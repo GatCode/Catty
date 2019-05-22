@@ -30,6 +30,7 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
+		2E3C0EB022952BB600351E45 /* XMLParserBlackBoxTests091.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
 		4C03A4C42133FF4B007BFFD2 /* FormulaManager+Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C32133FF4B007BFFD2 /* FormulaManager+Interpreter.swift */; };
@@ -1359,6 +1360,7 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
+		2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests091.swift; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -3242,6 +3244,30 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
+		2E3C0EAE22952B2600351E45 /* CatrobatLanguage0.91 */ = {
+			isa = PBXGroup;
+			children = (
+				2E3C0EB22295342D00351E45 /* XMLParserTests */,
+			);
+			path = CatrobatLanguage0.91;
+			sourceTree = "<group>";
+		};
+		2E3C0EB12295339E00351E45 /* BlackBox Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */,
+			);
+			path = "BlackBox Tests";
+			sourceTree = "<group>";
+		};
+		2E3C0EB22295342D00351E45 /* XMLParserTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E3C0EB12295339E00351E45 /* BlackBox Tests */,
+			);
+			path = XMLParserTests;
+			sourceTree = "<group>";
+		};
 		4C0DC6651C3D5CE5006D6691 /* CatrobatLanguage0.97 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4688,6 +4714,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2A00C41B5547EB00CD4492 /* Abstract */,
+				2E3C0EAE22952B2600351E45 /* CatrobatLanguage0.91 */,
 				4CD669711B272AB60008602D /* CatrobatLanguage0.92 */,
 				4CD194F61A0632C600484E4F /* CatrobatLanguage0.93 */,
 				4C2EE3DA1B5554D7006DE9B8 /* CatrobatLanguage0.95 */,
@@ -7481,9 +7508,9 @@
 		CAE3E4F31B4C50B300CC88BD /* Compass_0.1 */ = {
 			isa = PBXGroup;
 			children = (
-				4C2EE3EC1B55571D006DE9B8 /* Compass_0.1_095.xml */,
 				CAE3E4F41B4C50B300CC88BD /* Compass_0.1_091.xml */,
 				CAE3E4F51B4C50B300CC88BD /* Compass_0.1_093.xml */,
+				4C2EE3EC1B55571D006DE9B8 /* Compass_0.1_095.xml */,
 				4CEF0CC31B9C6373003C9B20 /* Compass_0.1_096.xml */,
 				4CE2D3F41C294F2000938B5E /* Compass_0.1_097.xml */,
 				4C6D15CF1D7AC5A500CE53CD /* Compass_0.1_098.xml */,
@@ -7526,9 +7553,9 @@
 		CAE3E4FC1B4C50B300CC88BD /* Flap_Pac_Man */ = {
 			isa = PBXGroup;
 			children = (
-				4C2EE3F21B555754006DE9B8 /* Flap_Pac_Man_095.xml */,
 				CAE3E4FD1B4C50B300CC88BD /* Flap_Pac_Man_091.xml */,
 				CAE3E4FE1B4C50B300CC88BD /* Flap_Pac_Man_093.xml */,
+				4C2EE3F21B555754006DE9B8 /* Flap_Pac_Man_095.xml */,
 				4CEF0CC91B9C63AD003C9B20 /* Flap_Pac_Man_096.xml */,
 				4CE2D3FA1C294FFE00938B5E /* Flap_Pac_Man_097.xml */,
 				4C6D15D71D7AC5CB00CE53CD /* Flap_Pac_Man_098.xml */,
@@ -8723,6 +8750,7 @@
 				4C3A5C9F21D3B3F9008FD83F /* AndOperatorTest.swift in Sources */,
 				4C28D7952133BC1D00870CE2 /* FormulaManagerTests.swift in Sources */,
 				4CAB100D1ECF1AB20019A67B /* SetVariableBrickTests.swift in Sources */,
+				2E3C0EB022952BB600351E45 /* XMLParserBlackBoxTests091.swift in Sources */,
 				4C82266E213FA7A400F3D750 /* DateWeekdaySensorTest.swift in Sources */,
 				BA94561821A5FBE800C5DE36 /* XMLParserObjectTests093.swift in Sources */,
 				4CFAD35F1CFAB3EC0019C636 /* UIImageExtensionTests.swift in Sources */,
