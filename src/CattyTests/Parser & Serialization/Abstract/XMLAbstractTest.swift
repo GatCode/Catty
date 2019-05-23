@@ -58,6 +58,8 @@ class XMLAbstractTest: XCTestCase {
         let firstProject = self.getProjectForXML(xmlFile: firstProjectName)
         let secondProject = self.getProjectForXML(xmlFile: secondProjectName)
 
+        printDifferencesInProjects(first: firstProject, second: secondProject)
+
         // FIXME: HACK => assign same header to both versions => this forces to ignore header
         firstProject.header = secondProject.header
         // FIXME: HACK => for background objects always replace german name "Hintergrund" with "Background"
@@ -67,6 +69,27 @@ class XMLAbstractTest: XCTestCase {
         secondBgObject.name = secondBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
 
         XCTAssertTrue((firstProject.isEqual(to: secondProject)), "Projects are not equal")
+    }
+
+    func printDifferencesInProjects(first: Project, second: Project) {
+
+        print("Start <<<<<<<<<<<<<<<<<<")
+
+        for i in 0..<first.objectList.count {
+            if (first.objectList[i] as! SpriteObject).isEqual(to: second.objectList[i] as? SpriteObject) {
+                print("no differences")
+            } else {
+                print("-------------------------------")
+                print("UUH there are some differences:")
+                print("-------------------------------")
+                print(first.objectList[i])
+                print("-------------------------------")
+                print(second.objectList[i])
+                print("-------------------------------")
+            }
+        }
+
+        print("Finish <<<<<<<<<<<<<<<<<<")
     }
 
     func getProjectForXML(xmlFile: String) -> Project {

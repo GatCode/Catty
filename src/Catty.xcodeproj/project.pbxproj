@@ -32,6 +32,7 @@
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
 		2E3C0EB022952BB600351E45 /* XMLParserBlackBoxTests091.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */; };
 		2E3C0EB62295357900351E45 /* XMLParserBlackBoxTests092.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */; };
+		2E87944E22966A1D0008602B /* XMLParserBlackBoxTests090.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
 		4C03A4C42133FF4B007BFFD2 /* FormulaManager+Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C32133FF4B007BFFD2 /* FormulaManager+Interpreter.swift */; };
@@ -1363,6 +1364,7 @@
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
 		2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests091.swift; sourceTree = "<group>"; };
 		2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests092.swift; sourceTree = "<group>"; };
+		2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests090.swift; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -3295,6 +3297,45 @@
 			name = "BlackBox Tests";
 			sourceTree = "<group>";
 		};
+		2E879445229667FE0008602B /* CatrobatLanguage0.90 */ = {
+			isa = PBXGroup;
+			children = (
+				2E8794492296681B0008602B /* XMLParserTests */,
+			);
+			path = CatrobatLanguage0.90;
+			sourceTree = "<group>";
+		};
+		2E879448229668070008602B /* CatrobatLanguage0.80 */ = {
+			isa = PBXGroup;
+			children = (
+				2E87944A229668200008602B /* XMLParserTests */,
+			);
+			path = CatrobatLanguage0.80;
+			sourceTree = "<group>";
+		};
+		2E8794492296681B0008602B /* XMLParserTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E87944B2296685B0008602B /* BlackBox Tests */,
+			);
+			path = XMLParserTests;
+			sourceTree = "<group>";
+		};
+		2E87944A229668200008602B /* XMLParserTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = XMLParserTests;
+			sourceTree = "<group>";
+		};
+		2E87944B2296685B0008602B /* BlackBox Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */,
+			);
+			path = "BlackBox Tests";
+			sourceTree = "<group>";
+		};
 		4C0DC6651C3D5CE5006D6691 /* CatrobatLanguage0.97 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4741,6 +4782,8 @@
 			isa = PBXGroup;
 			children = (
 				4C2A00C41B5547EB00CD4492 /* Abstract */,
+				2E879448229668070008602B /* CatrobatLanguage0.80 */,
+				2E879445229667FE0008602B /* CatrobatLanguage0.90 */,
 				2E3C0EAE22952B2600351E45 /* CatrobatLanguage0.91 */,
 				4CD669711B272AB60008602D /* CatrobatLanguage0.92 */,
 				4CD194F61A0632C600484E4F /* CatrobatLanguage0.93 */,
@@ -8641,6 +8684,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E87944E22966A1D0008602B /* XMLParserBlackBoxTests090.swift in Sources */,
 				4C099F6E1C282B3C00E190CA /* CBBackendTests.swift in Sources */,
 				4C3A5CAD21D3BAB9008FD83F /* GreaterThanOperatorTest.swift in Sources */,
 				4C6FE165212D2D2E0067B7D5 /* PiFunctionTest.swift in Sources */,
