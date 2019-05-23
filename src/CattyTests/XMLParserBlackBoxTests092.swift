@@ -26,30 +26,6 @@ import XCTest
 
 final class XMLParserBlackBoxTests092: XMLAbstractTest {
 
-//    func testAirFight() {
-//        self.compareProject(firstProjectName: "Air_fight_0.5_091", withProject: "Air_fight_0.5_093")
-//    }
-//
-//    func testAirplaneWithShadow() {
-//        self.compareProject(firstProjectName: "Airplane_with_shadow_091", withProject: "Airplane_with_shadow_093")
-//    }
-//
-//    func testCompass() {
-//        self.compareProject(firstProjectName: "Compass_0.1_091", withProject: "Compass_0.1_093")
-//    }
-
-    //    func testDemonstration() {
-    //        self.compareProject(firstProjectName: "Demonstration_093", withProject: "Demonstration_095")
-    //    }
-
-    //    func testDrinkMoreWater() {
-    //        self.compareProject(firstProjectName: "Drink_more_water_093", withProject: "Drink_more_water_095")
-    //    }
-
-//    func testFlapPacMan() {
-//        self.compareProject(firstProjectName: "Flap_Pac_Man_091", withProject: "Flap_Pac_Man_093")
-//    }
-
     func testFlappy() {
         self.compareProject(firstProjectName: "Flappy_v3.0_092", withProject: "Flappy_v3.0_093")
     }
@@ -58,48 +34,15 @@ final class XMLParserBlackBoxTests092: XMLAbstractTest {
         self.compareProject(firstProjectName: "Galaxy_War_092", withProject: "Galaxy_War_093")
     }
 
-//    func testGossipGirl() {
-//        self.compareProject(firstProjectName: "Gossip_Girl_091", withProject: "Gossip_Girl_093")
-//    }
-
-    //    func testMemory() {
-    //        self.compareProject(firstProjectName: "Memory_093", withProject: "Memory_095")
-    //    }
-
     func testMinecraftWorkInProgress() {
         self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_092", withProject: "Minecraft_Work_In_Progress_093")
     }
-
-//    func testMinions() {
-//        self.compareProject(firstProjectName: "Minions__091", withProject: "Minions__093")
-//    }
-
-    //    func testPongStarter() {
-    //        self.compareProject(firstProjectName: "Pong_Starter_093", withProject: "Pong_Starter_095")
-    //    }
 
     func testPythagoreanTheorem() {
         self.compareProject(firstProjectName: "Pythagorean_Theorem_092", withProject: "Pythagorean_Theorem_093")
     }
 
-//    func testRockPaperScissors() {
-//        self.compareProject(firstProjectName: "Rock_paper_scissors_091", withProject: "Rock_paper_scissors_093")
-//    }
-
     func testSkydivingSteve() {
         self.compareProject(firstProjectName: "Skydiving_Steve_092", withProject: "Skydiving_Steve_093")
     }
-
-//    func testTicTacToeMaster() {
-//        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_091", withProject: "Tic_Tac_Toe_Master_093")
-//    }
-
-    //    func testWordBalloonDemo() {
-    //        self.compareProject(firstProjectName: "Word_balloon_demo_093", withProject: "Word_balloon_demo_095")
-    //    }
-
-//    func testXRayPhone() {
-//        self.compareProject(firstProjectName: "X_Ray_phone_091", withProject: "X_Ray_phone_093")
-//    }
-
 }

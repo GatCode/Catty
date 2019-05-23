@@ -38,65 +38,25 @@ final class XMLParserBlackBoxTests091: XMLAbstractTest {
         self.compareProject(firstProjectName: "Compass_0.1_091", withProject: "Compass_0.1_093")
     }
 
-//    func testDemonstration() {
-//        self.compareProject(firstProjectName: "Demonstration_093", withProject: "Demonstration_095")
-//    }
-
-//    func testDrinkMoreWater() {
-//        self.compareProject(firstProjectName: "Drink_more_water_093", withProject: "Drink_more_water_095")
-//    }
-
     func testFlapPacMan() {
         self.compareProject(firstProjectName: "Flap_Pac_Man_091", withProject: "Flap_Pac_Man_093")
     }
-
-//    func testFlappy() {
-//        self.compareProject(firstProjectName: "Flappy_v3.0_093", withProject: "Flappy_v3.0_095")
-//    }
-
-//    func testGalaxyWar() {
-//        self.compareProject(firstProjectName: "Galaxy_War_093", withProject: "Galaxy_War_095")
-//    }
 
     func testGossipGirl() {
         self.compareProject(firstProjectName: "Gossip_Girl_091", withProject: "Gossip_Girl_093")
     }
 
-//    func testMemory() {
-//        self.compareProject(firstProjectName: "Memory_093", withProject: "Memory_095")
-//    }
-
-//    func testMinecraftWorkInProgress() {
-//        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_093", withProject: "Minecraft_Work_In_Progress_095")
-//    }
-
     func testMinions() {
         self.compareProject(firstProjectName: "Minions__091", withProject: "Minions__093")
     }
-
-//    func testPongStarter() {
-//        self.compareProject(firstProjectName: "Pong_Starter_093", withProject: "Pong_Starter_095")
-//    }
-
-//    func testPythagoreanTheorem() {
-//        self.compareProject(firstProjectName: "Pythagorean_Theorem_093", withProject: "Pythagorean_Theorem_095")
-//    }
 
     func testRockPaperScissors() {
         self.compareProject(firstProjectName: "Rock_paper_scissors_091", withProject: "Rock_paper_scissors_093")
     }
 
-//    func testSkydivingSteve() {
-//        self.compareProject(firstProjectName: "Skydiving_Steve_093", withProject: "Skydiving_Steve_095")
-//    }
-
     func testTicTacToeMaster() {
         self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_091", withProject: "Tic_Tac_Toe_Master_093")
     }
-
-//    func testWordBalloonDemo() {
-//        self.compareProject(firstProjectName: "Word_balloon_demo_093", withProject: "Word_balloon_demo_095")
-//    }
 
     func testXRayPhone() {
         self.compareProject(firstProjectName: "X_Ray_phone_091", withProject: "X_Ray_phone_093")
