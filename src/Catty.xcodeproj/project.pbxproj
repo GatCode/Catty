@@ -32,6 +32,22 @@
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
 		2E3C0EB022952BB600351E45 /* XMLParserBlackBoxTests091.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */; };
 		2E3C0EB62295357900351E45 /* XMLParserBlackBoxTests092.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */; };
+		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
+		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
+		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
+		2E6F42722299351C00840319 /* CBProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42712299351C00840319 /* CBProject.swift */; };
+		2E6F4275229937BA00840319 /* CBHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4274229937BA00840319 /* CBHeader.swift */; };
+		2E6F42782299381D00840319 /* CBObjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42772299381D00840319 /* CBObjectList.swift */; };
+		2E6F427B229938A200840319 /* CBLookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F427A229938A200840319 /* CBLookList.swift */; };
+		2E6F427F2299390300840319 /* CBSoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F427E2299390300840319 /* CBSoundList.swift */; };
+		2E6F42812299392E00840319 /* CBSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42802299392E00840319 /* CBSound.swift */; };
+		2E6F42842299399E00840319 /* CBScriptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42832299399E00840319 /* CBScriptList.swift */; };
+		2E6F4286229939C900840319 /* CBScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4285229939C900840319 /* CBScript.swift */; };
+		2E6F428822993A3A00840319 /* CBBrickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428722993A3A00840319 /* CBBrickList.swift */; };
+		2E6F428B22993A8B00840319 /* CBBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428A22993A8B00840319 /* CBBrick.swift */; };
+		2E6F428D22993B0B00840319 /* CBFormulaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428C22993B0B00840319 /* CBFormulaList.swift */; };
+		2E6F429022993B5700840319 /* CBFormula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428F22993B5700840319 /* CBFormula.swift */; };
+		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
 		2E87944E22966A1D0008602B /* XMLParserBlackBoxTests090.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */; };
 		2EA48F5A2297B2520015C7A2 /* XMLParserBlackBoxTests080.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
@@ -1365,6 +1381,23 @@
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
 		2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests091.swift; sourceTree = "<group>"; };
 		2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests092.swift; sourceTree = "<group>"; };
+		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		2E6F426A229929FC00840319 /* Siren.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Siren.framework.dSYM; path = Carthage/Build/iOS/Siren.framework.dSYM; sourceTree = "<group>"; };
+		2E6F426D2299344200840319 /* CBLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLook.swift; sourceTree = "<group>"; };
+		2E6F426F229934A300840319 /* CBObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObject.swift; sourceTree = "<group>"; };
+		2E6F42712299351C00840319 /* CBProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProject.swift; sourceTree = "<group>"; };
+		2E6F4274229937BA00840319 /* CBHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBHeader.swift; sourceTree = "<group>"; };
+		2E6F42772299381D00840319 /* CBObjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectList.swift; sourceTree = "<group>"; };
+		2E6F427A229938A200840319 /* CBLookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLookList.swift; sourceTree = "<group>"; };
+		2E6F427E2299390300840319 /* CBSoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBSoundList.swift; sourceTree = "<group>"; };
+		2E6F42802299392E00840319 /* CBSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBSound.swift; sourceTree = "<group>"; };
+		2E6F42832299399E00840319 /* CBScriptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBScriptList.swift; sourceTree = "<group>"; };
+		2E6F4285229939C900840319 /* CBScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBScript.swift; sourceTree = "<group>"; };
+		2E6F428722993A3A00840319 /* CBBrickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBBrickList.swift; sourceTree = "<group>"; };
+		2E6F428A22993A8B00840319 /* CBBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBBrick.swift; sourceTree = "<group>"; };
+		2E6F428C22993B0B00840319 /* CBFormulaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBFormulaList.swift; sourceTree = "<group>"; };
+		2E6F428F22993B5700840319 /* CBFormula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBFormula.swift; sourceTree = "<group>"; };
+		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
 		2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests090.swift; sourceTree = "<group>"; };
 		2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests080.swift; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -3143,6 +3176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */,
 				CADBD7EE19B0E8C200C62836 /* libz.dylib in Frameworks */,
 				59473A6A1F76F05000BD634F /* Bohr.framework in Frameworks */,
 				59473A6B1F76F05000BD634F /* HMSegmentedControl.framework in Frameworks */,
@@ -3204,6 +3238,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E6F426A229929FC00840319 /* Siren.framework.dSYM */,
+				2E63C82C229926B2000BE715 /* SWXMLHash.framework */,
 				B405BAC7175DD3F600B1A0FC /* libxml2.dylib */,
 				DE5C4E6D138ED109004892CA /* libz.dylib */,
 				59473A641F76F05000BD634F /* Bohr.framework */,
@@ -3297,6 +3333,84 @@
 				2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */,
 			);
 			name = "BlackBox Tests";
+			sourceTree = "<group>";
+		};
+		2E6F4273229937AB00840319 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F4274229937BA00840319 /* CBHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2E6F42762299380500840319 /* ObjectList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F42772299381D00840319 /* CBObjectList.swift */,
+				2E6F426F229934A300840319 /* CBObject.swift */,
+				2E6F42792299388B00840319 /* CBLookList */,
+				2E6F427D229938CB00840319 /* CBSoundList */,
+				2E6F42822299398000840319 /* CBScriptList */,
+			);
+			path = ObjectList;
+			sourceTree = "<group>";
+		};
+		2E6F42792299388B00840319 /* CBLookList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F427A229938A200840319 /* CBLookList.swift */,
+				2E6F426D2299344200840319 /* CBLook.swift */,
+			);
+			path = CBLookList;
+			sourceTree = "<group>";
+		};
+		2E6F427D229938CB00840319 /* CBSoundList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F427E2299390300840319 /* CBSoundList.swift */,
+				2E6F42802299392E00840319 /* CBSound.swift */,
+			);
+			path = CBSoundList;
+			sourceTree = "<group>";
+		};
+		2E6F42822299398000840319 /* CBScriptList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F42832299399E00840319 /* CBScriptList.swift */,
+				2E6F4285229939C900840319 /* CBScript.swift */,
+				2E6F428922993A5200840319 /* CBBrickList */,
+			);
+			path = CBScriptList;
+			sourceTree = "<group>";
+		};
+		2E6F428922993A5200840319 /* CBBrickList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F428722993A3A00840319 /* CBBrickList.swift */,
+				2E6F428A22993A8B00840319 /* CBBrick.swift */,
+				2E6F428E22993B0F00840319 /* CBFormulaList */,
+			);
+			path = CBBrickList;
+			sourceTree = "<group>";
+		};
+		2E6F428E22993B0F00840319 /* CBFormulaList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F428C22993B0B00840319 /* CBFormulaList.swift */,
+				2E6F428F22993B5700840319 /* CBFormula.swift */,
+			);
+			path = CBFormulaList;
+			sourceTree = "<group>";
+		};
+		2E6F42922299805700840319 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				2E7D46402299099A0003DFCE /* CBXMLParser.swift */,
+				2E6F42712299351C00840319 /* CBProject.swift */,
+				2E6F4273229937AB00840319 /* Header */,
+				2E6F42762299380500840319 /* ObjectList */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		2E879445229667FE0008602B /* CatrobatLanguage0.90 */ = {
@@ -7926,6 +8040,7 @@
 				B4BCF409170ECFC3008EDF3A /* Extensions & Delegates & Protocols */,
 				CA3E72D31B0BA46A00D6B184 /* PlayerEngine */,
 				92FF30271A24DCAA00093DA7 /* DataModel */,
+				2E6F42922299805700840319 /* Parser */,
 				4C724D851B4D3E8C00E27479 /* Parser&Serialializer */,
 				92FF310A1A24DEB300093DA7 /* ViewController */,
 				92FF31621A24E2F400093DA7 /* Views */,
@@ -8538,6 +8653,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/TTTAttributedLabel.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/LXReorderableCollectionViewFlowLayout.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
 			);
 			name = "Carthage Copy Frameworks Run Script";
 			outputPaths = (
@@ -8967,9 +9083,11 @@
 				BACDF3521F1F9B7E00346167 /* DeleteItemOfUserListBrick.m in Sources */,
 				AABCB3DF1BB3650B009F67D2 /* CBBackendProtocol.swift in Sources */,
 				92D56C311BF202E700A54750 /* ArduinoDevice.swift in Sources */,
+				2E6F428B22993A8B00840319 /* CBBrick.swift in Sources */,
 				F470A2E52129DF42005EC9A3 /* NumberOfItemsFunction.swift in Sources */,
 				92B46F9B1BC7BC8C004980C1 /* ArduinoSendDigitalValueBrick+CBXMLHandler.m in Sources */,
 				4C0F9F31204ADC2E00E71B2D /* ChooseCameraBrick.m in Sources */,
+				2E6F42842299399E00840319 /* CBScriptList.swift in Sources */,
 				AABCB3E01BB3650B009F67D2 /* CBFrontendProtocol.swift in Sources */,
 				AABCB3E11BB3650B009F67D2 /* CBSchedulerProtocol.swift in Sources */,
 				F4E6E598210E03FE00D86FE6 /* ExpFunction.swift in Sources */,
@@ -8986,6 +9104,7 @@
 				AABCB3D91BB3648E009F67D2 /* CBOperation.swift in Sources */,
 				4C72EA3D2108ED0800E7407F /* TouchManager.swift in Sources */,
 				4C0F9F69204BD19400E71B2D /* SetBackgroundBrick+CBXMLHandler.m in Sources */,
+				2E6F427B229938A200840319 /* CBLookList.swift in Sources */,
 				4C11795420AEC36D006C6E32 /* ProtocolConformance.swift in Sources */,
 				4C03A4C42133FF4B007BFFD2 /* FormulaManager+Interpreter.swift in Sources */,
 				4C8C3612213A9FDF00279BC7 /* ForeverBrick+Condition.swift in Sources */,
@@ -9055,6 +9174,7 @@
 				92FF32BC1A24E2F400093DA7 /* DarkBlueGradientImageDetailCell.m in Sources */,
 				92FF32B11A24E2F400093DA7 /* CreateView.m in Sources */,
 				4CF072A920D6710F00F93AB5 /* FingerTouchedSensor.swift in Sources */,
+				2E6F42782299381D00840319 /* CBObjectList.swift in Sources */,
 				AA74EEE41BC057B900D1E954 /* RepeatBrick+CBXMLHandler.m in Sources */,
 				4C724E5F1B4D3E8C00E27479 /* VariablesContainer+CBXMLHandler.m in Sources */,
 				E405EABB212D4E420074ADDB /* SearchStoreCell.swift in Sources */,
@@ -9062,6 +9182,7 @@
 				AA74F0AA1BC05FCE00D1E954 /* VibrationBrickCell.m in Sources */,
 				4C7B931F21B6DAC6001C3BA1 /* CBMultiTouchRecognizer.swift in Sources */,
 				CADBD71A19B0E8C200C62836 /* main.m in Sources */,
+				2E6F426E2299344200840319 /* CBLook.swift in Sources */,
 				92DFB0101A38949E00FA9B0F /* FormulaEditorHistory.m in Sources */,
 				927F79DC1BEE39B0008D1635 /* PhiroIfLogicBeginBrickCell.m in Sources */,
 				AA74EF721BC0588A00D1E954 /* StopAllSoundsBrick+CBXMLHandler.m in Sources */,
@@ -9144,6 +9265,7 @@
 				4C8BC6641B26C298001C7E32 /* iOSComboboxPickerView.m in Sources */,
 				4C0F9F79204BD1E300E71B2D /* SayForBubbleBrick+Instruction.swift in Sources */,
 				4CF429F1213A876000B78897 /* RepeatBrick+Condition.swift in Sources */,
+				2E6F4286229939C900840319 /* CBScript.swift in Sources */,
 				92D56C301BF202E700A54750 /* BluetoothDevice.swift in Sources */,
 				4C0F9F91204BD28100E71B2D /* CameraBrickCell.m in Sources */,
 				92FF2EBE1A24C8A700093DA7 /* CatrobatInformation.m in Sources */,
@@ -9174,6 +9296,7 @@
 				AA74F0B01BC05FCE00D1E954 /* SetBrightnessBrickCell.m in Sources */,
 				AA74F0A61BC05FCE00D1E954 /* RepeatBrickCell.m in Sources */,
 				99B2C3731D884E8A00736769 /* FlashBrickCell.m in Sources */,
+				2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */,
 				AA74F0BA1BC05FCE00D1E954 /* GoNStepsBackBrickCell.m in Sources */,
 				92FF2EA01A24C7D800093DA7 /* SSZipArchive.m in Sources */,
 				92FF2E381A24C5A700093DA7 /* NSString+CatrobatNSStringExtensions.m in Sources */,
@@ -9201,6 +9324,7 @@
 				AA74F09A1BC05FCE00D1E954 /* BrickCellInlineView.m in Sources */,
 				AA74EE3B1BC0543700D1E954 /* SetVolumeToBrick+Instruction.swift in Sources */,
 				92FF30FE1A24DCAA00093DA7 /* Look.m in Sources */,
+				2E6F42722299351C00840319 /* CBProject.swift in Sources */,
 				4CC6CE592104715700AA2A04 /* CBSpriteNode+Sensor.swift in Sources */,
 				AA74EF631BC0587B00D1E954 /* VibrationBrick+CBXMLHandler.m in Sources */,
 				921D46881BDF698A0086AD20 /* ChangeTransparencyByNBrick+Instruction.swift in Sources */,
@@ -9270,6 +9394,7 @@
 				AA74EFEB1BC05B5F00D1E954 /* WaitBrick.m in Sources */,
 				4C0F9FA5204BD2C200E71B2D /* ThinkForBubbleBrickCell.m in Sources */,
 				4CDA808521366AEA0052FA24 /* FormulaManagerProtocol.swift in Sources */,
+				2E6F429022993B5700840319 /* CBFormula.swift in Sources */,
 				4CF0728D20D659F700F93AB5 /* PhiroSideRightSensor.swift in Sources */,
 				AA74F0021BC05B5F00D1E954 /* MoveNStepsBrick.m in Sources */,
 				4C4A71A11B527E2F00BBE32B /* CBXMLParserContext.m in Sources */,
@@ -9279,6 +9404,7 @@
 				AA74EF521BC0586F00D1E954 /* MoveNStepsBrick+CBXMLHandler.m in Sources */,
 				921D467E1BDF61350086AD20 /* GoNStepsBackBrick+Instruction.swift in Sources */,
 				AA74EF531BC0586F00D1E954 /* PlaceAtBrick+CBXMLHandler.m in Sources */,
+				2E6F4275229937BA00840319 /* CBHeader.swift in Sources */,
 				4CF773F41AEE79A800DBBB2B /* Brick+UserVariable.m in Sources */,
 				4C2EE41F1B555B55006DE9B8 /* CBXMLPositionStack.m in Sources */,
 				92FF2E371A24C5A700093DA7 /* NSMutableArray+CustomExtensions.m in Sources */,
@@ -9329,6 +9455,7 @@
 				5EF590BA2192D81F00C19F12 /* Double+Extensions.swift in Sources */,
 				92FF2E911A24C7D800093DA7 /* DownloadImageCache.m in Sources */,
 				AA74EFF81BC05B5F00D1E954 /* SetSizeToBrick.m in Sources */,
+				2E6F428D22993B0B00840319 /* CBFormulaList.swift in Sources */,
 				9218B2101CC4AB75007B4C60 /* PipetteTool.m in Sources */,
 				4C0F9F66204BD18600E71B2D /* SayBubbleBrick+CBXMLHandler.m in Sources */,
 				923503901BA707DE00021F6A /* BaseLoginViewController.m in Sources */,
@@ -9347,6 +9474,7 @@
 				AA74F0AE1BC05FCE00D1E954 /* HideBrickCell.m in Sources */,
 				4C994E25207A56D500C415FD /* AccelerationYSensor.swift in Sources */,
 				921D467A1BDF61350086AD20 /* ChangeSizeByNBrick+Instruction.swift in Sources */,
+				2E6F42812299392E00840319 /* CBSound.swift in Sources */,
 				F470A2E32129DAFB005EC9A3 /* ElementFunction.swift in Sources */,
 				92FF30FF1A24DCAA00093DA7 /* Project.m in Sources */,
 				4C82268D213FB29A00F3D750 /* MultiFingerYFunction.swift in Sources */,
@@ -9355,6 +9483,7 @@
 				929CC0CF1BC39B0A0027DEC0 /* PhiroPlayToneBrick.m in Sources */,
 				BA1FA9A01F02B0020084184D /* InsertItemIntoUserListBrickCell.m in Sources */,
 				F4E6E590210E026500D86FE6 /* AbsFunction.swift in Sources */,
+				2E6F4270229934A300840319 /* CBObject.swift in Sources */,
 				AA74EEFD1BC057C900D1E954 /* SetBrightnessBrick+CBXMLHandler.m in Sources */,
 				9218B20C1CC4AB75007B4C60 /* FillTool.m in Sources */,
 				4C0F9F85204BD24600E71B2D /* IfThenLogicBeginBrick+CBXMLHandler.m in Sources */,
@@ -9404,6 +9533,7 @@
 				AA74EF511BC0586F00D1E954 /* GoNStepsBackBrick+CBXMLHandler.m in Sources */,
 				92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */,
 				92EC985C1BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.m in Sources */,
+				2E6F428822993A3A00840319 /* CBBrickList.swift in Sources */,
 				4C0F9F4F204BD0B400E71B2D /* CameraPreviewHandler.m in Sources */,
 				4C724E611B4D3E8C00E27479 /* ProjectParser.m in Sources */,
 				AA74F0931BC05FCE00D1E954 /* BrickCellFormulaData.m in Sources */,
@@ -9533,6 +9663,7 @@
 				9276B7051C9E8F6C008BC594 /* SoundCache.m in Sources */,
 				C6A06BEC1EC8CA4C0000C656 /* AlertController.swift in Sources */,
 				92FF31021A24DCAA00093DA7 /* BroadcastScript.m in Sources */,
+				2E6F427F2299390300840319 /* CBSoundList.swift in Sources */,
 				4C994E0A207A3D4100C415FD /* Sensor.swift in Sources */,
 				AA74F00D1BC05B5F00D1E954 /* SpeakBrick.m in Sources */,
 				4C0F9F1C204ADB5900E71B2D /* ChooseCameraBrick+Instruction.swift in Sources */,
