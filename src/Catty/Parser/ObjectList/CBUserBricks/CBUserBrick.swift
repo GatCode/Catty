@@ -22,22 +22,12 @@
 
 import SWXMLHash
 
-struct CBObject: XMLIndexerDeserializable {
+struct CBUserBrick: XMLIndexerDeserializable {
     let name: String?
-    let lookList: CBLookList?
-    let soundList: CBSoundList?
-    let scriptList: CBScriptList?
-    let userBricks: CBUserBricks?
-    let nfcTagList: CBNfcTagList?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBObject {
-        return try CBObject(
-            name: node["name"].value(),
-            lookList: node["lookList"].value(),
-            soundList: node["soundList"].value(),
-            scriptList: node["scriptList"].value(),
-            userBricks: node["userBricks"].value(),
-            nfcTagList: node["nfcTagList"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBUserBrick {
+        return try CBUserBrick(
+            name: node["name"].value()
         )
     }
 }

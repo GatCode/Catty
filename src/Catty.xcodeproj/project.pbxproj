@@ -47,6 +47,11 @@
 		2E6F428B22993A8B00840319 /* CBBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428A22993A8B00840319 /* CBBrick.swift */; };
 		2E6F428D22993B0B00840319 /* CBFormulaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428C22993B0B00840319 /* CBFormulaList.swift */; };
 		2E6F429022993B5700840319 /* CBFormula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428F22993B5700840319 /* CBFormula.swift */; };
+		2E6F4294229A639700840319 /* CBUserBricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4293229A639700840319 /* CBUserBricks.swift */; };
+		2E6F4296229A63F200840319 /* CBUserBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4295229A63F200840319 /* CBUserBrick.swift */; };
+		2E6F4299229A64C500840319 /* CBNfcTagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4298229A64C500840319 /* CBNfcTagList.swift */; };
+		2E6F429B229A64D500840319 /* CBNfcTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F429A229A64D500840319 /* CBNfcTag.swift */; };
+		2E6F42A1229A67A500840319 /* Test_Your_NFC_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F42A0229A67A500840319 /* Test_Your_NFC_098.xml */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
 		2E87944E22966A1D0008602B /* XMLParserBlackBoxTests090.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */; };
 		2EA48F5A2297B2520015C7A2 /* XMLParserBlackBoxTests080.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */; };
@@ -1397,6 +1402,11 @@
 		2E6F428A22993A8B00840319 /* CBBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBBrick.swift; sourceTree = "<group>"; };
 		2E6F428C22993B0B00840319 /* CBFormulaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBFormulaList.swift; sourceTree = "<group>"; };
 		2E6F428F22993B5700840319 /* CBFormula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBFormula.swift; sourceTree = "<group>"; };
+		2E6F4293229A639700840319 /* CBUserBricks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBricks.swift; sourceTree = "<group>"; };
+		2E6F4295229A63F200840319 /* CBUserBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrick.swift; sourceTree = "<group>"; };
+		2E6F4298229A64C500840319 /* CBNfcTagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBNfcTagList.swift; sourceTree = "<group>"; };
+		2E6F429A229A64D500840319 /* CBNfcTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBNfcTag.swift; sourceTree = "<group>"; };
+		2E6F42A0229A67A500840319 /* Test_Your_NFC_098.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test_Your_NFC_098.xml; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
 		2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests090.swift; sourceTree = "<group>"; };
 		2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests080.swift; sourceTree = "<group>"; };
@@ -3351,6 +3361,8 @@
 				2E6F42792299388B00840319 /* CBLookList */,
 				2E6F427D229938CB00840319 /* CBSoundList */,
 				2E6F42822299398000840319 /* CBScriptList */,
+				2E6F4297229A641E00840319 /* CBUserBricks */,
+				2E6F429C229A653E00840319 /* CBNfcTagList */,
 			);
 			path = ObjectList;
 			sourceTree = "<group>";
@@ -3411,6 +3423,32 @@
 				2E6F42762299380500840319 /* ObjectList */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		2E6F4297229A641E00840319 /* CBUserBricks */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F4293229A639700840319 /* CBUserBricks.swift */,
+				2E6F4295229A63F200840319 /* CBUserBrick.swift */,
+			);
+			path = CBUserBricks;
+			sourceTree = "<group>";
+		};
+		2E6F429C229A653E00840319 /* CBNfcTagList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F4298229A64C500840319 /* CBNfcTagList.swift */,
+				2E6F429A229A64D500840319 /* CBNfcTag.swift */,
+			);
+			path = CBNfcTagList;
+			sourceTree = "<group>";
+		};
+		2E6F429D229A670F00840319 /* Test_Your_NFC */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F42A0229A67A500840319 /* Test_Your_NFC_098.xml */,
+			);
+			path = Test_Your_NFC;
 			sourceTree = "<group>";
 		};
 		2E879445229667FE0008602B /* CatrobatLanguage0.90 */ = {
@@ -3664,6 +3702,7 @@
 				CAE3E5221B4C50B300CC88BD /* Skydiving_Steve */,
 				CAE3E5251B4C50B300CC88BD /* SKYPASCAL */,
 				4C8B79531CB141AA001231F1 /* Solar_System_v1.0 */,
+				2E6F429D229A670F00840319 /* Test_Your_NFC */,
 				CAE3E5281B4C50B300CC88BD /* Tic_Tac_Toe_Master */,
 				4CC85CD91B9C717C0097E470 /* ValidHeader */,
 				4CC85CDC1B9C717C0097E470 /* ValidProject */,
@@ -8508,6 +8547,7 @@
 				4C8B79561CB141AA001231F1 /* Solar_System_v1.0_092.xml in Resources */,
 				2DCB4928212EA477005E8E3D /* StoreProjectDownloader.fetchMostViewedProjects.fail.request.json in Resources */,
 				4C6D15F21D7AC61C00CE53CD /* Solar_System_v1.0_098.xml in Resources */,
+				2E6F42A1229A67A500840319 /* Test_Your_NFC_098.xml in Resources */,
 				4C994DD5207A25F600C415FD /* DeleteItemOfUserListBrick098.xml in Resources */,
 				CAE3E54A1B4C50B300CC88BD /* Memory_093.xml in Resources */,
 				4C6D14F0210B13C6006147BD /* ElementOfListFunction0991.xml in Resources */,
@@ -9500,6 +9540,7 @@
 				92FF315B1A24DEB300093DA7 /* ProjectDetailStoreViewController.m in Sources */,
 				AA74EFE91BC05B5F00D1E954 /* NoteBrick.m in Sources */,
 				92DFB00F1A38949E00FA9B0F /* ExternToken.m in Sources */,
+				2E6F4296229A63F200840319 /* CBUserBrick.swift in Sources */,
 				92DFB0191A38949E00FA9B0F /* InternToExternGenerator.m in Sources */,
 				AA74EEE31BC057B900D1E954 /* NoteBrick+CBXMLHandler.m in Sources */,
 				4CF0729A20D66C4800F93AB5 /* BackgroundNumberSensor.swift in Sources */,
@@ -9672,6 +9713,7 @@
 				92D56C3B1BF20B4700A54750 /* PhiroHelper.swift in Sources */,
 				AA74F0C31BC05FCE00D1E954 /* TurnRightBrickCell.m in Sources */,
 				AA74F0A01BC05FCE00D1E954 /* IfLogicElseBrickCell.m in Sources */,
+				2E6F4299229A64C500840319 /* CBNfcTagList.swift in Sources */,
 				AA74F0A91BC05FCE00D1E954 /* SetVariableBrickCell.m in Sources */,
 				4CF0729620D66B2800F93AB5 /* ColorSensor.swift in Sources */,
 				92FF2E921A24C7D800093DA7 /* ImageCache.m in Sources */,
@@ -9704,6 +9746,7 @@
 				F48E945920D6955E007E782E /* DateSensor.swift in Sources */,
 				92FF2E8F1A24C7D800093DA7 /* FlashHelper.m in Sources */,
 				AA74F09B1BC05FCE00D1E954 /* BrickCell.m in Sources */,
+				2E6F429B229A64D500840319 /* CBNfcTag.swift in Sources */,
 				59ABDC652021D7DA00061403 /* UIAlertController+AddAction.swift in Sources */,
 				922FE8E11B963BDE005A19FA /* BrickSelectionManager.m in Sources */,
 				4CF0729920D66C4800F93AB5 /* BackgroundNameSensor.swift in Sources */,
@@ -9728,6 +9771,7 @@
 				F4201CFB20D7A1060030181B /* TimeMinuteSensor.swift in Sources */,
 				F411560320E7732D00E2F254 /* InternFormula+KeyboardAdapter.swift in Sources */,
 				AA74EF781BC0589700D1E954 /* SetVariableBrick+CBXMLHandler.m in Sources */,
+				2E6F4294229A639700840319 /* CBUserBricks.swift in Sources */,
 				9218B2151CC4AB75007B4C60 /* ColorPickerViewController.m in Sources */,
 				92FF2E981A24C7D800093DA7 /* unzip.c in Sources */,
 				AA74F0B91BC05FCE00D1E954 /* GlideToBrickCell.m in Sources */,
