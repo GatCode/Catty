@@ -23,10 +23,12 @@
 import SWXMLHash
 
 struct CBData: XMLIndexerDeserializable {
+    let objectListOfList: [CBObjectListofList]?
     let objectVariableList: [CBObjectVariableList]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBData {
         return try CBData(
+            objectListOfList: node["objectListOfList"].value(),
             objectVariableList: node["objectVariableList"].value()
         )
     }

@@ -58,6 +58,10 @@
 		2E6F42AC229A6EF300840319 /* Data_Test_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F42AB229A6EF300840319 /* Data_Test_0991.xml */; };
 		2E6F42AF229A6FB100840319 /* CBData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42AE229A6FB100840319 /* CBData.swift */; };
 		2E6F42B1229A78AD00840319 /* CBUserVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B0229A78AD00840319 /* CBUserVariable.swift */; };
+		2E6F42B4229A81C100840319 /* CBObjectListOfList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */; };
+		2E6F42B7229A824000840319 /* CBObjectListOfListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */; };
+		2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */; };
+		2E6F42BB229A830700840319 /* CBUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42BA229A830700840319 /* CBUserList.swift */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
 		2E87944E22966A1D0008602B /* XMLParserBlackBoxTests090.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */; };
 		2EA48F5A2297B2520015C7A2 /* XMLParserBlackBoxTests080.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */; };
@@ -1419,6 +1423,10 @@
 		2E6F42AB229A6EF300840319 /* Data_Test_0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Data_Test_0991.xml; sourceTree = "<group>"; };
 		2E6F42AE229A6FB100840319 /* CBData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBData.swift; sourceTree = "<group>"; };
 		2E6F42B0229A78AD00840319 /* CBUserVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserVariable.swift; sourceTree = "<group>"; };
+		2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfList.swift; sourceTree = "<group>"; };
+		2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntry.swift; sourceTree = "<group>"; };
+		2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntryList.swift; sourceTree = "<group>"; };
+		2E6F42BA229A830700840319 /* CBUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserList.swift; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
 		2E87944C229668700008602B /* XMLParserBlackBoxTests090.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests090.swift; sourceTree = "<group>"; };
 		2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests080.swift; sourceTree = "<group>"; };
@@ -3468,6 +3476,7 @@
 			isa = PBXGroup;
 			children = (
 				2E6F42AE229A6FB100840319 /* CBData.swift */,
+				2E6F42B2229A818B00840319 /* CBObjectListOfList */,
 				2E6F42AD229A6F9200840319 /* CBObjectVariableList */,
 			);
 			path = Data;
@@ -3498,6 +3507,25 @@
 				2E6F42A9229A6CA500840319 /* CBObjectVariableEntry */,
 			);
 			path = CBObjectVariableList;
+			sourceTree = "<group>";
+		};
+		2E6F42B2229A818B00840319 /* CBObjectListOfList */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */,
+				2E6F42B5229A822800840319 /* CBObjectListOfListEntry */,
+			);
+			path = CBObjectListOfList;
+			sourceTree = "<group>";
+		};
+		2E6F42B5229A822800840319 /* CBObjectListOfListEntry */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */,
+				2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */,
+				2E6F42BA229A830700840319 /* CBUserList.swift */,
+			);
+			path = CBObjectListOfListEntry;
 			sourceTree = "<group>";
 		};
 		2E879445229667FE0008602B /* CatrobatLanguage0.90 */ = {
@@ -9162,6 +9190,7 @@
 				4CDF7BB62138735700FFF7F4 /* SceneBuilder.swift in Sources */,
 				AA74F0C91BC05FCE00D1E954 /* BrickShapeFactory.m in Sources */,
 				AABCB3F11BB36DCE009F67D2 /* InternFormulaUtils.m in Sources */,
+				2E6F42B4229A81C100840319 /* CBObjectListOfList.swift in Sources */,
 				AABCB3ED1BB368CF009F67D2 /* CBFrontend.swift in Sources */,
 				AABCB3EC1BB368C2009F67D2 /* CBFrontendSequenceFilters.swift in Sources */,
 				AABCB3EA1BB3687D009F67D2 /* CBScene.swift in Sources */,
@@ -9300,6 +9329,7 @@
 				AA74EE2C1BC0541E00D1E954 /* IfOnEdgeBounceBrick+Instruction.swift in Sources */,
 				AA74F09E1BC05FCE00D1E954 /* ForeverBrickCell.m in Sources */,
 				BAEAB29A214BCE8D000B2E4B /* WhenTouchDownScriptCell.m in Sources */,
+				2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */,
 				92FF314C1A24DEB300093DA7 /* CatrobatTableViewController.m in Sources */,
 				59D008E9208E3FDC000539E7 /* MotionManager.swift in Sources */,
 				4C595F4321CAEAFE0097D850 /* MinusOperator.swift in Sources */,
@@ -9543,6 +9573,7 @@
 				9218B20D1CC4AB75007B4C60 /* HandTool.m in Sources */,
 				4C0F9F49204ADD0C00E71B2D /* OrderedDictionary.swift in Sources */,
 				4C0F9F46204ADC7900E71B2D /* SpeakAndWaitBrick.m in Sources */,
+				2E6F42B7229A824000840319 /* CBObjectListOfListEntry.swift in Sources */,
 				4CE6788D210C503600D90B5D /* FunctionManager.swift in Sources */,
 				929CC0BD1BC39AD60027DEC0 /* BluetoothBrick.m in Sources */,
 				4C0F9F7A204BD1E300E71B2D /* SayBubbleBrick+Instruction.swift in Sources */,
@@ -9791,6 +9822,7 @@
 				AA74EF6E1BC0588A00D1E954 /* ChangeVolumeByNBrick+CBXMLHandler.m in Sources */,
 				AA74F0C21BC05FCE00D1E954 /* TurnLeftBrickCell.m in Sources */,
 				92C6318A1BC502CB00486958 /* KnownDevicesTableViewController.swift in Sources */,
+				2E6F42BB229A830700840319 /* CBUserList.swift in Sources */,
 				4C0F9F43204ADC6600E71B2D /* ThinkBubbleBrick.m in Sources */,
 				AAF6D9D81BC0BAF300686849 /* ShowBrick+Instruction.swift in Sources */,
 				593E4DDE1FE11D410016DCB9 /* CatrobatReorderableCollectionViewFlowLayout.m in Sources */,
