@@ -49,8 +49,8 @@
 		2E251945229BEA4C00DC11BD /* Pong_Starter_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251944229BEA4C00DC11BD /* Pong_Starter_0993.xml */; };
 		2E251949229C204A00DC11BD /* CBProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251948229C204A00DC11BD /* CBProjectScene.swift */; };
 		2E25194C229C2A3C00DC11BD /* CBUserBrickVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */; };
-		2E251987229C44C000DC11BD /* XMLParserTests080.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251986229C44BF00DC11BD /* XMLParserTests080.swift */; };
 		2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251988229C44E200DC11BD /* XMLAbstractTest.swift */; };
+		2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25198A229C465300DC11BD /* XMLParserTests.swift */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
 		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
 		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
@@ -1408,8 +1408,8 @@
 		2E251944229BEA4C00DC11BD /* Pong_Starter_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pong_Starter_0993.xml; sourceTree = "<group>"; };
 		2E251948229C204A00DC11BD /* CBProjectScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProjectScene.swift; sourceTree = "<group>"; };
 		2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrickVariableList.swift; sourceTree = "<group>"; };
-		2E251986229C44BF00DC11BD /* XMLParserTests080.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLParserTests080.swift; path = "Parser & Serialization/XMLParserTests080.swift"; sourceTree = "<group>"; };
 		2E251988229C44E200DC11BD /* XMLAbstractTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLAbstractTest.swift; path = "Parser & Serialization/XMLAbstractTest.swift"; sourceTree = "<group>"; };
+		2E25198A229C465300DC11BD /* XMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLParserTests.swift; path = "Parser & Serialization/XMLParserTests.swift"; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		2E6F426A229929FC00840319 /* Siren.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Siren.framework.dSYM; path = Carthage/Build/iOS/Siren.framework.dSYM; sourceTree = "<group>"; };
 		2E6F426D2299344200840319 /* CBLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLook.swift; sourceTree = "<group>"; };
@@ -4778,7 +4778,7 @@
 			isa = PBXGroup;
 			children = (
 				2E251988229C44E200DC11BD /* XMLAbstractTest.swift */,
-				2E251986229C44BF00DC11BD /* XMLParserTests080.swift */,
+				2E25198A229C465300DC11BD /* XMLParserTests.swift */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -8750,7 +8750,6 @@
 				4CE1D436213E5D700014DAF9 /* FormulaManagerCacheTests.swift in Sources */,
 				4CEB225F1B95E47500B3BE2F /* PlaceAtBrickTests.m in Sources */,
 				4C6FE171212D2D2E0067B7D5 /* CosFunctionTest.swift in Sources */,
-				2E251987229C44C000DC11BD /* XMLParserTests080.swift in Sources */,
 				4C53E38821D5238900F2EC76 /* GreaterOrEqualOperatorTest.swift in Sources */,
 				4C6FE15F212D2D2E0067B7D5 /* FalseFunctionTest.swift in Sources */,
 				2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */,
@@ -8775,6 +8774,7 @@
 				4CB2CFAD1D7AD8A5009F3034 /* SetColorBrickTests.m in Sources */,
 				4CDE807621A1B112009EFD31 /* ScenePresenterViewControllerTest.swift in Sources */,
 				4C822683213FA7A400F3D750 /* SensorManagerTests.swift in Sources */,
+				2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */,
 				4C82266F213FA7A400F3D750 /* DateMonthSensorTest.swift in Sources */,
 				4C822670213FA7A400F3D750 /* AccelerationYSensorTest.swift in Sources */,
 				4C6FE16A212D2D2E0067B7D5 /* AtanFunctionTest.swift in Sources */,

@@ -44,12 +44,12 @@ class XMLAbstractTest: XCTestCase {
         var project1: CBProject?
         var project2: CBProject?
 
-        getProjectForXML2(xmlFile: secondProjectName) { project in
-            project2 = project
-        }
-
         getProjectForXML2(xmlFile: firstProjectName) { project in
             project1 = project
+        }
+
+        getProjectForXML2(xmlFile: secondProjectName) { project in
+            project2 = project
         }
 
         XCTAssertNotNil(project1, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")

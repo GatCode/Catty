@@ -24,9 +24,9 @@ import XCTest
 
 @testable import Pocket_Code
 
-final class XMLParserBlackBoxTests080: XMLAbstractTest {
+final class XMLParserTests: XMLAbstractTest {
 
-    func testDemonstration() {
+    func test080VS093() {
         self.compareProject(firstProjectName: "SKYPASCAL_08", withProject: "SKYPASCAL_093")
     }
 

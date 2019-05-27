@@ -24,18 +24,25 @@ import SWXMLHash
 
 struct CBUserProgramVariable: XMLIndexerDeserializable, Equatable {
     let value: String?
-    let reference: String?
+    let name: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBUserProgramVariable {
+
+        var tmpValue: String?
+        tmpValue = try node["name"].value()
+
+        if tmpValue == nil {
+            tmpValue = try node.value()
+        }
+
         return try CBUserProgramVariable(
-            value: node.value(),
-            reference: node.value(ofAttribute: "reference")
+            value: tmpValue,
+            name: node["name"].value()
         )
     }
 
     static func == (lhs: CBUserProgramVariable, rhs: CBUserProgramVariable) -> Bool {
         return
-            lhs.value == rhs.value &&
-            lhs.reference != nil && rhs.reference != nil
+            lhs.value == rhs.value
     }
 }
