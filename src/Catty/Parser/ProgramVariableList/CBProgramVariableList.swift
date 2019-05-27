@@ -22,12 +22,17 @@
 
 import SWXMLHash
 
-struct CBSoundList: XMLIndexerDeserializable {
-    let sound: [CBSound]?
+struct CBProgramVariableList: XMLIndexerDeserializable, Equatable {
+    let userVariable: [CBUserProgramVariable]?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBSoundList {
-        return try CBSoundList(
-            sound: node["sound"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBProgramVariableList {
+        return try CBProgramVariableList(
+            userVariable: node["userVariable"].value()
         )
+    }
+
+    static func == (lhs: CBProgramVariableList, rhs: CBProgramVariableList) -> Bool {
+        return
+            lhs.userVariable == rhs.userVariable
     }
 }

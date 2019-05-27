@@ -22,14 +22,27 @@
 
 import SWXMLHash
 
-struct CBSound: XMLIndexerDeserializable {
-    let fileName: String?
+struct CBLook: XMLIndexerDeserializable, Equatable {
     let name: String?
+    let fileName: String?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBSound {
-        return try CBSound(
-            fileName: node["fileName"].value(),
-            name: node["name"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBLook {
+
+        var tmpName: String?
+        tmpName = node.value(ofAttribute: "name")
+        if tmpName == nil {
+            tmpName = try node["name"].value()
+        }
+
+        return try CBLook(
+            name: tmpName,
+            fileName: node["fileName"].value()
         )
+    }
+
+    static func == (lhs: CBLook, rhs: CBLook) -> Bool {
+        return
+            lhs.name == rhs.name &&
+            lhs.fileName == rhs.fileName
     }
 }

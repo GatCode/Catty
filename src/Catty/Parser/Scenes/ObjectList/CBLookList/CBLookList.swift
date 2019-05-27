@@ -22,14 +22,17 @@
 
 import SWXMLHash
 
-struct CBLook: XMLIndexerDeserializable {
-    let name: String?
-    let fileName: String?
+struct CBLookList: XMLIndexerDeserializable, Equatable {
+    let look: [CBLook]?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBLook {
-        return try CBLook(
-            name: node["name"].value(),
-            fileName: node["fileName"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBLookList {
+        return try CBLookList(
+            look: node["look"].value()
         )
+    }
+
+    static func == (lhs: CBLookList, rhs: CBLookList) -> Bool {
+        return
+            lhs.look == rhs.look
     }
 }

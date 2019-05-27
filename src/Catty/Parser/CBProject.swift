@@ -22,16 +22,43 @@
 
 import SWXMLHash
 
-struct CBProject: XMLIndexerDeserializable {
+struct CBProject: XMLIndexerDeserializable, Equatable {
     let header: CBHeader?
-    let objectList: CBObjectList?
-    let data: CBData?
+    let scenes: [CBProjectScene]?
+    let programVariableList: CBProgramVariableList?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProject {
+
+        var tmpScenes: [CBProjectScene]?
+        var tmpProgramVariableList: CBProgramVariableList?
+        tmpScenes = try node["scenes"].value()
+        tmpProgramVariableList = try node["programVariableList"].value()
+
+        if tmpScenes == nil {
+            tmpScenes = [CBProjectScene]()
+            var objectList: CBObjectList?
+            var objectVariableList: CBObjectVariableList?
+
+            objectList = try node["objectList"].value()
+            objectVariableList = try node["variables"]["objectVariableList"].value()
+            let data = CBProjectData(objectListOfList: nil, objectVariableList: objectVariableList, userBrickVariableList: nil)
+
+            tmpScenes!.append(CBProjectScene(name: nil, objectList: objectList, data: data, originalWidth: nil, originalHeight: nil))
+
+            tmpProgramVariableList = try node["variables"]["programVariableList"].value()
+        }
+
         return try CBProject(
             header: node["header"].value(),
-            objectList: node["objectList"].value(),
-            data: node["data"].value()
+            scenes: tmpScenes,
+            programVariableList: tmpProgramVariableList
         )
+    }
+
+    static func == (lhs: CBProject, rhs: CBProject) -> Bool {
+        return
+            lhs.header == rhs.header &&
+            lhs.scenes == rhs.scenes &&
+            lhs.programVariableList == rhs.programVariableList
     }
 }

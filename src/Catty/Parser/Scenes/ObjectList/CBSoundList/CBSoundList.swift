@@ -22,23 +22,17 @@
 
 import SWXMLHash
 
-struct CBObjectVariableEntry: XMLIndexerDeserializable {
-    let object: String?
-    let list: [CBUserVariable]?
+struct CBSoundList: XMLIndexerDeserializable, Equatable {
+    let sound: [CBSound]?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBObjectVariableEntry {
-
-        var reference = ""
-
-        for child in node.children {
-            let text = child.description
-            let arr = text.split(separator: "\"")
-            reference = arr.count == 3 ? String(arr[1]) : reference
-        }
-
-        return try CBObjectVariableEntry(
-            object: reference,
-            list: node["list"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBSoundList {
+        return try CBSoundList(
+            sound: node["sound"].value()
         )
+    }
+
+    static func == (lhs: CBSoundList, rhs: CBSoundList) -> Bool {
+        return
+            lhs.sound == rhs.sound
     }
 }

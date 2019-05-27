@@ -47,6 +47,8 @@
 		2E251941229BE95B00DC11BD /* Galaxy_War_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251940229BE95B00DC11BD /* Galaxy_War_0993.xml */; };
 		2E251943229BE9E600DC11BD /* X_Ray_phone_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251942229BE9E600DC11BD /* X_Ray_phone_0993.xml */; };
 		2E251945229BEA4C00DC11BD /* Pong_Starter_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251944229BEA4C00DC11BD /* Pong_Starter_0993.xml */; };
+		2E251949229C204A00DC11BD /* CBProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251948229C204A00DC11BD /* CBProjectScene.swift */; };
+		2E25194C229C2A3C00DC11BD /* CBUserBrickVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
 		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
 		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
@@ -69,9 +71,8 @@
 		2E6F42A1229A67A500840319 /* Test_Your_NFC_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F42A0229A67A500840319 /* Test_Your_NFC_098.xml */; };
 		2E6F42A4229A6B8600840319 /* CBObjectVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42A3229A6B8600840319 /* CBObjectVariableList.swift */; };
 		2E6F42A6229A6BC300840319 /* CBObjectVariableEnrty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */; };
-		2E6F42A8229A6C6C00840319 /* CBObjectVariableEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42A7229A6C6C00840319 /* CBObjectVariableEntryList.swift */; };
 		2E6F42AC229A6EF300840319 /* Data_Test_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F42AB229A6EF300840319 /* Data_Test_0991.xml */; };
-		2E6F42AF229A6FB100840319 /* CBData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42AE229A6FB100840319 /* CBData.swift */; };
+		2E6F42AF229A6FB100840319 /* CBProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42AE229A6FB100840319 /* CBProjectData.swift */; };
 		2E6F42B1229A78AD00840319 /* CBUserVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B0229A78AD00840319 /* CBUserVariable.swift */; };
 		2E6F42B4229A81C100840319 /* CBObjectListOfList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */; };
 		2E6F42B7229A824000840319 /* CBObjectListOfListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */; };
@@ -1405,6 +1406,8 @@
 		2E251940229BE95B00DC11BD /* Galaxy_War_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Galaxy_War_0993.xml; sourceTree = "<group>"; };
 		2E251942229BE9E600DC11BD /* X_Ray_phone_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = X_Ray_phone_0993.xml; sourceTree = "<group>"; };
 		2E251944229BEA4C00DC11BD /* Pong_Starter_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pong_Starter_0993.xml; sourceTree = "<group>"; };
+		2E251948229C204A00DC11BD /* CBProjectScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProjectScene.swift; sourceTree = "<group>"; };
+		2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrickVariableList.swift; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		2E6F426A229929FC00840319 /* Siren.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Siren.framework.dSYM; path = Carthage/Build/iOS/Siren.framework.dSYM; sourceTree = "<group>"; };
 		2E6F426D2299344200840319 /* CBLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLook.swift; sourceTree = "<group>"; };
@@ -1428,9 +1431,8 @@
 		2E6F42A0229A67A500840319 /* Test_Your_NFC_098.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test_Your_NFC_098.xml; sourceTree = "<group>"; };
 		2E6F42A3229A6B8600840319 /* CBObjectVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectVariableList.swift; sourceTree = "<group>"; };
 		2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectVariableEnrty.swift; sourceTree = "<group>"; };
-		2E6F42A7229A6C6C00840319 /* CBObjectVariableEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectVariableEntryList.swift; sourceTree = "<group>"; };
 		2E6F42AB229A6EF300840319 /* Data_Test_0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Data_Test_0991.xml; sourceTree = "<group>"; };
-		2E6F42AE229A6FB100840319 /* CBData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBData.swift; sourceTree = "<group>"; };
+		2E6F42AE229A6FB100840319 /* CBProjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProjectData.swift; sourceTree = "<group>"; };
 		2E6F42B0229A78AD00840319 /* CBUserVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserVariable.swift; sourceTree = "<group>"; };
 		2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfList.swift; sourceTree = "<group>"; };
 		2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntry.swift; sourceTree = "<group>"; };
@@ -3304,13 +3306,31 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
-		2E251921229BB2AC00DC11BD /* CBProgramVariableList */ = {
+		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
 			isa = PBXGroup;
 			children = (
 				2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */,
 				2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */,
 			);
-			path = CBProgramVariableList;
+			path = ProgramVariableList;
+			sourceTree = "<group>";
+		};
+		2E251947229C203100DC11BD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2E251948229C204A00DC11BD /* CBProjectScene.swift */,
+				2E6F42762299380500840319 /* ObjectList */,
+				2E6F42A2229A68F500840319 /* Data */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2E25194A229C2A1500DC11BD /* CBUserBrickVariableList */ = {
+			isa = PBXGroup;
+			children = (
+				2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */,
+			);
+			path = CBUserBrickVariableList;
 			sourceTree = "<group>";
 		};
 		2E6F4273229937AB00840319 /* Header */ = {
@@ -3388,8 +3408,8 @@
 				2E7D46402299099A0003DFCE /* CBXMLParser.swift */,
 				2E6F42712299351C00840319 /* CBProject.swift */,
 				2E6F4273229937AB00840319 /* Header */,
-				2E6F42762299380500840319 /* ObjectList */,
-				2E6F42A2229A68F500840319 /* Data */,
+				2E251947229C203100DC11BD /* Scenes */,
+				2E251921229BB2AC00DC11BD /* ProgramVariableList */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -3423,10 +3443,10 @@
 		2E6F42A2229A68F500840319 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				2E6F42AE229A6FB100840319 /* CBData.swift */,
+				2E6F42AE229A6FB100840319 /* CBProjectData.swift */,
 				2E6F42B2229A818B00840319 /* CBObjectListOfList */,
 				2E6F42AD229A6F9200840319 /* CBObjectVariableList */,
-				2E251921229BB2AC00DC11BD /* CBProgramVariableList */,
+				2E25194A229C2A1500DC11BD /* CBUserBrickVariableList */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -3435,7 +3455,6 @@
 			isa = PBXGroup;
 			children = (
 				2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */,
-				2E6F42A7229A6C6C00840319 /* CBObjectVariableEntryList.swift */,
 				2E6F42B0229A78AD00840319 /* CBUserVariable.swift */,
 			);
 			path = CBObjectVariableEntry;
@@ -8870,6 +8889,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CB2CFAE1D7ADA1D009F3034 /* SetColorBrick+Instruction.swift in Sources */,
+				2E251949229C204A00DC11BD /* CBProjectScene.swift in Sources */,
 				AA74F0BF1BC05FCE00D1E954 /* PointToBrickCell.m in Sources */,
 				AA74EF771BC0589700D1E954 /* ChangeVariableBrick+CBXMLHandler.m in Sources */,
 				AAA2979C1BB371EB006F8793 /* ExternInternRepresentationMapping.m in Sources */,
@@ -9232,13 +9252,14 @@
 				AAF6D9D41BC0B9EA00686849 /* HideBrick+Instruction.swift in Sources */,
 				F4E6E58E210E00E100D86FE6 /* ModFunction.swift in Sources */,
 				92FF30F81A24DCAA00093DA7 /* Formula.m in Sources */,
-				2E6F42AF229A6FB100840319 /* CBData.swift in Sources */,
+				2E6F42AF229A6FB100840319 /* CBProjectData.swift in Sources */,
 				59697DA4201F46AD00A0071A /* LibraryImageCollectionViewCell.swift in Sources */,
 				AA74EFF41BC05B5F00D1E954 /* HideBrick.m in Sources */,
 				AAF6D9DC1BC0BFFE00686849 /* SetSizeToBrick+Instruction.swift in Sources */,
 				92DFB01B1A38949E00FA9B0F /* FormulaEditorViewController.m in Sources */,
 				92EC994A1BC3CA870003A891 /* Firmata.swift in Sources */,
 				5947F6D9200D08430079DBCE /* MediaType.swift in Sources */,
+				2E25194C229C2A3C00DC11BD /* CBUserBrickVariableList.swift in Sources */,
 				2E6F42A4229A6B8600840319 /* CBObjectVariableList.swift in Sources */,
 				5E21DA6F21A5255600017D2C /* UploadViewController.swift in Sources */,
 				92EC985D1BC3ABB90003A891 /* PhiroMotorMoveForwardBrick+CBXMLHandler.m in Sources */,
@@ -9316,7 +9337,6 @@
 				92B46F921BC7B3E5004980C1 /* ArduinoSendDigitalValueBrick.m in Sources */,
 				4CF0728120D6577500F93AB5 /* PhiroSensor.swift in Sources */,
 				4C82268B213FAE0200F3D750 /* MultiFingerXFunction.swift in Sources */,
-				2E6F42A8229A6C6C00840319 /* CBObjectVariableEntryList.swift in Sources */,
 				4CE67896210C668C00D90B5D /* FormulaEditorButton.swift in Sources */,
 				BA1FA9A21F02B0C80084184D /* InsertItemIntoUserListBrick+Instruction.swift in Sources */,
 				92FF2EBF1A24C8A700093DA7 /* CatrobatProject.m in Sources */,

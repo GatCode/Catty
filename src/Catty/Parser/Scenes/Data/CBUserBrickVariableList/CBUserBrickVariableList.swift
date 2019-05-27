@@ -22,12 +22,12 @@
 
 import SWXMLHash
 
-struct CBLookList: XMLIndexerDeserializable {
-    let look: [CBLook]?
+struct CBUserBrickVariableList: XMLIndexerDeserializable {
+    let name: String?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBLookList {
-        return try CBLookList(
-            look: node["look"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBUserBrickVariableList {
+        return try CBUserBrickVariableList(
+            name: node["name"].value()
         )
     }
 }

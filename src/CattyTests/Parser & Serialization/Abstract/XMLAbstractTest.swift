@@ -44,29 +44,17 @@ class XMLAbstractTest: XCTestCase {
         var project1: CBProject?
         var project2: CBProject?
 
-        getProjectForXML2(xmlFile: firstProjectName) { project in
-            project1 = project
-        }
-
         getProjectForXML2(xmlFile: secondProjectName) { project in
             project2 = project
         }
 
+        getProjectForXML2(xmlFile: firstProjectName) { project in
+            project1 = project
+        }
+
         XCTAssertNotNil(project1, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
         XCTAssertNotNil(project2, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
-
-        XCTAssertTrue((project1!.header!).compareTo(header: project2!.header!))
-
-
-        // FIXME: HACK => assign same header to both versions => this forces to ignore header
-//        firstProject.header = secondProject.header
-//        // FIXME: HACK => for background objects always replace german name "Hintergrund" with "Background"
-//        let firstBgObject = firstProject.objectList[0] as! SpriteObject
-//        let secondBgObject = secondProject.objectList[0] as! SpriteObject
-//        firstBgObject.name = firstBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
-//        secondBgObject.name = secondBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
-//
-//        AssertTrue((firstProject.isEqual(to: secondProject)), "Projects are not equal")
+        XCTAssertTrue(project1! == project2!)
     }
 
     func isXMLElement(xmlElement: GDataXMLElement, equalToXMLElementForXPath xPath: String, inProjectForXML project: String) -> Bool {

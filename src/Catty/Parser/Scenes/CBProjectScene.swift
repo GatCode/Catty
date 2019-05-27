@@ -19,15 +19,28 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
-
 import SWXMLHash
 
-struct CBObjectVariableList: XMLIndexerDeserializable {
-    let entry: [CBObjectVariableEntry]?
+struct CBProjectScene: XMLIndexerDeserializable, Equatable {
+    let name: String?
+    let objectList: CBObjectList?
+    let data: CBProjectData?
+    let originalWidth: String?
+    let originalHeight: String?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBObjectVariableList {
-        return try CBObjectVariableList(
-            entry: node["entry"].value()
+    static func deserialize(_ node: XMLIndexer) throws -> CBProjectScene {
+        return try CBProjectScene(
+            name: node["scene"]["name"].value(),
+            objectList: node["scene"]["objectList"].value(),
+            data: node["scene"]["data"].value(),
+            originalWidth: node["scene"]["originalWidth"].value(),
+            originalHeight: node["scene"]["originalHeight"].value()
         )
+    }
+
+    static func == (lhs: CBProjectScene, rhs: CBProjectScene) -> Bool {
+        return
+            lhs.objectList == rhs.objectList &&
+            lhs.data == rhs.data
     }
 }

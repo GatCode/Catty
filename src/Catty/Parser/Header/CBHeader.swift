@@ -68,20 +68,17 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
         )
     }
 
-    func compareTo(header: CBHeader) -> Bool {
+    static func == (lhs: CBHeader, rhs: CBHeader) -> Bool {
         return
-            self.applicationBuildName == header.applicationBuildName &&
-            self.applicationBuildNumber == header.applicationBuildNumber &&
-            self.applicationName == header.applicationName &&
-            self.description == header.description &&
-            self.mediaLicense == header.mediaLicense &&
-            self.programLicense == header.programLicense &&
-            self.programName == header.programName &&
-            self.remixOf == header.remixOf &&
-            self.screenHeight == header.screenHeight &&
-            self.screenWidth == header.screenWidth &&
-            self.tags == header.tags &&
-            self.url == header.url &&
-            self.userHandle == header.userHandle
+            lhs.applicationBuildName == rhs.applicationBuildName &&
+            lhs.applicationBuildNumber == rhs.applicationBuildNumber &&
+            lhs.applicationName == rhs.applicationName &&
+            lhs.description == rhs.description &&
+            lhs.programLicense == rhs.programLicense &&
+            lhs.programName == rhs.programName &&
+            lhs.remixOf == rhs.remixOf &&
+            lhs.screenHeight == rhs.screenHeight &&
+            lhs.screenWidth == rhs.screenWidth &&
+            lhs.userHandle == rhs.userHandle
     }
 }
