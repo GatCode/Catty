@@ -30,6 +30,8 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
+		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
+		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E3C0EB022952BB600351E45 /* XMLParserBlackBoxTests091.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */; };
 		2E3C0EB62295357900351E45 /* XMLParserBlackBoxTests092.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
@@ -1394,6 +1396,8 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
+		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
+		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
 		2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests091.swift; sourceTree = "<group>"; };
 		2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests092.swift; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
@@ -3316,6 +3320,15 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
+		2E251921229BB2AC00DC11BD /* CBProgramVariableList */ = {
+			isa = PBXGroup;
+			children = (
+				2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */,
+				2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */,
+			);
+			path = CBProgramVariableList;
+			sourceTree = "<group>";
+		};
 		2E3C0EAE22952B2600351E45 /* CatrobatLanguage0.91 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3478,6 +3491,7 @@
 				2E6F42AE229A6FB100840319 /* CBData.swift */,
 				2E6F42B2229A818B00840319 /* CBObjectListOfList */,
 				2E6F42AD229A6F9200840319 /* CBObjectVariableList */,
+				2E251921229BB2AC00DC11BD /* CBProgramVariableList */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -9347,6 +9361,7 @@
 				AA74F00A1BC05B5F00D1E954 /* ChangeVolumeByNBrick.m in Sources */,
 				9218B2081CC4AB75007B4C60 /* UIImage+FloodFill.m in Sources */,
 				AA74F0A11BC05FCE00D1E954 /* IfLogicEndBrickCell.m in Sources */,
+				2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */,
 				BACDF35C1F1F9BFC00346167 /* DeleteItemOfUserListBrick+Instruction.swift in Sources */,
 				AA74F0B51BC05FCE00D1E954 /* ChangeSizeByNBrickCell.m in Sources */,
 				4CE67888210C4B1D00D90B5D /* Function.swift in Sources */,
@@ -9377,6 +9392,7 @@
 				929CC0DE1BC39B690027DEC0 /* BrickCellPhiroLightData.m in Sources */,
 				2DA8790C212B443500FE0585 /* SearchStoreViewController.swift in Sources */,
 				92C631A01BC5193B00486958 /* BluetoothDevicesTableViewController.swift in Sources */,
+				2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */,
 				F4E6E5C0210E1FE900D86FE6 /* RandFunction.swift in Sources */,
 				92D56C391BF2098700A54750 /* PhiroProtocol.swift in Sources */,
 				92FF315F1A24DEB300093DA7 /* MyProjectsViewController.m in Sources */,
