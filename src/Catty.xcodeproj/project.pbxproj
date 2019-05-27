@@ -32,6 +32,11 @@
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
+		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
+		2E25192B229BCDA800DC11BD /* Flappy_v3.0_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E25192A229BCDA800DC11BD /* Flappy_v3.0_0994.xml */; };
+		2E25192D229BCF0E00DC11BD /* Flap_Pac_Man_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E25192C229BCF0E00DC11BD /* Flap_Pac_Man_0994.xml */; };
+		2E25192F229BCFD500DC11BD /* X_Ray_phone_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E25192E229BCFD500DC11BD /* X_Ray_phone_0994.xml */; };
+		2E251931229BD05300DC11BD /* Pong_Starter_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251930229BD05300DC11BD /* Pong_Starter_0994.xml */; };
 		2E3C0EB022952BB600351E45 /* XMLParserBlackBoxTests091.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */; };
 		2E3C0EB62295357900351E45 /* XMLParserBlackBoxTests092.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
@@ -1398,6 +1403,11 @@
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
+		2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Galaxy_War_0994.xml; sourceTree = "<group>"; };
+		2E25192A229BCDA800DC11BD /* Flappy_v3.0_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Flappy_v3.0_0994.xml; sourceTree = "<group>"; };
+		2E25192C229BCF0E00DC11BD /* Flap_Pac_Man_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Flap_Pac_Man_0994.xml; sourceTree = "<group>"; };
+		2E25192E229BCFD500DC11BD /* X_Ray_phone_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = X_Ray_phone_0994.xml; sourceTree = "<group>"; };
+		2E251930229BD05300DC11BD /* Pong_Starter_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pong_Starter_0994.xml; sourceTree = "<group>"; };
 		2E3C0EAF22952BB600351E45 /* XMLParserBlackBoxTests091.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests091.swift; sourceTree = "<group>"; };
 		2E3C0EB52295357900351E45 /* XMLParserBlackBoxTests092.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests092.swift; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
@@ -7878,6 +7888,7 @@
 				4CE2D3FA1C294FFE00938B5E /* Flap_Pac_Man_097.xml */,
 				4C6D15D71D7AC5CB00CE53CD /* Flap_Pac_Man_098.xml */,
 				4C0F9FE8204BD45E00E71B2D /* Flap_Pac_Man_0991.xml */,
+				2E25192C229BCF0E00DC11BD /* Flap_Pac_Man_0994.xml */,
 			);
 			name = Flap_Pac_Man;
 			path = CattyTests/Resources/ParserTests/Flap_Pac_Man;
@@ -7893,6 +7904,7 @@
 				4CE2D3FC1C29500700938B5E /* Flappy_v3.0_097.xml */,
 				4C6D15D91D7AC5D300CE53CD /* Flappy_v3.0_098.xml */,
 				4C0F9FEA204BD46900E71B2D /* Flappy_v3.0_0991.xml */,
+				2E25192A229BCDA800DC11BD /* Flappy_v3.0_0994.xml */,
 			);
 			name = Flappy_v3.0;
 			path = CattyTests/Resources/ParserTests/Flappy_v3.0;
@@ -7908,6 +7920,7 @@
 				4CE2D3FE1C29500F00938B5E /* Galaxy_War_097.xml */,
 				4C6D15DB1D7AC5D900CE53CD /* Galaxy_War_098.xml */,
 				4C0F9FEC204BD47300E71B2D /* Galaxy_War_0991.xml */,
+				2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */,
 			);
 			name = Galaxy_War;
 			path = CattyTests/Resources/ParserTests/Galaxy_War;
@@ -8020,6 +8033,7 @@
 				4CE2D40C1C29505000938B5E /* Pong_Starter_097.xml */,
 				4C6D15E91D7AC60500CE53CD /* Pong_Starter_098.xml */,
 				4C0F9FFF204BD4E900E71B2D /* Pong_Starter_0991.xml */,
+				2E251930229BD05300DC11BD /* Pong_Starter_0994.xml */,
 			);
 			name = Pong_Starter;
 			path = CattyTests/Resources/ParserTests/Pong_Starter;
@@ -8120,6 +8134,7 @@
 				4CE2D4181C29509400938B5E /* X_Ray_phone_097.xml */,
 				4C6D15F71D7AC62E00CE53CD /* X_Ray_phone_098.xml */,
 				4C0FA016204BD57400E71B2D /* X_Ray_phone_0991.xml */,
+				2E25192E229BCFD500DC11BD /* X_Ray_phone_0994.xml */,
 			);
 			name = X_Ray_phone;
 			path = CattyTests/Resources/ParserTests/X_Ray_phone;
@@ -8560,7 +8575,9 @@
 				2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */,
 				CAE3E5441B4C50B300CC88BD /* Flappy_v3.0_093.xml in Resources */,
 				4C6D15D01D7AC5A500CE53CD /* Compass_0.1_098.xml in Resources */,
+				2E25192F229BCFD500DC11BD /* X_Ray_phone_0994.xml in Resources */,
 				4CEF0CCE1B9C63C2003C9B20 /* Galaxy_War_096.xml in Resources */,
+				2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */,
 				4C6D15F41D7AC62200CE53CD /* Tic_Tac_Toe_Master_098.xml in Resources */,
 				2DCB4932212EA923005E8E3D /* StoreProjectDownloader.fetchMostViewedProjects.fail.parse.json in Resources */,
 				4C0F9FF4204BD4A000E71B2D /* LogicBricks_0991.xml in Resources */,
@@ -8590,9 +8607,11 @@
 				CAE3E4EB1B4C509800CC88BD /* test.png in Resources */,
 				4C0FA017204BD57400E71B2D /* X_Ray_phone_0991.xml in Resources */,
 				4C2EE4091B555826006DE9B8 /* Rock_paper_scissors_095.xml in Resources */,
+				2E25192B229BCDA800DC11BD /* Flappy_v3.0_0994.xml in Resources */,
 				4CC85CEA1B9C717C0097E470 /* ValidProjectAllBricks095.xml in Resources */,
 				4C6D15E21D7AC5ED00CE53CD /* Minecraft_Work_In_Progress_098.xml in Resources */,
 				599E6498202D953F009494B5 /* MediaLibraryDownloader.downloadData.success.json in Resources */,
+				2E251931229BD05300DC11BD /* Pong_Starter_0994.xml in Resources */,
 				4C0F9FFC204BD4D400E71B2D /* Nyancat_1.0_0991.xml in Resources */,
 				4CC85CE61B9C717C0097E470 /* ValidProject.xml in Resources */,
 				4C6D15D61D7AC5C500CE53CD /* Encapsulated_098.xml in Resources */,
@@ -8691,6 +8710,7 @@
 				CAE3E55C1B4C50B300CC88BD /* SKYPASCAL_08.xml in Resources */,
 				4C2EE3F51B555766006DE9B8 /* Flappy_v3.0_095.xml in Resources */,
 				CAE3E53C1B4C50B300CC88BD /* Compass_0.1_093.xml in Resources */,
+				2E25192D229BCF0E00DC11BD /* Flap_Pac_Man_0994.xml in Resources */,
 				CAE3E5521B4C50B300CC88BD /* Piano_093.xml in Resources */,
 				4CC85CE51B9C717C0097E470 /* ValidHeader096.xml in Resources */,
 				BAD47DC81F12938D001C38BC /* InsertItemIntoUserListBrick098.xml in Resources */,
