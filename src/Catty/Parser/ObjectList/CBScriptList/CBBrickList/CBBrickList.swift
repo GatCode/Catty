@@ -26,8 +26,39 @@ struct CBBrickList: XMLIndexerDeserializable {
     let brick: [CBBrick]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrickList {
-        return try CBBrickList(
-            brick: node["brick"].value()
+
+        var res = [String]()
+        var result = [CBBrick]()
+
+        for child in node.children {
+
+            let subXML = child.description
+            var childXML = [String]()
+
+            let splitted = subXML.split(separator: ">")
+            splitted.forEach { val in
+                childXML.append(val + ">")
+            }
+
+            childXML.removeFirst()
+            childXML.insert("<resolver>", at: 0)
+            childXML.removeLast()
+            childXML.insert("</resolver>", at: childXML.count)
+
+            res.append(childXML.joined())
+        }
+
+        if res.joined() != "" {
+            let xml = SWXMLHash.parse(res.joined())
+            result = try xml["resolver"].value()
+        }
+
+        return CBBrickList(
+            brick: result
         )
+
+//        return try CBBrickList(
+//            brick: node["brick"].value()
+//        )
     }
 }

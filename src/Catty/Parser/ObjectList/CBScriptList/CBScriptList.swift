@@ -28,6 +28,7 @@ struct CBScriptList: XMLIndexerDeserializable {
     static func deserialize(_ node: XMLIndexer) throws -> CBScriptList {
 
         var res = [String]()
+        var result = [CBScript]()
 
         for child in node.children {
 
@@ -47,10 +48,13 @@ struct CBScriptList: XMLIndexerDeserializable {
             res.append(childXML.joined())
         }
 
-        let xml = SWXMLHash.parse(res.joined())
+        if res.joined() != "" {
+            let xml = SWXMLHash.parse(res.joined())
+            result = try xml["resolver"].value()
+        }
 
-        return try CBScriptList(
-            script: xml["resolver"].value()
+        return CBScriptList(
+            script: result
         )
     }
 }

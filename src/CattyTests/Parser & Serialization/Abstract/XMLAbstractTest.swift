@@ -35,6 +35,41 @@ class XMLAbstractTest: XCTestCase {
         super.tearDown()
     }
 
+    func compareProject(firstProjectName: String, withProject secondProjectName: String) {
+
+        // --------------------------------------------------
+        // TODO: change getProjectForXML2 to getProjectForXML
+        // --------------------------------------------------
+
+        var project1: CBProject?
+        var project2: CBProject?
+
+        getProjectForXML2(xmlFile: firstProjectName) { project in
+            project1 = project
+        }
+
+        getProjectForXML2(xmlFile: secondProjectName) { project in
+            project2 = project
+        }
+
+        XCTAssertNotNil(project1, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
+        XCTAssertNotNil(project2, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
+
+        // TODO: compare the two projects!
+
+
+
+        // FIXME: HACK => assign same header to both versions => this forces to ignore header
+//        firstProject.header = secondProject.header
+//        // FIXME: HACK => for background objects always replace german name "Hintergrund" with "Background"
+//        let firstBgObject = firstProject.objectList[0] as! SpriteObject
+//        let secondBgObject = secondProject.objectList[0] as! SpriteObject
+//        firstBgObject.name = firstBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
+//        secondBgObject.name = secondBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
+//
+//        AssertTrue((firstProject.isEqual(to: secondProject)), "Projects are not equal")
+    }
+
     func isXMLElement(xmlElement: GDataXMLElement, equalToXMLElementForXPath xPath: String, inProjectForXML project: String) -> Bool {
         let document = self.getXMLDocumentForPath(xmlPath: self.getPathForXML(xmlFile: project))
         let array = self.getXMLElementsForXPath(document, xPath: xPath)
@@ -52,70 +87,6 @@ class XMLAbstractTest: XCTestCase {
             XCTFail("Could not retrieve XML Element: " + error.domain)
         }
         return nil
-    }
-
-    func compareProject(firstProjectName: String, withProject secondProjectName: String) {
-        let firstProject = self.getProjectForXML(xmlFile: firstProjectName)
-        let secondProject = self.getProjectForXML(xmlFile: secondProjectName)
-
-        printDifferencesInProjects(first: firstProject, second: secondProject)
-
-        // FIXME: HACK => assign same header to both versions => this forces to ignore header
-        firstProject.header = secondProject.header
-        // FIXME: HACK => for background objects always replace german name "Hintergrund" with "Background"
-        let firstBgObject = firstProject.objectList[0] as! SpriteObject
-        let secondBgObject = secondProject.objectList[0] as! SpriteObject
-        firstBgObject.name = firstBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
-        secondBgObject.name = secondBgObject.name.replacingOccurrences(of: "Hintergrund", with: "Background")
-
-        XCTAssertTrue((firstProject.isEqual(to: secondProject)), "Projects are not equal")
-    }
-
-    func printDifferencesInProjects(first: Project, second: Project) {
-
-        print("Start <<<<<<<<<<<<<<<<<<")
-
-        for i in 0..<first.objectList.count {
-            if (first.objectList[i] as! SpriteObject).isEqual(to: second.objectList[i] as? SpriteObject) {
-                print("no differences")
-            } else {
-                print("-------------------------------")
-                print("UUH there are some differences:")
-                print("-------------------------------")
-                print(first.objectList[i])
-                print("-------------------------------")
-                print(second.objectList[i])
-                print("-------------------------------")
-            }
-        }
-
-        print("Finish <<<<<<<<<<<<<<<<<<")
-    }
-
-    func getProjectForXML(xmlFile: String) -> Project {
-        let xmlPath = getPathForXML(xmlFile: xmlFile)
-        let languageVersion = Util.detectCBLanguageVersionFromXML(withPath: xmlPath)
-        // detect right parser for correct catrobat language version
-
-        let catrobatParser = CBXMLParser.init(path: xmlPath)
-        if catrobatParser == nil {
-            XCTFail("Could not retrieve parser for xml file \(xmlFile)")
-        }
-
-        if !catrobatParser!.isSupportedLanguageVersion(languageVersion) {
-            let parser = Parser()
-            let project = parser.generateObjectForProject(withPath: xmlPath)
-            if project == nil {
-                XCTFail("Could not parse project from file \(xmlFile)")
-            }
-            return project!
-        } else {
-            let project = catrobatParser!.parseAndCreateProject()
-            if project == nil {
-                XCTFail("Could not parse project from file \(xmlFile)")
-            }
-            return project!
-        }
     }
 
     func isProject(firstProject: Project, equalToXML secondProject: String) -> Bool {
@@ -161,6 +132,56 @@ class XMLAbstractTest: XCTestCase {
         let project = self.getProjectForXML(xmlFile: xmlFile)
         let equal = self.isProject(firstProject: project, equalToXML: xmlFile)
         XCTAssertTrue(equal, "Serialized project and XML are not equal (\(xmlFile))")
+    }
+
+    func getProjectForXML(xmlFile: String) -> Project {
+        let xmlPath = getPathForXML(xmlFile: xmlFile)
+        let languageVersion = Util.detectCBLanguageVersionFromXML(withPath: xmlPath)
+        // detect right parser for correct catrobat language version
+
+        let catrobatParser = CBXMLParser.init(path: xmlPath)
+        if catrobatParser == nil {
+            XCTFail("Could not retrieve parser for xml file \(xmlFile)")
+        }
+
+        if !catrobatParser!.isSupportedLanguageVersion(languageVersion) {
+            let parser = Parser()
+            let project = parser.generateObjectForProject(withPath: xmlPath)
+            if project == nil {
+                XCTFail("Could not parse project from file \(xmlFile)")
+            }
+            return project!
+        } else {
+            let project = catrobatParser!.parseAndCreateProject()
+            if project == nil {
+                XCTFail("Could not parse project from file \(xmlFile)")
+            }
+            return project!
+        }
+    }
+
+    func getProjectForXML2(xmlFile: String, completion: @escaping (CBProject?) -> Void) {
+
+        // -----------------------------------------
+        // TODO: change CBXMLParser2 to CBXMLParser
+        // -----------------------------------------
+
+        let xmlPath = getPathForXML(xmlFile: xmlFile)
+
+        let catrobatParser2 = CBXMLParser2(path: xmlPath)
+        if catrobatParser2 == nil {
+            XCTFail("Could not retrieve parser for xml file \(xmlFile)")
+        }
+
+        catrobatParser2?.parseProject(completion: { parseSuccess in
+            if parseSuccess {
+                let project = catrobatParser2?.getProject()
+                if project == nil {
+                    XCTFail("Could not parse project from file \(xmlFile)")
+                }
+                completion(project)
+            }
+        })
     }
 
     func getPathForXML(xmlFile: String) -> String {
