@@ -21,7 +21,7 @@
  */
 import SWXMLHash
 
-struct CBHeader: XMLIndexerDeserializable {
+struct CBHeader: XMLIndexerDeserializable, Equatable {
     let applicationBuildName: String?
     let applicationBuildNumber: String?
     let applicationName: String?
@@ -66,5 +66,22 @@ struct CBHeader: XMLIndexerDeserializable {
             url: node["url"].value(),
             userHandle: node["userHandle"].value()
         )
+    }
+
+    func compareTo(header: CBHeader) -> Bool {
+        return
+            self.applicationBuildName == header.applicationBuildName &&
+            self.applicationBuildNumber == header.applicationBuildNumber &&
+            self.applicationName == header.applicationName &&
+            self.description == header.description &&
+            self.mediaLicense == header.mediaLicense &&
+            self.programLicense == header.programLicense &&
+            self.programName == header.programName &&
+            self.remixOf == header.remixOf &&
+            self.screenHeight == header.screenHeight &&
+            self.screenWidth == header.screenWidth &&
+            self.tags == header.tags &&
+            self.url == header.url &&
+            self.userHandle == header.userHandle
     }
 }

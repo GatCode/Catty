@@ -55,8 +55,7 @@ class XMLAbstractTest: XCTestCase {
         XCTAssertNotNil(project1, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
         XCTAssertNotNil(project2, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
 
-        // TODO: compare the two projects!
-
+        XCTAssertTrue((project1!.header!).compareTo(header: project2!.header!))
 
 
         // FIXME: HACK => assign same header to both versions => this forces to ignore header
