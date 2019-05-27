@@ -4,12 +4,11 @@
         <applicationBuildName/>
         <applicationBuildNumber>0</applicationBuildNumber>
         <applicationName>Pocket Code</applicationName>
-        <applicationVersion>0.9.30</applicationVersion>
-        <catrobatLanguageVersion>0.994</catrobatLanguageVersion>
+        <applicationVersion>0.9.27</applicationVersion>
+        <catrobatLanguageVersion>0.992</catrobatLanguageVersion>
         <dateTimeUpload/>
         <description>A simple game similar to the popular Flappy Bird, completely made using Pocket Code. Game not tested on multiple devices yet, which might lead to minor issues. Please let me know about any issues and always welcome to remix this game. </description>
         <deviceName>PRA-LX1</deviceName>
-        <isCastProject>false</isCastProject>
         <landscapeMode>false</landscapeMode>
         <mediaLicense>http://developer.catrobat.org/ccbysa_v4</mediaLicense>
         <platform>Android</platform>
@@ -36,7 +35,7 @@
                             <fileName>3a54777ea6b32fd6f72f1bec20ee1b7e_background2.PNG</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -68,8 +67,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="bird">
                     <lookList>
@@ -77,12 +76,7 @@
                             <fileName>41f124e7ed37b3dac8ccaeb17b2156b8_birdyellow1.PNG</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>060830b7bf0ae16166c15748387f9021_Hit1.mp3</fileName>
-                            <name>Hit</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -504,8 +498,13 @@
                             <receivedMessage>tapped</receivedMessage>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound>
+                            <fileName>060830b7bf0ae16166c15748387f9021_Hit1.mp3</fileName>
+                            <name>Hit</name>
+                        </sound>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="obstacle 2">
                     <lookList>
@@ -513,12 +512,7 @@
                             <fileName>bd1406e16257756adae2f7cba49d6d5b_down_cyl.PNG</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>0b12e691684c552746e9fc164be4d592_Hit2.mp3</fileName>
-                            <name>Hit</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -594,10 +588,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>7</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -605,6 +595,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>7</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -667,10 +661,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>1.2</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -678,6 +668,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>1.2</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -698,10 +692,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>2.3</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -709,6 +699,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>2.3</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -719,13 +713,13 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>0.000000001</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <type>NUMBER</type>
                                             <value>300</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>0.000000001</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -739,10 +733,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>3.5</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -750,6 +740,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>3.5</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -770,10 +764,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>1.2</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -781,6 +771,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>1.2</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -801,10 +795,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>2.3</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -812,6 +802,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>2.3</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -822,13 +816,13 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>0.000000001</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <type>NUMBER</type>
                                             <value>300</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>0.000000001</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -848,8 +842,13 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound>
+                            <fileName>0b12e691684c552746e9fc164be4d592_Hit2.mp3</fileName>
+                            <name>Hit</name>
+                        </sound>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="obstacle 1">
                     <lookList>
@@ -857,12 +856,7 @@
                             <fileName>bd1406e16257756adae2f7cba49d6d5b_down_cyl.PNG</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>c006f161e41acb98a9eb7b1e22405971_Hit3.mp3</fileName>
-                            <name>Hit</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -959,10 +953,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>3.5</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -970,6 +960,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>3.5</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -1032,10 +1026,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>1.2</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -1043,6 +1033,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>1.2</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -1063,10 +1057,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>2.3</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -1074,6 +1064,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>2.3</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -1084,13 +1078,13 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>0.0000000001</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <type>NUMBER</type>
                                             <value>300</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>0.0000000001</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <type>USER_VARIABLE</type>
@@ -1110,8 +1104,13 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound>
+                            <fileName>c006f161e41acb98a9eb7b1e22405971_Hit3.mp3</fileName>
+                            <name>Hit</name>
+                        </sound>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="move">
                     <lookList>
@@ -1119,12 +1118,7 @@
                             <fileName>c1a101798bd5fc7af2e70aa46db24976_move.PNG</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>c03622ec424461ab47259339ab71cf1c_Hit4.mp3</fileName>
-                            <name>Hit</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -1166,10 +1160,6 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>3</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <rightChild>
                                                 <type>NUMBER</type>
@@ -1177,6 +1167,10 @@
                                             </rightChild>
                                             <type>OPERATOR</type>
                                             <value>MINUS</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>3</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <rightChild>
@@ -1191,13 +1185,13 @@
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
                                     <formulaList>
-                                        <formula category="DURATION_IN_SECONDS">
-                                            <type>NUMBER</type>
-                                            <value>0.000000001</value>
-                                        </formula>
                                         <formula category="X_DESTINATION">
                                             <type>NUMBER</type>
                                             <value>150</value>
+                                        </formula>
+                                        <formula category="DURATION_IN_SECONDS">
+                                            <type>NUMBER</type>
+                                            <value>0.000000001</value>
                                         </formula>
                                         <formula category="Y_DESTINATION">
                                             <rightChild>
@@ -1220,8 +1214,13 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound>
+                            <fileName>c03622ec424461ab47259339ab71cf1c_Hit4.mp3</fileName>
+                            <name>Hit</name>
+                        </sound>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="touch_layer">
                     <lookList>
@@ -1229,7 +1228,7 @@
                             <fileName>1435dbc8f4f156c5247bfe3f3c4deeaf_look.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -1307,8 +1306,8 @@
                             <action>Tapped</action>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="gameover">
                     <lookList>
@@ -1316,7 +1315,7 @@
                             <fileName>06bbd6f132ef7c4f1a08e802eb1fab78_06bbd6f132ef7c4f1a08e802eb1fab78_game_over.PNG</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -1395,8 +1394,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="points low">
                     <lookList>
@@ -1431,7 +1430,7 @@
                             <fileName>cbb2382e182649508a4e5f5bce0f6961_9.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -1770,8 +1769,8 @@
                             <receivedMessage>tapped</receivedMessage>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="points high">
                     <lookList>
@@ -1806,7 +1805,7 @@
                             <fileName>cbb2382e182649508a4e5f5bce0f6961_9.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -2145,21 +2144,19 @@
                             <receivedMessage>tapped</receivedMessage>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
             </objectList>
             <data>
                 <objectListOfList/>
                 <objectVariableList>
                     <entry>
-                        <object reference="../../../../objectList/object[2]"/>
-                        <list>
-                            <userVariable reference="../../../../../objectList/object[2]/scriptList/script[2]/brickList/brick/userVariable"/>
-                        </list>
+                        <object reference="../../../../objectList/object[7]"/>
+                        <list/>
                     </entry>
                     <entry>
-                        <object reference="../../../../objectList/object[7]"/>
+                        <object reference="../../../../objectList/object[6]"/>
                         <list/>
                     </entry>
                     <entry>
@@ -2167,7 +2164,19 @@
                         <list/>
                     </entry>
                     <entry>
-                        <object reference="../../../../objectList/object[6]"/>
+                        <object reference="../../../../objectList/object[2]"/>
+                        <list>
+                            <userVariable reference="../../../../../objectList/object[2]/scriptList/script[2]/brickList/brick/userVariable"/>
+                        </list>
+                    </entry>
+                    <entry>
+                        <object reference="../../../../objectList/object[8]"/>
+                        <list>
+                            <userVariable reference="../../../../../objectList/object[8]/scriptList/script[2]/brickList/brick[2]/userVariable"/>
+                        </list>
+                    </entry>
+                    <entry>
+                        <object reference="../../../../objectList/object[3]"/>
                         <list/>
                     </entry>
                     <entry>
@@ -2183,16 +2192,6 @@
                         <list>
                             <userVariable reference="../../../../../objectList/object[9]/scriptList/script[2]/brickList/brick[2]/userVariable"/>
                         </list>
-                    </entry>
-                    <entry>
-                        <object reference="../../../../objectList/object[8]"/>
-                        <list>
-                            <userVariable reference="../../../../../objectList/object[8]/scriptList/script[2]/brickList/brick[2]/userVariable"/>
-                        </list>
-                    </entry>
-                    <entry>
-                        <object reference="../../../../objectList/object[3]"/>
-                        <list/>
                     </entry>
                 </objectVariableList>
                 <userBrickVariableList/>
@@ -2211,4 +2210,6 @@
         <userVariable reference="../../scenes/scene/objectList/object[3]/scriptList/script/brickList/brick[2]/userVariable"/>
         <userVariable reference="../../scenes/scene/objectList/object/scriptList/script/brickList/brick[3]/userVariable"/>
     </programVariableList>
+    <programListOfLists/>
 </program>
+

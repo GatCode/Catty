@@ -4,8 +4,8 @@
         <applicationBuildName/>
         <applicationBuildNumber>0</applicationBuildNumber>
         <applicationName>Pocket Code</applicationName>
-        <applicationVersion>0.9.30</applicationVersion>
-        <catrobatLanguageVersion>0.994</catrobatLanguageVersion>
+        <applicationVersion>0.9.27</applicationVersion>
+        <catrobatLanguageVersion>0.992</catrobatLanguageVersion>
         <dateTimeUpload/>
         <description>Use the phone to control the paddle.
             REMIX TIPS:
@@ -14,7 +14,6 @@
             * Add background music
             * Increase the speed of the ball each time it hits the paddle</description>
         <deviceName>PRA-LX1</deviceName>
-        <isCastProject>false</isCastProject>
         <landscapeMode>false</landscapeMode>
         <mediaLicense>http://developer.catrobat.org/ccbysa_v4</mediaLicense>
         <platform>Android</platform>
@@ -41,7 +40,7 @@
                             <fileName>f26cbf79372f08620945708906287207_grassland.jpg</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -63,8 +62,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Paddle">
                     <lookList>
@@ -72,7 +71,7 @@
                             <fileName>be40e5993d4bc69eb14711dbebe7fd75_look.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -140,8 +139,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Ball">
                     <lookList>
@@ -149,7 +148,7 @@
                             <fileName>d0b546fa3e67cc14a49dc2a639045a2a_tennisball.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -395,8 +394,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
             </objectList>
             <data>
@@ -422,5 +421,6 @@
         <userVariable reference="../../scenes/scene/objectList/object[2]/scriptList/script/brickList/brick[5]/userVariable"/>
         <userVariable reference="../../scenes/scene/objectList/object[3]/scriptList/script[3]/brickList/brick[3]/userVariable"/>
     </programVariableList>
+    <programListOfLists/>
 </program>
 

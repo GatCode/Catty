@@ -4,12 +4,11 @@
         <applicationBuildName/>
         <applicationBuildNumber>0</applicationBuildNumber>
         <applicationName>Pocket Code</applicationName>
-        <applicationVersion>0.9.30</applicationVersion>
-        <catrobatLanguageVersion>0.994</catrobatLanguageVersion>
+        <applicationVersion>0.9.27</applicationVersion>
+        <catrobatLanguageVersion>0.992</catrobatLanguageVersion>
         <dateTimeUpload/>
         <description>Control the ship by tilting the phone and shoot down as many enemies as possible.</description>
         <deviceName>PRA-LX1</deviceName>
-        <isCastProject>false</isCastProject>
         <landscapeMode>false</landscapeMode>
         <mediaLicense>http://developer.catrobat.org/ccbysa_v4</mediaLicense>
         <platform>Android</platform>
@@ -36,12 +35,7 @@
                             <fileName>827829F8866ACCF1050373EC6DFBAD98_Space_Background_bigger.gif</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>34631984F52E51EDD974F0130D6F46A2_8-Bit Betty - Spooky Loop_cut.mp3</fileName>
-                            <name>8-Bit Betty - Spooky Loop</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -60,7 +54,10 @@
                                 </brick>
                                 <brick type="PlaySoundBrick">
                                     <commentedOut>false</commentedOut>
-                                    <sound reference="../../../../../soundList/sound"/>
+                                    <sound>
+                                        <fileName>34631984F52E51EDD974F0130D6F46A2_8-Bit Betty - Spooky Loop_cut.mp3</fileName>
+                                        <name>8-Bit Betty - Spooky Loop</name>
+                                    </sound>
                                 </brick>
                                 <brick type="WaitBrick">
                                     <commentedOut>false</commentedOut>
@@ -183,8 +180,10 @@
                             <action>Tapped</action>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound reference="../../scriptList/script/brickList/brick[3]/sound"/>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Spaceship">
                     <lookList>
@@ -198,7 +197,7 @@
                             <fileName>4E3D93893ADD9E694D64221C2D0D6AD5_ship_left.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -514,8 +513,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Laser beam">
                     <lookList>
@@ -523,12 +522,7 @@
                             <fileName>0C4D13C8DF21C1A849972227C4743594_laser_beam.png</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>B5C52D60568A416924CC601731F7EA74_zap.mp3</fileName>
-                            <name>zap</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -618,7 +612,10 @@
                                 </brick>
                                 <brick type="PlaySoundBrick">
                                     <commentedOut>false</commentedOut>
-                                    <sound reference="../../../../../soundList/sound"/>
+                                    <sound>
+                                        <fileName>B5C52D60568A416924CC601731F7EA74_zap.mp3</fileName>
+                                        <name>zap</name>
+                                    </sound>
                                 </brick>
                                 <brick type="GlideToBrick">
                                     <commentedOut>false</commentedOut>
@@ -674,8 +671,10 @@
                             <receivedMessage>dead</receivedMessage>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound reference="../../scriptList/script[2]/brickList/brick[6]/sound"/>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Enemy1">
                     <lookList>
@@ -710,12 +709,7 @@
                             <fileName>C7C93E1597712BCACD6E75DCCFD1931A_explosion8.png</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
-                            <name>explode4</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -979,7 +973,10 @@
                                 </brick>
                                 <brick type="PlaySoundBrick">
                                     <commentedOut>false</commentedOut>
-                                    <sound reference="../../../../../soundList/sound"/>
+                                    <sound>
+                                        <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
+                                        <name>explode4</name>
+                                    </sound>
                                 </brick>
                                 <brick type="SetLookBrick">
                                     <commentedOut>false</commentedOut>
@@ -1047,8 +1044,10 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound reference="../../scriptList/script[2]/brickList/brick[6]/sound"/>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Enemy2">
                     <lookList>
@@ -1083,12 +1082,7 @@
                             <fileName>C7C93E1597712BCACD6E75DCCFD1931A_explosion8.png</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
-                            <name>explode4</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -1352,7 +1346,10 @@
                                 </brick>
                                 <brick type="PlaySoundBrick">
                                     <commentedOut>false</commentedOut>
-                                    <sound reference="../../../../../soundList/sound"/>
+                                    <sound>
+                                        <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
+                                        <name>explode4</name>
+                                    </sound>
                                 </brick>
                                 <brick type="SetLookBrick">
                                     <commentedOut>false</commentedOut>
@@ -1420,8 +1417,10 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound reference="../../scriptList/script[2]/brickList/brick[6]/sound"/>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Enemy3">
                     <lookList>
@@ -1456,12 +1455,7 @@
                             <fileName>C7C93E1597712BCACD6E75DCCFD1931A_explosion8.png</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
-                            <name>explode4</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -1725,7 +1719,10 @@
                                 </brick>
                                 <brick type="PlaySoundBrick">
                                     <commentedOut>false</commentedOut>
-                                    <sound reference="../../../../../soundList/sound"/>
+                                    <sound>
+                                        <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
+                                        <name>explode4</name>
+                                    </sound>
                                 </brick>
                                 <brick type="SetLookBrick">
                                     <commentedOut>false</commentedOut>
@@ -1793,8 +1790,10 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound reference="../../scriptList/script[2]/brickList/brick[6]/sound"/>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="Enemy4">
                     <lookList>
@@ -1829,12 +1828,7 @@
                             <fileName>C7C93E1597712BCACD6E75DCCFD1931A_explosion8.png</fileName>
                         </look>
                     </lookList>
-                    <soundList>
-                        <sound>
-                            <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
-                            <name>explode4</name>
-                        </sound>
-                    </soundList>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="StartScript">
                             <brickList>
@@ -2098,7 +2092,10 @@
                                 </brick>
                                 <brick type="PlaySoundBrick">
                                     <commentedOut>false</commentedOut>
-                                    <sound reference="../../../../../soundList/sound"/>
+                                    <sound>
+                                        <fileName>E13E0F5F2E34969E8514F121BC45D645_explode4.mp3</fileName>
+                                        <name>explode4</name>
+                                    </sound>
                                 </brick>
                                 <brick type="SetLookBrick">
                                     <commentedOut>false</commentedOut>
@@ -2166,8 +2163,10 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList>
+                        <sound reference="../../scriptList/script[2]/brickList/brick[6]/sound"/>
+                    </soundList>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
                 <object type="SingleSprite" name="End screen">
                     <lookList>
@@ -2175,7 +2174,7 @@
                             <fileName>469817C6324C625001A140CAC36D1E4E_end_screen.png</fileName>
                         </look>
                     </lookList>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                         <script type="BroadcastScript">
                             <brickList>
@@ -2212,8 +2211,8 @@
                             <isUserScript>false</isUserScript>
                         </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                 </object>
             </objectList>
             <data>
@@ -2224,7 +2223,11 @@
                         <list/>
                     </entry>
                     <entry>
-                        <object reference="../../../../objectList/object[2]"/>
+                        <object reference="../../../../objectList/object[7]"/>
+                        <list/>
+                    </entry>
+                    <entry>
+                        <object reference="../../../../objectList/object[3]"/>
                         <list/>
                     </entry>
                     <entry>
@@ -2236,15 +2239,11 @@
                         <list/>
                     </entry>
                     <entry>
-                        <object reference="../../../../objectList/object[3]"/>
+                        <object reference="../../../../objectList/object[2]"/>
                         <list/>
                     </entry>
                     <entry>
                         <object reference="../../../../objectList/object[6]"/>
-                        <list/>
-                    </entry>
-                    <entry>
-                        <object reference="../../../../objectList/object[7]"/>
                         <list/>
                     </entry>
                 </objectVariableList>
@@ -2261,5 +2260,6 @@
         <userVariable reference="../../scenes/scene/objectList/object[3]/scriptList/script/brickList/brick[5]/userVariable"/>
         <userVariable reference="../../scenes/scene/objectList/object[4]/scriptList/script/brickList/brick[2]/userVariable"/>
     </programVariableList>
+    <programListOfLists/>
 </program>
 
