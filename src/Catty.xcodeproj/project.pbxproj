@@ -49,6 +49,8 @@
 		2E251945229BEA4C00DC11BD /* Pong_Starter_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251944229BEA4C00DC11BD /* Pong_Starter_0993.xml */; };
 		2E251949229C204A00DC11BD /* CBProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251948229C204A00DC11BD /* CBProjectScene.swift */; };
 		2E25194C229C2A3C00DC11BD /* CBUserBrickVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */; };
+		2E251987229C44C000DC11BD /* XMLParserTests080.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251986229C44BF00DC11BD /* XMLParserTests080.swift */; };
+		2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251988229C44E200DC11BD /* XMLAbstractTest.swift */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
 		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
 		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
@@ -79,7 +81,6 @@
 		2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */; };
 		2E6F42BB229A830700840319 /* CBUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42BA229A830700840319 /* CBUserList.swift */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
-		2EA48F5A2297B2520015C7A2 /* XMLParserBlackBoxTests080.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
 		4C03A4C42133FF4B007BFFD2 /* FormulaManager+Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C32133FF4B007BFFD2 /* FormulaManager+Interpreter.swift */; };
@@ -1152,7 +1153,6 @@
 		BA9CAB601EC383E800796056 /* AddItemToUserListBrickCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9CAB5F1EC383E800796056 /* AddItemToUserListBrickCell.m */; };
 		BA9CAB621EC3853600796056 /* AddItemToUserListBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9CAB611EC3853600796056 /* AddItemToUserListBrick+Instruction.swift */; };
 		BACD947C219E1F250061D81C /* WaitUntilBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA584CB9219C8803002CC082 /* WaitUntilBrickTests.swift */; };
-		BACD947D219E1F2F0061D81C /* XMLAbstractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD9479219E19AD0061D81C /* XMLAbstractTest.swift */; };
 		BACD9480219E22FF0061D81C /* WaitUntilBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = BACD947F219E22FF0061D81C /* WaitUntilBrick0991.xml */; };
 		BACDF3521F1F9B7E00346167 /* DeleteItemOfUserListBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = BACDF3511F1F9B7E00346167 /* DeleteItemOfUserListBrick.m */; };
 		BACDF3571F1F9BB000346167 /* DeleteItemOfUserListBrick+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BACDF3561F1F9BB000346167 /* DeleteItemOfUserListBrick+CBXMLHandler.m */; };
@@ -1408,6 +1408,8 @@
 		2E251944229BEA4C00DC11BD /* Pong_Starter_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pong_Starter_0993.xml; sourceTree = "<group>"; };
 		2E251948229C204A00DC11BD /* CBProjectScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProjectScene.swift; sourceTree = "<group>"; };
 		2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrickVariableList.swift; sourceTree = "<group>"; };
+		2E251986229C44BF00DC11BD /* XMLParserTests080.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLParserTests080.swift; path = "Parser & Serialization/XMLParserTests080.swift"; sourceTree = "<group>"; };
+		2E251988229C44E200DC11BD /* XMLAbstractTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLAbstractTest.swift; path = "Parser & Serialization/XMLAbstractTest.swift"; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		2E6F426A229929FC00840319 /* Siren.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Siren.framework.dSYM; path = Carthage/Build/iOS/Siren.framework.dSYM; sourceTree = "<group>"; };
 		2E6F426D2299344200840319 /* CBLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLook.swift; sourceTree = "<group>"; };
@@ -1439,7 +1441,6 @@
 		2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntryList.swift; sourceTree = "<group>"; };
 		2E6F42BA229A830700840319 /* CBUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserList.swift; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
-		2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserBlackBoxTests080.swift; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -2997,7 +2998,6 @@
 		BA9CAB5E1EC383E800796056 /* AddItemToUserListBrickCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemToUserListBrickCell.h; sourceTree = "<group>"; };
 		BA9CAB5F1EC383E800796056 /* AddItemToUserListBrickCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemToUserListBrickCell.m; sourceTree = "<group>"; };
 		BA9CAB611EC3853600796056 /* AddItemToUserListBrick+Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AddItemToUserListBrick+Instruction.swift"; path = "PlayerEngine/Instructions/Data/AddItemToUserListBrick+Instruction.swift"; sourceTree = "<group>"; };
-		BACD9479219E19AD0061D81C /* XMLAbstractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLAbstractTest.swift; sourceTree = "<group>"; };
 		BACD947F219E22FF0061D81C /* WaitUntilBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = WaitUntilBrick0991.xml; path = CattyTests/Resources/ParserTests/ControlBricks/WaitUntilBrick0991.xml; sourceTree = SOURCE_ROOT; };
 		BACDF3501F1F9B7E00346167 /* DeleteItemOfUserListBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteItemOfUserListBrick.h; sourceTree = "<group>"; };
 		BACDF3511F1F9B7E00346167 /* DeleteItemOfUserListBrick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteItemOfUserListBrick.m; sourceTree = "<group>"; };
@@ -3496,22 +3496,6 @@
 			path = CBObjectListOfListEntry;
 			sourceTree = "<group>";
 		};
-		2E879448229668070008602B /* CatrobatLanguage0.80 */ = {
-			isa = PBXGroup;
-			children = (
-				2E87944A229668200008602B /* XMLParserTests */,
-			);
-			path = CatrobatLanguage0.80;
-			sourceTree = "<group>";
-		};
-		2E87944A229668200008602B /* XMLParserTests */ = {
-			isa = PBXGroup;
-			children = (
-				2EA48F562297B22C0015C7A2 /* XMLParserBlackBoxTests080.swift */,
-			);
-			path = XMLParserTests;
-			sourceTree = "<group>";
-		};
 		4C0F9F47204ADD0C00E71B2D /* OrderedDictionary */ = {
 			isa = PBXGroup;
 			children = (
@@ -3681,15 +3665,6 @@
 				4C28D78A2132A83D00870CE2 /* FormulaMock.swift */,
 			);
 			path = Mock;
-			sourceTree = "<group>";
-		};
-		4C2A00C41B5547EB00CD4492 /* Abstract */ = {
-			isa = PBXGroup;
-			children = (
-				BACD9479219E19AD0061D81C /* XMLAbstractTest.swift */,
-			);
-			name = Abstract;
-			path = "Parser & Serialization/Abstract";
 			sourceTree = "<group>";
 		};
 		4C2EE4141B555B55006DE9B8 /* Parser & Serializer */ = {
@@ -4799,13 +4774,13 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		4CD194F21A0631B200484E4F /* Parser & Serialization */ = {
+		4CD194F21A0631B200484E4F /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				4C2A00C41B5547EB00CD4492 /* Abstract */,
-				2E879448229668070008602B /* CatrobatLanguage0.80 */,
+				2E251988229C44E200DC11BD /* XMLAbstractTest.swift */,
+				2E251986229C44BF00DC11BD /* XMLParserTests080.swift */,
 			);
-			name = "Parser & Serialization";
+			name = Parser;
 			sourceTree = "<group>";
 		};
 		4CDF7BB42138735700FFF7F4 /* Builder */ = {
@@ -7292,7 +7267,7 @@
 				4C3C03F5199BA5250004F594 /* Formula */,
 				59A58D81202C712F008B1A8F /* MediaLibrary */,
 				599E649C202D9F85009494B5 /* Mocks */,
-				4CD194F21A0631B200484E4F /* Parser & Serialization */,
+				4CD194F21A0631B200484E4F /* Parser */,
 				AA70F7EF1B866E63003057C6 /* PlayerEngine */,
 				4CE5C56C1E0AD71800FD021C /* Project */,
 				4C1608A31A095480002C7032 /* Resources */,
@@ -8661,7 +8636,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EA48F5A2297B2520015C7A2 /* XMLParserBlackBoxTests080.swift in Sources */,
 				4C099F6E1C282B3C00E190CA /* CBBackendTests.swift in Sources */,
 				4C3A5CAD21D3BAB9008FD83F /* GreaterThanOperatorTest.swift in Sources */,
 				4C6FE165212D2D2E0067B7D5 /* PiFunctionTest.swift in Sources */,
@@ -8671,7 +8645,6 @@
 				4C68FC8E1B25A00B00AB3EE8 /* FormulaParserOperatorsTest.m in Sources */,
 				4C6FE15C212D2D2E0067B7D5 /* FloorFunctionTest.swift in Sources */,
 				4CBF5F9C21AF1D200079C834 /* TouchManagerTests.swift in Sources */,
-				BACD947D219E1F2F0061D81C /* XMLAbstractTest.swift in Sources */,
 				4CEB22561B95E47500B3BE2F /* ChangeSizeByNBrickTests.m in Sources */,
 				4C2732A91CE4F30F00CA61AC /* CBSpriteNodeTests.swift in Sources */,
 				4C6FE169212D2D2E0067B7D5 /* ExpFunctionTest.swift in Sources */,
@@ -8777,8 +8750,10 @@
 				4CE1D436213E5D700014DAF9 /* FormulaManagerCacheTests.swift in Sources */,
 				4CEB225F1B95E47500B3BE2F /* PlaceAtBrickTests.m in Sources */,
 				4C6FE171212D2D2E0067B7D5 /* CosFunctionTest.swift in Sources */,
+				2E251987229C44C000DC11BD /* XMLParserTests080.swift in Sources */,
 				4C53E38821D5238900F2EC76 /* GreaterOrEqualOperatorTest.swift in Sources */,
 				4C6FE15F212D2D2E0067B7D5 /* FalseFunctionTest.swift in Sources */,
+				2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */,
 				4C82266D213FA7A400F3D750 /* DateDaySensorTest.swift in Sources */,
 				92BCDC851BF1DE2A00F9CB23 /* FirmataTests.swift in Sources */,
 				4C822652213FA7A400F3D750 /* LocationManagerMock.swift in Sources */,
