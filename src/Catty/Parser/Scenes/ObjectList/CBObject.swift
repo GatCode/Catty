@@ -24,6 +24,7 @@ import SWXMLHash
 
 struct CBObject: XMLIndexerDeserializable, Equatable {
     let name: String?
+    let type: String?
     let lookList: CBLookList?
     let soundList: CBSoundList?
     let scriptList: CBScriptList?
@@ -40,6 +41,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
 
         return try CBObject(
             name: tmpName,
+            type: node.value(ofAttribute: "type"),
             lookList: node["lookList"].value(),
             soundList: node["soundList"].value(),
             scriptList: node["scriptList"].value(),
