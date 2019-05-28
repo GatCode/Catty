@@ -22,32 +22,9 @@
 
 import AEXML
 
-class CBXMLSerializer2 {
+extension CBXMLSerializer2 {
 
-    static let shared = CBXMLSerializer2()
-
-    func createXMLDocument(project: CBProject?, completion: @escaping (String?, CBXMLSerializerError?) -> Void) {
-
-        guard let project = project else { completion(nil, .invalidProject); return }
-
-        var options = AEXMLOptions()
-        options.documentHeader.version = 1.0
-        options.documentHeader.encoding = "UTF-8"
-        options.documentHeader.standalone = "yes"
-        let writeRequest = AEXMLDocument(options: options)
-
-        let program = writeRequest.addChild(name: "program")
-
-        // TODO: proper error handling!
-        addHeaderTo(program: program, data: project.header)
-        addSettingsTo(program: program)
-        addScenesTo(program: program, data: project.scenes)
-
-        completion(writeRequest.xml, nil)
+    func addSettingsTo(program: AEXMLElement) {
+        let settings = program.addChild(name: "settings")
     }
-}
-
-enum CBXMLSerializerError: Error {
-    case invalidProject
-    case serializationError
 }

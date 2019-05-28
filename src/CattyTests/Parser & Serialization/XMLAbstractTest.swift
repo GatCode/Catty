@@ -42,16 +42,30 @@ class XMLAbstractTest: XCTestCase {
         // --------------------------------------------------
 
         var project: CBProject?
-        getProjectForXML2(xmlFile: projectName) { proj in
-            project = proj
+        var xml: String?
+
+        getProjectForXML2(xmlFile: projectName) { result, error in
+            if error == nil {
+                project = result
+            }
+            XCTAssertNil(error)
         }
 
-        guard let filledProject = project else { return }
-        let xml = CBXMLSerializer2.shared.createXMLDocument(project: filledProject)
+        CBXMLSerializer2.shared.createXMLDocument(project: project) { result, error in
+            if error == nil {
+                xml = result
+            }
+            XCTAssertNil(error)
+        }
 
-        CBXMLSerializer2.shared.writeXMLFile(filename: "file.txt", data: xml)
+        CBXMLSerializer2.shared.writeXMLFile(filename: "file.txt", data: xml) { location, error in
+            if error == nil {
+                print("XML file is located at: \(String(describing: location))!")
+            }
+            XCTAssertNil(error)
+        }
 
-        print(xml)
+        //print(xml)
     }
 
     func compareProject(firstProjectName: String, withProject secondProjectName: String) {
@@ -63,11 +77,13 @@ class XMLAbstractTest: XCTestCase {
         var project1: CBProject?
         var project2: CBProject?
 
-        getProjectForXML2(xmlFile: firstProjectName) { project in
+        getProjectForXML2(xmlFile: firstProjectName) { project, error  in
+            XCTAssertNil(error)
             project1 = project
         }
 
-        getProjectForXML2(xmlFile: secondProjectName) { project in
+        getProjectForXML2(xmlFile: secondProjectName) { project, error in
+            XCTAssertNil(error)
             project2 = project
         }
 
@@ -77,7 +93,14 @@ class XMLAbstractTest: XCTestCase {
     }
 
     func isXMLElement(xmlElement: GDataXMLElement, equalToXMLElementForXPath xPath: String, inProjectForXML project: String) -> Bool {
-        let document = self.getXMLDocumentForPath(xmlPath: self.getPathForXML(xmlFile: project))
+
+        var path: String?
+        getPathForXML(xmlFile: project) { result, error in
+            XCTAssertNil(error)
+            path = result
+        }
+
+        let document = self.getXMLDocumentForPath(xmlPath: path!)
         let array = self.getXMLElementsForXPath(document, xPath: xPath)
         XCTAssertEqual(array!.count, 1)
         let xmlElementFromFile = array!.first
@@ -100,7 +123,14 @@ class XMLAbstractTest: XCTestCase {
             XCTFail("Could not serialize xml document for project ")
             return false
         }
-        let secondDocument = self.getXMLDocumentForPath(xmlPath: self.getPathForXML(xmlFile: secondProject))
+
+        var path: String?
+        getPathForXML(xmlFile: secondProject) { result, error in
+            XCTAssertNil(error)
+            path = result
+        }
+
+        let secondDocument = self.getXMLDocumentForPath(xmlPath: path!)
         guard let firstRoot = firstDocument.rootElement(), let secondRoot = secondDocument.rootElement() else {
             return false
         }
@@ -141,7 +171,13 @@ class XMLAbstractTest: XCTestCase {
     }
 
     func getProjectForXML(xmlFile: String) -> Project {
-        let xmlPath = getPathForXML(xmlFile: xmlFile)
+        var path: String?
+        getPathForXML(xmlFile: xmlFile) { result, error in
+            XCTAssertNil(error)
+            path = result
+        }
+
+        let xmlPath = path!
         let languageVersion = Util.detectCBLanguageVersionFromXML(withPath: xmlPath)
         // detect right parser for correct catrobat language version
 
@@ -166,36 +202,49 @@ class XMLAbstractTest: XCTestCase {
         }
     }
 
-    func getProjectForXML2(xmlFile: String, completion: @escaping (CBProject?) -> Void) {
+    func getProjectForXML2(xmlFile: String, completion: @escaping (CBProject?, XMLAbstractError?) -> Void) {
 
         // -----------------------------------------
         // TODO: change CBXMLParser2 to CBXMLParser
         // -----------------------------------------
 
-        let xmlPath = getPathForXML(xmlFile: xmlFile)
+        var xmlPath: String?
+        getPathForXML(xmlFile: xmlFile) { path, error in
+            if error != nil {
+                completion(nil, error)
+            }
+            xmlPath = path
+        }
 
-        let catrobatParser2 = CBXMLParser2(path: xmlPath)
+        guard let path = xmlPath else { completion(nil, .invalidPath); return }
+
+        let catrobatParser2 = CBXMLParser2(path: path)
         if catrobatParser2 == nil {
-            XCTFail("Could not retrieve parser for xml file \(xmlFile)")
+            completion(nil, .unexpectedError)
         }
 
         catrobatParser2?.parseProject(completion: { parseSuccess in
             if parseSuccess {
                 let project = catrobatParser2?.getProject()
                 if project == nil {
-                    XCTFail("Could not parse project from file \(xmlFile)")
+                    completion(nil, .parsingError)
                 }
-                completion(project)
+                completion(project, nil)
             }
         })
     }
 
-    func getPathForXML(xmlFile: String) -> String {
+    func getPathForXML(xmlFile: String, completion: @escaping (String?, XMLAbstractError?) -> Void) {
         let bundle = Bundle.init(for: self.classForCoder)
         guard let path = bundle.path(forResource: xmlFile, ofType: "xml") else {
-            XCTFail("Could not retrieve path for XML File \(xmlFile)")
-            return "path_not_found"
+            completion(nil, .invalidPath); return
         }
-        return path
+        completion(path, nil)
     }
+}
+
+enum XMLAbstractError: Error {
+    case invalidPath
+    case parsingError
+    case unexpectedError
 }
