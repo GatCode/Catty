@@ -21,6 +21,7 @@
  */
 
 import SWXMLHash
+import AEXML
 
 class CBXMLParser2: NSObject {
 
@@ -35,22 +36,12 @@ class CBXMLParser2: NSObject {
     }
 
     func parseProject(completion: (Bool) -> Void) {
-
-        var xmlFile = String()
-        do {
-            xmlFile = try String(contentsOfFile: self.xmlPath, encoding: .utf8)
-        } catch {
-            // TODO: ERROR HANDLING
-        }
+        guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { return }
 
         let xml = SWXMLHash.parse(xmlFile)
 
-        do {
-            project = try xml["program"].value()
-            completion(true)
-        } catch {
-            // TODO: ERROR HANDLING
-        }
+        project = try? xml["program"].value()
+        completion(true)
     }
 
     func getProject() -> CBProject? {

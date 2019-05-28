@@ -35,6 +35,21 @@ class XMLAbstractTest: XCTestCase {
         super.tearDown()
     }
 
+    func writeXMLFileFor(projectName: String) {
+
+        // --------------------------------------------------
+        // TODO: change getProjectForXML2 to getProjectForXML
+        // --------------------------------------------------
+
+        var project: CBProject?
+        getProjectForXML2(xmlFile: projectName) { proj in
+            project = proj
+        }
+
+        guard let filledProject = project else { return }
+        let xml = CBXMLSerializer2.shared.createXMLDocument(project: filledProject)
+    }
+
     func compareProject(firstProjectName: String, withProject secondProjectName: String) {
 
         // --------------------------------------------------

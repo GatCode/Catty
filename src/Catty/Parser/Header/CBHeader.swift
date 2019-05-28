@@ -30,12 +30,15 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
     let dateTimeUpload: String?
     let description: String?
     let deviceName: String?
+    let isCastProject: String?
+    let landscapeMode: String?
     let mediaLicense: String?
     let platform: String?
     let platformVersion: String?
     let programLicense: String?
     let programName: String?
     let remixOf: String?
+    let scenesEnabled: String?
     let screenHeight: String?
     let screenMode: String?
     let screenWidth: String?
@@ -53,12 +56,15 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
             dateTimeUpload: node["dateTimeUpload"].value(),
             description: node["description"].value(),
             deviceName: node["deviceName"].value(),
+            isCastProject: node["isCastProject"].value(),
+            landscapeMode: node["landscapeMode"].value(),
             mediaLicense: node["mediaLicense"].value(),
             platform: node["platform"].value(),
             platformVersion: node["platformVersion"].value(),
             programLicense: node["programLicense"].value(),
             programName: node["programName"].value(),
             remixOf: node["remixOf"].value(),
+            scenesEnabled: node["scenesEnabled"].value(),
             screenHeight: node["screenHeight"].value(),
             screenMode: node["screenMode"].value(),
             screenWidth: node["screenWidth"].value(),
