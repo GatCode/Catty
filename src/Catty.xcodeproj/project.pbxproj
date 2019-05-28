@@ -56,6 +56,7 @@
 		2E5A24E1229D7F460000A58F /* SerializeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E0229D7F460000A58F /* SerializeHeader.swift */; };
 		2E5A24E3229D7F680000A58F /* SerializeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E2229D7F680000A58F /* SerializeSettings.swift */; };
 		2E5A24E5229D7F740000A58F /* SerializeScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E4229D7F740000A58F /* SerializeScenes.swift */; };
+		2E5A24E7229D81D40000A58F /* XMLSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
 		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
 		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
@@ -1307,6 +1308,7 @@
 		2E5A24E0229D7F460000A58F /* SerializeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeHeader.swift; sourceTree = "<group>"; };
 		2E5A24E2229D7F680000A58F /* SerializeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeSettings.swift; sourceTree = "<group>"; };
 		2E5A24E4229D7F740000A58F /* SerializeScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeScenes.swift; sourceTree = "<group>"; };
+		2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLSerializerTests.swift; path = "Parser & Serialization/XMLSerializerTests.swift"; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		2E6F426A229929FC00840319 /* Siren.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Siren.framework.dSYM; path = Carthage/Build/iOS/Siren.framework.dSYM; sourceTree = "<group>"; };
 		2E6F426D2299344200840319 /* CBLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLook.swift; sourceTree = "<group>"; };
@@ -4474,6 +4476,7 @@
 			children = (
 				2E251988229C44E200DC11BD /* XMLAbstractTest.swift */,
 				2E25198A229C465300DC11BD /* XMLParserTests.swift */,
+				2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -8207,6 +8210,7 @@
 				4C822656213FA7A400F3D750 /* DeviceSensorMock.swift in Sources */,
 				4C822655213FA7A400F3D750 /* SensorMock.swift in Sources */,
 				4C28D7912133BC0B00870CE2 /* FormulaManagerResourceTests.swift in Sources */,
+				2E5A24E7229D81D40000A58F /* XMLSerializerTests.swift in Sources */,
 				4CEB22571B95E47500B3BE2F /* ChangeTransparencyByNBrickTests.m in Sources */,
 				599E64AA202DB3E8009494B5 /* MediaLibraryCollectionViewDataSourceTests.swift in Sources */,
 				4CEB22641B95E47500B3BE2F /* SetSizeToBrickTests.m in Sources */,

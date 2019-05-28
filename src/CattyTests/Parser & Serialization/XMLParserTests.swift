@@ -26,10 +26,6 @@ import XCTest
 
 final class XMLParserTests: XMLAbstractTest {
 
-    func testXML() {
-        self.writeXMLFileFor(projectName: "Flappy_v3.0_0994")
-    }
-
     func test080VS093() {
         self.compareProject(firstProjectName: "SKYPASCAL_08", withProject: "SKYPASCAL_093")
     }

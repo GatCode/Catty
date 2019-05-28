@@ -35,7 +35,7 @@ class XMLAbstractTest: XCTestCase {
         super.tearDown()
     }
 
-    func writeXMLFileFor(projectName: String) {
+    func createAndCompareXMLFileFor(projectName: String) {
 
         // --------------------------------------------------
         // TODO: change getProjectForXML2 to getProjectForXML
@@ -43,29 +43,68 @@ class XMLAbstractTest: XCTestCase {
 
         var project: CBProject?
         var xml: String?
+        var readXml: String?
 
         getProjectForXML2(xmlFile: projectName) { result, error in
-            if error == nil {
-                project = result
-            }
             XCTAssertNil(error)
+            project = result
         }
 
         CBXMLSerializer2.shared.createXMLDocument(project: project) { result, error in
-            if error == nil {
-                xml = result
-            }
             XCTAssertNil(error)
+            xml = result
         }
 
-        CBXMLSerializer2.shared.writeXMLFile(filename: "file.txt", data: xml) { location, error in
-            if error == nil {
-                print("XML file is located at: \(String(describing: location))!")
-            }
+        CBXMLSerializer2.shared.writeXMLFile(filename: "file.xml", data: xml) { location, error in
             XCTAssertNil(error)
+            print("XML file is located at: \(String(describing: location))!")
         }
 
-        //print(xml)
+        CBXMLSerializer2.shared.readXMLFile(filename: "file.xml") { result, error in
+            XCTAssertNil(error)
+            readXml = result
+        }
+
+        var originalXML: String?
+        getPathForXML(xmlFile: projectName) { path, error in
+            XCTAssertNil(error)
+            originalXML = try? String(contentsOfFile: path!, encoding: .utf8)
+        }
+
+        XCTAssertTrue(diffXML(lhs: originalXML!, rhs: readXml!))
+    }
+
+    func diffXML(lhs: String, rhs: String) -> Bool {
+
+        //XCTAssertEqual(arrLeft.count, arrRight.count)
+
+        let lhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: lhs)
+        let rhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: rhs)
+
+        for (left, right) in zip(lhs!, rhs!) {
+            let lhs = String(left.filter { !" \n\t\r".contains($0) })
+            let rhs = String(right.filter { !" \n\t\r".contains($0) })
+
+            let numberOfChars = Double(lhs.count < rhs.count ? lhs.count : rhs.count)
+            let threshhold = 0.9
+
+            let lhsIndex = lhs.index(lhs.startIndex, offsetBy: Int(numberOfChars * threshhold))
+            let rhsIndex = rhs.index(rhs.startIndex, offsetBy: Int(numberOfChars * threshhold))
+
+            if lhs[..<lhsIndex] != rhs[..<rhsIndex] {
+                print("ERROR XML DIFFS: \(lhs[..<lhsIndex]) == \(lhs[..<rhsIndex])")
+                return false
+            }
+        }
+
+        return true
+    }
+
+    func cleanAndSplitXMLWith(regex: String, xml: String) -> [String]? {
+
+        guard let regex = try? NSRegularExpression(pattern: regex) else { return nil }
+        let results = regex.matches(in: xml, range: NSRange(xml.startIndex..., in: xml))
+        return results.map { String(xml[Range($0.range, in: xml)!]) }
     }
 
     func compareProject(firstProjectName: String, withProject secondProjectName: String) {
