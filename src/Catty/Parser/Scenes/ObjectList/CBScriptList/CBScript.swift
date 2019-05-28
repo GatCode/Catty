@@ -24,11 +24,13 @@ import SWXMLHash
 
 struct CBScript: XMLIndexerDeserializable {
     let brickList: CBBrickList?
+    let type: String?
     let isUserScript: Bool?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBScript {
         return try CBScript(
             brickList: node["brickList"].value(),
+            type: node.value(ofAttribute: "name"),
             isUserScript: node["isUserScript"].value()
         )
     }

@@ -25,17 +25,21 @@ import SWXMLHash
 struct CBSound: XMLIndexerDeserializable, Equatable {
     let fileName: String?
     let name: String?
+    let reference: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBSound {
         return try CBSound(
             fileName: node["fileName"].value(),
-            name: node["name"].value()
+            name: node["name"].value(),
+            reference: node.value(ofAttribute: "reference")
         )
     }
 
     static func == (lhs: CBSound, rhs: CBSound) -> Bool {
         return
             lhs.fileName == rhs.fileName &&
-            lhs.name == rhs.name
+            lhs.name == rhs.name ||
+            lhs.reference != nil && rhs.name != nil ||
+            lhs.name != nil && rhs.reference != nil
     }
 }

@@ -69,16 +69,32 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
     }
 
     static func == (lhs: CBHeader, rhs: CBHeader) -> Bool {
+
+        let lhsDescriptionComponents = lhs.description?.components(separatedBy: .whitespacesAndNewlines)
+        let lhsDescriptionShort = lhsDescriptionComponents?.filter { !$0.isEmpty }.joined(separator: " ")
+        let rhsDescriptionComponents = rhs.description?.components(separatedBy: .whitespacesAndNewlines)
+        let rhsDescriptionShort = rhsDescriptionComponents?.filter { !$0.isEmpty }.joined(separator: " ")
+
+        let lhsLicenseWithoutHttps = lhs.programLicense?.split(separator: "/").last
+        let rhsLicenseWithoutHttps = rhs.programLicense?.split(separator: "/").last
+
+        let lhsRemixWithoutHttps = lhs.remixOf?.split(separator: ":").last
+        let rhsRemixWithoutHttps = rhs.remixOf?.split(separator: ":").last
+
+        let lhsUrlWithoutHttps = lhs.url?.split(separator: "/").last
+        let rhsUrlWithoutHttps = rhs.url?.split(separator: "/").last
+
         return
             lhs.applicationBuildName == rhs.applicationBuildName &&
             lhs.applicationBuildNumber == rhs.applicationBuildNumber &&
             lhs.applicationName == rhs.applicationName &&
-            lhs.description == rhs.description &&
-            lhs.programLicense == rhs.programLicense &&
+            lhsDescriptionShort == rhsDescriptionShort &&
+            lhsLicenseWithoutHttps == rhsLicenseWithoutHttps &&
             lhs.programName == rhs.programName &&
-            lhs.remixOf == rhs.remixOf &&
+            lhsRemixWithoutHttps == rhsRemixWithoutHttps &&
             lhs.screenHeight == rhs.screenHeight &&
             lhs.screenWidth == rhs.screenWidth &&
+            lhsUrlWithoutHttps == rhsUrlWithoutHttps &&
             lhs.userHandle == rhs.userHandle
     }
 }

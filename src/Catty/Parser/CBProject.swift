@@ -41,11 +41,19 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
 
             objectList = try node["objectList"].value()
             objectVariableList = try node["variables"]["objectVariableList"].value()
+            if objectVariableList == nil {
+                objectVariableList = try node["data"]["objectVariableList"].value()
+            }
+
             let data = CBProjectData(objectListOfList: nil, objectVariableList: objectVariableList, userBrickVariableList: nil)
 
             tmpScenes!.append(CBProjectScene(name: nil, objectList: objectList, data: data, originalWidth: nil, originalHeight: nil))
 
             tmpProgramVariableList = try node["variables"]["programVariableList"].value()
+
+            if tmpProgramVariableList == nil {
+                tmpProgramVariableList = try node["data"]["programVariableList"].value()
+            }
         }
 
         return try CBProject(

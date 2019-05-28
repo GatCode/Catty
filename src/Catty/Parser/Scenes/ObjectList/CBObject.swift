@@ -50,8 +50,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
 
     static func == (lhs: CBObject, rhs: CBObject) -> Bool {
         return
-            lhs.name == rhs.name
-//            lhs.lookList == rhs.lookList &&
-//            lhs.soundList == rhs.soundList
+            lhs.lookList == rhs.lookList &&
+            lhs.soundList == rhs.soundList
     }
 }
