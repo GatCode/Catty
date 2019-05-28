@@ -26,7 +26,7 @@ class CBXMLSerializer2 {
 
     static let shared = CBXMLSerializer2()
 
-    func createXMLDocument(project: CBProject) -> String? {
+    func createXMLDocument(project: CBProject) -> String {
         var options = AEXMLOptions()
         options.documentHeader.version = 1.0
         options.documentHeader.encoding = "UTF-8"
@@ -39,18 +39,41 @@ class CBXMLSerializer2 {
         addSettingsTo(program: program)
         addScenesTo(program: program, data: project.scenes)
 
-        print(writeRequest.xml)
-
-        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        writeXMLFileTo(filename: "file.txt", directory: dir, data: writeRequest.xml)
-
         return writeRequest.xml
     }
 
-    func writeXMLFileTo(filename: String, directory: URL?, data: String) {
-        guard let directory = directory else { return }
-        let dataPath = directory.appendingPathComponent(data)
-        try? data.write(to: dataPath, atomically: false, encoding: .utf8)
+    // MARK: - Read/Write XML File
+    func writeXMLFile(filename: String, data: String) {
+
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+            let filePath = dir.appendingPathComponent(filename)
+
+            do {
+                try data.write(to: filePath, atomically: false, encoding: .utf8)
+                print("XML file written to: \(dir)")
+            } catch {
+                print("ERROR: XML file could not be written!")
+            }
+        }
+    }
+
+    func readXMLFile(filename: String) -> String {
+
+        var result = ""
+
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+            let filePath = dir.appendingPathComponent(filename)
+
+            do {
+                result = try String(contentsOf: filePath, encoding: .utf8)
+            } catch {
+                print("ERROR: XML file could not be written!")
+            }
+        }
+
+        return result
     }
 
     // MARK: - Serialize Header

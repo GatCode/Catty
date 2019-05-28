@@ -48,6 +48,10 @@ class XMLAbstractTest: XCTestCase {
 
         guard let filledProject = project else { return }
         let xml = CBXMLSerializer2.shared.createXMLDocument(project: filledProject)
+
+        CBXMLSerializer2.shared.writeXMLFile(filename: "file.txt", data: xml)
+
+        print(xml)
     }
 
     func compareProject(firstProjectName: String, withProject secondProjectName: String) {
