@@ -114,12 +114,23 @@ extension CBXMLSerializer2 {
         for script in data {
             let currentScript = scriptList.addChild(name: "script", attributes: ["type": script.type ?? ""])
 
-            //bricklist
+            // TODO: add bricklist
 
-            // TODO: add values
-            currentScript.addChild(name: "commentedOut", value: "commentedOut")
-            currentScript.addChild(name: "isUserScript", value: "isUserScript")
-            currentScript.addChild(name: "receivedMessage", value: "receivedMessage")
+            if let msg = script.commentedOut {
+                currentScript.addChild(name: "commentedOut", value: msg)
+            }
+
+            if let msg = script.isUserScript {
+                currentScript.addChild(name: "isUserScript", value: msg)
+            }
+
+            if let msg = script.receivedMessage {
+                currentScript.addChild(name: "receivedMessage", value: msg)
+            }
+
+            if let msg = script.action {
+                currentScript.addChild(name: "action", value: msg)
+            }
         }
     }
 
