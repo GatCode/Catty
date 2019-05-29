@@ -92,9 +92,11 @@ class XMLAbstractTest: XCTestCase {
             let rhsIndex = rhs.index(rhs.startIndex, offsetBy: Int(numberOfChars * threshhold))
 
             if lhs[..<lhsIndex] != rhs[..<rhsIndex] {
-                print("ERROR XML DIFFS: \(lhs[..<lhsIndex]) == \(lhs[..<rhsIndex])")
+                print("ERROR XML DIFFS:\n\t\(lhs[..<lhsIndex])\n\t\(rhs[..<rhsIndex])")
                 return false
             }
+
+            print("SAME:\n\t\(lhs[..<lhsIndex])\n\t\(rhs[..<rhsIndex])")
         }
 
         return true

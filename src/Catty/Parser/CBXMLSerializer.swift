@@ -27,7 +27,6 @@ class CBXMLSerializer2 {
     static let shared = CBXMLSerializer2()
 
     func createXMLDocument(project: CBProject?, completion: @escaping (String?, CBXMLSerializerError?) -> Void) {
-
         guard let project = project else { completion(nil, .invalidProject); return }
 
         var options = AEXMLOptions()
@@ -43,8 +42,27 @@ class CBXMLSerializer2 {
         addSettingsTo(program: program)
         addScenesTo(program: program, data: project.scenes)
 
-        completion(writeRequest.xml, nil)
+        let cleanedXML = cleanXMLFromSpecialChars(xml: writeRequest.xml)
+        completion(cleanedXML, nil)
     }
+}
+
+func cleanXMLFromSpecialChars(xml: String) -> String {
+    let specialChars: [String: String] = [
+        "&quot;": "\"",
+        "&amp;": "&",
+        "&apos;": "'",
+        "&lt;": "<",
+        "&gt;": ">"
+    ]
+
+    var result = xml
+
+    for char in specialChars {
+        result = result.replacingOccurrences(of: char.key, with: char.value)
+    }
+
+    return result
 }
 
 enum CBXMLSerializerError: Error {
