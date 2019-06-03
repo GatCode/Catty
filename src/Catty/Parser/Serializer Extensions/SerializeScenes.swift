@@ -152,6 +152,10 @@ extension CBXMLSerializer2 {
                 currentBrick.addChild(name: "commentedOut", value: msg)
             }
 
+            if let msg = brick.sound {
+                currentBrick.addChild(name: "sound", attributes: ["reference": msg])
+            }
+
             if let msg = brick.formulaList {
                 addFormulaListTo(brick: currentBrick, data: msg)
             }
