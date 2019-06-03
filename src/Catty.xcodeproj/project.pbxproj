@@ -51,6 +51,8 @@
 		2E25194C229C2A3C00DC11BD /* CBUserBrickVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */; };
 		2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251988229C44E200DC11BD /* XMLAbstractTest.swift */; };
 		2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25198A229C465300DC11BD /* XMLParserTests.swift */; };
+		2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802722A4F250002D1482 /* CBLRChild.swift */; };
+		2E34802C22A4F682002D1482 /* CBLRChildOfChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802B22A4F682002D1482 /* CBLRChildOfChild.swift */; };
 		2E5A24DB229D53330000A58F /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */; };
 		2E5A24DE229D736C0000A58F /* XMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DD229D736C0000A58F /* XMLHandler.swift */; };
 		2E5A24E1229D7F460000A58F /* SerializeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E0229D7F460000A58F /* SerializeHeader.swift */; };
@@ -1303,6 +1305,8 @@
 		2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrickVariableList.swift; sourceTree = "<group>"; };
 		2E251988229C44E200DC11BD /* XMLAbstractTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLAbstractTest.swift; path = "Parser & Serialization/XMLAbstractTest.swift"; sourceTree = "<group>"; };
 		2E25198A229C465300DC11BD /* XMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLParserTests.swift; path = "Parser & Serialization/XMLParserTests.swift"; sourceTree = "<group>"; };
+		2E34802722A4F250002D1482 /* CBLRChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLRChild.swift; sourceTree = "<group>"; };
+		2E34802B22A4F682002D1482 /* CBLRChildOfChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLRChildOfChild.swift; sourceTree = "<group>"; };
 		2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
 		2E5A24DD229D736C0000A58F /* XMLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLHandler.swift; sourceTree = "<group>"; };
 		2E5A24E0229D7F460000A58F /* SerializeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeHeader.swift; sourceTree = "<group>"; };
@@ -3208,6 +3212,8 @@
 			children = (
 				2E6F428C22993B0B00840319 /* CBFormulaList.swift */,
 				2E6F428F22993B5700840319 /* CBFormula.swift */,
+				2E34802722A4F250002D1482 /* CBLRChild.swift */,
+				2E34802B22A4F682002D1482 /* CBLRChildOfChild.swift */,
 			);
 			path = CBFormulaList;
 			sourceTree = "<group>";
@@ -8595,6 +8601,7 @@
 				4CB2CFA61D7AD7E7009F3034 /* SetColorBrick+CBXMLHandler.m in Sources */,
 				AA74EFEB1BC05B5F00D1E954 /* WaitBrick.m in Sources */,
 				4C0F9FA5204BD2C200E71B2D /* ThinkForBubbleBrickCell.m in Sources */,
+				2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */,
 				4CDA808521366AEA0052FA24 /* FormulaManagerProtocol.swift in Sources */,
 				2E6F429022993B5700840319 /* CBFormula.swift in Sources */,
 				4CF0728D20D659F700F93AB5 /* PhiroSideRightSensor.swift in Sources */,
@@ -8607,6 +8614,7 @@
 				921D467E1BDF61350086AD20 /* GoNStepsBackBrick+Instruction.swift in Sources */,
 				AA74EF531BC0586F00D1E954 /* PlaceAtBrick+CBXMLHandler.m in Sources */,
 				2E6F4275229937BA00840319 /* CBHeader.swift in Sources */,
+				2E34802C22A4F682002D1482 /* CBLRChildOfChild.swift in Sources */,
 				4CF773F41AEE79A800DBBB2B /* Brick+UserVariable.m in Sources */,
 				4C2EE41F1B555B55006DE9B8 /* CBXMLPositionStack.m in Sources */,
 				92FF2E371A24C5A700093DA7 /* NSMutableArray+CustomExtensions.m in Sources */,

@@ -25,11 +25,17 @@ import SWXMLHash
 struct CBFormula: XMLIndexerDeserializable {
     let type: String?
     let value: String?
+    let category: String?
+    let leftChild: CBLRChild?
+    let rightChild: CBLRChild?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBFormula {
         return try CBFormula(
             type: node["type"].value(),
-            value: node["value"].value()
+            value: node["value"].value(),
+            category: node.value(ofAttribute: "category"),
+            leftChild: node["leftChild"].value(),
+            rightChild: node["rightChild"].value()
         )
     }
 }

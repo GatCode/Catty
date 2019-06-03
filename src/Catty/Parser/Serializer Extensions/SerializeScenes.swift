@@ -114,7 +114,7 @@ extension CBXMLSerializer2 {
         for script in data {
             let currentScript = scriptList.addChild(name: "script", attributes: ["type": script.type ?? ""])
 
-            // TODO: add bricklist
+            addBrickListTo(script: currentScript, data: script.brickList)
 
             if let msg = script.commentedOut {
                 currentScript.addChild(name: "commentedOut", value: msg)
@@ -148,10 +148,29 @@ extension CBXMLSerializer2 {
         for brick in data {
             let currentBrick = brickList.addChild(name: "brick", attributes: ["type": brick.name ?? ""])
 
-            // TODO: add values
-            currentBrick.addChild(name: "commentedOut", value: "commentedOut")
-            addFormulaListTo(brick: currentBrick, data: brick.formulaList)
-            currentBrick.addChild(name: "userVariable", value: "userVariable")
+            if let msg = brick.commentedOut {
+                currentBrick.addChild(name: "commentedOut", value: msg)
+            }
+
+            if let msg = brick.formulaList {
+                addFormulaListTo(brick: currentBrick, data: msg)
+            }
+
+            if let msg = brick.lookReference {
+                currentBrick.addChild(name: "look", attributes: ["reference": msg])
+            }
+
+            if let msg = brick.userVariable {
+                if let varRef = brick.userVariableReference {
+                    currentBrick.addChild(name: "userVariable", value: msg, attributes: ["reference": varRef])
+                } else {
+                    currentBrick.addChild(name: "userVariable", value: msg)
+                }
+            }
+
+            if let msg = brick.broadcastMessage {
+                currentBrick.addChild(name: "broadcastMessage", value: msg)
+            }
         }
     }
 
@@ -167,13 +186,50 @@ extension CBXMLSerializer2 {
         guard let data = data else { return }
 
         for formula in data {
-            // TODO: add category
-            let currentFormula = formulaList.addChild(name: "formula", attributes: ["category": "category"])
+            let currentFormula = formulaList.addChild(name: "formula", attributes: ["category": formula.category ?? ""])
 
-            // TODO: add rightChild
-            currentFormula.addChild(name: "type", value: formula.type)
-            currentFormula.addChild(name: "value", value: formula.value)
+            if let msg = formula.leftChild {
+                addChildTo(formula: currentFormula, data: msg, isLeftChild: true)
+            }
+
+            if let msg = formula.rightChild {
+                addChildTo(formula: currentFormula, data: msg, isLeftChild: false)
+            }
+
+            if let msg = formula.type {
+                currentFormula.addChild(name: "type", value: msg)
+            }
+
+            if let msg = formula.value {
+                currentFormula.addChild(name: "value", value: msg)
+            }
         }
+    }
+
+    func addChildTo(formula: AEXMLElement, data: CBLRChild?, isLeftChild: Bool) {
+        guard let data = data else { return }
+
+        let child = formula.addChild(name: isLeftChild ? "leftChild" : "rightChild")
+
+        // children of children
+        if let leftChildOfChild = data.leftChild {
+            addChildTo(child: child, data: leftChildOfChild, isLeftChild: true)
+        }
+        if let rightChildOfChild = data.rightChild {
+            addChildTo(child: child, data: rightChildOfChild, isLeftChild: false)
+        }
+
+        child.addChild(name: "type", value: data.type)
+        child.addChild(name: "value", value: data.value)
+    }
+
+    func addChildTo(child: AEXMLElement, data: CBLRChildOfChild?, isLeftChild: Bool) {
+        guard let data = data else { return }
+
+        let child = child.addChild(name: isLeftChild ? "leftChild" : "rightChild")
+
+        child.addChild(name: "type", value: data.type)
+        child.addChild(name: "value", value: data.value)
     }
 
     // MARK: - Serialize UserBricks

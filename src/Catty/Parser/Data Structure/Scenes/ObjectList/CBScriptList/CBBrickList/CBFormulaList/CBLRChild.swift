@@ -22,38 +22,18 @@
 
 import SWXMLHash
 
-struct CBBrickList: XMLIndexerDeserializable {
-    let brick: [CBBrick]?
+struct CBLRChild: XMLIndexerDeserializable {
+    let type: String?
+    let value: String?
+    let leftChild: CBLRChildOfChild?
+    let rightChild: CBLRChildOfChild?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBBrickList {
-
-        var result = [CBBrick]()
-
-        for child in node.children {
-
-            let subXML = child.description
-            var childXML = [String]()
-
-            let splitted = subXML.split(separator: ">")
-            splitted.forEach { val in
-                childXML.append(val + ">")
-            }
-
-            childXML.removeFirst()
-            childXML.insert("<resolver>", at: 0)
-            childXML.removeLast()
-            childXML.insert("</resolver>", at: childXML.count)
-
-            let xml = SWXMLHash.parse(childXML.joined())
-
-            var res: CBBrick
-            res = try xml["resolver"].value()
-
-            result.append(res)
-        }
-
-        return CBBrickList(
-            brick: result
+    static func deserialize(_ node: XMLIndexer) throws -> CBLRChild {
+        return try CBLRChild(
+            type: node["type"].value(),
+            value: node["value"].value(),
+            leftChild: node["leftChild"].value(),
+            rightChild: node["rightChild"].value()
         )
     }
 }
