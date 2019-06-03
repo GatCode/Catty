@@ -89,6 +89,7 @@
 		2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */; };
 		2E6F42BB229A830700840319 /* CBUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42BA229A830700840319 /* CBUserList.swift */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
+		2EF437A822A5445F00E9347B /* CBLRChildOfSecondLevelChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF437A722A5445F00E9347B /* CBLRChildOfSecondLevelChild.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
 		4C03A4C42133FF4B007BFFD2 /* FormulaManager+Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C32133FF4B007BFFD2 /* FormulaManager+Interpreter.swift */; };
@@ -1344,6 +1345,7 @@
 		2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntryList.swift; sourceTree = "<group>"; };
 		2E6F42BA229A830700840319 /* CBUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserList.swift; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
+		2EF437A722A5445F00E9347B /* CBLRChildOfSecondLevelChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLRChildOfSecondLevelChild.swift; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -3214,6 +3216,7 @@
 				2E6F428F22993B5700840319 /* CBFormula.swift */,
 				2E34802722A4F250002D1482 /* CBLRChild.swift */,
 				2E34802B22A4F682002D1482 /* CBLRChildOfChild.swift */,
+				2EF437A722A5445F00E9347B /* CBLRChildOfSecondLevelChild.swift */,
 			);
 			path = CBFormulaList;
 			sourceTree = "<group>";
@@ -8332,6 +8335,7 @@
 				CABF43B91B115E6400419A55 /* CBOperationSequence.swift in Sources */,
 				81D46EA41CC29E3000653EAB /* ShapeButton.m in Sources */,
 				AA74F0B41BC05FCE00D1E954 /* ShowBrickCell.m in Sources */,
+				2EF437A822A5445F00E9347B /* CBLRChildOfSecondLevelChild.swift in Sources */,
 				AA74EEFE1BC057C900D1E954 /* SetLookBrick+CBXMLHandler.m in Sources */,
 				CA2D444F1B1251BF00A3B53D /* CBSchedulingAlgorithms.swift in Sources */,
 				AA74F00C1BC05B5F00D1E954 /* SetVolumeToBrick.m in Sources */,

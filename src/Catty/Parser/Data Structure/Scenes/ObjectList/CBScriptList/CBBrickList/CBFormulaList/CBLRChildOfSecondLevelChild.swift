@@ -22,18 +22,14 @@
 
 import SWXMLHash
 
-struct CBLRChildOfChild: XMLIndexerDeserializable {
+struct CBLRChildOfSecondLevelChild: XMLIndexerDeserializable {
     let type: String?
     let value: String?
-    let leftChild: CBLRChildOfSecondLevelChild?
-    let rightChild: CBLRChildOfSecondLevelChild?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBLRChildOfChild {
-        return try CBLRChildOfChild(
+    static func deserialize(_ node: XMLIndexer) throws -> CBLRChildOfSecondLevelChild {
+        return try CBLRChildOfSecondLevelChild(
             type: node["type"].value(),
-            value: node["value"].value(),
-            leftChild: node["leftChild"].value(),
-            rightChild: node["rightChild"].value()
+            value: node["value"].value()
         )
     }
 }

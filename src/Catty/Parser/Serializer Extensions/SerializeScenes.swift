@@ -228,6 +228,23 @@ extension CBXMLSerializer2 {
 
         let child = child.addChild(name: isLeftChild ? "leftChild" : "rightChild")
 
+        // children of second level children
+        if let leftChildOfChild = data.leftChild {
+            addChildTo(secondLevelChild: child, data: leftChildOfChild, isLeftChild: true)
+        }
+        if let rightChildOfChild = data.rightChild {
+            addChildTo(secondLevelChild: child, data: rightChildOfChild, isLeftChild: false)
+        }
+
+        child.addChild(name: "type", value: data.type)
+        child.addChild(name: "value", value: data.value)
+    }
+
+    func addChildTo(secondLevelChild: AEXMLElement, data: CBLRChildOfSecondLevelChild?, isLeftChild: Bool) {
+        guard let data = data else { return }
+
+        let child = secondLevelChild.addChild(name: isLeftChild ? "leftChild" : "rightChild")
+
         child.addChild(name: "type", value: data.type)
         child.addChild(name: "value", value: data.value)
     }
