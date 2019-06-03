@@ -38,6 +38,13 @@ extension CBXMLSerializer2 {
             if let objectList = scene.objectList?.object {
                 addObjectListTo(scene: currentScene, data: objectList)
             }
+
+            if let data = scene.data {
+                addDataTo(scene: currentScene, data: data)
+            }
+
+            currentScene.addChild(name: "originalWidth", value: scene.originalWidth)
+            currentScene.addChild(name: "originalHeight", value: scene.originalHeight)
         }
     }
 
@@ -286,5 +293,82 @@ extension CBXMLSerializer2 {
             nfcTagList.addChild(name: "name", value: tag.name)
             nfcTagList.addChild(name: "uid", value: tag.uid)
         }
+    }
+
+    // MARK: - Serialize Data
+    func addDataTo(scene: AEXMLElement, data: CBProjectData?) {
+        guard let data = data else { return }
+
+        let dataObject = scene.addChild(name: "data")
+
+        if let objListOfList = data.objectListOfList {
+            addObjectListOfListTo(dataObject: dataObject, data: objListOfList)
+        }
+
+        if let objVariableList = data.objectVariableList {
+            addObjectVariableListTo(dataObject: dataObject, data: objVariableList)
+        }
+
+        if let userBrickVariableList = data.userBrickVariableList {
+            addUserBrickVariableListTo(dataObject: dataObject, data: userBrickVariableList)
+        }
+    }
+
+    // MARK: - Serialize ObjectListOfList
+    func addObjectListOfListTo(dataObject: AEXMLElement, data: CBObjectListofList?) {
+        guard let data = data else { return }
+
+        let objectListOfLists = dataObject.addChild(name: "objectListOfList")
+
+        addListsTo(objectListOfLists: objectListOfLists, data: data.entry)
+    }
+
+    func addListsTo(objectListOfLists: AEXMLElement, data: [CBObjectListOfListEntry]?) {
+        guard let data = data else { return }
+
+        for list in data {
+            //TODO: ADD THIS SECTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
+    }
+
+    // MARK: - Serialize ObjectVariableList
+    func addObjectVariableListTo(dataObject: AEXMLElement, data: CBObjectVariableList?) {
+        guard let data = data else { return }
+
+        let objectVariableList = dataObject.addChild(name: "objectVariableList")
+
+        addEntriesTo(objectVariableList: objectVariableList, data: data.entry)
+    }
+
+    func addEntriesTo(objectVariableList: AEXMLElement, data: [CBObjectVariableEntry]?) {
+        guard let data = data else { return }
+
+        for entry in data {
+            let objectVariableList = objectVariableList.addChild(name: "entry")
+
+            objectVariableList.addChild(name: "object", value: nil, attributes: ["reference": entry.object ?? ""])
+
+            addUserVariableListTo(objectVariableList: objectVariableList, data: entry.list)
+        }
+    }
+
+    func addUserVariableListTo(objectVariableList: AEXMLElement, data: CBUserVariableList?) {
+        guard let data = data else { return }
+
+        let userVariableList = objectVariableList.addChild(name: "list")
+
+        if let userVars = data.userVariables {
+            for userVar in userVars {
+                userVariableList.addChild(name: "userVariable", value: nil, attributes: ["reference": userVar])
+            }
+        }
+    }
+
+    func addUserBrickVariableListTo(dataObject: AEXMLElement, data: CBUserBrickVariableList?) {
+        guard let data = data else { return }
+
+        let userBrickVariableList = dataObject.addChild(name: "userBrickVariableList")
+
+        // TODO: ADD USERBRICK PARSING!!!
     }
 }

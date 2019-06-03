@@ -83,7 +83,7 @@
 		2E6F42A6229A6BC300840319 /* CBObjectVariableEnrty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */; };
 		2E6F42AC229A6EF300840319 /* Data_Test_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F42AB229A6EF300840319 /* Data_Test_0991.xml */; };
 		2E6F42AF229A6FB100840319 /* CBProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42AE229A6FB100840319 /* CBProjectData.swift */; };
-		2E6F42B1229A78AD00840319 /* CBUserVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B0229A78AD00840319 /* CBUserVariable.swift */; };
+		2E6F42B1229A78AD00840319 /* CBUserVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B0229A78AD00840319 /* CBUserVariableList.swift */; };
 		2E6F42B4229A81C100840319 /* CBObjectListOfList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */; };
 		2E6F42B7229A824000840319 /* CBObjectListOfListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */; };
 		2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */; };
@@ -1339,7 +1339,7 @@
 		2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectVariableEnrty.swift; sourceTree = "<group>"; };
 		2E6F42AB229A6EF300840319 /* Data_Test_0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Data_Test_0991.xml; sourceTree = "<group>"; };
 		2E6F42AE229A6FB100840319 /* CBProjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProjectData.swift; sourceTree = "<group>"; };
-		2E6F42B0229A78AD00840319 /* CBUserVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserVariable.swift; sourceTree = "<group>"; };
+		2E6F42B0229A78AD00840319 /* CBUserVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserVariableList.swift; sourceTree = "<group>"; };
 		2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfList.swift; sourceTree = "<group>"; };
 		2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntry.swift; sourceTree = "<group>"; };
 		2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntryList.swift; sourceTree = "<group>"; };
@@ -3273,7 +3273,7 @@
 			isa = PBXGroup;
 			children = (
 				2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */,
-				2E6F42B0229A78AD00840319 /* CBUserVariable.swift */,
+				2E6F42B0229A78AD00840319 /* CBUserVariableList.swift */,
 			);
 			path = CBObjectVariableEntry;
 			sourceTree = "<group>";
@@ -8339,7 +8339,7 @@
 				AA74EEFE1BC057C900D1E954 /* SetLookBrick+CBXMLHandler.m in Sources */,
 				CA2D444F1B1251BF00A3B53D /* CBSchedulingAlgorithms.swift in Sources */,
 				AA74F00C1BC05B5F00D1E954 /* SetVolumeToBrick.m in Sources */,
-				2E6F42B1229A78AD00840319 /* CBUserVariable.swift in Sources */,
+				2E6F42B1229A78AD00840319 /* CBUserVariableList.swift in Sources */,
 				CA43C4BA1B165C0B009B604F /* CBBroadcastHandler.swift in Sources */,
 				4CF0729E20D66F8D00F93AB5 /* LookNameSensor.swift in Sources */,
 				4C8C3616213AA2BD00279BC7 /* PhiroIfLogicBeginBrick+Condition.swift in Sources */,
