@@ -32,5 +32,6 @@ final class XMLSerializerTests: XMLAbstractTest {
         createAndCompareXMLFileFor(projectName: "Galaxy_War_0994")
         createAndCompareXMLFileFor(projectName: "Pong_Starter_0994")
         createAndCompareXMLFileFor(projectName: "X_Ray_phone_0994")
+        //createAndCompareXMLFileFor(projectName: "Tic_Tac_Toe_Master_0.994")
     }
 }
