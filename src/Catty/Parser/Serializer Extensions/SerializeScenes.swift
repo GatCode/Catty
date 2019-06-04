@@ -231,7 +231,10 @@ extension CBXMLSerializer2 {
         }
 
         child.addChild(name: "type", value: data.type)
-        child.addChild(name: "value", value: data.value)
+
+        if let msg = data.value {
+            child.addChild(name: "value", value: msg)
+        }
     }
 
     // MARK: - Serialize UserBricks

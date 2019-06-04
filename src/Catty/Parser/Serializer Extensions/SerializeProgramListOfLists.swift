@@ -24,25 +24,7 @@ import AEXML
 
 extension CBXMLSerializer2 {
 
-    func addProgramVariableListTo(program: AEXMLElement, data: CBProgramVariableList?) {
-        guard let data = data else { return }
-
-        let programVariableList = program.addChild(name: "programVariableList")
-
-        addUserVariablesTo(programVariableList: programVariableList, data: data.userVariable)
-    }
-
-    func addUserVariablesTo(programVariableList: AEXMLElement, data: [CBUserProgramVariable]?) {
-        guard let data = data else { return }
-
-        for userVar in data {
-            if let ref = userVar.reference {
-                programVariableList.addChild(name: "userVariable", value: userVar.value, attributes: ["reference": ref])
-            } else if userVar.value != nil {
-                programVariableList.addChild(name: "userVariable", value: userVar.value, attributes: ["reference": userVar.reference ?? ""])
-            } else {
-                programVariableList.addChild(name: "userVariable", value: "\n")
-            }
-        }
+    func addProgramListOfListsTo(program: AEXMLElement) {
+        program.addChild(name: "programListOfLists")
     }
 }

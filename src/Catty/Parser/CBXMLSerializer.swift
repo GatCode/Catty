@@ -42,6 +42,7 @@ class CBXMLSerializer2 {
         addSettingsTo(program: program)
         addScenesTo(program: program, data: project.scenes)
         addProgramVariableListTo(program: program, data: project.programVariableList)
+        addProgramListOfListsTo(program: program)
 
         let cleanedXML = cleanXMLFromSpecialChars(xml: writeRequest.xml)
         completion(cleanedXML, nil)

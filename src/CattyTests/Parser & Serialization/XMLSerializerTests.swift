@@ -28,9 +28,9 @@ final class XMLSerializerTests: XMLAbstractTest {
 
     func testReadWriteXMLFiles() {
         createAndCompareXMLFileFor(projectName: "Flap_Pac_Man_0994")
-        //createAndCompareXMLFileFor(projectName: "Flappy_v3.0_0994")
-//        createAndCompareXMLFileFor(projectName: "Galaxy_War_0994")
-//        createAndCompareXMLFileFor(projectName: "Pong_Starter_0994")
-//        createAndCompareXMLFileFor(projectName: "X_Ray_phone_0994")
+        createAndCompareXMLFileFor(projectName: "Flappy_v3.0_0994")
+        createAndCompareXMLFileFor(projectName: "Galaxy_War_0994")
+        createAndCompareXMLFileFor(projectName: "Pong_Starter_0994")
+        createAndCompareXMLFileFor(projectName: "X_Ray_phone_0994")
     }
 }
