@@ -26,10 +26,6 @@ import XCTest
 
 final class XMLParserTests: XMLAbstractTest {
 
-    func test080VS093() {
-        self.compareProject(firstProjectName: "SKYPASCAL_08", withProject: "SKYPASCAL_093")
-    }
-
     func testAllLanguageVersionsFlapPacMan() {
         self.compareProject(firstProjectName: "Flap_Pac_Man_091", withProject: "Flap_Pac_Man_093")
         self.compareProject(firstProjectName: "Flap_Pac_Man_093", withProject: "Flap_Pac_Man_096")
@@ -65,6 +61,28 @@ final class XMLParserTests: XMLAbstractTest {
         self.compareProject(firstProjectName: "Galaxy_War_0993", withProject: "Galaxy_War_0994")
     }
 
+    func testAllLanguageVersionsGossipGirl() {
+        self.compareProject(firstProjectName: "Gossip_Girl_091", withProject: "Gossip_Girl_093")
+        self.compareProject(firstProjectName: "Gossip_Girl_093", withProject: "Gossip_Girl_095")
+        self.compareProject(firstProjectName: "Gossip_Girl_095", withProject: "Gossip_Girl_096")
+        self.compareProject(firstProjectName: "Gossip_Girl_096", withProject: "Gossip_Girl_097")
+        self.compareProject(firstProjectName: "Gossip_Girl_097", withProject: "Gossip_Girl_098")
+        self.compareProject(firstProjectName: "Gossip_Girl_098", withProject: "Gossip_Girl_0991")
+        self.compareProject(firstProjectName: "Gossip_Girl_0991", withProject: "Gossip_Girl_0992")
+        self.compareProject(firstProjectName: "Gossip_Girl_0992", withProject: "Gossip_Girl_0993")
+        self.compareProject(firstProjectName: "Gossip_Girl_0993", withProject: "Gossip_Girl_0994")
+    }
+
+    func testAllLanguageVersionsMinions() {
+        self.compareProject(firstProjectName: "Minions__091", withProject: "Minions__093")
+        self.compareProject(firstProjectName: "Minions__093", withProject: "Minions__095")
+        self.compareProject(firstProjectName: "Minions__095", withProject: "Minions__096")
+        self.compareProject(firstProjectName: "Minions__096", withProject: "Minions__097")
+        self.compareProject(firstProjectName: "Minions__097", withProject: "Minions__098")
+        self.compareProject(firstProjectName: "Minions__098", withProject: "Minions__0991")
+        self.compareProject(firstProjectName: "Minions__0991", withProject: "Minions__0994")
+    }
+
     func testAllLanguageVersionsPongStarter() {
         self.compareProject(firstProjectName: "Pong_Starter_09", withProject: "Pong_Starter_093")
         self.compareProject(firstProjectName: "Pong_Starter_093", withProject: "Pong_Starter_095")
@@ -75,6 +93,48 @@ final class XMLParserTests: XMLAbstractTest {
         self.compareProject(firstProjectName: "Pong_Starter_0991", withProject: "Pong_Starter_0992")
         self.compareProject(firstProjectName: "Pong_Starter_0992", withProject: "Pong_Starter_0993")
         self.compareProject(firstProjectName: "Pong_Starter_0993", withProject: "Pong_Starter_0994")
+    }
+
+    func testAllLanguageVersionsRockPaperScissors() {
+        self.compareProject(firstProjectName: "Rock_paper_scissors_091", withProject: "Rock_paper_scissors_093")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_093", withProject: "Rock_paper_scissors_095")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_095", withProject: "Rock_paper_scissors_096")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_096", withProject: "Rock_paper_scissors_097")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_097", withProject: "Rock_paper_scissors_098")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_098", withProject: "Rock_paper_scissors_0991")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_0991", withProject: "Rock_paper_scissors_0993")
+        self.compareProject(firstProjectName: "Rock_paper_scissors_0993", withProject: "Rock_paper_scissors_0994")
+    }
+
+    func testAllLanguageVersionsSkypascal() {
+        self.compareProject(firstProjectName: "SKYPASCAL_08", withProject: "SKYPASCAL_093")
+    }
+
+    func testAllLanguageVersionsNfc() {
+        self.compareProject(firstProjectName: "Test_Your_NFC_098", withProject: "Test_Your_NFC_0993")
+        self.compareProject(firstProjectName: "Test_Your_NFC_0993", withProject: "Test_Your_NFC_0994")
+    }
+
+    func testAllLanguageVersionsTicTacToe() {
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_091", withProject: "Tic_Tac_Toe_Master_093")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_093", withProject: "Tic_Tac_Toe_Master_095")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_095", withProject: "Tic_Tac_Toe_Master_096")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_096", withProject: "Tic_Tac_Toe_Master_097")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_097", withProject: "Tic_Tac_Toe_Master_098")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_098", withProject: "Tic_Tac_Toe_Master_0991")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_0991", withProject: "Tic_Tac_Toe_Master_0993")
+        self.compareProject(firstProjectName: "Tic_Tac_Toe_Master_0993", withProject: "Tic_Tac_Toe_Master_0994")
+    }
+
+    func testAllLanguageVersionsWorldBalloon() {
+        self.compareProject(firstProjectName: "Word_balloon_demo_09", withProject: "Word_balloon_demo_093")
+        self.compareProject(firstProjectName: "Word_balloon_demo_093", withProject: "Word_balloon_demo_095")
+        self.compareProject(firstProjectName: "Word_balloon_demo_095", withProject: "Word_balloon_demo_096")
+        self.compareProject(firstProjectName: "Word_balloon_demo_096", withProject: "Word_balloon_demo_097")
+        self.compareProject(firstProjectName: "Word_balloon_demo_097", withProject: "Word_balloon_demo_098")
+        self.compareProject(firstProjectName: "Word_balloon_demo_098", withProject: "Word_balloon_demo_0991")
+        self.compareProject(firstProjectName: "Word_balloon_demo_0991", withProject: "Word_balloon_demo_0993")
+        self.compareProject(firstProjectName: "Word_balloon_demo_0993", withProject: "Word_balloon_demo_0994")
     }
 
     func testAllLanguageVersionsXRayPhone() {

@@ -133,9 +133,9 @@ class XMLAbstractTest: XCTestCase {
             project2 = project
         }
 
-        XCTAssertNotNil(project1, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
-        XCTAssertNotNil(project2, "ERROR: \(firstProjectName) is wrong or the XML file is not present!")
-        XCTAssertTrue(project1! == project2!)
+        XCTAssertNotNil(project1, "ERROR: project 1 is wrong or the XML file is not present!")
+        XCTAssertNotNil(project2, "ERROR: project 2 is wrong or the XML file is not present!")
+        XCTAssertTrue(project1 == project2)
     }
 
     func isXMLElement(xmlElement: GDataXMLElement, equalToXMLElementForXPath xPath: String, inProjectForXML project: String) -> Bool {
