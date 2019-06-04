@@ -269,14 +269,13 @@ class XMLAbstractTest: XCTestCase {
             completion(nil, .unexpectedError)
         }
 
-        catrobatParser2?.parseProject(completion: { parseSuccess in
-            if parseSuccess {
-                let project = catrobatParser2?.getProject()
-                if project == nil {
-                    completion(nil, .parsingError)
-                }
-                completion(project, nil)
+        catrobatParser2?.parseProject(completion: { error in
+            if error != nil {
+                completion(nil, .parsingError)
             }
+
+            let project = catrobatParser2?.getProject()
+            completion(project, nil)
         })
     }
 

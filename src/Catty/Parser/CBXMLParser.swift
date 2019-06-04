@@ -20,8 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-import SWXMLHash
 import AEXML
+import SWXMLHash
 
 class CBXMLParser2: NSObject {
 
@@ -35,16 +35,25 @@ class CBXMLParser2: NSObject {
         xmlPath = path
     }
 
-    func parseProject(completion: (Bool) -> Void) {
-        guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { return }
+    func parseProject(completion: @escaping (CBXMLParserError?) -> Void) {
+        guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { completion(.invalidPath); return }
 
         let xml = SWXMLHash.parse(xmlFile)
 
-        project = try? xml["program"].value()
-        completion(true)
+        do {
+            project = try xml["program"].value()
+            completion(nil)
+        } catch {
+            completion(.parsingError)
+        }
     }
 
     func getProject() -> CBProject? {
         return project
     }
+}
+
+enum CBXMLParserError: Error {
+    case invalidPath
+    case parsingError
 }

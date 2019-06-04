@@ -34,10 +34,10 @@ class CBXMLSerializer2 {
         options.documentHeader.encoding = "UTF-8"
         options.documentHeader.standalone = "yes"
         let writeRequest = AEXMLDocument(options: options)
+        if writeRequest.error != nil { completion(nil, .serializationError) }
 
         let program = writeRequest.addChild(name: "program")
 
-        // TODO: proper error handling!
         addHeaderTo(program: program, data: project.header)
         addSettingsTo(program: program)
         addScenesTo(program: program, data: project.scenes)
@@ -49,7 +49,7 @@ class CBXMLSerializer2 {
     }
 }
 
-func cleanXMLFromSpecialChars(xml: String) -> String {
+fileprivate func cleanXMLFromSpecialChars(xml: String) -> String {
     let specialChars: [String: String] = [
         "&quot;": "\"",
         "&amp;": "&",

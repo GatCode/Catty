@@ -22,7 +22,7 @@
 
 import SWXMLHash
 
-struct CBProjectData: XMLIndexerDeserializable, Equatable {
+struct CBProjectData: XMLIndexerDeserializable {
     let objectListOfList: CBObjectListofList?
     let objectVariableList: CBObjectVariableList?
     let userBrickVariableList: CBUserBrickVariableList?
@@ -33,10 +33,5 @@ struct CBProjectData: XMLIndexerDeserializable, Equatable {
             objectVariableList: node["objectVariableList"].value(),
             userBrickVariableList: node["userBrickVariableList"].value()
         )
-    }
-
-    static func == (lhs: CBProjectData, rhs: CBProjectData) -> Bool {
-        return
-            lhs.objectVariableList == rhs.objectVariableList
     }
 }

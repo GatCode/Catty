@@ -40,7 +40,7 @@ struct CBProjectScene: XMLIndexerDeserializable, Equatable {
 
     static func == (lhs: CBProjectScene, rhs: CBProjectScene) -> Bool {
         return
-            lhs.objectList == rhs.objectList &&
-            lhs.data == rhs.data
+            lhs.objectList == rhs.objectList
+
     }
 }
