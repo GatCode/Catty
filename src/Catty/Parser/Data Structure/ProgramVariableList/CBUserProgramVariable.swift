@@ -22,7 +22,7 @@
 
 import SWXMLHash
 
-struct CBUserProgramVariable: XMLIndexerDeserializable, Equatable {
+struct CBUserProgramVariable: XMLIndexerDeserializable {
     let value: String?
     let reference: String?
 
@@ -44,12 +44,5 @@ struct CBUserProgramVariable: XMLIndexerDeserializable, Equatable {
             value: tmpValue,
             reference: node.value(ofAttribute: "reference")
         )
-    }
-
-    static func == (lhs: CBUserProgramVariable, rhs: CBUserProgramVariable) -> Bool {
-        return
-            true
-            //lhs.reference == nil && lhs.value != nil ||
-            //rhs.value != nil && rhs.reference == nil
     }
 }

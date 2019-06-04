@@ -68,7 +68,6 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
     static func == (lhs: CBProject, rhs: CBProject) -> Bool {
         return
             lhs.header == rhs.header &&
-            lhs.scenes == rhs.scenes &&
-            lhs.programVariableList == rhs.programVariableList
+            lhs.scenes == rhs.scenes
     }
 }

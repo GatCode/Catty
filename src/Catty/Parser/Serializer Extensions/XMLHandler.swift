@@ -24,6 +24,7 @@ import AEXML
 
 extension CBXMLSerializer2 {
 
+    // MARK: - Read XML File
     func readXMLFile(filename: String, completion: @escaping (String?, CBXMLSerializerXMLHandlerError?) -> Void) {
 
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

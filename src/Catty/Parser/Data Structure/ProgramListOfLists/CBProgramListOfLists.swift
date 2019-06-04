@@ -22,17 +22,12 @@
 
 import SWXMLHash
 
-struct CBProgramListOfLists: XMLIndexerDeserializable, Equatable {
+struct CBProgramListOfLists: XMLIndexerDeserializable {
     let list: [CBProgramList]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProgramListOfLists {
         return try CBProgramListOfLists(
             list: node["userVariable"].value()
         )
-    }
-
-    static func == (lhs: CBProgramListOfLists, rhs: CBProgramListOfLists) -> Bool {
-        return
-            lhs.list == rhs.list
     }
 }
