@@ -20,13 +20,19 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-import AEXML
+import SWXMLHash
 
-extension CBXMLSerializer2 {
+struct CBProgramListOfLists: XMLIndexerDeserializable, Equatable {
+    let list: [CBProgramList]?
 
-    func addProgramListOfListsTo(program: AEXMLElement, data: CBProgramListOfLists?) {
-        guard let data = data else { return }
+    static func deserialize(_ node: XMLIndexer) throws -> CBProgramListOfLists {
+        return try CBProgramListOfLists(
+            list: node["userVariable"].value()
+        )
+    }
 
-        program.addChild(name: "programListOfLists")
+    static func == (lhs: CBProgramListOfLists, rhs: CBProgramListOfLists) -> Bool {
+        return
+            lhs.list == rhs.list
     }
 }

@@ -26,6 +26,7 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
     let header: CBHeader?
     let scenes: [CBProjectScene]?
     let programVariableList: CBProgramVariableList?
+    let programListOfLists: CBProgramListOfLists?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProject {
 
@@ -59,7 +60,8 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
         return try CBProject(
             header: node["header"].value(),
             scenes: tmpScenes,
-            programVariableList: tmpProgramVariableList
+            programVariableList: tmpProgramVariableList,
+            programListOfLists: node["programListOfLists"].value()
         )
     }
 
