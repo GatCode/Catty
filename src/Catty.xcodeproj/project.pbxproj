@@ -103,6 +103,9 @@
 		2EF5294922A6962D00FFD2B5 /* Test_Your_NFC_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5294822A6962D00FFD2B5 /* Test_Your_NFC_0993.xml */; };
 		2EF5294B22A6969400FFD2B5 /* Tic_Tac_Toe_Master_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5294A22A6969400FFD2B5 /* Tic_Tac_Toe_Master_0993.xml */; };
 		2EF5294D22A696F400FFD2B5 /* Word_balloon_demo_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5294C22A696F400FFD2B5 /* Word_balloon_demo_0993.xml */; };
+		2EF5295A22A78B7C00FFD2B5 /* EscapingChars_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5295922A78B7C00FFD2B5 /* EscapingChars_0991.xml */; };
+		2EF5295C22A78D5C00FFD2B5 /* EscapingChars_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5295B22A78D5C00FFD2B5 /* EscapingChars_0993.xml */; };
+		2EF5295E22A78F3700FFD2B5 /* EscapingChars_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5295D22A78F3700FFD2B5 /* EscapingChars_0994.xml */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
 		4C03A4C42133FF4B007BFFD2 /* FormulaManager+Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C32133FF4B007BFFD2 /* FormulaManager+Interpreter.swift */; };
@@ -1365,6 +1368,9 @@
 		2EF5294822A6962D00FFD2B5 /* Test_Your_NFC_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test_Your_NFC_0993.xml; sourceTree = "<group>"; };
 		2EF5294A22A6969400FFD2B5 /* Tic_Tac_Toe_Master_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tic_Tac_Toe_Master_0993.xml; sourceTree = "<group>"; };
 		2EF5294C22A696F400FFD2B5 /* Word_balloon_demo_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Word_balloon_demo_0993.xml; sourceTree = "<group>"; };
+		2EF5295922A78B7C00FFD2B5 /* EscapingChars_0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = EscapingChars_0991.xml; path = "Catty/New Group/EscapingChars_0991.xml"; sourceTree = SOURCE_ROOT; };
+		2EF5295B22A78D5C00FFD2B5 /* EscapingChars_0993.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = EscapingChars_0993.xml; path = "Catty/New Group/EscapingChars_0993.xml"; sourceTree = SOURCE_ROOT; };
+		2EF5295D22A78F3700FFD2B5 /* EscapingChars_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = EscapingChars_0994.xml; path = "Catty/New Group/EscapingChars_0994.xml"; sourceTree = SOURCE_ROOT; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -3330,6 +3336,17 @@
 			path = ProgramListOfLists;
 			sourceTree = "<group>";
 		};
+		2EF5295F22A78F3F00FFD2B5 /* EscapingChars */ = {
+			isa = PBXGroup;
+			children = (
+				2EF5295922A78B7C00FFD2B5 /* EscapingChars_0991.xml */,
+				2EF5295B22A78D5C00FFD2B5 /* EscapingChars_0993.xml */,
+				2EF5295D22A78F3700FFD2B5 /* EscapingChars_0994.xml */,
+			);
+			name = EscapingChars;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		4C0F9F47204ADD0C00E71B2D /* OrderedDictionary */ = {
 			isa = PBXGroup;
 			children = (
@@ -3409,6 +3426,7 @@
 		4C1608A41A09548F002C7032 /* ParserTests */ = {
 			isa = PBXGroup;
 			children = (
+				2EF5295F22A78F3F00FFD2B5 /* EscapingChars */,
 				CAE3E4FC1B4C50B300CC88BD /* Flap_Pac_Man */,
 				CAE3E4FF1B4C50B300CC88BD /* Flappy_v3.0 */,
 				CAE3E5021B4C50B300CC88BD /* Galaxy_War */,
@@ -7701,6 +7719,7 @@
 				2D7BE52021441FAE00F78A10 /* StoreProjectDownloader.searchProjects.fail.request.json in Resources */,
 				4C6D15F81D7AC62E00CE53CD /* X_Ray_phone_098.xml in Resources */,
 				2E251941229BE95B00DC11BD /* Galaxy_War_0993.xml in Resources */,
+				2EF5295E22A78F3700FFD2B5 /* EscapingChars_0994.xml in Resources */,
 				CAE3E5411B4C50B300CC88BD /* Flap_Pac_Man_091.xml in Resources */,
 				59B9F633202D8F8500937299 /* MediaLibraryDownloader.downloadIndex.success.json in Resources */,
 				4CEF0CE01B9C643E003C9B20 /* Rock_paper_scissors_096.xml in Resources */,
@@ -7759,6 +7778,7 @@
 				2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */,
 				4CEF0CCC1B9C63BA003C9B20 /* Flappy_v3.0_096.xml in Resources */,
 				4C15FE7F1D168C0D009C1A2B /* transparency-rgb.png in Resources */,
+				2EF5295A22A78B7C00FFD2B5 /* EscapingChars_0991.xml in Resources */,
 				CAE3E5591B4C50B300CC88BD /* Rock_paper_scissors_093.xml in Resources */,
 				2D7BE51E21441DE500F78A10 /* StoreProjectDownloader.searchProjects.success.json in Resources */,
 				2DCB4928212EA477005E8E3D /* StoreProjectDownloader.fetchMostViewedProjects.fail.request.json in Resources */,
@@ -7780,6 +7800,7 @@
 				CAE3E5471B4C50B300CC88BD /* Gossip_Girl_091.xml in Resources */,
 				2E251935229BE14100DC11BD /* X_Ray_phone_0992.xml in Resources */,
 				4CE2D4111C29506600938B5E /* Rock_paper_scissors_097.xml in Resources */,
+				2EF5295C22A78D5C00FFD2B5 /* EscapingChars_0993.xml in Resources */,
 				4C2EE4051B5557F3006DE9B8 /* Pong_Starter_095.xml in Resources */,
 				CAE3E5421B4C50B300CC88BD /* Flap_Pac_Man_093.xml in Resources */,
 				CAE3E5581B4C50B300CC88BD /* Rock_paper_scissors_091.xml in Resources */,

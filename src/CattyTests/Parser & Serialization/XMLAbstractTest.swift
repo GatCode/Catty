@@ -68,10 +68,10 @@ class XMLAbstractTest: XCTestCase {
         var originalXML: String?
         getPathForXML(xmlFile: projectName) { path, error in
             XCTAssertNil(error)
-            originalXML = try? String(contentsOfFile: path!, encoding: .utf8)
+            originalXML = try? String(contentsOfFile: path ?? "", encoding: .utf8)
         }
 
-        XCTAssertTrue(diffXML(lhs: originalXML!, rhs: readXml!))
+        XCTAssertTrue(diffXML(lhs: originalXML ?? "", rhs: readXml!))
     }
 
     func diffXML(lhs: String, rhs: String) -> Bool {

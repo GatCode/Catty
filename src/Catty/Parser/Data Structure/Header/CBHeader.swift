@@ -91,8 +91,6 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
         let rhsUrlWithoutHttps = rhs.url?.split(separator: "/").last
 
         return
-            lhs.applicationBuildName == rhs.applicationBuildName &&
-            lhs.applicationBuildNumber == rhs.applicationBuildNumber &&
             lhs.applicationName == rhs.applicationName &&
             lhsDescriptionShort == rhsDescriptionShort &&
             lhsLicenseWithoutHttps == rhsLicenseWithoutHttps &&

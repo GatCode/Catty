@@ -44,12 +44,12 @@ class CBXMLSerializer2 {
         addProgramVariableListTo(program: program, data: project.programVariableList)
         addProgramListOfListsTo(program: program, data: project.programListOfLists)
 
-        let cleanedXML = cleanXMLFromSpecialChars(xml: writeRequest.xml)
+        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)
         completion(cleanedXML, nil)
     }
 }
 
-fileprivate func cleanXMLFromSpecialChars(xml: String) -> String {
+fileprivate func prepareXMLWithSpecialChars(xml: String) -> String {
     let specialChars: [String: String] = [
         "&quot;": "\"",
         "&amp;": "&",
@@ -61,7 +61,7 @@ fileprivate func cleanXMLFromSpecialChars(xml: String) -> String {
     var result = xml
 
     for char in specialChars {
-        result = result.replacingOccurrences(of: char.key, with: char.value)
+        result = result.replacingOccurrences(of: char.value, with: char.key)
     }
 
     return result

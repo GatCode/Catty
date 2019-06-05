@@ -26,6 +26,11 @@ import XCTest
 
 final class XMLParserTests: XMLAbstractTest {
 
+    func testAllLanguageVersionsEscapingChars() {
+        self.compareProject(firstProjectName: "EscapingChars_0991", withProject: "EscapingChars_0993")
+        self.compareProject(firstProjectName: "EscapingChars_0993", withProject: "EscapingChars_0994")
+    }
+
     func testAllLanguageVersionsFlapPacMan() {
         self.compareProject(firstProjectName: "Flap_Pac_Man_091", withProject: "Flap_Pac_Man_093")
         self.compareProject(firstProjectName: "Flap_Pac_Man_093", withProject: "Flap_Pac_Man_096")

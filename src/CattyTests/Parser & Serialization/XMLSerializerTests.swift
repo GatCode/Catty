@@ -27,11 +27,17 @@ import XCTest
 final class XMLSerializerTests: XMLAbstractTest {
 
     func testReadWriteXMLFiles() {
+        createAndCompareXMLFileFor(projectName: "EscapingChars_0994")
+        createAndCompareXMLFileFor(projectName: "Minions__0994")
         createAndCompareXMLFileFor(projectName: "Flap_Pac_Man_0994")
         createAndCompareXMLFileFor(projectName: "Flappy_v3.0_0994")
         createAndCompareXMLFileFor(projectName: "Galaxy_War_0994")
+        createAndCompareXMLFileFor(projectName: "Gossip_Girl_0994")
         createAndCompareXMLFileFor(projectName: "Pong_Starter_0994")
+        createAndCompareXMLFileFor(projectName: "Rock_paper_scissors_0994")
+        createAndCompareXMLFileFor(projectName: "Test_Your_NFC_0994")
+        createAndCompareXMLFileFor(projectName: "Tic_Tac_Toe_Master_0994")
+        createAndCompareXMLFileFor(projectName: "Word_balloon_demo_0994")
         createAndCompareXMLFileFor(projectName: "X_Ray_phone_0994")
-        //createAndCompareXMLFileFor(projectName: "Tic_Tac_Toe_Master_0.994")
     }
 }
