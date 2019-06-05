@@ -22,7 +22,7 @@
 
 import AEXML
 
-class CBXMLSerializer2 {
+@objc class CBXMLSerializer2: NSObject {
 
     static let shared = CBXMLSerializer2()
 

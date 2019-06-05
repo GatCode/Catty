@@ -452,12 +452,7 @@
     NSString *xmlPath = [NSString stringWithFormat:@"%@%@", loadingInfo.basePath, kProjectCodeFileName];
     NSDebug(@"XML-Path: %@", xmlPath);
 
-    //    //######### FIXME remove that later!! {
-    //        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    //        xmlPath = [bundle pathForResource:@"ValidProjectAllBricks093" ofType:@"xml"];
-    //    // }
-
-    Project *project = nil;
+    CBProjectObjc *project = nil;
     CGFloat languageVersion = [Util detectCBLanguageVersionFromXMLWithPath:xmlPath];
 
     if (languageVersion == kCatrobatInvalidVersion) {
@@ -465,23 +460,18 @@
         return nil;
     }
 
-    // detect right parser for correct catrobat language version
-    CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
-    if (! [catrobatParser isSupportedLanguageVersion:languageVersion]) {
-        Parser *parser = [[Parser alloc] init];
-        project = [parser generateObjectForProjectWithPath:xmlPath];
-    } else {
-        project = [catrobatParser parseAndCreateProject];
+    CBXMLParser2 *catrobatParser2 = [[CBXMLParser2 alloc] initWithPath:xmlPath];
+    
+    if ([catrobatParser2 parseProject] == false) {
+        return nil;
     }
+    project = [catrobatParser2 getProjectObjc];
     project.header.programID = loadingInfo.projectID;
 
-    if (! project)
-        return nil;
-
-    NSDebug(@"%@", [project description]);
     NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);
     [self updateLastModificationTimeForProjectWithName:loadingInfo.visibleName projectID:loadingInfo.projectID];
-    return project;
+//    return project;
+    return nil;
 }
 
 + (instancetype)lastUsedProject

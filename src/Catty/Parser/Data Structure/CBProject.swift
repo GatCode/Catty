@@ -71,3 +71,66 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
             lhs.scenes == rhs.scenes
     }
 }
+
+@objc class CBProjectObjc: NSObject {
+    @objc var header = CBHeaderObjc()
+
+    init(project: CBProject?) {
+        header = CBHeaderObjc(header: project?.header)
+    }
+}
+
+@objc class CBHeaderObjc: NSObject {
+    @objc var applicationBuildName: String?
+    @objc var applicationBuildNumber: String?
+    @objc var applicationName: String?
+    @objc var applicationVersion: String?
+    @objc var catrobatLanguageVersion: String?
+    @objc var dateTimeUpload: String?
+    @objc var descr: String?
+    @objc var deviceName: String?
+    @objc var isCastProject: String?
+    @objc var landscapeMode: String?
+    @objc var mediaLicense: String?
+    @objc var platform: String?
+    @objc var platformVersion: String?
+    @objc var programLicense: String?
+    @objc var programName: String?
+    @objc var remixOf: String?
+    @objc var scenesEnabled: String?
+    @objc var screenHeight: String?
+    @objc var screenMode: String?
+    @objc var screenWidth: String?
+    @objc var tags: String?
+    @objc var url: String?
+    @objc var userHandle: String?
+    @objc var programID: String?
+
+    override init() {}
+    init(header: CBHeader?) {
+        applicationBuildName = header?.applicationBuildName
+        applicationBuildNumber = header?.applicationBuildNumber
+        applicationName = header?.applicationName
+        applicationVersion = header?.applicationVersion
+        catrobatLanguageVersion = header?.catrobatLanguageVersion
+        dateTimeUpload = header?.dateTimeUpload
+        descr = header?.description
+        deviceName = header?.deviceName
+        isCastProject = header?.isCastProject
+        landscapeMode = header?.landscapeMode
+        mediaLicense = header?.mediaLicense
+        platform = header?.platform
+        platformVersion = header?.platformVersion
+        programLicense = header?.programLicense
+        programName = header?.programName
+        remixOf = header?.remixOf
+        scenesEnabled = header?.scenesEnabled
+        screenHeight = header?.screenHeight
+        screenMode = header?.screenMode
+        screenWidth = header?.screenWidth
+        tags = header?.tags
+        url = header?.url
+        userHandle = header?.userHandle
+        programID = header?.programID
+    }
+}

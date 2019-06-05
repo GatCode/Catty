@@ -45,6 +45,7 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
     let tags: String?
     let url: String?
     let userHandle: String?
+    let programID: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBHeader {
         return try CBHeader(
@@ -70,7 +71,8 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
             screenWidth: node["screenWidth"].value(),
             tags: node["tags"].value(),
             url: node["url"].value(),
-            userHandle: node["userHandle"].value()
+            userHandle: node["userHandle"].value(),
+            programID: nil
         )
     }
 

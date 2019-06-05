@@ -23,12 +23,12 @@
 import AEXML
 import SWXMLHash
 
-class CBXMLParser2: NSObject {
+@objc class CBXMLParser2: NSObject {
 
     private var xmlPath: String = ""
     private var project: CBProject?
 
-    init?(path: String) {
+    @objc init?(path: String) {
         if path.isEmpty {
             return nil
         }
@@ -50,6 +50,22 @@ class CBXMLParser2: NSObject {
 
     func getProject() -> CBProject? {
         return project
+    }
+
+    // for legacy code support
+    @objc func parseProject() -> Bool {
+        var retVal = false
+
+        parseProject { error in
+            retVal = error != nil ? false : true
+        }
+
+        return retVal
+    }
+
+    // for legacy code support
+    @objc func getProjectObjc() -> CBProjectObjc? {
+        return CBProjectObjc(project: project)
     }
 }
 
