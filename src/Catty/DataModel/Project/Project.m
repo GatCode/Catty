@@ -452,7 +452,7 @@
     NSString *xmlPath = [NSString stringWithFormat:@"%@%@", loadingInfo.basePath, kProjectCodeFileName];
     NSDebug(@"XML-Path: %@", xmlPath);
 
-    CBProjectObjc *project = nil;
+    Project *project = nil;
     CGFloat languageVersion = [Util detectCBLanguageVersionFromXMLWithPath:xmlPath];
 
     if (languageVersion == kCatrobatInvalidVersion) {
@@ -470,8 +470,8 @@
 
     NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);
     [self updateLastModificationTimeForProjectWithName:loadingInfo.visibleName projectID:loadingInfo.projectID];
-//    return project;
-    return nil;
+
+    return project;
 }
 
 + (instancetype)lastUsedProject

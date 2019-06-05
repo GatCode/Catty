@@ -64,8 +64,9 @@ import SWXMLHash
     }
 
     // for legacy code support
-    @objc func getProjectObjc() -> CBProjectObjc? {
-        return CBProjectObjc(project: project)
+    @objc func getProjectObjc() -> Project? {
+        // TODO: map CBProject to Project (legacy)
+        return nil
     }
 }
 
