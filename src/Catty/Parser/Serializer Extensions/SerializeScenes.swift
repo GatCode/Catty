@@ -249,7 +249,6 @@ extension CBXMLSerializer2 {
         guard let data = data else { return }
 
         for brick in data {
-            // TODO: check it!
             userBricks.addChild(name: "name", value: brick.name)
         }
     }
@@ -266,7 +265,6 @@ extension CBXMLSerializer2 {
         guard let data = data else { return }
 
         for tag in data {
-            // TODO: check it!
             nfcTagList.addChild(name: "name", value: tag.name)
             nfcTagList.addChild(name: "uid", value: tag.uid)
         }
@@ -303,8 +301,7 @@ extension CBXMLSerializer2 {
     func addListsTo(objectListOfLists: AEXMLElement, data: [CBObjectListOfListEntry]?) {
         guard let data = data else { return }
 
-        for list in data {
-            //TODO: ADD THIS SECTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        for _ in data {
         }
     }
 
@@ -342,10 +339,6 @@ extension CBXMLSerializer2 {
     }
 
     func addUserBrickVariableListTo(dataObject: AEXMLElement, data: CBUserBrickVariableList?) {
-        guard let data = data else { return }
-
-        let userBrickVariableList = dataObject.addChild(name: "userBrickVariableList")
-
-        // TODO: ADD USERBRICK PARSING!!!
+        dataObject.addChild(name: "userBrickVariableList")
     }
 }

@@ -3418,13 +3418,13 @@
 			children = (
 				4C1329071CD9278E00F16E48 /* Sounds */,
 				4C6A64B31AF7CC5A00D04559 /* Images */,
-				4C1608A41A09548F002C7032 /* ParserTests */,
+				4C1608A41A09548F002C7032 /* Parser&Serialializer */,
 			);
 			name = Resources;
 			path = ../Catty;
 			sourceTree = "<group>";
 		};
-		4C1608A41A09548F002C7032 /* ParserTests */ = {
+		4C1608A41A09548F002C7032 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
 				2EBB708922A797350085E14F /* EscapingChars */,
@@ -3441,7 +3441,7 @@
 				CAE3E52B1B4C50B300CC88BD /* Word_balloon_demo */,
 				CAE3E52E1B4C50B300CC88BD /* X_Ray_phone */,
 			);
-			name = ParserTests;
+			name = "Parser&Serialializer";
 			sourceTree = "<group>";
 		};
 		4C2650671A6538470050775B /* CBCopyContext */ = {
@@ -4513,14 +4513,14 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		4CD194F21A0631B200484E4F /* Parser */ = {
+		4CD194F21A0631B200484E4F /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
 				2E251988229C44E200DC11BD /* XMLAbstractTest.swift */,
 				2E25198A229C465300DC11BD /* XMLParserTests.swift */,
 				2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */,
 			);
-			name = Parser;
+			name = "Parser&Serialializer";
 			sourceTree = "<group>";
 		};
 		4CDF7BB42138735700FFF7F4 /* Builder */ = {
@@ -6986,7 +6986,7 @@
 				4C3C03F5199BA5250004F594 /* Formula */,
 				59A58D81202C712F008B1A8F /* MediaLibrary */,
 				599E649C202D9F85009494B5 /* Mocks */,
-				4CD194F21A0631B200484E4F /* Parser */,
+				4CD194F21A0631B200484E4F /* Parser&Serialializer */,
 				AA70F7EF1B866E63003057C6 /* PlayerEngine */,
 				4CE5C56C1E0AD71800FD021C /* Project */,
 				4C1608A31A095480002C7032 /* Resources */,

@@ -25,6 +25,6 @@ import AEXML
 extension CBXMLSerializer2 {
 
     func addSettingsTo(program: AEXMLElement) {
-        let settings = program.addChild(name: "settings")
+        program.addChild(name: "settings")
     }
 }

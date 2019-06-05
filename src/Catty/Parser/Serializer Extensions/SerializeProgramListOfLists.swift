@@ -25,7 +25,7 @@ import AEXML
 extension CBXMLSerializer2 {
 
     func addProgramListOfListsTo(program: AEXMLElement, data: CBProgramListOfLists?) {
-        guard let data = data else { return }
+        guard let _ = data else { return }
 
         program.addChild(name: "programListOfLists")
     }
