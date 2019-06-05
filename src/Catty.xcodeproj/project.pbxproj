@@ -52,6 +52,7 @@
 		2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251988229C44E200DC11BD /* XMLAbstractTest.swift */; };
 		2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25198A229C465300DC11BD /* XMLParserTests.swift */; };
 		2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802722A4F250002D1482 /* CBLRChild.swift */; };
+		2E56BE5122A819D100F26BC1 /* CBXMLMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */; };
 		2E5A24DB229D53330000A58F /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */; };
 		2E5A24DE229D736C0000A58F /* XMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DD229D736C0000A58F /* XMLHandler.swift */; };
 		2E5A24E1229D7F460000A58F /* SerializeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E0229D7F460000A58F /* SerializeHeader.swift */; };
@@ -1316,6 +1317,7 @@
 		2E251988229C44E200DC11BD /* XMLAbstractTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLAbstractTest.swift; path = "Parser & Serialization/XMLAbstractTest.swift"; sourceTree = "<group>"; };
 		2E25198A229C465300DC11BD /* XMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLParserTests.swift; path = "Parser & Serialization/XMLParserTests.swift"; sourceTree = "<group>"; };
 		2E34802722A4F250002D1482 /* CBLRChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLRChild.swift; sourceTree = "<group>"; };
+		2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMapping.swift; sourceTree = "<group>"; };
 		2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
 		2E5A24DD229D736C0000A58F /* XMLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLHandler.swift; sourceTree = "<group>"; };
 		2E5A24E0229D7F460000A58F /* SerializeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeHeader.swift; sourceTree = "<group>"; };
@@ -3244,6 +3246,7 @@
 			isa = PBXGroup;
 			children = (
 				2E7D46402299099A0003DFCE /* CBXMLParser.swift */,
+				2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */,
 				2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */,
 				2E5A24DC229D72C40000A58F /* Data Structure */,
 				2E5A24DF229D76930000A58F /* Serializer Extensions */,
@@ -8843,6 +8846,7 @@
 				92289A4A1A42F2A3008C771A /* iOSCombobox.m in Sources */,
 				F4E6E58C210DFEFE00D86FE6 /* PiFunction.swift in Sources */,
 				4CF0729220D6697300F93AB5 /* LocationAccuracySensor.swift in Sources */,
+				2E56BE5122A819D100F26BC1 /* CBXMLMapping.swift in Sources */,
 				4C724E601B4D3E8C00E27479 /* Parser.m in Sources */,
 				92DFB0161A38949E00FA9B0F /* InternFormulaState.m in Sources */,
 				AA74F0C51BC05FCE00D1E954 /* PlaySoundBrickCell.m in Sources */,
