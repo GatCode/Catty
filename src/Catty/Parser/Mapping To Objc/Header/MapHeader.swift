@@ -20,9 +20,9 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-struct CBXMLMapping {
+extension CBXMLMapping {
 
-    static func mapHeader(input: CBHeader?) -> Header {
+    static func mapHeaderToHeader(input: CBHeader?) -> Header {
 
         // TODO: dateTimeUpload currently ignored
         let header = Header()

@@ -53,6 +53,12 @@
 		2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25198A229C465300DC11BD /* XMLParserTests.swift */; };
 		2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802722A4F250002D1482 /* CBLRChild.swift */; };
 		2E56BE5122A819D100F26BC1 /* CBXMLMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */; };
+		2E56BE5522A8E16D00F26BC1 /* MapScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5422A8E16D00F26BC1 /* MapScenes.swift */; };
+		2E56BE5722A8E1B700F26BC1 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5622A8E1B700F26BC1 /* MapHeader.swift */; };
+		2E56BE5C22A8E54B00F26BC1 /* MapLookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5B22A8E54B00F26BC1 /* MapLookList.swift */; };
+		2E56BE5F22A8E59200F26BC1 /* MapSoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5E22A8E59200F26BC1 /* MapSoundList.swift */; };
+		2E56BE6222A8E63000F26BC1 /* MapScriptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */; };
+		2E56BE6522A8E94C00F26BC1 /* MapBrickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */; };
 		2E5A24DB229D53330000A58F /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */; };
 		2E5A24DE229D736C0000A58F /* XMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DD229D736C0000A58F /* XMLHandler.swift */; };
 		2E5A24E1229D7F460000A58F /* SerializeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E0229D7F460000A58F /* SerializeHeader.swift */; };
@@ -1318,6 +1324,12 @@
 		2E25198A229C465300DC11BD /* XMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLParserTests.swift; path = "Parser & Serialization/XMLParserTests.swift"; sourceTree = "<group>"; };
 		2E34802722A4F250002D1482 /* CBLRChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLRChild.swift; sourceTree = "<group>"; };
 		2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMapping.swift; sourceTree = "<group>"; };
+		2E56BE5422A8E16D00F26BC1 /* MapScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScenes.swift; sourceTree = "<group>"; };
+		2E56BE5622A8E1B700F26BC1 /* MapHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeader.swift; sourceTree = "<group>"; };
+		2E56BE5B22A8E54B00F26BC1 /* MapLookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLookList.swift; sourceTree = "<group>"; };
+		2E56BE5E22A8E59200F26BC1 /* MapSoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSoundList.swift; sourceTree = "<group>"; };
+		2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScriptList.swift; sourceTree = "<group>"; };
+		2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBrickList.swift; sourceTree = "<group>"; };
 		2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
 		2E5A24DD229D736C0000A58F /* XMLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLHandler.swift; sourceTree = "<group>"; };
 		2E5A24E0229D7F460000A58F /* SerializeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeHeader.swift; sourceTree = "<group>"; };
@@ -3147,6 +3159,60 @@
 			path = CBUserBrickVariableList;
 			sourceTree = "<group>";
 		};
+		2E56BE5822A8E3D400F26BC1 /* Mapping To Objc */ = {
+			isa = PBXGroup;
+			children = (
+				2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */,
+				2E56BE5922A8E3EE00F26BC1 /* Header */,
+				2E56BE5A22A8E3FA00F26BC1 /* Scenes */,
+			);
+			path = "Mapping To Objc";
+			sourceTree = "<group>";
+		};
+		2E56BE5922A8E3EE00F26BC1 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2E56BE5622A8E1B700F26BC1 /* MapHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2E56BE5A22A8E3FA00F26BC1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2E56BE5422A8E16D00F26BC1 /* MapScenes.swift */,
+				2E56BE5D22A8E57500F26BC1 /* LookList */,
+				2E56BE6022A8E5EB00F26BC1 /* SoundList */,
+				2E56BE6322A8E63600F26BC1 /* ScriptList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2E56BE5D22A8E57500F26BC1 /* LookList */ = {
+			isa = PBXGroup;
+			children = (
+				2E56BE5B22A8E54B00F26BC1 /* MapLookList.swift */,
+			);
+			path = LookList;
+			sourceTree = "<group>";
+		};
+		2E56BE6022A8E5EB00F26BC1 /* SoundList */ = {
+			isa = PBXGroup;
+			children = (
+				2E56BE5E22A8E59200F26BC1 /* MapSoundList.swift */,
+			);
+			path = SoundList;
+			sourceTree = "<group>";
+		};
+		2E56BE6322A8E63600F26BC1 /* ScriptList */ = {
+			isa = PBXGroup;
+			children = (
+				2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */,
+				2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */,
+			);
+			path = ScriptList;
+			sourceTree = "<group>";
+		};
 		2E5A24DC229D72C40000A58F /* Data Structure */ = {
 			isa = PBXGroup;
 			children = (
@@ -3246,10 +3312,10 @@
 			isa = PBXGroup;
 			children = (
 				2E7D46402299099A0003DFCE /* CBXMLParser.swift */,
-				2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */,
 				2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */,
 				2E5A24DC229D72C40000A58F /* Data Structure */,
 				2E5A24DF229D76930000A58F /* Serializer Extensions */,
+				2E56BE5822A8E3D400F26BC1 /* Mapping To Objc */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -8446,6 +8512,7 @@
 				9218B2131CC4AB75007B4C60 /* UndoManager.m in Sources */,
 				AA74F0B31BC05FCE00D1E954 /* SetSizeToBrickCell.m in Sources */,
 				F4E6E5C6210E24F900D86FE6 /* TrueFunction.swift in Sources */,
+				2E56BE6522A8E94C00F26BC1 /* MapBrickList.swift in Sources */,
 				4CB0F9EC20A1731700D1BE2F /* PositionYSensor.swift in Sources */,
 				AA6CC28B1BB4AB9A0007A621 /* CBScriptContext.swift in Sources */,
 				A9F511831BE6A07A00B59540 /* SwiftBridge.swift in Sources */,
@@ -8781,6 +8848,7 @@
 				4CAB933B2132753A00AEB86D /* FormulaManager.swift in Sources */,
 				92FF2E331A24C5A700093DA7 /* CAGradientLayer+CatrobatCAGradientExtensions.m in Sources */,
 				2E5A24E1229D7F460000A58F /* SerializeHeader.swift in Sources */,
+				2E56BE5722A8E1B700F26BC1 /* MapHeader.swift in Sources */,
 				5E219F2621C8B46A000439BA /* SelectButton.swift in Sources */,
 				927F79D71BEE39A3008D1635 /* BrickCellPhiroIfSensorData.m in Sources */,
 				4C48ED2920EF9AEC00784CD5 /* AudioManager+Loudness.swift in Sources */,
@@ -8794,6 +8862,7 @@
 				92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */,
 				92EC985C1BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.m in Sources */,
 				2E6F428822993A3A00840319 /* CBBrickList.swift in Sources */,
+				2E56BE5522A8E16D00F26BC1 /* MapScenes.swift in Sources */,
 				4C0F9F4F204BD0B400E71B2D /* CameraPreviewHandler.m in Sources */,
 				4C724E611B4D3E8C00E27479 /* ProjectParser.m in Sources */,
 				AA74F0931BC05FCE00D1E954 /* BrickCellFormulaData.m in Sources */,
@@ -8854,6 +8923,7 @@
 				4CE6788F210C506B00D90B5D /* FunctionManagerProtocol.swift in Sources */,
 				92DFB0151A38949E00FA9B0F /* InternFormulaParserEmptyStackException.m in Sources */,
 				926198021BF48384006D1A61 /* BluetoothMocks.swift in Sources */,
+				2E56BE5F22A8E59200F26BC1 /* MapSoundList.swift in Sources */,
 				AA74EFF31BC05B5F00D1E954 /* ClearGraphicEffectBrick.m in Sources */,
 				AAF6D9C91BC0914100686849 /* CBPlayerConfig.swift in Sources */,
 				AA74EFF51BC05B5F00D1E954 /* NextLookBrick.m in Sources */,
@@ -8879,6 +8949,7 @@
 				92B46F9C1BC7BC8C004980C1 /* ArduinoSendPWMValueBrick+CBXMLHandler.m in Sources */,
 				4C724E5C1B4D3E8C00E27479 /* Sound+CBXMLHandler.m in Sources */,
 				92FF2E8C1A24C7D800093DA7 /* AudioManager.m in Sources */,
+				2E56BE6222A8E63000F26BC1 /* MapScriptList.swift in Sources */,
 				92FF2E9F1A24C7D800093DA7 /* SharkfoodMuteSwitchDetector.m in Sources */,
 				AAAF228A1BC0D0630076F11E /* TurnRightBrick+Instruction.swift in Sources */,
 				AA74EEDB1BC057B900D1E954 /* BroadcastBrick+CBXMLHandler.m in Sources */,
@@ -8970,6 +9041,7 @@
 				AA74F09B1BC05FCE00D1E954 /* BrickCell.m in Sources */,
 				2E6F429B229A64D500840319 /* CBNfcTag.swift in Sources */,
 				59ABDC652021D7DA00061403 /* UIAlertController+AddAction.swift in Sources */,
+				2E56BE5C22A8E54B00F26BC1 /* MapLookList.swift in Sources */,
 				922FE8E11B963BDE005A19FA /* BrickSelectionManager.m in Sources */,
 				4CF0729920D66C4800F93AB5 /* BackgroundNameSensor.swift in Sources */,
 				AA74EEE01BC057B900D1E954 /* IfLogicEndBrick+CBXMLHandler.m in Sources */,

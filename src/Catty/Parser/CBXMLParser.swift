@@ -25,8 +25,8 @@ import SWXMLHash
 
 @objc class CBXMLParser2: NSObject {
 
-    private var xmlPath: String = ""
-    private var project: CBProject?
+    fileprivate var xmlPath: String = ""
+    fileprivate var project: CBProject?
 
     @objc init?(path: String) {
         if path.isEmpty {
@@ -35,7 +35,7 @@ import SWXMLHash
         xmlPath = path
     }
 
-    func parseProject(completion: @escaping (CBXMLParserError?) -> Void) {
+    fileprivate func parseProject(completion: @escaping (CBXMLParserError?) -> Void) {
         guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { completion(.invalidPath); return }
 
         let xml = SWXMLHash.parse(xmlFile)
@@ -48,11 +48,14 @@ import SWXMLHash
         }
     }
 
-    func getProject() -> CBProject? {
+    fileprivate func getProject() -> CBProject? {
         return project
     }
+}
 
-    // for legacy code support
+// MARK: - Legacy Support
+extension CBXMLParser2 {
+
     @objc func parseProject() -> Bool {
         var retVal = false
 
@@ -63,13 +66,8 @@ import SWXMLHash
         return retVal
     }
 
-    // for legacy code support
     @objc func getProjectObjc() -> Project? {
-
-        let mappedProject = Project()
-        mappedProject.header = CBXMLMapping.mapHeader(input: project?.header)
-
-        return mappedProject
+        return CBXMLMapping.mapCBProjectToProject(project: project)
     }
 }
 
