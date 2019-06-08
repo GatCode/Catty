@@ -31,6 +31,11 @@ extension CBXMLMapping {
         header.applicationName = input?.applicationName
         header.applicationVersion = input?.applicationVersion
         header.catrobatLanguageVersion = input?.catrobatLanguageVersion
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'ddHH':'mm':'ss"
+        header.dateTimeUpload = dateFormatter.date(from: input?.dateTimeUpload ?? "")
+
         header.programDescription = input?.description
         header.deviceName = input?.deviceName
         header.landscapeMode = input?.landscapeMode?.bool ?? false
