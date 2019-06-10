@@ -35,7 +35,7 @@ import SWXMLHash
         xmlPath = path
     }
 
-    fileprivate func parseProject(completion: @escaping (CBXMLParserError?) -> Void) {
+    func parseProject(completion: @escaping (CBXMLParserError?) -> Void) {
         guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { completion(.invalidPath); return }
 
         let xml = SWXMLHash.parse(xmlFile)
@@ -48,7 +48,7 @@ import SWXMLHash
         }
     }
 
-    fileprivate func getProject() -> CBProject? {
+    func getProject() -> CBProject? {
         return project
     }
 }
@@ -56,7 +56,7 @@ import SWXMLHash
 // MARK: - Legacy Support
 extension CBXMLParser2 {
 
-    @objc func parseProject() -> Bool {
+    @objc func parseProjectObjc() -> Bool {
         var retVal = false
 
         parseProject { error in

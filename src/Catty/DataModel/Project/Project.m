@@ -462,7 +462,7 @@
 
     CBXMLParser2 *catrobatParser2 = [[CBXMLParser2 alloc] initWithPath:xmlPath];
     
-    if ([catrobatParser2 parseProject] == false) {
+    if ([catrobatParser2 parseProjectObjc] == false) {
         return nil;
     }
     project = [catrobatParser2 getProjectObjc];

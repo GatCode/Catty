@@ -37,6 +37,7 @@ class XMLAbstractTest: XCTestCase {
 
     func compareNewFileToOlderLanguageVersionFile(new: String, old: String) -> Bool {
         // implement when mapping serialization of Project is finished
+        return false
     }
 
     func createAndCompareXMLFileFor(projectName: String) {

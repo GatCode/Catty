@@ -29,8 +29,11 @@ extension CBXMLMapping {
         for script in input {
             let object = Script()
 
-            // TODO: map object
-            // TODO: received message
+            // TODO: differentiate between different types of scripts
+            // f.e. StartScript, WhenScript, WhenTouchDownScript, BroadcastScript or Script
+
+            // TODO: script.object = context.spriteObject;
+
             object.brickList = mapBrickListToScript(input: script)
 
             scriptList.append(object)

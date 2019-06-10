@@ -24,6 +24,7 @@ import SWXMLHash
 
 struct CBBrick: XMLIndexerDeserializable {
     let name: String?
+    let type: String?
     let sound: String?
     let commentedOut: String?
     let formulaList: CBFormulaList?
@@ -36,6 +37,7 @@ struct CBBrick: XMLIndexerDeserializable {
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
         return try CBBrick(
             name: node["name"].value(),
+            type: node.value(ofAttribute: "type"),
             sound: node["sound"].value(ofAttribute: "reference"),
             commentedOut: node["commentedOut"].value(),
             formulaList: node["formulaList"].value(),

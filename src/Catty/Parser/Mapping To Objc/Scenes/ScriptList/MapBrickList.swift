@@ -20,6 +20,12 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+let kBroadcastBrick: String = "BroadcastBrick"
+let kBroadcastWaitBrick: String = "BroadcastWaitBrick"
+let kForeverBrick: String = "ForeverBrick"
+
+let kIfThenLogicBeginBrick: String = "IfThenLogicBeginBrick"
+
 extension CBXMLMapping {
 
     static func mapBrickListToScript(input: CBScript?) -> NSMutableArray {
@@ -28,11 +34,18 @@ extension CBXMLMapping {
         guard let input = input?.brickList?.brick else { return  NSMutableArray(array: brickList) }
 
         for brick in input {
-            var object = Brick()
-
-            // TODO: Map
-
-            brickList.append(object)
+            switch brick.type {
+            case kBroadcastBrick:
+                brickList.append(BroadcastBrick(message: brick.broadcastMessage ?? ""))
+            case kBroadcastWaitBrick:
+                brickList.append(BroadcastWaitBrick(message: brick.broadcastMessage ?? ""))
+            case kForeverBrick:
+                brickList.append(ForeverBrick())
+            case .none:
+                print("")
+            case .some(_):
+                print("")
+            }
         }
 
         return NSMutableArray(array: brickList)
