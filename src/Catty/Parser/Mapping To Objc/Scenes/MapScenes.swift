@@ -29,17 +29,21 @@ extension CBXMLMapping {
         guard let input = input?.first?.objectList?.object else { return  NSMutableArray(array: objectList) }
 
         for object in input {
-            let item = SpriteObject()
-
-            item.name = (object.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
-            item.lookList = mapLookListToObject(input: object.lookList)
-            item.soundList = mapSoundListToObject(input: object.soundList)
-            item.scriptList = mapScriptListToObject(input: object.scriptList, object: item)
-            // TODO: map variables
-
-            objectList.append(item)
+            objectList.append(mapCBObjectToSpriteObject(input: object, objects: input))
         }
 
         return NSMutableArray(array: objectList)
+    }
+
+    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject]) -> SpriteObject {
+        let item = SpriteObject()
+
+        item.name = (input.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
+        item.lookList = mapLookListToObject(input: input.lookList)
+        item.soundList = mapSoundListToObject(input: input.soundList)
+        item.scriptList = mapScriptListToObject(input: input.scriptList, object: item, objects: objects)
+        // TODO: map variables
+
+        return item
     }
 }
