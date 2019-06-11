@@ -20,23 +20,41 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+let kStartScript = "StartScript"
+let kWhenScript = "WhenScript"
+let kWhenTouchDownScript = "WhenTouchDownScript"
+let kBroadcastScript = "BroadcastScript"
+let kScript = "Script"
+
 extension CBXMLMapping {
 
-    static func mapScriptListToObject(input: CBScriptList?) -> NSMutableArray {
+    static func mapScriptListToObject(input: CBScriptList?, object: SpriteObject) -> NSMutableArray {
         var scriptList = [Script]()
         guard let input = input?.script else { return  NSMutableArray(array: scriptList) }
 
         for script in input {
-            let object = Script()
+            var obj = Script()
 
-            // TODO: differentiate between different types of scripts
-            // f.e. StartScript, WhenScript, WhenTouchDownScript, BroadcastScript or Script
+            // TODO: fill other types correctly
 
-            // TODO: script.object = context.spriteObject;
+            if script.type == kStartScript {
+                obj = StartScript()
+            } else if script.type == kWhenScript {
+                obj = WhenScript()
+            } else if script.type == kWhenTouchDownScript {
+                obj = WhenTouchDownScript()
+            } else if script.type == kBroadcastScript {
+                obj = BroadcastScript()
+            } else if script.type == kScript {
+                obj = Script()
+            } else {
+                // TODO: unsupported script
+            }
 
-            object.brickList = mapBrickListToScript(input: script)
+            obj.object = object
+            obj.brickList = mapBrickListToScript(input: script)
 
-            scriptList.append(object)
+            scriptList.append(obj)
         }
 
         return NSMutableArray(array: scriptList)

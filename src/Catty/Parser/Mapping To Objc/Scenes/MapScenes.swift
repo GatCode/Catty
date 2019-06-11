@@ -31,10 +31,10 @@ extension CBXMLMapping {
         for object in input {
             let item = SpriteObject()
 
-            item.name = object.name
+            item.name = (object.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
             item.lookList = mapLookListToObject(input: object.lookList)
             item.soundList = mapSoundListToObject(input: object.soundList)
-            item.scriptList = mapScriptListToObject(input: object.scriptList)
+            item.scriptList = mapScriptListToObject(input: object.scriptList, object: item)
             // TODO: map variables
 
             objectList.append(item)

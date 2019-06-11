@@ -20,24 +20,16 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-import SWXMLHash
+extension CBXMLMapping {
 
-struct CBScript: XMLIndexerDeserializable {
-    let brickList: CBBrickList?
-    let type: String?
-    let commentedOut: String?
-    let isUserScript: String?
-    let receivedMessage: String?
-    let action: String?
+    static func mapFormulaListToBrick(input: CBBrick?) -> NSMutableArray {
+        var formulaList = [Formula]()
+        guard let input = input?.formulaList?.formula else { return  NSMutableArray(array: formulaList) }
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBScript {
-        return try CBScript(
-            brickList: node["brickList"].value(),
-            type: node.value(ofAttribute: "type"),
-            commentedOut: node["commentedOut"].value(),
-            isUserScript: node["isUserScript"].value(),
-            receivedMessage: node["receivedMessage"].value(),
-            action: node["action"].value()
-        )
+        for formula in input {
+            formulaList.append(mapCBFormulaToFormula(input: formula))
+        }
+
+        return NSMutableArray(array: formulaList)
     }
 }

@@ -33,6 +33,7 @@ struct CBBrick: XMLIndexerDeserializable {
     let userVariable: String?
     let userVariableReference: String?
     let broadcastMessage: String?
+    let noteMessage: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
         return try CBBrick(
@@ -45,7 +46,8 @@ struct CBBrick: XMLIndexerDeserializable {
             lookReference: node["look"].value(ofAttribute: "reference"),
             userVariable: node["userVariable"].value(),
             userVariableReference: node["userVariable"].value(ofAttribute: "reference"),
-            broadcastMessage: node["broadcastMessage"].value()
+            broadcastMessage: node["broadcastMessage"].value(),
+            noteMessage: node["formulaList"]["formula"]["value"].value()
         )
     }
 }

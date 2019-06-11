@@ -60,6 +60,8 @@
 		2E56BE5F22A8E59200F26BC1 /* MapSoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5E22A8E59200F26BC1 /* MapSoundList.swift */; };
 		2E56BE6222A8E63000F26BC1 /* MapScriptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */; };
 		2E56BE6522A8E94C00F26BC1 /* MapBrickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */; };
+		2E59CDC922AFA8AE001C305F /* MapFormulaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59CDC822AFA8AE001C305F /* MapFormulaList.swift */; };
+		2E59CDCD22AFAB2C001C305F /* MapFormula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59CDCC22AFAB2C001C305F /* MapFormula.swift */; };
 		2E5A24DB229D53330000A58F /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */; };
 		2E5A24DE229D736C0000A58F /* XMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DD229D736C0000A58F /* XMLHandler.swift */; };
 		2E5A24E1229D7F460000A58F /* SerializeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E0229D7F460000A58F /* SerializeHeader.swift */; };
@@ -1332,6 +1334,8 @@
 		2E56BE5E22A8E59200F26BC1 /* MapSoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSoundList.swift; sourceTree = "<group>"; };
 		2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScriptList.swift; sourceTree = "<group>"; };
 		2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBrickList.swift; sourceTree = "<group>"; };
+		2E59CDC822AFA8AE001C305F /* MapFormulaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFormulaList.swift; sourceTree = "<group>"; };
+		2E59CDCC22AFAB2C001C305F /* MapFormula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFormula.swift; sourceTree = "<group>"; };
 		2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
 		2E5A24DD229D736C0000A58F /* XMLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLHandler.swift; sourceTree = "<group>"; };
 		2E5A24E0229D7F460000A58F /* SerializeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeHeader.swift; sourceTree = "<group>"; };
@@ -3211,6 +3215,8 @@
 			children = (
 				2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */,
 				2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */,
+				2E59CDC822AFA8AE001C305F /* MapFormulaList.swift */,
+				2E59CDCC22AFAB2C001C305F /* MapFormula.swift */,
 			);
 			path = ScriptList;
 			sourceTree = "<group>";
@@ -8610,6 +8616,7 @@
 				59697DB0201F855C00A0071A /* LibraryCategoryCollectionReusableView.swift in Sources */,
 				92B46FA81BC7C2A5004980C1 /* ArduinoSendPWMValueBrick+Instruction.swift in Sources */,
 				F4201CF920D79CA80030181B /* TimeHourSensor.swift in Sources */,
+				2E59CDC922AFA8AE001C305F /* MapFormulaList.swift in Sources */,
 				4C0F9F74204BD1CE00E71B2D /* CameraBrick+Instruction.swift in Sources */,
 				4CF429ED213A82EB00B78897 /* IfThenLogicBeginBrick+Condition.swift in Sources */,
 				92C631911BC50DEE00486958 /* LanguageTranslationDefinesSwift.swift in Sources */,
@@ -8941,6 +8948,7 @@
 				E4AEC86D210843D20081A980 /* ProjectInformation.swift in Sources */,
 				AA74EFFC1BC05B5F00D1E954 /* ChangeXByNBrick.m in Sources */,
 				AA74EFE31BC05B5F00D1E954 /* ForeverBrick.m in Sources */,
+				2E59CDCD22AFAB2C001C305F /* MapFormula.swift in Sources */,
 				AA74EEFB1BC057C900D1E954 /* HideBrick+CBXMLHandler.m in Sources */,
 				AA74EFFD1BC05B5F00D1E954 /* ChangeYByNBrick.m in Sources */,
 				4C724E271B4D3E8C00E27479 /* CBXMLSerializer.m in Sources */,
