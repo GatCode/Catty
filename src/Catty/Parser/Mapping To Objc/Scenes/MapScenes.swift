@@ -22,25 +22,26 @@
 
 extension CBXMLMapping {
 
-    static func mapScenesToObjectList(input: [CBProjectScene]?) -> NSMutableArray {
+    static func mapScenesToObjectList(input: [CBProjectScene]?, project: Project) -> NSMutableArray {
         var objectList = [SpriteObject]()
 
         // since in 0.991 there are no multiple scenes
         guard let input = input?.first?.objectList?.object else { return  NSMutableArray(array: objectList) }
 
         for object in input {
-            objectList.append(mapCBObjectToSpriteObject(input: object, objects: input))
+            objectList.append(mapCBObjectToSpriteObject(input: object, objects: input, project: project))
         }
 
         return NSMutableArray(array: objectList)
     }
 
-    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject]) -> SpriteObject {
+    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project) -> SpriteObject {
         let item = SpriteObject()
         item.name = (input.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
+        item.project = project
         item.lookList = mapLookListToObject(input: input.lookList)
         item.soundList = mapSoundListToObject(input: input.soundList)
-        item.scriptList = mapScriptListToObject(input: input.scriptList, object: item, lookList: item.lookList, objects: objects)
+        item.scriptList = mapScriptListToObject(input: input.scriptList, object: item, lookList: item.lookList, soundList: item.soundList, objects: objects, project: project)
         // TODO: map variables
 
         return item

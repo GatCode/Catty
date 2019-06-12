@@ -68,81 +68,34 @@ let kFlashBrick: String = "FlashBrick"
 let kCameraBrick: String = "CameraBrick"
 let kChooseCameraBrick: String = "ChooseCameraBrick"
 
+let kPlaySoundBrick: String = "PlaySoundBrick"
+let kStopAllSoundsBrick: String = "StopAllSoundsBrick"
+let kSetVolumeToBrick: String = "SetVolumeToBrick"
+let kChangeVolumeByNBrick: String = "ChangeVolumeByNBrick"
+let kSpeakBrick: String = "SpeakBrick"
+let kSpeakAndWaitBrick: String = "SpeakAndWaitBrick"
+
 extension CBXMLMapping {
 
-    static func mapBrickListToScript(input: CBScript?, lookList: NSMutableArray, objects: [CBObject]) -> NSMutableArray {
+    static func mapBrickListToScript(input: CBScript?, lookList: NSMutableArray, soundList: NSMutableArray, objects: [CBObject], project: Project) -> NSMutableArray {
         var brickList = [Brick]()
         guard let input = input?.brickList?.brick else { return  NSMutableArray(array: brickList) }
 
         for brick in input {
             switch brick.type {
 
-            // MARK: - Look Bricks
-            case kSetBackgroundBrick:
-                let backgroundBrick = SetBackgroundBrick()
-
-                if let range = brick.lookReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-                    let index = String(brick.lookReference?[range] ?? "")
-                    if let index = Int(index), index <= lookList.count, index > 0 {
-                        backgroundBrick.look = lookList[index - 1] as? Look
+            // MARK: - Sound Bricks
+            case kPlaySoundBrick:
+                let soundBrick = PlaySoundBrick()
+                if let range = brick.sound?.range(of: "[(0-9)*]", options: .regularExpression) {
+                    let index = String(brick.sound?[range] ?? "")
+                    if let index = Int(index), index <= soundList.count, index > 0 {
+                        soundBrick.sound = soundList[index - 1] as? Sound
                     }
+                } else if (soundList.count == 1) {
+                    soundBrick.sound = soundList[0] as? Sound
                 }
-                brickList.append(backgroundBrick)
-            case kNextLookBrick:
-                let nextLookBrick = NextLookBrick()
-                brickList.append(nextLookBrick)
-            case kPreviousLookBrick:
-                let previousLookBrick = PreviousLookBrick()
-                brickList.append(previousLookBrick)
-            case kSetSizeToBrick:
-                let setSizeBrick = SetSizeToBrick()
-                setSizeBrick.size = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(setSizeBrick)
-            case kChangeSizeByNBrick:
-                let changeSizeBrick = ChangeSizeByNBrick()
-                changeSizeBrick.size = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(changeSizeBrick)
-            case kShowBrick:
-                brickList.append(ShowBrick())
-            case kHideBrick:
-                brickList.append(HideBrick())
-            case kSetTransparencyBrick:
-                let transparencyBrick = SetTransparencyBrick()
-                transparencyBrick.transparency = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(transparencyBrick)
-            case kChangeTransparencyByNBrick:
-                let transparencyBrick = ChangeTransparencyByNBrick()
-                transparencyBrick.changeTransparency = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(transparencyBrick)
-            case kSetBrightnessBrick:
-                let brightnessBrick = SetBrightnessBrick()
-                brightnessBrick.brightness = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(brightnessBrick)
-            case kChangeBrightnessByNBrick:
-                let brightnessBrick = ChangeBrightnessByNBrick()
-                brightnessBrick.changeBrightness = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(brightnessBrick)
-            case kSetColorBrick:
-                let colorBrick = SetColorBrick()
-                colorBrick.color = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(colorBrick)
-            case kChangeColorByNBrick:
-                let colorBrick = ChangeColorByNBrick()
-                colorBrick.changeColor = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                brickList.append(colorBrick)
-            case kClearGraphicEffectBrick:
-                let clearGraphicBrick = ClearGraphicEffectBrick()
-                // TODO: parse correct values
-                brickList.append(clearGraphicBrick)
-            case kFlashBrick:
-                // TODO: parse correct choice
-                brickList.append(FlashBrick())
-            case kCameraBrick:
-                // TODO: parse correct choice
-                brickList.append(CameraBrick())
-            case kChooseCameraBrick:
-                // TODO: parse correct choice
-                brickList.append(ChooseCameraBrick())
+                brickList.append(soundBrick)
 
             // MARK: - Condition Bricks
             case kBroadcastBrick:
@@ -262,7 +215,7 @@ extension CBXMLMapping {
             case kPointToBrick:
                 let pointBrick = PointToBrick()
                 for object in objects where object.name == brick.pointedObject {
-                    pointBrick.pointedObject = mapCBObjectToSpriteObject(input: object, objects: objects)
+                    pointBrick.pointedObject = mapCBObjectToSpriteObject(input: object, objects: objects, project: project)
                 }
                 brickList.append(pointBrick)
             case kGlideToBrick:
@@ -278,6 +231,75 @@ extension CBXMLMapping {
                 let vibrationBrick = VibrationBrick()
                 vibrationBrick.durationInSeconds = mapFormulaListToBrick(input: brick).firstObject as? Formula
                 brickList.append(vibrationBrick)
+
+            // MARK: - Look Bricks
+            case kSetBackgroundBrick:
+                let backgroundBrick = SetBackgroundBrick()
+                let tmpSpriteObj = SpriteObject()
+                tmpSpriteObj.lookList = lookList
+                backgroundBrick.setDefaultValuesFor(tmpSpriteObj)
+                if let range = brick.lookReference?.range(of: "[(0-9)*]", options: .regularExpression) {
+                    let index = String(brick.lookReference?[range] ?? "")
+                    if let index = Int(index), index <= lookList.count, index > 0 {
+                        backgroundBrick.look = lookList[index - 1] as? Look
+                    }
+                }
+                brickList.append(backgroundBrick)
+            case kNextLookBrick:
+                let nextLookBrick = NextLookBrick()
+                brickList.append(nextLookBrick)
+            case kPreviousLookBrick:
+                let previousLookBrick = PreviousLookBrick()
+                brickList.append(previousLookBrick)
+            case kSetSizeToBrick:
+                let setSizeBrick = SetSizeToBrick()
+                setSizeBrick.size = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(setSizeBrick)
+            case kChangeSizeByNBrick:
+                let changeSizeBrick = ChangeSizeByNBrick()
+                changeSizeBrick.size = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(changeSizeBrick)
+            case kShowBrick:
+                brickList.append(ShowBrick())
+            case kHideBrick:
+                brickList.append(HideBrick())
+            case kSetTransparencyBrick:
+                let transparencyBrick = SetTransparencyBrick()
+                transparencyBrick.transparency = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(transparencyBrick)
+            case kChangeTransparencyByNBrick:
+                let transparencyBrick = ChangeTransparencyByNBrick()
+                transparencyBrick.changeTransparency = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(transparencyBrick)
+            case kSetBrightnessBrick:
+                let brightnessBrick = SetBrightnessBrick()
+                brightnessBrick.brightness = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(brightnessBrick)
+            case kChangeBrightnessByNBrick:
+                let brightnessBrick = ChangeBrightnessByNBrick()
+                brightnessBrick.changeBrightness = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(brightnessBrick)
+            case kSetColorBrick:
+                let colorBrick = SetColorBrick()
+                colorBrick.color = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(colorBrick)
+            case kChangeColorByNBrick:
+                let colorBrick = ChangeColorByNBrick()
+                colorBrick.changeColor = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(colorBrick)
+            case kClearGraphicEffectBrick:
+                let clearGraphicBrick = ClearGraphicEffectBrick()
+                // TODO: parse correct values
+                brickList.append(clearGraphicBrick)
+            case kFlashBrick:
+                // TODO: parse correct choice
+                brickList.append(FlashBrick())
+            case kCameraBrick:
+                // TODO: parse correct choice
+                brickList.append(CameraBrick())
+            case kChooseCameraBrick:
+                // TODO: parse correct choice
+                brickList.append(ChooseCameraBrick())
 
             default:
                 print("ERROR: mapping BrickList to Script")

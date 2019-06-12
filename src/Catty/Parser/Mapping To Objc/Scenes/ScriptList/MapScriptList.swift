@@ -28,7 +28,7 @@ let kScript = "Script"
 
 extension CBXMLMapping {
 
-    static func mapScriptListToObject(input: CBScriptList?, object: SpriteObject, lookList: NSMutableArray, objects: [CBObject]) -> NSMutableArray {
+    static func mapScriptListToObject(input: CBScriptList?, object: SpriteObject, lookList: NSMutableArray, soundList: NSMutableArray, objects: [CBObject], project: Project) -> NSMutableArray {
         var scriptList = [Script]()
         guard let input = input?.script else { return  NSMutableArray(array: scriptList) }
 
@@ -52,7 +52,7 @@ extension CBXMLMapping {
             }
 
             obj.object = object
-            obj.brickList = mapBrickListToScript(input: script, lookList: lookList, objects: objects)
+            obj.brickList = mapBrickListToScript(input: script, lookList: lookList, soundList: soundList, objects: objects, project: project)
 
             scriptList.append(obj)
         }
