@@ -105,6 +105,8 @@
 		2EBB709422A797E10085E14F /* Test_Your_NFC_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709122A797E10085E14F /* Test_Your_NFC_098.xml */; };
 		2EBB709522A797E10085E14F /* Test_Your_NFC_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */; };
 		2EBB709622A797E10085E14F /* Test_Your_NFC_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */; };
+		2EE01CCF22B1579800FA2501 /* MapUserVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE01CCE22B1579800FA2501 /* MapUserVariable.swift */; };
+		2EE01CD122B2154300FA2501 /* MapProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */; };
 		2EF437AC22A568DD00E9347B /* SerializeProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */; };
 		2EF5293522A6891800FFD2B5 /* Gossip_Girl_0992.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5293422A6891800FFD2B5 /* Gossip_Girl_0992.xml */; };
 		2EF5293722A689AD00FFD2B5 /* Minions__0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5293622A689AD00FFD2B5 /* Minions__0994.xml */; };
@@ -1380,6 +1382,8 @@
 		2EBB709122A797E10085E14F /* Test_Your_NFC_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_098.xml; sourceTree = "<group>"; };
 		2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0993.xml; sourceTree = "<group>"; };
 		2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0994.xml; sourceTree = "<group>"; };
+		2EE01CCE22B1579800FA2501 /* MapUserVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUserVariable.swift; sourceTree = "<group>"; };
+		2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapProgramVariableList.swift; sourceTree = "<group>"; };
 		2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeProgramVariableList.swift; sourceTree = "<group>"; };
 		2EF5293422A6891800FFD2B5 /* Gossip_Girl_0992.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Gossip_Girl_0992.xml; sourceTree = "<group>"; };
 		2EF5293622A689AD00FFD2B5 /* Minions__0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Minions__0994.xml; sourceTree = "<group>"; };
@@ -3171,6 +3175,7 @@
 				2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */,
 				2E56BE5922A8E3EE00F26BC1 /* Header */,
 				2E56BE5A22A8E3FA00F26BC1 /* Scenes */,
+				2EE01CD222B21F1F00FA2501 /* ProgramVariableList */,
 			);
 			path = "Mapping To Objc";
 			sourceTree = "<group>";
@@ -3215,6 +3220,7 @@
 			children = (
 				2E56BE6122A8E63000F26BC1 /* MapScriptList.swift */,
 				2E56BE6422A8E94C00F26BC1 /* MapBrickList.swift */,
+				2EE01CCE22B1579800FA2501 /* MapUserVariable.swift */,
 				2E59CDC822AFA8AE001C305F /* MapFormulaList.swift */,
 				2E59CDCC22AFAB2C001C305F /* MapFormula.swift */,
 			);
@@ -3424,6 +3430,14 @@
 			name = Test_Your_NFC;
 			path = CattyTests/Resources/ParserTests/Test_Your_NFC;
 			sourceTree = SOURCE_ROOT;
+		};
+		2EE01CD222B21F1F00FA2501 /* ProgramVariableList */ = {
+			isa = PBXGroup;
+			children = (
+				2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */,
+			);
+			name = ProgramVariableList;
+			sourceTree = "<group>";
 		};
 		4C0F9F47204ADD0C00E71B2D /* OrderedDictionary */ = {
 			isa = PBXGroup;
@@ -8807,6 +8821,7 @@
 				4C60663A1A5ACC5A00F486CE /* GDataXMLNode+CustomExtensions.m in Sources */,
 				929CC0CE1BC39B0A0027DEC0 /* PhiroMotorStopBrick.m in Sources */,
 				AA74EFF01BC05B5F00D1E954 /* VibrationBrick.m in Sources */,
+				2EE01CD122B2154300FA2501 /* MapProgramVariableList.swift in Sources */,
 				AA74F0AE1BC05FCE00D1E954 /* HideBrickCell.m in Sources */,
 				4C994E25207A56D500C415FD /* AccelerationYSensor.swift in Sources */,
 				921D467A1BDF61350086AD20 /* ChangeSizeByNBrick+Instruction.swift in Sources */,
@@ -9044,6 +9059,7 @@
 				AAF6D9D81BC0BAF300686849 /* ShowBrick+Instruction.swift in Sources */,
 				593E4DDE1FE11D410016DCB9 /* CatrobatReorderableCollectionViewFlowLayout.m in Sources */,
 				4CEFFAD32105DE4800DC5CFE /* ObjectSensor.swift in Sources */,
+				2EE01CCF22B1579800FA2501 /* MapUserVariable.swift in Sources */,
 				921D467B1BDF61350086AD20 /* ChangeXByNBrick+Instruction.swift in Sources */,
 				4CB0F9F220A1739400D1BE2F /* SizeSensor.swift in Sources */,
 				F4A2AFB52110D48C00C53234 /* JoinFunction.swift in Sources */,

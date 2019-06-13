@@ -20,16 +20,33 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-struct CBXMLMapping {
+extension CBXMLMapping {
 
-    static func mapCBProjectToProject(project: CBProject?) -> Project {
+    static func mapUserVariableOrUserList(input: CBBrick?) -> UserVariable {
+        var userVar = UserVariable()
 
-        let mappedProject = Project()
+        if input?.userVariable != nil {
+            userVar = mapUserVariable(input: input)
+        } else if input?.userList != nil {
+            userVar = mapUserList(input: input)
+        }
 
-        mappedProject.header = CBXMLMapping.mapHeaderToHeader(input: project?.header)
-        mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject)
-        mappedProject.variables = CBXMLMapping.mapVariablesToVariableContrainer(input: project)
+        return userVar
+    }
 
-        return mappedProject
+    fileprivate static func mapUserVariable(input: CBBrick?) -> UserVariable {
+        guard let input = input else { return UserVariable() }
+        let userVar = UserVariable()
+        userVar.name = input.userVariable
+        userVar.isList = false
+        return userVar
+    }
+
+    fileprivate static func mapUserList(input: CBBrick?) -> UserVariable {
+        guard let input = input else { return UserVariable() }
+        let userList = UserVariable()
+        userList.name = input.userList
+        userList.isList = true
+        return userList
     }
 }

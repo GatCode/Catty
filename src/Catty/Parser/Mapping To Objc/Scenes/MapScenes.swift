@@ -26,10 +26,10 @@ extension CBXMLMapping {
         var objectList = [SpriteObject]()
 
         // since in 0.991 there are no multiple scenes
-        guard let input = input?.first?.objectList?.object else { return  NSMutableArray(array: objectList) }
+        guard let objects = input?.first?.objectList?.object else { return  NSMutableArray(array: objectList) }
 
-        for object in input {
-            objectList.append(mapCBObjectToSpriteObject(input: object, objects: input, project: project))
+        for object in objects {
+            objectList.append(mapCBObjectToSpriteObject(input: object, objects: objects, project: project))
         }
 
         return NSMutableArray(array: objectList)
@@ -42,7 +42,6 @@ extension CBXMLMapping {
         item.lookList = mapLookListToObject(input: input.lookList)
         item.soundList = mapSoundListToObject(input: input.soundList)
         item.scriptList = mapScriptListToObject(input: input.scriptList, object: item, lookList: item.lookList, soundList: item.soundList, objects: objects, project: project)
-        // TODO: map variables
 
         return item
     }
