@@ -399,25 +399,32 @@ extension CBXMLMapping {
             case kSetVariableBrick:
                 let variableBrick = SetVariableBrick()
                 variableBrick.variableFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                variableBrick.userVariable = mapUserVariableOrUserList(input: brick)
+                if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
+                    if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
+                        variableBrick.userVariable = uVar
+                    }
+                }
                 variableBrick.script = script
                 brickList.append(variableBrick)
-//            case kChangeVariableBrick:
-//                let variableBrick = ChangeVariableBrick()
-//                variableBrick.script = script
-//                variableBrick.variableFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-//                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-//                    let index = String(brick.userVariableReference?[range] ?? "")
-//                    if let index = Int(index), index <= brickList.count, index > 0 {
-//                        variableBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
-//                    }
-//                } else if brickList.count >= 1 {
-//                    variableBrick.userVariable = (brickList[0] as? SetVariableBrick)?.userVariable
-//                }
-//                brickList.append(variableBrick)
+            case kChangeVariableBrick:
+                let variableBrick = ChangeVariableBrick()
+                variableBrick.variableFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
+                    let index = String(brick.userVariableReference?[range] ?? "")
+                    if let index = Int(index), index <= brickList.count, index > 0 {
+                        variableBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
+                    }
+                } else if brickList.count >= 1 {
+                    if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
+                        if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
+                            variableBrick.userVariable = uVar
+                        }
+                    }
+                }
+                variableBrick.script = script
+                brickList.append(variableBrick)
             case kShowTextBrick:
                 let showBrick = ShowTextBrick()
-                showBrick.script = script
                 showBrick.xFormula = mapFormulaListToBrick(input: brick).lastObject as? Formula
                 showBrick.yFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
                 if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
@@ -426,29 +433,38 @@ extension CBXMLMapping {
                         showBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
                     }
                 } else if brickList.count >= 1 {
-                    showBrick.userVariable = (brickList[0] as? SetVariableBrick)?.userVariable
+                    if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
+                        if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
+                            showBrick.userVariable = uVar
+                        }
+                    }
                 }
+                showBrick.script = script
                 brickList.append(showBrick)
-//            case kHideTextBrick:
-//                let hideBrick = HideTextBrick()
-//                hideBrick.script = script
-//                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-//                    let index = String(brick.userVariableReference?[range] ?? "")
-//                    if let index = Int(index), index <= brickList.count, index > 0 {
-//                        hideBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
-//                    }
-//                } else if brickList.count >= 1 {
-//                    hideBrick.userVariable = (brickList[0] as? SetVariableBrick)?.userVariable
-//                }
-//                brickList.append(hideBrick)
-//            case kAddItemToUserListBrick:
-//                let listBrick = AddItemToUserListBrick()
-//                listBrick.script = script
-//                listBrick.userList = UserVariable()
-//                listBrick.userList.isList = true
-//                listBrick.userList.name = brick.userList
-//                listBrick.listFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-//                brickList.append(listBrick)
+            case kHideTextBrick:
+                let hideBrick = HideTextBrick()
+                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
+                    let index = String(brick.userVariableReference?[range] ?? "")
+                    if let index = Int(index), index <= brickList.count, index > 0 {
+                        hideBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
+                    }
+                } else if brickList.count >= 1 {
+                    if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
+                        if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
+                            hideBrick.userVariable = uVar
+                        }
+                    }
+                }
+                hideBrick.script = script
+                brickList.append(hideBrick)
+            case kAddItemToUserListBrick:
+                let listBrick = AddItemToUserListBrick()
+                listBrick.userList = UserVariable()
+                listBrick.userList.isList = true
+                listBrick.userList.name = brick.userList
+                listBrick.listFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                listBrick.script = script
+                brickList.append(listBrick)
 //            case kDeleteItemOfUserListBrick:
 //                let listBrick = DeleteItemOfUserListBrick()
 //                listBrick.script = script

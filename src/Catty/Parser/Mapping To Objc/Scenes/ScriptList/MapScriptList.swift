@@ -54,7 +54,6 @@ extension CBXMLMapping {
             obj.object = object
             obj.brickList = mapBrickListToScript(input: script, script: obj, lookList: lookList, soundList: soundList, objects: objects, project: project)
 
-
             scriptList.append(obj)
         }
 

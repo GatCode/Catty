@@ -26,26 +26,85 @@ extension CBXMLMapping {
         let varContainer = VariablesContainer()
         guard let input = input else { return varContainer }
 
-        var programVaiableList = [UserVariable]()
+        var objectVariableMap = OrderedDictionary<String, Any>()
+        var mapIndex = 0
 
-        if let objectList = input.scenes?.first?.objectList?.object {
-            for object in objectList {
-                if let scripts = object.scriptList?.script {
-                    for script in scripts {
-                        if let bricks = script.brickList?.brick {
-                            for brick in bricks {
-                                let userVarToAppend = mapUserVariableOrUserList(input: brick)
-                                if userVarToAppend.name.isEmpty == false, programVaiableList.contains(userVarToAppend) == false {
-                                    programVaiableList.append(userVarToAppend)
+        if let objectVarList = input.scenes?.first?.data?.objectVariableList?.entry {
+            for variable in objectVarList {
+
+                var foundKey = ""
+                var foundObject = NSArray()
+                guard let objects = input.scenes?.first?.objectList?.object else { break }
+
+                if let range = variable.object?.range(of: "[(0-9)*]", options: .regularExpression) {
+                    let index = String(variable.object?[range] ?? "")
+                    if let idx = Int(index), objects.count >= idx {
+                        let object = objects[idx]
+                        if let name = object.name {
+                            foundKey = name
+                            var arr = [UserVariable]()
+
+                            if let scriptList = object.scriptList?.script {
+                                for script in scriptList {
+                                    if let brickList = script.brickList?.brick {
+                                        for brick in brickList {
+                                            if let uVar = brick.userVariable, !uVar.isEmpty {
+                                                arr.append(mapUserVariableOrUserList(input: brick))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            foundObject = NSArray(array: arr)
+                        }
+                    }
+                } else if objects.count >= 1 {
+                    if let object = objects.first, let name = object.name {
+                        foundKey = name
+
+                        var arr = [UserVariable]()
+
+                        if let scriptList = object.scriptList?.script {
+                            for script in scriptList {
+                                if let brickList = script.brickList?.brick {
+                                    for brick in brickList {
+                                        if let uVar = brick.userVariable, !uVar.isEmpty {
+                                            arr.append(mapUserVariableOrUserList(input: brick))
+                                        }
+                                    }
                                 }
                             }
                         }
+
+                        foundObject = NSArray(array: arr)
                     }
                 }
+                _ = objectVariableMap.insertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
+                mapIndex += 1
             }
         }
 
-        varContainer.programVariableList = NSMutableArray(array: programVaiableList)
+        let objectVariableList = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
+        for obj in objectVariableMap {
+
+            var spriteObject = SpriteObject()
+
+            if let objectList = input.scenes?.first?.objectList?.object {
+                for object in objectList {
+                    if let o = object as? SpriteObject, o.name == obj.0 {
+                        spriteObject = o
+                        break
+                    }
+                }
+            }
+
+            objectVariableList.setObject(obj.1, forKey: spriteObject)
+        }
+
+        varContainer.objectVariableList = objectVariableList
+//        varContainer.programVariableList = NSMutableArray(array: programVaiableList)
+//        varContainer.programListOfLists = NSMutableArray(array: programListOfLists)
 
         return varContainer
     }

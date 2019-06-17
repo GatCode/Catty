@@ -26,9 +26,10 @@ struct CBXMLMapping {
 
         let mappedProject = Project()
 
+        // IMPORTANT: DO NOT CHANGE ORDER HERE!!
         mappedProject.header = CBXMLMapping.mapHeaderToHeader(input: project?.header)
-        mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject)
         mappedProject.variables = CBXMLMapping.mapVariablesToVariableContrainer(input: project)
+        mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject)
 
         return mappedProject
     }
