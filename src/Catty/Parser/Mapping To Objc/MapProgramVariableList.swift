@@ -29,6 +29,10 @@ extension CBXMLMapping {
         let objectVariableList = getObjectVariableListFrom(map: objectVariableMap, cbProject: input, project: project)
         varContainer.objectVariableList = objectVariableList
 
+        let objectListMap = getObjectListMapFrom(project: input)
+        let objectListOfLists = getObjectListOfListsFrom(map: objectListMap, cbProject: input, project: project)
+        varContainer.objectListOfLists = objectListOfLists
+
         return varContainer
     }
 }

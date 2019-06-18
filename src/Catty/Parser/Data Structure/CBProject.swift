@@ -39,6 +39,8 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
             tmpScenes = [CBProjectScene]()
             var objectList: CBObjectList?
             var objectVariableList: CBObjectVariableList?
+            var objectListOfList: CBObjectListofList?
+            var userBrickVariableList: CBUserBrickVariableList?
 
             objectList = try node["objectList"].value()
             objectVariableList = try node["variables"]["objectVariableList"].value()
@@ -46,7 +48,12 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
                 objectVariableList = try node["data"]["objectVariableList"].value()
             }
 
-            let data = CBProjectData(objectListOfList: nil, objectVariableList: objectVariableList, userBrickVariableList: nil)
+            objectListOfList = try node["data"]["objectListOfList"].value()
+            userBrickVariableList = try node["data"]["userBrickVariableList"].value()
+
+            // TODO: node["data"]["programListOfLists"] and node["data"]["programVariableList"]
+
+            let data = CBProjectData(objectListOfList: objectListOfList, objectVariableList: objectVariableList, userBrickVariableList: userBrickVariableList)
 
             tmpScenes!.append(CBProjectScene(name: nil, objectList: objectList, data: data, originalWidth: nil, originalHeight: nil))
 

@@ -100,6 +100,7 @@
 		2E8EDC1022A641E200119CDF /* CBProgramListOfLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EDC0F22A641E200119CDF /* CBProgramListOfLists.swift */; };
 		2E8EDC1322A6426B00119CDF /* CBProgramList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EDC1222A6426B00119CDF /* CBProgramList.swift */; };
 		2EA17ABD22B8BB6000CD7D74 /* MapObjectVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */; };
+		2EA17AC122B8CFA100CD7D74 /* MapObjectListOfLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA17AC022B8CFA100CD7D74 /* MapObjectListOfLists.swift */; };
 		2EBB708D22A797680085E14F /* EscapingChars_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB708A22A797670085E14F /* EscapingChars_0991.xml */; };
 		2EBB708E22A797680085E14F /* EscapingChars_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB708B22A797670085E14F /* EscapingChars_0993.xml */; };
 		2EBB708F22A797680085E14F /* EscapingChars_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB708C22A797680085E14F /* EscapingChars_0994.xml */; };
@@ -1378,6 +1379,7 @@
 		2E8EDC0F22A641E200119CDF /* CBProgramListOfLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramListOfLists.swift; sourceTree = "<group>"; };
 		2E8EDC1222A6426B00119CDF /* CBProgramList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramList.swift; sourceTree = "<group>"; };
 		2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectVariableList.swift; sourceTree = "<group>"; };
+		2EA17AC022B8CFA100CD7D74 /* MapObjectListOfLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectListOfLists.swift; sourceTree = "<group>"; };
 		2EBB708A22A797670085E14F /* EscapingChars_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EscapingChars_0991.xml; sourceTree = "<group>"; };
 		2EBB708B22A797670085E14F /* EscapingChars_0993.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EscapingChars_0993.xml; sourceTree = "<group>"; };
 		2EBB708C22A797680085E14F /* EscapingChars_0994.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EscapingChars_0994.xml; sourceTree = "<group>"; };
@@ -3438,6 +3440,7 @@
 			children = (
 				2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */,
 				2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */,
+				2EA17AC022B8CFA100CD7D74 /* MapObjectListOfLists.swift */,
 			);
 			name = ProgramVariableList;
 			sourceTree = "<group>";
@@ -8895,6 +8898,7 @@
 				4C0F9F4F204BD0B400E71B2D /* CameraPreviewHandler.m in Sources */,
 				4C724E611B4D3E8C00E27479 /* ProjectParser.m in Sources */,
 				AA74F0931BC05FCE00D1E954 /* BrickCellFormulaData.m in Sources */,
+				2EA17AC122B8CFA100CD7D74 /* MapObjectListOfLists.swift in Sources */,
 				AA74EF701BC0588A00D1E954 /* SetVolumeToBrick+CBXMLHandler.m in Sources */,
 				92FC85CE1B9E1EB5001C728F /* BrickManager.m in Sources */,
 				5E18A81221A547AA00541536 /* UIViewController+Extensions.swift in Sources */,

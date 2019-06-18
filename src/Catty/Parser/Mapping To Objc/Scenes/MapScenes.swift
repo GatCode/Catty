@@ -37,7 +37,8 @@ extension CBXMLMapping {
 
     static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project) -> SpriteObject {
         let item = SpriteObject()
-        item.name = (input.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
+        //item.name = (input.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
+        item.name = input.name
         //item.project = project
         item.lookList = mapLookListToObject(input: input.lookList)
         item.soundList = mapSoundListToObject(input: input.soundList)
