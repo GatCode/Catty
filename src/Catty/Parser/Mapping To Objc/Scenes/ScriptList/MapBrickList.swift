@@ -457,7 +457,9 @@ extension CBXMLMapping {
 
     // MARK: - UserVariables for Bricks
     static func getUserVariableFor(brick: CBBrick, project: Project) -> UserVariable? {
-        if brick.userVariableReference?.isEmpty ?? false {
+        if let ref = brick.userVariableReference, ref.isEmpty == false {
+            var res: UserVariable? = nil
+
             if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
                 let index = String(brick.userVariableReference?[range] ?? "")
                 if let index = Int(index) {
@@ -466,11 +468,14 @@ extension CBXMLMapping {
                         return res
                     }
                 }
-            } else if brick.userVariable?.isEmpty ?? true || brick.userList?.isEmpty ?? true {
-                let res = getUserVarForBrickOrIndex(brick: brick, project: project, index: 0)
-                if res != nil {
-                    return res
-                }
+            }
+            if let uVar = brick.userVariable, uVar.isEmpty == false {
+                res = getUserVarForBrickOrIndex(brick: brick, project: project, index: 0)
+            } else if let uList = brick.userList, uList.isEmpty == false {
+                res = getUserVarForBrickOrIndex(brick: brick, project: project, index: 0)
+            }
+            if res != nil {
+                return res
             }
         }
         return getUserVarForBrickOrIndex(brick: brick, project: project, index: nil)
@@ -481,7 +486,7 @@ extension CBXMLMapping {
 
         if project.variables.objectListOfLists.count() >= 1 {
             if let objectListOfLists = project.variables.objectListOfLists.object(at: 0) as? NSArray, objectListOfLists.count >= 1 {
-                if brick.userList?.isEmpty ?? false {
+                if let brList = brick.userList, brList.isEmpty == false {
                     returnVariable = getUserVariableOrUserListFrom(list: objectListOfLists, brick: brick)
                 } else if let index = index {
                     returnVariable = getUserVariableOrUserListFrom(list: objectListOfLists, atIndex: index)
@@ -491,7 +496,7 @@ extension CBXMLMapping {
         if project.variables.objectVariableList.count() >= 1 && returnVariable == nil {
             if let objectVariableList = project.variables.objectVariableList.object(at: 0) as? NSArray, objectVariableList.count >= 1 {
 
-                if brick.userVariable?.isEmpty ?? false {
+                if let uVar = brick.userVariable, uVar.isEmpty == false {
                     returnVariable = getUserVariableOrUserListFrom(list: objectVariableList, brick: brick)
                 } else if let index = index {
                     returnVariable = getUserVariableOrUserListFrom(list: objectVariableList, atIndex: index)
