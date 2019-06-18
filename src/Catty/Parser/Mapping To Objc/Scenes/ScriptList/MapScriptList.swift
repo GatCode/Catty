@@ -28,27 +28,48 @@ let kScript = "Script"
 
 extension CBXMLMapping {
 
-    static func mapScriptListToObject(input: CBScriptList?, object: SpriteObject, lookList: NSMutableArray, soundList: NSMutableArray, objects: [CBObject], project: Project) -> NSMutableArray {
+    static func mapScriptListToObject(input: CBScriptList?, object: SpriteObject, objects: [CBObject], project: Project, completion: @escaping (NSMutableArray?, CBXMLMappingError?) -> Void) {
+
         var scriptList = [Script]()
-        guard let input = input?.script else { return  NSMutableArray(array: scriptList) }
+        guard let input = input?.script else { completion(nil, .scriptListMapError); return }
+        guard let lookList = object.lookList else { completion(nil, .scriptListMapError); return }
+        guard let soundList = object.soundList else { completion(nil, .scriptListMapError); return }
 
         for script in input {
             var obj = Script()
 
-            // TODO: fill other types correctly
-
             if script.type == kStartScript {
                 obj = StartScript()
             } else if script.type == kWhenScript {
-                obj = WhenScript()
+                let whenScript = WhenScript()
+                if let action = script.action {
+                    whenScript.action = action
+                } else {
+                    completion(nil, .scriptListMapError)
+                }
+                obj = whenScript
             } else if script.type == kWhenTouchDownScript {
                 obj = WhenTouchDownScript()
             } else if script.type == kBroadcastScript {
-                obj = BroadcastScript()
-            } else if script.type == kScript {
-                obj = Script()
+                let broadcastScript = BroadcastScript()
+                if let msg = script.receivedMessage {
+                    broadcastScript.receivedMessage = msg
+                } else {
+                    completion(nil, .scriptListMapError)
+                }
+                obj = broadcastScript
+            } else if script.type?.hasSuffix(kScript) ?? false {
+                let broadcastScript = BroadcastScript()
+                if let type = script.type {
+                    let msg = String(format: "%@ %@", "timeNow in hex: ", kLocalizedUnsupportedScript, type)
+                    broadcastScript.receivedMessage = msg
+                } else {
+                    completion(nil, .scriptListMapError)
+                }
+                obj = broadcastScript
+                // TODO handle with black box logic
             } else {
-                // TODO: unsupported script
+                completion(nil, .unsupportedScript)
             }
 
             obj.object = object
@@ -57,6 +78,6 @@ extension CBXMLMapping {
             scriptList.append(obj)
         }
 
-        return NSMutableArray(array: scriptList)
+        completion(NSMutableArray(array: scriptList), nil)
     }
 }

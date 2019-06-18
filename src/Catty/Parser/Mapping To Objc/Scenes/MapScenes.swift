@@ -41,8 +41,22 @@ extension CBXMLMapping {
         //item.project = project
         item.lookList = mapLookListToObject(input: input.lookList)
         item.soundList = mapSoundListToObject(input: input.soundList)
-        item.scriptList = mapScriptListToObject(input: input.scriptList, object: item, lookList: item.lookList, soundList: item.soundList, objects: objects, project: project)
+
+        mapScriptListToObject(input: input.scriptList, object: item, objects: objects, project: project, completion: { result, error in
+            if error != nil {
+                print(error)
+            }
+            item.scriptList = result
+        })
 
         return item
     }
+}
+
+enum CBXMLMappingError: Error {
+    case lookListMapError
+    case soundListMapError
+    case scriptListMapError
+    case unsupportedScript
+    case unknownError
 }
