@@ -46,7 +46,14 @@ extension CBXMLMapping {
                                     if let brickList = script.brickList?.brick {
                                         for brick in brickList {
                                             if let uList = brick.userList, !uList.isEmpty {
-                                                arr.append(mapUserVariableOrUserList(input: brick))
+                                                let mappedUList = mapUserVariableOrUserList(input: brick)
+                                                var alreadyInArray = false
+                                                for obj in arr where obj.name == mappedUList.name {
+                                                    alreadyInArray = true
+                                                }
+                                                if alreadyInArray == false {
+                                                    arr.append(mappedUList)
+                                                }
                                             }
                                         }
                                     }
@@ -67,7 +74,14 @@ extension CBXMLMapping {
                                 if let brickList = script.brickList?.brick {
                                     for brick in brickList {
                                         if let uList = brick.userList, !uList.isEmpty {
-                                            arr.append(mapUserVariableOrUserList(input: brick))
+                                            let mappedUList = mapUserVariableOrUserList(input: brick)
+                                            var alreadyInArray = false
+                                            for obj in arr where obj.name == mappedUList.name {
+                                                alreadyInArray = true
+                                            }
+                                            if alreadyInArray == false {
+                                                arr.append(mappedUList)
+                                            }
                                         }
                                     }
                                 }
