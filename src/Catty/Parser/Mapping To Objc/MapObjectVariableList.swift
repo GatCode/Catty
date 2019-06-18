@@ -35,8 +35,8 @@ extension CBXMLMapping {
 
                 if let range = variable.object?.range(of: "[(0-9)*]", options: .regularExpression) {
                     let index = String(variable.object?[range] ?? "")
-                    if let idx = Int(index), objects.count >= idx {
-                        let object = objects[idx]
+                    if let idx = Int(index), idx <= objects.count {
+                        let object = objects[idx - 1]
                         if let name = object.name {
                             foundKey = name
                             var arr = [UserVariable]()

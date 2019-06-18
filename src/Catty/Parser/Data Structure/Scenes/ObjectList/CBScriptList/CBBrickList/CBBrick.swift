@@ -39,6 +39,13 @@ struct CBBrick: XMLIndexerDeserializable {
     let spinnerSelectionID: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
+        var userVar: String?
+
+        userVar = try? node["userVariable"].value()
+        if userVar?.isEmpty ?? true {
+            userVar = try? node["userVariableName"].value()
+        }
+
         return try CBBrick(
             name: node["name"].value(),
             type: node.value(ofAttribute: "type"),
@@ -47,7 +54,7 @@ struct CBBrick: XMLIndexerDeserializable {
             formulaList: node["formulaList"].value(),
             formulaTree: node["size"]["formulaTree"].value(),
             lookReference: node["look"].value(ofAttribute: "reference"),
-            userVariable: node["userVariable"].value(),
+            userVariable: userVar,
             userVariableReference: node["userVariable"].value(ofAttribute: "reference"),
             userList: node["userList"]["name"].value(),
             broadcastMessage: node["broadcastMessage"].value(),

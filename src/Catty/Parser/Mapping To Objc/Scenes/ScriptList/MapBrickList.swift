@@ -86,7 +86,7 @@ let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
 
 extension CBXMLMapping {
 
-    static func mapBrickListToScript(input: CBScript?, script: Script, objects: [CBObject], project: Project, completion: @escaping (NSMutableArray?, CBXMLMappingError?) -> Void) {
+    static func mapBrickListToScript(input: CBScript?, script: Script, obj: SpriteObject, objects: [CBObject], project: Project, completion: @escaping (NSMutableArray?, CBXMLMappingError?) -> Void) {
         var brickList = [Brick]()
         guard let input = input?.brickList?.brick else { completion(nil, .brickMappingError); return }
         guard let lookList = script.object.lookList else { completion(nil, .brickMappingError); return }
@@ -400,119 +400,130 @@ extension CBXMLMapping {
             // MARK: - Variable Bricks
             case kSetVariableBrick:
                 let variableBrick = SetVariableBrick()
+                variableBrick.userVariable = getUserVariableFor(brick: brick, project: project)
                 variableBrick.variableFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
-                    if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
-                        variableBrick.userVariable = uVar
-                    }
-                }
                 variableBrick.script = script
                 brickList.append(variableBrick)
             case kChangeVariableBrick:
                 let variableBrick = ChangeVariableBrick()
+                variableBrick.userVariable = getUserVariableFor(brick: brick, project: project)
                 variableBrick.variableFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-                    let index = String(brick.userVariableReference?[range] ?? "")
-                    if let index = Int(index), index <= brickList.count, index > 0 {
-                        variableBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
-                    }
-                } else if brickList.count >= 1 {
-                    if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
-                        if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
-                            variableBrick.userVariable = uVar
-                        }
-                    }
-                }
                 variableBrick.script = script
                 brickList.append(variableBrick)
             case kShowTextBrick:
                 let showBrick = ShowTextBrick()
                 showBrick.xFormula = mapFormulaListToBrick(input: brick).lastObject as? Formula
                 showBrick.yFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-                    let index = String(brick.userVariableReference?[range] ?? "")
-                    if let index = Int(index), index <= brickList.count, index > 0 {
-                        showBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
-                    }
-                } else if brickList.count >= 1 {
-                    if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
-                        if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
-                            showBrick.userVariable = uVar
-                        }
-                    }
-                }
+                showBrick.userVariable = getUserVariableFor(brick: brick, project: project)
                 showBrick.script = script
                 brickList.append(showBrick)
             case kHideTextBrick:
                 let hideBrick = HideTextBrick()
-                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-                    let index = String(brick.userVariableReference?[range] ?? "")
-                    if let index = Int(index), index <= brickList.count, index > 0 {
-                        hideBrick.userVariable = (brickList[index - 1] as? SetVariableBrick)?.userVariable
-                    }
-                } else if brickList.count >= 1 {
-                    if let objectVariableList = project.variables.objectVariableList, objectVariableList.count() >= 1 {
-                        if  let arr = objectVariableList.object(at: 0) as? NSArray, let uVar = arr.firstObject as? UserVariable {
-                            hideBrick.userVariable = uVar
-                        }
-                    }
-                }
+                hideBrick.userVariable = getUserVariableFor(brick: brick, project: project)
                 hideBrick.script = script
                 brickList.append(hideBrick)
             case kAddItemToUserListBrick:
                 let listBrick = AddItemToUserListBrick()
-                listBrick.userList = UserVariable()
-                listBrick.userList.isList = true
-                listBrick.userList.name = brick.userList
                 listBrick.listFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                listBrick.userList = getUserVariableFor(brick: brick, project: project)
                 listBrick.script = script
                 brickList.append(listBrick)
-//            case kDeleteItemOfUserListBrick:
-//                let listBrick = DeleteItemOfUserListBrick()
-//                listBrick.script = script
-//                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-//                    let index = String(brick.userVariableReference?[range] ?? "")
-//                    if let index = Int(index), index <= brickList.count, index > 0 {
-//                        listBrick.userList = (brickList[index - 1] as? AddItemToUserListBrick)?.userList
-//                    }
-//                } else if brickList.count >= 1 {
-//                    listBrick.userList = (brickList[0] as? AddItemToUserListBrick)?.userList
-//                }
-//                listBrick.listFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
-//                brickList.append(listBrick)
-//            case kInsertItemIntoUserListBrick:
-//                let listBrick = InsertItemIntoUserListBrick()
-//                listBrick.script = script
-//                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-//                    let index = String(brick.userVariableReference?[range] ?? "")
-//                    if let index = Int(index), index <= brickList.count, index > 0 {
-//                        listBrick.userList = (brickList[index - 1] as? AddItemToUserListBrick)?.userList
-//                    }
-//                } else if brickList.count >= 1 {
-//                    listBrick.userList = (brickList[0] as? AddItemToUserListBrick)?.userList
-//                }
-//                listBrick.index = mapFormulaListToBrick(input: brick).firstObject as? Formula
-//                listBrick.elementFormula = mapFormulaListToBrick(input: brick).lastObject as? Formula
-//                brickList.append(listBrick)
-//            case kReplaceItemInUserListBrick:
-//                let listBrick = ReplaceItemInUserListBrick()
-//                listBrick.script = script
-//                if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
-//                    let index = String(brick.userVariableReference?[range] ?? "")
-//                    if let index = Int(index), index <= brickList.count, index > 0 {
-//                        listBrick.userList = (brickList[index - 1] as? AddItemToUserListBrick)?.userList
-//                    }
-//                } else if brickList.count >= 1 {
-//                    listBrick.userList = (brickList[0] as? AddItemToUserListBrick)?.userList
-//                }
-//                listBrick.elementFormula = mapFormulaListToBrick(input: brick).lastObject as? Formula
-//                listBrick.index = mapFormulaListToBrick(input: brick).firstObject as? Formula
-//                brickList.append(listBrick)
-
+            case kDeleteItemOfUserListBrick:
+                let listBrick = DeleteItemOfUserListBrick()
+                listBrick.script = script
+                listBrick.userList = getUserVariableFor(brick: brick, project: project)
+                listBrick.listFormula = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(listBrick)
+            case kInsertItemIntoUserListBrick:
+                let listBrick = InsertItemIntoUserListBrick()
+                listBrick.script = script
+                listBrick.userList = getUserVariableFor(brick: brick, project: project)
+                listBrick.index = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                listBrick.elementFormula = mapFormulaListToBrick(input: brick).lastObject as? Formula
+                brickList.append(listBrick)
+            case kReplaceItemInUserListBrick:
+                let listBrick = ReplaceItemInUserListBrick()
+                listBrick.script = script
+                listBrick.userList = getUserVariableFor(brick: brick, project: project)
+                listBrick.elementFormula = mapFormulaListToBrick(input: brick).lastObject as? Formula
+                listBrick.index = mapFormulaListToBrick(input: brick).firstObject as? Formula
+                brickList.append(listBrick)
             default:
-                completion(nil, .unsupportedBrick);
+                completion(nil, .unsupportedBrick)
             }
         }
         completion(NSMutableArray(array: brickList), nil)
+    }
+
+    // MARK: - UserVariables for Bricks
+    static func getUserVariableFor(brick: CBBrick, project: Project) -> UserVariable? {
+        if brick.userVariableReference?.isEmpty ?? false {
+            if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
+                let index = String(brick.userVariableReference?[range] ?? "")
+                if let index = Int(index) {
+                    let res = getUserVarForBrickOrIndex(brick: brick, project: project, index: index)
+                    if res != nil {
+                        return res
+                    }
+                }
+            } else if brick.userVariable?.isEmpty ?? true || brick.userList?.isEmpty ?? true {
+                let res = getUserVarForBrickOrIndex(brick: brick, project: project, index: 0)
+                if res != nil {
+                    return res
+                }
+            }
+        }
+        return getUserVarForBrickOrIndex(brick: brick, project: project, index: nil)
+    }
+
+    static func getUserVarForBrickOrIndex(brick: CBBrick, project: Project, index: Int?) -> UserVariable? {
+        var returnVariable: UserVariable?
+
+        if project.variables.objectListOfLists.count() >= 1 {
+            if let objectListOfLists = project.variables.objectListOfLists.object(at: 0) as? NSArray, objectListOfLists.count >= 1 {
+                if brick.userList?.isEmpty ?? false {
+                    returnVariable = getUserVariableOrUserListFrom(list: objectListOfLists, brick: brick)
+                } else if let index = index {
+                    returnVariable = getUserVariableOrUserListFrom(list: objectListOfLists, atIndex: index)
+                }
+            }
+        }
+        if project.variables.objectVariableList.count() >= 1 && returnVariable == nil {
+            if let objectVariableList = project.variables.objectVariableList.object(at: 0) as? NSArray, objectVariableList.count >= 1 {
+
+                if brick.userVariable?.isEmpty ?? false {
+                    returnVariable = getUserVariableOrUserListFrom(list: objectVariableList, brick: brick)
+                } else if let index = index {
+                    returnVariable = getUserVariableOrUserListFrom(list: objectVariableList, atIndex: index)
+                }
+            }
+        }
+
+        return returnVariable
+    }
+
+    static func getUserVariableOrUserListFrom(list: NSArray, atIndex: Int) -> UserVariable? {
+        let atIndex = atIndex - 2 // because reference is one higher and array starts ar 0
+        guard list.count >= atIndex else { return nil }
+
+        if let entry = list[atIndex] as? UserVariable {
+            return entry
+        }
+
+        return nil
+    }
+
+    static func getUserVariableOrUserListFrom(list: NSArray, brick: CBBrick) -> UserVariable? {
+        guard list.count >= 1 else { return nil }
+
+        for i in 0..<list.count {
+            if let entry = list[i] as? UserVariable, entry.name == brick.userVariable ?? brick.userList {
+                if let uVar = list[i] as? UserVariable {
+                    return uVar
+                }
+            }
+        }
+
+        return nil
     }
 }

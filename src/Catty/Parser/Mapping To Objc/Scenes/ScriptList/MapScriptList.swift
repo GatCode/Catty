@@ -71,7 +71,7 @@ extension CBXMLMapping {
             }
 
             obj.object = object
-            mapBrickListToScript(input: script, script: obj, objects: objects, project: project) { result, error in
+            mapBrickListToScript(input: script, script: obj, obj: object, objects: objects, project: project) { result, error in
                 if error != nil {
                     completion(nil, error)
                 }
