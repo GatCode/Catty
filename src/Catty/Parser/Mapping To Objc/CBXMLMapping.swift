@@ -31,6 +31,7 @@ struct CBXMLMapping {
         mappedProject.variables = CBXMLMapping.mapVariablesToVariableContrainer(input: project, project: mappedProject)
         mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject)
 
+        mappedProject.variables.allVariables()
         return mappedProject
     }
 }

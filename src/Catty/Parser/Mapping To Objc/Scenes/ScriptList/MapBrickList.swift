@@ -457,8 +457,10 @@ extension CBXMLMapping {
 
     // MARK: - UserVariables for Bricks
     static func getUserVariableFor(brick: CBBrick, project: Project) -> UserVariable? {
-        if let ref = brick.userVariableReference, ref.isEmpty == false {
-            var res: UserVariable? = nil
+        let userVar = getUserVarForBrickOrIndex(brick: brick, project: project, index: nil)
+
+        if userVar == nil, let ref = brick.userVariableReference, ref.isEmpty == false {
+            var res: UserVariable?
 
             if let range = brick.userVariableReference?.range(of: "[(0-9)*]", options: .regularExpression) {
                 let index = String(brick.userVariableReference?[range] ?? "")
@@ -478,7 +480,8 @@ extension CBXMLMapping {
                 return res
             }
         }
-        return getUserVarForBrickOrIndex(brick: brick, project: project, index: nil)
+
+        return userVar
     }
 
     static func getUserVarForBrickOrIndex(brick: CBBrick, project: Project, index: Int?) -> UserVariable? {
