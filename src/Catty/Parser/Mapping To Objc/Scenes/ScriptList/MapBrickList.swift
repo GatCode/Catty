@@ -86,9 +86,11 @@ let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
 
 extension CBXMLMapping {
 
-    static func mapBrickListToScript(input: CBScript?, script: Script, lookList: NSMutableArray, soundList: NSMutableArray, objects: [CBObject], project: Project) -> NSMutableArray {
+    static func mapBrickListToScript(input: CBScript?, script: Script, objects: [CBObject], project: Project, completion: @escaping (NSMutableArray?, CBXMLMappingError?) -> Void) {
         var brickList = [Brick]()
-        guard let input = input?.brickList?.brick else { return  NSMutableArray(array: brickList) }
+        guard let input = input?.brickList?.brick else { completion(nil, .brickMappingError); return }
+        guard let lookList = script.object.lookList else { completion(nil, .brickMappingError); return }
+        guard let soundList = script.object.soundList else { completion(nil, .brickMappingError); return }
 
         for brick in input {
             switch brick.type {
@@ -508,9 +510,9 @@ extension CBXMLMapping {
 //                brickList.append(listBrick)
 
             default:
-                print("ERROR: mapping BrickList to Script")
+                completion(nil, .unsupportedBrick);
             }
         }
-        return NSMutableArray(array: brickList)
+        completion(NSMutableArray(array: brickList), nil)
     }
 }

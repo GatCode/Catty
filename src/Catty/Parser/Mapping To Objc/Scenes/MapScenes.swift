@@ -52,11 +52,3 @@ extension CBXMLMapping {
         return item
     }
 }
-
-enum CBXMLMappingError: Error {
-    case lookListMapError
-    case soundListMapError
-    case scriptListMapError
-    case unsupportedScript
-    case unknownError
-}

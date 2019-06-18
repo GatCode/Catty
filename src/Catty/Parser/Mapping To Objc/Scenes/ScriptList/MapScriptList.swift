@@ -32,8 +32,6 @@ extension CBXMLMapping {
 
         var scriptList = [Script]()
         guard let input = input?.script else { completion(nil, .scriptListMapError); return }
-        guard let lookList = object.lookList else { completion(nil, .scriptListMapError); return }
-        guard let soundList = object.soundList else { completion(nil, .scriptListMapError); return }
 
         for script in input {
             var obj = Script()
@@ -73,7 +71,12 @@ extension CBXMLMapping {
             }
 
             obj.object = object
-            obj.brickList = mapBrickListToScript(input: script, script: obj, lookList: lookList, soundList: soundList, objects: objects, project: project)
+            mapBrickListToScript(input: script, script: obj, objects: objects, project: project) { result, error in
+                if error != nil {
+                    completion(nil, error)
+                }
+                obj.brickList = result
+            }
 
             scriptList.append(obj)
         }

@@ -34,3 +34,15 @@ struct CBXMLMapping {
         return mappedProject
     }
 }
+
+enum CBXMLMappingError: Error {
+    case lookListMapError
+    case soundListMapError
+    case scriptListMapError
+
+    case unsupportedScript
+    case brickMappingError
+    case unsupportedBrick
+
+    case unknownError
+}
