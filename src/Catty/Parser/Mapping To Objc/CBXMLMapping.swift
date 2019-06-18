@@ -28,7 +28,7 @@ struct CBXMLMapping {
 
         // IMPORTANT: DO NOT CHANGE ORDER HERE!!
         mappedProject.header = CBXMLMapping.mapHeaderToHeader(input: project?.header)
-        mappedProject.variables = CBXMLMapping.mapVariablesToVariableContrainer(input: project)
+        mappedProject.variables = CBXMLMapping.mapVariablesToVariableContrainer(input: project, project: mappedProject)
         mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject)
 
         return mappedProject

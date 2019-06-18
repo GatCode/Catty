@@ -99,6 +99,7 @@
 		2E8EDC0C22A63FFC00119CDF /* SerializeProgramListOfLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EDC0B22A63FFC00119CDF /* SerializeProgramListOfLists.swift */; };
 		2E8EDC1022A641E200119CDF /* CBProgramListOfLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EDC0F22A641E200119CDF /* CBProgramListOfLists.swift */; };
 		2E8EDC1322A6426B00119CDF /* CBProgramList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EDC1222A6426B00119CDF /* CBProgramList.swift */; };
+		2EA17ABD22B8BB6000CD7D74 /* MapObjectVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */; };
 		2EBB708D22A797680085E14F /* EscapingChars_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB708A22A797670085E14F /* EscapingChars_0991.xml */; };
 		2EBB708E22A797680085E14F /* EscapingChars_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB708B22A797670085E14F /* EscapingChars_0993.xml */; };
 		2EBB708F22A797680085E14F /* EscapingChars_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB708C22A797680085E14F /* EscapingChars_0994.xml */; };
@@ -1376,6 +1377,7 @@
 		2E8EDC0B22A63FFC00119CDF /* SerializeProgramListOfLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeProgramListOfLists.swift; sourceTree = "<group>"; };
 		2E8EDC0F22A641E200119CDF /* CBProgramListOfLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramListOfLists.swift; sourceTree = "<group>"; };
 		2E8EDC1222A6426B00119CDF /* CBProgramList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramList.swift; sourceTree = "<group>"; };
+		2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectVariableList.swift; sourceTree = "<group>"; };
 		2EBB708A22A797670085E14F /* EscapingChars_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EscapingChars_0991.xml; sourceTree = "<group>"; };
 		2EBB708B22A797670085E14F /* EscapingChars_0993.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EscapingChars_0993.xml; sourceTree = "<group>"; };
 		2EBB708C22A797680085E14F /* EscapingChars_0994.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EscapingChars_0994.xml; sourceTree = "<group>"; };
@@ -3435,6 +3437,7 @@
 			isa = PBXGroup;
 			children = (
 				2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */,
+				2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */,
 			);
 			name = ProgramVariableList;
 			sourceTree = "<group>";
@@ -8928,6 +8931,7 @@
 				AA74F0041BC05B5F00D1E954 /* PointInDirectionBrick.m in Sources */,
 				921D467C1BDF61350086AD20 /* ChangeYByNBrick+Instruction.swift in Sources */,
 				4C595F4D21CAEBC50097D850 /* SmallerThanOperator.swift in Sources */,
+				2EA17ABD22B8BB6000CD7D74 /* MapObjectVariableList.swift in Sources */,
 				929CC0EE1BC39B8C0027DEC0 /* PhiroMotorMoveForwardBrickCell.m in Sources */,
 				AAF6D9DE1BC0C1F300686849 /* PlaceAtBrick+Instruction.swift in Sources */,
 				AA74EFED1BC05B5F00D1E954 /* SetVariableBrick.m in Sources */,
