@@ -28,7 +28,6 @@
 #import "Script.h"
 #import "Brick.h"
 #import "CatrobatLanguageDefines.h"
-#import "CBXMLParser.h"
 #import "CBXMLSerializer.h"
 #import "CBMutableCopyContext.h"
 #import "Pocket_Code-Swift.h"

@@ -162,8 +162,13 @@ extension CBXMLMapping {
 
                     if item.brickType == kBrickType.repeatBrick {
                         (item as? RepeatBrick)?.loopEndBrick = endBrick
+                        break
                     } else if item.brickType == kBrickType.repeatUntilBrick {
                         (item as? RepeatUntilBrick)?.loopEndBrick = endBrick
+                        break
+                    } else if item.brickType == kBrickType.foreverBrick {
+                        (item as? ForeverBrick)?.loopEndBrick = endBrick
+                        break
                     }
                 }
                 brickList.append(endBrick)

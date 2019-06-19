@@ -36,10 +36,26 @@ extension CBXMLMapping {
     }
 
     static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project) -> SpriteObject {
-        let item = SpriteObject()
+        var item = SpriteObject()
+
+        // only create a new SpriteObject when the needed one is not already in one of the object lists
+        for i in 0..<project.variables.objectListOfLists.count() {
+            let obj = project.variables.objectListOfLists.key(at: i) as? SpriteObject
+
+            if let obj = obj, obj.name == input.name {
+                item = obj
+            }
+        }
+        for i in 0..<project.variables.objectVariableList.count() {
+            let obj = project.variables.objectVariableList.key(at: i) as? SpriteObject
+
+            if let obj = obj, obj.name == input.name {
+                item = obj
+            }
+        }
+
         //item.name = (input.name)?.replacingOccurrences(of: "Hintergrund", with: "Background")
         item.name = input.name
-        //item.project = project
         item.lookList = mapLookListToObject(input: input.lookList)
         item.soundList = mapSoundListToObject(input: input.soundList)
 

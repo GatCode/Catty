@@ -113,7 +113,6 @@ extension CBXMLMapping {
                     }
                 }
             }
-
             objectVariableList.setObject(obj.1, forKey: spriteObject)
         }
         return objectVariableList
