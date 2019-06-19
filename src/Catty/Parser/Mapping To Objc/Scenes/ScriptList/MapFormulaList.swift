@@ -27,7 +27,10 @@ extension CBXMLMapping {
         guard let input = input?.formulaList?.formula else { return  NSMutableArray(array: formulaList) }
 
         for formula in input {
-            formulaList.append(mapCBFormulaToFormula(input: formula))
+            let mappedFormula = mapCBFormulaToFormula(input: formula)
+            if formulaList.contains(mappedFormula) == false {
+                formulaList.append(mappedFormula)
+            }
         }
 
         return NSMutableArray(array: formulaList)
