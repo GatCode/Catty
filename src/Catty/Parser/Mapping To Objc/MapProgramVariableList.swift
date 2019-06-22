@@ -25,6 +25,9 @@ extension CBXMLMapping {
     static func mapVariablesToVariableContrainer(input: CBProject?, project: Project) -> VariablesContainer {
         let varContainer = VariablesContainer()
 
+        let programVariablesList = getProgramVariableListFrom(CBProject: input, project: project)
+        varContainer.programVariableList = programVariablesList
+
         let objectVariableMap = getObjectVariableMapFrom(project: input)
         let objectVariableList = getObjectVariableListFrom(map: objectVariableMap, cbProject: input, project: project)
         varContainer.objectVariableList = objectVariableList
@@ -34,5 +37,45 @@ extension CBXMLMapping {
         varContainer.objectListOfLists = objectListOfLists
 
         return varContainer
+    }
+
+    static func getProgramVariableListFrom(CBProject: CBProject?, project: Project) -> NSMutableArray {
+        let programVariableList = NSMutableArray()
+        guard let userVariables = CBProject?.programVariableList?.userVariable else { return programVariableList }
+
+        for variable in userVariables {
+            if let reference = variable.reference {
+                let splittedReference = reference.split(separator: "/")
+                var brickNr = 0
+                var scriptNr = 0
+                var objectNr = 0
+
+                var fallbackCounter = 0
+                for string in splittedReference.reversed() {
+                    fallbackCounter += 1
+                    if fallbackCounter == 2, let range = string.range(of: "[(0-9)*]", options: .regularExpression) {
+                        brickNr = Int(string[range]) ?? 0
+                    }
+                    if fallbackCounter == 4, let range = string.range(of: "[(0-9)*]", options: .regularExpression) {
+                        scriptNr = Int(string[range]) ?? 0
+                    }
+                    if fallbackCounter == 6, let range = string.range(of: "[(0-9)*]", options: .regularExpression) {
+                        objectNr = Int(string[range]) ?? 0
+                    }
+                }
+
+                let brick: CBBrick
+                if let objectList = CBProject?.scenes?.first?.objectList?.object, objectNr <= objectList.count {
+                    if let scriptList = objectList[objectNr].scriptList?.script, scriptNr <= scriptList.count {
+                        if let brickList = scriptList[scriptNr].brickList?.brick, brickNr <= brickList.count {
+                            brick = brickList[brickNr]
+                            print(brick)
+                        }
+                    }
+                }
+            }
+        }
+
+        return programVariableList
     }
 }
