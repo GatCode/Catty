@@ -27,7 +27,7 @@ struct CBProgramListOfLists: XMLIndexerDeserializable {
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProgramListOfLists {
         return try CBProgramListOfLists(
-            list: node["userVariable"].value()
+            list: node["userList"].value()
         )
     }
 }

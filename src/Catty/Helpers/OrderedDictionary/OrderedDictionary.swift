@@ -153,6 +153,25 @@ public struct OrderedDictionary<Key: Hashable, Value>: MutableCollection, Expres
         return (key, value)
     }
 
+    public mutating func forceInsertElementWithKey(_ key: Key, value: Value, atIndex index: Index) {
+        forceInsertElement((key, value), atIndex: index)
+    }
+
+    public mutating func forceInsertElement(_ newElement: Element, atIndex index: Index) {
+        guard index >= 0 else {
+            fatalError("Negative OrderedDictionary index is out of range")
+        }
+
+        guard index <= count else {
+            fatalError("OrderedDictionary index out of range")
+        }
+
+        let (key, value) = (newElement.0, newElement.1)
+
+        _orderedKeys.insert(key, at: index)
+        _keysToValues[key] = value
+    }
+
     public mutating func insertElementWithKey(_ key: Key, value: Value, atIndex index: Index) -> Value? {
         return insertElement((key, value), atIndex: index)
     }

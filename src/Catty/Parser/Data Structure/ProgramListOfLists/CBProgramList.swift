@@ -24,10 +24,12 @@ import SWXMLHash
 
 struct CBProgramList: XMLIndexerDeserializable {
     let name: String?
+    let reference: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProgramList {
         return try CBProgramList(
-            name: node["name"].value()
+            name: node["name"].value(),
+            reference: node.value(ofAttribute: "reference")
         )
     }
 }

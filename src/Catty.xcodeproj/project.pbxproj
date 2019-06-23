@@ -107,8 +107,10 @@
 		2EBB709422A797E10085E14F /* Test_Your_NFC_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709122A797E10085E14F /* Test_Your_NFC_098.xml */; };
 		2EBB709522A797E10085E14F /* Test_Your_NFC_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */; };
 		2EBB709622A797E10085E14F /* Test_Your_NFC_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */; };
+		2EC7330622BF4E6C00BAD266 /* MapProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC7330522BF4E6C00BAD266 /* MapProgramVariableList.swift */; };
+		2EC7330822BF6BAE00BAD266 /* MapProgramListOfLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC7330722BF6BAE00BAD266 /* MapProgramListOfLists.swift */; };
 		2EE01CCF22B1579800FA2501 /* MapUserVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE01CCE22B1579800FA2501 /* MapUserVariable.swift */; };
-		2EE01CD122B2154300FA2501 /* MapProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */; };
+		2EE01CD122B2154300FA2501 /* MapProgramVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE01CD022B2154300FA2501 /* MapProgramVariables.swift */; };
 		2EF437AC22A568DD00E9347B /* SerializeProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */; };
 		2EF5293522A6891800FFD2B5 /* Gossip_Girl_0992.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5293422A6891800FFD2B5 /* Gossip_Girl_0992.xml */; };
 		2EF5293722A689AD00FFD2B5 /* Minions__0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5293622A689AD00FFD2B5 /* Minions__0994.xml */; };
@@ -1386,8 +1388,10 @@
 		2EBB709122A797E10085E14F /* Test_Your_NFC_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_098.xml; sourceTree = "<group>"; };
 		2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0993.xml; sourceTree = "<group>"; };
 		2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0994.xml; sourceTree = "<group>"; };
+		2EC7330522BF4E6C00BAD266 /* MapProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapProgramVariableList.swift; sourceTree = "<group>"; };
+		2EC7330722BF6BAE00BAD266 /* MapProgramListOfLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapProgramListOfLists.swift; sourceTree = "<group>"; };
 		2EE01CCE22B1579800FA2501 /* MapUserVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUserVariable.swift; sourceTree = "<group>"; };
-		2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapProgramVariableList.swift; sourceTree = "<group>"; };
+		2EE01CD022B2154300FA2501 /* MapProgramVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapProgramVariables.swift; sourceTree = "<group>"; };
 		2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeProgramVariableList.swift; sourceTree = "<group>"; };
 		2EF5293422A6891800FFD2B5 /* Gossip_Girl_0992.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Gossip_Girl_0992.xml; sourceTree = "<group>"; };
 		2EF5293622A689AD00FFD2B5 /* Minions__0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Minions__0994.xml; sourceTree = "<group>"; };
@@ -3438,7 +3442,9 @@
 		2EE01CD222B21F1F00FA2501 /* ProgramVariableList */ = {
 			isa = PBXGroup;
 			children = (
-				2EE01CD022B2154300FA2501 /* MapProgramVariableList.swift */,
+				2EE01CD022B2154300FA2501 /* MapProgramVariables.swift */,
+				2EC7330522BF4E6C00BAD266 /* MapProgramVariableList.swift */,
+				2EC7330722BF6BAE00BAD266 /* MapProgramListOfLists.swift */,
 				2EA17ABC22B8BB6000CD7D74 /* MapObjectVariableList.swift */,
 				2EA17AC022B8CFA100CD7D74 /* MapObjectListOfLists.swift */,
 			);
@@ -8581,6 +8587,7 @@
 				92FF31491A24DEB300093DA7 /* BaseCollectionViewController.m in Sources */,
 				BA987D0D2194E647002DAA05 /* WaitUntilBrick+Condition.swift in Sources */,
 				92D56C321BF202E700A54750 /* ArduinoHelper.swift in Sources */,
+				2EC7330822BF6BAE00BAD266 /* MapProgramListOfLists.swift in Sources */,
 				AAAF22881BC0CFC00076F11E /* TurnLeftBrick+Instruction.swift in Sources */,
 				4C0F9F80204BD1F800E71B2D /* ThinkBubbleBrick+Instruction.swift in Sources */,
 				4C0F9F9D204BD2B100E71B2D /* SetBackgroundBrickCell.m in Sources */,
@@ -8692,6 +8699,7 @@
 				5977B2A620298BD0008753ED /* MediaLibraryDownloader.swift in Sources */,
 				4C0F9F3D204ADC5900E71B2D /* SetBackgroundBrick.m in Sources */,
 				AA74EEE21BC057B900D1E954 /* LoopEndBrick+CBXMLHandler.m in Sources */,
+				2EC7330622BF4E6C00BAD266 /* MapProgramVariableList.swift in Sources */,
 				4C0F9F50204BD0B400E71B2D /* BubbleBrickHelper.m in Sources */,
 				92FF32BF1A24E2F400093DA7 /* BrickTransition.m in Sources */,
 				4CEFFADB2105E46500DC5CFE /* ObjectDoubleSensor.swift in Sources */,
@@ -8827,7 +8835,7 @@
 				4C60663A1A5ACC5A00F486CE /* GDataXMLNode+CustomExtensions.m in Sources */,
 				929CC0CE1BC39B0A0027DEC0 /* PhiroMotorStopBrick.m in Sources */,
 				AA74EFF01BC05B5F00D1E954 /* VibrationBrick.m in Sources */,
-				2EE01CD122B2154300FA2501 /* MapProgramVariableList.swift in Sources */,
+				2EE01CD122B2154300FA2501 /* MapProgramVariables.swift in Sources */,
 				AA74F0AE1BC05FCE00D1E954 /* HideBrickCell.m in Sources */,
 				4C994E25207A56D500C415FD /* AccelerationYSensor.swift in Sources */,
 				921D467A1BDF61350086AD20 /* ChangeSizeByNBrick+Instruction.swift in Sources */,

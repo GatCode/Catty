@@ -247,7 +247,7 @@ extension CBXMLMapping {
                 let pointBrick = PointToBrick()
                 pointBrick.script = script
                 for object in objects where object.name == brick.pointedObject {
-                    pointBrick.pointedObject = mapCBObjectToSpriteObject(input: object, objects: objects, project: project)
+                    pointBrick.pointedObject = mapCBObjectToSpriteObject(input: object, objects: objects, project: project, blankMap: false)
                 }
                 brickList.append(pointBrick)
             case kGlideToBrick:

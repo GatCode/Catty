@@ -32,8 +32,10 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
 
         var tmpScenes: [CBProjectScene]?
         var tmpProgramVariableList: CBProgramVariableList?
+        var tmpProgramListOfLists: CBProgramListOfLists?
         tmpScenes = try node["scenes"].value()
         tmpProgramVariableList = try node["programVariableList"].value()
+        tmpProgramListOfLists = try node["programListOfLists"].value()
 
         if tmpScenes == nil {
             tmpScenes = [CBProjectScene]()
@@ -51,8 +53,6 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
             objectListOfList = try node["data"]["objectListOfList"].value()
             userBrickVariableList = try node["data"]["userBrickVariableList"].value()
 
-            // TODO: node["data"]["programListOfLists"] and node["data"]["programVariableList"]
-
             let data = CBProjectData(objectListOfList: objectListOfList, objectVariableList: objectVariableList, userBrickVariableList: userBrickVariableList)
 
             tmpScenes!.append(CBProjectScene(name: nil, objectList: objectList, data: data, originalWidth: nil, originalHeight: nil))
@@ -62,13 +62,19 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
             if tmpProgramVariableList == nil {
                 tmpProgramVariableList = try node["data"]["programVariableList"].value()
             }
+
+            tmpProgramListOfLists = try node["variables"]["programListOfLists"].value()
+
+            if tmpProgramListOfLists == nil {
+                tmpProgramListOfLists = try node["data"]["programListOfLists"].value()
+            }
         }
 
         return try CBProject(
             header: node["header"].value(),
             scenes: tmpScenes,
             programVariableList: tmpProgramVariableList,
-            programListOfLists: node["programListOfLists"].value()
+            programListOfLists: tmpProgramListOfLists
         )
     }
 

@@ -22,8 +22,8 @@
 
 extension CBXMLMapping {
 
-    static func getProgramVariableListFrom(CBProject: CBProject?, project: Project) -> NSMutableArray {
-        guard let userVariables = CBProject?.programVariableList?.userVariable else { return NSMutableArray() }
+    static func getProgramListofListsFrom(CBProject: CBProject?, project: Project) -> NSMutableArray {
+        guard let userVariables = CBProject?.programListOfLists?.list else { return NSMutableArray() }
         var arr = [UserVariable]()
 
         for variable in userVariables {
@@ -50,7 +50,7 @@ extension CBXMLMapping {
                 if let objectList = CBProject?.scenes?.first?.objectList?.object, objectNr < objectList.count {
                     if let scriptList = objectList[objectNr].scriptList?.script, scriptNr < scriptList.count {
                         if let brickList = scriptList[scriptNr].brickList?.brick, brickNr < brickList.count {
-                            if let uVar = brickList[brickNr].userVariable, !uVar.isEmpty {
+                            if let uVar = brickList[brickNr].userList, !uVar.isEmpty {
                                 let mappedUVar = mapUserVariableOrUserList(input: brickList[brickNr])
                                 var alreadyInArray = false
                                 for obj in arr where obj.name == mappedUVar.name {

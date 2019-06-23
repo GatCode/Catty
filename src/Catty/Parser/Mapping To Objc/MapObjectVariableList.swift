@@ -33,10 +33,10 @@ extension CBXMLMapping {
                 var foundObject = NSArray()
                 guard let objects = project?.scenes?.first?.objectList?.object else { break }
 
-                if let range = variable.object?.range(of: "[(0-9)*]", options: .regularExpression) {
-                    let index = String(variable.object?[range] ?? "")
-                    if let idx = Int(index), idx <= objects.count {
-                        let object = objects[idx - 1]
+                if let obj = variable.object, objects.count >= 1 {
+                    let index = extractNumberInBacesFrom(string: obj)
+                    if index < objects.count {
+                        let object = objects[index]
                         if let name = object.name {
                             foundKey = name
                             var arr = [UserVariable]()
@@ -63,35 +63,9 @@ extension CBXMLMapping {
                             foundObject = NSArray(array: arr)
                         }
                     }
-                } else if objects.count >= 1 {
-                    if let object = objects.first, let name = object.name {
-                        foundKey = name
-
-                        var arr = [UserVariable]()
-
-                        if let scriptList = object.scriptList?.script {
-                            for script in scriptList {
-                                if let brickList = script.brickList?.brick {
-                                    for brick in brickList {
-                                        if let uVar = brick.userVariable, !uVar.isEmpty {
-                                            let mappedUVar = mapUserVariableOrUserList(input: brick)
-                                            var alreadyInArray = false
-                                            for obj in arr where obj.name == mappedUVar.name {
-                                                alreadyInArray = true
-                                            }
-                                            if alreadyInArray == false {
-                                                arr.append(mappedUVar)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        foundObject = NSArray(array: arr)
-                    }
                 }
                 _ = objectVariableMap.insertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
+                //objectVariableMap.forceInsertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
                 mapIndex += 1
             }
         }
@@ -106,7 +80,7 @@ extension CBXMLMapping {
 
             if let objectList = cbProject?.scenes?.first?.objectList?.object {
                 for object in objectList {
-                    let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project)
+                    let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project, blankMap: true)
                     if mappedObject.name == obj.0 {
                         spriteObject = mappedObject
                         break
