@@ -22,15 +22,25 @@
 
 extension CBXMLMapping {
 
-    static func mapFormulaListToBrick(input: CBBrick?) -> NSMutableArray {
+    static func mapFormulaListToBrick(input: CBBrick?) -> NSMutableArray? {
         var formulaList = [Formula]()
-        guard let input = input?.formulaList?.formula else { return  NSMutableArray(array: formulaList) }
 
-        for formula in input {
-            let mappedFormula = mapCBFormulaToFormula(input: formula)
-            if formulaList.contains(mappedFormula) == false {
-                formulaList.append(mappedFormula)
+        if let formulas = input?.formulaList?.formula  {
+            for formula in formulas {
+                let mappedFormula = mapCBFormulaToFormula(input: formula)
+                if formulaList.contains(mappedFormula) == false {
+                    formulaList.append(mappedFormula)
+                }
             }
+        } else if let formulas = input?.formulaTree?.formula {
+            for formula in formulas {
+                let mappedFormula = mapCBFormulaToFormula(input: formula)
+                if formulaList.contains(mappedFormula) == false {
+                    formulaList.append(mappedFormula)
+                }
+            }
+        } else {
+            return nil
         }
 
         return NSMutableArray(array: formulaList)

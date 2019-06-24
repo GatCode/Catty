@@ -28,7 +28,7 @@ let kScript = "Script"
 
 extension CBXMLMapping {
 
-    static func mapScriptListToObject(input: CBScriptList?, object: SpriteObject, objects: [CBObject], project: Project, completion: @escaping (NSMutableArray?, CBXMLMappingError?) -> Void) {
+    static func mapScrToObj(input: CBScriptList?, object: SpriteObject, objs: [CBObject], cbo: CBObject, proj: Project, cbp: CBProject?, completion: @escaping (NSMutableArray?, CBXMLError?) -> Void) {
 
         var scriptList = [Script]()
         guard let input = input?.script else { completion(nil, .scriptListMapError); return }
@@ -36,7 +36,7 @@ extension CBXMLMapping {
         for script in input {
             var obj = Script()
 
-            if script.type == kStartScript {
+            if script.type?.uppercased() == kStartScript.uppercased() {
                 obj = StartScript()
             } else if script.type == kWhenScript {
                 let whenScript = WhenScript()
@@ -46,9 +46,9 @@ extension CBXMLMapping {
                     completion(nil, .scriptListMapError)
                 }
                 obj = whenScript
-            } else if script.type == kWhenTouchDownScript {
+            } else if script.type?.uppercased() == kWhenTouchDownScript.uppercased() {
                 obj = WhenTouchDownScript()
-            } else if script.type == kBroadcastScript {
+            } else if script.type?.uppercased() == kBroadcastScript.uppercased() {
                 let broadcastScript = BroadcastScript()
                 if let msg = script.receivedMessage {
                     broadcastScript.receivedMessage = msg
@@ -71,7 +71,7 @@ extension CBXMLMapping {
             }
 
             obj.object = object
-            mapBrickListToScript(input: script, script: obj, obj: object, objects: objects, project: project) { result, error in
+            mapBrToScr(inp: script, scr: obj, obj: object, cbo: cbo, objs: objs, proj: proj, cbp: cbp) { result, error in
                 if error != nil {
                     completion(nil, error)
                 }

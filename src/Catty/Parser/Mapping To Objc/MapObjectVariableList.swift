@@ -34,7 +34,7 @@ extension CBXMLMapping {
                 guard let objects = project?.scenes?.first?.objectList?.object else { break }
 
                 if let obj = variable.object, objects.count >= 1 {
-                    let index = extractNumberInBacesFrom(string: obj)
+                    let index = extractAbstractNumbersFrom(reference: obj, project: project).0
                     if index < objects.count {
                         let object = objects[index]
                         if let name = object.name {
@@ -64,8 +64,8 @@ extension CBXMLMapping {
                         }
                     }
                 }
-                _ = objectVariableMap.insertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
-                //objectVariableMap.forceInsertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
+                //_ = objectVariableMap.insertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
+                objectVariableMap.forceInsertElementWithKey(foundKey, value: foundObject, atIndex: mapIndex)
                 mapIndex += 1
             }
         }
@@ -80,7 +80,7 @@ extension CBXMLMapping {
 
             if let objectList = cbProject?.scenes?.first?.objectList?.object {
                 for object in objectList {
-                    let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project, blankMap: true)
+                    let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project, cbProject: cbProject, blankMap: true)
                     if mappedObject.name == obj.0 {
                         spriteObject = mappedObject
                         break

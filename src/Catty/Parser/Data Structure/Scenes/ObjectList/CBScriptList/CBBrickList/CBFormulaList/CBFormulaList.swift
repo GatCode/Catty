@@ -26,8 +26,22 @@ struct CBFormulaList: XMLIndexerDeserializable {
     let formula: [CBFormula]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBFormulaList {
-        return try CBFormulaList(
-            formula: node["formula"].value()
+
+        var tmpFormulaList: [CBFormula]?
+        tmpFormulaList = try? node["formula"].value()
+
+        if tmpFormulaList == nil {
+            tmpFormulaList = [CBFormula]()
+
+            var tmpFormula: CBFormula?
+            tmpFormula = try? node.value()
+            if let tmp = tmpFormula {
+                tmpFormulaList?.append(tmp)
+            }
+        }
+
+        return CBFormulaList(
+            formula: tmpFormulaList
         )
     }
 }

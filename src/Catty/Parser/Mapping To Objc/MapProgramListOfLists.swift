@@ -28,24 +28,10 @@ extension CBXMLMapping {
 
         for variable in userVariables {
             if let reference = variable.reference {
-                let splittedReference = reference.split(separator: "/")
-                var brickNr = 0
-                var scriptNr = 0
-                var objectNr = 0
-
-                var fallbackCounter = 0
-                for string in splittedReference.reversed() {
-                    fallbackCounter += 1
-                    if fallbackCounter == 2 {
-                        brickNr = extractNumberInBacesFrom(string: String(string))
-                    }
-                    if fallbackCounter == 4 {
-                        scriptNr = extractNumberInBacesFrom(string: String(string))
-                    }
-                    if fallbackCounter == 6 {
-                        objectNr = extractNumberInBacesFrom(string: String(string))
-                    }
-                }
+                let abstractNumbers = extractAbstractNumbersFrom(reference: reference, project: CBProject)
+                let brickNr = abstractNumbers.2
+                let scriptNr = abstractNumbers.1
+                let objectNr = abstractNumbers.0
 
                 if let objectList = CBProject?.scenes?.first?.objectList?.object, objectNr < objectList.count {
                     if let scriptList = objectList[objectNr].scriptList?.script, scriptNr < scriptList.count {

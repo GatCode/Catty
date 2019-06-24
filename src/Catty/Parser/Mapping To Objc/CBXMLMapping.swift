@@ -29,14 +29,13 @@ struct CBXMLMapping {
         // IMPORTANT: DO NOT CHANGE ORDER HERE!!
         mappedProject.header = CBXMLMapping.mapHeaderToHeader(input: project?.header)
         mappedProject.variables = CBXMLMapping.mapVariablesToVariableContrainer(input: project, project: mappedProject)
-        mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject)
+        mappedProject.objectList = CBXMLMapping.mapScenesToObjectList(input: project?.scenes, project: mappedProject, cbProject: project)
 
-        mappedProject.variables.allVariables()
         return mappedProject
     }
 }
 
-enum CBXMLMappingError: Error {
+enum CBXMLError: Error {
     case lookListMapError
     case soundListMapError
     case scriptListMapError

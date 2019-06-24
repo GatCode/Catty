@@ -37,22 +37,49 @@ struct CBBrick: XMLIndexerDeserializable {
     let noteMessage: String?
     let pointedObject: String?
     let spinnerSelectionID: String?
+    let xPosition: CBFormula?
+    let yPosition: CBFormula?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
-        var userVar: String?
 
-        userVar = try? node["userVariable"].value()
+        var tmpType: String?
+        tmpType = try? node.value(ofAttribute: "type")
+
+        if tmpType == nil {
+            var splittedAndCleaned = [String]()
+
+            let splittedDescription = node.description.split(separator: ">")
+            splittedDescription.forEach { element in
+                splittedAndCleaned.append(element.replacingOccurrences(of: "<", with: ""))
+            }
+            if splittedAndCleaned.first?.isEmpty == false {
+                tmpType = splittedAndCleaned.first
+            }
+        }
+
+        var userVar: String?
+        userVar = try? node["userVariable"]["name"].value()
+        if userVar?.isEmpty ?? true {
+            userVar = try? node["userVariable"].value()
+        }
         if userVar?.isEmpty ?? true {
             userVar = try? node["userVariableName"].value()
         }
 
+        var tmpFormulaTree: CBFormulaList?
+        tmpFormulaTree = try? node["size"]["formulaTree"].value()
+
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["variableFormula"]["formulaTree"].value()
+        }
+
         return try CBBrick(
             name: node["name"].value(),
-            type: node.value(ofAttribute: "type"),
+            type: tmpType,
             sound: node["sound"].value(ofAttribute: "reference"),
             commentedOut: node["commentedOut"].value(),
             formulaList: node["formulaList"].value(),
-            formulaTree: node["size"]["formulaTree"].value(),
+            formulaTree: tmpFormulaTree,
             lookReference: node["look"].value(ofAttribute: "reference"),
             userVariable: userVar,
             userVariableReference: node["userVariable"].value(ofAttribute: "reference"),
@@ -60,7 +87,9 @@ struct CBBrick: XMLIndexerDeserializable {
             broadcastMessage: node["broadcastMessage"].value(),
             noteMessage: node["formulaList"]["formula"]["value"].value(),
             pointedObject: node["pointedObject"].value(ofAttribute: "name"),
-            spinnerSelectionID: node["spinnerSelectionID"].value()
+            spinnerSelectionID: node["spinnerSelectionID"].value(),
+            xPosition: node["xPosition"]["formulaTree"].value(),
+            yPosition: node["yPosition"]["formulaTree"].value()
         )
     }
 }

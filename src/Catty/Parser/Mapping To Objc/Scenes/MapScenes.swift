@@ -22,20 +22,20 @@
 
 extension CBXMLMapping {
 
-    static func mapScenesToObjectList(input: [CBProjectScene]?, project: Project) -> NSMutableArray {
+    static func mapScenesToObjectList(input: [CBProjectScene]?, project: Project, cbProject: CBProject?) -> NSMutableArray {
         var objectList = [SpriteObject]()
 
         // since in 0.991 there are no multiple scenes
         guard let objects = input?.first?.objectList?.object else { return  NSMutableArray(array: objectList) }
 
         for object in objects {
-            objectList.append(mapCBObjectToSpriteObject(input: object, objects: objects, project: project, blankMap: false))
+            objectList.append(mapCBObjectToSpriteObject(input: object, objects: objects, project: project, cbProject: cbProject, blankMap: false))
         }
 
         return NSMutableArray(array: objectList)
     }
 
-    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project, blankMap: Bool) -> SpriteObject {
+    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project, cbProject: CBProject?, blankMap: Bool) -> SpriteObject {
         var item = SpriteObject()
 
         // only create a new SpriteObject when the needed one is not already in one of the object lists
@@ -58,11 +58,10 @@ extension CBXMLMapping {
         item.name = input.name
 
         if blankMap == false {
-
             item.lookList = mapLookListToObject(input: input.lookList)
             item.soundList = mapSoundListToObject(input: input.soundList)
 
-            mapScriptListToObject(input: input.scriptList, object: item, objects: objects, project: project, completion: { result, error in
+            mapScrToObj(input: input.scriptList, object: item, objs: objects, cbo: input, proj: project, cbp: cbProject, completion: { result, error in
                 if error != nil {
                     print(error)
                 }

@@ -27,8 +27,24 @@ struct CBBrickList: XMLIndexerDeserializable {
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrickList {
 
-        return try CBBrickList(
-            brick: node["brick"].value()
+        var tmpBrickList: [CBBrick]?
+        tmpBrickList = try? node["brick"].value()
+
+        if tmpBrickList == nil {
+            tmpBrickList = [CBBrick]()
+
+            for child in node.children {
+                let tmp: CBBrick?
+                tmp = try? child.value()
+
+                if let res = tmp {
+                    tmpBrickList?.append(res)
+                }
+            }
+        }
+
+        return CBBrickList(
+            brick: tmpBrickList
         )
     }
 }

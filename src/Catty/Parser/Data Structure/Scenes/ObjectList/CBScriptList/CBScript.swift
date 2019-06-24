@@ -31,9 +31,25 @@ struct CBScript: XMLIndexerDeserializable {
     let action: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBScript {
+
+        var tmpType: String?
+        tmpType = try? node.value(ofAttribute: "type")
+
+        if tmpType == nil {
+            var splittedAndCleaned = [String]()
+
+            let splittedDescription = node.description.split(separator: ">")
+            splittedDescription.forEach { element in
+                splittedAndCleaned.append(element.replacingOccurrences(of: "<", with: ""))
+            }
+            if splittedAndCleaned.first?.isEmpty == false {
+                tmpType = splittedAndCleaned.first
+            }
+        }
+
         return try CBScript(
             brickList: node["brickList"].value(),
-            type: node.value(ofAttribute: "type"),
+            type: tmpType,
             commentedOut: node["commentedOut"].value(),
             isUserScript: node["isUserScript"].value(),
             receivedMessage: node["receivedMessage"].value(),
