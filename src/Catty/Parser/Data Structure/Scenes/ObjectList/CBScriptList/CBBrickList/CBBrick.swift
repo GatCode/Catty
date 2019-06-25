@@ -25,7 +25,8 @@ import SWXMLHash
 struct CBBrick: XMLIndexerDeserializable {
     let name: String?
     let type: String?
-    let sound: String?
+    let soundReference: String?
+    let sound: CBSound?
     let commentedOut: String?
     let formulaList: CBFormulaList?
     let formulaTree: CBFormulaList?
@@ -73,10 +74,17 @@ struct CBBrick: XMLIndexerDeserializable {
             tmpFormulaTree = try? node["variableFormula"]["formulaTree"].value()
         }
 
+        var tmpNoteMessage: String?
+        tmpNoteMessage = try? node["formulaList"]["formula"]["value"].value()
+        if tmpNoteMessage == nil {
+            tmpNoteMessage = try? node["text"].value()
+        }
+
         return try CBBrick(
             name: node["name"].value(),
             type: tmpType,
-            sound: node["sound"].value(ofAttribute: "reference"),
+            soundReference: node["sound"].value(ofAttribute: "reference"),
+            sound: node["sound"].value(),
             commentedOut: node["commentedOut"].value(),
             formulaList: node["formulaList"].value(),
             formulaTree: tmpFormulaTree,
@@ -85,7 +93,7 @@ struct CBBrick: XMLIndexerDeserializable {
             userVariableReference: node["userVariable"].value(ofAttribute: "reference"),
             userList: node["userList"]["name"].value(),
             broadcastMessage: node["broadcastMessage"].value(),
-            noteMessage: node["formulaList"]["formula"]["value"].value(),
+            noteMessage: tmpNoteMessage,
             pointedObject: node["pointedObject"].value(ofAttribute: "name"),
             spinnerSelectionID: node["spinnerSelectionID"].value(),
             xPosition: node["xPosition"]["formulaTree"].value(),

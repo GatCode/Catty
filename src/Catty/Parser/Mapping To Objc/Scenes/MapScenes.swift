@@ -59,7 +59,8 @@ extension CBXMLMapping {
 
         if blankMap == false {
             item.lookList = mapLookListToObject(input: input.lookList)
-            item.soundList = mapSoundListToObject(input: input.soundList)
+            item.soundList = mapSoundListToObject(input: input.soundList, cbProject: cbProject, object: input)
+            // TODO: fill it properly after adding scripts
 
             mapScrToObj(input: input.scriptList, object: item, objs: objects, cbo: input, proj: project, cbp: cbProject, completion: { result, error in
                 if error != nil {

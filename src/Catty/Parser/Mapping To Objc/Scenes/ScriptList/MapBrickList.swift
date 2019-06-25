@@ -381,44 +381,43 @@ extension CBXMLMapping {
                 brickList.append(cameraBrick)
 
             // MARK: - Sound Bricks
-//            case kPlaySoundBrick.uppercased():
-//                let soundBrick = PlaySoundBrick()
-//                soundBrick.script = scr
-//                if let range = brick.sound?.range(of: "[(0-9)*]", options: .regularExpression) {
-//                    let index = String(brick.sound?[range] ?? "")
-//                    if let index = Int(index), index <= soundList.count, index > 0 {
-//                        soundBrick.sound = soundList[index - 1] as? Sound
-//                    }
-//                } else if soundList.count >= 1 {
-//                    soundBrick.sound = soundList[0] as? Sound
-//                }
-//                brickList.append(soundBrick)
-//            case kStopAllSoundsBrick.uppercased():
-//                let brick = StopAllSoundsBrick()
-//                brick.script = scr
-//                brickList.append(brick)
-//            case kSetVolumeToBrick.uppercased():
-//                let setVolumeBrick = SetVolumeToBrick()
-//                setVolumeBrick.script = scr
-//                setVolumeBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-//                brickList.append(setVolumeBrick)
-//            case kChangeVolumeByNBrick.uppercased():
-//                let changeVolumeBrick = ChangeVolumeByNBrick()
-//                changeVolumeBrick.script = scr
-//                changeVolumeBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-//                brickList.append(changeVolumeBrick)
-//            case kSpeakBrick.uppercased():
-//                let speakBrick = SpeakBrick()
-//                speakBrick.script = scr
-//                speakBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-//                speakBrick.text = brick.noteMessage
-//                brickList.append(speakBrick)
-//            case kSpeakAndWaitBrick.uppercased():
-//                let speakWaitBrick = SpeakAndWaitBrick()
-//                speakWaitBrick.script = scr
-//                speakWaitBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-//                speakWaitBrick.text = brick.noteMessage
-//                brickList.append(speakWaitBrick)
+            case kPlaySoundBrick.uppercased():
+                let soundBrick = PlaySoundBrick()
+                soundBrick.script = scr
+                for sound in soundList {
+                    if let sound = sound as? Sound, sound.name == brick.sound?.name {
+                        soundBrick.sound = sound
+                        break
+                    }
+                }
+                brickList.append(soundBrick)
+            case kStopAllSoundsBrick.uppercased():
+                let brick = StopAllSoundsBrick()
+                brick.script = scr
+                brickList.append(brick)
+            case kSetVolumeToBrick.uppercased():
+                let setVolumeBrick = SetVolumeToBrick()
+                setVolumeBrick.script = scr
+                setVolumeBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                brickList.append(setVolumeBrick)
+            case kChangeVolumeByNBrick.uppercased():
+                let changeVolumeBrick = ChangeVolumeByNBrick()
+                changeVolumeBrick.script = scr
+                changeVolumeBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                brickList.append(changeVolumeBrick)
+            case kSpeakBrick.uppercased():
+                let speakBrick = SpeakBrick()
+                speakBrick.script = scr
+                speakBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                speakBrick.text = brick.noteMessage
+                brickList.append(speakBrick)
+            case kSpeakAndWaitBrick.uppercased():
+                let speakWaitBrick = SpeakAndWaitBrick()
+                speakWaitBrick.script = scr
+                speakWaitBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                speakWaitBrick.text = brick.noteMessage
+                brickList.append(speakWaitBrick)
+                // TODO: the two bricks above!!!
 
             // MARK: - Variable Bricks
             case kSetVariableBrick.uppercased():

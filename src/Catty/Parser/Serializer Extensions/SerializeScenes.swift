@@ -160,7 +160,7 @@ extension CBXMLSerializer2 {
             }
 
             if let msg = brick.sound {
-                currentBrick.addChild(name: "sound", attributes: ["reference": msg])
+                //currentBrick.addChild(name: "sound", attributes: ["reference": msg.reference])
             }
 
             if let msg = brick.formulaList {

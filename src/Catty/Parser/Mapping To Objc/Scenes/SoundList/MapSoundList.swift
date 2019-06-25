@@ -22,17 +22,27 @@
 
 extension CBXMLMapping {
 
-    static func mapSoundListToObject(input: CBSoundList?) -> NSMutableArray {
+    static func mapSoundListToObject(input: CBSoundList?, cbProject: CBProject?, object: CBObject) -> NSMutableArray {
         var soundList = [Sound]()
         guard let input = input?.sound else { return  NSMutableArray(array: soundList) }
 
         for sound in input {
-            let object = Sound()
-
-            object.name = sound.name
-            object.fileName = sound.fileName
-
-            soundList.append(object)
+            if let ref = sound.reference {
+                let brick: CBBrick?
+                if ref.split(separator: "/").count < 9 {
+                    let extr = extractAbstractNumbersFrom(object: object, reference: ref, project: cbProject)
+                    brick = object.scriptList?.script?[extr.0].brickList?.brick?[extr.1]
+                } else {
+                    let extr = extractAbstractNumbersFrom(reference: ref, project: cbProject)
+                    brick = cbProject?.scenes?.first?.objectList?.object?[extr.0].scriptList?.script?[extr.1].brickList?.brick?[extr.2]
+                }
+                if let brick = brick, let name = brick.sound?.name, let filename = brick.sound?.fileName {
+                    let soundToAppend = Sound(name: name, fileName: filename)
+                    if soundList.contains(soundToAppend) == false {
+                        soundList.append(soundToAppend)
+                    }
+                }
+            }
         }
 
         return NSMutableArray(array: soundList)
