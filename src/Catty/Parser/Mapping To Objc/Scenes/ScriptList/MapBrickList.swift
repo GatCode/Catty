@@ -148,15 +148,15 @@ extension CBXMLMapping {
                 brick.script = scr
                 brickList.append(brick)
             case kRepeatBrick.uppercased():
-                let repeatBrick = RepeatUntilBrick()
-                repeatBrick.script = scr
-                repeatBrick.repeatCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                brickList.append(repeatBrick)
-            case kRepeatUntilBrick.uppercased():
                 let repeatUntilBrick = RepeatBrick()
                 repeatUntilBrick.script = scr
                 repeatUntilBrick.timesToRepeat = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 brickList.append(repeatUntilBrick)
+            case kRepeatUntilBrick.uppercased():
+                let repeatBrick = RepeatUntilBrick()
+                repeatBrick.script = scr
+                repeatBrick.repeatCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                brickList.append(repeatBrick)
             case kLoopEndBrick.uppercased(), kLoopEndlessBrick.uppercased():
                 let endBrick = LoopEndBrick()
                 endBrick.script = scr
@@ -397,6 +397,14 @@ extension CBXMLMapping {
                         break
                     }
                 }
+                if let range = brick.sound?.reference?.range(of: "[(0-9)*]", options: .regularExpression) {
+                    let index = String(brick.sound?.reference?[range] ?? "")
+                    if let index = Int(index), index <= soundList.count, index > 0 {
+                        soundBrick.sound = soundList[index] as? Sound
+                    }
+                } else {
+                    soundBrick.sound = soundList.firstObject as? Sound
+                }
                 brickList.append(soundBrick)
             case kStopAllSoundsBrick.uppercased():
                 let brick = StopAllSoundsBrick()
@@ -557,7 +565,7 @@ extension CBXMLMapping {
 
     static func getUserVariableOrUserListFrom(list: NSArray, atIndex: Int) -> UserVariable? {
         let atIndex = atIndex - 2 // because reference is one higher and array starts ar 0
-        guard list.count >= atIndex else { return nil }
+        guard list.count >= atIndex && atIndex >= 0 else { return nil }
 
         if let entry = list[atIndex] as? UserVariable {
             return entry

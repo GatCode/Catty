@@ -48,6 +48,11 @@ extension CBXMLMapping {
                         soundList.append(soundToAppend)
                     }
                 }
+            } else if let name = sound.name, let filename = sound.fileName {
+                let soundToAppend = Sound(name: name, fileName: filename)
+                if soundList.contains(soundToAppend) == false {
+                    soundList.append(soundToAppend)
+                }
             }
         }
 
