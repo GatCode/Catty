@@ -454,7 +454,7 @@
     Project *project = nil;
     CGFloat languageVersion = [Util detectCBLanguageVersionFromXMLWithPath:xmlPath];
 
-    if (languageVersion == kCatrobatInvalidVersion) {
+    if (languageVersion == kCatrobatInvalidVersion || languageVersion > [[Util catrobatLanguageVersion] floatValue]) {
         NSDebug(@"Invalid catrobat language version!");
         return nil;
     }
