@@ -261,14 +261,16 @@ extension CBXMLMapping {
             case kGlideToBrick.uppercased():
                 let glideBrick = GlideToBrick()
                 glideBrick.script = scr
-                glideBrick.durationInSeconds = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                glideBrick.xDestination = mapGlideDestinations(input: brick, xDestination: true)?.firstObject as? Formula
-                glideBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.firstObject as? Formula
-//                if let mapping = mapFormulaListToBrick(input: brick), mapping.count > 2 {
-//                    glideBrick.durationInSeconds = mapping[0] as? Formula
-//                    glideBrick.yDestination = mapping[1] as? Formula
-//                    glideBrick.xDestination = mapping[2] as? Formula
-//                }
+                let formulaTreeMapping = mapFormulaListToBrick(input: brick)
+                guard let formulaMapping = formulaTreeMapping else { break }
+                glideBrick.durationInSeconds = formulaMapping.firstObject as? Formula
+                if formulaMapping.count >= 3 {
+                    glideBrick.xDestination = formulaMapping[1] as? Formula
+                    glideBrick.yDestination = formulaMapping[2] as? Formula
+                } else {
+                    glideBrick.xDestination = mapGlideDestinations(input: brick, xDestination: true)?.firstObject as? Formula
+                    glideBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.firstObject as? Formula
+                }
                 brickList.append(glideBrick)
             case kVibrationBrick.uppercased():
                 let vibrationBrick = VibrationBrick()
