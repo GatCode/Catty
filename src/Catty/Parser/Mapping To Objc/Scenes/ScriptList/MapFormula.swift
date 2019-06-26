@@ -28,6 +28,25 @@ extension CBXMLMapping {
 
         let formulaTree = FormulaElement(type: input.type, value: input.value, leftChild: nil, rightChild: nil, parent: nil)
 
+        switch input.type {
+        case "OPERATOR":
+            formulaTree?.type = ElementType.OPERATOR
+        case "USER_VARIABLE":
+            formulaTree?.value = input.value
+            formulaTree?.type = ElementType.USER_VARIABLE
+        case "USER_LIST":
+            formulaTree?.value = input.value
+            formulaTree?.type = ElementType.USER_LIST
+        case "FUNCTION":
+            formulaTree?.type = ElementType.FUNCTION
+        case "SENSOR":
+            formulaTree?.type = ElementType.SENSOR
+        case "BRACKET":
+            formulaTree?.type = ElementType.BRACKET
+        default:
+            formulaTree?.type = ElementType.STRING
+        }
+
         if let leftChild = input.leftChild, let tree = formulaTree {
             formulaTree?.leftChild = mapCBLRChildToFormulaTree(input: leftChild, tree: tree)
         }

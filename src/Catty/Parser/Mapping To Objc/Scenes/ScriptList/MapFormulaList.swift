@@ -25,7 +25,7 @@ extension CBXMLMapping {
     static func mapFormulaListToBrick(input: CBBrick?) -> NSMutableArray? {
         var formulaList = [Formula]()
 
-        if let formulas = input?.formulaList?.formula  {
+        if let formulas = input?.formulaList?.formula {
             for formula in formulas {
                 let mappedFormula = mapCBFormulaToFormula(input: formula)
                 if formulaList.contains(mappedFormula) == false {
