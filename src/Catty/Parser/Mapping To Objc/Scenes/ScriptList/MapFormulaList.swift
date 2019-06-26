@@ -45,4 +45,19 @@ extension CBXMLMapping {
 
         return NSMutableArray(array: formulaList)
     }
+
+    static func mapGlideDestinations(input: CBBrick?, xDestination: Bool) -> NSMutableArray? {
+        var formulaList = [Formula]()
+
+        if let formulas = xDestination ? input?.xDestination?.formula : input?.yDestination?.formula {
+            for formula in formulas {
+                let mappedFormula = mapCBFormulaToFormula(input: formula)
+                if formulaList.contains(mappedFormula) == false {
+                    formulaList.append(mappedFormula)
+                }
+            }
+        }
+
+        return NSMutableArray(array: formulaList)
+    }
 }

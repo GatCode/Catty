@@ -28,13 +28,19 @@ extension CBXMLMapping {
 
         for sound in input {
             if let ref = sound.reference {
-                let brick: CBBrick?
+                var brick: CBBrick? = nil
                 if ref.split(separator: "/").count < 9 {
                     let extr = extractAbstractNumbersFrom(object: object, reference: ref, project: cbProject)
-                    brick = object.scriptList?.script?[extr.0].brickList?.brick?[extr.1]
+                    if let sl = object.scriptList?.script, sl.count > extr.0, let bl = sl[extr.0].brickList?.brick, bl.count > extr.1 {
+                        brick = bl[extr.1]
+                    }
                 } else {
                     let extr = extractAbstractNumbersFrom(reference: ref, project: cbProject)
-                    brick = cbProject?.scenes?.first?.objectList?.object?[extr.0].scriptList?.script?[extr.1].brickList?.brick?[extr.2]
+                    if let ol = cbProject?.scenes?.first?.objectList?.object, ol.count > extr.0 {
+                        if let sl = ol[extr.0].scriptList?.script, sl.count > extr.1, let bl = sl[extr.1].brickList?.brick, bl.count > extr.2 {
+                            brick = bl[extr.2]
+                        }
+                    }
                 }
                 if let brick = brick, let name = brick.sound?.name, let filename = brick.sound?.fileName {
                     let soundToAppend = Sound(name: name, fileName: filename)

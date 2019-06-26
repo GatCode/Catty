@@ -30,6 +30,8 @@ struct CBBrick: XMLIndexerDeserializable {
     let commentedOut: String?
     let formulaList: CBFormulaList?
     let formulaTree: CBFormulaList?
+    let xDestination: CBFormulaList?
+    let yDestination: CBFormulaList?
     let lookReference: String?
     let userVariable: String?
     let userVariableReference: String?
@@ -40,9 +42,11 @@ struct CBBrick: XMLIndexerDeserializable {
     let spinnerSelectionID: String?
     let xPosition: CBFormula?
     let yPosition: CBFormula?
+    let ifReference: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
 
+        var tmpIfReference: String?
         var tmpType: String?
         tmpType = try? node.value(ofAttribute: "type")
 
@@ -53,8 +57,14 @@ struct CBBrick: XMLIndexerDeserializable {
             splittedDescription.forEach { element in
                 splittedAndCleaned.append(element.replacingOccurrences(of: "<", with: ""))
             }
-            if splittedAndCleaned.first?.isEmpty == false {
-                tmpType = splittedAndCleaned.first
+            if let slittedAndCleanedString = splittedAndCleaned.first {
+                let splittedType = slittedAndCleanedString.split(separator: " ")
+                if splittedType.count >= 2, let type = splittedType.first, let reference = splittedType.last {
+                    tmpType = String(type)
+                    tmpIfReference = String(reference)
+                } else {
+                    tmpType = splittedAndCleaned.first
+                }
             }
         }
 
@@ -73,6 +83,27 @@ struct CBBrick: XMLIndexerDeserializable {
         if tmpFormulaTree == nil {
             tmpFormulaTree = try? node["variableFormula"]["formulaTree"].value()
         }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["timeToWaitInSeconds"]["formulaTree"].value()
+        }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["ifCondition"]["formulaTree"].value()
+        }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["xMovement"]["formulaTree"].value()
+        }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["yMovement"]["formulaTree"].value()
+        }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["xPosition"]["formulaTree"].value()
+        }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["yPosition"]["formulaTree"].value()
+        }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["durationInSeconds"]["formulaTree"].value()
+        }
 
         var tmpNoteMessage: String?
         tmpNoteMessage = try? node["formulaList"]["formula"]["value"].value()
@@ -88,6 +119,8 @@ struct CBBrick: XMLIndexerDeserializable {
             commentedOut: node["commentedOut"].value(),
             formulaList: node["formulaList"].value(),
             formulaTree: tmpFormulaTree,
+            xDestination: node["xDestination"]["formulaTree"].value(),
+            yDestination: node["yDestination"]["formulaTree"].value(),
             lookReference: node["look"].value(ofAttribute: "reference"),
             userVariable: userVar,
             userVariableReference: node["userVariable"].value(ofAttribute: "reference"),
@@ -97,7 +130,8 @@ struct CBBrick: XMLIndexerDeserializable {
             pointedObject: node["pointedObject"].value(ofAttribute: "name"),
             spinnerSelectionID: node["spinnerSelectionID"].value(),
             xPosition: node["xPosition"]["formulaTree"].value(),
-            yPosition: node["yPosition"]["formulaTree"].value()
+            yPosition: node["yPosition"]["formulaTree"].value(),
+            ifReference: tmpIfReference
         )
     }
 }
