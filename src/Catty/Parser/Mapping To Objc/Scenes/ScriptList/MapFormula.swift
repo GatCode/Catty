@@ -47,13 +47,13 @@ extension CBXMLMapping {
         if let leftChild = input.leftChild.first, leftChild != nil, let ch = child {
             let leftChild = mapCBLRChildToFormulaTree(input: leftChild, tree: ch)
             child?.parent = tree
-            tree.leftChild = leftChild
+            child?.leftChild = leftChild
         }
 
         if let rightChild = input.rightChild.first, rightChild != nil, let ch = child {
             let rightChild = mapCBLRChildToFormulaTree(input: rightChild, tree: ch)
             child?.parent = tree
-            tree.rightChild = rightChild
+            child?.rightChild = rightChild
         }
 
         return child

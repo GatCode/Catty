@@ -96,6 +96,8 @@ extension CBXMLMapping {
         for brick in input {
             switch brick.type?.uppercased() {
 
+                // TODO: goto front brick missing???
+
             // MARK: - Condition Bricks
             case kBroadcastBrick.uppercased():
                 let brick = BroadcastBrick(message: brick.broadcastMessage ?? "")
