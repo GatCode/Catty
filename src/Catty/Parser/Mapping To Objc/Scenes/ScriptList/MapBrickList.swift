@@ -439,12 +439,14 @@ extension CBXMLMapping {
                 let variableBrick = SetVariableBrick()
                 variableBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 variableBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                updateVariableContainerWith(newBrick: variableBrick, project: proj)
                 variableBrick.script = scr
                 brickList.append(variableBrick)
             case kChangeVariableBrick.uppercased():
                 let variableBrick = ChangeVariableBrick()
                 variableBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 variableBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                updateVariableContainerWith(newBrick: variableBrick, project: proj)
                 variableBrick.script = scr
                 brickList.append(variableBrick)
             case kShowTextBrick.uppercased():
@@ -452,23 +454,27 @@ extension CBXMLMapping {
                 showBrick.xFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 showBrick.yFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 showBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+                updateVariableContainerWith(newBrick: showBrick, project: proj)
                 showBrick.script = scr
                 brickList.append(showBrick)
             case kHideTextBrick.uppercased():
                 let hideBrick = HideTextBrick()
                 hideBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+                updateVariableContainerWith(newBrick: hideBrick, project: proj)
                 hideBrick.script = scr
                 brickList.append(hideBrick)
             case kAddItemToUserListBrick.uppercased():
                 let listBrick = AddItemToUserListBrick()
                 listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+                updateVariableContainerWith(newBrick: listBrick, project: proj)
                 listBrick.script = scr
                 brickList.append(listBrick)
             case kDeleteItemOfUserListBrick.uppercased():
                 let listBrick = DeleteItemOfUserListBrick()
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                updateVariableContainerWith(newBrick: listBrick, project: proj)
                 listBrick.script = scr
                 brickList.append(listBrick)
             case kInsertItemIntoUserListBrick.uppercased():
@@ -476,6 +482,7 @@ extension CBXMLMapping {
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                updateVariableContainerWith(newBrick: listBrick, project: proj)
                 listBrick.script = scr
                 brickList.append(listBrick)
             case kReplaceItemInUserListBrick.uppercased():
@@ -483,6 +490,7 @@ extension CBXMLMapping {
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                updateVariableContainerWith(newBrick: listBrick, project: proj)
                 listBrick.script = scr
                 brickList.append(listBrick)
             default:
@@ -490,6 +498,76 @@ extension CBXMLMapping {
             }
         }
         comp(NSMutableArray(array: brickList), nil)
+    }
+
+    static func updateBrick(from: Brick, to: Brick) {
+        switch from.brickType {
+        case kBrickType.setVariableBrick:
+            if let from = from as? SetVariableBrick, let to = to as? SetVariableBrick {
+                to.userVariable = from.userVariable
+            }
+        case kBrickType.changeVariableBrick:
+            if let from = from as? ChangeVariableBrick, let to = to as? ChangeVariableBrick {
+                to.userVariable = from.userVariable
+            }
+        case kBrickType.showTextBrick:
+            if let from = from as? ShowTextBrick, let to = to as? ShowTextBrick {
+                to.userVariable = from.userVariable
+            }
+        case kBrickType.hideTextBrick:
+            if let from = from as? HideTextBrick, let to = to as? HideTextBrick {
+                to.userVariable = from.userVariable
+            }
+        case kBrickType.addItemToUserListBrick:
+            if let from = from as? AddItemToUserListBrick, let to = to as? AddItemToUserListBrick {
+                to.userList = from.userList
+            }
+        case kBrickType.deleteItemOfUserListBrick:
+            if let from = from as? DeleteItemOfUserListBrick, let to = to as? DeleteItemOfUserListBrick {
+                to.userList = from.userList
+            }
+        case kBrickType.insertItemIntoUserListBrick:
+            if let from = from as? InsertItemIntoUserListBrick, let to = to as? InsertItemIntoUserListBrick {
+                to.userList = from.userList
+            }
+        case kBrickType.replaceItemInUserListBrick:
+            if let from = from as? ReplaceItemInUserListBrick, let to = to as? ReplaceItemInUserListBrick {
+                to.userList = from.userList
+            }
+        default:
+            return
+        }
+    }
+
+    static func updateVariableContainerWith(newBrick: Brick, project: Project) {
+        for oIdx in 0..<project.variables.objectListOfLists.count() {
+            let object = project.variables.objectListOfLists.key(at: oIdx) as? SpriteObject
+            if let scriptList = object?.scriptList {
+                for script in scriptList {
+                    if let script = script as? Script {
+                        for brick in script.brickList {
+                            if let brick = brick as? Brick {
+                                updateBrick(from: newBrick, to: brick)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for oIdx in 0..<project.variables.objectVariableList.count() {
+            let object = project.variables.objectVariableList.key(at: oIdx) as? SpriteObject
+            if let scriptList = object?.scriptList {
+                for script in scriptList {
+                    if let script = script as? Script {
+                        for brick in script.brickList {
+                            if let brick = brick as? Brick {
+                                updateBrick(from: newBrick, to: brick)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - UserVariables for Bricks
