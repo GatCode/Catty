@@ -467,23 +467,23 @@ extension CBXMLMapping {
                 brickList.append(listBrick)
             case kDeleteItemOfUserListBrick.uppercased():
                 let listBrick = DeleteItemOfUserListBrick()
-                listBrick.script = scr
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                listBrick.script = scr
                 brickList.append(listBrick)
             case kInsertItemIntoUserListBrick.uppercased():
                 let listBrick = InsertItemIntoUserListBrick()
-                listBrick.script = scr
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                listBrick.script = scr
                 brickList.append(listBrick)
             case kReplaceItemInUserListBrick.uppercased():
                 let listBrick = ReplaceItemInUserListBrick()
-                listBrick.script = scr
                 listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
                 listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                listBrick.script = scr
                 brickList.append(listBrick)
             default:
                 comp(nil, .unsupportedBrick)
