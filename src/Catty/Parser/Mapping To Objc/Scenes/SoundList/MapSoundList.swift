@@ -28,7 +28,7 @@ extension CBXMLMapping {
 
         for sound in input {
             if let ref = sound.reference {
-                var brick: CBBrick? = nil
+                var brick: CBBrick?
                 if ref.split(separator: "/").count < 9 {
                     let extr = extractAbstractNumbersFrom(object: object, reference: ref, project: cbProject)
                     if let sl = object.scriptList?.script, sl.count > extr.0, let bl = sl[extr.0].brickList?.brick, bl.count > extr.1 {

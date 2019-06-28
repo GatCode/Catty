@@ -80,8 +80,8 @@ extension CBXMLMapping {
 
             if let objectList = cbProject?.scenes?.first?.objectList?.object {
                 for object in objectList {
-                    let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project, cbProject: cbProject, blankMap: false)
-                    if mappedObject.name == obj.0 {
+                    let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project, cbProject: cbProject)
+                    if let mappedObject = mappedObject, mappedObject.name == obj.0 {
                         spriteObject = mappedObject
                         break
                     }

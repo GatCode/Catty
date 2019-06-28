@@ -24,7 +24,6 @@ extension CBXMLMapping {
 
     static func mapHeaderToHeader(input: CBHeader?) -> Header {
 
-        // TODO: dateTimeUpload currently ignored
         let header = Header()
         header.applicationBuildName = input?.applicationBuildName
         header.applicationBuildNumber = input?.applicationBuildNumber
@@ -70,14 +69,12 @@ extension CBXMLMapping {
 }
 
 extension String {
-    var bool: Bool? {
+    var bool: Bool {
         switch self.lowercased() {
         case "true", "1":
             return true
-        case "false", "0":
-            return false
         default:
-            return nil
+            return false
         }
     }
 }

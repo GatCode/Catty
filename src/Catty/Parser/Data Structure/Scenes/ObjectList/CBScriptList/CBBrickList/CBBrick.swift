@@ -110,6 +110,9 @@ struct CBBrick: XMLIndexerDeserializable {
         if tmpFormulaTree == nil {
             tmpFormulaTree = try? node["degrees"]["formulaTree"].value()
         }
+        if tmpFormulaTree == nil {
+            tmpFormulaTree = try? node["steps"]["formulaTree"].value()
+        }
 
         var tmpNoteMessage: String?
         tmpNoteMessage = try? node["formulaList"]["formula"]["value"].value()

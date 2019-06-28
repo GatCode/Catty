@@ -29,17 +29,18 @@ extension CBXMLMapping {
         guard let objects = input?.first?.objectList?.object else { return  NSMutableArray(array: objectList) }
 
         for object in objects {
-            objectList.append(mapCBObjectToSpriteObject(input: object, objects: objects, project: project, cbProject: cbProject, blankMap: false))
+            if let obj = mapCBObjectToSpriteObject(input: object, objects: objects, project: project, cbProject: cbProject) {
+               objectList.append(obj)
+            }
         }
 
         return NSMutableArray(array: objectList)
     }
 
-    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project, cbProject: CBProject?, blankMap: Bool) -> SpriteObject {
+    static func mapCBObjectToSpriteObject(input: CBObject, objects: [CBObject], project: Project, cbProject: CBProject?) -> SpriteObject? {
         var item: SpriteObject?
 
         // only create a new SpriteObject when the needed one is not already in one of the object lists
-        // check if already in objectVariableList or objectListOfLists
         for i in 0..<project.variables.objectListOfLists.count() {
             let obj = project.variables.objectListOfLists.key(at: i) as? SpriteObject
 
@@ -58,21 +59,20 @@ extension CBXMLMapping {
             item = SpriteObject()
         }
 
-        if let item = item { //blankMap == false {
+        if let item = item {
             item.name = input.name
 
             item.lookList = mapLookListToObject(input: input.lookList)
             item.soundList = mapSoundListToObject(input: input.soundList, cbProject: cbProject, object: input)
 
+            var mappingError: CBXMLError? = nil
             mapScrToObj(input: input.scriptList, object: item, objs: objects, cbo: input, proj: project, cbp: cbProject, completion: { result, error in
-                if error != nil {
-                    print(error)
-                }
+                mappingError = error
                 item.scriptList = result
             })
-            return item
+            return mappingError == nil ? item : nil
         }
 
-        return SpriteObject()
+        return nil
     }
 }

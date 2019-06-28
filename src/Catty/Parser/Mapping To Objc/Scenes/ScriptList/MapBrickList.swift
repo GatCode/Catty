@@ -255,7 +255,7 @@ extension CBXMLMapping {
                 let pointBrick = PointToBrick()
                 pointBrick.script = scr
                 for object in objs where object.name == brick.pointedObject {
-                    pointBrick.pointedObject = mapCBObjectToSpriteObject(input: object, objects: objs, project: proj, cbProject: cbp, blankMap: false)
+                    pointBrick.pointedObject = mapCBObjectToSpriteObject(input: object, objects: objs, project: proj, cbProject: cbp)
                 }
                 brickList.append(pointBrick)
             case kGlideToBrick.uppercased():
@@ -432,7 +432,6 @@ extension CBXMLMapping {
                 speakWaitBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 speakWaitBrick.text = brick.noteMessage
                 brickList.append(speakWaitBrick)
-                // TODO: the two bricks above!!!
 
             // MARK: - Variable Bricks
             case kSetVariableBrick.uppercased():

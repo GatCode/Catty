@@ -103,7 +103,7 @@ extension CBXMLMapping {
     }
 
     static func extractAbstractNumbersFrom(reference: String, project: CBProject?) -> (Int, Int, Int) {
-        guard let project = project else { return (0,0,0) }
+        guard let project = project else { return (0, 0, 0) }
         let splittedReference = reference.split(separator: "/")
         var brickNr = 0
         var scriptNr = 0
