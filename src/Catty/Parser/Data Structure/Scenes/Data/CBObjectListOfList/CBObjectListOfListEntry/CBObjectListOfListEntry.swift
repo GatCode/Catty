@@ -28,16 +28,8 @@ struct CBObjectListOfListEntry: XMLIndexerDeserializable {
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObjectListOfListEntry {
 
-        var reference = ""
-
-        for child in node.children {
-            let text = child.description
-            let arr = text.split(separator: "\"")
-            reference = arr.count == 3 ? String(arr[1]) : reference
-        }
-
         return try CBObjectListOfListEntry(
-            object: reference,
+            object: node["object"].value(ofAttribute: "reference"),
             list: node["list"].value()
         )
     }

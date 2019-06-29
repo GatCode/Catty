@@ -21,12 +21,14 @@
  */
 
 #import "ScriptProtocol.h"
+#import "UserVariable.h"
 
 @class Script;
 
 @protocol BrickProtocol <ScriptProtocol>
 
 @property (nonatomic, weak) Script *script;
+@property (nonatomic, weak) UserVariable *uVar;
 - (BOOL)isFormulaBrick;
 - (BOOL)isIfLogicBrick;
 - (BOOL)isLoopBrick;

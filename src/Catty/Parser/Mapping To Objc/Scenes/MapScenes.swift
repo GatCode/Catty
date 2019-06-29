@@ -65,9 +65,11 @@ extension CBXMLMapping {
             item.lookList = mapLookListToObject(input: input.lookList)
             item.soundList = mapSoundListToObject(input: input.soundList, cbProject: cbProject, object: input)
 
-            var mappingError: CBXMLError? = nil
+            var mappingError: CBXMLError?
             mapScrToObj(input: input.scriptList, object: item, objs: objects, cbo: input, proj: project, cbp: cbProject, completion: { result, error in
-                mappingError = error
+                if error != nil {
+                    mappingError = error
+                }
                 item.scriptList = result
             })
             return mappingError == nil ? item : nil

@@ -47,6 +47,10 @@
                     value = ""
                 }
                 userVariable.textLabel.text = value
+
+                if userVariable.name == "opponent" {
+                    print("")
+                }
             }
             context.state = .runnable
         }

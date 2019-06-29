@@ -23,11 +23,11 @@
 import SWXMLHash
 
 struct CBUserVariableList: XMLIndexerDeserializable {
-    let userVariables: [String]?
+    let userVariable: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBUserVariableList {
         return try CBUserVariableList(
-            userVariables: node["userVariable"].value()
+            userVariable: node["userVariable"].value(ofAttribute: "reference")
         )
     }
 }

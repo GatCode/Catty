@@ -22,28 +22,25 @@
 
 extension CBXMLMapping {
 
-    static func mapUserVariableOrUserList(input: CBBrick?) -> UserVariable {
-        var userVar = UserVariable()
-
+    static func mapUserVariableOrUserList(input: CBBrick?) -> UserVariable? {
         if input?.userVariable != nil {
-            userVar = mapUserVariable(input: input)
+            return mapUserVariable(input: input)
         } else if input?.userList != nil {
-            userVar = mapUserList(input: input)
+            return mapUserList(input: input)
         }
-
-        return userVar
+        return nil
     }
 
-    fileprivate static func mapUserVariable(input: CBBrick?) -> UserVariable {
-        guard let input = input else { return UserVariable() }
+    fileprivate static func mapUserVariable(input: CBBrick?) -> UserVariable? {
+        guard let input = input else { return nil }
         let userVar = UserVariable()
         userVar.name = input.userVariable
         userVar.isList = false
         return userVar
     }
 
-    fileprivate static func mapUserList(input: CBBrick?) -> UserVariable {
-        guard let input = input else { return UserVariable() }
+    fileprivate static func mapUserList(input: CBBrick?) -> UserVariable? {
+        guard let input = input else { return nil }
         let userList = UserVariable()
         userList.name = input.userList
         userList.isList = true

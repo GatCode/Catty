@@ -24,7 +24,7 @@ import SWXMLHash
 
 struct CBObjectVariableEntry: XMLIndexerDeserializable {
     let object: String?
-    let list: CBUserVariableList?
+    let list: [CBUserVariableList]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObjectVariableEntry {
         return try CBObjectVariableEntry(

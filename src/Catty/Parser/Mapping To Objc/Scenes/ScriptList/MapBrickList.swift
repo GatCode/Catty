@@ -87,7 +87,7 @@ let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
 
 extension CBXMLMapping {
 
-    static func mapBrToScr(inp: CBScript?, scr: Script, obj: SpriteObject, cbo: CBObject, objs: [CBObject], proj: Project, cbp: CBProject?, comp: @escaping (NSMutableArray?, CBXMLError?) -> Void) {
+    static func mapBrToScr(inp: CBScript?, scr: Script, obj: SpriteObject, cbo: CBObject, objs: [CBObject], proj: Project, cbp: CBProject?, comp: (NSMutableArray?, CBXMLError?) -> Void) {
         var brickList = [Brick]()
         guard let input = inp?.brickList?.brick else { comp(nil, .brickMappingError); return }
         guard let lookList = scr.object.lookList else { comp(nil, .brickMappingError); return }
@@ -434,64 +434,64 @@ extension CBXMLMapping {
                 brickList.append(speakWaitBrick)
 
             // MARK: - Variable Bricks
-            case kSetVariableBrick.uppercased():
-                let variableBrick = SetVariableBrick()
-                variableBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                variableBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                updateVariableContainerWith(newBrick: variableBrick, project: proj)
-                variableBrick.script = scr
-                brickList.append(variableBrick)
-            case kChangeVariableBrick.uppercased():
-                let variableBrick = ChangeVariableBrick()
-                variableBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                variableBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                updateVariableContainerWith(newBrick: variableBrick, project: proj)
-                variableBrick.script = scr
-                brickList.append(variableBrick)
-            case kShowTextBrick.uppercased():
-                let showBrick = ShowTextBrick()
-                showBrick.xFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
-                showBrick.yFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                showBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                updateVariableContainerWith(newBrick: showBrick, project: proj)
-                showBrick.script = scr
-                brickList.append(showBrick)
-            case kHideTextBrick.uppercased():
-                let hideBrick = HideTextBrick()
-                hideBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                updateVariableContainerWith(newBrick: hideBrick, project: proj)
-                hideBrick.script = scr
-                brickList.append(hideBrick)
-            case kAddItemToUserListBrick.uppercased():
-                let listBrick = AddItemToUserListBrick()
-                listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                updateVariableContainerWith(newBrick: listBrick, project: proj)
-                listBrick.script = scr
-                brickList.append(listBrick)
-            case kDeleteItemOfUserListBrick.uppercased():
-                let listBrick = DeleteItemOfUserListBrick()
-                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                updateVariableContainerWith(newBrick: listBrick, project: proj)
-                listBrick.script = scr
-                brickList.append(listBrick)
-            case kInsertItemIntoUserListBrick.uppercased():
-                let listBrick = InsertItemIntoUserListBrick()
-                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
-                updateVariableContainerWith(newBrick: listBrick, project: proj)
-                listBrick.script = scr
-                brickList.append(listBrick)
-            case kReplaceItemInUserListBrick.uppercased():
-                let listBrick = ReplaceItemInUserListBrick()
-                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
-                listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
-                listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                updateVariableContainerWith(newBrick: listBrick, project: proj)
-                listBrick.script = scr
-                brickList.append(listBrick)
+//            case kSetVariableBrick.uppercased():
+//                let variableBrick = SetVariableBrick()
+//                variableBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                variableBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                updateVariableContainerWith(newBrick: variableBrick, project: proj)
+//                variableBrick.script = scr
+//                brickList.append(variableBrick)
+//            case kChangeVariableBrick.uppercased():
+//                let variableBrick = ChangeVariableBrick()
+//                variableBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                variableBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                updateVariableContainerWith(newBrick: variableBrick, project: proj)
+//                variableBrick.script = scr
+//                brickList.append(variableBrick)
+//            case kShowTextBrick.uppercased():
+//                let showBrick = ShowTextBrick()
+//                showBrick.xFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+//                showBrick.yFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                showBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                updateVariableContainerWith(newBrick: showBrick, project: proj)
+//                showBrick.script = scr
+//                brickList.append(showBrick)
+//            case kHideTextBrick.uppercased():
+//                let hideBrick = HideTextBrick()
+//                hideBrick.userVariable = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                updateVariableContainerWith(newBrick: hideBrick, project: proj)
+//                hideBrick.script = scr
+//                brickList.append(hideBrick)
+//            case kAddItemToUserListBrick.uppercased():
+//                let listBrick = AddItemToUserListBrick()
+//                listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                updateVariableContainerWith(newBrick: listBrick, project: proj)
+//                listBrick.script = scr
+//                brickList.append(listBrick)
+//            case kDeleteItemOfUserListBrick.uppercased():
+//                let listBrick = DeleteItemOfUserListBrick()
+//                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                listBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                updateVariableContainerWith(newBrick: listBrick, project: proj)
+//                listBrick.script = scr
+//                brickList.append(listBrick)
+//            case kInsertItemIntoUserListBrick.uppercased():
+//                let listBrick = InsertItemIntoUserListBrick()
+//                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+//                updateVariableContainerWith(newBrick: listBrick, project: proj)
+//                listBrick.script = scr
+//                brickList.append(listBrick)
+//            case kReplaceItemInUserListBrick.uppercased():
+//                let listBrick = ReplaceItemInUserListBrick()
+//                listBrick.userList = getUserVariableFor(brick: brick, object: cbo, script: inp, project: proj, cbProject: cbp)
+//                listBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+//                listBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+//                updateVariableContainerWith(newBrick: listBrick, project: proj)
+//                listBrick.script = scr
+//                brickList.append(listBrick)
             default:
                 comp(nil, .unsupportedBrick)
             }

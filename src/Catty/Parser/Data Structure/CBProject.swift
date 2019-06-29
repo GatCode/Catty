@@ -34,40 +34,44 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
         var tmpProgramVariableList: CBProgramVariableList?
         var tmpProgramListOfLists: CBProgramListOfLists?
         tmpScenes = try node["scenes"].value()
-        tmpProgramVariableList = try node["programVariableList"].value()
         tmpProgramListOfLists = try node["programListOfLists"].value()
+        tmpProgramVariableList = try node["programVariableList"].value()
 
         if tmpScenes == nil {
             tmpScenes = [CBProjectScene]()
             var objectList: CBObjectList?
-            var objectVariableList: CBObjectVariableList?
             var objectListOfList: CBObjectListofList?
+            var objectVariableList: CBObjectVariableList?
             var userBrickVariableList: CBUserBrickVariableList?
 
             objectList = try node["objectList"].value()
+
+            objectListOfList = try node["variables"]["objectListOfList"].value()
+            if objectListOfList == nil {
+                objectListOfList = try node["data"]["objectListOfList"].value()
+            }
+
             objectVariableList = try node["variables"]["objectVariableList"].value()
             if objectVariableList == nil {
                 objectVariableList = try node["data"]["objectVariableList"].value()
             }
 
-            objectListOfList = try node["data"]["objectListOfList"].value()
+            tmpProgramListOfLists = try node["variables"]["programListOfLists"].value()
+            if tmpProgramListOfLists == nil {
+                tmpProgramListOfLists = try node["data"]["programListOfLists"].value()
+            }
+
+            tmpProgramVariableList = try node["variables"]["programVariableList"].value()
+            if tmpProgramVariableList == nil {
+                tmpProgramVariableList = try node["data"]["programVariableList"].value()
+            }
+
+
             userBrickVariableList = try node["data"]["userBrickVariableList"].value()
 
             let data = CBProjectData(objectListOfList: objectListOfList, objectVariableList: objectVariableList, userBrickVariableList: userBrickVariableList)
 
             tmpScenes!.append(CBProjectScene(name: nil, objectList: objectList, data: data, originalWidth: nil, originalHeight: nil))
-
-            tmpProgramVariableList = try node["variables"]["programVariableList"].value()
-
-            if tmpProgramVariableList == nil {
-                tmpProgramVariableList = try node["data"]["programVariableList"].value()
-            }
-
-            tmpProgramListOfLists = try node["variables"]["programListOfLists"].value()
-
-            if tmpProgramListOfLists == nil {
-                tmpProgramListOfLists = try node["data"]["programListOfLists"].value()
-            }
         }
 
         return try CBProject(

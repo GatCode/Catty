@@ -166,39 +166,39 @@ extension CBXMLMapping {
         return (objectNr, scriptNr, brickNr)
     }
 
-    static func extractNumberInBacesFrom(string: String) -> Int {
-        var firstDigit: Int?
-        var secondDigit: Int?
-        var thirdDigit: Int?
-
-        let firstDigitRange = string.range(of: "[(0-9)*]", options: .regularExpression)
-
-        if let fdr = firstDigitRange {
-            firstDigit = Int(string[fdr])
-
-            let secondPartOfString = string[Range(uncheckedBounds: (lower: fdr.upperBound, upper: string.endIndex))]
-            let secondDigitRange = secondPartOfString.range(of: "[(0-9)*]", options: .regularExpression)
-
-            if let sdr = secondDigitRange {
-                secondDigit = Int(string[sdr])
-
-                let thirdPartOfString = string[Range(uncheckedBounds: (lower: sdr.upperBound, upper: string.endIndex))]
-                let thirdDigitRange = thirdPartOfString.range(of: "[(0-9)*]", options: .regularExpression)
-
-                if let tdr = thirdDigitRange {
-                    thirdDigit = Int(string[tdr])
-                }
-            }
-        }
-
-        if let first = firstDigit, let second = secondDigit, let third = thirdDigit {
-            return first * 100 + second * 10 + third - 1
-        } else if let first = firstDigit, let second = secondDigit {
-            return first * 10 + second - 1
-        } else if let first = firstDigit {
-            return first - 1
-        } else {
-            return 0
-        }
-    }
+//    static func extractNumberInBacesFrom(string: String) -> Int {
+//        var firstDigit: Int?
+//        var secondDigit: Int?
+//        var thirdDigit: Int?
+//
+//        let firstDigitRange = string.range(of: "[(0-9)*]", options: .regularExpression)
+//
+//        if let fdr = firstDigitRange {
+//            firstDigit = Int(string[fdr])
+//
+//            let secondPartOfString = string[Range(uncheckedBounds: (lower: fdr.upperBound, upper: string.endIndex))]
+//            let secondDigitRange = secondPartOfString.range(of: "[(0-9)*]", options: .regularExpression)
+//
+//            if let sdr = secondDigitRange {
+//                secondDigit = Int(string[sdr])
+//
+//                let thirdPartOfString = string[Range(uncheckedBounds: (lower: sdr.upperBound, upper: string.endIndex))]
+//                let thirdDigitRange = thirdPartOfString.range(of: "[(0-9)*]", options: .regularExpression)
+//
+//                if let tdr = thirdDigitRange {
+//                    thirdDigit = Int(string[tdr])
+//                }
+//            }
+//        }
+//
+//        if let first = firstDigit, let second = secondDigit, let third = thirdDigit {
+//            return first * 100 + second * 10 + third - 1
+//        } else if let first = firstDigit, let second = secondDigit {
+//            return first * 10 + second - 1
+//        } else if let first = firstDigit {
+//            return first - 1
+//        } else {
+//            return 0
+//        }
+//    }
 }

@@ -34,7 +34,15 @@ extension CBXMLMapping {
                 guard let objects = project?.scenes?.first?.objectList?.object else { break }
 
                 if let obj = variable.object, objects.count >= 1 {
-                    let index = extractAbstractNumbersFrom(reference: obj, project: project).0
+                    var index = 0
+                    if obj.split(separator: "/").count <= 6 {
+                        if let range = obj.range(of: "[(0-9)*]", options: .regularExpression) {
+                            index = Int(obj[range]) ?? 0
+                        }
+                    } else {
+                        index = extractAbstractNumbersFrom(reference: obj, project: project).0
+                    }
+
                     if index < objects.count {
                         let object = objects[index]
                         if let name = object.name {
@@ -48,11 +56,13 @@ extension CBXMLMapping {
                                             if let uVar = brick.userVariable, !uVar.isEmpty {
                                                 let mappedUVar = mapUserVariableOrUserList(input: brick)
                                                 var alreadyInArray = false
-                                                for obj in arr where obj.name == mappedUVar.name {
-                                                    alreadyInArray = true
-                                                }
-                                                if alreadyInArray == false {
-                                                    arr.append(mappedUVar)
+                                                if let mappedUVar = mappedUVar {
+                                                    for obj in arr where obj.name == mappedUVar.name {
+                                                        alreadyInArray = true
+                                                    }
+                                                    if alreadyInArray == false {
+                                                        arr.append(mappedUVar)
+                                                    }
                                                 }
                                             }
                                         }
@@ -76,18 +86,15 @@ extension CBXMLMapping {
         let objectVariableList = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
         for obj in map {
 
-            var spriteObject = SpriteObject()
-
             if let objectList = cbProject?.scenes?.first?.objectList?.object {
                 for object in objectList {
                     let mappedObject = mapCBObjectToSpriteObject(input: object, objects: objectList, project: project, cbProject: cbProject)
                     if let mappedObject = mappedObject, mappedObject.name == obj.0 {
-                        spriteObject = mappedObject
+                        objectVariableList.setObject(obj.1, forKey: mappedObject)
                         break
                     }
                 }
             }
-            objectVariableList.setObject(obj.1, forKey: spriteObject)
         }
         return objectVariableList
     }

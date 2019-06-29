@@ -39,11 +39,13 @@ extension CBXMLMapping {
                             if let uVar = brickList[brickNr].userList, !uVar.isEmpty {
                                 let mappedUVar = mapUserVariableOrUserList(input: brickList[brickNr])
                                 var alreadyInArray = false
-                                for obj in arr where obj.name == mappedUVar.name {
-                                    alreadyInArray = true
-                                }
-                                if alreadyInArray == false {
-                                    arr.append(mappedUVar)
+                                if let mappedUVar = mappedUVar {
+                                    for obj in arr where obj.name == mappedUVar.name {
+                                        alreadyInArray = true
+                                    }
+                                    if alreadyInArray == false {
+                                        arr.append(mappedUVar)
+                                    }
                                 }
                             }
                         }

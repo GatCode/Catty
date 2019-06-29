@@ -23,11 +23,11 @@
 import SWXMLHash
 
 struct CBObjectListOfListEntryList: XMLIndexerDeserializable {
-    let userList: [CBUserList]?
+    let userList: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObjectListOfListEntryList {
         return try CBObjectListOfListEntryList(
-            userList: node["userList"].value()
+            userList: node["userList"].value(ofAttribute: "reference")
         )
     }
 }

@@ -28,7 +28,7 @@ let kScript = "Script"
 
 extension CBXMLMapping {
 
-    static func mapScrToObj(input: CBScriptList?, object: SpriteObject, objs: [CBObject], cbo: CBObject, proj: Project, cbp: CBProject?, completion: @escaping (NSMutableArray?, CBXMLError?) -> Void) {
+    static func mapScrToObj(input: CBScriptList?, object: SpriteObject, objs: [CBObject], cbo: CBObject, proj: Project, cbp: CBProject?, completion: (NSMutableArray?, CBXMLError?) -> Void) {
 
         var scriptList = [Script]()
         guard let input = input?.script else { completion(nil, .scriptListMapError); return }
@@ -71,11 +71,16 @@ extension CBXMLMapping {
             }
 
             obj.object = object
+            var mappingError: CBXMLError?
             mapBrToScr(inp: script, scr: obj, obj: object, cbo: cbo, objs: objs, proj: proj, cbp: cbp) { result, error in
                 if error != nil {
-                    completion(nil, error)
+                    mappingError = error
                 }
                 obj.brickList = result
+            }
+            if mappingError != nil {
+                completion(nil, mappingError)
+                break
             }
 
             scriptList.append(obj)
