@@ -22,7 +22,7 @@
 
 extension CBXMLMapping {
 
-    static func mapHeaderToHeader(input: CBHeader?) -> Header {
+    static func mapHeader(input: CBHeader?) -> Header? {
 
         let header = Header()
         header.applicationBuildName = input?.applicationBuildName
