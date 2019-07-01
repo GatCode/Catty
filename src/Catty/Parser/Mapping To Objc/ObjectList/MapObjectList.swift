@@ -159,66 +159,68 @@ extension CBXMLMapping {
 
             case kSetVariableBrick.uppercased():
                 let newBrick = SetVariableBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userVariable = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
+
                 newBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kChangeVariableBrick.uppercased():
                 let newBrick = ChangeVariableBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userVariable = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kShowTextBrick.uppercased():
                 let newBrick = ShowTextBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userVariable = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.xFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.yFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kHideTextBrick.uppercased():
                 let newBrick = HideTextBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userVariable = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kAddItemToUserListBrick.uppercased():
                 let newBrick = AddItemToUserListBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userList = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kDeleteItemOfUserListBrick.uppercased():
                 let newBrick = DeleteItemOfUserListBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userList = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kInsertItemIntoUserListBrick.uppercased():
                 let newBrick = InsertItemIntoUserListBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userList = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kReplaceItemInUserListBrick.uppercased():
                 let newBrick = ReplaceItemInUserListBrick()
-                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                let uVar = getUserVariableForBrickInCurrentBrickList(currBr: brick, cbProject: cbProject, currBrList: resultBrickList, mappedProject: &mappedProject)
                 newBrick.userList = uVar
-                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
+                newBrick.uVar = uVar
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
