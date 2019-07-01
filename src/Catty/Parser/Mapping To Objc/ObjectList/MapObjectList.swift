@@ -226,11 +226,7 @@ extension CBXMLMapping {
     static func resolveUserVariable(brick: CBBrick?, currentBrickList: inout [Brick]) -> UserVariable? {
         guard let brick = brick else { return nil }
 
-        if let variable = brick.userVariable {
-            return allocUserVariable(name: variable, isList: false)
-        } else if let variable = brick.userList {
-            return allocUserVariable(name: variable, isList: true)
-        } else if let reference = brick.userVariableReference {
+        if let reference = brick.userVariableReference {
             var splittedReference = reference.split(separator: "/")
             splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
             if splittedReference.count == 2, let string = splittedReference.first {
@@ -239,6 +235,10 @@ extension CBXMLMapping {
                     return currentBrickList[index].uVar
                 }
             }
+        } else if let variable = brick.userVariable {
+            return allocUserVariable(name: variable, isList: false)
+        } else if let variable = brick.userList {
+            return allocUserVariable(name: variable, isList: true)
         }
 
         return nil
