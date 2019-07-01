@@ -47,8 +47,20 @@ extension CBXMLMapping {
         var result = [UserVariable]()
         for variable in programListOfLists {
             let referencedObject = getObjectFor(reference: variable.reference, project: project, mappedProject: &mappedProject)
+            let resolvedReference = resolveReferenceString(reference: variable.reference)
 
-            print("")
+            let scrNr = resolvedReference?.1 ?? 0
+            let brNr = resolvedReference?.2 ?? 0
+
+            if let scrList = referencedObject?.scriptList {
+                if scrNr < scrList.count, let script = referencedObject?.scriptList[scrNr] as? Script {
+                    if brNr < script.brickList.count, let brick = script.brickList[brNr] as? Brick {
+                        if let uVar = UnsafeMutablePointer<UserVariable>(OpaquePointer(brick.uVar))?.pointee {
+                            result.append(uVar)
+                        }
+                    }
+                }
+            }
         }
 
         return NSMutableArray(array: result)
@@ -60,7 +72,21 @@ extension CBXMLMapping {
 
         var result = [UserVariable]()
         for variable in programVariableList {
-            print("")
+            let referencedObject = getObjectFor(reference: variable.reference, project: project, mappedProject: &mappedProject)
+            let resolvedReference = resolveReferenceString(reference: variable.reference)
+
+            let scrNr = resolvedReference?.1 ?? 0
+            let brNr = resolvedReference?.2 ?? 0
+
+            if let scrList = referencedObject?.scriptList {
+                if scrNr < scrList.count, let script = referencedObject?.scriptList[scrNr] as? Script {
+                    if brNr < script.brickList.count, let brick = script.brickList[brNr] as? Brick {
+                        if let uVar = UnsafeMutablePointer<UserVariable>(OpaquePointer(brick.uVar))?.pointee {
+                            result.append(uVar)
+                        }
+                    }
+                }
+            }
         }
 
         return NSMutableArray(array: result)
