@@ -22,15 +22,16 @@
 
 extension CBXMLMapping {
 
-    static func mapObjectList(project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
+    static func mapObjectList(project: CBProject?, mappedProject: inout Project) -> NSMutableArray? {
         guard let project = project else { return nil }
         guard let objectList = project.scenes?.first?.objectList?.object else { return nil }
 
-        // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
         var resultObjectList = [SpriteObject]()
         for object in objectList {
-            if let mappedObject = mapObject(object: object) {
-                mappedObject.project = currentProject
+            if let mappedObject = checkIfObjectAlreadyAllocated(cbObject: object, mappedProject: mappedProject) {
+                resultObjectList.append(mappedObject.pointee)
+            } else if let mappedObject = mapObject(object: object, cbProject: project, mappedProject: &mappedProject) {
+                mappedObject.project = mappedProject
                 resultObjectList.append(mappedObject)
             }
         }
@@ -39,7 +40,7 @@ extension CBXMLMapping {
         return NSMutableArray(array: resultObjectList)
     }
 
-    static func mapObject(object: CBObject?) -> SpriteObject? {
+    static func mapObject(object: CBObject?, cbProject: CBProject?, mappedProject: inout Project) -> SpriteObject? {
         guard let object = object else { return nil }
         guard let lookList = object.lookList else { return nil }
         var result = SpriteObject()
@@ -47,19 +48,19 @@ extension CBXMLMapping {
         result.name = object.name
         result.lookList = mapLookListToObject(input: lookList)
         //result.soundList = mapSoundListToObject(input: soundList, cbProject: cbProject, object: input)
-        if let mappedScriptList = mapScriptList(scriptList: object.scriptList, currentObject: &result) {
+        if let mappedScriptList = mapScriptList(scriptList: object.scriptList, currentObject: &result, cbProject: cbProject, mappedProject: &mappedProject) {
             result.scriptList = mappedScriptList
         }
 
         return result
     }
 
-    static func mapScriptList(scriptList: CBScriptList?, currentObject: inout SpriteObject) -> NSMutableArray? {
+    static func mapScriptList(scriptList: CBScriptList?, currentObject: inout SpriteObject, cbProject: CBProject?, mappedProject: inout Project) -> NSMutableArray? {
         guard let scriptList = scriptList?.script else { return nil }
 
         var resultScriptList = [Script]()
         for script in scriptList {
-            if let scr = mapScript(script: script) {
+            if let scr = mapScript(script: script, cbProject: cbProject, mappedProject: &mappedProject) {
                 scr.object = currentObject
                 resultScriptList.append(scr)
             }
@@ -69,12 +70,12 @@ extension CBXMLMapping {
         return NSMutableArray(array: resultScriptList)
     }
 
-    static func mapScript(script: CBScript?) -> Script? {
+    static func mapScript(script: CBScript?, cbProject: CBProject?, mappedProject: inout Project) -> Script? {
         guard let script = script else { return nil }
 
         // TODO: IMPLEMENT OTHER SCRIPT TYPES!!!
         var result = StartScript()
-        if let brickList = mapBrickList(brickList: script.brickList, currentScript: &result) {
+        if let brickList = mapBrickList(brickList: script.brickList, currentScript: &result, cbProject: cbProject, mappedProject: &mappedProject) {
             result.brickList = brickList
         }
         if result.brickList == nil { return nil }
@@ -84,7 +85,7 @@ extension CBXMLMapping {
         return result
     }
 
-    static func mapBrickList(brickList: CBBrickList?, currentScript: inout StartScript) -> NSMutableArray? {
+    static func mapBrickList(brickList: CBBrickList?, currentScript: inout StartScript, cbProject: CBProject?, mappedProject: inout Project) -> NSMutableArray? {
         guard let brickList = brickList?.brick else { return nil }
 
         let kBroadcastBrick: String = "BroadcastBrick"
@@ -158,58 +159,66 @@ extension CBXMLMapping {
 
             case kSetVariableBrick.uppercased():
                 let newBrick = SetVariableBrick()
-                newBrick.userVariable = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userVariable
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userVariable = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kChangeVariableBrick.uppercased():
                 let newBrick = ChangeVariableBrick()
-                newBrick.userVariable = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userVariable
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userVariable = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kShowTextBrick.uppercased():
                 let newBrick = ShowTextBrick()
-                newBrick.userVariable = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userVariable
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userVariable = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.xFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.yFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kHideTextBrick.uppercased():
                 let newBrick = HideTextBrick()
-                newBrick.userVariable = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userVariable
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userVariable = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kAddItemToUserListBrick.uppercased():
                 let newBrick = AddItemToUserListBrick()
-                newBrick.userList = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userList
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userList = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kDeleteItemOfUserListBrick.uppercased():
                 let newBrick = DeleteItemOfUserListBrick()
-                newBrick.userList = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userList
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userList = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kInsertItemIntoUserListBrick.uppercased():
                 let newBrick = InsertItemIntoUserListBrick()
-                newBrick.userList = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userList
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userList = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kReplaceItemInUserListBrick.uppercased():
                 let newBrick = ReplaceItemInUserListBrick()
-                newBrick.userList = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
-                newBrick.uVar = newBrick.userList
+                var uVar = resolveUserVariable(brick: brick, cbProject: cbProject, mappedProject: &mappedProject)
+                newBrick.userList = uVar
+                newBrick.uVar = UnsafeMutableRawPointer(&uVar)
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
@@ -221,34 +230,6 @@ extension CBXMLMapping {
         if resultBrickList.isEmpty { return nil }
 
         return NSMutableArray(array: resultBrickList)
-    }
-
-    static func resolveUserVariable(brick: CBBrick?, currentBrickList: inout [Brick]) -> UserVariable? {
-        guard let brick = brick else { return nil }
-
-        if let variable = brick.userVariable {
-            return allocUserVariable(name: variable, isList: false)
-        } else if let variable = brick.userList {
-            return allocUserVariable(name: variable, isList: true)
-        } else if let reference = brick.userVariableReference {
-            var splittedReference = reference.split(separator: "/")
-            splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
-            if splittedReference.count == 2, let string = splittedReference.first {
-                let index = extractNumberInBacesFrom(string: String(string))
-                if index < currentBrickList.count {
-                    return currentBrickList[index].uVar
-                }
-            }
-        }
-
-        return nil
-    }
-
-    static func allocUserVariable(name: String, isList: Bool) -> UserVariable {
-        let userVar = UserVariable()
-        userVar.name = name
-        userVar.isList = isList ? true : false
-        return userVar
     }
 
     // MARK: - mapFormula

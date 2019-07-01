@@ -32,14 +32,14 @@ struct CBXMLMapping {
             return nil
         }
 
-        if let mappedObjectList = CBXMLMapping.mapObjectList(project: project, currentProject: &mappedProject) {
-            mappedProject.objectList = mappedObjectList
+        if let mappedVariables = CBXMLMapping.mapVariables(project: project, mappedProject: &mappedProject) {
+            mappedProject.variables = mappedVariables
         } else {
             return nil
         }
 
-        if let mappedVariables = CBXMLMapping.mapVariables(project: project, mappedProject: &mappedProject) {
-            mappedProject.variables = mappedVariables
+        if let mappedObjectList = CBXMLMapping.mapObjectList(project: project, mappedProject: &mappedProject) {
+            mappedProject.objectList = mappedObjectList
         } else {
             return nil
         }
