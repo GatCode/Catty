@@ -56,7 +56,8 @@ extension CBXMLMapping {
                 if scrNr < scrList.count, let script = referencedObject?.scriptList[scrNr] as? Script {
                     if brNr < script.brickList.count, let brick = script.brickList[brNr] as? Brick {
                         if let uVar = brick.uVar {
-                            result.append(uVar)
+                            let res = UnsafeMutablePointer<UserVariable>(OpaquePointer(uVar))
+                            result.append(res.pointee)
                         }
                     }
                 }
@@ -82,7 +83,8 @@ extension CBXMLMapping {
                 if scrNr < scrList.count, let script = referencedObject?.scriptList[scrNr] as? Script {
                     if brNr < script.brickList.count, let brick = script.brickList[brNr] as? Brick {
                         if let uVar = brick.uVar {
-                            result.append(uVar)
+                            let res = UnsafeMutablePointer<UserVariable>(OpaquePointer(uVar))
+                            result.append(res.pointee)
                         }
                     }
                 }
@@ -248,8 +250,10 @@ extension CBXMLMapping {
 
             if let br = cbProject?.scenes?.first?.objectList?.object?[objNr].scriptList?.script?[scrNr].brickList?.brick?[brNr] {
                 for brick in currBrList {
-                    if brick.uVar.name == br.userVariable || brick.uVar.name == br.userList {
-                        uVar = brick.uVar
+                    if let brickUVar = UnsafeMutablePointer<UserVariable>(OpaquePointer(brick.uVar))?.pointee {
+                        if brickUVar.name == br.userVariable || brickUVar.name == br.userList {
+                            uVar = brickUVar
+                        }
                     }
                 }
             }
