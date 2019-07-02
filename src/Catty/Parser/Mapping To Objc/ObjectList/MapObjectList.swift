@@ -38,12 +38,12 @@ extension CBXMLMapping {
 
         return NSMutableArray(array: resultObjectList)
     }
-    
+
     static func mapObject(object: CBObject?) -> SpriteObject? {
         guard let object = object else { return nil }
         guard let lookList = object.lookList else { return nil }
         guard let soundList = object.soundList else { return nil }
-        
+
         var result = SpriteObject()
         result.name = object.name
         result.lookList = mapLookList(lookList: lookList)
@@ -53,28 +53,28 @@ extension CBXMLMapping {
 
         return result
     }
-    
+
     // MARK: - mapLookList
     static func mapLookList(lookList: CBLookList?) -> NSMutableArray? {
         guard let input = lookList?.look else { return  nil }
-        
+
         var lookList = [Look]()
         for look in input {
             let object = Look()
-            
+
             object.name = look.name
             object.fileName = look.fileName
-            
+
             lookList.append(object)
         }
-        
+
         return NSMutableArray(array: lookList)
     }
-    
+
     // MARK: - mapSoundList
     static func mapSoundList(soundList: CBSoundList?, object: CBObject) -> NSMutableArray? {
         guard let input = soundList?.sound else { return  nil }
-        
+
         var soundList = [Sound]()
         for sound in input {
             //            if let ref = sound.reference {
@@ -105,7 +105,7 @@ extension CBXMLMapping {
             //                }
             //            }
         }
-        
+
         return NSMutableArray(array: soundList)
     }
 
@@ -128,20 +128,55 @@ extension CBXMLMapping {
     static func mapScript(script: CBScript?) -> Script? {
         guard let script = script else { return nil }
 
-        // TODO: IMPLEMENT OTHER SCRIPT TYPES!!!
-        var result = StartScript()
-        if let brickList = mapBrickList(brickList: script.brickList, currentScript: &result) {
-            result.brickList = brickList
-        }
-        if result.brickList == nil { return nil }
-        // TODO: IMPLEMENT isUserScript
+        let kStartScript = "StartScript"
+        let kWhenScript = "WhenScript"
+        let kWhenTouchDownScript = "WhenTouchDownScript"
+        let kBroadcastScript = "BroadcastScript"
+        let kScript = "Script"
 
-        return result
+        var result: Script?
+        switch script.type?.uppercased() {
+        case kStartScript.uppercased():
+            let scr = StartScript()
+            result = scr
+        case kWhenScript.uppercased():
+            let scr = WhenScript()
+            if let action = script.action {
+                scr.action = action
+            }
+            result = scr
+        case kWhenTouchDownScript.uppercased():
+            let scr = WhenTouchDownScript()
+            result = scr
+        case kBroadcastScript.uppercased():
+            let scr = BroadcastScript()
+            if let msg = script.receivedMessage {
+                scr.receivedMessage = msg
+            }
+            result = scr
+        default:
+            if script.type?.hasSuffix(kScript) ?? false {
+                let scr = BroadcastScript()
+                if let type = script.type {
+                    let msg = String(format: "%@ %@", "timeNow in hex: ", kLocalizedUnsupportedScript, type)
+                    scr.receivedMessage = msg
+                }
+                result = scr
+            }
+        }
+
+        if let res = result {
+            res.brickList = mapBrickList(brickList: script.brickList, currentScript: &result) // TODO: IMPLEMENT isUserScript
+            return res.brickList != nil ? result : nil
+        }
+
+        return nil
     }
 
     // MARK: - mapBrickList
-    static func mapBrickList(brickList: CBBrickList?, currentScript: inout StartScript) -> NSMutableArray? {
+    static func mapBrickList(brickList: CBBrickList?, currentScript: inout Script?) -> NSMutableArray? {
         guard let brickList = brickList?.brick else { return nil }
+        guard let currentScript = currentScript else { return nil }
 
         let kBroadcastBrick: String = "BroadcastBrick"
         let kBroadcastWaitBrick: String = "BroadcastWaitBrick"
