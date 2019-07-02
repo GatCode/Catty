@@ -22,11 +22,11 @@
 
 extension CBXMLMapping {
 
+    // MARK: - mapObjectList
     static func mapObjectList(project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
         guard let project = project else { return nil }
-        guard let objectList = project.scenes?.first?.objectList?.object else { return nil }
+        guard let objectList = project.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
 
-        // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
         var resultObjectList = [SpriteObject]()
         for object in objectList {
             if let mappedObject = mapObject(object: object) {
@@ -38,22 +38,78 @@ extension CBXMLMapping {
 
         return NSMutableArray(array: resultObjectList)
     }
-
+    
     static func mapObject(object: CBObject?) -> SpriteObject? {
         guard let object = object else { return nil }
         guard let lookList = object.lookList else { return nil }
+        guard let soundList = object.soundList else { return nil }
+        
         var result = SpriteObject()
-
         result.name = object.name
-        result.lookList = mapLookListToObject(input: lookList)
-        //result.soundList = mapSoundListToObject(input: soundList, cbProject: cbProject, object: input)
-        if let mappedScriptList = mapScriptList(scriptList: object.scriptList, currentObject: &result) {
-            result.scriptList = mappedScriptList
-        }
+        result.lookList = mapLookList(lookList: lookList)
+        result.soundList = mapSoundList(soundList: soundList, object: object)
+        result.scriptList = mapScriptList(scriptList: object.scriptList, currentObject: &result)
+        if result.lookList == nil || result.soundList == nil || result.scriptList == nil { return nil }
 
         return result
     }
+    
+    // MARK: - mapLookList
+    static func mapLookList(lookList: CBLookList?) -> NSMutableArray? {
+        guard let input = lookList?.look else { return  nil }
+        
+        var lookList = [Look]()
+        for look in input {
+            let object = Look()
+            
+            object.name = look.name
+            object.fileName = look.fileName
+            
+            lookList.append(object)
+        }
+        
+        return NSMutableArray(array: lookList)
+    }
+    
+    // MARK: - mapSoundList
+    static func mapSoundList(soundList: CBSoundList?, object: CBObject) -> NSMutableArray? {
+        guard let input = soundList?.sound else { return  nil }
+        
+        var soundList = [Sound]()
+        for sound in input {
+            //            if let ref = sound.reference {
+            //                var brick: CBBrick?
+            //                if ref.split(separator: "/").count < 9 {
+            //                    let extr = extractAbstractNumbersFrom(object: object, reference: ref, project: cbProject)
+            //                    if let sl = object.scriptList?.script, sl.count > extr.0, let bl = sl[extr.0].brickList?.brick, bl.count > extr.1 {
+            //                        brick = bl[extr.1]
+            //                    }
+            //                } else {
+            //                    let extr = extractAbstractNumbersFrom(reference: ref, project: cbProject)
+            //                    if let ol = cbProject?.scenes?.first?.objectList?.object, ol.count > extr.0 {
+            //                        if let sl = ol[extr.0].scriptList?.script, sl.count > extr.1, let bl = sl[extr.1].brickList?.brick, bl.count > extr.2 {
+            //                            brick = bl[extr.2]
+            //                        }
+            //                    }
+            //                }
+            //                if let brick = brick, let name = brick.sound?.name, let filename = brick.sound?.fileName {
+            //                    let soundToAppend = Sound(name: name, fileName: filename)
+            //                    if soundList.contains(soundToAppend) == false {
+            //                        soundList.append(soundToAppend)
+            //                    }
+            //                }
+            //            } else if let name = sound.name, let filename = sound.fileName {
+            //                let soundToAppend = Sound(name: name, fileName: filename)
+            //                if soundList.contains(soundToAppend) == false {
+            //                    soundList.append(soundToAppend)
+            //                }
+            //            }
+        }
+        
+        return NSMutableArray(array: soundList)
+    }
 
+    // MARK: - mapScriptList
     static func mapScriptList(scriptList: CBScriptList?, currentObject: inout SpriteObject) -> NSMutableArray? {
         guard let scriptList = scriptList?.script else { return nil }
 
@@ -78,12 +134,12 @@ extension CBXMLMapping {
             result.brickList = brickList
         }
         if result.brickList == nil { return nil }
-
         // TODO: IMPLEMENT isUserScript
 
         return result
     }
 
+    // MARK: - mapBrickList
     static func mapBrickList(brickList: CBBrickList?, currentScript: inout StartScript) -> NSMutableArray? {
         guard let brickList = brickList?.brick else { return nil }
 
@@ -331,61 +387,6 @@ extension CBXMLMapping {
         }
 
         return child
-    }
-
-    // MARK: - mapLookListToObject
-    static func mapLookListToObject(input: CBLookList?) -> NSMutableArray {
-        var lookList = [Look]()
-        guard let input = input?.look else { return  NSMutableArray(array: lookList) }
-
-        for look in input {
-            let object = Look()
-
-            object.name = look.name
-            object.fileName = look.fileName
-
-            lookList.append(object)
-        }
-
-        return NSMutableArray(array: lookList)
-    }
-
-    // MARK: - mapSoundListToObject
-    static func mapSoundListToObject(input: CBSoundList?, cbProject: CBProject?, object: CBObject) -> NSMutableArray {
-        var soundList = [Sound]()
-        guard let input = input?.sound else { return  NSMutableArray(array: soundList) }
-
-        for sound in input {
-            if let ref = sound.reference {
-                var brick: CBBrick?
-                if ref.split(separator: "/").count < 9 {
-                    let extr = extractAbstractNumbersFrom(object: object, reference: ref, project: cbProject)
-                    if let sl = object.scriptList?.script, sl.count > extr.0, let bl = sl[extr.0].brickList?.brick, bl.count > extr.1 {
-                        brick = bl[extr.1]
-                    }
-                } else {
-                    let extr = extractAbstractNumbersFrom(reference: ref, project: cbProject)
-                    if let ol = cbProject?.scenes?.first?.objectList?.object, ol.count > extr.0 {
-                        if let sl = ol[extr.0].scriptList?.script, sl.count > extr.1, let bl = sl[extr.1].brickList?.brick, bl.count > extr.2 {
-                            brick = bl[extr.2]
-                        }
-                    }
-                }
-                if let brick = brick, let name = brick.sound?.name, let filename = brick.sound?.fileName {
-                    let soundToAppend = Sound(name: name, fileName: filename)
-                    if soundList.contains(soundToAppend) == false {
-                        soundList.append(soundToAppend)
-                    }
-                }
-            } else if let name = sound.name, let filename = sound.fileName {
-                let soundToAppend = Sound(name: name, fileName: filename)
-                if soundList.contains(soundToAppend) == false {
-                    soundList.append(soundToAppend)
-                }
-            }
-        }
-
-        return NSMutableArray(array: soundList)
     }
 
     static func extractAbstractNumbersFrom(object: CBObject, reference: String, project: CBProject?) -> (Int, Int) {
