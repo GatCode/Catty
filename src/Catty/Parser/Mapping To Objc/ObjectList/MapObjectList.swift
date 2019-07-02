@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+// swiftlint:disable large_tuple
+
 extension CBXMLMapping {
 
     // MARK: - mapObjectList
@@ -190,7 +192,6 @@ extension CBXMLMapping {
 
         if let res = result {
             res.brickList = mapBrickList(brickList: script.brickList, objectList: objectList, project: project, currentScript: &result, currentObject: &currentObject)
-            // TODO: IMPLEMENT isUserScript
             return res.brickList != nil ? result : nil
         }
 
@@ -822,8 +823,7 @@ extension CBXMLMapping {
             }
         }
 
-        if scriptType != "" && brickType != "", let objectList = project.scenes?.first?.objectList?.object?[objectNr] {
-
+        if scriptType.isEmpty == false && brickType.isEmpty == false, let objectList = project.scenes?.first?.objectList?.object?[objectNr] {
             var abstractScriptNr = 0
             if let scriptList = objectList.scriptList?.script {
                 for script in scriptList {

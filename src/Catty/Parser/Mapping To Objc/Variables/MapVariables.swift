@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+// swiftlint:disable large_tuple
+
 extension CBXMLMapping {
 
     static func mapVariables(project: CBProject?, mappedProject: inout Project) -> VariablesContainer? {
