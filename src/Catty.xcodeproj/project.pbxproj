@@ -31,6 +31,7 @@
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
 		2E13C40422ABB0090018CB1E /* XMLMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */; };
+		2E21CF6522CB7EA0001154DD /* CBXMLDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21CF6422CB7EA0001154DD /* CBXMLDefinitions.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
@@ -1299,6 +1300,7 @@
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
 		2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLMappingTests.swift; path = "Parser & Serialization/XMLMappingTests.swift"; sourceTree = "<group>"; };
+		2E21CF6422CB7EA0001154DD /* CBXMLDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLDefinitions.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
 		2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Galaxy_War_0994.xml; sourceTree = "<group>"; };
@@ -3126,6 +3128,14 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
+		2E21CF6122CB7E7C001154DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E21CF6422CB7EA0001154DD /* CBXMLDefinitions.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
 			isa = PBXGroup;
 			children = (
@@ -3160,6 +3170,7 @@
 				2E56BE5922A8E3EE00F26BC1 /* Header */,
 				2E75ADB222C7B40800BFB521 /* ObjectList */,
 				2E75ADB522C7B48A00BFB521 /* Variables */,
+				2E21CF6122CB7E7C001154DD /* Supporting Files */,
 			);
 			path = "Mapping To Objc";
 			sourceTree = "<group>";
@@ -8678,6 +8689,7 @@
 				AA74EFF91BC05B5F00D1E954 /* SetTransparencyBrick.m in Sources */,
 				AA74EFE81BC05B5F00D1E954 /* LoopEndBrick.m in Sources */,
 				9200C2DB1C8084AA002F5CA4 /* HideTextBrick+CBXMLHandler.m in Sources */,
+				2E21CF6522CB7EA0001154DD /* CBXMLDefinitions.swift in Sources */,
 				AA74EEDD1BC057B900D1E954 /* ForeverBrick+CBXMLHandler.m in Sources */,
 				4C0F9F22204ADBAF00E71B2D /* IfThenLogicEndBrick+CBXMLHandler.m in Sources */,
 				4CF0728C20D659F700F93AB5 /* PhiroSideLeftSensor.swift in Sources */,

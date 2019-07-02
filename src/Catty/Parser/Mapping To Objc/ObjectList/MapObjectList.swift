@@ -157,13 +157,6 @@ extension CBXMLMapping {
     static func mapScript(script: CBScript?) -> Script? {
         guard let script = script else { return nil }
 
-        // TODO: outsource definitions
-        let kStartScript = "StartScript"
-        let kWhenScript = "WhenScript"
-        let kWhenTouchDownScript = "WhenTouchDownScript"
-        let kBroadcastScript = "BroadcastScript"
-        let kScript = "Script"
-
         var result: Script?
         switch script.type?.uppercased() {
         case kStartScript.uppercased():
@@ -208,76 +201,9 @@ extension CBXMLMapping {
         guard let brickList = brickList?.brick else { return nil }
         guard let currentScript = currentScript else { return nil }
 
-        // TODO: outsource definitions
-        let kBroadcastBrick: String = "BroadcastBrick"
-        let kBroadcastWaitBrick: String = "BroadcastWaitBrick"
-        let kForeverBrick: String = "ForeverBrick"
-        let kIfLogicBeginBrick: String = "IfLogicBeginBrick"
-        let kIfLogicElseBrick: String = "IfLogicElseBrick"
-        let kIfLogicEndBrick: String = "IfLogicEndBrick"
-        let kIfThenLogicBeginBrick: String = "IfThenLogicBeginBrick"
-        let kIfThenLogicEndBrick: String = "IfThenLogicEndBrick"
-        let kLoopEndBrick: String = "LoopEndBrick"
-        let kLoopEndlessBrick: String = "LoopEndlessBrick"
-        let kNoteBrick: String = "NoteBrick"
-        let kRepeatBrick: String = "RepeatBrick"
-        let kRepeatUntilBrick: String = "RepeatUntilBrick"
-        let kWaitBrick: String = "WaitBrick"
-        let kWaitUntilBrick: String = "WaitUntilBrick"
-
-        let kPlaceAtBrick: String = "PlaceAtBrick"
-        let kChangeXByNBrick: String = "ChangeXByNBrick"
-        let kChangeYByNBrick: String = "ChangeYByNBrick"
-        let kSetXBrick: String = "SetXBrick"
-        let kSetYBrick: String = "SetYBrick"
-        let kIfOnEdgeBounceBrick: String = "IfOnEdgeBounceBrick"
-        let kMoveNStepsBrick: String = "MoveNStepsBrick"
-        let kTurnLeftBrick: String = "TurnLeftBrick"
-        let kTurnRightBrick: String = "TurnRightBrick"
-        let kPointInDirectionBrick: String = "PointInDirectionBrick"
-        let kPointToBrick: String = "PointToBrick"
-        let kGlideToBrick: String = "GlideToBrick"
-        let kVibrationBrick: String = "VibrationBrick"
-
-        let kSetBackgroundBrick: String = "SetBackgroundBrick"
-        let kSetLookBrick: String = "SetLookBrick"
-        let kNextLookBrick: String = "NextLookBrick"
-        let kPreviousLookBrick: String = "PreviousLookBrick"
-        let kSetSizeToBrick: String = "SetSizeToBrick"
-        let kChangeSizeByNBrick: String = "ChangeSizeByNBrick"
-        let kHideBrick: String = "HideBrick"
-        let kShowBrick: String = "ShowBrick"
-        let kSetTransparencyBrick: String = "SetTransparencyBrick"
-        let kChangeTransparencyByNBrick: String = "ChangeTransparencyByNBrick"
-        let kSetBrightnessBrick: String = "SetBrightnessBrick"
-        let kChangeBrightnessByNBrick: String = "ChangeBrightnessByNBrick"
-        let kSetColorBrick: String = "SetColorBrick"
-        let kChangeColorByNBrick: String = "ChangeColorByNBrick"
-        let kClearGraphicEffectBrick: String = "ClearGraphicEffectBrick"
-        let kFlashBrick: String = "FlashBrick"
-        let kCameraBrick: String = "CameraBrick"
-        let kChooseCameraBrick: String = "ChooseCameraBrick"
-
-        let kPlaySoundBrick: String = "PlaySoundBrick"
-        let kStopAllSoundsBrick: String = "StopAllSoundsBrick"
-        let kSetVolumeToBrick: String = "SetVolumeToBrick"
-        let kChangeVolumeByNBrick: String = "ChangeVolumeByNBrick"
-        let kSpeakBrick: String = "SpeakBrick"
-        let kSpeakAndWaitBrick: String = "SpeakAndWaitBrick"
-
-        let kSetVariableBrick: String = "SetVariableBrick"
-        let kChangeVariableBrick: String = "ChangeVariableBrick"
-        let kShowTextBrick: String = "ShowTextBrick"
-        let kHideTextBrick: String = "HideTextBrick"
-        let kAddItemToUserListBrick: String = "AddItemToUserListBrick"
-        let kDeleteItemOfUserListBrick: String = "DeleteItemOfUserListBrick"
-        let kInsertItemIntoUserListBrick: String = "InsertItemIntoUserListBrick"
-        let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
-
         var resultBrickList = [Brick]()
         for brick in brickList {
             switch brick.type?.uppercased() {
-
             case kSetVariableBrick.uppercased():
                 let newBrick = SetVariableBrick()
                 newBrick.userVariable = resolveUserVariable(brick: brick, currentBrickList: &resultBrickList)
