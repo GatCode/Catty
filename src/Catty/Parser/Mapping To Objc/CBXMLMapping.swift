@@ -22,11 +22,13 @@
 
 enum CBXMLMapping {
 
+    static var mappingLookList = [Look]()
     static var mappingSoundList = [Sound]()
 
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
         var mappedProject = Project()
+        CBXMLMapping.mappingLookList.removeAll()
         CBXMLMapping.mappingSoundList.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {
