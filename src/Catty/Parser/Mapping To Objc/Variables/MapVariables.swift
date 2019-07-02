@@ -218,8 +218,8 @@ extension CBXMLMapping {
             }
         }
 
-        let objForUpdate = objectList[object?.0 ?? 0]
-        let scriptList = objForUpdate.scriptList?.script
+        let objForUpdate = objectList.isEmpty == false ? objectList[object?.0 ?? 0] : nil
+        let scriptList = objForUpdate?.scriptList?.script
 
         if var ctr = script?.0, let scriptList = scriptList {
             var resNr = 0
@@ -235,7 +235,7 @@ extension CBXMLMapping {
             }
         }
 
-        let scrForUpdate = scriptList?[script?.0 ?? 0]
+        let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil
         let brickList = scrForUpdate?.brickList?.brick
 
         if var ctr = brick?.0, let brickList = brickList {
@@ -257,7 +257,6 @@ extension CBXMLMapping {
 
     static func resolveReferenceStringShort(reference: String?, project: CBProject?, object: CBObject?) -> (Int?, Int?)? {
         guard let reference = reference else { return nil }
-        guard let objectList = project?.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
 
         var splittedReference = reference.split(separator: "/")
         splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
@@ -295,7 +294,7 @@ extension CBXMLMapping {
             }
         }
 
-        let scrForUpdate = scriptList?[script?.0 ?? 0]
+        let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil
         let brickList = scrForUpdate?.brickList?.brick
 
         if var ctr = brick?.0, let brickList = brickList {
