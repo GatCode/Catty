@@ -29,7 +29,7 @@ extension CBXMLMapping {
 
         var resultObjectList = [SpriteObject]()
         for object in objectList {
-            if let mappedObject = mapObject(object: object) {
+            if let mappedObject = mapObject(object: object, project: project) {
                 mappedObject.project = currentProject
                 resultObjectList.append(mappedObject)
             }
@@ -39,15 +39,16 @@ extension CBXMLMapping {
         return NSMutableArray(array: resultObjectList)
     }
 
-    static func mapObject(object: CBObject?) -> SpriteObject? {
+    static func mapObject(object: CBObject?, project: CBProject?) -> SpriteObject? {
         guard let object = object else { return nil }
+        guard let project = project else { return nil }
         guard let lookList = object.lookList else { return nil }
         guard let soundList = object.soundList else { return nil }
 
         var result = SpriteObject()
         result.name = object.name
         result.lookList = mapLookList(lookList: lookList)
-        result.soundList = mapSoundList(soundList: soundList, object: object)
+        result.soundList = mapSoundList(soundList: soundList, project: project, object: object)
         result.scriptList = mapScriptList(scriptList: object.scriptList, currentObject: &result)
         if result.lookList == nil || result.soundList == nil || result.scriptList == nil { return nil }
 
@@ -72,41 +73,56 @@ extension CBXMLMapping {
     }
 
     // MARK: - mapSoundList
-    static func mapSoundList(soundList: CBSoundList?, object: CBObject) -> NSMutableArray? {
-        guard let input = soundList?.sound else { return  nil }
+    static func mapSoundList(soundList: CBSoundList?, project: CBProject?, object: CBObject?) -> NSMutableArray? {
+        guard let input = soundList?.sound else { return nil }
+        guard let project = project else { return nil }
 
         var soundList = [Sound]()
         for sound in input {
-            //            if let ref = sound.reference {
-            //                var brick: CBBrick?
-            //                if ref.split(separator: "/").count < 9 {
-            //                    let extr = extractAbstractNumbersFrom(object: object, reference: ref, project: cbProject)
-            //                    if let sl = object.scriptList?.script, sl.count > extr.0, let bl = sl[extr.0].brickList?.brick, bl.count > extr.1 {
-            //                        brick = bl[extr.1]
-            //                    }
-            //                } else {
-            //                    let extr = extractAbstractNumbersFrom(reference: ref, project: cbProject)
-            //                    if let ol = cbProject?.scenes?.first?.objectList?.object, ol.count > extr.0 {
-            //                        if let sl = ol[extr.0].scriptList?.script, sl.count > extr.1, let bl = sl[extr.1].brickList?.brick, bl.count > extr.2 {
-            //                            brick = bl[extr.2]
-            //                        }
-            //                    }
-            //                }
-            //                if let brick = brick, let name = brick.sound?.name, let filename = brick.sound?.fileName {
-            //                    let soundToAppend = Sound(name: name, fileName: filename)
-            //                    if soundList.contains(soundToAppend) == false {
-            //                        soundList.append(soundToAppend)
-            //                    }
-            //                }
-            //            } else if let name = sound.name, let filename = sound.fileName {
-            //                let soundToAppend = Sound(name: name, fileName: filename)
-            //                if soundList.contains(soundToAppend) == false {
-            //                    soundList.append(soundToAppend)
-            //                }
-            //            }
+
+            if let resolvedSound = resolveSoundReference(reference: sound.reference, project: project, object: object), soundList.contains(resolvedSound) == false {
+                soundList.append(resolvedSound)
+            }
+
+            if let newSound = allocSound(name: sound.name, filename: sound.fileName), soundList.contains(newSound) == false {
+                soundList.append(newSound)
+            }
         }
 
         return NSMutableArray(array: soundList)
+    }
+
+    static func resolveSoundReference(reference: String?, project: CBProject?, object: CBObject?) -> Sound? {
+        let resolvedReferenceString = resolveReferenceStringShort(reference: reference, project: project, object: object)
+        guard let resolvedString = resolvedReferenceString else { return nil }
+
+        var soundNameToResolve: String?
+        var soundFileNameToResolve: String?
+        let sIdx = resolvedString.0 ?? 0
+        let bIdx = resolvedString.1 ?? 0
+
+        if let scriptList = object?.scriptList?.script, sIdx < scriptList.count {
+            if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
+                soundNameToResolve = brickList[bIdx].sound?.name
+                soundFileNameToResolve = brickList[bIdx].sound?.fileName
+            }
+        }
+
+        return allocSound(name: soundNameToResolve, filename: soundFileNameToResolve)
+    }
+
+    static func allocSound(name: String?, filename: String?) -> Sound? {
+        guard let name = name else { return nil }
+        guard let filename = filename else { return nil }
+
+        let newSound = Sound(name: name, fileName: filename)
+
+        for sound in mappingSoundList where sound.name == newSound.name {
+            return sound
+        }
+
+        mappingSoundList.append(newSound)
+        return newSound
     }
 
     // MARK: - mapScriptList
@@ -128,6 +144,7 @@ extension CBXMLMapping {
     static func mapScript(script: CBScript?) -> Script? {
         guard let script = script else { return nil }
 
+        // TODO: outsource definitions
         let kStartScript = "StartScript"
         let kWhenScript = "WhenScript"
         let kWhenTouchDownScript = "WhenTouchDownScript"
@@ -178,6 +195,7 @@ extension CBXMLMapping {
         guard let brickList = brickList?.brick else { return nil }
         guard let currentScript = currentScript else { return nil }
 
+        // TODO: outsource definitions
         let kBroadcastBrick: String = "BroadcastBrick"
         let kBroadcastWaitBrick: String = "BroadcastWaitBrick"
         let kForeverBrick: String = "ForeverBrick"

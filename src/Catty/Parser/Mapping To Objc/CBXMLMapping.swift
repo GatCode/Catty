@@ -21,9 +21,13 @@
  */
 
 enum CBXMLMapping {
+
+    static var mappingSoundList = [Sound]()
+
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
         var mappedProject = Project()
+        CBXMLMapping.mappingSoundList.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
@@ -37,11 +41,11 @@ enum CBXMLMapping {
             return nil
         }
 
-        if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
-            mappedProject.variables = mappedVariables
-        } else {
-            return nil
-        }
+//        if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
+//            mappedProject.variables = mappedVariables
+//        } else {
+//            return nil
+//        }
 
         return mappedProject
     }

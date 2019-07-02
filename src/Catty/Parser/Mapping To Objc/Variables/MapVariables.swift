@@ -47,7 +47,7 @@ extension CBXMLMapping {
 
         // TODO: eventually value???
         for variable in programListOfLists {
-            let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, mappedProject: &mappedProject)
+            let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
             if let uVar = referencedUserVariable {
                 result.append(uVar.pointee)
             }
@@ -63,7 +63,7 @@ extension CBXMLMapping {
 
         // TODO: eventually value???
         for variable in programVariableList {
-            let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, mappedProject: &mappedProject)
+            let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
             if let uVar = referencedUserVariable {
                 result.append(uVar.pointee)
             }
@@ -82,11 +82,11 @@ extension CBXMLMapping {
                 for entry in objectListOfList {
                     if let lists = entry.list {
 
-                        let referencedObject = resolveObjectReference(reference: entry.object, mappedProject: &mappedProject)?.pointee
+                        let referencedObject = resolveObjectReference(reference: entry.object, project: project, mappedProject: &mappedProject)?.pointee
 
                         var referencedList = [UserVariable]()
                         for list in lists {
-                            if let element = resolveUserVariableReference(reference: list.userList, mappedProject: &mappedProject) {
+                            if let element = resolveUserVariableReference(reference: list.userList, project: project, mappedProject: &mappedProject) {
                                 referencedList.append(element.pointee)
                             }
                         }
@@ -112,11 +112,11 @@ extension CBXMLMapping {
                 for entry in objectVariableList {
                     if let lists = entry.list {
 
-                        let referencedObject = resolveObjectReference(reference: entry.object, mappedProject: &mappedProject)?.pointee
+                        let referencedObject = resolveObjectReference(reference: entry.object, project: project, mappedProject: &mappedProject)?.pointee
 
                         var referencedList = [UserVariable]()
                         for list in lists {
-                            if let element = resolveUserVariableReference(reference: list.userVariable, mappedProject: &mappedProject) {
+                            if let element = resolveUserVariableReference(reference: list.userVariable, project: project, mappedProject: &mappedProject) {
                                 referencedList.append(element.pointee)
                             }
                         }
@@ -132,8 +132,8 @@ extension CBXMLMapping {
         return result
     }
 
-    static func resolveObjectReference(reference: String?, mappedProject: inout Project) -> UnsafeMutablePointer<SpriteObject>? {
-        let resolvedReferenceString = resolveReferenceString(reference: reference)
+    static func resolveObjectReference(reference: String?, project: CBProject?, mappedProject: inout Project) -> UnsafeMutablePointer<SpriteObject>? {
+        let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }
 
         if let oNr = resolvedString.0, oNr < mappedProject.objectList.count {
@@ -147,8 +147,8 @@ extension CBXMLMapping {
         return nil
     }
 
-    static func resolveUserVariableReference(reference: String?, mappedProject: inout Project) -> UnsafeMutablePointer<UserVariable>? {
-        let resolvedReferenceString = resolveReferenceString(reference: reference)
+    static func resolveUserVariableReference(reference: String?, project: CBProject?, mappedProject: inout Project) -> UnsafeMutablePointer<UserVariable>? {
+        let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }
 
         if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < mappedProject.objectList.count {
@@ -168,33 +168,151 @@ extension CBXMLMapping {
     }
 
     // MARK: - resolveReferenceString
-    static func resolveReferenceString(reference: String?) -> (Int?, Int?, Int?)? {
+    static func resolveReferenceString(reference: String?, project: CBProject?) -> (Int?, Int?, Int?)? {
         guard let reference = reference else { return nil }
+        guard let objectList = project?.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
+
         var splittedReference = reference.split(separator: "/")
         splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
         var counter = 0
-        var objectNr: Int?
-        var scriptNr: Int?
-        var brickNr: Int?
+        var object: (Int, String)?
+        var script: (Int, String)?
+        var brick: (Int, String)?
 
         if splittedReference.count == 2, let objString = splittedReference.last {
-            objectNr = extractNumberInBacesFrom(string: String(objString))
+            let tmpNr = extractNumberInBacesFrom(string: String(objString))
+            let tmpName = String(objString)
+            object = (tmpNr, tmpName)
         } else {
             for reference in splittedReference.reversed() {
                 counter += 1
                 if counter == 2 {
-                    brickNr = extractNumberInBacesFrom(string: String(reference))
+                    let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                    let tmpName = String(reference)
+                    brick = (tmpNr, tmpName)
                 }
                 if counter == 4 {
-                    scriptNr = extractNumberInBacesFrom(string: String(reference))
+                    let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                    let tmpName = String(reference)
+                    script = (tmpNr, tmpName)
                 }
                 if counter == 6 {
-                    objectNr = extractNumberInBacesFrom(string: String(reference))
+                    let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                    let tmpName = String(reference)
+                    object = (tmpNr, tmpName)
                 }
             }
         }
 
-        return (objectNr, scriptNr, brickNr)
+        if var ctr = object?.0 {
+            var resNr = 0
+            for o in objectList {
+                if o.name == object?.1 {
+                    if ctr <= 0 {
+                        object?.0 = resNr
+                        break
+                    }
+                    ctr -= 1
+                }
+                resNr += 1
+            }
+        }
+
+        let objForUpdate = objectList[object?.0 ?? 0]
+        let scriptList = objForUpdate.scriptList?.script
+
+        if var ctr = script?.0, let scriptList = scriptList {
+            var resNr = 0
+            for s in scriptList {
+                if s.type == script?.1 {
+                    if ctr <= 0 {
+                        script?.0 = resNr
+                        break
+                    }
+                    ctr -= 1
+                }
+                resNr += 1
+            }
+        }
+
+        let scrForUpdate = scriptList?[script?.0 ?? 0]
+        let brickList = scrForUpdate?.brickList?.brick
+
+        if var ctr = brick?.0, let brickList = brickList {
+            var resNr = 0
+            for b in brickList {
+                if b.type == brick?.1 {
+                    if ctr <= 0 {
+                        brick?.0 = resNr
+                        break
+                    }
+                    ctr -= 1
+                }
+                resNr += 1
+            }
+        }
+
+        return (object?.0, script?.0, brick?.0)
+    }
+
+    static func resolveReferenceStringShort(reference: String?, project: CBProject?, object: CBObject?) -> (Int?, Int?)? {
+        guard let reference = reference else { return nil }
+        guard let objectList = project?.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
+
+        var splittedReference = reference.split(separator: "/")
+        splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+        var counter = 0
+        var script: (Int, String)?
+        var brick: (Int, String)?
+
+        for reference in splittedReference.reversed() {
+            counter += 1
+            if counter == 2 {
+                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpName = String(reference)
+                brick = (tmpNr, tmpName)
+            }
+            if counter == 4 {
+                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpName = String(reference)
+                script = (tmpNr, tmpName)
+            }
+        }
+
+        let scriptList = object?.scriptList?.script
+
+        if var ctr = script?.0, let scriptList = scriptList {
+            var resNr = 0
+            for s in scriptList {
+                if s.type == script?.1 {
+                    if ctr <= 0 {
+                        script?.0 = resNr
+                        break
+                    }
+                    ctr -= 1
+                }
+                resNr += 1
+            }
+        }
+
+        let scrForUpdate = scriptList?[script?.0 ?? 0]
+        let brickList = scrForUpdate?.brickList?.brick
+
+        if var ctr = brick?.0, let brickList = brickList {
+            var resNr = 0
+            for b in brickList {
+                if b.type == brick?.1 {
+                    if ctr <= 0 {
+                        brick?.0 = resNr
+                        break
+                    }
+                    ctr -= 1
+                }
+                resNr += 1
+            }
+        }
+
+        return (script?.0, brick?.0)
     }
 
     static func extractNumberInBacesFrom(string: String) -> Int {
