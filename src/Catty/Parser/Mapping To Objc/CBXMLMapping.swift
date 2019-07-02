@@ -43,11 +43,11 @@ enum CBXMLMapping {
             return nil
         }
 
-//        if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
-//            mappedProject.variables = mappedVariables
-//        } else {
-//            return nil
-//        }
+        if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
+            mappedProject.variables = mappedVariables
+        } else {
+            return nil
+        }
 
         return mappedProject
     }

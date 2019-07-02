@@ -154,9 +154,9 @@ extension CBXMLMapping {
         if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < mappedProject.objectList.count {
             if let obj = mappedProject.objectList[oNr] as? SpriteObject {
                 if let scr = obj.scriptList[sNr] as? Script, sNr < obj.scriptList.count {
-                    if let br = scr.brickList[bNr] as? Brick, bNr < scr.brickList.count {
+                    if let br = scr.brickList[bNr] as? Brick, bNr < scr.brickList.count, let uVar = br.uVar {
                         let uVarPtr = UnsafeMutablePointer<UserVariable>.allocate(capacity: 1)
-                        uVarPtr.initialize(to: br.uVar)
+                        uVarPtr.initialize(to: uVar)
                         return uVarPtr
                     }
                 }
@@ -181,24 +181,24 @@ extension CBXMLMapping {
 
         if splittedReference.count == 2, let objString = splittedReference.last {
             let tmpNr = extractNumberInBacesFrom(string: String(objString))
-            let tmpName = String(objString)
+            let tmpName = String(objString.split(separator: "[").first ?? objString)
             object = (tmpNr, tmpName)
         } else {
             for reference in splittedReference.reversed() {
                 counter += 1
                 if counter == 2 {
                     let tmpNr = extractNumberInBacesFrom(string: String(reference))
-                    let tmpName = String(reference)
+                    let tmpName = String(reference.split(separator: "[").first ?? reference)
                     brick = (tmpNr, tmpName)
                 }
                 if counter == 4 {
                     let tmpNr = extractNumberInBacesFrom(string: String(reference))
-                    let tmpName = String(reference)
+                    let tmpName = String(reference.split(separator: "[").first ?? reference)
                     script = (tmpNr, tmpName)
                 }
                 if counter == 6 {
                     let tmpNr = extractNumberInBacesFrom(string: String(reference))
-                    let tmpName = String(reference)
+                    let tmpName = String(reference.split(separator: "[").first ?? reference)
                     object = (tmpNr, tmpName)
                 }
             }
@@ -268,12 +268,12 @@ extension CBXMLMapping {
         for reference in splittedReference.reversed() {
             counter += 1
             if counter == 2 {
-                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpNr = extractNumberInBacesFrom(string: String(reference.split(separator: "[").first ?? reference))
                 let tmpName = String(reference)
                 brick = (tmpNr, tmpName)
             }
             if counter == 4 {
-                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpNr = extractNumberInBacesFrom(string: String(reference.split(separator: "[").first ?? reference))
                 let tmpName = String(reference)
                 script = (tmpNr, tmpName)
             }
