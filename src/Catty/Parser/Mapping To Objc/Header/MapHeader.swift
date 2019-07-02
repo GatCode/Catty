@@ -22,47 +22,48 @@
 
 extension CBXMLMapping {
 
-    static func mapHeader(input: CBHeader?) -> Header? {
+    static func mapHeader(project: CBProject?) -> Header? {
+         guard let input = project?.header else { return nil }
 
         let header = Header()
-        header.applicationBuildName = input?.applicationBuildName
-        header.applicationBuildNumber = input?.applicationBuildNumber
-        header.applicationName = input?.applicationName
-        header.applicationVersion = input?.applicationVersion
-        header.catrobatLanguageVersion = input?.catrobatLanguageVersion
+        header.applicationBuildName = input.applicationBuildName
+        header.applicationBuildNumber = input.applicationBuildNumber
+        header.applicationName = input.applicationName
+        header.applicationVersion = input.applicationVersion
+        header.catrobatLanguageVersion = input.catrobatLanguageVersion
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy'-'MM'-'ddHH':'mm':'ss"
-        header.dateTimeUpload = dateFormatter.date(from: input?.dateTimeUpload ?? "")
+        header.dateTimeUpload = dateFormatter.date(from: input.dateTimeUpload ?? "")
 
-        header.programDescription = input?.description
-        header.deviceName = input?.deviceName
-        header.landscapeMode = input?.landscapeMode?.bool ?? false
-        header.mediaLicense = input?.mediaLicense
-        header.platform = input?.platform
-        header.platformVersion = input?.platformVersion
-        header.programLicense = input?.programLicense
-        header.programName = input?.programName
-        header.remixOf = input?.remixOf
+        header.programDescription = input.description
+        header.deviceName = input.deviceName
+        header.landscapeMode = input.landscapeMode?.bool ?? false
+        header.mediaLicense = input.mediaLicense
+        header.platform = input.platform
+        header.platformVersion = input.platformVersion
+        header.programLicense = input.programLicense
+        header.programName = input.programName
+        header.remixOf = input.remixOf
 
         var screenHeight: NSNumber?
-        if let tmp = Int(input?.screenHeight ?? "") {
+        if let tmp = Int(input.screenHeight ?? "") {
             screenHeight = NSNumber(value: tmp)
         }
         header.screenHeight = screenHeight
 
-        header.screenMode = input?.screenMode
+        header.screenMode = input.screenMode
 
         var screenWidth: NSNumber?
-        if let tmp = Int(input?.screenWidth ?? "") {
+        if let tmp = Int(input.screenWidth ?? "") {
             screenWidth = NSNumber(value: tmp)
         }
         header.screenWidth = screenWidth
 
-        header.tags = input?.tags
-        header.url = input?.url
-        header.userHandle = input?.userHandle
-        header.programID = input?.programID
+        header.tags = input.tags
+        header.url = input.url
+        header.userHandle = input.userHandle
+        header.programID = input.programID
 
         return header
     }

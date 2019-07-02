@@ -20,25 +20,24 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-struct CBXMLMapping {
+enum CBXMLMapping {
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
         var mappedProject = Project()
 
-        // IMPORTANT: DO NOT CHANGE ORDER HERE!!
-        if let mappedHeader = CBXMLMapping.mapHeader(input: project?.header) {
+        if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
         } else {
             return nil
         }
 
-        if let mappedObjectList = CBXMLMapping.mapObjectList(project: project, currentProject: &mappedProject) {
+        if let mappedObjectList = mapObjectList(project: project, currentProject: &mappedProject) {
             mappedProject.objectList = mappedObjectList
         } else {
             return nil
         }
 
-        if let mappedVariables = CBXMLMapping.mapVariables(project: project, mappedProject: &mappedProject) {
+        if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
             mappedProject.variables = mappedVariables
         } else {
             return nil
