@@ -24,6 +24,7 @@ enum CBXMLMapping {
 
     static var mappingLookList = [Look]()
     static var mappingSoundList = [Sound]()
+    static var mappingVariableList = [UserVariable]()
 
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 

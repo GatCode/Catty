@@ -79,7 +79,7 @@ extension CBXMLMapping {
         newLook.name = name
         newLook.fileName = filename
 
-        for look in mappingLookList where look.name == newLook.name {
+        for look in mappingLookList where look.name == newLook.name && look.fileName == newLook.fileName {
             return look
         }
 
@@ -498,19 +498,23 @@ extension CBXMLMapping {
             // MARK: Sound Bricks
             case kPlaySoundBrick.uppercased():
                 let newBrick = PlaySoundBrick()
-                for sound in soundList {
-                    if let sound = sound as? Sound, sound.name == brick.sound?.name {
-                        newBrick.sound = sound
-                        break
-                    }
-                }
-                if let range = brick.sound?.reference?.range(of: "[(0-9)*]", options: .regularExpression) {
-                    let index = String(brick.sound?.reference?[range] ?? "")
-                    if let index = Int(index), index <= soundList.count, index > 0 {
-                        newBrick.sound = soundList[index] as? Sound
+                if let soundReference = brick.soundReference {
+                    var splittedReference = soundReference.split(separator: "/")
+                    splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+                    if splittedReference.count == 2, let soundString = splittedReference.last {
+                        let soundIndex = extractNumberInBacesFrom(string: String(soundString))
+                        if let newSoundList = object?.soundList?.sound, soundIndex < newSoundList.count {
+                            for sound in mappingSoundList where sound.name == newSoundList[soundIndex].name {
+                                newBrick.sound = sound
+                            }
+                        }
+                    } else {
+                        print("ERROR MAPPING PLAYSOUNDBRICK")
                     }
                 } else {
-                    newBrick.sound = soundList.firstObject as? Sound
+                    for sound in mappingSoundList where sound.name == brick.sound?.name {
+                        newBrick.sound = sound
+                    }
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
@@ -635,14 +639,14 @@ extension CBXMLMapping {
             if splittedReference.count == 2, let string = splittedReference.first {
                 let resolvedReference = resolveReferenceStringExtraShort(reference: reference, project: project, script: script)
                 if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count {
-                    return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx])
+                    for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
                 }
             } else if splittedReference.count == 4 {
                 let resolvedReference = resolveReferenceStringShort(reference: reference, project: project, object: object)
                 if let sIdx = resolvedReference?.0, let bIdx = resolvedReference?.1 {
                     if let scriptList = object.scriptList?.script, sIdx < scriptList.count {
                         if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
-                            return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx])
+                            for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
                         }
                     }
                 }
@@ -652,7 +656,8 @@ extension CBXMLMapping {
                     if let objectList = project.scenes?.first?.objectList?.object, oIdx < objectList.count {
                         if let scriptList = objectList[oIdx].scriptList?.script, sIdx < scriptList.count {
                             if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
-                                return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx])
+                                for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
+
                             }
                         }
                     }
@@ -671,6 +676,12 @@ extension CBXMLMapping {
         let userVar = UserVariable()
         userVar.name = name
         userVar.isList = isList ? true : false
+
+        for variable in mappingVariableList where variable.name == name {
+            return variable
+        }
+
+        mappingVariableList.append(userVar)
         return userVar
     }
 
