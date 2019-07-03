@@ -269,13 +269,13 @@ extension CBXMLMapping {
         for reference in splittedReference.reversed() {
             counter += 1
             if counter == 2 {
-                let tmpNr = extractNumberInBacesFrom(string: String(reference.split(separator: "[").first ?? reference))
-                let tmpName = String(reference)
+                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpName = String(reference.split(separator: "[").first ?? reference)
                 brick = (tmpNr, tmpName)
             }
             if counter == 4 {
-                let tmpNr = extractNumberInBacesFrom(string: String(reference.split(separator: "[").first ?? reference))
-                let tmpName = String(reference)
+                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpName = String(reference.split(separator: "[").first ?? reference)
                 script = (tmpNr, tmpName)
             }
         }
@@ -314,6 +314,42 @@ extension CBXMLMapping {
         }
 
         return (script?.0, brick?.0)
+    }
+
+    static func resolveReferenceStringExtraShort(reference: String?, project: CBProject?, script: CBScript?) -> Int? {
+        guard let reference = reference else { return nil }
+
+        var splittedReference = reference.split(separator: "/")
+        splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+        var counter = 0
+        var brick: (Int, String)?
+
+        for reference in splittedReference.reversed() {
+            counter += 1
+            if counter == 2 {
+                let tmpNr = extractNumberInBacesFrom(string: String(reference))
+                let tmpName = String(reference.split(separator: "[").first ?? reference)
+                brick = (tmpNr, tmpName)
+            }
+        }
+
+        let brickList = script?.brickList?.brick
+
+        if var ctr = brick?.0, let brickList = brickList {
+            var resNr = 0
+            for b in brickList {
+                if b.type == brick?.1 {
+                    if ctr <= 0 {
+                        brick?.0 = resNr
+                        break
+                    }
+                    ctr -= 1
+                }
+                resNr += 1
+            }
+        }
+
+        return brick?.0
     }
 
     static func extractNumberInBacesFrom(string: String) -> Int {
