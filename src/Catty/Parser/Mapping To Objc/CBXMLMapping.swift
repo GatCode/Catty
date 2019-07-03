@@ -31,6 +31,7 @@ enum CBXMLMapping {
         var mappedProject = Project()
         CBXMLMapping.mappingLookList.removeAll()
         CBXMLMapping.mappingSoundList.removeAll()
+        CBXMLMapping.mappingVariableList.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
