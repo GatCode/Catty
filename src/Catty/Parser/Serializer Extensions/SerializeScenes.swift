@@ -326,17 +326,17 @@ extension CBXMLSerializer2 {
         }
     }
 
-    func addUserVariableListTo(objectVariableList: AEXMLElement, data: CBUserVariableList?) {
-        guard let data = data else { return }
-
-        let userVariableList = objectVariableList.addChild(name: "list")
-
-//        if let userVars = data.userVariables {
-//            for userVar in userVars {
-//                userVariableList.addChild(name: "userVariable", value: nil, attributes: ["reference": userVar])
-//            }
-//        }
-    }
+//    func addUserVariableListTo(objectVariableList: AEXMLElement, data: CBUserVariableList?) {
+//        guard let data = data else { return }
+//
+//        let userVariableList = objectVariableList.addChild(name: "list")
+//
+////        if let userVars = data.userVariables {
+////            for userVar in userVars {
+////                userVariableList.addChild(name: "userVariable", value: nil, attributes: ["reference": userVar])
+////            }
+////        }
+//    }
 
     func addUserBrickVariableListTo(dataObject: AEXMLElement, data: CBUserBrickVariableList?) {
         dataObject.addChild(name: "userBrickVariableList")

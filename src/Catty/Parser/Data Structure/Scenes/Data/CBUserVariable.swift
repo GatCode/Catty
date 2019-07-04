@@ -22,24 +22,36 @@
 
 import SWXMLHash
 
-struct CBObjectListOfListEntryList: XMLIndexerDeserializable {
-    let userList: String?
+struct CBUserVariable: XMLIndexerDeserializable {
+    let value: String?
+    let reference: String?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBObjectListOfListEntryList {
-        return try CBObjectListOfListEntryList(
-            userList: node["userList"].value(ofAttribute: "reference")
+    static func deserialize(_ node: XMLIndexer) throws -> CBUserVariable {
+
+        var tmpValue: String?
+        var tmpReference: String?
+        tmpValue = try? node["userVariable"].value()
+        tmpReference = try? node["userVariable"].value(ofAttribute: "reference")
+
+        if tmpValue == nil {
+            tmpValue = try? node["userList"].value()
+        }
+
+        if tmpReference == nil {
+            tmpReference = try? node["userList"].value(ofAttribute: "reference")
+        }
+
+        if tmpValue == nil {
+            tmpValue = try? node.value()
+        }
+
+        if tmpReference == nil {
+            tmpReference = try? node.value(ofAttribute: "reference")
+        }
+
+        return CBUserVariable(
+            value: tmpValue?.isEmpty == true ? nil : tmpValue,
+            reference: tmpReference?.isEmpty == true  ? nil : tmpReference
         )
     }
 }
-
-//struct CBObjectListOfListEntryListEntry: XMLIndexerDeserializable {
-//    let reference: String?
-//    let value: String?
-//
-//    static func deserialize(_ node: XMLIndexer) throws -> CBObjectListOfListEntryListEntry {
-//        return try CBObjectListOfListEntryListEntry(
-//            reference: node.value(ofAttribute: "reference"),
-//            value: node.value()
-//        )
-//    }
-//}

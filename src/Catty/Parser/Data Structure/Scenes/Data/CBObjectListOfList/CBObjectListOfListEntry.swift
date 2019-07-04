@@ -22,24 +22,26 @@
 
 import SWXMLHash
 
-struct CBUserVariableList: XMLIndexerDeserializable {
-    let userVariable: String?
+struct CBObjectListOfListEntry: XMLIndexerDeserializable {
+    let object: String?
+    let list: [CBUserVariable]?
 
-    static func deserialize(_ node: XMLIndexer) throws -> CBUserVariableList {
-        return try CBUserVariableList(
-            userVariable: node["userVariable"].value(ofAttribute: "reference")
+    static func deserialize(_ node: XMLIndexer) throws -> CBObjectListOfListEntry {
+
+        var userVariableArray = [CBUserVariable]()
+
+        for child in node["list"].children {
+            let tmpUVar: CBUserVariable?
+            tmpUVar = try? child.value()
+
+            if let uVar = tmpUVar {
+                userVariableArray.append(uVar)
+            }
+        }
+
+        return CBObjectListOfListEntry(
+            object: node["object"].value(ofAttribute: "reference"),
+            list: userVariableArray
         )
     }
 }
-
-//struct CBUserVariableListEntry: XMLIndexerDeserializable {
-//    let reference: String?
-//    let value: String?
-//
-//    static func deserialize(_ node: XMLIndexer) throws -> CBUserVariableListEntry {
-//        return try CBUserVariableListEntry(
-//            reference: node.value(ofAttribute: "reference"),
-//            value: node.value()
-//        )
-//    }
-//}

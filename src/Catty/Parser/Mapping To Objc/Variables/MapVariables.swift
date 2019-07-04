@@ -94,15 +94,13 @@ extension CBXMLMapping {
 
                         var referencedList = [UserVariable]()
                         for list in lists {
-                            // TODO: Implement proper list mapping
-                            if list.userList != nil {
-                                if let element = resolveUserVariableReference(reference: list.userList, project: project, mappedProject: &mappedProject) {
+                            if list.reference != nil {
+                                if let element = resolveUserVariableReference(reference: list.reference, project: project, mappedProject: &mappedProject) {
                                     referencedList.append(element.pointee)
                                 }
+                            } else if let value = list.value {
+                                referencedList.append(allocUserVariable(name: value, isList: false))
                             }
-//                            else if let value = list.name {
-//                                referencedList.append(allocUserVariable(name: value, isList: false))
-//                            }
                         }
 
                         if referencedList.isEmpty == false {
@@ -130,15 +128,13 @@ extension CBXMLMapping {
 
                         var referencedList = [UserVariable]()
                         for list in lists {
-                            // TODO: Implement proper list mapping
-                            if list.userVariable != nil {
-                                if let element = resolveUserVariableReference(reference: list.userVariable, project: project, mappedProject: &mappedProject) {
+                            if list.reference != nil {
+                                if let element = resolveUserVariableReference(reference: list.reference, project: project, mappedProject: &mappedProject) {
                                     referencedList.append(element.pointee)
                                 }
+                            } else if let value = list.value {
+                                referencedList.append(allocUserVariable(name: value, isList: false))
                             }
-//                            else if let value = list.name {
-//                                referencedList.append(allocUserVariable(name: value, isList: false))
-//                            }
                         }
 
                         if referencedList.isEmpty == false {

@@ -84,14 +84,13 @@
 		2E6F42A4229A6B8600840319 /* CBObjectVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42A3229A6B8600840319 /* CBObjectVariableList.swift */; };
 		2E6F42A6229A6BC300840319 /* CBObjectVariableEnrty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */; };
 		2E6F42AF229A6FB100840319 /* CBProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42AE229A6FB100840319 /* CBProjectData.swift */; };
-		2E6F42B1229A78AD00840319 /* CBUserVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B0229A78AD00840319 /* CBUserVariableList.swift */; };
 		2E6F42B4229A81C100840319 /* CBObjectListOfList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */; };
 		2E6F42B7229A824000840319 /* CBObjectListOfListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */; };
-		2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */; };
 		2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8222CDD8AC00F38581 /* LookMapping.xml */; };
 		2E734F8522CDD8AC00F38581 /* SoundMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8322CDD8AC00F38581 /* SoundMapping.xml */; };
 		2E734F8A22CDDC3E00F38581 /* VariableMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8922CDDC3E00F38581 /* VariableMapping.xml */; };
 		2E734F8E22CDFBA400F38581 /* BroadcastMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8D22CDFBA400F38581 /* BroadcastMapping.xml */; };
+		2E734F9222CE557100F38581 /* CBUserVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E734F9122CE557100F38581 /* CBUserVariable.swift */; };
 		2E75ADB422C7B41E00BFB521 /* MapObjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E75ADB322C7B41E00BFB521 /* MapObjectList.swift */; };
 		2E75ADB722C7B4BA00BFB521 /* MapVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E75ADB622C7B4BA00BFB521 /* MapVariables.swift */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
@@ -1358,14 +1357,13 @@
 		2E6F42A3229A6B8600840319 /* CBObjectVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectVariableList.swift; sourceTree = "<group>"; };
 		2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectVariableEnrty.swift; sourceTree = "<group>"; };
 		2E6F42AE229A6FB100840319 /* CBProjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProjectData.swift; sourceTree = "<group>"; };
-		2E6F42B0229A78AD00840319 /* CBUserVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserVariableList.swift; sourceTree = "<group>"; };
 		2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfList.swift; sourceTree = "<group>"; };
 		2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntry.swift; sourceTree = "<group>"; };
-		2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntryList.swift; sourceTree = "<group>"; };
 		2E734F8222CDD8AC00F38581 /* LookMapping.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LookMapping.xml; sourceTree = "<group>"; };
 		2E734F8322CDD8AC00F38581 /* SoundMapping.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SoundMapping.xml; sourceTree = "<group>"; };
 		2E734F8922CDDC3E00F38581 /* VariableMapping.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VariableMapping.xml; sourceTree = "<group>"; };
 		2E734F8D22CDFBA400F38581 /* BroadcastMapping.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BroadcastMapping.xml; sourceTree = "<group>"; };
+		2E734F9122CE557100F38581 /* CBUserVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserVariable.swift; sourceTree = "<group>"; };
 		2E75ADB322C7B41E00BFB521 /* MapObjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectList.swift; sourceTree = "<group>"; };
 		2E75ADB622C7B4BA00BFB521 /* MapVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariables.swift; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
@@ -3323,24 +3321,16 @@
 				2E6F42AD229A6F9200840319 /* CBObjectVariableList */,
 				2E6F42B2229A818B00840319 /* CBObjectListOfList */,
 				2E25194A229C2A1500DC11BD /* CBUserBrickVariableList */,
+				2E734F9122CE557100F38581 /* CBUserVariable.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		2E6F42A9229A6CA500840319 /* CBObjectVariableEntry */ = {
-			isa = PBXGroup;
-			children = (
-				2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */,
-				2E6F42B0229A78AD00840319 /* CBUserVariableList.swift */,
-			);
-			path = CBObjectVariableEntry;
 			sourceTree = "<group>";
 		};
 		2E6F42AD229A6F9200840319 /* CBObjectVariableList */ = {
 			isa = PBXGroup;
 			children = (
 				2E6F42A3229A6B8600840319 /* CBObjectVariableList.swift */,
-				2E6F42A9229A6CA500840319 /* CBObjectVariableEntry */,
+				2E6F42A5229A6BC300840319 /* CBObjectVariableEnrty.swift */,
 			);
 			path = CBObjectVariableList;
 			sourceTree = "<group>";
@@ -3349,18 +3339,9 @@
 			isa = PBXGroup;
 			children = (
 				2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */,
-				2E6F42B5229A822800840319 /* CBObjectListOfListEntry */,
+				2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */,
 			);
 			path = CBObjectListOfList;
-			sourceTree = "<group>";
-		};
-		2E6F42B5229A822800840319 /* CBObjectListOfListEntry */ = {
-			isa = PBXGroup;
-			children = (
-				2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */,
-				2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */,
-			);
-			path = CBObjectListOfListEntry;
 			sourceTree = "<group>";
 		};
 		2E734F8122CDD8AC00F38581 /* Mapping */ = {
@@ -8457,7 +8438,6 @@
 				AA74EEFE1BC057C900D1E954 /* SetLookBrick+CBXMLHandler.m in Sources */,
 				CA2D444F1B1251BF00A3B53D /* CBSchedulingAlgorithms.swift in Sources */,
 				AA74F00C1BC05B5F00D1E954 /* SetVolumeToBrick.m in Sources */,
-				2E6F42B1229A78AD00840319 /* CBUserVariableList.swift in Sources */,
 				CA43C4BA1B165C0B009B604F /* CBBroadcastHandler.swift in Sources */,
 				4CF0729E20D66F8D00F93AB5 /* LookNameSensor.swift in Sources */,
 				4C8C3616213AA2BD00279BC7 /* PhiroIfLogicBeginBrick+Condition.swift in Sources */,
@@ -8534,7 +8514,6 @@
 				AA74EE2C1BC0541E00D1E954 /* IfOnEdgeBounceBrick+Instruction.swift in Sources */,
 				AA74F09E1BC05FCE00D1E954 /* ForeverBrickCell.m in Sources */,
 				BAEAB29A214BCE8D000B2E4B /* WhenTouchDownScriptCell.m in Sources */,
-				2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */,
 				92FF314C1A24DEB300093DA7 /* CatrobatTableViewController.m in Sources */,
 				59D008E9208E3FDC000539E7 /* MotionManager.swift in Sources */,
 				4C595F4321CAEAFE0097D850 /* MinusOperator.swift in Sources */,
@@ -8945,6 +8924,7 @@
 				4CEFFADA2105E46500DC5CFE /* ObjectStringSensor.swift in Sources */,
 				AA74F0C41BC05FCE00D1E954 /* ChangeVolumeByNBrickCell.m in Sources */,
 				92FF30FD1A24DCAA00093DA7 /* Header.m in Sources */,
+				2E734F9222CE557100F38581 /* CBUserVariable.swift in Sources */,
 				92B46FA71BC7C2A5004980C1 /* ArduinoSendDigitalValueBrick+Instruction.swift in Sources */,
 				E4AEC86D210843D20081A980 /* ProjectInformation.swift in Sources */,
 				AA74EFFC1BC05B5F00D1E954 /* ChangeXByNBrick.m in Sources */,
