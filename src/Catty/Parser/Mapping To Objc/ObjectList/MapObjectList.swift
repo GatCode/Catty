@@ -456,12 +456,12 @@ extension CBXMLMapping {
                 let newBrick = HideBrick()
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
-            case kSetTransparencyBrick.uppercased():
+            case kSetTransparencyBrick.uppercased(), kSetGhostEffectBrick.uppercased():
                 let newBrick = SetTransparencyBrick()
                 newBrick.transparency = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
-            case kChangeTransparencyByNBrick.uppercased():
+            case kChangeTransparencyByNBrick.uppercased(), kChangeGhostEffectByNBrick.uppercased():
                 let newBrick = ChangeTransparencyByNBrick()
                 newBrick.changeTransparency = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
@@ -490,7 +490,7 @@ extension CBXMLMapping {
                 let newBrick = ClearGraphicEffectBrick()
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
-            case kFlashBrick.uppercased():
+            case kFlashBrick.uppercased(), kLedOnBrick.uppercased(), kLedOffBrick.uppercased():
                 var newBrick = FlashBrick()
                 if let flashState = brick.spinnerSelectionID {
                     newBrick = FlashBrick(choice: Int32(flashState) ?? 0)
@@ -617,6 +617,11 @@ extension CBXMLMapping {
                 newBrick.uVar = newBrick.userList
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
+            // MARK: Alternative Bricks
+            case kComeToFrontBrick.uppercased():
+                let newBrick = ComeToFrontBrick()
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             default:
