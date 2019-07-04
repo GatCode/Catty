@@ -3320,8 +3320,8 @@
 			isa = PBXGroup;
 			children = (
 				2E6F42AE229A6FB100840319 /* CBProjectData.swift */,
-				2E6F42B2229A818B00840319 /* CBObjectListOfList */,
 				2E6F42AD229A6F9200840319 /* CBObjectVariableList */,
+				2E6F42B2229A818B00840319 /* CBObjectListOfList */,
 				2E25194A229C2A1500DC11BD /* CBUserBrickVariableList */,
 			);
 			path = Data;

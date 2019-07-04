@@ -47,11 +47,14 @@ extension CBXMLMapping {
         guard let programListOfLists = project?.programListOfLists?.list else { return nil }
         var result = [UserVariable]()
 
-        // TODO: eventually value???
         for variable in programListOfLists {
-            let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
-            if let uVar = referencedUserVariable {
-                result.append(uVar.pointee)
+            if variable.reference != nil {
+                let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
+                if let uVar = referencedUserVariable {
+                    result.append(uVar.pointee)
+                }
+            } else if let value = variable.name {
+                result.append(allocUserVariable(name: value, isList: true))
             }
         }
 
@@ -63,11 +66,14 @@ extension CBXMLMapping {
         guard let programVariableList = project?.programVariableList?.userVariable else { return nil }
         var result = [UserVariable]()
 
-        // TODO: eventually value???
         for variable in programVariableList {
-            let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
-            if let uVar = referencedUserVariable {
-                result.append(uVar.pointee)
+            if variable.reference != nil {
+                let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
+                if let uVar = referencedUserVariable {
+                    result.append(uVar.pointee)
+                }
+            } else if let value = variable.value {
+                result.append(allocUserVariable(name: value, isList: false))
             }
         }
 
@@ -88,9 +94,15 @@ extension CBXMLMapping {
 
                         var referencedList = [UserVariable]()
                         for list in lists {
-                            if let element = resolveUserVariableReference(reference: list.userList, project: project, mappedProject: &mappedProject) {
-                                referencedList.append(element.pointee)
+                            // TODO: Implement proper list mapping
+                            if list.userList != nil {
+                                if let element = resolveUserVariableReference(reference: list.userList, project: project, mappedProject: &mappedProject) {
+                                    referencedList.append(element.pointee)
+                                }
                             }
+//                            else if let value = list.name {
+//                                referencedList.append(allocUserVariable(name: value, isList: false))
+//                            }
                         }
 
                         if referencedList.isEmpty == false {
@@ -104,7 +116,7 @@ extension CBXMLMapping {
         return result
     }
 
-    // MARK: - mapObjectListOfLists
+    // MARK: - mapObjectVariableList
     static func mapObjectVariableList(project: CBProject?, mappedProject: inout Project) -> OrderedMapTable? {
         guard let scenes = project?.scenes else { return nil }
         let result = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
@@ -118,9 +130,15 @@ extension CBXMLMapping {
 
                         var referencedList = [UserVariable]()
                         for list in lists {
-                            if let element = resolveUserVariableReference(reference: list.userVariable, project: project, mappedProject: &mappedProject) {
-                                referencedList.append(element.pointee)
+                            // TODO: Implement proper list mapping
+                            if list.userVariable != nil {
+                                if let element = resolveUserVariableReference(reference: list.userVariable, project: project, mappedProject: &mappedProject) {
+                                    referencedList.append(element.pointee)
+                                }
                             }
+//                            else if let value = list.name {
+//                                referencedList.append(allocUserVariable(name: value, isList: false))
+//                            }
                         }
 
                         if referencedList.isEmpty == false {

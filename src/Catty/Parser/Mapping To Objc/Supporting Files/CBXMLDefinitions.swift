@@ -98,3 +98,4 @@ let kInsertItemIntoUserListBrick: String = "InsertItemIntoUserListBrick"
 let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
 
 let kComeToFrontBrick: String = "comeToFrontBrick"
+let kGoNStepsBackBrick: String = "GoNStepsBackBrick"

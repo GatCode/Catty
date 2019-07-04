@@ -31,3 +31,15 @@ struct CBUserVariableList: XMLIndexerDeserializable {
         )
     }
 }
+
+//struct CBUserVariableListEntry: XMLIndexerDeserializable {
+//    let reference: String?
+//    let value: String?
+//
+//    static func deserialize(_ node: XMLIndexer) throws -> CBUserVariableListEntry {
+//        return try CBUserVariableListEntry(
+//            reference: node.value(ofAttribute: "reference"),
+//            value: node.value()
+//        )
+//    }
+//}

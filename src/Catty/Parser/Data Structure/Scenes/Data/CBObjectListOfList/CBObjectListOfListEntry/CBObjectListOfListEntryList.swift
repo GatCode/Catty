@@ -31,3 +31,15 @@ struct CBObjectListOfListEntryList: XMLIndexerDeserializable {
         )
     }
 }
+
+//struct CBObjectListOfListEntryListEntry: XMLIndexerDeserializable {
+//    let reference: String?
+//    let value: String?
+//
+//    static func deserialize(_ node: XMLIndexer) throws -> CBObjectListOfListEntryListEntry {
+//        return try CBObjectListOfListEntryListEntry(
+//            reference: node.value(ofAttribute: "reference"),
+//            value: node.value()
+//        )
+//    }
+//}

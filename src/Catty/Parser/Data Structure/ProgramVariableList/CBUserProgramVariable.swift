@@ -29,15 +29,10 @@ struct CBUserProgramVariable: XMLIndexerDeserializable {
     static func deserialize(_ node: XMLIndexer) throws -> CBUserProgramVariable {
 
         var tmpValue: String?
+        tmpValue = try node["name"].value()
 
-        if node.children.isEmpty {
-            tmpValue = nil
-        } else {
-            tmpValue = try node["name"].value()
-
-            if tmpValue == nil {
-                tmpValue = try node.value()
-            }
+        if tmpValue == nil {
+            tmpValue = try node.value()
         }
 
         return CBUserProgramVariable(

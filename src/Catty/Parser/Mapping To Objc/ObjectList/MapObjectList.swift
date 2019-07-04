@@ -624,6 +624,11 @@ extension CBXMLMapping {
                 let newBrick = ComeToFrontBrick()
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
+            case kGoNStepsBackBrick.uppercased():
+                let newBrick = GoNStepsBackBrick()
+                newBrick.steps = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
             default:
                 print("UNSUPPORTED BRICK!!!")
             }
@@ -660,16 +665,14 @@ extension CBXMLMapping {
             if splittedReference.count == 2 {
                 let resolvedReference = resolveReferenceStringExtraShort(reference: reference, project: project, script: script)
                 if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count {
-                    for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
-                    for variable in mappingVariableList where variable.name == brickList[bIdx].userList { return variable }
+                    return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx])
                 }
             } else if splittedReference.count == 4 {
                 let resolvedReference = resolveReferenceStringShort(reference: reference, project: project, object: object)
                 if let sIdx = resolvedReference?.0, let bIdx = resolvedReference?.1 {
                     if let scriptList = object.scriptList?.script, sIdx < scriptList.count {
                         if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
-                            for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
-                            for variable in mappingVariableList where variable.name == brickList[bIdx].userList { return variable }
+                            return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx])
                         }
                     }
                 }
@@ -679,8 +682,7 @@ extension CBXMLMapping {
                     if let objectList = project.scenes?.first?.objectList?.object, oIdx < objectList.count {
                         if let scriptList = objectList[oIdx].scriptList?.script, sIdx < scriptList.count {
                             if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
-                                for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
-                                for variable in mappingVariableList where variable.name == brickList[bIdx].userList { return variable }
+                                return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx])
                             }
                         }
                     }
@@ -696,14 +698,13 @@ extension CBXMLMapping {
     }
 
     static func allocUserVariable(name: String, isList: Bool) -> UserVariable {
-        let userVar = UserVariable()
-        userVar.name = name
-        userVar.isList = isList ? true : false
-
         for variable in mappingVariableList where variable.name == name {
             return variable
         }
 
+        let userVar = UserVariable()
+        userVar.name = name
+        userVar.isList = isList ? true : false
         mappingVariableList.append(userVar)
         return userVar
     }
