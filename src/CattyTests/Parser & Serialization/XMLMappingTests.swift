@@ -26,7 +26,41 @@ import XCTest
 
 final class XMLMappingTests: XMLAbstractTest {
 
-    func testXMLMapping() {
-        // implement when mapping serialization of Project is finished
+    func testBothSoundsHaveSameAddress() {
+        var cbProject: CBProject?
+        getProjectForXML2(xmlFile: "SoundMapping") { project, error  in
+            XCTAssertNil(error)
+            cbProject = project
+        }
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        if let object = project?.objectList.firstObject as? SpriteObject {
+            if let scriptList = object.scriptList {
+                XCTAssertEqual(scriptList.count, 2)
+                let soundFromScript1 = ((scriptList[0] as? Script)?.brickList.firstObject as? PlaySoundBrick)?.sound
+                let soundFromScript2 = ((scriptList[1] as? Script)?.brickList.firstObject as? PlaySoundBrick)?.sound
+                XCTAssert(soundFromScript1 === soundFromScript2)
+            }
+        }
+    }
+
+    func testBothLooksHaveSameAddress() {
+        var cbProject: CBProject?
+        getProjectForXML2(xmlFile: "LookMapping") { project, error  in
+            XCTAssertNil(error)
+            cbProject = project
+        }
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        if let object = project?.objectList.firstObject as? SpriteObject {
+            if let scriptList = object.scriptList {
+                XCTAssertEqual(scriptList.count, 2)
+                let soundFromScript1 = ((scriptList[0] as? Script)?.brickList.firstObject as? SetLookBrick)?.look
+                let soundFromScript2 = ((scriptList[1] as? Script)?.brickList.firstObject as? SetLookBrick)?.look
+                XCTAssert(soundFromScript1 === soundFromScript2)
+            }
+        }
     }
 }

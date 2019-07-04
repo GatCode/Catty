@@ -88,6 +88,8 @@
 		2E6F42B4229A81C100840319 /* CBObjectListOfList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */; };
 		2E6F42B7229A824000840319 /* CBObjectListOfListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */; };
 		2E6F42B9229A82B500840319 /* CBObjectListOfListEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */; };
+		2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8222CDD8AC00F38581 /* LookMapping.xml */; };
+		2E734F8522CDD8AC00F38581 /* SoundMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8322CDD8AC00F38581 /* SoundMapping.xml */; };
 		2E75ADB422C7B41E00BFB521 /* MapObjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E75ADB322C7B41E00BFB521 /* MapObjectList.swift */; };
 		2E75ADB722C7B4BA00BFB521 /* MapVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E75ADB622C7B4BA00BFB521 /* MapVariables.swift */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
@@ -1358,6 +1360,8 @@
 		2E6F42B3229A81C100840319 /* CBObjectListOfList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfList.swift; sourceTree = "<group>"; };
 		2E6F42B6229A824000840319 /* CBObjectListOfListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntry.swift; sourceTree = "<group>"; };
 		2E6F42B8229A82B500840319 /* CBObjectListOfListEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBObjectListOfListEntryList.swift; sourceTree = "<group>"; };
+		2E734F8222CDD8AC00F38581 /* LookMapping.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LookMapping.xml; sourceTree = "<group>"; };
+		2E734F8322CDD8AC00F38581 /* SoundMapping.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SoundMapping.xml; sourceTree = "<group>"; };
 		2E75ADB322C7B41E00BFB521 /* MapObjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectList.swift; sourceTree = "<group>"; };
 		2E75ADB622C7B4BA00BFB521 /* MapVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariables.swift; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
@@ -3355,6 +3359,16 @@
 			path = CBObjectListOfListEntry;
 			sourceTree = "<group>";
 		};
+		2E734F8122CDD8AC00F38581 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				2E734F8222CDD8AC00F38581 /* LookMapping.xml */,
+				2E734F8322CDD8AC00F38581 /* SoundMapping.xml */,
+			);
+			name = Mapping;
+			path = CattyTests/Resources/ParserTests/Mapping;
+			sourceTree = SOURCE_ROOT;
+		};
 		2E75ADB222C7B40800BFB521 /* ObjectList */ = {
 			isa = PBXGroup;
 			children = (
@@ -3481,6 +3495,7 @@
 		4C1608A41A09548F002C7032 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
+				2E734F8122CDD8AC00F38581 /* Mapping */,
 				2EBB708922A797350085E14F /* EscapingChars */,
 				CAE3E4FC1B4C50B300CC88BD /* Flap_Pac_Man */,
 				CAE3E4FF1B4C50B300CC88BD /* Flappy_v3.0 */,
@@ -7844,8 +7859,10 @@
 				4C6D15F61D7AC62800CE53CD /* Word_balloon_demo_098.xml in Resources */,
 				2EF5294122A68C9500FFD2B5 /* Gossip_Girl_0994.xml in Resources */,
 				2E25193D229BE6FF00DC11BD /* Flappy_v3.0_0993.xml in Resources */,
+				2E734F8522CDD8AC00F38581 /* SoundMapping.xml in Resources */,
 				4CE2D40D1C29505000938B5E /* Pong_Starter_097.xml in Resources */,
 				4C6D15DE1D7AC5E200CE53CD /* Gossip_Girl_098.xml in Resources */,
+				2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */,
 				4CE2D3FD1C29500700938B5E /* Flappy_v3.0_097.xml in Resources */,
 				CAE3E54E1B4C50B300CC88BD /* Minions__093.xml in Resources */,
 				4C2EE4111B555882006DE9B8 /* X_Ray_phone_095.xml in Resources */,
