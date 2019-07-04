@@ -63,4 +63,36 @@ final class XMLMappingTests: XMLAbstractTest {
             }
         }
     }
+
+    func testVariablesHaveSameAddresses() {
+        var cbProject: CBProject?
+        getProjectForXML2(xmlFile: "VariableMapping") { project, error  in
+            XCTAssertNil(error)
+            cbProject = project
+        }
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        if let object = project?.objectList.firstObject as? SpriteObject {
+            if let scriptList = object.scriptList {
+                XCTAssertEqual(scriptList.count, 2)
+
+                let localVar1 = ((scriptList[0] as? Script)?.brickList[0] as? SetVariableBrick)?.userVariable
+                let localVar2 = ((scriptList[1] as? Script)?.brickList[0] as? SetVariableBrick)?.userVariable
+                XCTAssert(localVar1 === localVar2)
+
+                let globalVar1 = ((scriptList[0] as? Script)?.brickList[1] as? SetVariableBrick)?.userVariable
+                let globalVar2 = ((scriptList[1] as? Script)?.brickList[1] as? SetVariableBrick)?.userVariable
+                XCTAssert(globalVar1 === globalVar2)
+
+                let localList1 = ((scriptList[0] as? Script)?.brickList[2] as? AddItemToUserListBrick)?.userList
+                let localList2 = ((scriptList[1] as? Script)?.brickList[2] as? AddItemToUserListBrick)?.userList
+                XCTAssert(localList1 === localList2)
+
+                let globalList1 = ((scriptList[0] as? Script)?.brickList[3] as? AddItemToUserListBrick)?.userList
+                let globalList2 = ((scriptList[1] as? Script)?.brickList[3] as? AddItemToUserListBrick)?.userList
+                XCTAssert(globalList1 === globalList2)
+            }
+        }
+    }
 }
