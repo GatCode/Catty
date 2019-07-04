@@ -91,6 +91,7 @@
 		2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8222CDD8AC00F38581 /* LookMapping.xml */; };
 		2E734F8522CDD8AC00F38581 /* SoundMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8322CDD8AC00F38581 /* SoundMapping.xml */; };
 		2E734F8A22CDDC3E00F38581 /* VariableMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8922CDDC3E00F38581 /* VariableMapping.xml */; };
+		2E734F8E22CDFBA400F38581 /* BroadcastMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E734F8D22CDFBA400F38581 /* BroadcastMapping.xml */; };
 		2E75ADB422C7B41E00BFB521 /* MapObjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E75ADB322C7B41E00BFB521 /* MapObjectList.swift */; };
 		2E75ADB722C7B4BA00BFB521 /* MapVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E75ADB622C7B4BA00BFB521 /* MapVariables.swift */; };
 		2E7D46412299099A0003DFCE /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D46402299099A0003DFCE /* CBXMLParser.swift */; };
@@ -1364,6 +1365,7 @@
 		2E734F8222CDD8AC00F38581 /* LookMapping.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LookMapping.xml; sourceTree = "<group>"; };
 		2E734F8322CDD8AC00F38581 /* SoundMapping.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SoundMapping.xml; sourceTree = "<group>"; };
 		2E734F8922CDDC3E00F38581 /* VariableMapping.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VariableMapping.xml; sourceTree = "<group>"; };
+		2E734F8D22CDFBA400F38581 /* BroadcastMapping.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BroadcastMapping.xml; sourceTree = "<group>"; };
 		2E75ADB322C7B41E00BFB521 /* MapObjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectList.swift; sourceTree = "<group>"; };
 		2E75ADB622C7B4BA00BFB521 /* MapVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariables.swift; sourceTree = "<group>"; };
 		2E7D46402299099A0003DFCE /* CBXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
@@ -3365,6 +3367,7 @@
 			isa = PBXGroup;
 			children = (
 				2E734F8222CDD8AC00F38581 /* LookMapping.xml */,
+				2E734F8D22CDFBA400F38581 /* BroadcastMapping.xml */,
 				2E734F8922CDDC3E00F38581 /* VariableMapping.xml */,
 				2E734F8322CDD8AC00F38581 /* SoundMapping.xml */,
 			);
@@ -7838,6 +7841,7 @@
 				4CE2D4171C29508A00938B5E /* Word_balloon_demo_097.xml in Resources */,
 				CAE3E5631B4C50B300CC88BD /* X_Ray_phone_091.xml in Resources */,
 				CAE3E4EC1B4C509800CC88BD /* test2.png in Resources */,
+				2E734F8E22CDFBA400F38581 /* BroadcastMapping.xml in Resources */,
 				4C0F9FED204BD47300E71B2D /* Galaxy_War_0991.xml in Resources */,
 				4CE2D4011C29501800938B5E /* Gossip_Girl_097.xml in Resources */,
 				2EF5293522A6891800FFD2B5 /* Gossip_Girl_0992.xml in Resources */,

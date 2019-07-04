@@ -95,4 +95,28 @@ final class XMLMappingTests: XMLAbstractTest {
             }
         }
     }
+
+    func testBroadcastsHaveSameValues() {
+        var cbProject: CBProject?
+        getProjectForXML2(xmlFile: "BroadcastMapping") { project, error  in
+            XCTAssertNil(error)
+            cbProject = project
+        }
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        if let object = project?.objectList.firstObject as? SpriteObject {
+            if let scriptList = object.scriptList {
+                XCTAssertEqual(scriptList.count, 2)
+
+                let broadcast1 = ((scriptList[0] as? Script)?.brickList[0] as? BroadcastBrick)?.broadcastMessage
+                let broadcast2 = ((scriptList[1] as? Script)?.brickList[0] as? BroadcastBrick)?.broadcastMessage
+                XCTAssert(broadcast1 == broadcast2)
+
+                let broadcastWait1 = ((scriptList[0] as? Script)?.brickList[1] as? BroadcastWaitBrick)?.broadcastMessage
+                let broadcastWait2 = ((scriptList[1] as? Script)?.brickList[1] as? BroadcastWaitBrick)?.broadcastMessage
+                XCTAssert(broadcastWait1 == broadcastWait2)
+            }
+        }
+    }
 }
