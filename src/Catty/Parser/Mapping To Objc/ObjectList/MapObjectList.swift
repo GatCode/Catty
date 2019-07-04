@@ -656,6 +656,7 @@ extension CBXMLMapping {
                 let resolvedReference = resolveReferenceStringExtraShort(reference: reference, project: project, script: script)
                 if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count {
                     for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
+                    for variable in mappingVariableList where variable.name == brickList[bIdx].userList { return variable }
                 }
             } else if splittedReference.count == 4 {
                 let resolvedReference = resolveReferenceStringShort(reference: reference, project: project, object: object)
@@ -663,6 +664,7 @@ extension CBXMLMapping {
                     if let scriptList = object.scriptList?.script, sIdx < scriptList.count {
                         if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
                             for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
+                            for variable in mappingVariableList where variable.name == brickList[bIdx].userList { return variable }
                         }
                     }
                 }
@@ -673,7 +675,7 @@ extension CBXMLMapping {
                         if let scriptList = objectList[oIdx].scriptList?.script, sIdx < scriptList.count {
                             if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
                                 for variable in mappingVariableList where variable.name == brickList[bIdx].userVariable { return variable }
-
+                                for variable in mappingVariableList where variable.name == brickList[bIdx].userList { return variable }
                             }
                         }
                     }

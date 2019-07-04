@@ -50,6 +50,12 @@ struct CBBrick: XMLIndexerDeserializable {
         var tmpType: String?
         tmpType = try? node.value(ofAttribute: "type")
 
+        var tmpUserVariableReference: String?
+        tmpUserVariableReference = try? node["userVariable"].value(ofAttribute: "reference")
+        if tmpUserVariableReference == nil {
+            tmpUserVariableReference = try? node["userList"].value(ofAttribute: "reference")
+        }
+
         if tmpType == nil {
             var splittedAndCleaned = [String]()
 
@@ -135,7 +141,7 @@ struct CBBrick: XMLIndexerDeserializable {
             yDestination: node["yDestination"]["formulaTree"].value(),
             lookReference: node["look"].value(ofAttribute: "reference"),
             userVariable: userVar,
-            userVariableReference: node["userVariable"].value(ofAttribute: "reference"),
+            userVariableReference: tmpUserVariableReference,
             userList: node["userList"]["name"].value(),
             broadcastMessage: node["broadcastMessage"].value(),
             noteMessage: tmpNoteMessage,
