@@ -103,9 +103,7 @@ extension CBXMLMapping {
                             }
                         }
 
-                        if referencedList.isEmpty == false {
-                            result.setObject(NSArray(array: referencedList), forKey: referencedObject)
-                        }
+                        result.setObject(NSArray(array: referencedList), forKey: referencedObject)
                     }
                 }
             }
@@ -137,9 +135,7 @@ extension CBXMLMapping {
                             }
                         }
 
-                        if referencedList.isEmpty == false {
-                            result.setObject(NSArray(array: referencedList), forKey: referencedObject)
-                        }
+                        result.setObject(NSArray(array: referencedList), forKey: referencedObject)
                     }
                 }
             }
