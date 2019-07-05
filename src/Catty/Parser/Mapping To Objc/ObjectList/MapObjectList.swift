@@ -390,11 +390,11 @@ extension CBXMLMapping {
                 guard let formulaMapping = formulaTreeMapping else { break }
                 newBrick.durationInSeconds = formulaMapping.firstObject as? Formula
                 if formulaMapping.count >= 3 {
-                    newBrick.xDestination = formulaMapping[1] as? Formula
-                    newBrick.yDestination = formulaMapping[2] as? Formula
+                    newBrick.yDestination = formulaMapping[1] as? Formula
+                    newBrick.xDestination = formulaMapping[2] as? Formula
                 } else {
-                    newBrick.xDestination = mapGlideDestinations(input: brick, xDestination: true)?.firstObject as? Formula
-                    newBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.firstObject as? Formula
+                    newBrick.yDestination = mapGlideDestinations(input: brick, xDestination: true)?.firstObject as? Formula
+                    newBrick.xDestination = mapGlideDestinations(input: brick, xDestination: false)?.lastObject as? Formula
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
