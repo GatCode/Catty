@@ -103,7 +103,7 @@ extension CBXMLMapping {
                             }
                         }
 
-                        result.setObject(NSArray(array: referencedList), forKey: referencedObject)
+                        result.setObject(NSMutableArray(array: referencedList), forKey: referencedObject)
                     }
                 }
             }
@@ -135,7 +135,7 @@ extension CBXMLMapping {
                             }
                         }
 
-                        result.setObject(NSArray(array: referencedList), forKey: referencedObject)
+                        result.setObject(NSMutableArray(array: referencedList), forKey: referencedObject)
                     }
                 }
             }

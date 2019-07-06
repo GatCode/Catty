@@ -26,6 +26,8 @@ enum CBXMLMapping {
     static var mappingSoundList = [Sound]()
     static var mappingVariableList = [UserVariable]()
     static var mappingBroadcastList = [String]()
+    static var formulaVariableList = [SpriteObject: [String]]()
+    static var formulaListOfLists = [SpriteObject: [String]]()
 
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
@@ -34,6 +36,8 @@ enum CBXMLMapping {
         CBXMLMapping.mappingSoundList.removeAll()
         CBXMLMapping.mappingVariableList.removeAll()
         CBXMLMapping.mappingBroadcastList.removeAll()
+        CBXMLMapping.formulaVariableList.removeAll()
+        CBXMLMapping.formulaListOfLists.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
@@ -51,6 +55,27 @@ enum CBXMLMapping {
             mappedProject.variables = mappedVariables
         } else {
             return nil
+        }
+
+        for object in formulaVariableList {
+            let listToObject = object.value
+            var tmpArr = [UserVariable]()
+            for variable in listToObject {
+                tmpArr.append(allocUserVariable(name: variable, isList: false))
+            }
+            if let objectList = mappedProject.variables.objectVariableList.object(forKey: object.key) as? NSMutableArray {
+                objectList.addObjects(from: tmpArr)
+            }
+        }
+        for object in formulaListOfLists {
+            let listToObject = object.value
+            var tmpArr = [UserVariable]()
+            for variable in listToObject {
+                tmpArr.append(allocUserVariable(name: variable, isList: true))
+            }
+            if let objectList = mappedProject.variables.objectVariableList.object(forKey: object.key) as? NSMutableArray {
+                objectList.addObjects(from: tmpArr)
+            }
         }
 
         return mappedProject
