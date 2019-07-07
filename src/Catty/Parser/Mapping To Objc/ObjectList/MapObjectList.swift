@@ -242,18 +242,24 @@ extension CBXMLMapping {
             case kIfLogicElseBrick.uppercased():
                 let newBrick = IfLogicElseBrick()
                 for item in resultBrickList.reversed() where item.brickType == kBrickType.ifBrick {
-                    newBrick.ifBeginBrick = item as? IfLogicBeginBrick
-                    (item as? IfLogicBeginBrick)?.ifElseBrick = newBrick
+                    if let item = item as? IfLogicBeginBrick, item.ifElseBrick == nil {
+                        newBrick.ifBeginBrick = item
+                        item.ifElseBrick = newBrick
+                        break
+                    }
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kIfLogicEndBrick.uppercased():
                 let newBrick = IfLogicEndBrick()
                 for item in resultBrickList.reversed() where item.brickType == kBrickType.ifElseBrick {
-                    newBrick.ifBeginBrick = (item as? IfLogicElseBrick)?.ifBeginBrick
-                    newBrick.ifElseBrick = item as? IfLogicElseBrick
-                    (item as? IfLogicElseBrick)?.ifBeginBrick.ifEndBrick = newBrick
-                    (item as? IfLogicElseBrick)?.ifEndBrick = newBrick
+                    if let item = item as? IfLogicElseBrick, item.ifEndBrick == nil {
+                        newBrick.ifBeginBrick = item.ifBeginBrick
+                        newBrick.ifElseBrick = item
+                        item.ifBeginBrick.ifEndBrick = newBrick
+                        item.ifEndBrick = newBrick
+                        break
+                    }
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
@@ -265,8 +271,11 @@ extension CBXMLMapping {
             case kIfThenLogicEndBrick.uppercased():
                 let newBrick = IfThenLogicEndBrick()
                 for item in resultBrickList.reversed() where item.brickType == kBrickType.ifThenBrick {
-                    newBrick.ifBeginBrick = item as? IfThenLogicBeginBrick
-                    (item as? IfThenLogicBeginBrick)?.ifEndBrick = newBrick
+                    if let item = item as? IfThenLogicBeginBrick, item.ifEndBrick == nil {
+                        newBrick.ifBeginBrick = item
+                        item.ifEndBrick = newBrick
+                        break
+                    }
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
