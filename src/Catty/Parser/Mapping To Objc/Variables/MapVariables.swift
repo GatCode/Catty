@@ -103,6 +103,21 @@ extension CBXMLMapping {
                             }
                         }
 
+                        // also search for unlisted userVariables/Lists
+                        if let scriptList = referencedObject?.scriptList {
+                            for script in scriptList {
+                                if let script = script as? Script, let brickList = script.brickList {
+                                    for brick in brickList {
+                                        if let brick = brick as? Brick, let uVar = brick.uVar {
+                                            if referencedList.contains(uVar) == false {
+                                                referencedList.append(uVar)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                         result.setObject(NSArray(array: referencedList), forKey: referencedObject)
                     }
                 }
@@ -132,6 +147,21 @@ extension CBXMLMapping {
                                 }
                             } else if let value = list.value {
                                 referencedList.append(allocUserVariable(name: value, isList: false))
+                            }
+                        }
+
+                        // also search for unlisted userVariables/Lists
+                        if let scriptList = referencedObject?.scriptList {
+                            for script in scriptList {
+                                if let script = script as? Script, let brickList = script.brickList {
+                                    for brick in brickList {
+                                        if let brick = brick as? Brick, let uVar = brick.uVar {
+                                            if referencedList.contains(uVar) == false {
+                                                referencedList.append(uVar)
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
 
