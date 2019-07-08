@@ -399,11 +399,11 @@ extension CBXMLMapping {
                 guard let formulaMapping = formulaTreeMapping else { break }
                 newBrick.durationInSeconds = formulaMapping.firstObject as? Formula
                 if formulaMapping.count >= 3 {
-                    newBrick.xDestination = formulaMapping[1] as? Formula
-                    newBrick.yDestination = formulaMapping[2] as? Formula
+                    newBrick.xDestination = formulaMapping[2] as? Formula
+                    newBrick.yDestination = formulaMapping[1] as? Formula
                 } else {
-                    newBrick.xDestination = mapGlideDestinations(input: brick, xDestination: true)?.firstObject as? Formula
-                    newBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.lastObject as? Formula
+                    newBrick.xDestination = mapGlideDestinations(input: brick, xDestination: true)?.lastObject as? Formula
+                    newBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.firstObject as? Formula
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
@@ -518,6 +518,17 @@ extension CBXMLMapping {
                 if let cameraState = brick.spinnerSelectionID {
                     newBrick = ChooseCameraBrick(choice: Int32(cameraState) ?? 0)
                 }
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
+            case kThinkBubbleBrick.uppercased():
+                let newBrick = ThinkBubbleBrick()
+                newBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
+            case kThinkForBubbleBrick.uppercased():
+                let newBrick = ThinkForBubbleBrick()
+                newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.intFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             // MARK: Sound Bricks

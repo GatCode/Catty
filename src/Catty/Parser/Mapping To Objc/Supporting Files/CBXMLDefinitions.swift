@@ -80,6 +80,8 @@ let kLedOnBrick: String = "LedOnBrick"
 let kLedOffBrick: String = "LedOffBrick"
 let kCameraBrick: String = "CameraBrick"
 let kChooseCameraBrick: String = "ChooseCameraBrick"
+let kThinkBubbleBrick: String = "ThinkBubbleBrick"
+let kThinkForBubbleBrick: String = "ThinkForBubbleBrick"
 
 let kPlaySoundBrick: String = "PlaySoundBrick"
 let kStopAllSoundsBrick: String = "StopAllSoundsBrick"
