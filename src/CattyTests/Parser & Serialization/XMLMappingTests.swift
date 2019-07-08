@@ -103,7 +103,7 @@ final class XMLMappingTests: XMLAbstractTest {
             cbProject = project
         }
 
-        XCTAssertNil(cbProject)
+        XCTAssertNotNil(cbProject)
 
         let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
 
@@ -117,6 +117,8 @@ final class XMLMappingTests: XMLAbstractTest {
                 let o2Local2 = ((scriptList2[0] as? Script)?.brickList[1] as? ChangeVariableBrick)?.userVariable
                 XCTAssert(o2Local1 === o2Local2)
 
+                XCTAssertNotNil(o1Local1)
+                XCTAssertNotNil(o2Local1)
                 XCTAssertFalse(o1Local1 === o2Local1)
             }
         }

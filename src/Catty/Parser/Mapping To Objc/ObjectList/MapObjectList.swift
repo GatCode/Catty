@@ -31,6 +31,7 @@ extension CBXMLMapping {
 
         var resultObjectList = [SpriteObject]()
         for object in objectList {
+            localMappingVariableList.removeAll()
             if let mappedObject = mapObject(object: object, objectList: objectList, project: project) {
                 mappedObject.project = currentProject
                 resultObjectList.append(mappedObject)
@@ -676,6 +677,53 @@ extension CBXMLMapping {
         return NSMutableArray(array: formulaList)
     }
 
+    static func getLocalVariablesFromObject(project: CBProject?, object: CBObject?, isList: Bool) -> [String] {
+        guard let project = project else { return [String]() }
+        var localVariables = [String]()
+
+        if let objctVariableList = project.scenes?.first?.data?.objectVariableList?.entry, isList == false {
+            for entry in objctVariableList {
+                let resolvedReference = resolveReferenceString(reference: entry.object, project: project)
+                if let objectIndex = resolvedReference?.0 {
+                    let referencedObject = project.scenes?.first?.objectList?.object?[objectIndex]
+
+                    if referencedObject == object, let entryList = entry.list {
+                        for variable in entryList {
+                            let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
+                            if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
+                                if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userVariable {
+                                    localVariables.append(localVar)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if let objctVariableList = project.scenes?.first?.data?.objectListOfList?.entry, isList == true {
+            for entry in objctVariableList {
+                let resolvedReference = resolveReferenceString(reference: entry.object, project: project)
+                if let objectIndex = resolvedReference?.0 {
+                    let referencedObject = project.scenes?.first?.objectList?.object?[objectIndex]
+
+                    if referencedObject == object, let entryList = entry.list {
+                        for variable in entryList {
+                            let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
+                            if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
+                                if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userList {
+                                    localVariables.append(localVar)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return localVariables
+    }
+
     static func resolveUserVariable(project: CBProject?, object: CBObject?, script: CBScript?, brick: CBBrick?) -> UserVariable? {
         guard let project = project else { return nil }
         guard let object = object else { return nil }
@@ -712,8 +760,16 @@ extension CBXMLMapping {
                 }
             }
         } else if let variable = brick.userVariable {
+            let localVariableNames = getLocalVariablesFromObject(project: project, object: object, isList: false)
+            if let variable = brick.userVariable, localVariableNames.contains(variable) {
+                return allocLocalUserVariable(name: variable, isList: false)
+            }
             return allocUserVariable(name: variable, isList: false)
         } else if let variable = brick.userList {
+            let localVariableNames = getLocalVariablesFromObject(project: project, object: object, isList: true)
+            if let variable = brick.userList, localVariableNames.contains(variable) {
+                return allocLocalUserVariable(name: variable, isList: true)
+            }
             return allocUserVariable(name: variable, isList: true)
         }
 
@@ -729,6 +785,18 @@ extension CBXMLMapping {
         userVar.name = name
         userVar.isList = isList ? true : false
         mappingVariableList.append(userVar)
+        return userVar
+    }
+
+    static func allocLocalUserVariable(name: String, isList: Bool) -> UserVariable {
+        for variable in localMappingVariableList where variable.name == name {
+            return variable
+        }
+
+        let userVar = UserVariable()
+        userVar.name = name
+        userVar.isList = isList ? true : false
+        localMappingVariableList.append(userVar)
         return userVar
     }
 
