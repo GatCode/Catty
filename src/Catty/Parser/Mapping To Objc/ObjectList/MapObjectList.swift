@@ -296,16 +296,19 @@ extension CBXMLMapping {
             case kLoopEndBrick.uppercased(), kLoopEndlessBrick.uppercased():
                 let newBrick = LoopEndBrick()
                 for item in resultBrickList.reversed() {
-                    newBrick.loopBeginBrick = item as? LoopBeginBrick
-
-                    if item.brickType == kBrickType.repeatBrick {
-                        (item as? RepeatBrick)?.loopEndBrick = newBrick
+                    if let item = item as? RepeatBrick, item.loopEndBrick == nil {
+                        newBrick.loopBeginBrick = item
+                        item.loopEndBrick = newBrick
                         break
-                    } else if item.brickType == kBrickType.repeatUntilBrick {
-                        (item as? RepeatUntilBrick)?.loopEndBrick = newBrick
+                    }
+                    if let item = item as? RepeatUntilBrick, item.loopEndBrick == nil {
+                        newBrick.loopBeginBrick = item
+                        item.loopEndBrick = newBrick
                         break
-                    } else if item.brickType == kBrickType.foreverBrick {
-                        (item as? ForeverBrick)?.loopEndBrick = newBrick
+                    }
+                    if let item = item as? ForeverBrick, item.loopEndBrick == nil {
+                        newBrick.loopBeginBrick = item
+                        item.loopEndBrick = newBrick
                         break
                     }
                 }
