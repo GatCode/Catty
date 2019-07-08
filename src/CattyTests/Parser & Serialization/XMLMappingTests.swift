@@ -96,6 +96,32 @@ final class XMLMappingTests: XMLAbstractTest {
         }
     }
 
+    func testVariablesHaveSameAddresses2() {
+        var cbProject: CBProject?
+        getProjectForXML2(xmlFile: "VariableMapping2") { project, error  in
+            XCTAssertNil(error)
+            cbProject = project
+        }
+
+        XCTAssertNil(cbProject)
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        if let object1 = project?.objectList[0] as? SpriteObject, let object2 = project?.objectList[1] as? SpriteObject {
+            if let scriptList1 = object1.scriptList, let scriptList2 = object2.scriptList {
+                let o1Local1 = ((scriptList1[0] as? Script)?.brickList[0] as? SetVariableBrick)?.userVariable
+                let o1Local2 = ((scriptList1[0] as? Script)?.brickList[1] as? ChangeVariableBrick)?.userVariable
+                XCTAssert(o1Local1 === o1Local2)
+
+                let o2Local1 = ((scriptList2[0] as? Script)?.brickList[0] as? SetVariableBrick)?.userVariable
+                let o2Local2 = ((scriptList2[0] as? Script)?.brickList[1] as? ChangeVariableBrick)?.userVariable
+                XCTAssert(o2Local1 === o2Local2)
+
+                XCTAssertFalse(o1Local1 === o2Local1)
+            }
+        }
+    }
+
     func testBroadcastsHaveSameValues() {
         var cbProject: CBProject?
         getProjectForXML2(xmlFile: "BroadcastMapping") { project, error  in
