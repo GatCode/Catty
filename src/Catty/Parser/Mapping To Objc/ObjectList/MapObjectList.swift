@@ -653,6 +653,17 @@ extension CBXMLMapping {
                 newBrick.steps = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
+            case kSayBubbleBrick.uppercased():
+                let newBrick = SayBubbleBrick()
+                newBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
+            case kSayForBubbleBrick.uppercased():
+                let newBrick = SayForBubbleBrick()
+                newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.intFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
             default:
                 print("UNSUPPORTED BRICK!!!")
             }

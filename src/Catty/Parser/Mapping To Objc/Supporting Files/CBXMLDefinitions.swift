@@ -101,3 +101,5 @@ let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
 
 let kComeToFrontBrick: String = "comeToFrontBrick"
 let kGoNStepsBackBrick: String = "GoNStepsBackBrick"
+let kSayBubbleBrick: String = "SayBubbleBrick"
+let kSayForBubbleBrick: String = "SayForBubbleBrick"
