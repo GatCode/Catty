@@ -124,6 +124,22 @@ final class XMLMappingTests: XMLAbstractTest {
         }
     }
 
+    func testUninitializedVariableListMapping() {
+        var cbProject: CBProject?
+        getProjectForXML2(xmlFile: "VariableMapping3") { project, error  in
+            XCTAssertNil(error)
+            cbProject = project
+        }
+
+        XCTAssertNotNil(cbProject)
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let spriteObject = project?.objectList[0] as? SpriteObject
+        let formulaElement = (((spriteObject?.scriptList[0] as? Script)?.brickList[0] as? IfThenLogicBeginBrick)?.getFormulas()?.first)?.formulaTree
+
+        XCTAssertNotNil(project?.variables.getUserListNamed(formulaElement?.value, for: spriteObject))
+    }
+
     func testBroadcastsHaveSameValues() {
         var cbProject: CBProject?
         getProjectForXML2(xmlFile: "BroadcastMapping") { project, error  in
