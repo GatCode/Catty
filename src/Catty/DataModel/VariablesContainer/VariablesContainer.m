@@ -101,12 +101,6 @@ static pthread_mutex_t variablesLock;
 
 - (UserVariable*)getUserListNamed:(NSString*)name forSpriteObject:(SpriteObject*)sprite
 {
-    // THIS SECTION IS FOR TESTING ONLY:
-    SpriteObject *thisIsHowItShouldBe = (SpriteObject *)[self.objectListOfLists keyAtIndex:0];
-    SpriteObject *thisIsTheOneToCompare = sprite;
-    BOOL comparisonResult = [thisIsHowItShouldBe isEqualToSpriteObject:thisIsTheOneToCompare];
-    // WHY THE BLACK MAGIC BELOW???
-    
     NSArray *objectUserLists = [self.objectListOfLists objectForKey:sprite];
     UserVariable *list = [self findUserVariableNamed:name inArray:objectUserLists];
     
