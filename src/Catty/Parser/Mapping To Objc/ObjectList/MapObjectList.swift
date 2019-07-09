@@ -704,9 +704,11 @@ extension CBXMLMapping {
                             if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
                                 if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userVariable {
                                     localVariables.append(localVar)
+                                    break
                                 }
                             }
                         }
+                        break
                     }
                 }
             }
@@ -724,9 +726,11 @@ extension CBXMLMapping {
                             if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
                                 if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userList {
                                     localVariables.append(localVar)
+                                    break
                                 }
                             }
                         }
+                        break
                     }
                 }
             }
