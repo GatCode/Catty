@@ -183,11 +183,11 @@ extension CBXMLMapping {
         default:
             if script.type?.hasSuffix(kScript) ?? false {
                 let scr = BroadcastScript()
-                if let type = script.type {
-                    let msg = allocBroadcastMessage(message: String(format: "%@ %@", "timeNow in hex: ", kLocalizedUnsupportedScript, type))
+                if let msg = allocBroadcastMessage(message: String(format: "%@ %@", kLocalizedUnsupportedScript, script.type ?? "")) {
                     scr.receivedMessage = msg
                 }
                 result = scr
+                unsupportedElements.append(script.type ?? "")
             }
         }
 
@@ -665,7 +665,11 @@ extension CBXMLMapping {
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             default:
-                print("UNSUPPORTED BRICK!!!")
+                let newBrick = NoteBrick()
+                newBrick.note = String(format: "%@ %@", kLocalizedUnsupportedBrick, brick.type ?? "")
+                newBrick.script = currentScript
+                resultBrickList.append(newBrick)
+                unsupportedElements.append(brick.type ?? "")
             }
         }
         if resultBrickList.isEmpty { return nil }
