@@ -24,9 +24,8 @@ enum CBXMLMapping {
 
     static var mappingLookList = [Look]()
     static var mappingSoundList = [Sound]()
-    static var mappingVariableList = [UserVariable]()
-    static var localMappingVariableList = [UserVariable]()
-    static var mappingBroadcastList = [String]()
+    static var mappingVariableListGlobal = [UserVariable]()
+    static var mappingVariableListLocal = [UserVariable]()
     static var unsupportedElements = [String]()
 
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
@@ -34,8 +33,7 @@ enum CBXMLMapping {
         var mappedProject = Project()
         CBXMLMapping.mappingLookList.removeAll()
         CBXMLMapping.mappingSoundList.removeAll()
-        CBXMLMapping.mappingVariableList.removeAll()
-        CBXMLMapping.mappingBroadcastList.removeAll()
+        CBXMLMapping.mappingVariableListGlobal.removeAll()
         CBXMLMapping.unsupportedElements.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {

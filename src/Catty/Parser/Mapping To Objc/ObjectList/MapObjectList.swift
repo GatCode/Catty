@@ -31,7 +31,7 @@ extension CBXMLMapping {
 
         var resultObjectList = [SpriteObject]()
         for object in objectList {
-            localMappingVariableList.removeAll()
+            mappingVariableListLocal.removeAll()
             if let mappedObject = mapObject(object: object, objectList: objectList, project: project) {
                 mappedObject.project = currentProject
                 resultObjectList.append(mappedObject)
@@ -176,16 +176,14 @@ extension CBXMLMapping {
             result = scr
         case kBroadcastScript.uppercased():
             let scr = BroadcastScript()
-            if let msg = allocBroadcastMessage(message: script.receivedMessage) {
+            if let msg = script.receivedMessage {
                 scr.receivedMessage = msg
             }
             result = scr
         default:
             if script.type?.hasSuffix(kScript) ?? false {
                 let scr = BroadcastScript()
-                if let msg = allocBroadcastMessage(message: String(format: "%@ %@", kLocalizedUnsupportedScript, script.type ?? "")) {
-                    scr.receivedMessage = msg
-                }
+                scr.receivedMessage = String(format: "%@ %@", kLocalizedUnsupportedScript, script.type ?? "")
                 result = scr
                 unsupportedElements.append(script.type ?? "")
             }
@@ -197,17 +195,6 @@ extension CBXMLMapping {
         }
 
         return nil
-    }
-
-    static func allocBroadcastMessage(message: String?) -> String? {
-        guard let message = message else { return nil }
-
-        for msg in mappingBroadcastList where msg == message {
-            return msg
-        }
-
-        mappingBroadcastList.append(message)
-        return message
     }
 
     // MARK: - mapBrickList
@@ -223,14 +210,14 @@ extension CBXMLMapping {
             // MARK: Condition Bricks
             case kBroadcastBrick.uppercased():
                 let newBrick = BroadcastBrick()
-                if let msg = allocBroadcastMessage(message: brick.broadcastMessage) {
+                if let msg = brick.broadcastMessage {
                     newBrick.broadcastMessage = msg
                 }
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kBroadcastWaitBrick.uppercased():
                 let newBrick = BroadcastWaitBrick()
-                if let msg = allocBroadcastMessage(message: brick.broadcastMessage) {
+                if let msg = brick.broadcastMessage {
                     newBrick.broadcastMessage = msg
                 }
                 newBrick.script = currentScript
@@ -794,26 +781,26 @@ extension CBXMLMapping {
     }
 
     static func allocUserVariable(name: String, isList: Bool) -> UserVariable {
-        for variable in mappingVariableList where variable.name == name {
+        for variable in mappingVariableListGlobal where variable.name == name {
             return variable
         }
 
         let userVar = UserVariable()
         userVar.name = name
         userVar.isList = isList ? true : false
-        mappingVariableList.append(userVar)
+        mappingVariableListGlobal.append(userVar)
         return userVar
     }
 
     static func allocLocalUserVariable(name: String, isList: Bool) -> UserVariable {
-        for variable in localMappingVariableList where variable.name == name {
+        for variable in mappingVariableListLocal where variable.name == name {
             return variable
         }
 
         let userVar = UserVariable()
         userVar.name = name
         userVar.isList = isList ? true : false
-        localMappingVariableList.append(userVar)
+        mappingVariableListLocal.append(userVar)
         return userVar
     }
 

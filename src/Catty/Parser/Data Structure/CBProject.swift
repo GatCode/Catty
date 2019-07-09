@@ -66,7 +66,6 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
                 tmpProgramVariableList = try node["data"]["programVariableList"].value()
             }
 
-
             userBrickVariableList = try node["data"]["userBrickVariableList"].value()
 
             let data = CBProjectData(objectListOfList: objectListOfList, objectVariableList: objectVariableList, userBrickVariableList: userBrickVariableList)
