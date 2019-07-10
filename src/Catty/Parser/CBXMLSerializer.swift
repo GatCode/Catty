@@ -70,24 +70,9 @@ fileprivate func prepareXMLWithSpecialChars(xml: String) -> String {
 // MARK: - Legacy Support
 extension CBXMLSerializer2 {
 
-    @objc func serializeProjectObjc(project: Project, xmlPath: String, fileManager: FileManager) {
-        do {
-            let document = xmlDocumentForProject(project: project)
-            let xmlString = String(format: "%@\n%@", kCatrobatHeaderXMLDeclaration, document?.rootElement()?.xmlStringPrettyPrinted(true) ?? "")
-
-            try xmlString.write(toFile: xmlPath, atomically: true, encoding: String.Encoding.utf8)
-
-            Project.updateLastModificationTimeForProject(withName: project.header.programName, projectID: project.header.programID)
-        } catch let error as NSError {
-            print("Project could not be serialized! \(error.domain)")
-        }
-    }
-
-    func xmlDocumentForProject(project: Project) -> GDataXMLDocument? {
-        let context = CBXMLSerializerContext()
-        let programElement = project.xmlElement(with: context)
-        let document = GDataXMLDocument.init(rootElement: programElement)
-        return document
+    @objc func serializeProjectObjc(project: Project, xmlPath: String, fileManager: CBFileManager) {
+        let legacySerializer = CBXMLSerializer(path: xmlPath, fileManager: fileManager)
+        legacySerializer?.serializeProject(project)
     }
 }
 

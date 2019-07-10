@@ -169,7 +169,7 @@
         // TODO: rename CBXMLSerializer2 to CBXMLSerializer
         NSString *xmlPath = [NSString stringWithFormat:@"%@%@", [self projectPath], kProjectCodeFileName];
         CBXMLSerializer2* serializer = [CBXMLSerializer2 alloc];
-        [serializer serializeProjectObjcWithProject:self xmlPath:xmlPath fileManager:(NSFileManager*)fileManager];
+        [serializer serializeProjectObjcWithProject:self xmlPath:xmlPath fileManager:fileManager];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kHideLoadingViewNotification object:self];
