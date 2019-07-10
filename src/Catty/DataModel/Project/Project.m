@@ -28,7 +28,6 @@
 #import "Script.h"
 #import "Brick.h"
 #import "CatrobatLanguageDefines.h"
-#import "CBXMLSerializer.h"
 #import "CBMutableCopyContext.h"
 #import "Pocket_Code-Swift.h"
 
@@ -167,10 +166,10 @@
                 [notificationCenter postNotificationName:kShowSavedViewNotification object:self];
             });
         }
-        // TODO: find correct serializer class dynamically
+        // TODO: rename CBXMLSerializer2 to CBXMLSerializer
         NSString *xmlPath = [NSString stringWithFormat:@"%@%@", [self projectPath], kProjectCodeFileName];
-        id<CBSerializerProtocol> serializer = [[CBXMLSerializer alloc] initWithPath:xmlPath fileManager:fileManager];
-        [serializer serializeProject:self];
+        CBXMLSerializer2* serializer = [CBXMLSerializer2 alloc];
+        [serializer serializeProjectObjcWithProject:self xmlPath:xmlPath fileManager:(NSFileManager*)fileManager];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kHideLoadingViewNotification object:self];
