@@ -212,7 +212,7 @@ extension CBXMLMapping {
             }
         }
 
-        if var ctr = object?.0 {
+        if var ctr = object?.0, ctr > 0 {
             var resNr = 0
             for o in objectList {
                 if o.name == object?.1 {

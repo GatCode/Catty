@@ -687,7 +687,7 @@ extension CBXMLMapping {
                 if let objectIndex = resolvedReference?.0 {
                     let referencedObject = project.scenes?.first?.objectList?.object?[objectIndex]
 
-                    if referencedObject == object, let entryList = entry.list {
+                    if referencedObject?.name == object?.name, let entryList = entry.list {
                         for variable in entryList {
                             let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
                             if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
@@ -708,7 +708,7 @@ extension CBXMLMapping {
                 if let objectIndex = resolvedReference?.0 {
                     let referencedObject = project.scenes?.first?.objectList?.object?[objectIndex]
 
-                    if referencedObject == object, let entryList = entry.list {
+                    if referencedObject?.name == object?.name, let entryList = entry.list {
                         for variable in entryList {
                             let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
                             if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
