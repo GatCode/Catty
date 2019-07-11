@@ -23,6 +23,7 @@
 enum CBXMLMappingFromObjc {
 
     private static var userVariableList = [(UserVariable?, (Int, Int, Int))]()
+    private static var objectList = [(SpriteObject?, (Int, Int, Int))]()
     private static var currentSerializationPosition = (0, 0, 0)
 
     static func mapProjectToCBProject(project: Project) -> CBProject? {
@@ -69,6 +70,7 @@ extension CBXMLMappingFromObjc {
             // map nfcTagList
 
             mappedObjectList.append(mappedObject)
+            CBXMLMappingFromObjc.objectList.append((object as? SpriteObject, CBXMLMappingFromObjc.currentSerializationPosition))
             CBXMLMappingFromObjc.currentSerializationPosition.0 += 1
             CBXMLMappingFromObjc.currentSerializationPosition.1 = 0
         }
@@ -284,7 +286,10 @@ extension CBXMLMappingFromObjc {
     private static func resolveObjectPath(project: Project, object: SpriteObject?) -> String? {
         guard let object = object else { return nil }
 
-        // TODO: Map Objects like the variables in resolveUserVariablePath
+        if let referencedUserVariable = CBXMLMappingFromObjc.objectList.first(where: {$0.0 == object} ) {
+            let referencedPosition = referencedUserVariable.1
+            return "../../../../objectList/" + (referencedPosition.0 == 0 ? "object" : "object[\(referencedPosition.0 + 1)]")
+        }
 
         return nil
     }
@@ -292,7 +297,7 @@ extension CBXMLMappingFromObjc {
     private static func mapObjectVariableListEntryList(project: Project, list: [UserVariable]?) -> [CBUserVariable]? {
         guard let list = list else { return nil }
 
-        // TODO: Map List
+        // TODO: map list - keep an eye on local variables!!!
 
         return nil
     }
