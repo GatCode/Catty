@@ -23,8 +23,14 @@
 import SWXMLHash
 
 struct CBLook: XMLIndexerDeserializable, Equatable {
-    let name: String?
-    let fileName: String?
+    var name: String?
+    var fileName: String?
+
+    init(name: String? = nil,
+         fileName: String? = nil) {
+        self.name = name
+        self.fileName = fileName
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBLook {
 

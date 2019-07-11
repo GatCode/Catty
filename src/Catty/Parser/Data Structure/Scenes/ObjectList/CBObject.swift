@@ -23,13 +23,29 @@
 import SWXMLHash
 
 struct CBObject: XMLIndexerDeserializable, Equatable {
-    let name: String?
-    let type: String?
-    let lookList: CBLookList?
-    let soundList: CBSoundList?
-    let scriptList: CBScriptList?
-    let userBricks: CBUserBricks?
-    let nfcTagList: CBNfcTagList?
+    var name: String?
+    var type: String?
+    var lookList: CBLookList?
+    var soundList: CBSoundList?
+    var scriptList: CBScriptList?
+    var userBricks: CBUserBricks?
+    var nfcTagList: CBNfcTagList?
+
+    init(name: String? = nil,
+         type: String? = nil,
+         lookList: CBLookList? = nil,
+         soundList: CBSoundList? = nil,
+         scriptList: CBScriptList? = nil,
+         userBricks: CBUserBricks? = nil,
+         nfcTagList: CBNfcTagList? = nil) {
+        self.name = name
+        self.type = type
+        self.lookList = lookList
+        self.soundList = soundList
+        self.scriptList = scriptList
+        self.userBricks = userBricks
+        self.nfcTagList = nfcTagList
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObject {
 

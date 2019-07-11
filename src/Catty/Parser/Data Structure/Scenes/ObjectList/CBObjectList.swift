@@ -23,7 +23,7 @@
 import SWXMLHash
 
 struct CBObjectList: XMLIndexerDeserializable, Equatable {
-    let object: [CBObject]?
+    var object: [CBObject]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObjectList {
         return try CBObjectList(

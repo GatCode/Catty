@@ -26,6 +26,270 @@ import XCTest
 
 final class XMLMappingTests: XMLAbstractTest {
 
+    func createBasicCBProject() -> CBProject {
+        let sceneList = [CBProjectScene(name: "Scene1")]
+        let objectList = CBObjectList(object: [CBObject(name: "Object1"), CBObject(name: "Object2")])
+        let lookList = CBLookList(look: [CBLook(name: "Look1", fileName: "File1"), CBLook(name: "Look2", fileName: "File1")])
+        let soundList = CBSoundList(sound: [CBSound(fileName: "File1", name: "Sound1", reference: "ref"), CBSound(fileName: "File1", name: "Sound2", reference: "ref")])
+        let scriptList = CBScriptList(script: [CBScript(type: "Script"), CBScript(type: "BroadcastScript")])
+        let brickList = CBBrickList(brick: [CBBrick(name: "Brick1", type: "SetVariableBrick"), CBBrick(name: "Brick2", type: "SetVariableBrick")])
+        let userVariable = "UVar1"
+        let userList = "UList1"
+
+        var cbProject = CBProject()
+        cbProject.scenes = sceneList
+        for sceneIdx in 0..<(cbProject.scenes?.count)! {
+            cbProject.scenes?[sceneIdx].objectList = objectList
+            for objectIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.object?.count)! {
+                cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].lookList = lookList
+                cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].soundList = soundList
+                cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList = scriptList
+                for scriptIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?.count)! {
+                    cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList = brickList
+                    for brickIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList?.brick?.count)! {
+                        cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList?.brick?[brickIdx].userVariable = userVariable
+                        cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList?.brick?[brickIdx].userList = userList
+                    }
+                }
+            }
+        }
+
+        return cbProject
+    }
+
+    func createExtendedCBProject() -> CBProject {
+
+        let programVariableListEntries = [CBUserProgramVariable(value: "Value1"), CBUserProgramVariable(value: "Value2")]
+        let programVariableList = CBProgramVariableList(userVariable: programVariableListEntries)
+        let programListOfListsEntries = [CBProgramList(name: "Value1"), CBProgramList(name: "Value2")]
+        let programListOfLists = CBProgramListOfLists(list: programListOfListsEntries)
+
+        var cbProject = createBasicCBProject()
+        cbProject.programVariableList = programVariableList
+        cbProject.programListOfLists = programListOfLists
+
+        return cbProject
+    }
+
+    func createExtendedCBProjectWithReferencedUserVariable() -> (CBProject, String) {
+
+        var cbProject = createBasicCBProject()
+
+        let referencedList = "../../../objectList/object/scriptList/script/brickList/brick/userList"
+        let referencedVariable = "../../../objectList/object/scriptList/script/brickList/brick/userVariable"
+        let referencedVariableName = cbProject.scenes?[0].objectList?.object?[0].scriptList?.script?[0].brickList?.brick?[0].userVariable
+
+        let programVariableList = CBProgramVariableList(userVariable: [CBUserProgramVariable(reference: referencedVariable)])
+        let programListOfLists = CBProgramListOfLists(list: [CBProgramList(reference: referencedList)])
+
+        cbProject.programVariableList = programVariableList
+        cbProject.programListOfLists = programListOfLists
+
+        return (cbProject, referencedVariableName!)
+    }
+
+    func testHeadersAreEqual() {
+        var cbProject = CBProject()
+        var header = CBHeader()
+        header.applicationBuildName = "applicationBuildName"
+        header.applicationName = "applicationName"
+        header.catrobatLanguageVersion = "catrobatLanguageVersion"
+        header.description = "description"
+        header.remixOf = "remixOf"
+        header.url = "url"
+        header.userHandle = "userHandle"
+        header.programID = "programID"
+        cbProject.header = header
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        XCTAssertEqual(cbProject.header?.applicationBuildName, project?.header.applicationBuildName)
+        XCTAssertEqual(cbProject.header?.applicationName, project?.header.applicationName)
+        XCTAssertEqual(cbProject.header?.catrobatLanguageVersion, project?.header.catrobatLanguageVersion)
+        XCTAssertEqual(cbProject.header?.description, project?.header.programDescription)
+        XCTAssertEqual(cbProject.header?.remixOf, project?.header.remixOf)
+        XCTAssertEqual(cbProject.header?.url, project?.header.url)
+        XCTAssertEqual(cbProject.header?.userHandle, project?.header.userHandle)
+        XCTAssertEqual(cbProject.header?.programID, project?.header.programID)
+    }
+
+    func testObjectsAreEqual() {
+        var cbProject = createBasicCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbObjectList = cbProject.scenes?[0].objectList?.object
+        let mappedObjectList = project?.objectList
+
+        XCTAssertEqual(cbObjectList?.count, mappedObjectList?.count)
+        XCTAssertEqual(cbObjectList?[0].name, (mappedObjectList?[0] as? SpriteObject)?.name)
+        XCTAssertEqual(cbObjectList?[1].name, (mappedObjectList?[1] as? SpriteObject)?.name)
+    }
+
+    func testLooksAreEqual() {
+        var cbProject = createBasicCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let mappedObjectsCount = project?.objectList.count
+        XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
+
+        for oIdx in 0..<cbObjectsCount! {
+            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+
+            let cbLookCount = cbObject?.lookList?.look?.count
+            let mappedLookCount = mappedObject?.lookList.count
+            XCTAssertEqual(cbLookCount, mappedLookCount)
+
+            for lIdx in 0..<cbLookCount! {
+                let cbLook = cbObject?.lookList?.look?[lIdx]
+                let mappedLook = mappedObject?.lookList[lIdx] as? Look
+
+                XCTAssertEqual(cbLook?.name, mappedLook?.name)
+                XCTAssertEqual(cbLook?.fileName, mappedLook?.fileName)
+            }
+        }
+    }
+
+    func testSoundsAreEqual() {
+        var cbProject = createBasicCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let mappedObjectsCount = project?.objectList.count
+        XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
+
+        for oIdx in 0..<cbObjectsCount! {
+            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+
+            let cbSoundCount = cbObject?.soundList?.sound?.count
+            let mappedSoundCount = mappedObject?.soundList.count
+            XCTAssertEqual(cbSoundCount, mappedSoundCount)
+
+            for sIdx in 0..<cbSoundCount! {
+                let cbSound = cbObject?.soundList?.sound?[sIdx]
+                let mappedSound = mappedObject?.soundList[sIdx] as? Sound
+
+                XCTAssertEqual(cbSound?.name, mappedSound?.name)
+                XCTAssertEqual(cbSound?.fileName, mappedSound?.fileName)
+            }
+        }
+    }
+
+    func testScriptsAreEqual() {
+        var cbProject = createBasicCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let mappedObjectsCount = project?.objectList.count
+        XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
+
+        for oIdx in 0..<cbObjectsCount! {
+            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+
+            let cbScriptCount = cbObject?.scriptList?.script?.count
+            let mappedScriptCount = mappedObject?.scriptList.count
+            XCTAssertEqual(cbScriptCount, mappedScriptCount)
+
+            for sIdx in 0..<cbScriptCount! {
+                let cbScript = cbObject?.scriptList?.script?[sIdx]
+                let mappedScript = mappedObject?.scriptList[sIdx] as? Script
+
+                XCTAssertNotNil(cbScript?.type)
+                XCTAssertNotNil(mappedScript?.brickTitle)
+            }
+        }
+    }
+
+    func testBricksAreEqual() {
+        var cbProject = createBasicCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let mappedObjectsCount = project?.objectList.count
+        XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
+
+        for oIdx in 0..<cbObjectsCount! {
+            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+
+            let cbScriptCount = cbObject?.scriptList?.script?.count
+            let mappedScriptCount = mappedObject?.scriptList.count
+            XCTAssertEqual(cbScriptCount, mappedScriptCount)
+
+            for sIdx in 0..<cbScriptCount! {
+                let cbScript = cbObject?.scriptList?.script?[sIdx]
+                let mappedScript = mappedObject?.scriptList[sIdx] as? Script
+
+                let cbBrickCount = cbScript?.brickList?.brick?.count
+                let mappedBrickCount = mappedScript?.brickList.count
+                XCTAssertEqual(cbBrickCount, mappedBrickCount)
+
+                for bIdx in 0..<cbBrickCount! {
+                    let cbBrick = cbScript?.brickList?.brick?[bIdx]
+                    let mappedBrick = mappedScript?.brickList[bIdx] as? Brick
+
+                    XCTAssertNotNil(cbBrick?.name)
+                    XCTAssertNotNil(mappedBrick?.brickTitle)
+                }
+            }
+        }
+    }
+
+    func testProgramVariableListsAreEqual() {
+        let cbProject = createExtendedCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbProgramVariableListCount = cbProject.programVariableList?.userVariable?.count
+        let mappedProgramVariableListCount = project?.variables.programVariableList.count
+        XCTAssertEqual(cbProgramVariableListCount, mappedProgramVariableListCount)
+
+        for vIdx in 0..<cbProgramVariableListCount! {
+            let cbVar = cbProject.programVariableList?.userVariable?[vIdx]
+            let mappedVar = project?.variables.programVariableList[vIdx] as? UserVariable
+
+            XCTAssertEqual(cbVar?.value, mappedVar?.name)
+        }
+    }
+
+    func testProgramVariableListsWithReferencesAreEqual() {
+        let resolvedProject = createExtendedCBProjectWithReferencedUserVariable()
+        let cbProject = resolvedProject.0
+        let referencedUserVariable = resolvedProject.1
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        XCTAssertEqual((project?.variables.programVariableList?[0] as? UserVariable)?.name, referencedUserVariable)
+    }
+
+    func testProgramListOfListsAreEqual() {
+        let cbProject = createExtendedCBProject()
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        let cbProgramListOfListsCount = cbProject.programListOfLists?.list?.count
+        let mappedProgramListOfListsCount = project?.variables.programListOfLists.count
+        XCTAssertEqual(cbProgramListOfListsCount, mappedProgramListOfListsCount)
+
+        for vIdx in 0..<cbProgramListOfListsCount! {
+            let cbVar = cbProject.programListOfLists?.list?[vIdx]
+            let mappedVar = project?.variables.programListOfLists[vIdx] as? UserVariable
+
+            XCTAssertEqual(cbVar?.name, mappedVar?.name)
+        }
+    }
+
+    func testProgramListOfListsWithReferencesAreEqual() {
+        let resolvedProject = createExtendedCBProjectWithReferencedUserVariable()
+        let cbProject = resolvedProject.0
+        let referencedUserVariable = resolvedProject.1
+
+        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+
+        XCTAssertEqual((project?.variables.programListOfLists?[0] as? UserVariable)?.name, referencedUserVariable)
+    }
+
     func testBothSoundsHaveSameAddress() {
         var cbProject: CBProject?
         getProjectForXML2(xmlFile: "SoundMapping") { project, error  in

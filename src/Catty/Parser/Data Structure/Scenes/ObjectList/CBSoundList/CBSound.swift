@@ -23,9 +23,17 @@
 import SWXMLHash
 
 struct CBSound: XMLIndexerDeserializable, Equatable {
-    let fileName: String?
-    let name: String?
-    let reference: String?
+    var fileName: String?
+    var name: String?
+    var reference: String?
+
+    init(fileName: String? = nil,
+         name: String? = nil,
+         reference: String? = nil) {
+        self.fileName = fileName
+        self.name = name
+        self.reference = reference
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBSound {
         return try CBSound(

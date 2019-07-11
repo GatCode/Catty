@@ -22,11 +22,23 @@
 import SWXMLHash
 
 struct CBProjectScene: XMLIndexerDeserializable, Equatable {
-    let name: String?
-    let objectList: CBObjectList?
-    let data: CBProjectData?
-    let originalWidth: String?
-    let originalHeight: String?
+    var name: String?
+    var objectList: CBObjectList?
+    var data: CBProjectData?
+    var originalWidth: String?
+    var originalHeight: String?
+
+    init(name: String? = nil,
+         objectList: CBObjectList? = nil,
+         data: CBProjectData? = nil,
+         originalWidth: String? = nil,
+         originalHeight: String? = nil) {
+        self.name = name
+        self.objectList = objectList
+        self.data = data
+        self.originalWidth = originalWidth
+        self.originalHeight = originalHeight
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProjectScene {
         return try CBProjectScene(

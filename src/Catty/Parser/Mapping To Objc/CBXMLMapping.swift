@@ -38,23 +38,17 @@ enum CBXMLMapping {
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
-        } else {
-            return nil
         }
 
         if let mappedObjectList = mapObjectList(project: project, currentProject: &mappedProject) {
             mappedProject.objectList = mappedObjectList
-        } else {
-            return nil
         }
 
         if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
             mappedProject.variables = mappedVariables
-        } else {
-            return nil
         }
 
-        mappedProject.unsupportedElements = NSMutableSet(array: unsupportedElements)
+        mappedProject.unsupportedElements = NSMutableSet(array: CBXMLMapping.unsupportedElements)
 
         return mappedProject
     }

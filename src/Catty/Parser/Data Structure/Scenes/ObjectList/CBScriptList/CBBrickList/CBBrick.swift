@@ -23,26 +23,68 @@
 import SWXMLHash
 
 struct CBBrick: XMLIndexerDeserializable {
-    let name: String?
-    let type: String?
-    let soundReference: String?
-    let sound: CBSound?
-    let commentedOut: String?
-    let formulaList: CBFormulaList?
-    let formulaTree: CBFormulaList?
-    let xDestination: CBFormulaList?
-    let yDestination: CBFormulaList?
-    let lookReference: String?
-    let userVariable: String?
-    let userVariableReference: String?
-    let userList: String?
-    let broadcastMessage: String?
-    let noteMessage: String?
-    let pointedObject: String?
-    let spinnerSelectionID: String?
-    let xPosition: CBFormula?
-    let yPosition: CBFormula?
-    let ifReference: String?
+    var name: String?
+    var type: String?
+    var soundReference: String?
+    var sound: CBSound?
+    var commentedOut: String?
+    var formulaList: CBFormulaList?
+    var formulaTree: CBFormulaList?
+    var xDestination: CBFormulaList?
+    var yDestination: CBFormulaList?
+    var lookReference: String?
+    var userVariable: String?
+    var userVariableReference: String?
+    var userList: String?
+    var broadcastMessage: String?
+    var noteMessage: String?
+    var pointedObject: String?
+    var spinnerSelectionID: String?
+    var xPosition: CBFormula?
+    var yPosition: CBFormula?
+    var ifReference: String?
+
+    init(name: String? = nil,
+         type: String? = nil,
+         soundReference: String? = nil,
+         sound: CBSound? = nil,
+         commentedOut: String? = nil,
+         formulaList: CBFormulaList? = nil,
+         formulaTree: CBFormulaList? = nil,
+         xDestination: CBFormulaList? = nil,
+         yDestination: CBFormulaList? = nil,
+         lookReference: String? = nil,
+         userVariable: String? = nil,
+         userVariableReference: String? = nil,
+         userList: String? = nil,
+         broadcastMessage: String? = nil,
+         noteMessage: String? = nil,
+         pointedObject: String? = nil,
+         spinnerSelectionID: String? = nil,
+         xPosition: CBFormula? = nil,
+         yPosition: CBFormula? = nil,
+         ifReference: String? = nil) {
+        self.name = name
+        self.type = type
+        self.soundReference = soundReference
+        self.sound = sound
+        self.commentedOut = commentedOut
+        self.formulaList = formulaList
+        self.formulaTree = formulaTree
+        self.xDestination = xDestination
+        self.yDestination = yDestination
+        self.lookReference = lookReference
+        self.userVariable = userVariable
+        self.userVariableReference = userVariableReference
+        self.userList = userList
+        self.broadcastMessage = broadcastMessage
+        self.noteMessage = noteMessage
+        self.pointedObject = pointedObject
+        self.spinnerSelectionID = spinnerSelectionID
+        self.xPosition = xPosition
+        self.yPosition = yPosition
+        self.ifReference = ifReference
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
 

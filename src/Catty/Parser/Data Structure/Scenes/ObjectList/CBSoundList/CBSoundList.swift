@@ -23,7 +23,7 @@
 import SWXMLHash
 
 struct CBSoundList: XMLIndexerDeserializable, Equatable {
-    let sound: [CBSound]?
+    var sound: [CBSound]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBSoundList {
         return try CBSoundList(

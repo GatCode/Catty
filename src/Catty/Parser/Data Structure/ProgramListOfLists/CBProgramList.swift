@@ -23,8 +23,14 @@
 import SWXMLHash
 
 struct CBProgramList: XMLIndexerDeserializable {
-    let name: String?
-    let reference: String?
+    var name: String?
+    var reference: String?
+
+    init(name: String? = nil,
+         reference: String? = nil) {
+        self.name = name
+        self.reference = reference
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProgramList {
         return try CBProgramList(

@@ -22,30 +22,80 @@
 import SWXMLHash
 
 struct CBHeader: XMLIndexerDeserializable, Equatable {
-    let applicationBuildName: String?
-    let applicationBuildNumber: String?
-    let applicationName: String?
-    let applicationVersion: String?
-    let catrobatLanguageVersion: String?
-    let dateTimeUpload: String?
-    let description: String?
-    let deviceName: String?
-    let isCastProject: String?
-    let landscapeMode: String?
-    let mediaLicense: String?
-    let platform: String?
-    let platformVersion: String?
-    let programLicense: String?
-    let programName: String?
-    let remixOf: String?
-    let scenesEnabled: String?
-    let screenHeight: String?
-    let screenMode: String?
-    let screenWidth: String?
-    let tags: String?
-    let url: String?
-    let userHandle: String?
-    let programID: String?
+    var applicationBuildName: String?
+    var applicationBuildNumber: String?
+    var applicationName: String?
+    var applicationVersion: String?
+    var catrobatLanguageVersion: String?
+    var dateTimeUpload: String?
+    var description: String?
+    var deviceName: String?
+    var isCastProject: String?
+    var landscapeMode: String?
+    var mediaLicense: String?
+    var platform: String?
+    var platformVersion: String?
+    var programLicense: String?
+    var programName: String?
+    var remixOf: String?
+    var scenesEnabled: String?
+    var screenHeight: String?
+    var screenMode: String?
+    var screenWidth: String?
+    var tags: String?
+    var url: String?
+    var userHandle: String?
+    var programID: String?
+
+    init (applicationBuildName: String? = nil,
+          applicationBuildNumber: String? = nil,
+          applicationName: String? = nil,
+          applicationVersion: String? = nil,
+          catrobatLanguageVersion: String? = nil,
+          dateTimeUpload: String? = nil,
+          description: String? = nil,
+          deviceName: String? = nil,
+          isCastProject: String? = nil,
+          landscapeMode: String? = nil,
+          mediaLicense: String? = nil,
+          platform: String? = nil,
+          platformVersion: String? = nil,
+          programLicense: String? = nil,
+          programName: String? = nil,
+          remixOf: String? = nil,
+          scenesEnabled: String? = nil,
+          screenHeight: String? = nil,
+          screenMode: String? = nil,
+          screenWidth: String? = nil,
+          tags: String? = nil,
+          url: String? = nil,
+          userHandle: String? = nil,
+          programID: String? = nil) {
+        self.applicationBuildName = applicationBuildName
+        self.applicationBuildNumber = applicationBuildNumber
+        self.applicationName = applicationName
+        self.applicationVersion = applicationVersion
+        self.catrobatLanguageVersion = catrobatLanguageVersion
+        self.dateTimeUpload = dateTimeUpload
+        self.description = description
+        self.deviceName = deviceName
+        self.isCastProject = isCastProject
+        self.landscapeMode = landscapeMode
+        self.mediaLicense = mediaLicense
+        self.platform = platform
+        self.platformVersion = platformVersion
+        self.programLicense = programLicense
+        self.programName = programName
+        self.remixOf = remixOf
+        self.scenesEnabled = scenesEnabled
+        self.screenHeight = screenHeight
+        self.screenMode = screenMode
+        self.screenWidth = screenWidth
+        self.tags = tags
+        self.url = url
+        self.userHandle = userHandle
+        self.programID = programID
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBHeader {
         return try CBHeader(

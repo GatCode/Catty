@@ -30,7 +30,6 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
-		2E13C40422ABB0090018CB1E /* XMLMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */; };
 		2E21CF6522CB7EA0001154DD /* CBXMLDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21CF6422CB7EA0001154DD /* CBXMLDefinitions.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
@@ -53,6 +52,9 @@
 		2E25194C229C2A3C00DC11BD /* CBUserBrickVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */; };
 		2E251989229C44E200DC11BD /* XMLAbstractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251988229C44E200DC11BD /* XMLAbstractTest.swift */; };
 		2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25198A229C465300DC11BD /* XMLParserTests.swift */; };
+		2E27BC3D22D61CED00B83AF3 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30AB1A24DCAA00093DA7 /* Project.m */; };
+		2E27BC4722D6216800B83AF3 /* LanguageTranslationDefinesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C631901BC50DEE00486958 /* LanguageTranslationDefinesSwift.swift */; };
+		2E27BC4A22D6426700B83AF3 /* XMLMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */; };
 		2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802722A4F250002D1482 /* CBLRChild.swift */; };
 		2E56BE5122A819D100F26BC1 /* CBXMLMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */; };
 		2E56BE5722A8E1B700F26BC1 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5622A8E1B700F26BC1 /* MapHeader.swift */; };
@@ -8148,6 +8150,7 @@
 				4C28D78B2132A83D00870CE2 /* FormulaMock.swift in Sources */,
 				4C6FE163212D2D2E0067B7D5 /* ModFunctionTest.swift in Sources */,
 				4C82265A213FA7A400F3D750 /* TouchManagerMock.swift in Sources */,
+				2E27BC3D22D61CED00B83AF3 /* Project.m in Sources */,
 				5973F245202EF3A000A4CED9 /* SoundsLibraryCollectionViewDataSourceDelegateMock.swift in Sources */,
 				4C3A5CA921D3B7EF008FD83F /* NotEqualOperatorTest.swift in Sources */,
 				4C0F9FD3204BD3B400E71B2D /* BubbleBrickTests.swift in Sources */,
@@ -8207,6 +8210,7 @@
 				4C82265D213FA7A400F3D750 /* FingerYSensorTest.swift in Sources */,
 				4CEB225D1B95E47500B3BE2F /* MoveNStepsBrickTests.m in Sources */,
 				4CEB22531B95E47500B3BE2F /* BrickMutableCopyTests.m in Sources */,
+				2E27BC4A22D6426700B83AF3 /* XMLMappingTests.swift in Sources */,
 				4C1F6FA7213CFB5800C20BEB /* FunctionTests.swift in Sources */,
 				4C3A5CAB21D3B967008FD83F /* SmallerThanOperatorTest.swift in Sources */,
 				4C822653213FA7A400F3D750 /* ObjectDoubleSensorMock.swift in Sources */,
@@ -8235,7 +8239,6 @@
 				4C822659213FA7A400F3D750 /* AudioManagerMock.swift in Sources */,
 				4CD27AAA21B5765C00DDADB5 /* FeatureMock.swift in Sources */,
 				4CEB22501B95E47500B3BE2F /* BrickMoveManagerLogicTests.m in Sources */,
-				2E13C40422ABB0090018CB1E /* XMLMappingTests.swift in Sources */,
 				4C968C401F00288500355C0D /* BrickTests.swift in Sources */,
 				4CDF7BBE213875A900FFF7F4 /* ProjectMock.m in Sources */,
 				4C0F9FD9204BD3D500E71B2D /* RepeatUntilBrickTests.swift in Sources */,
@@ -8292,6 +8295,7 @@
 				4C53E39221D525F800F2EC76 /* OperatorManagerTest.swift in Sources */,
 				4C68FC921B25A00B00AB3EE8 /* InternFormulaStateTest.m in Sources */,
 				5973F239202EF34700A4CED9 /* MediaLibraryCollectionViewDataSourceDelegateMock.swift in Sources */,
+				2E27BC4722D6216800B83AF3 /* LanguageTranslationDefinesSwift.swift in Sources */,
 				4CC614B7212EA84E006E4720 /* FormulaEditorItemTest.swift in Sources */,
 				4C822676213FA7A400F3D750 /* LookNameSensorTest.swift in Sources */,
 				4CD085DE1CD9EE59009A6428 /* SceneTests.m in Sources */,

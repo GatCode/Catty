@@ -23,12 +23,26 @@
 import SWXMLHash
 
 struct CBScript: XMLIndexerDeserializable {
-    let brickList: CBBrickList?
-    let type: String?
-    let commentedOut: String?
-    let isUserScript: String?
-    let receivedMessage: String?
-    let action: String?
+    var brickList: CBBrickList?
+    var type: String?
+    var commentedOut: String?
+    var isUserScript: String?
+    var receivedMessage: String?
+    var action: String?
+
+    init(brickList: CBBrickList? = nil,
+         type: String? = nil,
+         commentedOut: String? = nil,
+         isUserScript: String? = nil,
+         receivedMessage: String? = nil,
+         action: String? = nil) {
+        self.brickList = brickList
+        self.type = type
+        self.commentedOut = commentedOut
+        self.isUserScript = isUserScript
+        self.receivedMessage = receivedMessage
+        self.action = action
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBScript {
 

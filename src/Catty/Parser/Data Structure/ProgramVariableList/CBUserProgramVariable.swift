@@ -23,8 +23,14 @@
 import SWXMLHash
 
 struct CBUserProgramVariable: XMLIndexerDeserializable {
-    let value: String?
-    let reference: String?
+    var value: String?
+    var reference: String?
+
+    init(value: String? = nil,
+         reference: String? = nil) {
+        self.value = value
+        self.reference = reference
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBUserProgramVariable {
 

@@ -25,19 +25,16 @@
 extension CBXMLMapping {
 
     static func mapVariables(project: CBProject?, mappedProject: inout Project) -> VariablesContainer? {
+        guard let project = project else { return nil }
         let container = VariablesContainer()
 
         container.programListOfLists = mapProgramListOfLists(project: project, mappedProject: &mappedProject)
-        if container.programListOfLists == nil { return nil }
 
         container.programVariableList = mapProgramVariableList(project: project, mappedProject: &mappedProject)
-        if container.programVariableList == nil { return nil }
 
         container.objectListOfLists = mapObjectListOfLists(project: project, mappedProject: &mappedProject)
-        if container.objectListOfLists == nil { return nil }
 
         container.objectVariableList = mapObjectVariableList(project: project, mappedProject: &mappedProject)
-        if container.objectVariableList == nil { return nil }
 
         return container
     }
@@ -184,7 +181,7 @@ extension CBXMLMapping {
         guard let objectList = project?.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
 
         var splittedReference = reference.split(separator: "/")
-        splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+        splittedReference = splittedReference.filter { $0 != ".." }
         var counter = 0
         var object: (Int, String)?
         var script: (Int, String)?
@@ -270,7 +267,7 @@ extension CBXMLMapping {
         guard let reference = reference else { return nil }
 
         var splittedReference = reference.split(separator: "/")
-        splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+        splittedReference = splittedReference.filter { $0 != ".." }
         var counter = 0
         var script: (Int, String)?
         var brick: (Int, String)?
@@ -329,7 +326,7 @@ extension CBXMLMapping {
         guard let reference = reference else { return nil }
 
         var splittedReference = reference.split(separator: "/")
-        splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+        splittedReference = splittedReference.filter { $0 != ".." }
         var counter = 0
         var brick: (Int, String)?
 

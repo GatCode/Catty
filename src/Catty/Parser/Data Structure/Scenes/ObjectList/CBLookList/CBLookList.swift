@@ -23,7 +23,7 @@
 import SWXMLHash
 
 struct CBLookList: XMLIndexerDeserializable, Equatable {
-    let look: [CBLook]?
+    var look: [CBLook]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBLookList {
         return try CBLookList(

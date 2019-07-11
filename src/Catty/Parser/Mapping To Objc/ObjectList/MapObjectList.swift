@@ -37,23 +37,22 @@ extension CBXMLMapping {
                 resultObjectList.append(mappedObject)
             }
         }
-        if resultObjectList.isEmpty { return nil }
 
         return NSMutableArray(array: resultObjectList)
     }
 
     static func mapObject(object: CBObject?, objectList: [CBObject]?, project: CBProject?) -> SpriteObject? {
+        var result = SpriteObject()
         guard let object = object else { return nil }
         guard let project = project else { return nil }
         guard let lookList = object.lookList else { return nil }
         guard let soundList = object.soundList else { return nil }
 
-        var result = SpriteObject()
         result.name = object.name
         result.lookList = mapLookList(lookList: lookList)
         result.soundList = mapSoundList(soundList: soundList, project: project, object: object)
         result.scriptList = mapScriptList(object: object, objectList: objectList, project: project, currentObject: &result)
-        if result.lookList == nil || result.soundList == nil || result.scriptList == nil { return nil }
+        //if result.lookList == nil || result.soundList == nil || result.scriptList == nil { return nil }
 
         return result
     }
@@ -152,7 +151,6 @@ extension CBXMLMapping {
                 resultScriptList.append(scr)
             }
         }
-        if resultScriptList.isEmpty { return nil }
 
         return NSMutableArray(array: resultScriptList)
     }
@@ -191,7 +189,7 @@ extension CBXMLMapping {
 
         if let res = result {
             res.brickList = mapBrickList(script: script, objectList: objectList, object: object, project: project, currScript: &result, currObject: &currentObject)
-            return res.brickList != nil ? result : nil
+            return res
         }
 
         return nil
@@ -527,7 +525,7 @@ extension CBXMLMapping {
                 let newBrick = PlaySoundBrick()
                 if let soundReference = brick.soundReference {
                     var splittedReference = soundReference.split(separator: "/")
-                    splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+                    splittedReference = splittedReference.filter { $0 != ".." }
                     if splittedReference.count == 2, let soundString = splittedReference.last {
                         let soundIndex = extractNumberInBacesFrom(string: String(soundString))
                         if let newSoundList = object?.soundList?.sound, soundIndex < newSoundList.count {
@@ -736,7 +734,7 @@ extension CBXMLMapping {
 
         if let reference = brick.userVariableReference {
             var splittedReference = reference.split(separator: "/")
-            splittedReference.forEach { if $0 == ".." { splittedReference.removeObject($0) } }
+            splittedReference = splittedReference.filter { $0 != ".." }
             if splittedReference.count == 2 {
                 let resolvedReference = resolveReferenceStringExtraShort(reference: reference, project: project, script: script)
                 if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count {

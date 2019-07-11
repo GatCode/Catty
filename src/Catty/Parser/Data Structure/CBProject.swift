@@ -23,10 +23,20 @@
 import SWXMLHash
 
 struct CBProject: XMLIndexerDeserializable, Equatable {
-    let header: CBHeader?
-    let scenes: [CBProjectScene]?
-    let programVariableList: CBProgramVariableList?
-    let programListOfLists: CBProgramListOfLists?
+    var header: CBHeader?
+    var scenes: [CBProjectScene]?
+    var programVariableList: CBProgramVariableList?
+    var programListOfLists: CBProgramListOfLists?
+
+    init(header: CBHeader? = nil,
+         scenes: [CBProjectScene]? = nil,
+         programVariableList: CBProgramVariableList? = nil,
+         programListOfLists: CBProgramListOfLists? = nil) {
+        self.header = header
+        self.scenes = scenes
+        self.programVariableList = programVariableList
+        self.programListOfLists = programListOfLists
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProject {
 
