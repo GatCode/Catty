@@ -71,6 +71,7 @@ fileprivate func prepareXMLWithSpecialChars(xml: String) -> String {
 extension CBXMLSerializer2 {
 
     @objc func serializeProjectObjc(project: Project, xmlPath: String, fileManager: CBFileManager) {
+        CBXMLMappingFromObjc.mapProjectToCBProject(project: project)
         let legacySerializer = CBXMLSerializer(path: xmlPath, fileManager: fileManager)
         legacySerializer?.serializeProject(project)
     }

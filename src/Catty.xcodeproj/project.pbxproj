@@ -55,6 +55,7 @@
 		2E27BC3D22D61CED00B83AF3 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30AB1A24DCAA00093DA7 /* Project.m */; };
 		2E27BC4722D6216800B83AF3 /* LanguageTranslationDefinesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C631901BC50DEE00486958 /* LanguageTranslationDefinesSwift.swift */; };
 		2E27BC4A22D6426700B83AF3 /* XMLMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */; };
+		2E27BC4D22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27BC4C22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift */; };
 		2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802722A4F250002D1482 /* CBLRChild.swift */; };
 		2E56BE5122A819D100F26BC1 /* CBXMLMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */; };
 		2E56BE5722A8E1B700F26BC1 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5622A8E1B700F26BC1 /* MapHeader.swift */; };
@@ -1329,6 +1330,7 @@
 		2E25194B229C2A3C00DC11BD /* CBUserBrickVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrickVariableList.swift; sourceTree = "<group>"; };
 		2E251988229C44E200DC11BD /* XMLAbstractTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLAbstractTest.swift; path = "Parser & Serialization/XMLAbstractTest.swift"; sourceTree = "<group>"; };
 		2E25198A229C465300DC11BD /* XMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLParserTests.swift; path = "Parser & Serialization/XMLParserTests.swift"; sourceTree = "<group>"; };
+		2E27BC4C22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMappingFromObjc.swift; sourceTree = "<group>"; };
 		2E34802722A4F250002D1482 /* CBLRChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLRChild.swift; sourceTree = "<group>"; };
 		2E56BE5022A819D100F26BC1 /* CBXMLMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMapping.swift; sourceTree = "<group>"; };
 		2E56BE5622A8E1B700F26BC1 /* MapHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeader.swift; sourceTree = "<group>"; };
@@ -3175,6 +3177,14 @@
 			path = CBUserBrickVariableList;
 			sourceTree = "<group>";
 		};
+		2E27BC4E22D77A9600B83AF3 /* Mapping From Objc */ = {
+			isa = PBXGroup;
+			children = (
+				2E27BC4C22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift */,
+			);
+			path = "Mapping From Objc";
+			sourceTree = "<group>";
+		};
 		2E56BE5822A8E3D400F26BC1 /* Mapping To Objc */ = {
 			isa = PBXGroup;
 			children = (
@@ -3298,6 +3308,7 @@
 				2E5A24DC229D72C40000A58F /* Data Structure */,
 				2E5A24DF229D76930000A58F /* Serializer Extensions */,
 				2E56BE5822A8E3D400F26BC1 /* Mapping To Objc */,
+				2E27BC4E22D77A9600B83AF3 /* Mapping From Objc */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -8867,6 +8878,7 @@
 				92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */,
 				92EC985C1BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.m in Sources */,
 				2E6F428822993A3A00840319 /* CBBrickList.swift in Sources */,
+				2E27BC4D22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift in Sources */,
 				4C0F9F4F204BD0B400E71B2D /* CameraPreviewHandler.m in Sources */,
 				4C724E611B4D3E8C00E27479 /* ProjectParser.m in Sources */,
 				AA74F0931BC05FCE00D1E954 /* BrickCellFormulaData.m in Sources */,

@@ -23,9 +23,17 @@
 import SWXMLHash
 
 struct CBProjectData: XMLIndexerDeserializable {
-    let objectListOfList: CBObjectListofList?
-    let objectVariableList: CBObjectVariableList?
-    let userBrickVariableList: CBUserBrickVariableList?
+    var objectListOfList: CBObjectListofList?
+    var objectVariableList: CBObjectVariableList?
+    var userBrickVariableList: CBUserBrickVariableList?
+
+    init(objectListOfList: CBObjectListofList? = nil,
+         objectVariableList: CBObjectVariableList? = nil,
+         userBrickVariableList: CBUserBrickVariableList? = nil) {
+        self.objectListOfList = objectListOfList
+        self.objectVariableList = objectVariableList
+        self.userBrickVariableList = userBrickVariableList
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProjectData {
         return try CBProjectData(
