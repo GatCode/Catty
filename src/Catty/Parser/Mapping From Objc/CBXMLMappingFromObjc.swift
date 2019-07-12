@@ -140,6 +140,20 @@ extension CBXMLMappingFromObjc {
 
         return CBScriptList(script: mappedScriptList)
     }
+    
+    private static func resolveLook(object: SpriteObject, look: Look?) -> (CBLook?, String?) {
+        
+        // TODO: do some magic here
+        
+        return (nil, nil)
+    }
+
+    private static func resolveSound(object: SpriteObject, sound: Sound?) -> (CBSound?, String?) {
+
+        // TODO: do some magic here
+
+        return (nil, nil)
+    }
 
     private static func mapBrickList(project: Project, script: Script?, object: SpriteObject) -> CBBrickList? {
         guard let script = script else { return nil }
@@ -148,9 +162,105 @@ extension CBXMLMappingFromObjc {
         for brick in script.brickList {
             if let type = (brick as? Brick)?.brickTitle {
                 var mappedBrick = CBBrick()
-
+                
+                // MARK: Look Bricks
+                if type.hasPrefix(kLocalizedSetBackground) {
+                    let brick = brick as? SetBackgroundBrick
+                    mappedBrick.name = kSetBackgroundBrick
+                    mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
+                } else if type.hasPrefix(kLocalizedSetLook) {
+                    let brick = brick as? SetLookBrick
+                    mappedBrick.name = kSetLookBrick
+                    mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
+                } else if type.hasPrefix(kLocalizedNextLook) {
+                    mappedBrick.name = kNextLookBrick
+                } else if type.hasPrefix(kLocalizedPreviousLook) {
+                    mappedBrick.name = kPreviousLookBrick
+                } else if type.hasPrefix(kLocalizedSetSizeTo) {
+                    let brick = brick as? SetSizeToBrick
+                    mappedBrick.name = kSetSizeToBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
+                } else if type.hasPrefix(kLocalizedChangeSizeByN) {
+                    let brick = brick as? ChangeSizeByNBrick
+                    mappedBrick.name = kChangeSizeByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
+                } else if type.hasPrefix(kLocalizedShow) {
+                    mappedBrick.name = kShowBrick
+                } else if type.hasPrefix(kLocalizedHide) {
+                    mappedBrick.name = kHideBrick
+                } else if type.hasPrefix(kLocalizedSetTransparency) {
+                    let brick = brick as? SetTransparencyBrick
+                    mappedBrick.name = kSetTransparencyBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.transparency])
+                } else if type.hasPrefix(kLocalizedChangeTransparency) {
+                    let brick = brick as? ChangeTransparencyByNBrick
+                    mappedBrick.name = kChangeTransparencyByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeTransparency])
+                } else if type.hasPrefix(kLocalizedSetBrightness) {
+                    let brick = brick as? SetBrightnessBrick
+                    mappedBrick.name = kSetBrightnessBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.brightness])
+                } else if type.hasPrefix(kLocalizedChangeBrightness) {
+                    let brick = brick as? ChangeBrightnessByNBrick
+                    mappedBrick.name = kChangeBrightnessByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeBrightness])
+                } else if type.hasPrefix(kLocalizedSetColor) {
+                    let brick = brick as? SetColorBrick
+                    mappedBrick.name = kSetColorBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.color])
+                } else if type.hasPrefix(kLocalizedChangeColor) {
+                    let brick = brick as? ChangeColorByNBrick
+                    mappedBrick.name = kChangeColorByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeColor])
+                } else if type.hasPrefix(kLocalizedClearGraphicEffect) {
+                    mappedBrick.name = kClearGraphicEffectBrick
+                } else if type.hasPrefix(kLocalizedFlash) {
+                    let brick = brick as? FlashBrick
+                    mappedBrick.name = kFlashBrick
+                    mappedBrick.spinnerSelectionID = String(brick?.flashChoice ?? 0)
+                } else if type.hasPrefix(kLocalizedCamera) {
+                    let brick = brick as? CameraBrick
+                    mappedBrick.name = kCameraBrick
+                    mappedBrick.spinnerSelectionID = String(brick?.cameraChoice ?? 0)
+                } else if type.hasPrefix(kLocalizedThink) {
+                    let brick = brick as? ThinkBubbleBrick
+                    mappedBrick.name = kThinkBubbleBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+                } else if type.hasPrefix(kLocalizedAndWait) {
+                    let brick = brick as? ThinkForBubbleBrick
+                    mappedBrick.name = kThinkForBubbleBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
+                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
+                }
+                // MARK: Sound Bricks
+                else if type.hasPrefix(kLocalizedPlaySound) {
+                    let brick = brick as? PlaySoundBrick
+                    mappedBrick.name = kPlaySoundBrick
+                    mappedBrick.sound = resolveSound(object: object, sound: brick?.sound).0
+                    mappedBrick.soundReference = resolveSound(object: object, sound: brick?.sound).1
+                } else if type.hasPrefix(kLocalizedStopAllSounds) {
+                    mappedBrick.name = kStopAllSoundsBrick
+                } else if type.hasPrefix(kLocalizedSetVolumeTo) {
+                    let brick = brick as? SetVolumeToBrick
+                    mappedBrick.name = kSetVolumeToBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
+                } else if type.hasPrefix(kLocalizedChangeVolumeBy) {
+                    let brick = brick as? ChangeVolumeByNBrick
+                    mappedBrick.name = kChangeVolumeByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
+                } else if type.hasPrefix(kLocalizedSpeak) {
+                    let brick = brick as? SpeakBrick
+                    mappedBrick.name = kSpeakBrick
+                    mappedBrick.noteMessage = brick?.text
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+                } else if type.hasPrefix(kLocalizedAndWait) {
+                    let brick = brick as? SpeakAndWaitBrick
+                    mappedBrick.name = kSpeakAndWaitBrick
+                    mappedBrick.noteMessage = brick?.text
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+                }
                 // MARK: Variable Bricks
-                if type.hasPrefix(kLocalizedSetVariable) {
+                else if type.hasPrefix(kLocalizedSetVariable) {
                     let brick = brick as? SetVariableBrick
                     mappedBrick.name = kSetVariableBrick
                     mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
@@ -208,6 +318,23 @@ extension CBXMLMappingFromObjc {
                     let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
                     mappedBrick.userList = uVar?.value
                     mappedBrick.userVariableReference = uVar?.reference
+                }
+                // MARK: Alternative Bricks
+                else if type.hasPrefix(kLocalizedComeToFront) {
+                    mappedBrick.name = kComeToFrontBrick
+                } else if type.hasPrefix(kLocalizedGoBack) {
+                    let brick = brick as? GoNStepsBackBrick
+                    mappedBrick.name = kGoNStepsBackBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
+                } else if type.hasPrefix(kLocalizedSay) {
+                    let brick = brick as? SayBubbleBrick
+                    mappedBrick.name = kSayBubbleBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+                } else if type.hasPrefix(kLocalizedSay) { // TODO FIX!!!
+                    let brick = brick as? SayForBubbleBrick
+                    mappedBrick.name = kSayForBubbleBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
+                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
                 } else {
                     print("nononono")
                 }
