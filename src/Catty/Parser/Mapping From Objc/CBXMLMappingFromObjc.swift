@@ -160,293 +160,298 @@ extension CBXMLMappingFromObjc {
         var mappedBrickList = [CBBrick]()
 
         for brick in script.brickList {
-            if let type = (brick as? Brick)?.brickTitle {
-                var mappedBrick = CBBrick()
+            var mappedBrick = CBBrick()
 
-                // MARK: Condition Bricks
-                if type.hasPrefix(kLocalizedBroadcast) {
-                    let brick = brick as? BroadcastBrick
-                    mappedBrick.name = kBroadcastBrick
-                    mappedBrick.broadcastMessage = brick?.broadcastMessage
-                } else if type.hasPrefix(kLocalizedBroadcastAndWait) {
-                    let brick = brick as? BroadcastWaitBrick
-                    mappedBrick.name = kBroadcastWaitBrick
-                    mappedBrick.broadcastMessage = brick?.broadcastMessage
-                } else if type.hasPrefix(kLocalizedIfBegin) {
-                    let brick = brick as? IfLogicBeginBrick
-                    mappedBrick.name = kIfLogicBeginBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
-                } else if type.hasPrefix(kLocalizedElse) {
-                    let brick = brick as? IfLogicElseBrick
-                    mappedBrick.name = kIfLogicElseBrick
-                } else if type.hasPrefix(kLocalizedEndOfLoop) {
-                    let brick = brick as? IfLogicEndBrick
-                    mappedBrick.name = kIfLogicEndBrick
-                } else if type.hasPrefix(kLocalizedIfBegin) { // TODO: fix
-                    let brick = brick as? IfThenLogicBeginBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
-                    mappedBrick.name = kIfThenLogicBeginBrick
-                } else if type.hasPrefix(kLocalizedIfBegin) { // TODO: fix
-                    let brick = brick as? IfThenLogicEndBrick
-                    mappedBrick.name = kIfThenLogicEndBrick
-                } else if type.hasPrefix(kLocalizedForever) {
-                    let brick = brick as? ForeverBrick
-                    mappedBrick.name = kForeverBrick
-                } else if type.hasPrefix(kLocalizedRepeat) {
-                    let brick = brick as? RepeatBrick
-                    mappedBrick.name = kRepeatBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timesToRepeat])
-                } else if type.hasPrefix(kLocalizedRepeatUntil) {
-                    let brick = brick as? RepeatUntilBrick
-                    mappedBrick.name = kRepeatUntilBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.repeatCondition])
-                } else if type.hasPrefix(kLocalizedEndOfLoop) {
-                    let brick = brick as? LoopEndBrick
-                    mappedBrick.name = kLoopEndBrick
-                } else if type.hasPrefix(kLocalizedNote) {
-                    let brick = brick as? NoteBrick
-                    mappedBrick.name = kNoteBrick
-                    mappedBrick.noteMessage = brick?.note
-                } else if type.hasPrefix(kLocalizedWait) {
-                    let brick = brick as? WaitBrick
-                    mappedBrick.name = kWaitBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timeToWaitInSeconds])
-                } else if type.hasPrefix(kLocalizedWaitUntil) {
-                    let brick = brick as? WaitUntilBrick
-                    mappedBrick.name = kWaitUntilBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.waitCondition])
-                }
-                // MARK: Motion Bricks
-                else if type.hasPrefix(kLocalizedPlaceAt) {
-                    let brick = brick as? PlaceAtBrick
-                    mappedBrick.name = kPlaceAtBrick
-                    mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
-                    mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
-                } else if type.hasPrefix(kLocalizedChangeXBy) {
-                    let brick = brick as? ChangeXByNBrick
-                    mappedBrick.name = kChangeXByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xMovement])
-                } else if type.hasPrefix(kLocalizedChangeYBy) {
-                    let brick = brick as? ChangeYByNBrick
-                    mappedBrick.name = kChangeYByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yMovement])
-                } else if type.hasPrefix(kLocalizedSetX) {
-                    let brick = brick as? SetXBrick
-                    mappedBrick.name = kSetXBrick
-                    mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
-                } else if type.hasPrefix(kLocalizedSetY) {
-                    let brick = brick as? SetYBrick
-                    mappedBrick.name = kSetYBrick
-                    mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
-                } else if type.hasPrefix(kLocalizedBack) { // TODO: FIX
-                    mappedBrick.name = kIfOnEdgeBounceBrick
-                } else if type.hasPrefix(kLocalizedStep) { // TODO: FIX
-                    let brick = brick as? MoveNStepsBrick
-                    mappedBrick.name = kMoveNStepsBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
-                } else if type.hasPrefix(kLocalizedTurnLeft) {
-                    let brick = brick as? TurnLeftBrick
-                    mappedBrick.name = kTurnLeftBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
-                } else if type.hasPrefix(kLocalizedTurnRight) {
-                    let brick = brick as? TurnRightBrick
-                    mappedBrick.name = kTurnRightBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
-                } else if type.hasPrefix(kLocalizedPointInDirection) {
-                    let brick = brick as? PointInDirectionBrick
-                    mappedBrick.name = kPointInDirectionBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
-                } else if type.hasPrefix(kLocalizedPointTowards) {
-                    let brick = brick as? PointToBrick
-                    mappedBrick.name = kPointToBrick
-                    mappedBrick.pointedObject = resolveObjectPath(project: project, object: brick?.pointedObject)
-                } else if type.hasPrefix(kLocalizedPointTowards) { // TODO: FIX
-                    let brick = brick as? GlideToBrick
-                    mappedBrick.name = kGlideToBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.yDestination, brick?.xDestination])
-                } else if type.hasPrefix(kLocalizedVibration) { // TODO: FIX
-                    let brick = brick as? VibrationBrick
-                    mappedBrick.name = kVibrationBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds])
-                }
-                // MARK: Look Bricks
-                else if type.hasPrefix(kLocalizedSetBackground) {
-                    let brick = brick as? SetBackgroundBrick
-                    mappedBrick.name = kSetBackgroundBrick
-                    mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
-                } else if type.hasPrefix(kLocalizedSetLook) {
-                    let brick = brick as? SetLookBrick
-                    mappedBrick.name = kSetLookBrick
-                    mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
-                } else if type.hasPrefix(kLocalizedNextLook) {
-                    mappedBrick.name = kNextLookBrick
-                } else if type.hasPrefix(kLocalizedPreviousLook) {
-                    mappedBrick.name = kPreviousLookBrick
-                } else if type.hasPrefix(kLocalizedSetSizeTo) {
-                    let brick = brick as? SetSizeToBrick
-                    mappedBrick.name = kSetSizeToBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
-                } else if type.hasPrefix(kLocalizedChangeSizeByN) {
-                    let brick = brick as? ChangeSizeByNBrick
-                    mappedBrick.name = kChangeSizeByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
-                } else if type.hasPrefix(kLocalizedShow) {
-                    mappedBrick.name = kShowBrick
-                } else if type.hasPrefix(kLocalizedHide) {
-                    mappedBrick.name = kHideBrick
-                } else if type.hasPrefix(kLocalizedSetTransparency) {
-                    let brick = brick as? SetTransparencyBrick
-                    mappedBrick.name = kSetTransparencyBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.transparency])
-                } else if type.hasPrefix(kLocalizedChangeTransparency) {
-                    let brick = brick as? ChangeTransparencyByNBrick
-                    mappedBrick.name = kChangeTransparencyByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeTransparency])
-                } else if type.hasPrefix(kLocalizedSetBrightness) {
-                    let brick = brick as? SetBrightnessBrick
-                    mappedBrick.name = kSetBrightnessBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.brightness])
-                } else if type.hasPrefix(kLocalizedChangeBrightness) {
-                    let brick = brick as? ChangeBrightnessByNBrick
-                    mappedBrick.name = kChangeBrightnessByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeBrightness])
-                } else if type.hasPrefix(kLocalizedSetColor) {
-                    let brick = brick as? SetColorBrick
-                    mappedBrick.name = kSetColorBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.color])
-                } else if type.hasPrefix(kLocalizedChangeColor) {
-                    let brick = brick as? ChangeColorByNBrick
-                    mappedBrick.name = kChangeColorByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeColor])
-                } else if type.hasPrefix(kLocalizedClearGraphicEffect) {
-                    mappedBrick.name = kClearGraphicEffectBrick
-                } else if type.hasPrefix(kLocalizedFlash) {
-                    let brick = brick as? FlashBrick
-                    mappedBrick.name = kFlashBrick
-                    mappedBrick.spinnerSelectionID = String(brick?.flashChoice ?? 0)
-                } else if type.hasPrefix(kLocalizedCamera) {
-                    let brick = brick as? CameraBrick
-                    mappedBrick.name = kCameraBrick
-                    mappedBrick.spinnerSelectionID = String(brick?.cameraChoice ?? 0)
-                } else if type.hasPrefix(kLocalizedThink) {
-                    let brick = brick as? ThinkBubbleBrick
-                    mappedBrick.name = kThinkBubbleBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-                } else if type.hasPrefix(kLocalizedAndWait) {
-                    let brick = brick as? ThinkForBubbleBrick
-                    mappedBrick.name = kThinkForBubbleBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
-                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
-                }
-                // MARK: Sound Bricks
-                else if type.hasPrefix(kLocalizedPlaySound) {
-                    let brick = brick as? PlaySoundBrick
-                    mappedBrick.name = kPlaySoundBrick
-                    mappedBrick.sound = resolveSound(object: object, sound: brick?.sound).0
-                    mappedBrick.soundReference = resolveSound(object: object, sound: brick?.sound).1
-                } else if type.hasPrefix(kLocalizedStopAllSounds) {
-                    mappedBrick.name = kStopAllSoundsBrick
-                } else if type.hasPrefix(kLocalizedSetVolumeTo) {
-                    let brick = brick as? SetVolumeToBrick
-                    mappedBrick.name = kSetVolumeToBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
-                } else if type.hasPrefix(kLocalizedChangeVolumeBy) {
-                    let brick = brick as? ChangeVolumeByNBrick
-                    mappedBrick.name = kChangeVolumeByNBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
-                } else if type.hasPrefix(kLocalizedSpeak) {
-                    let brick = brick as? SpeakBrick
-                    mappedBrick.name = kSpeakBrick
-                    mappedBrick.noteMessage = brick?.text
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-                } else if type.hasPrefix(kLocalizedAndWait) {
-                    let brick = brick as? SpeakAndWaitBrick
-                    mappedBrick.name = kSpeakAndWaitBrick
-                    mappedBrick.noteMessage = brick?.text
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-                }
-                // MARK: Variable Bricks
-                else if type.hasPrefix(kLocalizedSetVariable) {
-                    let brick = brick as? SetVariableBrick
-                    mappedBrick.name = kSetVariableBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
-                    mappedBrick.userVariable = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedChangeVariable) {
-                    let brick = brick as? ChangeVariableBrick
-                    mappedBrick.name = kChangeVariableBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
-                    mappedBrick.userVariable = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedShowVariable) {
-                    let brick = brick as? ShowTextBrick
-                    mappedBrick.name = kShowTextBrick
-                    mappedBrick.xPosition = mapFormula(formula: brick?.xFormula)
-                    mappedBrick.yPosition = mapFormula(formula: brick?.yFormula)
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
-                    mappedBrick.userVariable = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedHideVariable) {
-                    let brick = brick as? HideTextBrick
-                    mappedBrick.name = kHideTextBrick
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
-                    mappedBrick.userVariable = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedUserListAdd) {
-                    let brick = brick as? AddItemToUserListBrick
-                    mappedBrick.name = kAddItemToUserListBrick
-                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
-                    mappedBrick.userList = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedUserListDeleteItemFrom) {
-                    let brick = brick as? DeleteItemOfUserListBrick
-                    mappedBrick.name = kDeleteItemOfUserListBrick
-                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
-                    mappedBrick.userList = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedUserListInsert) {
-                    let brick = brick as? InsertItemIntoUserListBrick
-                    mappedBrick.name = kInsertItemIntoUserListBrick
-                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula])
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.index])
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
-                    mappedBrick.userList = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                } else if type.hasPrefix(kLocalizedUserListReplaceItemInList) {
-                    let brick = brick as? ReplaceItemInUserListBrick
-                    mappedBrick.name = kReplaceItemInUserListBrick
-                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula])
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.index])
-                    let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
-                    mappedBrick.userList = uVar?.value
-                    mappedBrick.userVariableReference = uVar?.reference
-                }
-                // MARK: Alternative Bricks
-                else if type.hasPrefix(kLocalizedComeToFront) {
-                    mappedBrick.name = kComeToFrontBrick
-                } else if type.hasPrefix(kLocalizedGoBack) {
-                    let brick = brick as? GoNStepsBackBrick
-                    mappedBrick.name = kGoNStepsBackBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
-                } else if type.hasPrefix(kLocalizedSay) {
-                    let brick = brick as? SayBubbleBrick
-                    mappedBrick.name = kSayBubbleBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-                } else if type.hasPrefix(kLocalizedSay) { // TODO FIX!!!
-                    let brick = brick as? SayForBubbleBrick
-                    mappedBrick.name = kSayForBubbleBrick
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
-                    mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
-                } else {
-                    print("nononono")
-                }
-
-                mappedBrickList.append(mappedBrick)
+            switch (brick as? Brick)?.name.uppercased() {
+            // MARK: Condition Bricks
+            case kLocalizedBroadcast.uppercased():
+                let brick = brick as? BroadcastBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.broadcastMessage = brick?.broadcastMessage
+            case kBroadcastWaitBrick.uppercased():
+                let brick = brick as? BroadcastWaitBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.broadcastMessage = brick?.broadcastMessage
+            case kIfLogicBeginBrick.uppercased():
+                let brick = brick as? IfLogicBeginBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
+            case kIfLogicElseBrick.uppercased():
+                let brick = brick as? IfLogicElseBrick
+                mappedBrick.name = brick?.name
+            case kIfLogicEndBrick.uppercased():
+                let brick = brick as? IfLogicEndBrick
+                mappedBrick.name = brick?.name
+            case kIfThenLogicBeginBrick.uppercased():
+                let brick = brick as? IfThenLogicBeginBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
+            case kIfThenLogicEndBrick.uppercased():
+                let brick = brick as? IfThenLogicEndBrick
+                mappedBrick.name = brick?.name
+            case kForeverBrick.uppercased():
+                let brick = brick as? ForeverBrick
+                mappedBrick.name = brick?.name
+            case kRepeatBrick.uppercased():
+                let brick = brick as? RepeatBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timesToRepeat])
+            case kRepeatUntilBrick.uppercased():
+                let brick = brick as? RepeatUntilBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.repeatCondition])
+            case kLoopEndBrick.uppercased():
+                let brick = brick as? LoopEndBrick
+                mappedBrick.name = brick?.name
+            case kNoteBrick.uppercased():
+                let brick = brick as? NoteBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.noteMessage = brick?.note
+            case kWaitBrick.uppercased():
+                let brick = brick as? WaitBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timeToWaitInSeconds])
+            case kWaitUntilBrick.uppercased():
+                let brick = brick as? WaitUntilBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.waitCondition])
+            // MARK: Motion Bricks
+            case kPlaceAtBrick.uppercased():
+                let brick = brick as? PlaceAtBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
+                mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
+            case kChangeXByNBrick.uppercased():
+                let brick = brick as? ChangeXByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xMovement])
+            case kChangeYByNBrick.uppercased():
+                let brick = brick as? ChangeYByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yMovement])
+            case kSetXBrick.uppercased():
+                let brick = brick as? SetXBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
+            case kSetYBrick.uppercased():
+                let brick = brick as? SetYBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
+            case kIfOnEdgeBounceBrick.uppercased():
+                mappedBrick.name = kIfOnEdgeBounceBrick
+            case kMoveNStepsBrick.uppercased():
+                let brick = brick as? MoveNStepsBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
+            case kTurnLeftBrick.uppercased():
+                let brick = brick as? TurnLeftBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
+            case kTurnRightBrick.uppercased():
+                let brick = brick as? TurnRightBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
+            case kPointInDirectionBrick.uppercased():
+                let brick = brick as? PointInDirectionBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
+            case kPointToBrick.uppercased():
+                let brick = brick as? PointToBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.pointedObject = resolveObjectPath(project: project, object: brick?.pointedObject)
+            case kGlideToBrick.uppercased():
+                let brick = brick as? GlideToBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.yDestination, brick?.xDestination])
+            case kVibrationBrick.uppercased():
+                let brick = brick as? VibrationBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds])
+            // MARK: Look Bricks
+            case kSetBackgroundBrick.uppercased():
+                let brick = brick as? SetBackgroundBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
+            case kSetLookBrick.uppercased():
+                let brick = brick as? SetLookBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
+            case kNextLookBrick.uppercased():
+                let brick = brick as? NextLookBrick
+                mappedBrick.name = brick?.name
+            case kPreviousLookBrick.uppercased():
+                let brick = brick as? PreviousLookBrick
+                mappedBrick.name = brick?.name
+            case kSetSizeToBrick.uppercased():
+                let brick = brick as? SetSizeToBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
+            case kChangeSizeByNBrick.uppercased():
+                let brick = brick as? ChangeSizeByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
+            case kShowBrick.uppercased():
+                let brick = brick as? ShowBrick
+                mappedBrick.name = brick?.name
+            case kHideBrick.uppercased():
+                let brick = brick as? HideBrick
+                mappedBrick.name = brick?.name
+            case kSetTransparencyBrick.uppercased():
+                let brick = brick as? SetTransparencyBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.transparency])
+            case kChangeTransparencyByNBrick.uppercased():
+                let brick = brick as? ChangeTransparencyByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeTransparency])
+            case kSetBrightnessBrick.uppercased():
+                let brick = brick as? SetBrightnessBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.brightness])
+            case kChangeBrightnessByNBrick.uppercased():
+                let brick = brick as? ChangeBrightnessByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeBrightness])
+            case kSetColorBrick.uppercased():
+                let brick = brick as? SetColorBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.color])
+            case kChangeColorByNBrick.uppercased():
+                let brick = brick as? ChangeColorByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeColor])
+            case kClearGraphicEffectBrick.uppercased():
+                let brick = brick as? ClearGraphicEffectBrick
+                mappedBrick.name = brick?.name
+            case kFlashBrick.uppercased():
+                let brick = brick as? FlashBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.spinnerSelectionID = String(brick?.flashChoice ?? 0)
+            case kCameraBrick.uppercased():
+                let brick = brick as? CameraBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.spinnerSelectionID = String(brick?.cameraChoice ?? 0)
+            case kChooseCameraBrick.uppercased():
+                let brick = brick as? ChooseCameraBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.spinnerSelectionID = String(brick?.cameraPosition ?? 0)
+            case kThinkBubbleBrick.uppercased():
+                let brick = brick as? ThinkBubbleBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+            case kThinkForBubbleBrick.uppercased():
+                let brick = brick as? ThinkForBubbleBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
+            // MARK: Sound Bricks
+            case kPlaySoundBrick.uppercased():
+                let brick = brick as? PlaySoundBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.sound = resolveSound(object: object, sound: brick?.sound).0
+                mappedBrick.soundReference = resolveSound(object: object, sound: brick?.sound).1
+            case kStopAllSoundsBrick.uppercased():
+                let brick = brick as? StopAllSoundsBrick
+                mappedBrick.name = brick?.name
+            case kSetVolumeToBrick.uppercased():
+                let brick = brick as? SetVolumeToBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
+            case kChangeVolumeByNBrick.uppercased():
+                let brick = brick as? ChangeVolumeByNBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
+            case kSpeakBrick.uppercased():
+                let brick = brick as? SpeakBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.noteMessage = brick?.text
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+            case kSpeakAndWaitBrick.uppercased():
+                let brick = brick as? SpeakAndWaitBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.noteMessage = brick?.text
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+            // MARK: Variable Bricks
+            case kSetVariableBrick.uppercased():
+                let brick = brick as? SetVariableBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                mappedBrick.userVariable = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kChangeVariableBrick.uppercased():
+                let brick = brick as? ChangeVariableBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                mappedBrick.userVariable = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kShowTextBrick.uppercased():
+                let brick = brick as? ShowTextBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.xPosition = mapFormula(formula: brick?.xFormula)
+                mappedBrick.yPosition = mapFormula(formula: brick?.yFormula)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                mappedBrick.userVariable = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kHideTextBrick.uppercased():
+                let brick = brick as? HideTextBrick
+                mappedBrick.name = brick?.name
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                mappedBrick.userVariable = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kAddItemToUserListBrick.uppercased():
+                let brick = brick as? AddItemToUserListBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                mappedBrick.userList = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kDeleteItemOfUserListBrick.uppercased():
+                let brick = brick as? DeleteItemOfUserListBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                mappedBrick.userList = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kInsertItemIntoUserListBrick.uppercased():
+                let brick = brick as? InsertItemIntoUserListBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula])
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.index])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                mappedBrick.userList = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            case kReplaceItemInUserListBrick.uppercased():
+                let brick = brick as? ReplaceItemInUserListBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula])
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.index])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                mappedBrick.userList = uVar?.value
+                mappedBrick.userVariableReference = uVar?.reference
+            // MARK: Alternative Bricks
+            case kComeToFrontBrick.uppercased():
+                let brick = brick as? ComeToFrontBrick
+                mappedBrick.name = brick?.name
+            case kGoNStepsBackBrick.uppercased():
+                let brick = brick as? GoNStepsBackBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
+            case kSayBubbleBrick.uppercased():
+                let brick = brick as? SayBubbleBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
+            case kSayForBubbleBrick.uppercased():
+                let brick = brick as? SayForBubbleBrick
+                mappedBrick.name = brick?.name
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
+            default:
+                print("Error at Serialization Mapping!")
             }
+
+            mappedBrickList.append(mappedBrick)
             CBXMLMappingFromObjc.currentSerializationPosition.2 += 1
         }
 
