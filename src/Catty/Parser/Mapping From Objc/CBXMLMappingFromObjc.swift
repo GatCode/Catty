@@ -83,9 +83,9 @@ extension CBXMLMappingFromObjc {
         for object in project.objectList {
             var mappedObject = CBObject()
 
-            // TODO: map lookList
-            // TODO: map soundList
             mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject)
+            mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
+            mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)
             // TODO: map userBricks
             // TODO: map nfcTagList
 
@@ -96,6 +96,30 @@ extension CBXMLMappingFromObjc {
         }
 
         return CBObjectList(object: mappedObjectList)
+    }
+
+    private static func mapLookList(project: Project, object: SpriteObject?) -> CBLookList? {
+        guard let object = object else { return nil }
+        guard let lookList = object.lookList else { return nil }
+        var mappedLooks = [CBLook]()
+
+        for look in lookList {
+            // TODO: resolve the reference
+        }
+
+        return CBLookList(look: mappedLooks)
+    }
+
+    private static func mapSoundList(project: Project, object: SpriteObject?) -> CBSoundList? {
+        guard let object = object else { return nil }
+        guard let soundList = object.soundList else { return nil }
+        var mappedSounds = [CBSound]()
+
+        for sound in soundList {
+            // TODO: resolve the reference
+        }
+
+        return CBSoundList(sound: mappedSounds)
     }
 
     private static func mapScriptList(project: Project, object: SpriteObject?) -> CBScriptList? {
