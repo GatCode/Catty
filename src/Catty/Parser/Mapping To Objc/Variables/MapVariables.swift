@@ -229,7 +229,7 @@ extension CBXMLMapping {
         let objForUpdate = objectList.isEmpty == false ? objectList[object?.0 ?? 0] : nil
         let scriptList = objForUpdate?.scriptList?.script
 
-        if var ctr = script?.0, let scriptList = scriptList {
+        if var ctr = script?.0, ctr > 0, let scriptList = scriptList {
             var resNr = 0
             for s in scriptList {
                 if s.type == script?.1 {
@@ -246,7 +246,7 @@ extension CBXMLMapping {
         let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil
         let brickList = scrForUpdate?.brickList?.brick
 
-        if var ctr = brick?.0, let brickList = brickList {
+        if var ctr = brick?.0, ctr > 0, let brickList = brickList {
             var resNr = 0
             for b in brickList {
                 if b.type == brick?.1 {
