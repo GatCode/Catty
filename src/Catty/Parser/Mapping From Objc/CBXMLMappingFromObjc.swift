@@ -140,11 +140,11 @@ extension CBXMLMappingFromObjc {
 
         return CBScriptList(script: mappedScriptList)
     }
-    
+
     private static func resolveLook(object: SpriteObject, look: Look?) -> (CBLook?, String?) {
-        
+
         // TODO: do some magic here
-        
+
         return (nil, nil)
     }
 
@@ -162,9 +162,115 @@ extension CBXMLMappingFromObjc {
         for brick in script.brickList {
             if let type = (brick as? Brick)?.brickTitle {
                 var mappedBrick = CBBrick()
-                
+
+                // MARK: Condition Bricks
+                if type.hasPrefix(kLocalizedBroadcast) {
+                    let brick = brick as? BroadcastBrick
+                    mappedBrick.name = kBroadcastBrick
+                    mappedBrick.broadcastMessage = brick?.broadcastMessage
+                } else if type.hasPrefix(kLocalizedBroadcastAndWait) {
+                    let brick = brick as? BroadcastWaitBrick
+                    mappedBrick.name = kBroadcastWaitBrick
+                    mappedBrick.broadcastMessage = brick?.broadcastMessage
+                } else if type.hasPrefix(kLocalizedIfBegin) {
+                    let brick = brick as? IfLogicBeginBrick
+                    mappedBrick.name = kIfLogicBeginBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
+                } else if type.hasPrefix(kLocalizedElse) {
+                    let brick = brick as? IfLogicElseBrick
+                    mappedBrick.name = kIfLogicElseBrick
+                } else if type.hasPrefix(kLocalizedEndOfLoop) {
+                    let brick = brick as? IfLogicEndBrick
+                    mappedBrick.name = kIfLogicEndBrick
+                } else if type.hasPrefix(kLocalizedIfBegin) { // TODO: fix
+                    let brick = brick as? IfThenLogicBeginBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
+                    mappedBrick.name = kIfThenLogicBeginBrick
+                } else if type.hasPrefix(kLocalizedIfBegin) { // TODO: fix
+                    let brick = brick as? IfThenLogicEndBrick
+                    mappedBrick.name = kIfThenLogicEndBrick
+                } else if type.hasPrefix(kLocalizedForever) {
+                    let brick = brick as? ForeverBrick
+                    mappedBrick.name = kForeverBrick
+                } else if type.hasPrefix(kLocalizedRepeat) {
+                    let brick = brick as? RepeatBrick
+                    mappedBrick.name = kRepeatBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timesToRepeat])
+                } else if type.hasPrefix(kLocalizedRepeatUntil) {
+                    let brick = brick as? RepeatUntilBrick
+                    mappedBrick.name = kRepeatUntilBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.repeatCondition])
+                } else if type.hasPrefix(kLocalizedEndOfLoop) {
+                    let brick = brick as? LoopEndBrick
+                    mappedBrick.name = kLoopEndBrick
+                } else if type.hasPrefix(kLocalizedNote) {
+                    let brick = brick as? NoteBrick
+                    mappedBrick.name = kNoteBrick
+                    mappedBrick.noteMessage = brick?.note
+                } else if type.hasPrefix(kLocalizedWait) {
+                    let brick = brick as? WaitBrick
+                    mappedBrick.name = kWaitBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timeToWaitInSeconds])
+                } else if type.hasPrefix(kLocalizedWaitUntil) {
+                    let brick = brick as? WaitUntilBrick
+                    mappedBrick.name = kWaitUntilBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.waitCondition])
+                }
+                // MARK: Motion Bricks
+                else if type.hasPrefix(kLocalizedPlaceAt) {
+                    let brick = brick as? PlaceAtBrick
+                    mappedBrick.name = kPlaceAtBrick
+                    mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
+                    mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
+                } else if type.hasPrefix(kLocalizedChangeXBy) {
+                    let brick = brick as? ChangeXByNBrick
+                    mappedBrick.name = kChangeXByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xMovement])
+                } else if type.hasPrefix(kLocalizedChangeYBy) {
+                    let brick = brick as? ChangeYByNBrick
+                    mappedBrick.name = kChangeYByNBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yMovement])
+                } else if type.hasPrefix(kLocalizedSetX) {
+                    let brick = brick as? SetXBrick
+                    mappedBrick.name = kSetXBrick
+                    mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
+                } else if type.hasPrefix(kLocalizedSetY) {
+                    let brick = brick as? SetYBrick
+                    mappedBrick.name = kSetYBrick
+                    mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
+                } else if type.hasPrefix(kLocalizedBack) { // TODO: FIX
+                    mappedBrick.name = kIfOnEdgeBounceBrick
+                } else if type.hasPrefix(kLocalizedStep) { // TODO: FIX
+                    let brick = brick as? MoveNStepsBrick
+                    mappedBrick.name = kMoveNStepsBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
+                } else if type.hasPrefix(kLocalizedTurnLeft) {
+                    let brick = brick as? TurnLeftBrick
+                    mappedBrick.name = kTurnLeftBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
+                } else if type.hasPrefix(kLocalizedTurnRight) {
+                    let brick = brick as? TurnRightBrick
+                    mappedBrick.name = kTurnRightBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
+                } else if type.hasPrefix(kLocalizedPointInDirection) {
+                    let brick = brick as? PointInDirectionBrick
+                    mappedBrick.name = kPointInDirectionBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
+                } else if type.hasPrefix(kLocalizedPointTowards) {
+                    let brick = brick as? PointToBrick
+                    mappedBrick.name = kPointToBrick
+                    mappedBrick.pointedObject = resolveObjectPath(project: project, object: brick?.pointedObject)
+                } else if type.hasPrefix(kLocalizedPointTowards) { // TODO: FIX
+                    let brick = brick as? GlideToBrick
+                    mappedBrick.name = kGlideToBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.yDestination, brick?.xDestination])
+                } else if type.hasPrefix(kLocalizedVibration) { // TODO: FIX
+                    let brick = brick as? VibrationBrick
+                    mappedBrick.name = kVibrationBrick
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds])
+                }
                 // MARK: Look Bricks
-                if type.hasPrefix(kLocalizedSetBackground) {
+                else if type.hasPrefix(kLocalizedSetBackground) {
                     let brick = brick as? SetBackgroundBrick
                     mappedBrick.name = kSetBackgroundBrick
                     mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
