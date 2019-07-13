@@ -36,18 +36,54 @@ enum CBXMLMappingFromObjc {
 
         var mappedProject = CBProject()
 
-        // TODO: map header
-        // TODO: map settings
         CBXMLMappingFromObjc.extractGlobalUserVariables(project: project)
+        mappedProject.header = mapHeader(project: project)
+        // TODO: map settings
         mappedProject.scenes = CBXMLMappingFromObjc.mapScenesToCBProject(project: project)
         mappedProject.programVariableList = CBXMLMappingFromObjc.mapProgramVariableList(project: project)
         mappedProject.programListOfLists = CBXMLMappingFromObjc.mapProgramListOfLists(project: project)
 
-        return nil
+        return mappedProject
     }
 }
 
 extension CBXMLMappingFromObjc {
+
+    // MARK: - Map Header
+    private static func mapHeader(project: Project) -> CBHeader {
+        let header = project.header
+
+        var mappedHeader = CBHeader()
+        mappedHeader.applicationBuildName = header.applicationBuildName
+        mappedHeader.applicationBuildNumber = header.applicationBuildNumber
+        mappedHeader.applicationName = header.applicationName
+        mappedHeader.applicationVersion = header.applicationVersion
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'ddHH':'mm':'ss"
+        if let dateTime = header.dateTimeUpload {
+            mappedHeader.dateTimeUpload = dateFormatter.string(from: dateTime)
+        }
+
+        mappedHeader.description = header.programDescription
+        mappedHeader.deviceName = header.deviceName
+        mappedHeader.landscapeMode = String(header.landscapeMode)
+        mappedHeader.mediaLicense = header.mediaLicense
+        mappedHeader.platform = header.platform
+        mappedHeader.platformVersion = header.platformVersion
+        mappedHeader.programLicense = header.programLicense
+        mappedHeader.programName = header.programName
+        mappedHeader.remixOf = header.remixOf
+        mappedHeader.screenHeight = header.screenHeight.stringValue
+        mappedHeader.screenMode = header.screenMode
+        mappedHeader.screenWidth = header.screenWidth.stringValue
+        mappedHeader.tags = header.tags
+        mappedHeader.url = header.url
+        mappedHeader.userHandle = header.userHandle
+        mappedHeader.programID = header.programID
+
+        return mappedHeader
+    }
 
     // MARK: - Extract Global UserVariables
     private static func extractGlobalUserVariables(project: Project) {

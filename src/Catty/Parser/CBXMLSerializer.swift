@@ -44,8 +44,11 @@ import AEXML
         addProgramVariableListTo(program: program, data: project.programVariableList)
         addProgramListOfListsTo(program: program, data: project.programListOfLists)
 
-        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)
-        completion(cleanedXML, nil)
+//        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)
+        completion(writeRequest.xml, nil)
+
+//        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)
+//        completion(cleanedXML, nil)
     }
 }
 
@@ -70,10 +73,15 @@ fileprivate func prepareXMLWithSpecialChars(xml: String) -> String {
 // MARK: - Legacy Support
 extension CBXMLSerializer2 {
 
-    @objc func serializeProjectObjc(project: Project, xmlPath: String, fileManager: CBFileManager) {
-        CBXMLMappingFromObjc.mapProjectToCBProject(project: project)
-        let legacySerializer = CBXMLSerializer(path: xmlPath, fileManager: fileManager)
-        legacySerializer?.serializeProject(project)
+    @objc func serializeProjectObjc(project: Project, xmlPath: String?, fileManager: CBFileManager?) -> String? {
+        let mappedProject = CBXMLMappingFromObjc.mapProjectToCBProject(project: project)
+
+        var resolvedXml: String?
+        CBXMLSerializer2.shared.createXMLDocument(project: mappedProject) { xml, _ in
+            resolvedXml = xml
+        }
+
+        return resolvedXml
     }
 }
 

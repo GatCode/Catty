@@ -40,4 +40,19 @@ final class XMLSerializerTests: XMLAbstractTest {
         createAndCompareXMLFileFor(projectName: "Word_balloon_demo_0994")
         createAndCompareXMLFileFor(projectName: "X_Ray_phone_0994")
     }
+
+    func testObjcSerialization() {
+        createAndCompareMappedObjcXMLFileFor(projectName: "EscapingChars_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Flap_Pac_Man_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Flappy_v3.0_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Galaxy_War_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Gossip_Girl_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Minions__0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Pong_Starter_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Rock_paper_scissors_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Test_Your_NFC_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Tic_Tac_Toe_Master_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "Word_balloon_demo_0994")
+//        createAndCompareMappedObjcXMLFileFor(projectName: "X_Ray_phone_0994")
+    }
 }

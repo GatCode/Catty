@@ -40,6 +40,43 @@ class XMLAbstractTest: XCTestCase {
         return false
     }
 
+    func createAndCompareMappedObjcXMLFileFor(projectName: String) {
+
+        // --------------------------------------------------
+        // TODO: change getProjectForXML2 to getProjectForXML
+        // --------------------------------------------------
+
+        var project: Project?
+        var xml: String?
+        var readXml: String?
+
+        getObjcProjectForXML2(xmlFile: projectName) { result, error in
+            XCTAssertNil(error)
+            project = result
+        }
+
+        XCTAssertNotNil(project)
+        xml = CBXMLSerializer2.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
+
+        CBXMLSerializer2.shared.writeXMLFile(filename: "file.xml", data: xml) { location, error in
+            XCTAssertNil(error)
+            print("XML file is located at: \(String(describing: location))!")
+        }
+
+        CBXMLSerializer2.shared.readXMLFile(filename: "file.xml") { result, error in
+            XCTAssertNil(error)
+            readXml = result
+        }
+
+        var originalXML: String?
+        getPathForXML(xmlFile: projectName) { path, error in
+            XCTAssertNil(error)
+            originalXML = try? String(contentsOfFile: path ?? "", encoding: .utf8)
+        }
+
+        XCTAssertTrue(diffXML(lhs: originalXML ?? "", rhs: readXml!))
+    }
+
     func createAndCompareXMLFileFor(projectName: String) {
 
         // --------------------------------------------------
@@ -280,6 +317,37 @@ class XMLAbstractTest: XCTestCase {
             }
 
             let project = catrobatParser2?.getProject()
+            completion(project, nil)
+        })
+    }
+
+    func getObjcProjectForXML2(xmlFile: String, completion: @escaping (Project?, XMLAbstractError?) -> Void) {
+
+        // -----------------------------------------
+        // TODO: change CBXMLParser2 to CBXMLParser
+        // -----------------------------------------
+
+        var xmlPath: String?
+        getPathForXML(xmlFile: xmlFile) { path, error in
+            if error != nil {
+                completion(nil, error)
+            }
+            xmlPath = path
+        }
+
+        guard let path = xmlPath else { completion(nil, .invalidPath); return }
+
+        let catrobatParser2 = CBXMLParser2(path: path)
+        if catrobatParser2 == nil {
+            completion(nil, .unexpectedError)
+        }
+
+        catrobatParser2?.parseProject(completion: { error in
+            if error != nil {
+                completion(nil, .parsingError)
+            }
+
+            let project = catrobatParser2?.getProjectObjc()
             completion(project, nil)
         })
     }
