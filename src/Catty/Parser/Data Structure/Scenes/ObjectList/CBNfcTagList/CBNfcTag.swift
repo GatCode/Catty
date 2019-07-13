@@ -23,8 +23,14 @@
 import SWXMLHash
 
 struct CBNfcTag: XMLIndexerDeserializable {
-    let name: String?
-    let uid: String?
+    var name: String?
+    var uid: String?
+
+    init(name: String? = nil,
+         uid: String? = nil) {
+        self.name = name
+        self.uid = uid
+    }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBNfcTag {
         return try CBNfcTag(

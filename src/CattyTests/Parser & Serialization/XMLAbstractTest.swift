@@ -121,7 +121,12 @@ class XMLAbstractTest: XCTestCase {
         //XCTAssertEqual(arrLeft.count, arrRight.count)
 
         let lhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: lhs)
-        let rhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: rhs)
+        var rhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: rhs)
+        if let rhsCount = rhs?.count, let lhsCount = lhs?.count, rhsCount == lhsCount + 1 {
+            rhs?.remove(at: lhsCount - 1) // counteract eventuall empty prigramVariableList
+        }
+
+        if lhs == nil || rhs == nil { return false }
 
         for (left, right) in zip(lhs!, rhs!) {
             let lhs = String(left.filter { !" \n\t\r".contains($0) })

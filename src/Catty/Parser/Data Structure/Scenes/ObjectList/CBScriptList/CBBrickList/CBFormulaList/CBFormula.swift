@@ -29,6 +29,18 @@ struct CBFormula: XMLIndexerDeserializable {
     let leftChild: CBLRChild?
     let rightChild: CBLRChild?
 
+    init(type: String? = nil,
+         value: String? = nil,
+         category: String? = nil,
+         leftChild: CBLRChild? = nil,
+         rightChild: CBLRChild? = nil) {
+        self.type = type
+        self.value = value
+        self.category = category
+        self.leftChild = leftChild
+        self.rightChild = rightChild
+    }
+
     static func deserialize(_ node: XMLIndexer) throws -> CBFormula {
         return try CBFormula(
             type: node["type"].value(),

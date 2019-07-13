@@ -44,6 +44,8 @@
 @property (nonatomic) BOOL isSelected;
 @property (nonatomic, strong) NSString *commentedOut;
 @property (nonatomic, strong) NSString *isUserScript;
+@property (nonatomic, strong) NSString *receivedMsg;
+@property (nonatomic, strong) NSString *action;
 
 - (BOOL)isSelectableForObject;
 - (BOOL)isAnimateable;

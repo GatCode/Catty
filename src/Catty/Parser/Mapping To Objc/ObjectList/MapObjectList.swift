@@ -176,12 +176,14 @@ extension CBXMLMapping {
             let scr = BroadcastScript()
             if let msg = script.receivedMessage {
                 scr.receivedMessage = msg
+                scr.receivedMsg = msg
             }
             result = scr
         default:
             if script.type?.hasSuffix(kScript) ?? false {
                 let scr = BroadcastScript()
                 scr.receivedMessage = String(format: "%@ %@", kLocalizedUnsupportedScript, script.type ?? "")
+                scr.receivedMsg = scr.receivedMessage
                 result = scr
                 unsupportedElements.append(script.type ?? "")
             }
@@ -190,6 +192,7 @@ extension CBXMLMapping {
         if let res = result {
             res.commentedOut = script.commentedOut
             res.isUserScript = script.isUserScript
+            res.action = script.action
             res.brickList = mapBrickList(script: script, objectList: objectList, object: object, project: project, currScript: &result, currObject: &currentObject)
             return res
         }
@@ -215,6 +218,7 @@ extension CBXMLMapping {
                     newBrick.broadcastMessage = msg
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kBroadcastWaitBrick.uppercased():
                 let newBrick = BroadcastWaitBrick()
@@ -229,6 +233,7 @@ extension CBXMLMapping {
                 newBrick.name = brick.type
                 newBrick.ifCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kIfLogicElseBrick.uppercased():
                 let newBrick = IfLogicElseBrick()
@@ -241,6 +246,7 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kIfLogicEndBrick.uppercased():
                 let newBrick = IfLogicEndBrick()
@@ -255,12 +261,14 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kIfThenLogicBeginBrick.uppercased():
                 let newBrick = IfThenLogicBeginBrick()
                 newBrick.name = brick.type
                 newBrick.ifCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kIfThenLogicEndBrick.uppercased():
                 let newBrick = IfThenLogicEndBrick()
@@ -273,23 +281,27 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kForeverBrick.uppercased():
                 let newBrick = ForeverBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kRepeatBrick.uppercased():
                 let newBrick = RepeatBrick()
                 newBrick.name = brick.type
                 newBrick.timesToRepeat = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kRepeatUntilBrick.uppercased():
                 let newBrick = RepeatUntilBrick()
                 newBrick.name = brick.type
                 newBrick.repeatCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kLoopEndBrick.uppercased(), kLoopEndlessBrick.uppercased():
                 let newBrick = LoopEndBrick()
@@ -312,12 +324,14 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kNoteBrick.uppercased():
                 let newBrick = NoteBrick()
                 newBrick.name = brick.type
                 newBrick.note = brick.noteMessage
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kWaitBrick.uppercased():
                 let newBrick = WaitBrick()
@@ -326,6 +340,7 @@ extension CBXMLMapping {
                     newBrick.timeToWaitInSeconds = time
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kWaitUntilBrick.uppercased():
                 let newBrick = WaitUntilBrick()
@@ -334,6 +349,7 @@ extension CBXMLMapping {
                     newBrick.waitCondition = condition
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             // MARK: Motion Bricks
             case kPlaceAtBrick.uppercased():
@@ -347,59 +363,69 @@ extension CBXMLMapping {
                     newBrick.yPosition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeXByNBrick.uppercased():
                 let newBrick = ChangeXByNBrick()
                 newBrick.name = brick.type
                 newBrick.xMovement = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeYByNBrick.uppercased():
                 let newBrick = ChangeYByNBrick()
                 newBrick.name = brick.type
                 newBrick.yMovement = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetXBrick.uppercased():
                 let newBrick = SetXBrick()
                 newBrick.name = brick.type
                 newBrick.xPosition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetYBrick.uppercased():
                 let newBrick = SetYBrick()
                 newBrick.name = brick.type
                 newBrick.yPosition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kIfOnEdgeBounceBrick.uppercased():
                 let newBrick = IfOnEdgeBounceBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kMoveNStepsBrick.uppercased():
                 let newBrick = MoveNStepsBrick()
                 newBrick.name = brick.type
                 newBrick.steps = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kTurnLeftBrick.uppercased():
                 let newBrick = TurnLeftBrick()
                 newBrick.name = brick.type
                 newBrick.degrees = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kTurnRightBrick.uppercased():
                 let newBrick = TurnRightBrick()
                 newBrick.name = brick.type
                 newBrick.degrees = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kPointInDirectionBrick.uppercased():
                 let newBrick = PointInDirectionBrick()
                 newBrick.name = brick.type
                 newBrick.degrees = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kPointToBrick.uppercased():
                 let newBrick = PointToBrick()
@@ -408,6 +434,7 @@ extension CBXMLMapping {
                     newBrick.pointedObject = mapObject(object: object, objectList: objectList, project: project)
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kGlideToBrick.uppercased():
                 let newBrick = GlideToBrick()
@@ -423,12 +450,14 @@ extension CBXMLMapping {
                     newBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.firstObject as? Formula
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kVibrationBrick.uppercased():
                 let newBrick = VibrationBrick()
                 newBrick.name = brick.type
                 newBrick.durationInSeconds = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             // MARK: Look Bricks
             case kSetBackgroundBrick.uppercased():
@@ -444,6 +473,7 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetLookBrick.uppercased():
                 let newBrick = SetLookBrick()
@@ -458,79 +488,93 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kNextLookBrick.uppercased():
                 let newBrick = NextLookBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kPreviousLookBrick.uppercased():
                 let newBrick = PreviousLookBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetSizeToBrick.uppercased():
                 let newBrick = SetSizeToBrick()
                 newBrick.name = brick.type
                 newBrick.size = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeSizeByNBrick.uppercased():
                 let newBrick = ChangeSizeByNBrick()
                 newBrick.name = brick.type
                 newBrick.size = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kShowBrick.uppercased():
                 let newBrick = ShowBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kHideBrick.uppercased():
                 let newBrick = HideBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetTransparencyBrick.uppercased(), kSetGhostEffectBrick.uppercased():
                 let newBrick = SetTransparencyBrick()
                 newBrick.name = brick.type
                 newBrick.transparency = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeTransparencyByNBrick.uppercased(), kChangeGhostEffectByNBrick.uppercased():
                 let newBrick = ChangeTransparencyByNBrick()
                 newBrick.name = brick.type
                 newBrick.changeTransparency = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetBrightnessBrick.uppercased():
                 let newBrick = SetBrightnessBrick()
                 newBrick.name = brick.type
                 newBrick.brightness = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeBrightnessByNBrick.uppercased():
                 let newBrick = ChangeBrightnessByNBrick()
                 newBrick.name = brick.type
                 newBrick.changeBrightness = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetColorBrick.uppercased():
                 let newBrick = SetColorBrick()
                 newBrick.name = brick.type
                 newBrick.color = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeColorByNBrick.uppercased():
                 let newBrick = ChangeColorByNBrick()
                 newBrick.name = brick.type
                 newBrick.changeColor = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kClearGraphicEffectBrick.uppercased():
                 let newBrick = ClearGraphicEffectBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kFlashBrick.uppercased(), kLedOnBrick.uppercased(), kLedOffBrick.uppercased():
                 var newBrick = FlashBrick()
@@ -539,6 +583,7 @@ extension CBXMLMapping {
                 }
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kCameraBrick.uppercased():
                 var newBrick = CameraBrick()
@@ -547,6 +592,7 @@ extension CBXMLMapping {
                 }
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChooseCameraBrick.uppercased():
                 var newBrick = ChooseCameraBrick()
@@ -555,12 +601,14 @@ extension CBXMLMapping {
                 }
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kThinkBubbleBrick.uppercased():
                 let newBrick = ThinkBubbleBrick()
                 newBrick.name = brick.type
                 newBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kThinkForBubbleBrick.uppercased():
                 let newBrick = ThinkForBubbleBrick()
@@ -568,6 +616,7 @@ extension CBXMLMapping {
                 newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.intFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             // MARK: Sound Bricks
             case kPlaySoundBrick.uppercased():
@@ -592,23 +641,27 @@ extension CBXMLMapping {
                     }
                 }
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kStopAllSoundsBrick.uppercased():
                 let newBrick = StopAllSoundsBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSetVolumeToBrick.uppercased():
                 let newBrick = SetVolumeToBrick()
                 newBrick.name = brick.type
                 newBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeVolumeByNBrick.uppercased():
                 let newBrick = ChangeVolumeByNBrick()
                 newBrick.name = brick.type
                 newBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSpeakBrick.uppercased():
                 let newBrick = SpeakBrick()
@@ -616,6 +669,7 @@ extension CBXMLMapping {
                 newBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.text = brick.noteMessage
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSpeakAndWaitBrick.uppercased():
                 let newBrick = SpeakAndWaitBrick()
@@ -623,6 +677,7 @@ extension CBXMLMapping {
                 newBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.text = brick.noteMessage
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             // MARK: Variable Bricks
             case kSetVariableBrick.uppercased():
@@ -632,6 +687,7 @@ extension CBXMLMapping {
                 newBrick.uVar = newBrick.userVariable
                 newBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kChangeVariableBrick.uppercased():
                 let newBrick = ChangeVariableBrick()
@@ -640,6 +696,7 @@ extension CBXMLMapping {
                 newBrick.uVar = newBrick.userVariable
                 newBrick.variableFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kShowTextBrick.uppercased():
                 let newBrick = ShowTextBrick()
@@ -649,6 +706,7 @@ extension CBXMLMapping {
                 newBrick.xFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.yFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kHideTextBrick.uppercased():
                 let newBrick = HideTextBrick()
@@ -656,6 +714,7 @@ extension CBXMLMapping {
                 newBrick.userVariable = resolveUserVariable(project: project, object: object, script: script, brick: brick)
                 newBrick.uVar = newBrick.userVariable
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kAddItemToUserListBrick.uppercased():
                 let newBrick = AddItemToUserListBrick()
@@ -664,6 +723,7 @@ extension CBXMLMapping {
                 newBrick.uVar = newBrick.userList
                 newBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kDeleteItemOfUserListBrick.uppercased():
                 let newBrick = DeleteItemOfUserListBrick()
@@ -672,6 +732,7 @@ extension CBXMLMapping {
                 newBrick.uVar = newBrick.userList
                 newBrick.listFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kInsertItemIntoUserListBrick.uppercased():
                 let newBrick = InsertItemIntoUserListBrick()
@@ -681,6 +742,7 @@ extension CBXMLMapping {
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kReplaceItemInUserListBrick.uppercased():
                 let newBrick = ReplaceItemInUserListBrick()
@@ -690,24 +752,28 @@ extension CBXMLMapping {
                 newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             // MARK: Alternative Bricks
             case kComeToFrontBrick.uppercased():
                 let newBrick = ComeToFrontBrick()
                 newBrick.name = brick.type
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kGoNStepsBackBrick.uppercased():
                 let newBrick = GoNStepsBackBrick()
                 newBrick.name = brick.type
                 newBrick.steps = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSayBubbleBrick.uppercased():
                 let newBrick = SayBubbleBrick()
                 newBrick.name = brick.type
                 newBrick.formula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             case kSayForBubbleBrick.uppercased():
                 let newBrick = SayForBubbleBrick()
@@ -715,12 +781,14 @@ extension CBXMLMapping {
                 newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.intFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
             default:
                 let newBrick = NoteBrick()
                 newBrick.name = brick.type
                 newBrick.note = String(format: "%@ %@", kLocalizedUnsupportedBrick, brick.type ?? "")
                 newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
                 unsupportedElements.append(brick.type ?? "")
             }

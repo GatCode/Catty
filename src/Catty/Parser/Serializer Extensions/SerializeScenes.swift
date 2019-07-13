@@ -159,11 +159,13 @@ extension CBXMLSerializer2 {
                 currentBrick.addChild(name: "commentedOut", value: msg)
             }
 
-            if let msg = brick.sound {
-                //currentBrick.addChild(name: "sound", attributes: ["reference": msg.reference])
+            if let msg = brick.soundReference {
+                currentBrick.addChild(name: "sound", attributes: ["reference": msg])
             }
 
             if let msg = brick.formulaList {
+                addFormulaListTo(brick: currentBrick, data: msg)
+            } else if let msg = brick.formulaTree {
                 addFormulaListTo(brick: currentBrick, data: msg)
             }
 
@@ -172,11 +174,9 @@ extension CBXMLSerializer2 {
             }
 
             if let msg = brick.userVariable {
-                if let varRef = brick.userVariableReference {
-                    currentBrick.addChild(name: "userVariable", value: msg, attributes: ["reference": varRef])
-                } else {
-                    currentBrick.addChild(name: "userVariable", value: msg)
-                }
+                currentBrick.addChild(name: "userVariable", value: msg)
+            } else if let varRef = brick.userVariableReference {
+                currentBrick.addChild(name: "userVariable", value: nil, attributes: ["reference": varRef])
             }
 
             if let msg = brick.broadcastMessage {
@@ -322,21 +322,19 @@ extension CBXMLSerializer2 {
 
             objectVariableList.addChild(name: "object", value: nil, attributes: ["reference": entry.object ?? ""])
 
-//            addUserVariableListTo(objectVariableList: objectVariableList, data: entry.list)
+            addUserVariableListTo(objectVariableList: objectVariableList, data: entry.list)
         }
     }
 
-//    func addUserVariableListTo(objectVariableList: AEXMLElement, data: CBUserVariableList?) {
-//        guard let data = data else { return }
-//
-//        let userVariableList = objectVariableList.addChild(name: "list")
-//
-////        if let userVars = data.userVariables {
-////            for userVar in userVars {
-////                userVariableList.addChild(name: "userVariable", value: nil, attributes: ["reference": userVar])
-////            }
-////        }
-//    }
+    func addUserVariableListTo(objectVariableList: AEXMLElement, data: [CBUserVariable]?) {
+        guard let data = data else { return }
+
+        let userVariableList = objectVariableList.addChild(name: "list")
+
+        for userVar in data {
+            userVariableList.addChild(name: "userVariable") //, value: nil, attributes: ["reference": userVar]) // TODO
+        }
+    }
 
     func addUserBrickVariableListTo(dataObject: AEXMLElement, data: CBUserBrickVariableList?) {
         dataObject.addChild(name: "userBrickVariableList")

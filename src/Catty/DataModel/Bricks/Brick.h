@@ -32,6 +32,7 @@
 @property (nonatomic, readonly) kBrickCategoryType brickCategoryType;
 @property (nonatomic, readonly) kBrickType brickType;
 @property (nonatomic, strong, readonly) NSString *brickTitle;
+@property (nonatomic, strong) NSString *commentedOut;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, weak) UserVariable *uVar;
 @property (nonatomic, weak) Script *script;

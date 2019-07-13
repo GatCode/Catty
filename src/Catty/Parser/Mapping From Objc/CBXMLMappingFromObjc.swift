@@ -31,6 +31,8 @@ enum CBXMLMappingFromObjc {
     static func mapProjectToCBProject(project: Project) -> CBProject? {
 
         CBXMLMappingFromObjc.userVariableList.removeAll()
+        CBXMLMappingFromObjc.objectList.removeAll()
+        CBXMLMappingFromObjc.currentSerializationPosition = (0, 0, 0)
         CBXMLMappingFromObjc.globalVariableList.removeAll()
         CBXMLMappingFromObjc.localVariableList.removeAll()
 
@@ -122,8 +124,8 @@ extension CBXMLMappingFromObjc {
             mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
             mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)
             mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject, currentObject: mappedObject)
-            // TODO: map userBricks
-            // TODO: map nfcTagList
+            mappedObject.userBricks = CBUserBricks(userBrick: nil) // TODO: map userBricks
+            mappedObject.nfcTagList = CBNfcTagList(nfcTag: nil) // TODO: map nfcTagList
 
             mappedObjectList.append(mappedObject)
             CBXMLMappingFromObjc.objectList.append((object as? SpriteObject, CBXMLMappingFromObjc.currentSerializationPosition))
@@ -172,6 +174,8 @@ extension CBXMLMappingFromObjc {
             mappedScript.brickList = mapBrickList(project: project, script: script as? Script, object: object, currentObject: currentObject)
             mappedScript.commentedOut = (script as? Script)?.commentedOut
             mappedScript.isUserScript = (script as? Script)?.isUserScript
+            mappedScript.receivedMessage = (script as? Script)?.receivedMsg
+            mappedScript.action = (script as? Script)?.action
 
             mappedScriptList.append(mappedScript)
             CBXMLMappingFromObjc.currentSerializationPosition.1 += 1
@@ -252,7 +256,7 @@ extension CBXMLMappingFromObjc {
             case kNoteBrick.uppercased():
                 let brick = brick as? NoteBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.noteMessage = brick?.note
+                mappedBrick.formulaTree = CBFormulaList(formula: [CBFormula(type: "STRING", value: brick?.note, category: "NOTE")])
             case kWaitBrick.uppercased():
                 let brick = brick as? WaitBrick
                 mappedBrick.name = brick?.name
@@ -265,8 +269,7 @@ extension CBXMLMappingFromObjc {
             case kPlaceAtBrick.uppercased():
                 let brick = brick as? PlaceAtBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
-                mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yPosition, brick?.xPosition])
             case kChangeXByNBrick.uppercased():
                 let brick = brick as? ChangeXByNBrick
                 mappedBrick.name = brick?.name
@@ -278,11 +281,11 @@ extension CBXMLMappingFromObjc {
             case kSetXBrick.uppercased():
                 let brick = brick as? SetXBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.xPosition = mapFormula(formula: brick?.xPosition)
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xPosition])
             case kSetYBrick.uppercased():
                 let brick = brick as? SetYBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.yPosition = mapFormula(formula: brick?.yPosition)
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yPosition])
             case kIfOnEdgeBounceBrick.uppercased():
                 mappedBrick.name = kIfOnEdgeBounceBrick
             case kMoveNStepsBrick.uppercased():
@@ -492,7 +495,7 @@ extension CBXMLMappingFromObjc {
             default:
                 print("Error at Serialization Mapping!")
             }
-
+            mappedBrick.commentedOut = (brick as? Brick)?.commentedOut
             mappedBrickList.append(mappedBrick)
             CBXMLMappingFromObjc.currentSerializationPosition.2 += 1
         }
@@ -580,7 +583,7 @@ extension CBXMLMappingFromObjc {
                 } else {
                     let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                     let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                    return "../../../.." + scrString + "brickList/" + brString + endPart
+                    return "../../../../" + scrString + "brickList/" + brString + endPart
                 }
             } else {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
@@ -598,7 +601,7 @@ extension CBXMLMappingFromObjc {
 
         mappedData.objectVariableList = mapObjectVariableList(project: project)
         mappedData.objectListOfList = mapObjectListOfLists(project: project)
-        // TODO: map userBrickVariableList
+        mappedData.userBrickVariableList = CBUserBrickVariableList(name: nil) // TODO: map userBrickVariableList
 
         return mappedData
     }
@@ -702,7 +705,8 @@ extension CBXMLMappingFromObjc {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
                 let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                 let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                let referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                //let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
                 mappedProgramVariables.append(CBUserProgramVariable(reference: referenceString))
             }
         }
@@ -720,7 +724,8 @@ extension CBXMLMappingFromObjc {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
                 let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                 let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
+                let referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
+                //let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
                 mappedProgramVariables.append(CBProgramList(reference: referenceString))
             }
         }
