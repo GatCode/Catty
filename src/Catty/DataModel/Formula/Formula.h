@@ -31,6 +31,7 @@
 @interface Formula : NSObject<CBMutableCopying>
 
 @property (nonatomic, strong) FormulaElement *formulaTree;
+@property (nonatomic, strong) NSString *category;
 @property (nonatomic, weak) NSString *displayString;
 
 - (id)initWithZero;

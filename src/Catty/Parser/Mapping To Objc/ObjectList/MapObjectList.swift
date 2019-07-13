@@ -532,26 +532,26 @@ extension CBXMLMapping {
                 resultBrickList.append(newBrick)
             case kFlashBrick.uppercased(), kLedOnBrick.uppercased(), kLedOffBrick.uppercased():
                 var newBrick = FlashBrick()
-                newBrick.name = brick.type
                 if let flashState = brick.spinnerSelectionID {
                     newBrick = FlashBrick(choice: Int32(flashState) ?? 0)
                 }
+                newBrick.name = brick.type
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kCameraBrick.uppercased():
                 var newBrick = CameraBrick()
-                newBrick.name = brick.type
                 if let cameraState = brick.spinnerSelectionID {
                     newBrick = CameraBrick(choice: Int32(cameraState) ?? 0)
                 }
+                newBrick.name = brick.type
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kChooseCameraBrick.uppercased():
                 var newBrick = ChooseCameraBrick()
-                newBrick.name = brick.type
                 if let cameraState = brick.spinnerSelectionID {
                     newBrick = ChooseCameraBrick(choice: Int32(cameraState) ?? 0)
                 }
+                newBrick.name = brick.type
                 newBrick.script = currentScript
                 resultBrickList.append(newBrick)
             case kThinkBubbleBrick.uppercased():
@@ -928,6 +928,7 @@ extension CBXMLMapping {
         }
 
         formula.formulaTree = formulaTree
+        formula.category = input.category
         return formula
     }
 

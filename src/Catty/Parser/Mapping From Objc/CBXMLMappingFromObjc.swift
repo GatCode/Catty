@@ -83,9 +83,9 @@ extension CBXMLMappingFromObjc {
         for object in project.objectList {
             var mappedObject = CBObject()
 
-            mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject)
             mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
             mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)
+            mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject, currentObject: mappedObject)
             // TODO: map userBricks
             // TODO: map nfcTagList
 
@@ -104,7 +104,9 @@ extension CBXMLMappingFromObjc {
         var mappedLooks = [CBLook]()
 
         for look in lookList {
-            // TODO: resolve the reference
+            if let look = look as? Look {
+                mappedLooks.append(CBLook(name: look.name, fileName: look.fileName))
+            }
         }
 
         return CBLookList(look: mappedLooks)
@@ -116,20 +118,22 @@ extension CBXMLMappingFromObjc {
         var mappedSounds = [CBSound]()
 
         for sound in soundList {
-            // TODO: resolve the reference
+            if let sound = sound as? Sound {
+                mappedSounds.append(CBSound(fileName: sound.fileName, name: sound.name, reference: nil))
+            }
         }
 
         return CBSoundList(sound: mappedSounds)
     }
 
-    private static func mapScriptList(project: Project, object: SpriteObject?) -> CBScriptList? {
+    private static func mapScriptList(project: Project, object: SpriteObject?, currentObject: CBObject) -> CBScriptList? {
         guard let object = object else { return nil }
         var mappedScriptList = [CBScript]()
 
         for script in object.scriptList {
             var mappedScript = CBScript()
 
-            mappedScript.brickList = mapBrickList(project: project, script: script as? Script, object: object)
+            mappedScript.brickList = mapBrickList(project: project, script: script as? Script, object: object, currentObject: currentObject)
             // TODO: map commentedOut
             // TODO: map isUserScript
 
@@ -141,21 +145,27 @@ extension CBXMLMappingFromObjc {
         return CBScriptList(script: mappedScriptList)
     }
 
-    private static func resolveLook(object: SpriteObject, look: Look?) -> (CBLook?, String?) {
+    private static func resolveLookPath(look: Look?, currentObject: CBObject) -> String? {
+        guard let lookList = currentObject.lookList?.look else { return nil }
 
-        // TODO: do some magic here
+        for (idx, refLook) in lookList.enumerated() where refLook.name == look?.name {
+            return "../../../../../lookList/" + (idx == 0 ? "look" : "look[\(idx)]")
+        }
 
-        return (nil, nil)
+        return nil
     }
 
-    private static func resolveSound(object: SpriteObject, sound: Sound?) -> (CBSound?, String?) {
+    private static func resolveSoundPath(sound: Sound?, currentObject: CBObject) -> String? {
+        guard let soundList = currentObject.soundList?.sound else { return nil }
 
-        // TODO: do some magic here
+        for (idx, refSound) in soundList.enumerated() where refSound.name == sound?.name {
+            return "../../../../../soundList/" + (idx == 0 ? "sound" : "sound[\(idx)]")
+        }
 
-        return (nil, nil)
+        return nil
     }
 
-    private static func mapBrickList(project: Project, script: Script?, object: SpriteObject) -> CBBrickList? {
+    private static func mapBrickList(project: Project, script: Script?, object: SpriteObject, currentObject: CBObject) -> CBBrickList? {
         guard let script = script else { return nil }
         var mappedBrickList = [CBBrick]()
 
@@ -164,7 +174,7 @@ extension CBXMLMappingFromObjc {
 
             switch (brick as? Brick)?.name.uppercased() {
             // MARK: Condition Bricks
-            case kLocalizedBroadcast.uppercased():
+            case kBroadcastBrick.uppercased():
                 let brick = brick as? BroadcastBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.broadcastMessage = brick?.broadcastMessage
@@ -200,7 +210,7 @@ extension CBXMLMappingFromObjc {
                 let brick = brick as? RepeatUntilBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.repeatCondition])
-            case kLoopEndBrick.uppercased():
+            case kLoopEndBrick.uppercased(), kLoopEndlessBrick.uppercased():
                 let brick = brick as? LoopEndBrick
                 mappedBrick.name = brick?.name
             case kNoteBrick.uppercased():
@@ -258,7 +268,7 @@ extension CBXMLMappingFromObjc {
             case kPointToBrick.uppercased():
                 let brick = brick as? PointToBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.pointedObject = resolveObjectPath(project: project, object: brick?.pointedObject)
+                //mappedBrick.pointedObject = resolveObjectPath(project: project, object: brick?.pointedObject) // TODO!
             case kGlideToBrick.uppercased():
                 let brick = brick as? GlideToBrick
                 mappedBrick.name = brick?.name
@@ -271,11 +281,11 @@ extension CBXMLMappingFromObjc {
             case kSetBackgroundBrick.uppercased():
                 let brick = brick as? SetBackgroundBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
+                mappedBrick.lookReference = resolveLookPath(look: brick?.look, currentObject: currentObject)
             case kSetLookBrick.uppercased():
                 let brick = brick as? SetLookBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.lookReference = resolveLook(object: object, look: brick?.look).1
+                mappedBrick.lookReference = resolveLookPath(look: brick?.look, currentObject: currentObject)
             case kNextLookBrick.uppercased():
                 let brick = brick as? NextLookBrick
                 mappedBrick.name = brick?.name
@@ -296,11 +306,11 @@ extension CBXMLMappingFromObjc {
             case kHideBrick.uppercased():
                 let brick = brick as? HideBrick
                 mappedBrick.name = brick?.name
-            case kSetTransparencyBrick.uppercased():
+            case kSetTransparencyBrick.uppercased(), kSetGhostEffectBrick.uppercased():
                 let brick = brick as? SetTransparencyBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.transparency])
-            case kChangeTransparencyByNBrick.uppercased():
+            case kChangeTransparencyByNBrick.uppercased(), kChangeGhostEffectByNBrick.uppercased():
                 let brick = brick as? ChangeTransparencyByNBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeTransparency])
@@ -323,7 +333,7 @@ extension CBXMLMappingFromObjc {
             case kClearGraphicEffectBrick.uppercased():
                 let brick = brick as? ClearGraphicEffectBrick
                 mappedBrick.name = brick?.name
-            case kFlashBrick.uppercased():
+            case kFlashBrick.uppercased(), kLedOnBrick.uppercased(), kLedOffBrick.uppercased():
                 let brick = brick as? FlashBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.spinnerSelectionID = String(brick?.flashChoice ?? 0)
@@ -348,8 +358,7 @@ extension CBXMLMappingFromObjc {
             case kPlaySoundBrick.uppercased():
                 let brick = brick as? PlaySoundBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.sound = resolveSound(object: object, sound: brick?.sound).0
-                mappedBrick.soundReference = resolveSound(object: object, sound: brick?.sound).1
+                mappedBrick.soundReference = resolveSoundPath(sound: brick?.sound, currentObject: currentObject)
             case kStopAllSoundsBrick.uppercased():
                 let brick = brick as? StopAllSoundsBrick
                 mappedBrick.name = brick?.name
@@ -376,14 +385,14 @@ extension CBXMLMappingFromObjc {
                 let brick = brick as? SetVariableBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kChangeVariableBrick.uppercased():
                 let brick = brick as? ChangeVariableBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kShowTextBrick.uppercased():
@@ -391,43 +400,41 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.name = brick?.name
                 mappedBrick.xPosition = mapFormula(formula: brick?.xFormula)
                 mappedBrick.yPosition = mapFormula(formula: brick?.yFormula)
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kHideTextBrick.uppercased():
                 let brick = brick as? HideTextBrick
                 mappedBrick.name = brick?.name
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kAddItemToUserListBrick.uppercased():
                 let brick = brick as? AddItemToUserListBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kDeleteItemOfUserListBrick.uppercased():
                 let brick = brick as? DeleteItemOfUserListBrick
                 mappedBrick.name = brick?.name
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kInsertItemIntoUserListBrick.uppercased():
                 let brick = brick as? InsertItemIntoUserListBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula])
-                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.index])
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula, brick?.index])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kReplaceItemInUserListBrick.uppercased():
                 let brick = brick as? ReplaceItemInUserListBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula])
-                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.index])
-                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object)
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula, brick?.index])
+                let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             // MARK: Alternative Bricks
@@ -445,8 +452,7 @@ extension CBXMLMappingFromObjc {
             case kSayForBubbleBrick.uppercased():
                 let brick = brick as? SayForBubbleBrick
                 mappedBrick.name = brick?.name
-                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
-                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
+                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula, brick?.intFormula])
             default:
                 print("Error at Serialization Mapping!")
             }
@@ -476,7 +482,7 @@ extension CBXMLMappingFromObjc {
 
         let type = parentElement.string(for: parentElement.type)
         let value = parentElement.value
-        let category = "" // TODO???
+        let category = formula.category
         let left = mapFormulaChild(formulaElement: parentElement.leftChild)
         let right = mapFormulaChild(formulaElement: parentElement.rightChild)
 
@@ -497,7 +503,7 @@ extension CBXMLMappingFromObjc {
         return mappedChild
     }
 
-    private static func mapUserVariableWithLocalCheck(project: Project, userVariable: UserVariable?, object: SpriteObject) -> CBUserVariable? {
+    private static func mapUserVariableWithLocalCheck(project: Project, userVariable: UserVariable?, object: SpriteObject, isList: Bool) -> CBUserVariable? {
         guard let userVariable = userVariable else { return nil }
 
         if globalVariableList.contains(where: { $0.0 == userVariable.name }) == false {
@@ -505,15 +511,15 @@ extension CBXMLMappingFromObjc {
                 if CBXMLMappingFromObjc.localVariableList[index].1.contains(where: { $0.contains(where: { $0.key == userVariable }) }) == false {
                     CBXMLMappingFromObjc.localVariableList[index].1.append([userVariable: CBXMLMappingFromObjc.currentSerializationPosition])
                 }
-                return mapUserVariable(project: project, userVariable: userVariable)
+                return mapUserVariable(project: project, userVariable: userVariable, isList: isList)
             }
             CBXMLMappingFromObjc.localVariableList.append((object, [[userVariable: CBXMLMappingFromObjc.currentSerializationPosition]]))
         }
 
-        return mapUserVariable(project: project, userVariable: userVariable)
+        return mapUserVariable(project: project, userVariable: userVariable, isList: isList)
     }
 
-    private static func mapUserVariable(project: Project, userVariable: UserVariable?) -> CBUserVariable? {
+    private static func mapUserVariable(project: Project, userVariable: UserVariable?, isList: Bool) -> CBUserVariable? {
         guard let userVariable = userVariable else { return nil }
 
         if CBXMLMappingFromObjc.userVariableList.contains(where: { $0.0 == userVariable }) == false {
@@ -521,29 +527,30 @@ extension CBXMLMappingFromObjc {
             return(CBUserVariable(value: userVariable.name, reference: nil))
         }
 
-        return CBUserVariable(value: nil, reference: resolveUserVariablePath(project: project, userVariable: userVariable))
+        return CBUserVariable(value: nil, reference: resolveUserVariablePath(project: project, userVariable: userVariable, isList: isList))
     }
 
-    private static func resolveUserVariablePath(project: Project, userVariable: UserVariable?) -> String? {
+    private static func resolveUserVariablePath(project: Project, userVariable: UserVariable?, isList: Bool) -> String? {
         let currentObjectPos = CBXMLMappingFromObjc.currentSerializationPosition.0
         let currentScriptPos = CBXMLMappingFromObjc.currentSerializationPosition.1
+        let endPart = isList ? "userList" : "userVariable"
 
         if let referencedUserVariable = CBXMLMappingFromObjc.userVariableList.first(where: { $0.0 == userVariable }) {
             let referencedPosition = referencedUserVariable.1
 
             if referencedPosition.0 == currentObjectPos {
                 if referencedPosition.1 == currentScriptPos {
-                    return "../../" + (referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/") + "userVariable"
+                    return "../../" + (referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/") + endPart
                 } else {
                     let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                     let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                    return "../../../.." + scrString + "brickList/" + brString + "userVariable"
+                    return "../../../.." + scrString + "brickList/" + brString + endPart
                 }
             } else {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
                 let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                 let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                return "../../../../../../" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                return "../../../../../../" + objString + "scriptList/" + scrString + "brickList/" + brString + endPart
             }
         }
 
@@ -677,7 +684,7 @@ extension CBXMLMappingFromObjc {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
                 let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                 let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
                 mappedProgramVariables.append(CBProgramList(reference: referenceString))
             }
         }
