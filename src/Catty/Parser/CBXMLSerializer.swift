@@ -44,7 +44,6 @@ import AEXML
         addProgramVariableListTo(program: program, data: project.programVariableList)
         addProgramListOfListsTo(program: program, data: project.programListOfLists)
 
-//        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)
         completion(writeRequest.xml, nil)
 
 //        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)

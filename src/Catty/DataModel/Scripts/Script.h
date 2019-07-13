@@ -42,6 +42,8 @@
 @property (nonatomic, getter=isAnimatedInsertBrick) BOOL animateInsertBrick;
 @property (nonatomic, getter=isAnimatedMoveBrick) BOOL animateMoveBrick;
 @property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) NSString *commentedOut;
+@property (nonatomic, strong) NSString *isUserScript;
 
 - (BOOL)isSelectableForObject;
 - (BOOL)isAnimateable;

@@ -104,11 +104,11 @@ extension CBXMLMappingFromObjc {
     private static func mapScenesToCBProject(project: Project) -> [CBProjectScene] {
         var mappedScene = CBProjectScene()
 
-        // TODO: map name
+        mappedScene.name = "Szene 1" // TODO: extract name furtheron
         mappedScene.objectList = mapObjectList(project: project)
         mappedScene.data = mapData(project: project)
-        // TODO: map originalWidth
-        // TODO: map originalHeight
+        mappedScene.originalHeight = project.header.screenHeight.stringValue
+        mappedScene.originalWidth = project.header.screenWidth.stringValue
 
         return [mappedScene]
     }
@@ -170,8 +170,8 @@ extension CBXMLMappingFromObjc {
             var mappedScript = CBScript()
 
             mappedScript.brickList = mapBrickList(project: project, script: script as? Script, object: object, currentObject: currentObject)
-            // TODO: map commentedOut
-            // TODO: map isUserScript
+            mappedScript.commentedOut = (script as? Script)?.commentedOut
+            mappedScript.isUserScript = (script as? Script)?.isUserScript
 
             mappedScriptList.append(mappedScript)
             CBXMLMappingFromObjc.currentSerializationPosition.1 += 1

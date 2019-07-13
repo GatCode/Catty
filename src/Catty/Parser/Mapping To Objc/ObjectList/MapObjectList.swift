@@ -188,6 +188,8 @@ extension CBXMLMapping {
         }
 
         if let res = result {
+            res.commentedOut = script.commentedOut
+            res.isUserScript = script.isUserScript
             res.brickList = mapBrickList(script: script, objectList: objectList, object: object, project: project, currScript: &result, currObject: &currentObject)
             return res
         }
