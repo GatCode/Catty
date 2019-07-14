@@ -22,9 +22,9 @@
 
 import AEXML
 
-@objc class CBXMLSerializer2: NSObject {
+@objc class CBXMLSerializer: NSObject {
 
-    static let shared = CBXMLSerializer2()
+    static let shared = CBXMLSerializer()
     static var serializeInCBL991 = true
 
     func createXMLDocument(project: CBProject?, completion: @escaping (String?, CBXMLSerializerError?) -> Void) {
@@ -40,7 +40,7 @@ import AEXML
         let program = writeRequest.addChild(name: "program")
 
         addHeaderTo(program: program, data: project.header)
-        if CBXMLSerializer2.serializeInCBL991 == false {
+        if CBXMLSerializer.serializeInCBL991 == false {
             addSettingsTo(program: program)
             addScenesTo(program: program, data: project.scenes)
             addProgramVariableListTo(program: program, data: project.programVariableList)
@@ -55,13 +55,13 @@ import AEXML
 }
 
 // MARK: - Legacy Support
-extension CBXMLSerializer2 {
+extension CBXMLSerializer {
 
     @objc func serializeProjectObjc(project: Project, xmlPath: String?, fileManager: CBFileManager?) -> String? {
         let mappedProject = CBXMLMappingFromObjc.mapProjectToCBProject(project: project)
 
         var resolvedXml: String?
-        CBXMLSerializer2.shared.createXMLDocument(project: mappedProject) { xml, _ in
+        CBXMLSerializer.shared.createXMLDocument(project: mappedProject) { xml, _ in
             resolvedXml = xml
         }
 
@@ -69,11 +69,14 @@ extension CBXMLSerializer2 {
             return resolvedXml
         }
 
-        writeXMLFile(xmlPath: xmlPath, fileManager: fileManager, data: resolvedXml) { _, _ in
-            return resolvedXml
+        var error = false
+        writeXMLFile(xmlPath: xmlPath, fileManager: fileManager, data: resolvedXml) { _, err in
+            if err != nil {
+                error = true
+            }
         }
 
-        return resolvedXml
+        return error ? nil : resolvedXml
     }
 }
 

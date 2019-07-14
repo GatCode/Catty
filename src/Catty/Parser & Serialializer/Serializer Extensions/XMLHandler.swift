@@ -22,7 +22,7 @@
 
 import AEXML
 
-extension CBXMLSerializer2 {
+extension CBXMLSerializer {
 
     // MARK: - Read XML File
     func readXMLFile(filename: String, completion: @escaping (String?, CBXMLSerializerXMLHandlerError?) -> Void) {

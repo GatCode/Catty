@@ -23,7 +23,7 @@
 import AEXML
 import SWXMLHash
 
-@objc class CBXMLParser2: NSObject {
+@objc class CBXMLParser: NSObject {
 
     fileprivate var xmlPath: String = ""
     fileprivate var project: CBProject?
@@ -54,7 +54,7 @@ import SWXMLHash
 }
 
 // MARK: - Legacy Support
-extension CBXMLParser2 {
+extension CBXMLParser {
 
     @objc func parseProjectObjc() -> Bool {
         var retVal = false
@@ -67,7 +67,7 @@ extension CBXMLParser2 {
     }
 
     @objc func getProjectObjc() -> Project? {
-        return CBXMLMapping.mapCBProjectToProject(project: project)
+        return CBXMLMappingToObjc.mapCBProjectToProject(project: project)
     }
 }
 

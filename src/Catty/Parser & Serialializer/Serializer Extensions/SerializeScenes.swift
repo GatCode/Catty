@@ -22,7 +22,7 @@
 
 import AEXML
 
-extension CBXMLSerializer2 {
+extension CBXMLSerializer {
 
     // MARK: - Serialize Scenes
     func addScenesTo(program: AEXMLElement, data: [CBProjectScene]?) {
@@ -159,7 +159,7 @@ extension CBXMLSerializer2 {
         for brick in data {
             let currentBrick = brickList.addChild(name: "brick", attributes: ["type": brick.name ?? ""])
 
-            if let msg = brick.commentedOut, CBXMLSerializer2.serializeInCBL991 == false {
+            if let msg = brick.commentedOut, CBXMLSerializer.serializeInCBL991 == false {
                 currentBrick.addChild(name: "commentedOut", value: msg)
             }
 

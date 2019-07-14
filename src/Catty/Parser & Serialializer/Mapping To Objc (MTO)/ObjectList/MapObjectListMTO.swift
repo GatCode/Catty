@@ -22,12 +22,12 @@
 
 // swiftlint:disable large_tuple
 
-extension CBXMLMapping {
+extension CBXMLMappingToObjc {
 
     // MARK: - mapObjectList
     static func mapObjectList(project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
         guard let project = project else { return nil }
-        guard let objectList = project.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
+        guard let objectList = project.scenes?.first?.objectList?.object else { return nil }
 
         var resultObjectList = [SpriteObject]()
         for object in objectList {

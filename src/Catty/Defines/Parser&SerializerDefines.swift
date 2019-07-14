@@ -20,14 +20,20 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-// MARK: - Script Definitions
+//*************************************************************************************
+//********************       Script Definitions        ********************************
+//*************************************************************************************
+
 let kStartScript: String = "StartScript"
 let kWhenScript: String = "WhenScript"
 let kWhenTouchDownScript: String = "WhenTouchDownScript"
 let kBroadcastScript: String = "BroadcastScript"
 let kScript: String = "Script"
 
-// MARK: - Brick Definitions
+//*************************************************************************************
+//***************************      Brick Definitions       ****************************
+//*************************************************************************************
+
 let kBroadcastBrick: String = "BroadcastBrick"
 let kBroadcastWaitBrick: String = "BroadcastWaitBrick"
 let kForeverBrick: String = "ForeverBrick"

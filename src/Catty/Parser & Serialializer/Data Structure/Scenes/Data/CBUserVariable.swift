@@ -37,7 +37,7 @@ struct CBUserVariable: XMLIndexerDeserializable {
             tmpValue = try? node["userList"].value()
         }
 
-        if tmpReference == nil {
+        if tmpReference == nil {
             tmpReference = try? node["userList"].value(ofAttribute: "reference")
         }
 
@@ -45,7 +45,7 @@ struct CBUserVariable: XMLIndexerDeserializable {
             tmpValue = try? node.value()
         }
 
-        if tmpReference == nil {
+        if tmpReference == nil {
             tmpReference = try? node.value(ofAttribute: "reference")
         }
 

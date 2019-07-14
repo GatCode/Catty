@@ -22,7 +22,7 @@
 
 import AEXML
 
-extension CBXMLSerializer2 {
+extension CBXMLSerializer {
 
     func addHeaderTo(program: AEXMLElement, data: CBHeader?) {
         guard let data = data else { return }
@@ -32,12 +32,12 @@ extension CBXMLSerializer2 {
         header.addChild(name: "applicationBuildNumber", value: data.applicationBuildNumber)
         header.addChild(name: "applicationName", value: data.applicationName)
         header.addChild(name: "applicationVersion", value: data.applicationVersion)
-        header.addChild(name: "catrobatLanguageVersion", value: "0.991") // TODO
+        header.addChild(name: "catrobatLanguageVersion", value: Bundle.main.object(forInfoDictionaryKey: "CatrobatLanguageVersion") as? String)
         header.addChild(name: "dateTimeUpload", value: data.dateTimeUpload)
         header.addChild(name: "description", value: data.description)
         header.addChild(name: "deviceName", value: data.deviceName)
 
-        if CBXMLSerializer2.serializeInCBL991 == false {
+        if CBXMLSerializer.serializeInCBL991 == false {
             header.addChild(name: "isCastProject", value: data.isCastProject)
         }
 
@@ -49,7 +49,7 @@ extension CBXMLSerializer2 {
         header.addChild(name: "programName", value: data.programName)
         header.addChild(name: "remixOf", value: data.remixOf)
 
-        if CBXMLSerializer2.serializeInCBL991 == false {
+        if CBXMLSerializer.serializeInCBL991 == false {
             header.addChild(name: "scenesEnabled", value: data.scenesEnabled)
         }
 

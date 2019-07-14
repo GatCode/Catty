@@ -22,7 +22,7 @@
 
 import AEXML
 
-extension CBXMLSerializer2 {
+extension CBXMLSerializer {
 
     func addProgramVariableListTo(program: AEXMLElement, data: CBProgramVariableList?) {
         guard let data = data else { return }

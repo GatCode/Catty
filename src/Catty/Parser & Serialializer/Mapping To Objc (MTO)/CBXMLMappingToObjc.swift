@@ -20,7 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-enum CBXMLMapping {
+enum CBXMLMappingToObjc {
 
     static var mappingLookList = [Look]()
     static var mappingSoundList = [Sound]()
@@ -31,10 +31,10 @@ enum CBXMLMapping {
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
         var mappedProject = Project()
-        CBXMLMapping.mappingLookList.removeAll()
-        CBXMLMapping.mappingSoundList.removeAll()
-        CBXMLMapping.mappingVariableListGlobal.removeAll()
-        CBXMLMapping.unsupportedElements.removeAll()
+        CBXMLMappingToObjc.mappingLookList.removeAll()
+        CBXMLMappingToObjc.mappingSoundList.removeAll()
+        CBXMLMappingToObjc.mappingVariableListGlobal.removeAll()
+        CBXMLMappingToObjc.unsupportedElements.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
@@ -48,7 +48,7 @@ enum CBXMLMapping {
             mappedProject.variables = mappedVariables
         }
 
-        mappedProject.unsupportedElements = NSMutableSet(array: CBXMLMapping.unsupportedElements)
+        mappedProject.unsupportedElements = NSMutableSet(array: CBXMLMappingToObjc.unsupportedElements)
 
         return mappedProject
     }

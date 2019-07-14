@@ -20,7 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-extension CBXMLMapping {
+extension CBXMLMappingToObjc {
 
     static func mapHeader(project: CBProject?) -> Header? {
          guard let input = project?.header else { return nil }
@@ -33,7 +33,7 @@ extension CBXMLMapping {
         header.catrobatLanguageVersion = input.catrobatLanguageVersion
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'ddHH':'mm':'ss"
+        dateFormatter.dateFormat = kCatrobatHeaderDateTimeFormat
         header.dateTimeUpload = dateFormatter.date(from: input.dateTimeUpload ?? "")
 
         header.programDescription = input.description
@@ -66,29 +66,5 @@ extension CBXMLMapping {
         header.programID = input.programID
 
         return header
-    }
-}
-
-extension String {
-    var bool: Bool {
-        switch self.lowercased() {
-        case "true", "1":
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-extension Optional {
-    func pseudoEmpty() -> Bool {
-        if let unwrapped = self, let string = unwrapped as? String {
-            if string.isEmpty {
-                return true
-            } else {
-                return false
-            }
-        }
-        return false
     }
 }

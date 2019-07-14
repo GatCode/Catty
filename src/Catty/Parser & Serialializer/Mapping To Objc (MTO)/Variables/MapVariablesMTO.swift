@@ -22,7 +22,7 @@
 
 // swiftlint:disable large_tuple
 
-extension CBXMLMapping {
+extension CBXMLMappingToObjc {
 
     static func mapVariables(project: CBProject?, mappedProject: inout Project) -> VariablesContainer? {
         guard let project = project else { return nil }

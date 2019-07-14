@@ -20,11 +20,13 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-import AEXML
-
-extension CBXMLSerializer {
-
-    func addSettingsTo(program: AEXMLElement) {
-        program.addChild(name: "settings")
+extension String {
+    var bool: Bool {
+        switch self.lowercased() {
+        case "true", "1":
+            return true
+        default:
+            return false
+        }
     }
 }

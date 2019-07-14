@@ -165,10 +165,13 @@
                 [notificationCenter postNotificationName:kShowSavedViewNotification object:self];
             });
         }
-        // TODO: rename CBXMLSerializer2 to CBXMLSerializer
         NSString *xmlPath = [NSString stringWithFormat:@"%@%@", [self projectPath], kProjectCodeFileName];
-        CBXMLSerializer2* serializer = [CBXMLSerializer2 alloc];
-        [serializer serializeProjectObjcWithProject:self xmlPath:xmlPath fileManager:fileManager];
+        CBXMLSerializer* serializer = [CBXMLSerializer alloc];
+        NSString *serializationResult = [serializer serializeProjectObjcWithProject:self xmlPath:xmlPath fileManager:fileManager];
+        
+        if (serializationResult == nil) {
+            NSDebug(@"Serialization failed!");
+        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kHideLoadingViewNotification object:self];
@@ -457,12 +460,11 @@
         return nil;
     }
 
-    CBXMLParser2 *catrobatParser2 = [[CBXMLParser2 alloc] initWithPath:xmlPath];
-    
-    if ([catrobatParser2 parseProjectObjc] == false) {
+    CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
+    if ([catrobatParser parseProjectObjc] == false) {
         return nil;
     }
-    project = [catrobatParser2 getProjectObjc];
+    project = [catrobatParser getProjectObjc];
     project.header.programID = loadingInfo.projectID;
 
     NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);

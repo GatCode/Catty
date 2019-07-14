@@ -20,11 +20,15 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-import AEXML
-
-extension CBXMLSerializer {
-
-    func addSettingsTo(program: AEXMLElement) {
-        program.addChild(name: "settings")
+extension Optional {
+    func pseudoEmpty() -> Bool {
+        if let unwrapped = self, let string = unwrapped as? String {
+            if string.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        }
+        return false
     }
 }
