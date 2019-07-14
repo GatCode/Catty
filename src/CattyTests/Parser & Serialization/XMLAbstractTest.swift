@@ -122,7 +122,7 @@ class XMLAbstractTest: XCTestCase {
         guard let lhsLength = lhs?.count else { return false }
         guard let rhsLength = rhs?.count else { return false }
 
-        let threshhold = 0.8 // to counteract eventual blank variables im xml
+        let threshhold = 0.85 // to counteract eventual blank variables im xml
         lhs = Array(lhs?.prefix(Int(Double(lhsLength) * threshhold)) ?? [])
         rhs = Array(rhs?.prefix(Int(Double(rhsLength) * threshhold)) ?? [])
 
@@ -136,9 +136,12 @@ class XMLAbstractTest: XCTestCase {
             if lhs.contains("objecttype") || rhs.contains("objecttype") {
                 continue
             }
+            if lhs.contains("catrobatLanguageVersion") || rhs.contains("catrobatLanguageVersion") {
+                continue
+            }
 
             let numberOfChars = Double(lhs.count < rhs.count ? lhs.count : rhs.count)
-            let threshhold = 0.9
+            let threshhold = 0.8
 
             let lhsIndex = lhs.index(lhs.startIndex, offsetBy: Int(numberOfChars * threshhold))
             let rhsIndex = rhs.index(rhs.startIndex, offsetBy: Int(numberOfChars * threshhold))

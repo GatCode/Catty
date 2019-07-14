@@ -159,7 +159,7 @@ extension CBXMLSerializer2 {
         for brick in data {
             let currentBrick = brickList.addChild(name: "brick", attributes: ["type": brick.name ?? ""])
 
-            if let msg = brick.commentedOut {
+            if let msg = brick.commentedOut, CBXMLSerializer2.serializeInCBL991 == false {
                 currentBrick.addChild(name: "commentedOut", value: msg)
             }
 
@@ -286,6 +286,32 @@ extension CBXMLSerializer2 {
 
         if let objVariableList = data.objectVariableList {
             addObjectVariableListTo(dataObject: dataObject, data: objVariableList)
+        }
+
+        if let userBrickVariableList = data.userBrickVariableList {
+            addUserBrickVariableListTo(dataObject: dataObject, data: userBrickVariableList)
+        }
+    }
+
+    func addDataTo0991(scene: AEXMLElement, data: CBProjectData?, progVarList: CBProgramVariableList?, progListOfLists: CBProgramListOfLists?) {
+        guard let data = data else { return }
+
+        let dataObject = scene.addChild(name: "data")
+
+        if let objListOfList = data.objectListOfList {
+            addObjectListOfListTo(dataObject: dataObject, data: objListOfList)
+        }
+
+        if let objVariableList = data.objectVariableList {
+            addObjectVariableListTo(dataObject: dataObject, data: objVariableList)
+        }
+
+        if let programListOfLists = progListOfLists {
+            addProgramListOfListsTo(program: dataObject, data: programListOfLists)
+        }
+
+        if let programVariableList = progVarList {
+            addProgramVariableListTo(program: dataObject, data: programVariableList)
         }
 
         if let userBrickVariableList = data.userBrickVariableList {

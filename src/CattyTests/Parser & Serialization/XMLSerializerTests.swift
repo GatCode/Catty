@@ -40,7 +40,23 @@ final class XMLSerializerTests: XMLAbstractTest {
         createAndCompareXMLFileFor(projectName: "X_Ray_phone_0994")
     }
 
-    func testObjcSerialization() {
+    func testObjcSerialization0991() {
+        CBXMLSerializer2.serializeInCBL991 = true
+        createAndCompareMappedObjcXMLFileFor(projectName: "EscapingChars_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Flap_Pac_Man_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Flappy_v3.0_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Galaxy_War_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Gossip_Girl_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Minions__0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Pong_Starter_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Rock_paper_scissors_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Tic_Tac_Toe_Master_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "Word_balloon_demo_0991")
+        createAndCompareMappedObjcXMLFileFor(projectName: "X_Ray_phone_0991")
+    }
+
+    func testObjcSerialization0994() {
+        CBXMLSerializer2.serializeInCBL991 = false
         createAndCompareMappedObjcXMLFileFor(projectName: "EscapingChars_0994")
         createAndCompareMappedObjcXMLFileFor(projectName: "Flap_Pac_Man_0994")
         createAndCompareMappedObjcXMLFileFor(projectName: "Flappy_v3.0_0994")

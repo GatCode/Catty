@@ -32,11 +32,15 @@ extension CBXMLSerializer2 {
         header.addChild(name: "applicationBuildNumber", value: data.applicationBuildNumber)
         header.addChild(name: "applicationName", value: data.applicationName)
         header.addChild(name: "applicationVersion", value: data.applicationVersion)
-        header.addChild(name: "catrobatLanguageVersion", value: "0.991")
+        header.addChild(name: "catrobatLanguageVersion", value: "0.991") // TODO
         header.addChild(name: "dateTimeUpload", value: data.dateTimeUpload)
         header.addChild(name: "description", value: data.description)
         header.addChild(name: "deviceName", value: data.deviceName)
-        header.addChild(name: "isCastProject", value: data.isCastProject)
+
+        if CBXMLSerializer2.serializeInCBL991 == false {
+            header.addChild(name: "isCastProject", value: data.isCastProject)
+        }
+
         header.addChild(name: "landscapeMode", value: data.landscapeMode)
         header.addChild(name: "mediaLicense", value: data.mediaLicense)
         header.addChild(name: "platform", value: data.platform)
@@ -44,7 +48,11 @@ extension CBXMLSerializer2 {
         header.addChild(name: "programLicense", value: data.programLicense)
         header.addChild(name: "programName", value: data.programName)
         header.addChild(name: "remixOf", value: data.remixOf)
-        header.addChild(name: "scenesEnabled", value: data.scenesEnabled)
+
+        if CBXMLSerializer2.serializeInCBL991 == false {
+            header.addChild(name: "scenesEnabled", value: data.scenesEnabled)
+        }
+
         header.addChild(name: "screenHeight", value: data.screenHeight)
         header.addChild(name: "screenMode", value: data.screenMode)
         header.addChild(name: "screenWidth", value: data.screenWidth)

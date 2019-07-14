@@ -25,6 +25,7 @@ import AEXML
 @objc class CBXMLSerializer2: NSObject {
 
     static let shared = CBXMLSerializer2()
+    static var serializeInCBL991 = true
 
     func createXMLDocument(project: CBProject?, completion: @escaping (String?, CBXMLSerializerError?) -> Void) {
         guard let project = project else { completion(nil, .invalidProject); return }
@@ -39,10 +40,15 @@ import AEXML
         let program = writeRequest.addChild(name: "program")
 
         addHeaderTo(program: program, data: project.header)
-        addSettingsTo(program: program)
-        addScenesTo(program: program, data: project.scenes)
-        addProgramVariableListTo(program: program, data: project.programVariableList)
-        addProgramListOfListsTo(program: program, data: project.programListOfLists)
+        if CBXMLSerializer2.serializeInCBL991 == false {
+            addSettingsTo(program: program)
+            addScenesTo(program: program, data: project.scenes)
+            addProgramVariableListTo(program: program, data: project.programVariableList)
+            addProgramListOfListsTo(program: program, data: project.programListOfLists)
+        } else {
+            addObjectListTo(scene: program, data: project.scenes?.first?.objectList?.object)
+            addDataTo0991(scene: program, data: project.scenes?.first?.data, progVarList: project.programVariableList, progListOfLists: project.programListOfLists)
+        }
 
         completion(writeRequest.xml, nil)
     }

@@ -60,7 +60,7 @@ extension CBXMLMapping {
         }
         header.screenWidth = screenWidth
 
-        header.tags = input.tags
+        header.tags = input.tags.pseudoEmpty() ? nil : input.tags
         header.url = input.url
         header.userHandle = input.userHandle
         header.programID = input.programID
@@ -77,5 +77,18 @@ extension String {
         default:
             return false
         }
+    }
+}
+
+extension Optional {
+    func pseudoEmpty() -> Bool {
+        if let unwrapped = self, let string = unwrapped as? String {
+            if string.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        }
+        return false
     }
 }

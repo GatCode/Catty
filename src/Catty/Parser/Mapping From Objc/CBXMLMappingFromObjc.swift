@@ -707,8 +707,12 @@ extension CBXMLMappingFromObjc {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
                 let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                 let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                let referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
-                //let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                var referenceString = ""
+                if CBXMLSerializer2.serializeInCBL991 {
+                    referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                } else {
+                    referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
+                }
                 mappedProgramVariables.append(CBUserProgramVariable(reference: referenceString))
             }
         }
@@ -726,8 +730,12 @@ extension CBXMLMappingFromObjc {
                 let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
                 let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                 let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                let referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
-                //let referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
+                var referenceString = ""
+                if CBXMLSerializer2.serializeInCBL991 {
+                    referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
+                } else {
+                    referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
+                }
                 mappedProgramVariables.append(CBProgramList(reference: referenceString))
             }
         }
