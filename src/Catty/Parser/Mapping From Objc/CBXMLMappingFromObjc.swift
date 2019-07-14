@@ -120,6 +120,7 @@ extension CBXMLMappingFromObjc {
 
         for object in project.objectList {
             var mappedObject = CBObject()
+            mappedObject.name = (object as? SpriteObject)?.name
 
             mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
             mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)

@@ -32,7 +32,7 @@ extension CBXMLSerializer2 {
         header.addChild(name: "applicationBuildNumber", value: data.applicationBuildNumber)
         header.addChild(name: "applicationName", value: data.applicationName)
         header.addChild(name: "applicationVersion", value: data.applicationVersion)
-        header.addChild(name: "catrobatLanguageVersion", value: data.catrobatLanguageVersion)
+        header.addChild(name: "catrobatLanguageVersion", value: "0.991")
         header.addChild(name: "dateTimeUpload", value: data.dateTimeUpload)
         header.addChild(name: "description", value: data.description)
         header.addChild(name: "deviceName", value: data.deviceName)

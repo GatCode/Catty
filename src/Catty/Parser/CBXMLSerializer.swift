@@ -59,6 +59,14 @@ extension CBXMLSerializer2 {
             resolvedXml = xml
         }
 
+        if xmlPath == nil {
+            return resolvedXml
+        }
+
+        writeXMLFile(xmlPath: xmlPath, fileManager: fileManager, data: resolvedXml) { path, error in
+            return resolvedXml
+        }
+
         return resolvedXml
     }
 }

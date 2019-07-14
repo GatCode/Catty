@@ -61,6 +61,19 @@ extension CBXMLSerializer2 {
             completion(nil, CBXMLSerializerXMLHandlerError.invalidDirectory)
         }
     }
+
+    func writeXMLFile(xmlPath: String?, fileManager: CBFileManager?, data: String?, completion: @escaping (String?, CBXMLSerializerXMLHandlerError?) -> Void) {
+        guard let data = data else { completion(nil, CBXMLSerializerXMLHandlerError.writeError); return }
+        guard let stringPath = xmlPath else { completion(nil, CBXMLSerializerXMLHandlerError.writeError); return }
+        let xmlPath = URL(fileURLWithPath: stringPath)
+
+        do {
+            try data.write(to: xmlPath, atomically: true, encoding: .utf8)
+            completion(stringPath, nil)
+        } catch {
+            completion(nil, CBXMLSerializerXMLHandlerError.writeError)
+        }
+    }
 }
 
 enum CBXMLSerializerXMLHandlerError: Error {

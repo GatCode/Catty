@@ -161,9 +161,9 @@ extension CBXMLMapping {
         guard let resolvedString = resolvedReferenceString else { return nil }
 
         if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < mappedProject.objectList.count {
-            if let obj = mappedProject.objectList[oNr] as? SpriteObject {
-                if let scr = obj.scriptList[sNr] as? Script, sNr < obj.scriptList.count {
-                    if let br = scr.brickList[bNr] as? Brick, bNr < scr.brickList.count, let uVar = br.uVar {
+            if let obj = mappedProject.objectList[oNr] as? SpriteObject, sNr < obj.scriptList.count {
+                if let scr = obj.scriptList[sNr] as? Script, bNr < scr.brickList.count {
+                    if let br = scr.brickList[bNr] as? Brick, let uVar = br.uVar {
                         let uVarPtr = UnsafeMutablePointer<UserVariable>.allocate(capacity: 1)
                         uVarPtr.initialize(to: uVar)
                         return uVarPtr
