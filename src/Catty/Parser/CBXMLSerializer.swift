@@ -69,7 +69,7 @@ extension CBXMLSerializer2 {
             return resolvedXml
         }
 
-        writeXMLFile(xmlPath: xmlPath, fileManager: fileManager, data: resolvedXml) { path, error in
+        writeXMLFile(xmlPath: xmlPath, fileManager: fileManager, data: resolvedXml) { _, _ in
             return resolvedXml
         }
 

@@ -179,6 +179,10 @@ extension CBXMLMappingFromObjc {
             mappedScript.matchAll = (script as? Script)?.matchAll
             mappedScript.action = (script as? Script)?.action
 
+            if let brickType = (script as? Script)?.brickType {
+                mappedScript.type = BrickManager.shared()?.className(for: brickType)
+            }
+
             mappedScriptList.append(mappedScript)
             CBXMLMappingFromObjc.currentSerializationPosition.1 += 1
             CBXMLMappingFromObjc.currentSerializationPosition.2 = 0
