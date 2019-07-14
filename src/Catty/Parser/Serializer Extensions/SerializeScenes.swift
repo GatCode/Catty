@@ -131,6 +131,10 @@ extension CBXMLSerializer2 {
                 currentScript.addChild(name: "isUserScript", value: msg)
             }
 
+            if let msg = script.matchAll {
+                currentScript.addChild(name: "matchAll", value: msg)
+            }
+
             if let msg = script.receivedMessage {
                 currentScript.addChild(name: "receivedMessage", value: msg)
             }

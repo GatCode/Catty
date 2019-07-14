@@ -175,6 +175,7 @@ extension CBXMLMappingFromObjc {
             mappedScript.commentedOut = (script as? Script)?.commentedOut
             mappedScript.isUserScript = (script as? Script)?.isUserScript
             mappedScript.receivedMessage = (script as? Script)?.receivedMsg
+            mappedScript.matchAll = (script as? Script)?.matchAll
             mappedScript.action = (script as? Script)?.action
 
             mappedScriptList.append(mappedScript)
@@ -495,7 +496,7 @@ extension CBXMLMappingFromObjc {
             default:
                 print("Error at Serialization Mapping!")
             }
-            mappedBrick.commentedOut = (brick as? Brick)?.commentedOut
+            mappedBrick.commentedOut = (brick as? Brick)?.commentedOut ?? "false"
             mappedBrickList.append(mappedBrick)
             CBXMLMappingFromObjc.currentSerializationPosition.2 += 1
         }

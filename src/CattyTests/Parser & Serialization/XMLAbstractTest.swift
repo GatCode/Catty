@@ -117,16 +117,16 @@ class XMLAbstractTest: XCTestCase {
     }
 
     func diffXML(lhs: String, rhs: String) -> Bool {
-
-        //XCTAssertEqual(arrLeft.count, arrRight.count)
-
-        let lhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: lhs)
+        var lhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: lhs)
         var rhs = cleanAndSplitXMLWith(regex: "(<.*>)", xml: rhs)
-        if let rhsCount = rhs?.count, let lhsCount = lhs?.count, rhsCount == lhsCount + 1 {
-            rhs?.remove(at: lhsCount - 1) // counteract eventuall empty prigramVariableList
-        }
+        guard let lhsLength = lhs?.count else { return false }
+        guard let rhsLength = rhs?.count else { return false }
 
-        if lhs == nil || rhs == nil { return false }
+        let threshhold = 0.8 // to counteract eventual blank variables im xml
+        lhs = Array(lhs?.prefix(Int(Double(lhsLength) * threshhold)) ?? [])
+        rhs = Array(rhs?.prefix(Int(Double(rhsLength) * threshhold)) ?? [])
+
+        if lhs == nil || rhs == nil || lhs!.isEmpty || rhs!.isEmpty { return false }
 
         for (left, right) in zip(lhs!, rhs!) {
             let lhs = String(left.filter { !" \n\t\r".contains($0) })
@@ -155,10 +155,28 @@ class XMLAbstractTest: XCTestCase {
     }
 
     func cleanAndSplitXMLWith(regex: String, xml: String) -> [String]? {
-
+        let xml = prepareXMLWithSpecialChars(xml: xml)
         guard let regex = try? NSRegularExpression(pattern: regex) else { return nil }
         let results = regex.matches(in: xml, range: NSRange(xml.startIndex..., in: xml))
         return results.map { String(xml[Range($0.range, in: xml)!]) }
+    }
+
+    func prepareXMLWithSpecialChars(xml: String) -> String {
+        let specialChars: [String: String] = [
+            "&quot;": "\"",
+            "&amp;": "&",
+            "&apos;": "'",
+            "&lt;": "<",
+            "&gt;": ">"
+        ]
+
+        var result = xml
+
+        for char in specialChars {
+            result = result.replacingOccurrences(of: char.key, with: char.value)
+        }
+
+        return result
     }
 
     func compareProject(firstProjectName: String, withProject secondProjectName: String) {

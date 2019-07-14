@@ -29,19 +29,22 @@ struct CBScript: XMLIndexerDeserializable {
     var isUserScript: String?
     var receivedMessage: String?
     var action: String?
+    var matchAll: String?
 
     init(brickList: CBBrickList? = nil,
          type: String? = nil,
          commentedOut: String? = nil,
          isUserScript: String? = nil,
          receivedMessage: String? = nil,
-         action: String? = nil) {
+         action: String? = nil,
+         matchAll: String? = nil) {
         self.brickList = brickList
         self.type = type
         self.commentedOut = commentedOut
         self.isUserScript = isUserScript
         self.receivedMessage = receivedMessage
         self.action = action
+        self.matchAll = matchAll
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBScript {
@@ -67,7 +70,8 @@ struct CBScript: XMLIndexerDeserializable {
             commentedOut: node["commentedOut"].value(),
             isUserScript: node["isUserScript"].value(),
             receivedMessage: node["receivedMessage"].value(),
-            action: node["action"].value()
+            action: node["action"].value(),
+            matchAll: node["matchAll"].value()
         )
     }
 }

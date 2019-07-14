@@ -46,6 +46,7 @@
 @property (nonatomic, strong) NSString *isUserScript;
 @property (nonatomic, strong) NSString *receivedMsg;
 @property (nonatomic, strong) NSString *action;
+@property (nonatomic, strong) NSString *matchAll;
 
 - (BOOL)isSelectableForObject;
 - (BOOL)isAnimateable;

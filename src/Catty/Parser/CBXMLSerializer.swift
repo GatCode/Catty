@@ -44,24 +44,8 @@ import AEXML
         addProgramVariableListTo(program: program, data: project.programVariableList)
         addProgramListOfListsTo(program: program, data: project.programListOfLists)
 
-        let cleanedXML = prepareXMLWithSpecialChars(xml: writeRequest.xml)
-        completion(cleanedXML, nil)
+        completion(writeRequest.xml, nil)
     }
-}
-
-fileprivate func prepareXMLWithSpecialChars(xml: String) -> String {
-    let specialChars: [String: String] = [
-        "&quot;": "\"",
-        "&apos;": "'"
-    ]
-
-    var result = xml
-
-    for char in specialChars {
-        result = result.replacingOccurrences(of: char.key, with: char.value)
-    }
-
-    return result
 }
 
 // MARK: - Legacy Support

@@ -132,7 +132,7 @@ extension CBXMLMapping {
 
         let newSound = Sound(name: name, fileName: filename)
 
-        for sound in mappingSoundList where sound.name == newSound.name {
+        for sound in mappingSoundList where sound.fileName == newSound.fileName {
             return sound
         }
 
@@ -192,6 +192,7 @@ extension CBXMLMapping {
         if let res = result {
             res.commentedOut = script.commentedOut
             res.isUserScript = script.isUserScript
+            res.matchAll = script.matchAll
             res.action = script.action
             res.brickList = mapBrickList(script: script, objectList: objectList, object: object, project: project, currScript: &result, currObject: &currentObject)
             return res
@@ -628,7 +629,7 @@ extension CBXMLMapping {
                     if splittedReference.count == 2, let soundString = splittedReference.last {
                         let soundIndex = extractNumberInBacesFrom(string: String(soundString))
                         if let newSoundList = object?.soundList?.sound, soundIndex < newSoundList.count {
-                            for sound in mappingSoundList where sound.name == newSoundList[soundIndex].name {
+                            for sound in mappingSoundList where sound.fileName == newSoundList[soundIndex].fileName {
                                 newBrick.sound = sound
                             }
                         }
@@ -636,7 +637,7 @@ extension CBXMLMapping {
                         print("ERROR MAPPING PLAYSOUNDBRICK")
                     }
                 } else {
-                    for sound in mappingSoundList where sound.name == brick.sound?.name {
+                    for sound in mappingSoundList where sound.fileName == brick.sound?.fileName  {
                         newBrick.sound = sound
                     }
                 }
