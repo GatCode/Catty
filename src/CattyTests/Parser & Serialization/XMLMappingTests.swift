@@ -30,7 +30,7 @@ final class XMLMappingTests: XMLAbstractTest {
         let sceneList = [CBProjectScene(name: "Scene1")]
         let objectList = CBObjectList(object: [CBObject(name: "Object1"), CBObject(name: "Object2")])
         let lookList = CBLookList(look: [CBLook(name: "Look1", fileName: "File1"), CBLook(name: "Look2", fileName: "File1")])
-        let soundList = CBSoundList(sound: [CBSound(fileName: "File1", name: "Sound1", reference: "ref"), CBSound(fileName: "File1", name: "Sound2", reference: "ref")])
+        let soundList = CBSoundList(sound: [CBSound(fileName: "File1", name: "Sound1", reference: "../ref1"), CBSound(fileName: "File2", name: "Sound2", reference: "../ref2")])
         let scriptList = CBScriptList(script: [CBScript(type: "Script"), CBScript(type: "BroadcastScript")])
         let brickList = CBBrickList(brick: [CBBrick(name: "Brick1", type: "SetVariableBrick"), CBBrick(name: "Brick2", type: "SetVariableBrick")])
         let userVariable = "UVar1"
