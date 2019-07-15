@@ -333,7 +333,7 @@ extension CBXMLMappingFromObjc {
                 let brick = brick as? SayForBubbleBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula, brick?.intFormula])
             default:
-                continue
+                break
             }
             mappedBrick.commentedOut = (brick as? Brick)?.commentedOut ?? "false" // TODO
             mappedBrickList.append(mappedBrick)

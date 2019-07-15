@@ -27,6 +27,7 @@ import XCTest
 final class XMLSerializerTests: XMLAbstractTest {
 
     func testReadWriteXMLFiles() {
+        CBXMLSerializer.serializeInCBL991 = false
         createAndCompareXMLFileFor(projectName: "EscapingChars_0994")
         createAndCompareXMLFileFor(projectName: "Flap_Pac_Man_0994")
         createAndCompareXMLFileFor(projectName: "Flappy_v3.0_0994")

@@ -124,6 +124,9 @@ class XMLAbstractTest: XCTestCase {
             if lhs.contains("catrobatLanguageVersion") || rhs.contains("catrobatLanguageVersion") {
                 continue
             }
+            if lhs.contains("LoopEndBrick") || rhs.contains("LoopEndBrick") {
+                continue
+            }
 
             let numberOfChars = Double(lhs.count < rhs.count ? lhs.count : rhs.count)
             let threshhold = 0.8

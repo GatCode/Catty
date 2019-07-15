@@ -185,8 +185,6 @@ extension CBXMLSerializer {
 
             if let msg = brick.userList {
                 currentBrick.addChild(name: "userList", value: msg)
-            } else if let varRef = brick.userVariableReference {
-                currentBrick.addChild(name: "userList", value: nil, attributes: ["reference": varRef])
             }
 
             if let msg = brick.broadcastMessage {
