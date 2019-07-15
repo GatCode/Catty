@@ -35,22 +35,12 @@ class XMLAbstractTest: XCTestCase {
         super.tearDown()
     }
 
-    func compareNewFileToOlderLanguageVersionFile(new: String, old: String) -> Bool {
-        // implement when mapping serialization of Project is finished
-        return false
-    }
-
     func createAndCompareMappedObjcXMLFileFor(projectName: String) {
-
-        // --------------------------------------------------
-        // TODO: change getProjectForXML2 to getProjectForXML
-        // --------------------------------------------------
-
         var project: Project?
         var xml: String?
         var readXml: String?
 
-        getObjcProjectForXML2(xmlFile: projectName) { result, error in
+        getObjcProjectForXML(xmlFile: projectName) { result, error in
             XCTAssertNil(error)
             project = result
         }
@@ -78,16 +68,11 @@ class XMLAbstractTest: XCTestCase {
     }
 
     func createAndCompareXMLFileFor(projectName: String) {
-
-        // --------------------------------------------------
-        // TODO: change getProjectForXML2 to getProjectForXML
-        // --------------------------------------------------
-
         var project: CBProject?
         var xml: String?
         var readXml: String?
 
-        getProjectForXML2(xmlFile: projectName) { result, error in
+        getProjectForXML(xmlFile: projectName) { result, error in
             XCTAssertNil(error)
             project = result
         }
@@ -183,20 +168,15 @@ class XMLAbstractTest: XCTestCase {
     }
 
     func compareProject(firstProjectName: String, withProject secondProjectName: String) {
-
-        // --------------------------------------------------
-        // TODO: change getProjectForXML2 to getProjectForXML
-        // --------------------------------------------------
-
         var project1: CBProject?
         var project2: CBProject?
 
-        getProjectForXML2(xmlFile: firstProjectName) { project, error  in
+        getProjectForXML(xmlFile: firstProjectName) { project, error  in
             XCTAssertNil(error)
             project1 = project
         }
 
-        getProjectForXML2(xmlFile: secondProjectName) { project, error in
+        getProjectForXML(xmlFile: secondProjectName) { project, error in
             XCTAssertNil(error)
             project2 = project
         }
@@ -206,12 +186,7 @@ class XMLAbstractTest: XCTestCase {
         XCTAssertTrue(project1 == project2)
     }
 
-    func getProjectForXML2(xmlFile: String, completion: @escaping (CBProject?, XMLAbstractError?) -> Void) {
-
-        // -----------------------------------------
-        // TODO: change CBXMLParser2 to CBXMLParser
-        // -----------------------------------------
-
+    func getProjectForXML(xmlFile: String, completion: @escaping (CBProject?, XMLAbstractError?) -> Void) {
         var xmlPath: String?
         getPathForXML(xmlFile: xmlFile) { path, error in
             if error != nil {
@@ -222,27 +197,22 @@ class XMLAbstractTest: XCTestCase {
 
         guard let path = xmlPath else { completion(nil, .invalidPath); return }
 
-        let catrobatParser2 = CBXMLParser(path: path)
-        if catrobatParser2 == nil {
+        let catrobatParser = CBXMLParser(path: path)
+        if catrobatParser == nil {
             completion(nil, .unexpectedError)
         }
 
-        catrobatParser2?.parseProject(completion: { error in
+        catrobatParser?.parseProject(completion: { error in
             if error != nil {
                 completion(nil, .parsingError)
             }
 
-            let project = catrobatParser2?.getProject()
+            let project = catrobatParser?.getProject()
             completion(project, nil)
         })
     }
 
-    func getObjcProjectForXML2(xmlFile: String, completion: @escaping (Project?, XMLAbstractError?) -> Void) {
-
-        // -----------------------------------------
-        // TODO: change CBXMLParser2 to CBXMLParser
-        // -----------------------------------------
-
+    func getObjcProjectForXML(xmlFile: String, completion: @escaping (Project?, XMLAbstractError?) -> Void) {
         var xmlPath: String?
         getPathForXML(xmlFile: xmlFile) { path, error in
             if error != nil {
@@ -253,17 +223,17 @@ class XMLAbstractTest: XCTestCase {
 
         guard let path = xmlPath else { completion(nil, .invalidPath); return }
 
-        let catrobatParser2 = CBXMLParser(path: path)
-        if catrobatParser2 == nil {
+        let catrobatParser = CBXMLParser(path: path)
+        if catrobatParser == nil {
             completion(nil, .unexpectedError)
         }
 
-        catrobatParser2?.parseProject(completion: { error in
+        catrobatParser?.parseProject(completion: { error in
             if error != nil {
                 completion(nil, .parsingError)
             }
 
-            let project = catrobatParser2?.getProjectObjc()
+            let project = catrobatParser?.getProjectObjc()
             completion(project, nil)
         })
     }

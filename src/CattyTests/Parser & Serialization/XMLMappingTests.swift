@@ -292,7 +292,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testBothSoundsHaveSameAddress() {
         var cbProject: CBProject?
-        getProjectForXML2(xmlFile: "SoundMapping") { project, error  in
+        getProjectForXML(xmlFile: "SoundMapping") { project, error  in
             XCTAssertNil(error)
             cbProject = project
         }
@@ -311,7 +311,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testBothLooksHaveSameAddress() {
         var cbProject: CBProject?
-        getProjectForXML2(xmlFile: "LookMapping") { project, error  in
+        getProjectForXML(xmlFile: "LookMapping") { project, error  in
             XCTAssertNil(error)
             cbProject = project
         }
@@ -330,7 +330,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testVariablesHaveSameAddresses() {
         var cbProject: CBProject?
-        getProjectForXML2(xmlFile: "VariableMapping") { project, error  in
+        getProjectForXML(xmlFile: "VariableMapping") { project, error  in
             XCTAssertNil(error)
             cbProject = project
         }
@@ -362,7 +362,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testVariablesHaveSameAddresses2() {
         var cbProject: CBProject?
-        getProjectForXML2(xmlFile: "VariableMapping2") { project, error  in
+        getProjectForXML(xmlFile: "VariableMapping2") { project, error  in
             XCTAssertNil(error)
             cbProject = project
         }
@@ -390,7 +390,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testUninitializedVariableListMapping() {
         var cbProject: CBProject?
-        getProjectForXML2(xmlFile: "VariableMapping3") { project, error  in
+        getProjectForXML(xmlFile: "VariableMapping3") { project, error  in
             XCTAssertNil(error)
             cbProject = project
         }
@@ -406,7 +406,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testBroadcastsHaveSameValues() {
         var cbProject: CBProject?
-        getProjectForXML2(xmlFile: "BroadcastMapping") { project, error  in
+        getProjectForXML(xmlFile: "BroadcastMapping") { project, error  in
             XCTAssertNil(error)
             cbProject = project
         }
