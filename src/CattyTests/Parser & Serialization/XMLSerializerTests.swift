@@ -41,7 +41,7 @@ final class XMLSerializerTests: XMLAbstractTest {
     }
 
     func testObjcSerialization0991() {
-        CBXMLSerializer2.serializeInCBL991 = true
+        CBXMLSerializer.serializeInCBL991 = true
         createAndCompareMappedObjcXMLFileFor(projectName: "EscapingChars_0991")
         createAndCompareMappedObjcXMLFileFor(projectName: "Flap_Pac_Man_0991")
         createAndCompareMappedObjcXMLFileFor(projectName: "Flappy_v3.0_0991")
@@ -56,7 +56,7 @@ final class XMLSerializerTests: XMLAbstractTest {
     }
 
     func testObjcSerialization0994() {
-        CBXMLSerializer2.serializeInCBL991 = false
+        CBXMLSerializer.serializeInCBL991 = false
         createAndCompareMappedObjcXMLFileFor(projectName: "EscapingChars_0994")
         createAndCompareMappedObjcXMLFileFor(projectName: "Flap_Pac_Man_0994")
         createAndCompareMappedObjcXMLFileFor(projectName: "Flappy_v3.0_0994")

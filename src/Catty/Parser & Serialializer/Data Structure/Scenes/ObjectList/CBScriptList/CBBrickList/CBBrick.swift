@@ -23,7 +23,6 @@
 import SWXMLHash
 
 struct CBBrick: XMLIndexerDeserializable {
-    var name: String?
     var type: String?
     var soundReference: String?
     var sound: CBSound?
@@ -44,8 +43,7 @@ struct CBBrick: XMLIndexerDeserializable {
     var yPosition: CBFormula?
     var ifReference: String?
 
-    init(name: String? = nil,
-         type: String? = nil,
+    init(type: String? = nil,
          soundReference: String? = nil,
          sound: CBSound? = nil,
          commentedOut: String? = nil,
@@ -64,7 +62,6 @@ struct CBBrick: XMLIndexerDeserializable {
          xPosition: CBFormula? = nil,
          yPosition: CBFormula? = nil,
          ifReference: String? = nil) {
-        self.name = name
         self.type = type
         self.soundReference = soundReference
         self.sound = sound
@@ -91,6 +88,12 @@ struct CBBrick: XMLIndexerDeserializable {
         var tmpIfReference: String?
         var tmpType: String?
         tmpType = try? node.value(ofAttribute: "type")
+
+        let tmpBrickName: String?
+        tmpBrickName = try? node["name"].value()
+        if tmpType == nil && tmpBrickName != "brick" {
+            tmpType = tmpBrickName
+        }
 
         var tmpUserVariableReference: String?
         tmpUserVariableReference = try? node["userVariable"].value(ofAttribute: "reference")
@@ -123,6 +126,15 @@ struct CBBrick: XMLIndexerDeserializable {
         }
         if userVar?.isEmpty ?? true {
             userVar = try? node["userVariableName"].value()
+        }
+
+        var userList: String?
+        userList = try? node["userList"]["name"].value()
+        if userList?.isEmpty ?? true {
+            userList = try? node["userList"].value()
+        }
+        if userList?.isEmpty ?? true {
+            userList = try? node["userListName"].value()
         }
 
         var tmpFormulaTree: CBFormulaList?
@@ -181,7 +193,6 @@ struct CBBrick: XMLIndexerDeserializable {
         }
 
         return try CBBrick(
-            name: node["name"].value(),
             type: tmpType,
             soundReference: node["sound"].value(ofAttribute: "reference"),
             sound: node["sound"].value(),
@@ -193,7 +204,7 @@ struct CBBrick: XMLIndexerDeserializable {
             lookReference: node["look"].value(ofAttribute: "reference"),
             userVariable: userVar,
             userVariableReference: tmpUserVariableReference,
-            userList: node["userList"]["name"].value(),
+            userList: userList,
             broadcastMessage: node["broadcastMessage"].value(),
             noteMessage: tmpNoteMessage,
             pointedObject: node["pointedObject"].value(ofAttribute: "name"),

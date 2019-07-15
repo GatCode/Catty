@@ -29,7 +29,6 @@
 #import "FormulaElement.h"
 #import "ProjectLoadingInfo.h"
 #import "Project.h"
-#import "Parser.h"
 #import "Look.h"
 #import <SpriteKit/SpriteKit.h>
 #import "UserVariable.h"

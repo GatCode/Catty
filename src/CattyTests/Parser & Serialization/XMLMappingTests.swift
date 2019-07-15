@@ -32,7 +32,7 @@ final class XMLMappingTests: XMLAbstractTest {
         let lookList = CBLookList(look: [CBLook(name: "Look1", fileName: "File1"), CBLook(name: "Look2", fileName: "File1")])
         let soundList = CBSoundList(sound: [CBSound(fileName: "File1", name: "Sound1", reference: "../ref1"), CBSound(fileName: "File2", name: "Sound2", reference: "../ref2")])
         let scriptList = CBScriptList(script: [CBScript(type: "Script"), CBScript(type: "BroadcastScript")])
-        let brickList = CBBrickList(brick: [CBBrick(name: "Brick1", type: "SetVariableBrick"), CBBrick(name: "Brick2", type: "SetVariableBrick")])
+        let brickList = CBBrickList(brick: [CBBrick(type: "SetVariableBrick"), CBBrick(type: "SetVariableBrick")])
         let userVariable = "UVar1"
         let userList = "UList1"
 
@@ -101,7 +101,7 @@ final class XMLMappingTests: XMLAbstractTest {
         header.programID = "programID"
         cbProject.header = header
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         XCTAssertEqual(cbProject.header?.applicationBuildName, project?.header.applicationBuildName)
         XCTAssertEqual(cbProject.header?.applicationName, project?.header.applicationName)
@@ -115,7 +115,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testObjectsAreEqual() {
         var cbProject = createBasicCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectList = cbProject.scenes?[0].objectList?.object
         let mappedObjectList = project?.objectList
@@ -127,7 +127,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testLooksAreEqual() {
         var cbProject = createBasicCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
         let mappedObjectsCount = project?.objectList.count
@@ -153,7 +153,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testSoundsAreEqual() {
         var cbProject = createBasicCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
         let mappedObjectsCount = project?.objectList.count
@@ -179,7 +179,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testScriptsAreEqual() {
         var cbProject = createBasicCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
         let mappedObjectsCount = project?.objectList.count
@@ -205,7 +205,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testBricksAreEqual() {
         var cbProject = createBasicCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
         let mappedObjectsCount = project?.objectList.count
@@ -231,7 +231,7 @@ final class XMLMappingTests: XMLAbstractTest {
                     let cbBrick = cbScript?.brickList?.brick?[bIdx]
                     let mappedBrick = mappedScript?.brickList[bIdx] as? Brick
 
-                    XCTAssertNotNil(cbBrick?.name)
+                    XCTAssertNotNil(cbBrick?.type)
                     XCTAssertNotNil(mappedBrick?.brickTitle)
                 }
             }
@@ -240,7 +240,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func testProgramVariableListsAreEqual() {
         let cbProject = createExtendedCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbProgramVariableListCount = cbProject.programVariableList?.userVariable?.count
         let mappedProgramVariableListCount = project?.variables.programVariableList.count
@@ -259,14 +259,14 @@ final class XMLMappingTests: XMLAbstractTest {
         let cbProject = resolvedProject.0
         let referencedUserVariable = resolvedProject.1
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         XCTAssertEqual((project?.variables.programVariableList?[0] as? UserVariable)?.name, referencedUserVariable)
     }
 
     func testProgramListOfListsAreEqual() {
         let cbProject = createExtendedCBProject()
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbProgramListOfListsCount = cbProject.programListOfLists?.list?.count
         let mappedProgramListOfListsCount = project?.variables.programListOfLists.count
@@ -285,7 +285,7 @@ final class XMLMappingTests: XMLAbstractTest {
         let cbProject = resolvedProject.0
         let referencedUserVariable = resolvedProject.1
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         XCTAssertEqual((project?.variables.programListOfLists?[0] as? UserVariable)?.name, referencedUserVariable)
     }
@@ -297,7 +297,7 @@ final class XMLMappingTests: XMLAbstractTest {
             cbProject = project
         }
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if let object = project?.objectList.firstObject as? SpriteObject {
             if let scriptList = object.scriptList {
@@ -316,7 +316,7 @@ final class XMLMappingTests: XMLAbstractTest {
             cbProject = project
         }
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if let object = project?.objectList.firstObject as? SpriteObject {
             if let scriptList = object.scriptList {
@@ -335,7 +335,7 @@ final class XMLMappingTests: XMLAbstractTest {
             cbProject = project
         }
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if let object = project?.objectList.firstObject as? SpriteObject {
             if let scriptList = object.scriptList {
@@ -369,7 +369,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
         XCTAssertNotNil(cbProject)
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if let object1 = project?.objectList[0] as? SpriteObject, let object2 = project?.objectList[1] as? SpriteObject {
             if let scriptList1 = object1.scriptList, let scriptList2 = object2.scriptList {
@@ -397,7 +397,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
         XCTAssertNotNil(cbProject)
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
         let spriteObject = project?.objectList[0] as? SpriteObject
         let formulaElement = (((spriteObject?.scriptList[0] as? Script)?.brickList[0] as? IfThenLogicBeginBrick)?.getFormulas()?.first)?.formulaTree
 
@@ -411,7 +411,7 @@ final class XMLMappingTests: XMLAbstractTest {
             cbProject = project
         }
 
-        let project = CBXMLMapping.mapCBProjectToProject(project: cbProject)
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if let object = project?.objectList.firstObject as? SpriteObject {
             if let scriptList = object.scriptList {

@@ -157,7 +157,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         for brick in data {
-            let currentBrick = brickList.addChild(name: "brick", attributes: ["type": brick.name ?? ""])
+            let currentBrick = brickList.addChild(name: "brick", attributes: ["type": brick.type ?? ""])
 
             if let msg = brick.commentedOut, CBXMLSerializer.serializeInCBL991 == false {
                 currentBrick.addChild(name: "commentedOut", value: msg)
@@ -181,6 +181,12 @@ extension CBXMLSerializer {
                 currentBrick.addChild(name: "userVariable", value: msg)
             } else if let varRef = brick.userVariableReference {
                 currentBrick.addChild(name: "userVariable", value: nil, attributes: ["reference": varRef])
+            }
+
+            if let msg = brick.userList {
+                currentBrick.addChild(name: "userList", value: msg)
+            } else if let varRef = brick.userVariableReference {
+                currentBrick.addChild(name: "userList", value: nil, attributes: ["reference": varRef])
             }
 
             if let msg = brick.broadcastMessage {
@@ -331,7 +337,25 @@ extension CBXMLSerializer {
     func addListsTo(objectListOfLists: AEXMLElement, data: [CBObjectListOfListEntry]?) {
         guard let data = data else { return }
 
-        for _ in data {
+        for entry in data {
+            let objectListOfLists = objectListOfLists.addChild(name: "entry")
+
+            objectListOfLists.addChild(name: "object", value: nil, attributes: ["reference": entry.object ?? ""])
+
+            addUserListTo(objectListOfLists: objectListOfLists, data: entry.list)
+        }
+    }
+
+    func addUserListTo(objectListOfLists: AEXMLElement, data: [CBUserVariable]?) {
+        guard let data = data else { return }
+
+        let userListOfLists = objectListOfLists.addChild(name: "list")
+
+        for userVar in data {
+            if let ref = userVar.reference {
+                userListOfLists.addChild(name: "userList", value: nil, attributes: ["reference": ref])
+                continue
+            }
         }
     }
 
@@ -362,7 +386,10 @@ extension CBXMLSerializer {
         let userVariableList = objectVariableList.addChild(name: "list")
 
         for userVar in data {
-            userVariableList.addChild(name: "userVariable") //, value: nil, attributes: ["reference": userVar]) // TODO
+            if let ref = userVar.reference {
+                userVariableList.addChild(name: "userVariable", value: nil, attributes: ["reference": ref])
+                continue
+            }
         }
     }
 

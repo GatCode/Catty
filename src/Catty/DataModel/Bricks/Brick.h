@@ -32,14 +32,13 @@
 @property (nonatomic, readonly) kBrickCategoryType brickCategoryType;
 @property (nonatomic, readonly) kBrickType brickType;
 @property (nonatomic, strong, readonly) NSString *brickTitle;
-@property (nonatomic, strong) NSString *commentedOut;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, weak) UserVariable *uVar;
-@property (nonatomic, weak) Script *script;
 @property (nonatomic, getter=isAnimated) BOOL animate;
 @property (nonatomic, getter=isAnimatedInsertBrick) BOOL animateInsertBrick;
 @property (nonatomic, getter=isAnimatedMoveBrick) BOOL animateMoveBrick;
 @property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) NSString *commentedOut;
+@property (nonatomic, weak) UserVariable *uVar;
+@property (nonatomic, weak) Script *script;
 
 - (BOOL)isSelectableForObject;
 

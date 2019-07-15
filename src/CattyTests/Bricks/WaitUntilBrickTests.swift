@@ -27,8 +27,8 @@ import XCTest
 final class WaitUntilBrickTests: XMLAbstractTest {
 
     lazy var project: Project = {
-        let project = getProjectForXML(xmlFile: "WaitUntilBrick0991")
-        return project
+        //let project = getProjectForXML2(xmlFile: "WaitUntilBrick0991")
+        return Project()
     }()
 
     func testWaitUntilBrick_conditionTrue_proceedsToNextBrick() {
