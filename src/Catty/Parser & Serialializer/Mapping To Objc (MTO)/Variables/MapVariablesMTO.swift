@@ -246,7 +246,7 @@ extension CBXMLMappingToObjc {
         let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil
         let brickList = scrForUpdate?.brickList?.brick
 
-        if var ctr = brick?.0, ctr > 0, let brickList = brickList {
+        if var ctr = brick?.0, let brickList = brickList {
             var resNr = 0
             for b in brickList {
                 if b.type == brick?.1 {
