@@ -37,7 +37,8 @@ struct CBBrick: XMLIndexerDeserializable {
     var userList: String?
     var broadcastMessage: String?
     var noteMessage: String?
-    var pointedObject: String?
+    var pointedObject: CBObject?
+    var pointedObjectReference: String?
     var spinnerSelectionID: String?
     var xPosition: CBFormula?
     var yPosition: CBFormula?
@@ -57,7 +58,8 @@ struct CBBrick: XMLIndexerDeserializable {
          userList: String? = nil,
          broadcastMessage: String? = nil,
          noteMessage: String? = nil,
-         pointedObject: String? = nil,
+         pointedObject: CBObject? = nil,
+         pointedObjectReference: String? = nil,
          spinnerSelectionID: String? = nil,
          xPosition: CBFormula? = nil,
          yPosition: CBFormula? = nil,
@@ -77,6 +79,7 @@ struct CBBrick: XMLIndexerDeserializable {
         self.broadcastMessage = broadcastMessage
         self.noteMessage = noteMessage
         self.pointedObject = pointedObject
+        self.pointedObjectReference = pointedObjectReference
         self.spinnerSelectionID = spinnerSelectionID
         self.xPosition = xPosition
         self.yPosition = yPosition
@@ -207,7 +210,8 @@ struct CBBrick: XMLIndexerDeserializable {
             userList: userList,
             broadcastMessage: node["broadcastMessage"].value(),
             noteMessage: tmpNoteMessage,
-            pointedObject: node["pointedObject"].value(ofAttribute: "name"),
+            pointedObject: node["pointedObject"].value(),
+            pointedObjectReference: node["pointedObject"].value(ofAttribute: "name"),
             spinnerSelectionID: node["spinnerSelectionID"].value(),
             xPosition: node["xPosition"]["formulaTree"].value(),
             yPosition: node["yPosition"]["formulaTree"].value(),

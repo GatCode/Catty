@@ -32,7 +32,19 @@ extension CBXMLMappingToObjc {
         var resultObjectList = [SpriteObject]()
         for object in objectList {
             mappingVariableListLocal.removeAll()
-            if let mappedObject = mapObject(object: object, objectList: objectList, project: project) {
+
+            if let ref = object.reference {
+                let resolvedString = resolveReferenceString(reference: ref, project: project)
+                if let resolvedString = resolvedString, let oNr = resolvedString.0, oNr < resultObjectList.count {
+                    if let sNr = resolvedString.1, sNr < resultObjectList[oNr].scriptList.count, let script = resultObjectList[oNr].scriptList[sNr] as? Script {
+                        if let bNr = resolvedString.2, bNr < script.brickList.count, let brick = script.brickList[bNr] as? Brick {
+                            if let brick = brick as? PointToBrick, brick.pointedObject != nil {
+                                resultObjectList.append(brick.pointedObject)
+                            }
+                        }
+                    }
+                }
+            } else if let mappedObject = mapObject(object: object, objectList: objectList, project: project) {
                 mappedObject.project = currentProject
                 resultObjectList.append(mappedObject)
             }
@@ -48,10 +60,16 @@ extension CBXMLMappingToObjc {
         guard let lookList = object.lookList else { return nil }
         guard let soundList = object.soundList else { return nil }
 
+        if let alreadyMapped = CBXMLMappingToObjc.spriteObjectList.first(where: { $0.name == object.name }) {
+            return alreadyMapped
+        }
+
         result.name = object.name
         result.lookList = mapLookList(lookList: lookList)
         result.soundList = mapSoundList(soundList: soundList, project: project, object: object)
         result.scriptList = mapScriptList(object: object, objectList: objectList, project: project, currentObject: &result)
+
+        CBXMLMappingToObjc.spriteObjectList.append(result)
 
         return result
     }
@@ -405,8 +423,11 @@ extension CBXMLMappingToObjc {
                 resultBrickList.append(newBrick)
             case kPointToBrick.uppercased():
                 let newBrick = PointToBrick()
-                for object in objectList where object.name == brick.pointedObject {
+                for object in objectList where object.name == brick.pointedObjectReference {
                     newBrick.pointedObject = mapObject(object: object, objectList: objectList, project: project)
+                }
+                if newBrick.pointedObject == nil, let pointed = brick.pointedObject {
+                    newBrick.pointedObject = mapObject(object: pointed, objectList: objectList, project: project)
                 }
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
@@ -588,7 +609,7 @@ extension CBXMLMappingToObjc {
                         print("ERROR MAPPING PLAYSOUNDBRICK")
                     }
                 } else {
-                    for sound in mappingSoundList where sound.fileName == brick.sound?.fileName  {
+                    for sound in mappingSoundList where sound.fileName == brick.sound?.fileName {
                         newBrick.sound = sound
                     }
                 }

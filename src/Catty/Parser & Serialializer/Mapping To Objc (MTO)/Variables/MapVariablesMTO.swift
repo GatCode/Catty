@@ -178,7 +178,7 @@ extension CBXMLMappingToObjc {
     // MARK: - resolveReferenceString
     static func resolveReferenceString(reference: String?, project: CBProject?) -> (Int?, Int?, Int?)? {
         guard let reference = reference else { return nil }
-        guard let objectList = project?.scenes?.first?.objectList?.object else { return nil } // TODO: NOW ONLY WORKING WITH ONE SCENE!!!
+        guard let objectList = project?.scenes?.first?.objectList?.object else { return nil }
 
         var splittedReference = reference.split(separator: "/")
         splittedReference = splittedReference.filter { $0 != ".." }

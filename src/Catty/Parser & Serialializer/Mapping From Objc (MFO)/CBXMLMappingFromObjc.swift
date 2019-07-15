@@ -39,6 +39,7 @@ enum CBXMLMappingFromObjc {
         var mappedProject = CBProject()
 
         CBXMLMappingFromObjc.extractGlobalUserVariables(project: project)
+        CBXMLMappingFromObjc.extractSpriteObjects(project: project)
         mappedProject.header = mapHeader(project: project)
         // TODO: map settings
         mappedProject.scenes = CBXMLMappingFromObjc.mapScenesToCBProject(project: project)
@@ -50,7 +51,6 @@ enum CBXMLMappingFromObjc {
 }
 
 extension CBXMLMappingFromObjc {
-    // MARK: - Extract Global UserVariables
     private static func extractGlobalUserVariables(project: Project) {
         project.variables.programVariableList.forEach { variable in
             if let variable = variable as? UserVariable, CBXMLMappingFromObjc.globalVariableList.contains(where: { $0.0 == variable.name && $0.1 == false }) == false {
@@ -62,6 +62,17 @@ extension CBXMLMappingFromObjc {
             if let variable = variable as? UserVariable, CBXMLMappingFromObjc.globalVariableList.contains(where: { $0.0 == variable.name && $0.1 == true }) == false {
                 CBXMLMappingFromObjc.globalVariableList.append((variable.name, true))
             }
+        }
+    }
+
+    private static func extractSpriteObjects(project: Project) {
+        var counter = 0
+
+        for object in project.objectList {
+            if let obj = object as? SpriteObject {
+                CBXMLMappingFromObjc.objectList.append((obj, (counter, 0, 0)))
+            }
+            counter += 1
         }
     }
 }

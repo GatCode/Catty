@@ -27,6 +27,7 @@ enum CBXMLMappingToObjc {
     static var mappingVariableListGlobal = [UserVariable]()
     static var mappingVariableListLocal = [UserVariable]()
     static var unsupportedElements = [String]()
+    static var spriteObjectList = [SpriteObject]()
 
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
@@ -35,6 +36,7 @@ enum CBXMLMappingToObjc {
         CBXMLMappingToObjc.mappingSoundList.removeAll()
         CBXMLMappingToObjc.mappingVariableListGlobal.removeAll()
         CBXMLMappingToObjc.unsupportedElements.removeAll()
+        CBXMLMappingToObjc.spriteObjectList.removeAll()
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader

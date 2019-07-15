@@ -26,7 +26,7 @@ extension CBXMLMappingFromObjc {
     static func mapScenesToCBProject(project: Project) -> [CBProjectScene] {
         var mappedScene = CBProjectScene()
 
-        mappedScene.name = "Szene 1" // TODO: extract name furtheron
+        mappedScene.name = "Szene 1"
         mappedScene.objectList = mapObjectList(project: project)
         mappedScene.data = mapData(project: project)
         mappedScene.originalHeight = project.header.screenHeight.stringValue
@@ -45,8 +45,8 @@ extension CBXMLMappingFromObjc {
             mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
             mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)
             mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject, currentObject: mappedObject)
-            mappedObject.userBricks = CBUserBricks(userBrick: nil) // TODO: map userBricks
-            mappedObject.nfcTagList = CBNfcTagList(nfcTag: nil) // TODO: map nfcTagList
+            mappedObject.userBricks = CBUserBricks(userBrick: nil)
+            mappedObject.nfcTagList = CBNfcTagList(nfcTag: nil)
 
             mappedObjectList.append(mappedObject)
             CBXMLMappingFromObjc.objectList.append((object as? SpriteObject, CBXMLMappingFromObjc.currentSerializationPosition))
@@ -335,7 +335,7 @@ extension CBXMLMappingFromObjc {
             default:
                 break
             }
-            mappedBrick.commentedOut = (brick as? Brick)?.commentedOut ?? "false" // TODO
+            mappedBrick.commentedOut = (brick as? Brick)?.commentedOut ?? "false"
             mappedBrickList.append(mappedBrick)
             CBXMLMappingFromObjc.currentSerializationPosition.2 += 1
         }
@@ -442,8 +442,7 @@ extension CBXMLMappingFromObjc {
 
         mappedData.objectVariableList = mapObjectVariableList(project: project)
         mappedData.objectListOfList = mapObjectListOfLists(project: project)
-        mappedData.userBrickVariableList = CBUserBrickVariableList(name: nil) // TODO: map userBrickVariableList
-
+        mappedData.userBrickVariableList = CBUserBrickVariableList(name: nil)
         return mappedData
     }
 }

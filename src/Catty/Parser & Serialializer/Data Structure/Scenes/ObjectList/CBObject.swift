@@ -25,6 +25,7 @@ import SWXMLHash
 struct CBObject: XMLIndexerDeserializable, Equatable {
     var name: String?
     var type: String?
+    var reference: String?
     var lookList: CBLookList?
     var soundList: CBSoundList?
     var scriptList: CBScriptList?
@@ -33,6 +34,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
 
     init(name: String? = nil,
          type: String? = nil,
+         reference: String? = nil,
          lookList: CBLookList? = nil,
          soundList: CBSoundList? = nil,
          scriptList: CBScriptList? = nil,
@@ -40,6 +42,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
          nfcTagList: CBNfcTagList? = nil) {
         self.name = name
         self.type = type
+        self.reference = reference
         self.lookList = lookList
         self.soundList = soundList
         self.scriptList = scriptList
@@ -58,6 +61,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
         return try CBObject(
             name: tmpName,
             type: node.value(ofAttribute: "type"),
+            reference: node.value(ofAttribute: "reference"),
             lookList: node["lookList"].value(),
             soundList: node["soundList"].value(),
             scriptList: node["scriptList"].value(),
