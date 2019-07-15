@@ -126,16 +126,20 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         self.compareSpriteObjectsWithIsEqualMethodForProjectWithXML(xml: "Flap_Pac_Man_093")
     }
 
-    func compareSpriteObjectsWithIsEqualMethodForProjectWithXML(xml: String) { // TODO
-//        let project = self.getProjectForXML(xmlFile: xml)
-//        XCTAssertTrue(!(project.objectList as! [SpriteObject]).isEmpty, "Invalid objectList")
-//
-//        for object in project.objectList {
-//            let spriteObject = object as! SpriteObject
-//            let context = CBMutableCopyContext()
-//            let copiedSpriteObject = spriteObject.mutableCopy(with: context) as! SpriteObject
-//            XCTAssertTrue(spriteObject.isEqual(to: copiedSpriteObject), "SpriteObjects are not equal")
-//        }
+    func compareSpriteObjectsWithIsEqualMethodForProjectWithXML(xml: String) {
+        var project: Project?
+        getObjcProjectForXML(xmlFile: xml) { proj, _ in
+            project = proj
+        }
+        XCTAssertTrue(!(project?.objectList as! [SpriteObject]).isEmpty, "Invalid objectList")
+        XCTAssertNotNil(project)
+
+        for object in project!.objectList {
+            let spriteObject = object as! SpriteObject
+            let context = CBMutableCopyContext()
+            let copiedSpriteObject = spriteObject.mutableCopy(with: context) as! SpriteObject
+            XCTAssertTrue(spriteObject.isEqual(to: copiedSpriteObject), "SpriteObjects are not equal")
+        }
     }
 
     func testMutableCopyAndUpdateReferenceForLook() {

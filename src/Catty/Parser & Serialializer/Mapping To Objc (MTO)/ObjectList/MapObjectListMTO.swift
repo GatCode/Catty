@@ -760,9 +760,11 @@ extension CBXMLMappingToObjc {
                     if referencedObject?.name == object?.name, let entryList = entry.list {
                         for variable in entryList {
                             let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
-                            if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
-                                if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userVariable {
-                                    localVariables.append(localVar)
+                            if let scIdx = resolvedVariableReference?.1, scIdx < referencedObject?.scriptList?.script?.count ?? 0 {
+                                if let brIdx = resolvedVariableReference?.2, brIdx < referencedObject?.scriptList?.script?[scIdx].brickList?.brick?.count ?? 0 {
+                                    if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userVariable {
+                                        localVariables.append(localVar)
+                                    }
                                 }
                             }
                         }

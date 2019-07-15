@@ -62,7 +62,123 @@
 		2E35EBBC22DB97A000B580FD /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */; };
 		2E35EBC122DB981600B580FD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC022DB981600B580FD /* String.swift */; };
 		2E35EBC322DB984600B580FD /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC222DB984600B580FD /* Optional.swift */; };
-		2E55491F22DC834400799BCF /* WaitUntilBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55491E22DC834400799BCF /* WaitUntilBrick0991.xml */; };
+		2E554A0022DC844D00799BCF /* InvalidBricksAndScripts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */; };
+		2E554A0122DC844D00799BCF /* ValidFormulaList.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492322DC844C00799BCF /* ValidFormulaList.xml */; };
+		2E554A0222DC844D00799BCF /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */; };
+		2E554A0322DC844D00799BCF /* Nyancat_1.0_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492622DC844C00799BCF /* Nyancat_1.0_091.xml */; };
+		2E554A0422DC844D00799BCF /* Nyancat_1.0_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492722DC844C00799BCF /* Nyancat_1.0_093.xml */; };
+		2E554A0522DC844D00799BCF /* Nyancat_1.0_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492822DC844C00799BCF /* Nyancat_1.0_097.xml */; };
+		2E554A0622DC844D00799BCF /* Nyancat_1.0_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492922DC844C00799BCF /* Nyancat_1.0_096.xml */; };
+		2E554A0722DC844D00799BCF /* Nyancat_1.0_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492A22DC844C00799BCF /* Nyancat_1.0_098.xml */; };
+		2E554A1622DC844D00799BCF /* Sensors_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55493C22DC844C00799BCF /* Sensors_0991.xml */; };
+		2E554A1722DC844D00799BCF /* Piano_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55493E22DC844C00799BCF /* Piano_096.xml */; };
+		2E554A1822DC844D00799BCF /* Piano_09.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55493F22DC844C00799BCF /* Piano_09.xml */; };
+		2E554A1922DC844D00799BCF /* Piano_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494022DC844C00799BCF /* Piano_097.xml */; };
+		2E554A1A22DC844D00799BCF /* Piano_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494122DC844C00799BCF /* Piano_093.xml */; };
+		2E554A1B22DC844D00799BCF /* Piano_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494222DC844C00799BCF /* Piano_098.xml */; };
+		2E554A1C22DC844D00799BCF /* Piano_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494322DC844C00799BCF /* Piano_0991.xml */; };
+		2E554A1F22DC844D00799BCF /* Air_fight_0.5_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494822DC844C00799BCF /* Air_fight_0.5_098.xml */; };
+		2E554A2022DC844D00799BCF /* Air_fight_0.5_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494922DC844C00799BCF /* Air_fight_0.5_093.xml */; };
+		2E554A2122DC844D00799BCF /* Air_fight_0.5_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494A22DC844C00799BCF /* Air_fight_0.5_091.xml */; };
+		2E554A2222DC844D00799BCF /* Air_fight_0.5_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494B22DC844C00799BCF /* Air_fight_0.5_095.xml */; };
+		2E554A2322DC844D00799BCF /* Air_fight_0.5_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494C22DC844C00799BCF /* Air_fight_0.5_096.xml */; };
+		2E554A2422DC844D00799BCF /* Air_fight_0.5_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494D22DC844C00799BCF /* Air_fight_0.5_097.xml */; };
+		2E554A2522DC844D00799BCF /* Air_fight_0.5_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55494E22DC844C00799BCF /* Air_fight_0.5_0991.xml */; };
+		2E554A2D22DC844D00799BCF /* ValidProjectAllBricks0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495822DC844C00799BCF /* ValidProjectAllBricks0991.xml */; };
+		2E554A2E22DC844D00799BCF /* ValidProjectAllBricks098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495922DC844C00799BCF /* ValidProjectAllBricks098.xml */; };
+		2E554A2F22DC844D00799BCF /* ValidProjectAllBricks097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495A22DC844C00799BCF /* ValidProjectAllBricks097.xml */; };
+		2E554A3022DC844D00799BCF /* ValidProjectAllBricks096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495B22DC844C00799BCF /* ValidProjectAllBricks096.xml */; };
+		2E554A3122DC844D00799BCF /* ValidProjectAllBricks095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495C22DC844C00799BCF /* ValidProjectAllBricks095.xml */; };
+		2E554A3222DC844D00799BCF /* ValidProjectAllBricks093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495D22DC844C00799BCF /* ValidProjectAllBricks093.xml */; };
+		2E554A3322DC844D00799BCF /* Demonstration_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55495F22DC844C00799BCF /* Demonstration_093.xml */; };
+		2E554A3422DC844D00799BCF /* Demonstration_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496022DC844C00799BCF /* Demonstration_097.xml */; };
+		2E554A3522DC844D00799BCF /* Demonstration_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496122DC844C00799BCF /* Demonstration_096.xml */; };
+		2E554A3622DC844D00799BCF /* Demonstration_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496222DC844C00799BCF /* Demonstration_095.xml */; };
+		2E554A3722DC844D00799BCF /* Demonstration_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496322DC844C00799BCF /* Demonstration_0991.xml */; };
+		2E554A3822DC844D00799BCF /* Demonstration_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496422DC844C00799BCF /* Demonstration_098.xml */; };
+		2E554A3922DC844D00799BCF /* Demonstration_09.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496522DC844C00799BCF /* Demonstration_09.xml */; };
+		2E554A3A22DC844D00799BCF /* Airplane_with_shadow_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496722DC844C00799BCF /* Airplane_with_shadow_091.xml */; };
+		2E554A3B22DC844D00799BCF /* Airplane_with_shadow_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496822DC844C00799BCF /* Airplane_with_shadow_093.xml */; };
+		2E554A3C22DC844D00799BCF /* Airplane_with_shadow_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496922DC844C00799BCF /* Airplane_with_shadow_097.xml */; };
+		2E554A3D22DC844D00799BCF /* Airplane_with_shadow_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496A22DC844C00799BCF /* Airplane_with_shadow_096.xml */; };
+		2E554A3E22DC844D00799BCF /* Airplane_with_shadow_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496B22DC844C00799BCF /* Airplane_with_shadow_095.xml */; };
+		2E554A3F22DC844D00799BCF /* Airplane_with_shadow_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496C22DC844C00799BCF /* Airplane_with_shadow_098.xml */; };
+		2E554A4022DC844D00799BCF /* Airplane_with_shadow_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496D22DC844C00799BCF /* Airplane_with_shadow_0991.xml */; };
+		2E554A4122DC844D00799BCF /* Memory_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55496F22DC844C00799BCF /* Memory_097.xml */; };
+		2E554A4222DC844D00799BCF /* Memory_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497022DC844C00799BCF /* Memory_096.xml */; };
+		2E554A4322DC844D00799BCF /* Memory_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497122DC844C00799BCF /* Memory_095.xml */; };
+		2E554A4422DC844D00799BCF /* Memory_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497222DC844C00799BCF /* Memory_0991.xml */; };
+		2E554A4522DC844D00799BCF /* Memory_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497322DC844C00799BCF /* Memory_093.xml */; };
+		2E554A4622DC844D00799BCF /* Memory_09.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497422DC844C00799BCF /* Memory_09.xml */; };
+		2E554A4722DC844D00799BCF /* Memory_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497522DC844C00799BCF /* Memory_098.xml */; };
+		2E554A4F22DC844D00799BCF /* Pythagorean_Theorem_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55497F22DC844C00799BCF /* Pythagorean_Theorem_096.xml */; };
+		2E554A5022DC844D00799BCF /* Pythagorean_Theorem_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498022DC844C00799BCF /* Pythagorean_Theorem_097.xml */; };
+		2E554A5122DC844D00799BCF /* Pythagorean_Theorem_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498122DC844C00799BCF /* Pythagorean_Theorem_0991.xml */; };
+		2E554A5222DC844D00799BCF /* Pythagorean_Theorem_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498222DC844C00799BCF /* Pythagorean_Theorem_095.xml */; };
+		2E554A5322DC844D00799BCF /* Pythagorean_Theorem_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498322DC844C00799BCF /* Pythagorean_Theorem_093.xml */; };
+		2E554A5422DC844D00799BCF /* Pythagorean_Theorem_092.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498422DC844C00799BCF /* Pythagorean_Theorem_092.xml */; };
+		2E554A5522DC844D00799BCF /* Pythagorean_Theorem_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498522DC844C00799BCF /* Pythagorean_Theorem_098.xml */; };
+		2E554A5622DC844D00799BCF /* ValidHeader097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498722DC844C00799BCF /* ValidHeader097.xml */; };
+		2E554A5722DC844D00799BCF /* ValidHeader096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498822DC844C00799BCF /* ValidHeader096.xml */; };
+		2E554A5822DC844D00799BCF /* ValidHeader095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498922DC844C00799BCF /* ValidHeader095.xml */; };
+		2E554A5922DC844D00799BCF /* ValidHeader0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498A22DC844C00799BCF /* ValidHeader0991.xml */; };
+		2E554A5A22DC844D00799BCF /* ValidHeader098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498B22DC844C00799BCF /* ValidHeader098.xml */; };
+		2E554A5B22DC844D00799BCF /* Minecraft_Work_In_Progress_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498D22DC844C00799BCF /* Minecraft_Work_In_Progress_093.xml */; };
+		2E554A5C22DC844D00799BCF /* Minecraft_Work_In_Progress_092.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498E22DC844C00799BCF /* Minecraft_Work_In_Progress_092.xml */; };
+		2E554A5D22DC844D00799BCF /* Minecraft_Work_In_Progress_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55498F22DC844C00799BCF /* Minecraft_Work_In_Progress_095.xml */; };
+		2E554A5E22DC844D00799BCF /* Minecraft_Work_In_Progress_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55499022DC844C00799BCF /* Minecraft_Work_In_Progress_096.xml */; };
+		2E554A5F22DC844D00799BCF /* Minecraft_Work_In_Progress_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55499122DC844C00799BCF /* Minecraft_Work_In_Progress_097.xml */; };
+		2E554A6022DC844D00799BCF /* Minecraft_Work_In_Progress_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55499222DC844C00799BCF /* Minecraft_Work_In_Progress_0991.xml */; };
+		2E554A6122DC844D00799BCF /* Minecraft_Work_In_Progress_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55499322DC844C00799BCF /* Minecraft_Work_In_Progress_098.xml */; };
+		2E554A7022DC844D00799BCF /* WaitUntilBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549A522DC844C00799BCF /* WaitUntilBrick0991.xml */; };
+		2E554A7122DC844D00799BCF /* Drink_more_water_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549A722DC844C00799BCF /* Drink_more_water_0991.xml */; };
+		2E554A7222DC844D00799BCF /* Drink_more_water_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549A822DC844C00799BCF /* Drink_more_water_098.xml */; };
+		2E554A7322DC844D00799BCF /* Drink_more_water_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549A922DC844C00799BCF /* Drink_more_water_093.xml */; };
+		2E554A7422DC844D00799BCF /* Drink_more_water_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549AA22DC844C00799BCF /* Drink_more_water_096.xml */; };
+		2E554A7522DC844D00799BCF /* Drink_more_water_09.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549AB22DC844C00799BCF /* Drink_more_water_09.xml */; };
+		2E554A7622DC844D00799BCF /* Drink_more_water_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549AC22DC844C00799BCF /* Drink_more_water_097.xml */; };
+		2E554A7722DC844D00799BCF /* Drink_more_water_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549AD22DC844C00799BCF /* Drink_more_water_095.xml */; };
+		2E554A7822DC844D00799BCF /* Solar_System_v1.0_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549AF22DC844C00799BCF /* Solar_System_v1.0_098.xml */; };
+		2E554A7922DC844D00799BCF /* Solar_System_v1.0_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B022DC844C00799BCF /* Solar_System_v1.0_097.xml */; };
+		2E554A7A22DC844D00799BCF /* Solar_System_v1.0_092.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B122DC844C00799BCF /* Solar_System_v1.0_092.xml */; };
+		2E554A7B22DC844D00799BCF /* Solar_System_v1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B222DC844C00799BCF /* Solar_System_v1.0_0991.xml */; };
+		2E554A7C22DC844D00799BCF /* ValidProject.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B422DC844C00799BCF /* ValidProject.xml */; };
+		2E554A7D22DC844D00799BCF /* ValidProject098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B522DC844C00799BCF /* ValidProject098.xml */; };
+		2E554A7E22DC844D00799BCF /* ValidProject0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B622DC844C00799BCF /* ValidProject0991.xml */; };
+		2E554A7F22DC844D00799BCF /* ValidProject096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B722DC844C00799BCF /* ValidProject096.xml */; };
+		2E554A8022DC844D00799BCF /* ValidProject097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B822DC844C00799BCF /* ValidProject097.xml */; };
+		2E554A8122DC844D00799BCF /* ValidProject095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549B922DC844C00799BCF /* ValidProject095.xml */; };
+		2E554A8222DC844D00799BCF /* Compass_0.1_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549BB22DC844C00799BCF /* Compass_0.1_093.xml */; };
+		2E554A8322DC844D00799BCF /* Compass_0.1_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549BC22DC844C00799BCF /* Compass_0.1_091.xml */; };
+		2E554A8422DC844D00799BCF /* Compass_0.1_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549BD22DC844C00799BCF /* Compass_0.1_095.xml */; };
+		2E554A8522DC844D00799BCF /* Compass_0.1_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549BE22DC844C00799BCF /* Compass_0.1_097.xml */; };
+		2E554A8622DC844D00799BCF /* Compass_0.1_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549BF22DC844C00799BCF /* Compass_0.1_096.xml */; };
+		2E554A8722DC844D00799BCF /* Compass_0.1_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549C022DC844C00799BCF /* Compass_0.1_0991.xml */; };
+		2E554A8822DC844D00799BCF /* Compass_0.1_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549C122DC844C00799BCF /* Compass_0.1_098.xml */; };
+		2E554A9022DC844D00799BCF /* Encapsulated_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549CB22DC844C00799BCF /* Encapsulated_098.xml */; };
+		2E554A9122DC844D00799BCF /* Encapsulated_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549CC22DC844C00799BCF /* Encapsulated_0991.xml */; };
+		2E554A9222DC844D00799BCF /* Encapsulated_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549CD22DC844C00799BCF /* Encapsulated_097.xml */; };
+		2E554A9322DC844D00799BCF /* LedFlashBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549CF22DC844C00799BCF /* LedFlashBrick0991.xml */; };
+		2E554A9422DC844D00799BCF /* LedFlashBrick098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D022DC844C00799BCF /* LedFlashBrick098.xml */; };
+		2E554A9522DC844D00799BCF /* Skydiving_Steve_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D222DC844C00799BCF /* Skydiving_Steve_093.xml */; };
+		2E554A9622DC844D00799BCF /* Skydiving_Steve_092.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D322DC844C00799BCF /* Skydiving_Steve_092.xml */; };
+		2E554A9722DC844D00799BCF /* Skydiving_Steve_096.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D422DC844C00799BCF /* Skydiving_Steve_096.xml */; };
+		2E554A9822DC844D00799BCF /* Skydiving_Steve_097.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D522DC844C00799BCF /* Skydiving_Steve_097.xml */; };
+		2E554A9922DC844D00799BCF /* Skydiving_Steve_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D622DC844C00799BCF /* Skydiving_Steve_095.xml */; };
+		2E554A9A22DC844D00799BCF /* Skydiving_Steve_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D722DC844C00799BCF /* Skydiving_Steve_098.xml */; };
+		2E554A9B22DC844D00799BCF /* Skydiving_Steve_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549D822DC844C00799BCF /* Skydiving_Steve_0991.xml */; };
+		2E554A9C22DC844D00799BCF /* LogicBricks_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549DA22DC844C00799BCF /* LogicBricks_0991.xml */; };
+		2E554A9D22DC844D00799BCF /* PointToBrickWithoutSpriteObject.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549DC22DC844C00799BCF /* PointToBrickWithoutSpriteObject.xml */; };
+		2E554AB322DC844D00799BCF /* ElementOfListFunction0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549F622DC844C00799BCF /* ElementOfListFunction0991.xml */; };
+		2E554AB422DC844D00799BCF /* InsertItemIntoUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549F722DC844C00799BCF /* InsertItemIntoUserListBrick0991.xml */; };
+		2E554AB522DC844D00799BCF /* NumberOfItemsInListFunction0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549F822DC844C00799BCF /* NumberOfItemsInListFunction0991.xml */; };
+		2E554AB622DC844D00799BCF /* InsertItemIntoUserListBrick098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549F922DC844C00799BCF /* InsertItemIntoUserListBrick098.xml */; };
+		2E554AB722DC844D00799BCF /* AddItemToUserListBrick098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549FA22DC844C00799BCF /* AddItemToUserListBrick098.xml */; };
+		2E554AB822DC844D00799BCF /* ReplaceItemInUserListBrick098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549FB22DC844C00799BCF /* ReplaceItemInUserListBrick098.xml */; };
+		2E554AB922DC844D00799BCF /* DeleteItemOfUserListBrick098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549FC22DC844C00799BCF /* DeleteItemOfUserListBrick098.xml */; };
+		2E554ABA22DC844D00799BCF /* DeleteItemOfUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549FD22DC844C00799BCF /* DeleteItemOfUserListBrick0991.xml */; };
+		2E554ABB22DC844D00799BCF /* ReplaceItemInUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549FE22DC844C00799BCF /* ReplaceItemInUserListBrick0991.xml */; };
+		2E554ABC22DC844D00799BCF /* AddItemToUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E5549FF22DC844C00799BCF /* AddItemToUserListBrick0991.xml */; };
 		2E56BE5122A819D100F26BC1 /* CBXMLMappingToObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5022A819D100F26BC1 /* CBXMLMappingToObjc.swift */; };
 		2E56BE5722A8E1B700F26BC1 /* MapHeaderMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5622A8E1B700F26BC1 /* MapHeaderMTO.swift */; };
 		2E5A24DB229D53330000A58F /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */; };
@@ -1247,7 +1363,123 @@
 		2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
 		2E35EBC022DB981600B580FD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E35EBC222DB984600B580FD /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
-		2E55491E22DC834400799BCF /* WaitUntilBrick0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WaitUntilBrick0991.xml; path = CattyTests/Resources/ParserTests/WaitUntilBrick0991.xml; sourceTree = SOURCE_ROOT; };
+		2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvalidBricksAndScripts.xml; sourceTree = "<group>"; };
+		2E55492322DC844C00799BCF /* ValidFormulaList.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidFormulaList.xml; sourceTree = "<group>"; };
+		2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
+		2E55492622DC844C00799BCF /* Nyancat_1.0_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_091.xml; sourceTree = "<group>"; };
+		2E55492722DC844C00799BCF /* Nyancat_1.0_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_093.xml; sourceTree = "<group>"; };
+		2E55492822DC844C00799BCF /* Nyancat_1.0_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_097.xml; sourceTree = "<group>"; };
+		2E55492922DC844C00799BCF /* Nyancat_1.0_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_096.xml; sourceTree = "<group>"; };
+		2E55492A22DC844C00799BCF /* Nyancat_1.0_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_098.xml; sourceTree = "<group>"; };
+		2E55493C22DC844C00799BCF /* Sensors_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Sensors_0991.xml; sourceTree = "<group>"; };
+		2E55493E22DC844C00799BCF /* Piano_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Piano_096.xml; sourceTree = "<group>"; };
+		2E55493F22DC844C00799BCF /* Piano_09.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Piano_09.xml; sourceTree = "<group>"; };
+		2E55494022DC844C00799BCF /* Piano_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Piano_097.xml; sourceTree = "<group>"; };
+		2E55494122DC844C00799BCF /* Piano_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Piano_093.xml; sourceTree = "<group>"; };
+		2E55494222DC844C00799BCF /* Piano_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Piano_098.xml; sourceTree = "<group>"; };
+		2E55494322DC844C00799BCF /* Piano_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Piano_0991.xml; sourceTree = "<group>"; };
+		2E55494822DC844C00799BCF /* Air_fight_0.5_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_098.xml; sourceTree = "<group>"; };
+		2E55494922DC844C00799BCF /* Air_fight_0.5_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_093.xml; sourceTree = "<group>"; };
+		2E55494A22DC844C00799BCF /* Air_fight_0.5_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_091.xml; sourceTree = "<group>"; };
+		2E55494B22DC844C00799BCF /* Air_fight_0.5_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_095.xml; sourceTree = "<group>"; };
+		2E55494C22DC844C00799BCF /* Air_fight_0.5_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_096.xml; sourceTree = "<group>"; };
+		2E55494D22DC844C00799BCF /* Air_fight_0.5_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_097.xml; sourceTree = "<group>"; };
+		2E55494E22DC844C00799BCF /* Air_fight_0.5_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Air_fight_0.5_0991.xml; sourceTree = "<group>"; };
+		2E55495822DC844C00799BCF /* ValidProjectAllBricks0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProjectAllBricks0991.xml; sourceTree = "<group>"; };
+		2E55495922DC844C00799BCF /* ValidProjectAllBricks098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProjectAllBricks098.xml; sourceTree = "<group>"; };
+		2E55495A22DC844C00799BCF /* ValidProjectAllBricks097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProjectAllBricks097.xml; sourceTree = "<group>"; };
+		2E55495B22DC844C00799BCF /* ValidProjectAllBricks096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProjectAllBricks096.xml; sourceTree = "<group>"; };
+		2E55495C22DC844C00799BCF /* ValidProjectAllBricks095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProjectAllBricks095.xml; sourceTree = "<group>"; };
+		2E55495D22DC844C00799BCF /* ValidProjectAllBricks093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProjectAllBricks093.xml; sourceTree = "<group>"; };
+		2E55495F22DC844C00799BCF /* Demonstration_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_093.xml; sourceTree = "<group>"; };
+		2E55496022DC844C00799BCF /* Demonstration_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_097.xml; sourceTree = "<group>"; };
+		2E55496122DC844C00799BCF /* Demonstration_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_096.xml; sourceTree = "<group>"; };
+		2E55496222DC844C00799BCF /* Demonstration_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_095.xml; sourceTree = "<group>"; };
+		2E55496322DC844C00799BCF /* Demonstration_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_0991.xml; sourceTree = "<group>"; };
+		2E55496422DC844C00799BCF /* Demonstration_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_098.xml; sourceTree = "<group>"; };
+		2E55496522DC844C00799BCF /* Demonstration_09.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Demonstration_09.xml; sourceTree = "<group>"; };
+		2E55496722DC844C00799BCF /* Airplane_with_shadow_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_091.xml; sourceTree = "<group>"; };
+		2E55496822DC844C00799BCF /* Airplane_with_shadow_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_093.xml; sourceTree = "<group>"; };
+		2E55496922DC844C00799BCF /* Airplane_with_shadow_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_097.xml; sourceTree = "<group>"; };
+		2E55496A22DC844C00799BCF /* Airplane_with_shadow_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_096.xml; sourceTree = "<group>"; };
+		2E55496B22DC844C00799BCF /* Airplane_with_shadow_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_095.xml; sourceTree = "<group>"; };
+		2E55496C22DC844C00799BCF /* Airplane_with_shadow_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_098.xml; sourceTree = "<group>"; };
+		2E55496D22DC844C00799BCF /* Airplane_with_shadow_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airplane_with_shadow_0991.xml; sourceTree = "<group>"; };
+		2E55496F22DC844C00799BCF /* Memory_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_097.xml; sourceTree = "<group>"; };
+		2E55497022DC844C00799BCF /* Memory_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_096.xml; sourceTree = "<group>"; };
+		2E55497122DC844C00799BCF /* Memory_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_095.xml; sourceTree = "<group>"; };
+		2E55497222DC844C00799BCF /* Memory_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_0991.xml; sourceTree = "<group>"; };
+		2E55497322DC844C00799BCF /* Memory_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_093.xml; sourceTree = "<group>"; };
+		2E55497422DC844C00799BCF /* Memory_09.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_09.xml; sourceTree = "<group>"; };
+		2E55497522DC844C00799BCF /* Memory_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Memory_098.xml; sourceTree = "<group>"; };
+		2E55497F22DC844C00799BCF /* Pythagorean_Theorem_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_096.xml; sourceTree = "<group>"; };
+		2E55498022DC844C00799BCF /* Pythagorean_Theorem_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_097.xml; sourceTree = "<group>"; };
+		2E55498122DC844C00799BCF /* Pythagorean_Theorem_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_0991.xml; sourceTree = "<group>"; };
+		2E55498222DC844C00799BCF /* Pythagorean_Theorem_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_095.xml; sourceTree = "<group>"; };
+		2E55498322DC844C00799BCF /* Pythagorean_Theorem_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_093.xml; sourceTree = "<group>"; };
+		2E55498422DC844C00799BCF /* Pythagorean_Theorem_092.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_092.xml; sourceTree = "<group>"; };
+		2E55498522DC844C00799BCF /* Pythagorean_Theorem_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pythagorean_Theorem_098.xml; sourceTree = "<group>"; };
+		2E55498722DC844C00799BCF /* ValidHeader097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidHeader097.xml; sourceTree = "<group>"; };
+		2E55498822DC844C00799BCF /* ValidHeader096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidHeader096.xml; sourceTree = "<group>"; };
+		2E55498922DC844C00799BCF /* ValidHeader095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidHeader095.xml; sourceTree = "<group>"; };
+		2E55498A22DC844C00799BCF /* ValidHeader0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidHeader0991.xml; sourceTree = "<group>"; };
+		2E55498B22DC844C00799BCF /* ValidHeader098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidHeader098.xml; sourceTree = "<group>"; };
+		2E55498D22DC844C00799BCF /* Minecraft_Work_In_Progress_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_093.xml; sourceTree = "<group>"; };
+		2E55498E22DC844C00799BCF /* Minecraft_Work_In_Progress_092.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_092.xml; sourceTree = "<group>"; };
+		2E55498F22DC844C00799BCF /* Minecraft_Work_In_Progress_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_095.xml; sourceTree = "<group>"; };
+		2E55499022DC844C00799BCF /* Minecraft_Work_In_Progress_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_096.xml; sourceTree = "<group>"; };
+		2E55499122DC844C00799BCF /* Minecraft_Work_In_Progress_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_097.xml; sourceTree = "<group>"; };
+		2E55499222DC844C00799BCF /* Minecraft_Work_In_Progress_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_0991.xml; sourceTree = "<group>"; };
+		2E55499322DC844C00799BCF /* Minecraft_Work_In_Progress_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minecraft_Work_In_Progress_098.xml; sourceTree = "<group>"; };
+		2E5549A522DC844C00799BCF /* WaitUntilBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WaitUntilBrick0991.xml; sourceTree = "<group>"; };
+		2E5549A722DC844C00799BCF /* Drink_more_water_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_0991.xml; sourceTree = "<group>"; };
+		2E5549A822DC844C00799BCF /* Drink_more_water_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_098.xml; sourceTree = "<group>"; };
+		2E5549A922DC844C00799BCF /* Drink_more_water_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_093.xml; sourceTree = "<group>"; };
+		2E5549AA22DC844C00799BCF /* Drink_more_water_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_096.xml; sourceTree = "<group>"; };
+		2E5549AB22DC844C00799BCF /* Drink_more_water_09.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_09.xml; sourceTree = "<group>"; };
+		2E5549AC22DC844C00799BCF /* Drink_more_water_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_097.xml; sourceTree = "<group>"; };
+		2E5549AD22DC844C00799BCF /* Drink_more_water_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drink_more_water_095.xml; sourceTree = "<group>"; };
+		2E5549AF22DC844C00799BCF /* Solar_System_v1.0_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Solar_System_v1.0_098.xml; sourceTree = "<group>"; };
+		2E5549B022DC844C00799BCF /* Solar_System_v1.0_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Solar_System_v1.0_097.xml; sourceTree = "<group>"; };
+		2E5549B122DC844C00799BCF /* Solar_System_v1.0_092.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Solar_System_v1.0_092.xml; sourceTree = "<group>"; };
+		2E5549B222DC844C00799BCF /* Solar_System_v1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Solar_System_v1.0_0991.xml; sourceTree = "<group>"; };
+		2E5549B422DC844C00799BCF /* ValidProject.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProject.xml; sourceTree = "<group>"; };
+		2E5549B522DC844C00799BCF /* ValidProject098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProject098.xml; sourceTree = "<group>"; };
+		2E5549B622DC844C00799BCF /* ValidProject0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProject0991.xml; sourceTree = "<group>"; };
+		2E5549B722DC844C00799BCF /* ValidProject096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProject096.xml; sourceTree = "<group>"; };
+		2E5549B822DC844C00799BCF /* ValidProject097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProject097.xml; sourceTree = "<group>"; };
+		2E5549B922DC844C00799BCF /* ValidProject095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidProject095.xml; sourceTree = "<group>"; };
+		2E5549BB22DC844C00799BCF /* Compass_0.1_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_093.xml; sourceTree = "<group>"; };
+		2E5549BC22DC844C00799BCF /* Compass_0.1_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_091.xml; sourceTree = "<group>"; };
+		2E5549BD22DC844C00799BCF /* Compass_0.1_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_095.xml; sourceTree = "<group>"; };
+		2E5549BE22DC844C00799BCF /* Compass_0.1_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_097.xml; sourceTree = "<group>"; };
+		2E5549BF22DC844C00799BCF /* Compass_0.1_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_096.xml; sourceTree = "<group>"; };
+		2E5549C022DC844C00799BCF /* Compass_0.1_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_0991.xml; sourceTree = "<group>"; };
+		2E5549C122DC844C00799BCF /* Compass_0.1_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Compass_0.1_098.xml; sourceTree = "<group>"; };
+		2E5549CB22DC844C00799BCF /* Encapsulated_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Encapsulated_098.xml; sourceTree = "<group>"; };
+		2E5549CC22DC844C00799BCF /* Encapsulated_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Encapsulated_0991.xml; sourceTree = "<group>"; };
+		2E5549CD22DC844C00799BCF /* Encapsulated_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Encapsulated_097.xml; sourceTree = "<group>"; };
+		2E5549CF22DC844C00799BCF /* LedFlashBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LedFlashBrick0991.xml; sourceTree = "<group>"; };
+		2E5549D022DC844C00799BCF /* LedFlashBrick098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LedFlashBrick098.xml; sourceTree = "<group>"; };
+		2E5549D222DC844C00799BCF /* Skydiving_Steve_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_093.xml; sourceTree = "<group>"; };
+		2E5549D322DC844C00799BCF /* Skydiving_Steve_092.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_092.xml; sourceTree = "<group>"; };
+		2E5549D422DC844C00799BCF /* Skydiving_Steve_096.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_096.xml; sourceTree = "<group>"; };
+		2E5549D522DC844C00799BCF /* Skydiving_Steve_097.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_097.xml; sourceTree = "<group>"; };
+		2E5549D622DC844C00799BCF /* Skydiving_Steve_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_095.xml; sourceTree = "<group>"; };
+		2E5549D722DC844C00799BCF /* Skydiving_Steve_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_098.xml; sourceTree = "<group>"; };
+		2E5549D822DC844C00799BCF /* Skydiving_Steve_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Skydiving_Steve_0991.xml; sourceTree = "<group>"; };
+		2E5549DA22DC844C00799BCF /* LogicBricks_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LogicBricks_0991.xml; sourceTree = "<group>"; };
+		2E5549DC22DC844C00799BCF /* PointToBrickWithoutSpriteObject.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PointToBrickWithoutSpriteObject.xml; sourceTree = "<group>"; };
+		2E5549F622DC844C00799BCF /* ElementOfListFunction0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ElementOfListFunction0991.xml; sourceTree = "<group>"; };
+		2E5549F722DC844C00799BCF /* InsertItemIntoUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InsertItemIntoUserListBrick0991.xml; sourceTree = "<group>"; };
+		2E5549F822DC844C00799BCF /* NumberOfItemsInListFunction0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumberOfItemsInListFunction0991.xml; sourceTree = "<group>"; };
+		2E5549F922DC844C00799BCF /* InsertItemIntoUserListBrick098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InsertItemIntoUserListBrick098.xml; sourceTree = "<group>"; };
+		2E5549FA22DC844C00799BCF /* AddItemToUserListBrick098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AddItemToUserListBrick098.xml; sourceTree = "<group>"; };
+		2E5549FB22DC844C00799BCF /* ReplaceItemInUserListBrick098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReplaceItemInUserListBrick098.xml; sourceTree = "<group>"; };
+		2E5549FC22DC844C00799BCF /* DeleteItemOfUserListBrick098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeleteItemOfUserListBrick098.xml; sourceTree = "<group>"; };
+		2E5549FD22DC844C00799BCF /* DeleteItemOfUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeleteItemOfUserListBrick0991.xml; sourceTree = "<group>"; };
+		2E5549FE22DC844C00799BCF /* ReplaceItemInUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReplaceItemInUserListBrick0991.xml; sourceTree = "<group>"; };
+		2E5549FF22DC844C00799BCF /* AddItemToUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AddItemToUserListBrick0991.xml; sourceTree = "<group>"; };
 		2E56BE5022A819D100F26BC1 /* CBXMLMappingToObjc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMappingToObjc.swift; sourceTree = "<group>"; };
 		2E56BE5622A8E1B700F26BC1 /* MapHeaderMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderMTO.swift; sourceTree = "<group>"; };
 		2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
@@ -2941,6 +3173,315 @@
 			path = Variables;
 			sourceTree = "<group>";
 		};
+		2E55492022DC844C00799BCF /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				2E55492122DC844C00799BCF /* Misc */,
+				2E55492422DC844C00799BCF /* Nyancat_1.0 */,
+				2E55493B22DC844C00799BCF /* Sensors */,
+				2E55493D22DC844C00799BCF /* Piano */,
+				2E55494722DC844C00799BCF /* Air_fight_0.5 */,
+				2E55495722DC844C00799BCF /* ValidProjectAllBricks */,
+				2E55495E22DC844C00799BCF /* Demonstration */,
+				2E55496622DC844C00799BCF /* Airplane_with_shadow */,
+				2E55496E22DC844C00799BCF /* Memory */,
+				2E55497E22DC844C00799BCF /* Pythagorean_Theorem */,
+				2E55498622DC844C00799BCF /* ValidHeader */,
+				2E55498C22DC844C00799BCF /* Minecraft_Work_In_Progress */,
+				2E5549A422DC844C00799BCF /* ControlBricks */,
+				2E5549A622DC844C00799BCF /* Drink_more_water */,
+				2E5549AE22DC844C00799BCF /* Solar_System_v1.0 */,
+				2E5549B322DC844C00799BCF /* ValidProject */,
+				2E5549BA22DC844C00799BCF /* Compass_0.1 */,
+				2E5549CA22DC844C00799BCF /* Encapsulated */,
+				2E5549CE22DC844C00799BCF /* LedFlashBrick */,
+				2E5549D122DC844C00799BCF /* Skydiving_Steve */,
+				2E5549D922DC844C00799BCF /* LogicBricks */,
+				2E5549DB22DC844C00799BCF /* PointToBrickWithoutSpriteObject */,
+				2E5549F522DC844C00799BCF /* ListBricks */,
+			);
+			name = Legacy;
+			path = ../CattyTests/Resources/ParserTests/Legacy;
+			sourceTree = "<group>";
+		};
+		2E55492122DC844C00799BCF /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */,
+				2E55492322DC844C00799BCF /* ValidFormulaList.xml */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		2E55492422DC844C00799BCF /* Nyancat_1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */,
+				2E55492622DC844C00799BCF /* Nyancat_1.0_091.xml */,
+				2E55492722DC844C00799BCF /* Nyancat_1.0_093.xml */,
+				2E55492822DC844C00799BCF /* Nyancat_1.0_097.xml */,
+				2E55492922DC844C00799BCF /* Nyancat_1.0_096.xml */,
+				2E55492A22DC844C00799BCF /* Nyancat_1.0_098.xml */,
+			);
+			path = Nyancat_1.0;
+			sourceTree = "<group>";
+		};
+		2E55493B22DC844C00799BCF /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				2E55493C22DC844C00799BCF /* Sensors_0991.xml */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
+		2E55493D22DC844C00799BCF /* Piano */ = {
+			isa = PBXGroup;
+			children = (
+				2E55493E22DC844C00799BCF /* Piano_096.xml */,
+				2E55493F22DC844C00799BCF /* Piano_09.xml */,
+				2E55494022DC844C00799BCF /* Piano_097.xml */,
+				2E55494122DC844C00799BCF /* Piano_093.xml */,
+				2E55494222DC844C00799BCF /* Piano_098.xml */,
+				2E55494322DC844C00799BCF /* Piano_0991.xml */,
+			);
+			path = Piano;
+			sourceTree = "<group>";
+		};
+		2E55494722DC844C00799BCF /* Air_fight_0.5 */ = {
+			isa = PBXGroup;
+			children = (
+				2E55494822DC844C00799BCF /* Air_fight_0.5_098.xml */,
+				2E55494922DC844C00799BCF /* Air_fight_0.5_093.xml */,
+				2E55494A22DC844C00799BCF /* Air_fight_0.5_091.xml */,
+				2E55494B22DC844C00799BCF /* Air_fight_0.5_095.xml */,
+				2E55494C22DC844C00799BCF /* Air_fight_0.5_096.xml */,
+				2E55494D22DC844C00799BCF /* Air_fight_0.5_097.xml */,
+				2E55494E22DC844C00799BCF /* Air_fight_0.5_0991.xml */,
+			);
+			path = Air_fight_0.5;
+			sourceTree = "<group>";
+		};
+		2E55495722DC844C00799BCF /* ValidProjectAllBricks */ = {
+			isa = PBXGroup;
+			children = (
+				2E55495822DC844C00799BCF /* ValidProjectAllBricks0991.xml */,
+				2E55495922DC844C00799BCF /* ValidProjectAllBricks098.xml */,
+				2E55495A22DC844C00799BCF /* ValidProjectAllBricks097.xml */,
+				2E55495B22DC844C00799BCF /* ValidProjectAllBricks096.xml */,
+				2E55495C22DC844C00799BCF /* ValidProjectAllBricks095.xml */,
+				2E55495D22DC844C00799BCF /* ValidProjectAllBricks093.xml */,
+			);
+			path = ValidProjectAllBricks;
+			sourceTree = "<group>";
+		};
+		2E55495E22DC844C00799BCF /* Demonstration */ = {
+			isa = PBXGroup;
+			children = (
+				2E55495F22DC844C00799BCF /* Demonstration_093.xml */,
+				2E55496022DC844C00799BCF /* Demonstration_097.xml */,
+				2E55496122DC844C00799BCF /* Demonstration_096.xml */,
+				2E55496222DC844C00799BCF /* Demonstration_095.xml */,
+				2E55496322DC844C00799BCF /* Demonstration_0991.xml */,
+				2E55496422DC844C00799BCF /* Demonstration_098.xml */,
+				2E55496522DC844C00799BCF /* Demonstration_09.xml */,
+			);
+			path = Demonstration;
+			sourceTree = "<group>";
+		};
+		2E55496622DC844C00799BCF /* Airplane_with_shadow */ = {
+			isa = PBXGroup;
+			children = (
+				2E55496722DC844C00799BCF /* Airplane_with_shadow_091.xml */,
+				2E55496822DC844C00799BCF /* Airplane_with_shadow_093.xml */,
+				2E55496922DC844C00799BCF /* Airplane_with_shadow_097.xml */,
+				2E55496A22DC844C00799BCF /* Airplane_with_shadow_096.xml */,
+				2E55496B22DC844C00799BCF /* Airplane_with_shadow_095.xml */,
+				2E55496C22DC844C00799BCF /* Airplane_with_shadow_098.xml */,
+				2E55496D22DC844C00799BCF /* Airplane_with_shadow_0991.xml */,
+			);
+			path = Airplane_with_shadow;
+			sourceTree = "<group>";
+		};
+		2E55496E22DC844C00799BCF /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				2E55496F22DC844C00799BCF /* Memory_097.xml */,
+				2E55497022DC844C00799BCF /* Memory_096.xml */,
+				2E55497122DC844C00799BCF /* Memory_095.xml */,
+				2E55497222DC844C00799BCF /* Memory_0991.xml */,
+				2E55497322DC844C00799BCF /* Memory_093.xml */,
+				2E55497422DC844C00799BCF /* Memory_09.xml */,
+				2E55497522DC844C00799BCF /* Memory_098.xml */,
+			);
+			path = Memory;
+			sourceTree = "<group>";
+		};
+		2E55497E22DC844C00799BCF /* Pythagorean_Theorem */ = {
+			isa = PBXGroup;
+			children = (
+				2E55497F22DC844C00799BCF /* Pythagorean_Theorem_096.xml */,
+				2E55498022DC844C00799BCF /* Pythagorean_Theorem_097.xml */,
+				2E55498122DC844C00799BCF /* Pythagorean_Theorem_0991.xml */,
+				2E55498222DC844C00799BCF /* Pythagorean_Theorem_095.xml */,
+				2E55498322DC844C00799BCF /* Pythagorean_Theorem_093.xml */,
+				2E55498422DC844C00799BCF /* Pythagorean_Theorem_092.xml */,
+				2E55498522DC844C00799BCF /* Pythagorean_Theorem_098.xml */,
+			);
+			path = Pythagorean_Theorem;
+			sourceTree = "<group>";
+		};
+		2E55498622DC844C00799BCF /* ValidHeader */ = {
+			isa = PBXGroup;
+			children = (
+				2E55498722DC844C00799BCF /* ValidHeader097.xml */,
+				2E55498822DC844C00799BCF /* ValidHeader096.xml */,
+				2E55498922DC844C00799BCF /* ValidHeader095.xml */,
+				2E55498A22DC844C00799BCF /* ValidHeader0991.xml */,
+				2E55498B22DC844C00799BCF /* ValidHeader098.xml */,
+			);
+			path = ValidHeader;
+			sourceTree = "<group>";
+		};
+		2E55498C22DC844C00799BCF /* Minecraft_Work_In_Progress */ = {
+			isa = PBXGroup;
+			children = (
+				2E55498D22DC844C00799BCF /* Minecraft_Work_In_Progress_093.xml */,
+				2E55498E22DC844C00799BCF /* Minecraft_Work_In_Progress_092.xml */,
+				2E55498F22DC844C00799BCF /* Minecraft_Work_In_Progress_095.xml */,
+				2E55499022DC844C00799BCF /* Minecraft_Work_In_Progress_096.xml */,
+				2E55499122DC844C00799BCF /* Minecraft_Work_In_Progress_097.xml */,
+				2E55499222DC844C00799BCF /* Minecraft_Work_In_Progress_0991.xml */,
+				2E55499322DC844C00799BCF /* Minecraft_Work_In_Progress_098.xml */,
+			);
+			path = Minecraft_Work_In_Progress;
+			sourceTree = "<group>";
+		};
+		2E5549A422DC844C00799BCF /* ControlBricks */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549A522DC844C00799BCF /* WaitUntilBrick0991.xml */,
+			);
+			path = ControlBricks;
+			sourceTree = "<group>";
+		};
+		2E5549A622DC844C00799BCF /* Drink_more_water */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549A722DC844C00799BCF /* Drink_more_water_0991.xml */,
+				2E5549A822DC844C00799BCF /* Drink_more_water_098.xml */,
+				2E5549A922DC844C00799BCF /* Drink_more_water_093.xml */,
+				2E5549AA22DC844C00799BCF /* Drink_more_water_096.xml */,
+				2E5549AB22DC844C00799BCF /* Drink_more_water_09.xml */,
+				2E5549AC22DC844C00799BCF /* Drink_more_water_097.xml */,
+				2E5549AD22DC844C00799BCF /* Drink_more_water_095.xml */,
+			);
+			path = Drink_more_water;
+			sourceTree = "<group>";
+		};
+		2E5549AE22DC844C00799BCF /* Solar_System_v1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549AF22DC844C00799BCF /* Solar_System_v1.0_098.xml */,
+				2E5549B022DC844C00799BCF /* Solar_System_v1.0_097.xml */,
+				2E5549B122DC844C00799BCF /* Solar_System_v1.0_092.xml */,
+				2E5549B222DC844C00799BCF /* Solar_System_v1.0_0991.xml */,
+			);
+			path = Solar_System_v1.0;
+			sourceTree = "<group>";
+		};
+		2E5549B322DC844C00799BCF /* ValidProject */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549B422DC844C00799BCF /* ValidProject.xml */,
+				2E5549B522DC844C00799BCF /* ValidProject098.xml */,
+				2E5549B622DC844C00799BCF /* ValidProject0991.xml */,
+				2E5549B722DC844C00799BCF /* ValidProject096.xml */,
+				2E5549B822DC844C00799BCF /* ValidProject097.xml */,
+				2E5549B922DC844C00799BCF /* ValidProject095.xml */,
+			);
+			path = ValidProject;
+			sourceTree = "<group>";
+		};
+		2E5549BA22DC844C00799BCF /* Compass_0.1 */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549BB22DC844C00799BCF /* Compass_0.1_093.xml */,
+				2E5549BC22DC844C00799BCF /* Compass_0.1_091.xml */,
+				2E5549BD22DC844C00799BCF /* Compass_0.1_095.xml */,
+				2E5549BE22DC844C00799BCF /* Compass_0.1_097.xml */,
+				2E5549BF22DC844C00799BCF /* Compass_0.1_096.xml */,
+				2E5549C022DC844C00799BCF /* Compass_0.1_0991.xml */,
+				2E5549C122DC844C00799BCF /* Compass_0.1_098.xml */,
+			);
+			path = Compass_0.1;
+			sourceTree = "<group>";
+		};
+		2E5549CA22DC844C00799BCF /* Encapsulated */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549CB22DC844C00799BCF /* Encapsulated_098.xml */,
+				2E5549CC22DC844C00799BCF /* Encapsulated_0991.xml */,
+				2E5549CD22DC844C00799BCF /* Encapsulated_097.xml */,
+			);
+			path = Encapsulated;
+			sourceTree = "<group>";
+		};
+		2E5549CE22DC844C00799BCF /* LedFlashBrick */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549CF22DC844C00799BCF /* LedFlashBrick0991.xml */,
+				2E5549D022DC844C00799BCF /* LedFlashBrick098.xml */,
+			);
+			path = LedFlashBrick;
+			sourceTree = "<group>";
+		};
+		2E5549D122DC844C00799BCF /* Skydiving_Steve */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549D222DC844C00799BCF /* Skydiving_Steve_093.xml */,
+				2E5549D322DC844C00799BCF /* Skydiving_Steve_092.xml */,
+				2E5549D422DC844C00799BCF /* Skydiving_Steve_096.xml */,
+				2E5549D522DC844C00799BCF /* Skydiving_Steve_097.xml */,
+				2E5549D622DC844C00799BCF /* Skydiving_Steve_095.xml */,
+				2E5549D722DC844C00799BCF /* Skydiving_Steve_098.xml */,
+				2E5549D822DC844C00799BCF /* Skydiving_Steve_0991.xml */,
+			);
+			path = Skydiving_Steve;
+			sourceTree = "<group>";
+		};
+		2E5549D922DC844C00799BCF /* LogicBricks */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549DA22DC844C00799BCF /* LogicBricks_0991.xml */,
+			);
+			path = LogicBricks;
+			sourceTree = "<group>";
+		};
+		2E5549DB22DC844C00799BCF /* PointToBrickWithoutSpriteObject */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549DC22DC844C00799BCF /* PointToBrickWithoutSpriteObject.xml */,
+			);
+			path = PointToBrickWithoutSpriteObject;
+			sourceTree = "<group>";
+		};
+		2E5549F522DC844C00799BCF /* ListBricks */ = {
+			isa = PBXGroup;
+			children = (
+				2E5549F622DC844C00799BCF /* ElementOfListFunction0991.xml */,
+				2E5549F722DC844C00799BCF /* InsertItemIntoUserListBrick0991.xml */,
+				2E5549F822DC844C00799BCF /* NumberOfItemsInListFunction0991.xml */,
+				2E5549F922DC844C00799BCF /* InsertItemIntoUserListBrick098.xml */,
+				2E5549FA22DC844C00799BCF /* AddItemToUserListBrick098.xml */,
+				2E5549FB22DC844C00799BCF /* ReplaceItemInUserListBrick098.xml */,
+				2E5549FC22DC844C00799BCF /* DeleteItemOfUserListBrick098.xml */,
+				2E5549FD22DC844C00799BCF /* DeleteItemOfUserListBrick0991.xml */,
+				2E5549FE22DC844C00799BCF /* ReplaceItemInUserListBrick0991.xml */,
+				2E5549FF22DC844C00799BCF /* AddItemToUserListBrick0991.xml */,
+			);
+			path = ListBricks;
+			sourceTree = "<group>";
+		};
 		2E56BE5822A8E3D400F26BC1 /* Mapping To Objc (MTO) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3243,6 +3784,7 @@
 		4C1608A41A09548F002C7032 /* Parser & Serialializer */ = {
 			isa = PBXGroup;
 			children = (
+				2E55492022DC844C00799BCF /* Legacy */,
 				2E734F8122CDD8AC00F38581 /* Mapping */,
 				2EBB708922A797350085E14F /* EscapingChars */,
 				CAE3E4FC1B4C50B300CC88BD /* Flap_Pac_Man */,
@@ -3257,7 +3799,6 @@
 				CAE3E5281B4C50B300CC88BD /* Tic_Tac_Toe_Master */,
 				CAE3E52B1B4C50B300CC88BD /* Word_balloon_demo */,
 				CAE3E52E1B4C50B300CC88BD /* X_Ray_phone */,
-				2E55491E22DC834400799BCF /* WaitUntilBrick0991.xml */,
 			);
 			name = "Parser & Serialializer";
 			sourceTree = "<group>";
@@ -7065,124 +7606,230 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E554A3622DC844D00799BCF /* Demonstration_095.xml in Resources */,
 				2EF32DB522D37A1300D9D5B7 /* VariableMapping2.xml in Resources */,
 				4CC85CD41B9C6EC80097E470 /* Word_balloon_demo_096.xml in Resources */,
+				2E554ABA22DC844D00799BCF /* DeleteItemOfUserListBrick0991.xml in Resources */,
+				2E554A9722DC844D00799BCF /* Skydiving_Steve_096.xml in Resources */,
 				CAE3E55E1B4C50B300CC88BD /* Tic_Tac_Toe_Master_091.xml in Resources */,
 				2E251937229BE1D900DC11BD /* Pong_Starter_0992.xml in Resources */,
+				2E554A5222DC844D00799BCF /* Pythagorean_Theorem_095.xml in Resources */,
+				2E554A1722DC844D00799BCF /* Piano_096.xml in Resources */,
 				CAE3E5611B4C50B300CC88BD /* Word_balloon_demo_093.xml in Resources */,
+				2E554A6022DC844D00799BCF /* Minecraft_Work_In_Progress_0991.xml in Resources */,
 				2DCB4918212E9BF4005E8E3D /* StoreProjectDownloader.fetchMostDownloadedProjects.success.json in Resources */,
+				2E554A7F22DC844D00799BCF /* ValidProject096.xml in Resources */,
 				2E25193B229BE31D00DC11BD /* Flap_Pac_Man_0992.xml in Resources */,
 				CAE3E54D1B4C50B300CC88BD /* Minions__091.xml in Resources */,
 				4C0F9FEF204BD47F00E71B2D /* Gossip_Girl_0991.xml in Resources */,
 				2E734F8A22CDDC3E00F38581 /* VariableMapping.xml in Resources */,
+				2E554AB622DC844D00799BCF /* InsertItemIntoUserListBrick098.xml in Resources */,
 				4CEF0CDC1B9C642A003C9B20 /* Pong_Starter_096.xml in Resources */,
+				2E554A8522DC844D00799BCF /* Compass_0.1_097.xml in Resources */,
 				CAE3E55D1B4C50B300CC88BD /* SKYPASCAL_093.xml in Resources */,
 				2DCB492E212EA7EC005E8E3D /* StoreProjectDownloader.fetchFeaturedProjects.fail.parse.json in Resources */,
 				2E251939229BE25900DC11BD /* Flappy_v3.0_0992.xml in Resources */,
 				2EBB708D22A797680085E14F /* EscapingChars_0991.xml in Resources */,
+				2E554A9C22DC844D00799BCF /* LogicBricks_0991.xml in Resources */,
 				4C2EE3FF1B5557BF006DE9B8 /* Minions__095.xml in Resources */,
+				2E554A1822DC844D00799BCF /* Piano_09.xml in Resources */,
+				2E554A7322DC844D00799BCF /* Drink_more_water_093.xml in Resources */,
+				2E554A8822DC844D00799BCF /* Compass_0.1_098.xml in Resources */,
 				2DCB492A212EA547005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.request.json in Resources */,
 				599E64A4202DB037009494B5 /* MediaLibraryDownloader.downloadIndex.fail.parse.json in Resources */,
+				2E554A3F22DC844D00799BCF /* Airplane_with_shadow_098.xml in Resources */,
+				2E554A3C22DC844D00799BCF /* Airplane_with_shadow_097.xml in Resources */,
 				2DCB4920212EA096005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.success.json in Resources */,
 				4C2EE3F91B55578C006DE9B8 /* Gossip_Girl_095.xml in Resources */,
+				2E554ABC22DC844D00799BCF /* AddItemToUserListBrick0991.xml in Resources */,
+				2E554A7422DC844D00799BCF /* Drink_more_water_096.xml in Resources */,
 				4C0F9FFA204BD4C900E71B2D /* Minions__0991.xml in Resources */,
+				2E554A2F22DC844D00799BCF /* ValidProjectAllBricks097.xml in Resources */,
 				4C0F9FEB204BD46900E71B2D /* Flappy_v3.0_0991.xml in Resources */,
+				2E554A1F22DC844D00799BCF /* Air_fight_0.5_098.xml in Resources */,
 				4C6D15E41D7AC5F300CE53CD /* Minions__098.xml in Resources */,
+				2E554A7B22DC844D00799BCF /* Solar_System_v1.0_0991.xml in Resources */,
+				2E554A1622DC844D00799BCF /* Sensors_0991.xml in Resources */,
 				4C0FA004204BD4FF00E71B2D /* Rock_paper_scissors_0991.xml in Resources */,
 				2EF5294722A695A400FFD2B5 /* Rock_paper_scissors_0993.xml in Resources */,
 				2DCB4922212EA251005E8E3D /* StoreProjectDownloader.fetchFeaturedProjects.fail.request.json in Resources */,
+				2E554A5B22DC844D00799BCF /* Minecraft_Work_In_Progress_093.xml in Resources */,
+				2E554A7222DC844D00799BCF /* Drink_more_water_098.xml in Resources */,
+				2E554A1C22DC844D00799BCF /* Piano_0991.xml in Resources */,
 				CAE3E55F1B4C50B300CC88BD /* Tic_Tac_Toe_Master_093.xml in Resources */,
 				4CE2D4071C29503300938B5E /* Minions__097.xml in Resources */,
+				2E554A5022DC844D00799BCF /* Pythagorean_Theorem_097.xml in Resources */,
 				4C6D15EE1D7AC61000CE53CD /* Rock_paper_scissors_098.xml in Resources */,
 				2D7BE52021441FAE00F78A10 /* StoreProjectDownloader.searchProjects.fail.request.json in Resources */,
 				4C6D15F81D7AC62E00CE53CD /* X_Ray_phone_098.xml in Resources */,
 				2EBB708F22A797680085E14F /* EscapingChars_0994.xml in Resources */,
+				2E554A0722DC844D00799BCF /* Nyancat_1.0_098.xml in Resources */,
+				2E554A9422DC844D00799BCF /* LedFlashBrick098.xml in Resources */,
 				2E251941229BE95B00DC11BD /* Galaxy_War_0993.xml in Resources */,
 				CAE3E5411B4C50B300CC88BD /* Flap_Pac_Man_091.xml in Resources */,
 				59B9F633202D8F8500937299 /* MediaLibraryDownloader.downloadIndex.success.json in Resources */,
+				2E554A7822DC844D00799BCF /* Solar_System_v1.0_098.xml in Resources */,
+				2E554A3122DC844D00799BCF /* ValidProjectAllBricks095.xml in Resources */,
+				2E554A3722DC844D00799BCF /* Demonstration_0991.xml in Resources */,
+				2E554A2022DC844D00799BCF /* Air_fight_0.5_093.xml in Resources */,
 				4CEF0CE01B9C643E003C9B20 /* Rock_paper_scissors_096.xml in Resources */,
 				4CE2D3FF1C29500F00938B5E /* Galaxy_War_097.xml in Resources */,
 				4CEF0CD01B9C63DB003C9B20 /* Gossip_Girl_096.xml in Resources */,
+				2E554A2422DC844D00799BCF /* Air_fight_0.5_097.xml in Resources */,
 				2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */,
+				2E554A4F22DC844D00799BCF /* Pythagorean_Theorem_096.xml in Resources */,
+				2E554A2122DC844D00799BCF /* Air_fight_0.5_091.xml in Resources */,
 				CAE3E5441B4C50B300CC88BD /* Flappy_v3.0_093.xml in Resources */,
+				2E554A7922DC844D00799BCF /* Solar_System_v1.0_097.xml in Resources */,
+				2E554A3422DC844D00799BCF /* Demonstration_097.xml in Resources */,
 				2EF5293F22A68C2600FFD2B5 /* Word_balloon_demo_0994.xml in Resources */,
+				2E554A0422DC844D00799BCF /* Nyancat_1.0_093.xml in Resources */,
 				2E25192F229BCFD500DC11BD /* X_Ray_phone_0994.xml in Resources */,
+				2E554A8222DC844D00799BCF /* Compass_0.1_093.xml in Resources */,
+				2E554A4022DC844D00799BCF /* Airplane_with_shadow_0991.xml in Resources */,
 				4CEF0CCE1B9C63C2003C9B20 /* Galaxy_War_096.xml in Resources */,
+				2E554A9522DC844D00799BCF /* Skydiving_Steve_093.xml in Resources */,
+				2E554A0322DC844D00799BCF /* Nyancat_1.0_091.xml in Resources */,
+				2E554A5E22DC844D00799BCF /* Minecraft_Work_In_Progress_096.xml in Resources */,
 				2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */,
 				2EF32DB922D4925300D9D5B7 /* VariableMapping3.xml in Resources */,
+				2E554A4622DC844D00799BCF /* Memory_09.xml in Resources */,
+				2E554A1A22DC844D00799BCF /* Piano_093.xml in Resources */,
 				4C6D15F41D7AC62200CE53CD /* Tic_Tac_Toe_Master_098.xml in Resources */,
 				2DCB4932212EA923005E8E3D /* StoreProjectDownloader.fetchMostViewedProjects.fail.parse.json in Resources */,
+				2E554A9922DC844D00799BCF /* Skydiving_Steve_095.xml in Resources */,
+				2E554A7722DC844D00799BCF /* Drink_more_water_095.xml in Resources */,
 				2EF5293D22A68BA000FFD2B5 /* Tic_Tac_Toe_Master_0994.xml in Resources */,
 				2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */,
 				CAE3E5641B4C50B300CC88BD /* X_Ray_phone_093.xml in Resources */,
+				2E554A5D22DC844D00799BCF /* Minecraft_Work_In_Progress_095.xml in Resources */,
 				4CE2D4191C29509400938B5E /* X_Ray_phone_097.xml in Resources */,
 				4C0FA00D204BD53400E71B2D /* Tic_Tac_Toe_Master_0991.xml in Resources */,
+				2E554A5322DC844D00799BCF /* Pythagorean_Theorem_093.xml in Resources */,
+				2E554AB422DC844D00799BCF /* InsertItemIntoUserListBrick0991.xml in Resources */,
+				2E554A3222DC844D00799BCF /* ValidProjectAllBricks093.xml in Resources */,
+				2E554A7C22DC844D00799BCF /* ValidProject.xml in Resources */,
+				2E554A2522DC844D00799BCF /* Air_fight_0.5_0991.xml in Resources */,
+				2E554A5822DC844D00799BCF /* ValidHeader095.xml in Resources */,
+				2E554A9D22DC844D00799BCF /* PointToBrickWithoutSpriteObject.xml in Resources */,
+				2E554A9222DC844D00799BCF /* Encapsulated_097.xml in Resources */,
 				2DCB4930212EA88E005E8E3D /* StoreProjectDownloader.fetchMostDownloadedProjects.fail.parse.json in Resources */,
 				4C6D15DA1D7AC5D300CE53CD /* Flappy_v3.0_098.xml in Resources */,
+				2E554A0622DC844D00799BCF /* Nyancat_1.0_096.xml in Resources */,
 				CA2D44441B1231F900A3B53D /* Swell.plist in Resources */,
+				2E554AB722DC844D00799BCF /* AddItemToUserListBrick098.xml in Resources */,
+				2E554A2222DC844D00799BCF /* Air_fight_0.5_095.xml in Resources */,
+				2E554A4722DC844D00799BCF /* Memory_098.xml in Resources */,
+				2E554A6122DC844D00799BCF /* Minecraft_Work_In_Progress_098.xml in Resources */,
 				4C9F37A91D167630002C3B45 /* transparency-gray-alpha.png in Resources */,
+				2E554A9A22DC844D00799BCF /* Skydiving_Steve_098.xml in Resources */,
 				4C6D15EA1D7AC60500CE53CD /* Pong_Starter_098.xml in Resources */,
+				2E554A3B22DC844D00799BCF /* Airplane_with_shadow_093.xml in Resources */,
+				2E554A3022DC844D00799BCF /* ValidProjectAllBricks096.xml in Resources */,
 				2EBB709622A797E10085E14F /* Test_Your_NFC_0994.xml in Resources */,
+				2E554A7022DC844D00799BCF /* WaitUntilBrick0991.xml in Resources */,
+				2E554A8422DC844D00799BCF /* Compass_0.1_095.xml in Resources */,
 				4C2EE40F1B555871006DE9B8 /* Word_balloon_demo_095.xml in Resources */,
+				2E554A2322DC844D00799BCF /* Air_fight_0.5_096.xml in Resources */,
 				4CEF0CCA1B9C63AD003C9B20 /* Flap_Pac_Man_096.xml in Resources */,
 				2DCB491E212EA006005E8E3D /* StoreProjectDownloader.fetchMostViewedProjects.success.json in Resources */,
 				2D7BE5222144238C00F78A10 /* StoreProjectDownloader.fetchSearchProjects.fail.parse.json in Resources */,
 				CAE3E4EB1B4C509800CC88BD /* test.png in Resources */,
+				2E554A8322DC844D00799BCF /* Compass_0.1_091.xml in Resources */,
 				4C0FA017204BD57400E71B2D /* X_Ray_phone_0991.xml in Resources */,
+				2E554AB922DC844D00799BCF /* DeleteItemOfUserListBrick098.xml in Resources */,
 				4C2EE4091B555826006DE9B8 /* Rock_paper_scissors_095.xml in Resources */,
 				2E25192B229BCDA800DC11BD /* Flappy_v3.0_0994.xml in Resources */,
 				599E6498202D953F009494B5 /* MediaLibraryDownloader.downloadData.success.json in Resources */,
+				2E554A4522DC844D00799BCF /* Memory_093.xml in Resources */,
 				2E251931229BD05300DC11BD /* Pong_Starter_0994.xml in Resources */,
 				4C0FA015204BD56800E71B2D /* Word_balloon_demo_0991.xml in Resources */,
+				2E554A7A22DC844D00799BCF /* Solar_System_v1.0_092.xml in Resources */,
+				2E554A9B22DC844D00799BCF /* Skydiving_Steve_0991.xml in Resources */,
+				2E554A2D22DC844D00799BCF /* ValidProjectAllBricks0991.xml in Resources */,
+				2E554A5C22DC844D00799BCF /* Minecraft_Work_In_Progress_092.xml in Resources */,
+				2E554A7622DC844D00799BCF /* Drink_more_water_097.xml in Resources */,
 				2DCB4924212EA31B005E8E3D /* StoreProjectDownloader.fetchMostDownloadedProjects.fail.request.json in Resources */,
 				2DCB4916212E9B56005E8E3D /* StoreProjectDownloader.fetchFeaturedProjects.success.json in Resources */,
 				4CE2D3FB1C294FFE00938B5E /* Flap_Pac_Man_097.xml in Resources */,
+				2E554A4122DC844D00799BCF /* Memory_097.xml in Resources */,
 				2EF5294D22A696F400FFD2B5 /* Word_balloon_demo_0993.xml in Resources */,
 				4CE2D4171C29508A00938B5E /* Word_balloon_demo_097.xml in Resources */,
 				CAE3E5631B4C50B300CC88BD /* X_Ray_phone_091.xml in Resources */,
 				CAE3E4EC1B4C509800CC88BD /* test2.png in Resources */,
+				2E554A8722DC844D00799BCF /* Compass_0.1_0991.xml in Resources */,
+				2E554A3D22DC844D00799BCF /* Airplane_with_shadow_096.xml in Resources */,
 				2E734F8E22CDFBA400F38581 /* BroadcastMapping.xml in Resources */,
+				2E554A7E22DC844D00799BCF /* ValidProject0991.xml in Resources */,
 				4C0F9FED204BD47300E71B2D /* Galaxy_War_0991.xml in Resources */,
 				4CE2D4011C29501800938B5E /* Gossip_Girl_097.xml in Resources */,
 				2EF5293522A6891800FFD2B5 /* Gossip_Girl_0992.xml in Resources */,
+				2E554A7522DC844D00799BCF /* Drink_more_water_09.xml in Resources */,
 				CAE3E5551B4C50B300CC88BD /* Pong_Starter_093.xml in Resources */,
+				2E554A9322DC844D00799BCF /* LedFlashBrick0991.xml in Resources */,
 				4C6D15D81D7AC5CB00CE53CD /* Flap_Pac_Man_098.xml in Resources */,
 				2E25193F229BE79400DC11BD /* Flap_Pac_Man_0993.xml in Resources */,
+				2E554A7D22DC844D00799BCF /* ValidProject098.xml in Resources */,
 				4CE2D4151C29507F00938B5E /* Tic_Tac_Toe_Master_097.xml in Resources */,
 				CAE3E5481B4C50B300CC88BD /* Gossip_Girl_093.xml in Resources */,
 				CAE3E5601B4C50B300CC88BD /* Word_balloon_demo_09.xml in Resources */,
 				4C2EE3F71B55577C006DE9B8 /* Galaxy_War_095.xml in Resources */,
+				2E554A0222DC844D00799BCF /* Nyancat_1.0_0991.xml in Resources */,
+				2E554A3E22DC844D00799BCF /* Airplane_with_shadow_095.xml in Resources */,
+				2E554AB822DC844D00799BCF /* ReplaceItemInUserListBrick098.xml in Resources */,
+				2E554A3522DC844D00799BCF /* Demonstration_096.xml in Resources */,
 				4C2EE40D1B55585B006DE9B8 /* Tic_Tac_Toe_Master_095.xml in Resources */,
 				4CC85CD21B9C6E6F0097E470 /* Tic_Tac_Toe_Master_096.xml in Resources */,
 				2EBB709422A797E10085E14F /* Test_Your_NFC_098.xml in Resources */,
 				4CC85CD61B9C6F220097E470 /* X_Ray_phone_096.xml in Resources */,
 				2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */,
 				4CEF0CCC1B9C63BA003C9B20 /* Flappy_v3.0_096.xml in Resources */,
+				2E554A9822DC844D00799BCF /* Skydiving_Steve_097.xml in Resources */,
 				4C15FE7F1D168C0D009C1A2B /* transparency-rgb.png in Resources */,
 				CAE3E5591B4C50B300CC88BD /* Rock_paper_scissors_093.xml in Resources */,
 				2D7BE51E21441DE500F78A10 /* StoreProjectDownloader.searchProjects.success.json in Resources */,
+				2E554A5722DC844D00799BCF /* ValidHeader096.xml in Resources */,
 				2DCB4928212EA477005E8E3D /* StoreProjectDownloader.fetchMostViewedProjects.fail.request.json in Resources */,
 				2EF5294B22A6969400FFD2B5 /* Tic_Tac_Toe_Master_0993.xml in Resources */,
 				2EF5293922A68A4000FFD2B5 /* Rock_paper_scissors_0994.xml in Resources */,
+				2E554A5F22DC844D00799BCF /* Minecraft_Work_In_Progress_097.xml in Resources */,
 				4C6D15F61D7AC62800CE53CD /* Word_balloon_demo_098.xml in Resources */,
+				2E554A2E22DC844D00799BCF /* ValidProjectAllBricks098.xml in Resources */,
+				2E554A0122DC844D00799BCF /* ValidFormulaList.xml in Resources */,
 				2EF5294122A68C9500FFD2B5 /* Gossip_Girl_0994.xml in Resources */,
+				2E554A4222DC844D00799BCF /* Memory_096.xml in Resources */,
+				2E554A5422DC844D00799BCF /* Pythagorean_Theorem_092.xml in Resources */,
 				2E25193D229BE6FF00DC11BD /* Flappy_v3.0_0993.xml in Resources */,
 				2E734F8522CDD8AC00F38581 /* SoundMapping.xml in Resources */,
+				2E554A9022DC844D00799BCF /* Encapsulated_098.xml in Resources */,
 				4CE2D40D1C29505000938B5E /* Pong_Starter_097.xml in Resources */,
 				4C6D15DE1D7AC5E200CE53CD /* Gossip_Girl_098.xml in Resources */,
+				2E554A5A22DC844D00799BCF /* ValidHeader098.xml in Resources */,
+				2E554A4322DC844D00799BCF /* Memory_095.xml in Resources */,
 				2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */,
-				2E55491F22DC834400799BCF /* WaitUntilBrick0991.xml in Resources */,
+				2E554A9122DC844D00799BCF /* Encapsulated_0991.xml in Resources */,
+				2E554A5622DC844D00799BCF /* ValidHeader097.xml in Resources */,
 				4CE2D3FD1C29500700938B5E /* Flappy_v3.0_097.xml in Resources */,
+				2E554A3822DC844D00799BCF /* Demonstration_098.xml in Resources */,
+				2E554A5922DC844D00799BCF /* ValidHeader0991.xml in Resources */,
+				2E554A8622DC844D00799BCF /* Compass_0.1_096.xml in Resources */,
 				CAE3E54E1B4C50B300CC88BD /* Minions__093.xml in Resources */,
 				4C2EE4111B555882006DE9B8 /* X_Ray_phone_095.xml in Resources */,
 				4C6D15DC1D7AC5D900CE53CD /* Galaxy_War_098.xml in Resources */,
+				2E554A4422DC844D00799BCF /* Memory_0991.xml in Resources */,
 				599E64A2202DAF75009494B5 /* MediaLibraryDownloader.downloadIndex.fail.request.json in Resources */,
+				2E554AB322DC844D00799BCF /* ElementOfListFunction0991.xml in Resources */,
+				2E554A5522DC844D00799BCF /* Pythagorean_Theorem_098.xml in Resources */,
 				2EF5294322A6948D00FFD2B5 /* Gossip_Girl_0993.xml in Resources */,
+				2E554A3A22DC844D00799BCF /* Airplane_with_shadow_091.xml in Resources */,
 				4C0F9FE9204BD45E00E71B2D /* Flap_Pac_Man_0991.xml in Resources */,
 				CAE3E5471B4C50B300CC88BD /* Gossip_Girl_091.xml in Resources */,
 				2E251935229BE14100DC11BD /* X_Ray_phone_0992.xml in Resources */,
 				4CE2D4111C29506600938B5E /* Rock_paper_scissors_097.xml in Resources */,
 				2EBB708E22A797680085E14F /* EscapingChars_0993.xml in Resources */,
+				2E554A3322DC844D00799BCF /* Demonstration_093.xml in Resources */,
+				2E554AB522DC844D00799BCF /* NumberOfItemsInListFunction0991.xml in Resources */,
+				2E554A1B22DC844D00799BCF /* Piano_098.xml in Resources */,
 				4C2EE4051B5557F3006DE9B8 /* Pong_Starter_095.xml in Resources */,
 				CAE3E5421B4C50B300CC88BD /* Flap_Pac_Man_093.xml in Resources */,
 				CAE3E5581B4C50B300CC88BD /* Rock_paper_scissors_091.xml in Resources */,
@@ -7191,14 +7838,24 @@
 				4CEF0CD61B9C6406003C9B20 /* Minions__096.xml in Resources */,
 				4C0FA000204BD4E900E71B2D /* Pong_Starter_0991.xml in Resources */,
 				4C13290B1CD92D5500F16E48 /* silence.mp3 in Resources */,
+				2E554A0022DC844D00799BCF /* InvalidBricksAndScripts.xml in Resources */,
 				2EF5293722A689AD00FFD2B5 /* Minions__0994.xml in Resources */,
 				2EBB709522A797E10085E14F /* Test_Your_NFC_0993.xml in Resources */,
 				4CFAD3611CFAB9AA0019C636 /* transparency-rgba.png in Resources */,
 				599E64A0202DACCB009494B5 /* MediaLibraryDownloader.downloadData.fail.request.json in Resources */,
+				2E554A7122DC844D00799BCF /* Drink_more_water_0991.xml in Resources */,
 				2E251943229BE9E600DC11BD /* X_Ray_phone_0993.xml in Resources */,
+				2E554A9622DC844D00799BCF /* Skydiving_Steve_092.xml in Resources */,
+				2E554A5122DC844D00799BCF /* Pythagorean_Theorem_0991.xml in Resources */,
+				2E554A0522DC844D00799BCF /* Nyancat_1.0_097.xml in Resources */,
+				2E554A8022DC844D00799BCF /* ValidProject097.xml in Resources */,
 				4C2EE3F31B555754006DE9B8 /* Flap_Pac_Man_095.xml in Resources */,
+				2E554A3922DC844D00799BCF /* Demonstration_09.xml in Resources */,
 				CAE3E5541B4C50B300CC88BD /* Pong_Starter_09.xml in Resources */,
+				2E554ABB22DC844D00799BCF /* ReplaceItemInUserListBrick0991.xml in Resources */,
 				CAE3E5451B4C50B300CC88BD /* Galaxy_War_092.xml in Resources */,
+				2E554A1922DC844D00799BCF /* Piano_097.xml in Resources */,
+				2E554A8122DC844D00799BCF /* ValidProject095.xml in Resources */,
 				CAE3E55C1B4C50B300CC88BD /* SKYPASCAL_08.xml in Resources */,
 				4C2EE3F51B555766006DE9B8 /* Flappy_v3.0_095.xml in Resources */,
 				2E251933229BE10100DC11BD /* Galaxy_War_0992.xml in Resources */,
