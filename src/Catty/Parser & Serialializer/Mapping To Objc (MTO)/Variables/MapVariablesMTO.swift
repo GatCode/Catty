@@ -229,7 +229,7 @@ extension CBXMLMappingToObjc {
         let objForUpdate = objectList.isEmpty == false ? objectList[object?.0 ?? 0] : nil
         let scriptList = objForUpdate?.scriptList?.script
 
-        if var ctr = script?.0, ctr > 0, let scriptList = scriptList {
+        if var ctr = script?.0, let scriptList = scriptList {
             var resNr = 0
             for s in scriptList {
                 if s.type == script?.1 {
