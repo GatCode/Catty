@@ -62,6 +62,7 @@
 		2E35EBBC22DB97A000B580FD /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */; };
 		2E35EBC122DB981600B580FD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC022DB981600B580FD /* String.swift */; };
 		2E35EBC322DB984600B580FD /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC222DB984600B580FD /* Optional.swift */; };
+		2E55491F22DC834400799BCF /* WaitUntilBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55491E22DC834400799BCF /* WaitUntilBrick0991.xml */; };
 		2E56BE5122A819D100F26BC1 /* CBXMLMappingToObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5022A819D100F26BC1 /* CBXMLMappingToObjc.swift */; };
 		2E56BE5722A8E1B700F26BC1 /* MapHeaderMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56BE5622A8E1B700F26BC1 /* MapHeaderMTO.swift */; };
 		2E5A24DB229D53330000A58F /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */; };
@@ -1246,6 +1247,7 @@
 		2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
 		2E35EBC022DB981600B580FD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E35EBC222DB984600B580FD /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		2E55491E22DC834400799BCF /* WaitUntilBrick0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WaitUntilBrick0991.xml; path = CattyTests/Resources/ParserTests/WaitUntilBrick0991.xml; sourceTree = SOURCE_ROOT; };
 		2E56BE5022A819D100F26BC1 /* CBXMLMappingToObjc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMappingToObjc.swift; sourceTree = "<group>"; };
 		2E56BE5622A8E1B700F26BC1 /* MapHeaderMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderMTO.swift; sourceTree = "<group>"; };
 		2E5A24DA229D53330000A58F /* CBXMLSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
@@ -3255,6 +3257,7 @@
 				CAE3E5281B4C50B300CC88BD /* Tic_Tac_Toe_Master */,
 				CAE3E52B1B4C50B300CC88BD /* Word_balloon_demo */,
 				CAE3E52E1B4C50B300CC88BD /* X_Ray_phone */,
+				2E55491E22DC834400799BCF /* WaitUntilBrick0991.xml */,
 			);
 			name = "Parser & Serialializer";
 			sourceTree = "<group>";
@@ -7168,6 +7171,7 @@
 				4CE2D40D1C29505000938B5E /* Pong_Starter_097.xml in Resources */,
 				4C6D15DE1D7AC5E200CE53CD /* Gossip_Girl_098.xml in Resources */,
 				2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */,
+				2E55491F22DC834400799BCF /* WaitUntilBrick0991.xml in Resources */,
 				4CE2D3FD1C29500700938B5E /* Flappy_v3.0_097.xml in Resources */,
 				CAE3E54E1B4C50B300CC88BD /* Minions__093.xml in Resources */,
 				4C2EE4111B555882006DE9B8 /* X_Ray_phone_095.xml in Resources */,
