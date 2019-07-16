@@ -167,9 +167,9 @@ extension CBXMLSerializer {
                 currentBrick.addChild(name: "sound", attributes: ["reference": msg])
             }
 
-            if let msg = brick.formulaList {
+            if let msg = brick.formulaTree {
                 addFormulaListTo(brick: currentBrick, data: msg)
-            } else if let msg = brick.formulaTree {
+            } else if let msg = brick.formulaList {
                 addFormulaListTo(brick: currentBrick, data: msg)
             }
 
@@ -208,7 +208,7 @@ extension CBXMLSerializer {
     func addFormulasTo(formulaList: AEXMLElement, data: [CBFormula]?) {
         guard let data = data else { return }
 
-        for formula in data {
+        for formula in data.reversed() {
             let currentFormula = formulaList.addChild(name: "formula", attributes: ["category": formula.category ?? ""])
 
             if let msg = formula.leftChild {
@@ -238,6 +238,7 @@ extension CBXMLSerializer {
         if let leftChildOfChild = data.leftChild.first {
             addChildTo(formula: child, data: leftChildOfChild, isLeftChild: true)
         }
+
         if let rightChildOfChild = data.rightChild.first {
             addChildTo(formula: child, data: rightChildOfChild, isLeftChild: false)
         }
