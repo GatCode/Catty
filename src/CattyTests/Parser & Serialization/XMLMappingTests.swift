@@ -442,6 +442,7 @@ final class XMLMappingTests: XMLAbstractTest {
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "Tic_Tac_Toe_Master_0993"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "Word_balloon_demo_095"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "X_Ray_phone_0992"))
+        XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "CopyObjectsMapping"))
     }
 
     // MARK: - Legacy
@@ -463,7 +464,6 @@ final class XMLMappingTests: XMLAbstractTest {
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "Solar_System_v1.0_092"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "ValidProject0991"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "Compass_0.1_095"))
-//        XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "Encapsulated_0991"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "LedFlashBrick0991"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "Skydiving_Steve_092"))
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "LogicBricks_0991"))

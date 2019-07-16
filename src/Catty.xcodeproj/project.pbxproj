@@ -228,6 +228,7 @@
 		2EBB709422A797E10085E14F /* Test_Your_NFC_098.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709122A797E10085E14F /* Test_Your_NFC_098.xml */; };
 		2EBB709522A797E10085E14F /* Test_Your_NFC_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */; };
 		2EBB709622A797E10085E14F /* Test_Your_NFC_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */; };
+		2EC3640922DDC1DE0011F179 /* CopyObjectsMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3640822DDC1DE0011F179 /* CopyObjectsMapping.xml */; };
 		2EF32DB522D37A1300D9D5B7 /* VariableMapping2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF32DB422D37A1200D9D5B7 /* VariableMapping2.xml */; };
 		2EF32DB922D4925300D9D5B7 /* VariableMapping3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF32DB822D4925300D9D5B7 /* VariableMapping3.xml */; };
 		2EF437AC22A568DD00E9347B /* SerializeProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */; };
@@ -1530,6 +1531,7 @@
 		2EBB709122A797E10085E14F /* Test_Your_NFC_098.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_098.xml; sourceTree = "<group>"; };
 		2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0993.xml; sourceTree = "<group>"; };
 		2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0994.xml; sourceTree = "<group>"; };
+		2EC3640822DDC1DE0011F179 /* CopyObjectsMapping.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CopyObjectsMapping.xml; sourceTree = "<group>"; };
 		2EF32DB422D37A1200D9D5B7 /* VariableMapping2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VariableMapping2.xml; sourceTree = "<group>"; };
 		2EF32DB822D4925300D9D5B7 /* VariableMapping3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VariableMapping3.xml; sourceTree = "<group>"; };
 		2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeProgramVariableList.swift; sourceTree = "<group>"; };
@@ -3653,6 +3655,7 @@
 				2E734F8322CDD8AC00F38581 /* SoundMapping.xml */,
 				2EF32DB422D37A1200D9D5B7 /* VariableMapping2.xml */,
 				2EF32DB822D4925300D9D5B7 /* VariableMapping3.xml */,
+				2EC3640822DDC1DE0011F179 /* CopyObjectsMapping.xml */,
 			);
 			name = Mapping;
 			path = CattyTests/Resources/ParserTests/Mapping;
@@ -7804,6 +7807,7 @@
 				2E554A9022DC844D00799BCF /* Encapsulated_098.xml in Resources */,
 				4CE2D40D1C29505000938B5E /* Pong_Starter_097.xml in Resources */,
 				4C6D15DE1D7AC5E200CE53CD /* Gossip_Girl_098.xml in Resources */,
+				2EC3640922DDC1DE0011F179 /* CopyObjectsMapping.xml in Resources */,
 				2E554A5A22DC844D00799BCF /* ValidHeader098.xml in Resources */,
 				2E554A4322DC844D00799BCF /* Memory_095.xml in Resources */,
 				2E734F8422CDD8AC00F38581 /* LookMapping.xml in Resources */,
