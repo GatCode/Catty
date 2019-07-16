@@ -177,6 +177,10 @@ extension CBXMLSerializer {
                 currentBrick.addChild(name: "look", attributes: ["reference": msg])
             }
 
+            if let xPos = brick.xPosition, let yPos = brick.yPosition {
+                addFormulaListTo(brick: currentBrick, data: CBFormulaList(formula: [yPos, xPos]))
+            }
+
             if let msg = brick.userVariable {
                 currentBrick.addChild(name: "userVariable", value: msg)
             } else if let varRef = brick.userVariableReference {
