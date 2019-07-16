@@ -587,8 +587,8 @@ extension CBXMLMappingToObjc {
                 resultBrickList.append(newBrick)
             case kThinkForBubbleBrick.uppercased():
                 let newBrick = ThinkForBubbleBrick()
-                newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                newBrick.intFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.intFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
@@ -734,8 +734,8 @@ extension CBXMLMappingToObjc {
                 resultBrickList.append(newBrick)
             case kSayForBubbleBrick.uppercased():
                 let newBrick = SayForBubbleBrick()
-                newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
-                newBrick.intFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.stringFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.intFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)

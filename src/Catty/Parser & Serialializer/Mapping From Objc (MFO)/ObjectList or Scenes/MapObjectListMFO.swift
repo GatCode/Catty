@@ -253,8 +253,7 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
             case kThinkForBubbleBrick.uppercased():
                 let brick = brick as? ThinkForBubbleBrick
-                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula])
-                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula])
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula, brick?.stringFormula])
             // MARK: Sound Bricks
             case kPlaySoundBrick.uppercased():
                 let brick = brick as? PlaySoundBrick
@@ -288,8 +287,8 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.userVariableReference = uVar?.reference
             case kShowTextBrick.uppercased():
                 let brick = brick as? ShowTextBrick
-                mappedBrick.yPosition = mapFormula(formula: brick?.xFormula)
-                mappedBrick.xPosition = mapFormula(formula: brick?.yFormula)
+                mappedBrick.xPosition = mapFormula(formula: brick?.xFormula)
+                mappedBrick.yPosition = mapFormula(formula: brick?.yFormula)
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
@@ -312,13 +311,13 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.userVariableReference = uVar?.reference
             case kInsertItemIntoUserListBrick.uppercased():
                 let brick = brick as? InsertItemIntoUserListBrick
-                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula, brick?.index])
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.index, brick?.elementFormula])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             case kReplaceItemInUserListBrick.uppercased():
                 let brick = brick as? ReplaceItemInUserListBrick
-                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.index, brick?.elementFormula])
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula, brick?.index])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
@@ -331,7 +330,7 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
             case kSayForBubbleBrick.uppercased():
                 let brick = brick as? SayForBubbleBrick
-                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.stringFormula, brick?.intFormula])
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula, brick?.stringFormula])
             default:
                 break
             }

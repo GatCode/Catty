@@ -208,7 +208,7 @@ extension CBXMLSerializer {
     func addFormulasTo(formulaList: AEXMLElement, data: [CBFormula]?) {
         guard let data = data else { return }
 
-        for formula in data.reversed() {
+        for formula in data {
             let currentFormula = formulaList.addChild(name: "formula", attributes: ["category": formula.category ?? ""])
 
             if let msg = formula.leftChild {
