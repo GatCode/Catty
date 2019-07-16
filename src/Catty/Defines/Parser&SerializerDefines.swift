@@ -105,6 +105,9 @@ let kDeleteItemOfUserListBrick: String = "DeleteItemOfUserListBrick"
 let kInsertItemIntoUserListBrick: String = "InsertItemIntoUserListBrick"
 let kReplaceItemInUserListBrick: String = "ReplaceItemInUserListBrick"
 
+let kArduinoSendDigitalValueBrick: String = "ArduinoSendDigitalValueBrick"
+let kArduinoSendPWMValueBrick: String = "ArduinoSendPWMValueBrick"
+
 let kComeToFrontBrick: String = "comeToFrontBrick"
 let kGoNStepsBackBrick: String = "GoNStepsBackBrick"
 let kSayBubbleBrick: String = "SayBubbleBrick"

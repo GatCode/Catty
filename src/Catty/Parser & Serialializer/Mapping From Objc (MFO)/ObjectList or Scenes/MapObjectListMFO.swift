@@ -321,6 +321,13 @@ extension CBXMLMappingFromObjc {
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
+            // MARK: Arduino Bricks
+            case kArduinoSendDigitalValueBrick.uppercased():
+                let brick = brick as? ArduinoSendDigitalValueBrick
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.pin, brick?.value])
+            case kArduinoSendPWMValueBrick.uppercased():
+                let brick = brick as? ArduinoSendPWMValueBrick
+                mappedBrick.formulaList = mapFormulaList(formulas: [brick?.pin, brick?.value])
             // MARK: Alternative Bricks
             case kGoNStepsBackBrick.uppercased():
                 let brick = brick as? GoNStepsBackBrick

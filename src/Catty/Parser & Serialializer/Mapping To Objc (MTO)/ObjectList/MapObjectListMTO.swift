@@ -714,6 +714,21 @@ extension CBXMLMappingToObjc {
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
+            // MARK: Arduino Bricks
+            case kArduinoSendDigitalValueBrick.uppercased():
+                let newBrick = ArduinoSendDigitalValueBrick()
+                newBrick.pin = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.value = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
+                resultBrickList.append(newBrick)
+            case kArduinoSendPWMValueBrick.uppercased():
+                let newBrick = ArduinoSendPWMValueBrick()
+                newBrick.pin = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.value = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
+                newBrick.script = currentScript
+                newBrick.commentedOut = brick.commentedOut
+                resultBrickList.append(newBrick)
             // MARK: Alternative Bricks
             case kComeToFrontBrick.uppercased():
                 let newBrick = ComeToFrontBrick()
