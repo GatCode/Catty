@@ -229,6 +229,8 @@
 		2EBB709522A797E10085E14F /* Test_Your_NFC_0993.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */; };
 		2EBB709622A797E10085E14F /* Test_Your_NFC_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */; };
 		2EC3640922DDC1DE0011F179 /* CopyObjectsMapping.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3640822DDC1DE0011F179 /* CopyObjectsMapping.xml */; };
+		2EC3640C22DE191D0011F179 /* SWXMLHash.license in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3640B22DE191D0011F179 /* SWXMLHash.license */; };
+		2EC3640E22DE19AE0011F179 /* AEXML.license in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3640D22DE19AE0011F179 /* AEXML.license */; };
 		2EF32DB522D37A1300D9D5B7 /* VariableMapping2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF32DB422D37A1200D9D5B7 /* VariableMapping2.xml */; };
 		2EF32DB922D4925300D9D5B7 /* VariableMapping3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2EF32DB822D4925300D9D5B7 /* VariableMapping3.xml */; };
 		2EF437AC22A568DD00E9347B /* SerializeProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */; };
@@ -1532,6 +1534,8 @@
 		2EBB709222A797E10085E14F /* Test_Your_NFC_0993.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0993.xml; sourceTree = "<group>"; };
 		2EBB709322A797E10085E14F /* Test_Your_NFC_0994.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test_Your_NFC_0994.xml; sourceTree = "<group>"; };
 		2EC3640822DDC1DE0011F179 /* CopyObjectsMapping.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CopyObjectsMapping.xml; sourceTree = "<group>"; };
+		2EC3640B22DE191D0011F179 /* SWXMLHash.license */ = {isa = PBXFileReference; lastKnownFileType = text; path = SWXMLHash.license; sourceTree = "<group>"; };
+		2EC3640D22DE19AE0011F179 /* AEXML.license */ = {isa = PBXFileReference; lastKnownFileType = text; path = AEXML.license; sourceTree = "<group>"; };
 		2EF32DB422D37A1200D9D5B7 /* VariableMapping2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VariableMapping2.xml; sourceTree = "<group>"; };
 		2EF32DB822D4925300D9D5B7 /* VariableMapping3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VariableMapping3.xml; sourceTree = "<group>"; };
 		2EF437AB22A568DD00E9347B /* SerializeProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeProgramVariableList.swift; sourceTree = "<group>"; };
@@ -4363,6 +4367,7 @@
 		4C9E2D1D198EA6B600455B77 /* Licenses */ = {
 			isa = PBXGroup;
 			children = (
+				2EC3640D22DE19AE0011F179 /* AEXML.license */,
 				4CDE4CD4203DBBF300B43034 /* BDKNotifyHUD.license */,
 				4CDE4CFF203DBD0B00B43034 /* DVR.license */,
 				4CDE4CDF203DBBF400B43034 /* EVCircularProgressView.license */,
@@ -4381,6 +4386,7 @@
 				4CDE4CD8203DBBF300B43034 /* SPUserResizableView.license */,
 				4CDE4CD0203DBBF200B43034 /* SSZipArchive.license */,
 				4CDE4CFB203DBC8100B43034 /* Siren.license */,
+				2EC3640B22DE191D0011F179 /* SWXMLHash.license */,
 				4CDE4CE1203DBBF400B43034 /* TTTAttributedLabel.license */,
 				4CDE4CDD203DBBF400B43034 /* UIImage+FloodFill.license */,
 				4CDE4CD3203DBBF200B43034 /* UIViewController+KNSemiModal.license */,
@@ -7885,6 +7891,7 @@
 				4CDE4CF9203DBBF500B43034 /* TTTAttributedLabel.license in Resources */,
 				92FF325E1A24E2F400093DA7 /* LICENSE_EVCircularProgressView in Resources */,
 				4C33F214214BC0680014044C /* Document-Icon.png in Resources */,
+				2EC3640C22DE191D0011F179 /* SWXMLHash.license in Resources */,
 				4CDE4CEE203DBBF500B43034 /* minizip.license in Resources */,
 				92D346BD1B8DDC0A009EB8F7 /* LaunchScreen.storyboard in Resources */,
 				598319951FBB813C00639BBF /* Introduction.storyboard in Resources */,
@@ -7896,6 +7903,7 @@
 				4C33F210214BC0200014044C /* Default-568h@2x.png in Resources */,
 				9218B1FD1CC4AB75007B4C60 /* nko_brightness_guide@2x.png in Resources */,
 				4CDE4CF4203DBBF500B43034 /* HMSegmentedControl.license in Resources */,
+				2EC3640E22DE19AE0011F179 /* AEXML.license in Resources */,
 				CADBD6E319B0E8C200C62836 /* Images.xcassets in Resources */,
 				4CDE4CF1203DBBF500B43034 /* YKImageCropperView.license in Resources */,
 				92FF2E9E1A24C7D800093DA7 /* IMPORTANT.caf in Resources */,

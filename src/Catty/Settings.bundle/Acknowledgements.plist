@@ -16,6 +16,12 @@
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>FooterText</key>
+                <string>Catty/Resources/Licenses/AEXML</string>
+            </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSGroupSpecifier</string>
+                <key>FooterText</key>
                 <string>Catty/Resources/Licenses/BDKNotifyHUD</string>
             </dict>
             <dict>
@@ -101,6 +107,12 @@
                 <string>PSGroupSpecifier</string>
                 <key>FooterText</key>
                 <string>Catty/Resources/Licenses/SSZipArchive</string>
+            </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSGroupSpecifier</string>
+                <key>FooterText</key>
+                <string>Catty/Resources/Licenses/SWXMLHash</string>
             </dict>
             <dict>
                 <key>Type</key>
