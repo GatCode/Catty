@@ -248,6 +248,53 @@ class XMLAbstractTest: XCTestCase {
         }
         completion(path, nil)
     }
+
+    func testBackAndForthMappingOfProjectToCBProject(filename: String) -> Bool {
+        var cbProject: CBProject?
+        getProjectForXML(xmlFile: filename) { project, error  in
+            cbProject = project
+        }
+
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
+        guard project != nil else { return false }
+
+        let backMapped = CBXMLMappingFromObjc.mapProjectToCBProject(project: project!)
+        guard backMapped != nil else { return false }
+
+        return checkIfCountsAreEqual(lhs: cbProject!, rhs: backMapped!)
+    }
+
+    func checkIfCountsAreEqual(lhs: CBProject, rhs: CBProject) -> Bool {
+        guard lhs.header == rhs.header else { return false }
+        guard let lhsObjectList = lhs.scenes?.first?.objectList?.object else { return false }
+        guard let rhsObjectList = rhs.scenes?.first?.objectList?.object else { return false }
+        guard lhsObjectList.count == rhsObjectList.count else { return false }
+
+        for (index, object) in lhsObjectList.enumerated() {
+
+            if object.reference?.isEmpty == false || rhsObjectList[index].reference?.isEmpty == false {
+                continue
+            }
+
+            guard object.name == rhsObjectList[index].name else { return false }
+
+            if object.lookList?.look?.count != rhsObjectList[index].lookList?.look?.count {
+                guard object.lookList?.look.pseudoEmpty() == rhsObjectList[index].lookList?.look.pseudoEmpty() else { return false }
+            } else {
+                guard object.lookList?.look?.count == rhsObjectList[index].lookList?.look?.count else { return false }
+            }
+
+            if object.soundList?.sound?.count != rhsObjectList[index].soundList?.sound?.count {
+                guard object.soundList?.sound.pseudoEmpty() == rhsObjectList[index].soundList?.sound.pseudoEmpty() else { return false }
+            } else {
+                guard object.soundList?.sound.pseudoEmpty() == rhsObjectList[index].soundList?.sound.pseudoEmpty() else { return false }
+            }
+
+            guard object.scriptList?.script?.count == rhsObjectList[index].scriptList?.script?.count else { return false }
+        }
+
+        return true
+    }
 }
 
 enum XMLAbstractError: Error {

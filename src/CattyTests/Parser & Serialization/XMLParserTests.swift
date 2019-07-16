@@ -153,4 +153,136 @@ final class XMLParserTests: XMLAbstractTest {
         self.compareProject(firstProjectName: "X_Ray_phone_0992", withProject: "X_Ray_phone_0993")
         self.compareProject(firstProjectName: "X_Ray_phone_0993", withProject: "X_Ray_phone_0994")
     }
+
+    // MARK: - Legacy
+    func testAllLanguageVersionsNyancat() {
+        self.compareProject(firstProjectName: "Nyancat_1.0_091", withProject: "Nyancat_1.0_093")
+        self.compareProject(firstProjectName: "Nyancat_1.0_093", withProject: "Nyancat_1.0_096")
+        self.compareProject(firstProjectName: "Nyancat_1.0_096", withProject: "Nyancat_1.0_097")
+        self.compareProject(firstProjectName: "Nyancat_1.0_097", withProject: "Nyancat_1.0_098")
+        self.compareProject(firstProjectName: "Nyancat_1.0_098", withProject: "Nyancat_1.0_0991")
+    }
+
+    func testAllLanguageVersionsPiano() {
+        self.compareProject(firstProjectName: "Piano_09", withProject: "Piano_093")
+        self.compareProject(firstProjectName: "Piano_093", withProject: "Piano_096")
+        self.compareProject(firstProjectName: "Piano_096", withProject: "Piano_097")
+        self.compareProject(firstProjectName: "Piano_097", withProject: "Piano_098")
+        self.compareProject(firstProjectName: "Piano_098", withProject: "Piano_0991")
+    }
+
+    func testAllLanguageVersionsAirFight() {
+        self.compareProject(firstProjectName: "Air_fight_0.5_091", withProject: "Air_fight_0.5_093")
+        self.compareProject(firstProjectName: "Air_fight_0.5_093", withProject: "Air_fight_0.5_095")
+        self.compareProject(firstProjectName: "Air_fight_0.5_095", withProject: "Air_fight_0.5_096")
+        self.compareProject(firstProjectName: "Air_fight_0.5_097", withProject: "Air_fight_0.5_098")
+        self.compareProject(firstProjectName: "Air_fight_0.5_098", withProject: "Air_fight_0.5_0991")
+    }
+
+    func testAllLanguageVersionsValidProjectAllBricks() {
+        self.compareProject(firstProjectName: "ValidProjectAllBricks093", withProject: "ValidProjectAllBricks095")
+        self.compareProject(firstProjectName: "ValidProjectAllBricks095", withProject: "ValidProjectAllBricks096")
+        self.compareProject(firstProjectName: "ValidProjectAllBricks096", withProject: "ValidProjectAllBricks097")
+        self.compareProject(firstProjectName: "ValidProjectAllBricks097", withProject: "ValidProjectAllBricks098")
+    }
+
+    func testAllLanguageVersionsDemonstration() {
+        self.compareProject(firstProjectName: "Demonstration_09", withProject: "Demonstration_093")
+        self.compareProject(firstProjectName: "Demonstration_093", withProject: "Demonstration_095")
+        self.compareProject(firstProjectName: "Demonstration_095", withProject: "Demonstration_096")
+        self.compareProject(firstProjectName: "Demonstration_096", withProject: "Demonstration_097")
+        self.compareProject(firstProjectName: "Demonstration_097", withProject: "Demonstration_098")
+        self.compareProject(firstProjectName: "Demonstration_098", withProject: "Demonstration_0991")
+    }
+
+    func testAllLanguageVersionsAirplane() {
+        self.compareProject(firstProjectName: "Airplane_with_shadow_091", withProject: "Airplane_with_shadow_093")
+        self.compareProject(firstProjectName: "Airplane_with_shadow_093", withProject: "Airplane_with_shadow_095")
+        self.compareProject(firstProjectName: "Airplane_with_shadow_095", withProject: "Airplane_with_shadow_096")
+        self.compareProject(firstProjectName: "Airplane_with_shadow_096", withProject: "Airplane_with_shadow_097")
+        self.compareProject(firstProjectName: "Airplane_with_shadow_097", withProject: "Airplane_with_shadow_098")
+        self.compareProject(firstProjectName: "Airplane_with_shadow_098", withProject: "Airplane_with_shadow_0991")
+    }
+
+    func testAllLanguageVersionsMemory() {
+        self.compareProject(firstProjectName: "Memory_09", withProject: "Memory_093")
+        self.compareProject(firstProjectName: "Memory_093", withProject: "Memory_095")
+        self.compareProject(firstProjectName: "Memory_095", withProject: "Memory_096")
+        self.compareProject(firstProjectName: "Memory_096", withProject: "Memory_097")
+        self.compareProject(firstProjectName: "Memory_097", withProject: "Memory_098")
+        self.compareProject(firstProjectName: "Memory_098", withProject: "Memory_0991")
+    }
+
+    func testAllLanguageVersionsPythagorean() {
+        self.compareProject(firstProjectName: "Pythagorean_Theorem_092", withProject: "Pythagorean_Theorem_093")
+        self.compareProject(firstProjectName: "Pythagorean_Theorem_093", withProject: "Pythagorean_Theorem_095")
+        self.compareProject(firstProjectName: "Pythagorean_Theorem_095", withProject: "Pythagorean_Theorem_096")
+        self.compareProject(firstProjectName: "Pythagorean_Theorem_096", withProject: "Pythagorean_Theorem_097")
+        self.compareProject(firstProjectName: "Pythagorean_Theorem_097", withProject: "Pythagorean_Theorem_098")
+        self.compareProject(firstProjectName: "Pythagorean_Theorem_098", withProject: "Pythagorean_Theorem_0991")
+    }
+
+    func testAllLanguageVersionsValidHeader() {
+        self.compareProject(firstProjectName: "ValidHeader095", withProject: "ValidHeader096")
+        self.compareProject(firstProjectName: "ValidHeader096", withProject: "ValidHeader097")
+        self.compareProject(firstProjectName: "ValidHeader097", withProject: "ValidHeader098")
+        self.compareProject(firstProjectName: "ValidHeader098", withProject: "ValidHeader0991")
+    }
+
+    func testAllLanguageVersionsMinecraft() {
+        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_092", withProject: "Minecraft_Work_In_Progress_093")
+        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_093", withProject: "Minecraft_Work_In_Progress_095")
+        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_095", withProject: "Minecraft_Work_In_Progress_096")
+        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_096", withProject: "Minecraft_Work_In_Progress_097")
+        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_097", withProject: "Minecraft_Work_In_Progress_098")
+        self.compareProject(firstProjectName: "Minecraft_Work_In_Progress_098", withProject: "Minecraft_Work_In_Progress_0991")
+    }
+
+    func testAllLanguageVersionsDrinkMoreWater() {
+        self.compareProject(firstProjectName: "Drink_more_water_09", withProject: "Drink_more_water_093")
+        self.compareProject(firstProjectName: "Drink_more_water_093", withProject: "Drink_more_water_095")
+        self.compareProject(firstProjectName: "Drink_more_water_095", withProject: "Drink_more_water_096")
+        self.compareProject(firstProjectName: "Drink_more_water_096", withProject: "Drink_more_water_097")
+        self.compareProject(firstProjectName: "Drink_more_water_097", withProject: "Drink_more_water_098")
+        self.compareProject(firstProjectName: "Drink_more_water_098", withProject: "Drink_more_water_0991")
+    }
+
+    func testAllLanguageVersionsSolarSystem() {
+        self.compareProject(firstProjectName: "Solar_System_v1.0_097", withProject: "Solar_System_v1.0_098")
+        self.compareProject(firstProjectName: "Solar_System_v1.0_098", withProject: "Solar_System_v1.0_0991")
+    }
+
+    func testAllLanguageVersionsValidProject() {
+        self.compareProject(firstProjectName: "ValidProject095", withProject: "ValidProject096")
+        self.compareProject(firstProjectName: "ValidProject096", withProject: "ValidProject097")
+        self.compareProject(firstProjectName: "ValidProject097", withProject: "ValidProject098")
+        self.compareProject(firstProjectName: "ValidProject098", withProject: "ValidProject0991")
+    }
+
+    func testAllLanguageVersionsCompass() {
+        self.compareProject(firstProjectName: "Compass_0.1_091", withProject: "Compass_0.1_093")
+        self.compareProject(firstProjectName: "Compass_0.1_093", withProject: "Compass_0.1_095")
+        self.compareProject(firstProjectName: "Compass_0.1_095", withProject: "Compass_0.1_096")
+        self.compareProject(firstProjectName: "Compass_0.1_096", withProject: "Compass_0.1_097")
+        self.compareProject(firstProjectName: "Compass_0.1_097", withProject: "Compass_0.1_098")
+        self.compareProject(firstProjectName: "Compass_0.1_098", withProject: "Compass_0.1_0991")
+    }
+
+    func testAllLanguageVersionsEncapsulated() {
+        self.compareProject(firstProjectName: "Encapsulated_097", withProject: "Encapsulated_098")
+        self.compareProject(firstProjectName: "Encapsulated_098", withProject: "Encapsulated_0991")
+    }
+
+    func testAllLanguageVersionsLedFlashBrick() {
+        self.compareProject(firstProjectName: "LedFlashBrick098", withProject: "LedFlashBrick0991")
+    }
+
+    func testAllLanguageVersionsSkydivingSteve() {
+        self.compareProject(firstProjectName: "Skydiving_Steve_092", withProject: "Skydiving_Steve_093")
+        self.compareProject(firstProjectName: "Skydiving_Steve_093", withProject: "Skydiving_Steve_095")
+        self.compareProject(firstProjectName: "Skydiving_Steve_095", withProject: "Skydiving_Steve_096")
+        self.compareProject(firstProjectName: "Skydiving_Steve_096", withProject: "Skydiving_Steve_097")
+        self.compareProject(firstProjectName: "Skydiving_Steve_097", withProject: "Skydiving_Steve_098")
+        self.compareProject(firstProjectName: "Skydiving_Steve_098", withProject: "Skydiving_Steve_0991")
+    }
 }

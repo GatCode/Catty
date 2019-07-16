@@ -226,6 +226,10 @@ extension CBXMLMappingToObjc {
             }
         }
 
+        if let objectIdx = object?.0 {
+            guard objectIdx < objectList.count else { return (object?.0, script?.0, brick?.0) }
+        }
+
         let objForUpdate = objectList.isEmpty == false ? objectList[object?.0 ?? 0] : nil
         let scriptList = objForUpdate?.scriptList?.script
 
@@ -241,6 +245,10 @@ extension CBXMLMappingToObjc {
                 }
                 resNr += 1
             }
+        }
+
+        if let scriptListCount = scriptList?.count, let scriptIdx = script?.0 {
+            guard scriptIdx < scriptListCount else { return (object?.0, script?.0, brick?.0) }
         }
 
         let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil

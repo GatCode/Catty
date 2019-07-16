@@ -201,7 +201,7 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
             case kPointToBrick.uppercased():
                 let brick = brick as? PointToBrick
-            //mappedBrick.pointedObject = resolveObjectPath(project: project, object: brick?.pointedObject) // TODO!
+                mappedBrick.pointedObjectReference = "../../" + (resolveObjectPath(project: project, object: brick?.pointedObject) ?? "")
             case kGlideToBrick.uppercased():
                 let brick = brick as? GlideToBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.yDestination, brick?.xDestination])

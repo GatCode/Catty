@@ -830,14 +830,14 @@ extension CBXMLMappingToObjc {
             splittedReference = splittedReference.filter { $0 != ".." }
             if splittedReference.count == 2 {
                 let resolvedReference = resolveReferenceStringExtraShort(reference: reference, project: project, script: script)
-                if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count {
+                if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
                     return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx], isList: isList)
                 }
             } else if splittedReference.count == 4 {
                 let resolvedReference = resolveReferenceStringShort(reference: reference, project: project, object: object)
                 if let sIdx = resolvedReference?.0, let bIdx = resolvedReference?.1 {
                     if let scriptList = object.scriptList?.script, sIdx < scriptList.count {
-                        if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
+                        if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
                             return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx], isList: isList)
                         }
                     }
@@ -847,7 +847,7 @@ extension CBXMLMappingToObjc {
                 if let oIdx = resolvedReference?.0, let sIdx = resolvedReference?.1, let bIdx = resolvedReference?.2 {
                     if let objectList = project.scenes?.first?.objectList?.object, oIdx < objectList.count {
                         if let scriptList = objectList[oIdx].scriptList?.script, sIdx < scriptList.count {
-                            if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
+                            if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
                                 return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx], isList: isList)
                             }
                         }

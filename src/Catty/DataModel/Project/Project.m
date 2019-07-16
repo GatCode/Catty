@@ -165,6 +165,7 @@
                 [notificationCenter postNotificationName:kShowSavedViewNotification object:self];
             });
         }
+        
         NSString *xmlPath = [NSString stringWithFormat:@"%@%@", [self projectPath], kProjectCodeFileName];
         CBXMLSerializer* serializer = [CBXMLSerializer alloc];
         NSString *serializationResult = [serializer serializeProjectObjcWithProject:self xmlPath:xmlPath fileManager:fileManager];
