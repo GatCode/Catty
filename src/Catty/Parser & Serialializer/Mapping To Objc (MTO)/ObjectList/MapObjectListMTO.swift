@@ -96,11 +96,6 @@ extension CBXMLMappingToObjc {
         newLook.name = name
         newLook.fileName = filename
 
-        for look in mappingLookList where look.name == newLook.name && look.fileName == newLook.fileName {
-            return look
-        }
-
-        mappingLookList.append(newLook)
         return newLook
     }
 

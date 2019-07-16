@@ -22,7 +22,6 @@
 
 enum CBXMLMappingToObjc {
 
-    static var mappingLookList = [Look]()
     static var mappingSoundList = [Sound]()
     static var mappingVariableListGlobal = [UserVariable]()
     static var mappingVariableListLocal = [UserVariable]()
@@ -32,7 +31,6 @@ enum CBXMLMappingToObjc {
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
         var mappedProject = Project()
-        CBXMLMappingToObjc.mappingLookList.removeAll()
         CBXMLMappingToObjc.mappingSoundList.removeAll()
         CBXMLMappingToObjc.mappingVariableListGlobal.removeAll()
         CBXMLMappingToObjc.unsupportedElements.removeAll()
