@@ -709,8 +709,8 @@ extension CBXMLMappingToObjc {
                 let newBrick = ReplaceItemInUserListBrick()
                 newBrick.userList = resolveUserVariable(project: project, object: object, script: script, brick: brick, isList: true)
                 newBrick.uVar = newBrick.userList
-                newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
-                newBrick.index = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.elementFormula = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
+                newBrick.index = mapFormulaListToBrick(input: brick)?.lastObject as? Formula
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)
