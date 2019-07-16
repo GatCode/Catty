@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+// swiftlint:disable large_tuple
+
 extension CBXMLMappingFromObjc {
 
     // MARK: - Map ObjectVariableList
@@ -34,18 +36,6 @@ extension CBXMLMappingFromObjc {
         return CBObjectVariableList(entry: mappedEntries)
     }
 
-    // MARK: - Map ObjectListOfLists
-    static func mapObjectListOfLists(project: Project) -> CBObjectListofList {
-
-        var mappedEntries = [CBObjectListOfListEntry]()
-
-        for index in 0..<project.variables.objectListOfLists.count() {
-            mappedEntries.append(mapObjectListOfListsEntry(project: project, referencedIndex: index))
-        }
-
-        return CBObjectListofList(entry: mappedEntries)
-    }
-
     static func mapObjectVariableListEntry(project: Project, referencedIndex: UInt) -> CBObjectVariableEntry {
         let referencedObject = project.variables.objectVariableList.key(at: referencedIndex)
         let referencedVariableList = project.variables.objectVariableList.object(at: referencedIndex)
@@ -56,6 +46,18 @@ extension CBXMLMappingFromObjc {
         let list = mapObjectVariableListEntryList(project: project, list: userVariableList, object: spriteObject, objectPath: object, isList: false)
 
         return CBObjectVariableEntry(object: object, list: list)
+    }
+
+    // MARK: - Map ObjectListOfLists
+    static func mapObjectListOfLists(project: Project) -> CBObjectListofList {
+
+        var mappedEntries = [CBObjectListOfListEntry]()
+
+        for index in 0..<project.variables.objectListOfLists.count() {
+            mappedEntries.append(mapObjectListOfListsEntry(project: project, referencedIndex: index))
+        }
+
+        return CBObjectListofList(entry: mappedEntries)
     }
 
     static func mapObjectListOfListsEntry(project: Project, referencedIndex: UInt) -> CBObjectListOfListEntry {
@@ -70,6 +72,33 @@ extension CBXMLMappingFromObjc {
         return CBObjectListOfListEntry(object: object, list: list)
     }
 
+    // MARK: - Map ProgramVariableList
+    static func mapProgramVariableList(project: Project) -> CBProgramVariableList {
+        var mappedProgramVariables = [CBUserProgramVariable]()
+
+        for variable in globalVariableList where variable.1 == false {
+            for v in CBXMLMappingFromObjc.userVariableList where v.0?.name == variable.0 {
+                mappedProgramVariables.append(CBUserProgramVariable(reference: resolveProgramVariableOrListOfListsUVarPosition(position: v.1, isList: false)))
+            }
+        }
+
+        return CBProgramVariableList(userVariable: mappedProgramVariables)
+    }
+
+    // MARK: - Map ProgramListOfLists
+    static func mapProgramListOfLists(project: Project) -> CBProgramListOfLists {
+        var mappedProgramVariables = [CBProgramList]()
+
+        for variable in globalVariableList where variable.1 == true {
+            for v in CBXMLMappingFromObjc.userVariableList where v.0?.name == variable.0 {
+                mappedProgramVariables.append(CBProgramList(reference: resolveProgramVariableOrListOfListsUVarPosition(position: v.1, isList: true)))
+            }
+        }
+
+        return CBProgramListOfLists(list: mappedProgramVariables)
+    }
+
+    // MARK: - Helper functions
     static func resolveObjectPath(project: Project, object: SpriteObject?) -> String? {
         guard let object = object else { return nil }
 
@@ -85,7 +114,6 @@ extension CBXMLMappingFromObjc {
         guard let list = list else { return nil }
         guard let objectPath = objectPath else { return nil }
         var mappedUserVariables = [CBUserVariable]()
-        // TODO: this just works for 0.991
         for userVariable in list {
             if CBXMLMappingFromObjc.globalVariableList.contains(where: { $0.0 == userVariable.name && $0.1 == isList }) == false {
                 if let referencedDictionary = CBXMLMappingFromObjc.localVariableList.first(where: { $0.0 == object }) {
@@ -94,7 +122,7 @@ extension CBXMLMappingFromObjc {
                             let scrString = referencedUserVariablePosition.1.1 == 0 ? "script/" : "script[\(referencedUserVariablePosition.1.1 + 1)]/"
                             let brString = referencedUserVariablePosition.1.2 == 0 ? "brick/" : "brick[\(referencedUserVariablePosition.1.2 + 1)]/"
                             let referenceString = "../" + objectPath + "/scriptList/" + scrString + "brickList/" + brString + (isList ? "userList" : "userVariable")
-                            mappedUserVariables.append(CBUserVariable(value: "userVariable", reference: referenceString))
+                            mappedUserVariables.append(CBUserVariable(value: (isList ? "userList" : "userVariable"), reference: referenceString))
                         }
                     }
                 }
@@ -105,7 +133,7 @@ extension CBXMLMappingFromObjc {
                     let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
                     let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
                     let referenceString = "../../../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + (isList ? "userList" : "userVariable")
-                    mappedUserVariables.append(CBUserVariable(value: "userVariable", reference: referenceString))
+                    mappedUserVariables.append(CBUserVariable(value: (isList ? "userList" : "userVariable"), reference: referenceString))
                 }
             }
         }
@@ -113,49 +141,17 @@ extension CBXMLMappingFromObjc {
         return mappedUserVariables
     }
 
-    // MARK: - Map ProgramVariableList
-    static func mapProgramVariableList(project: Project) -> CBProgramVariableList {
-        var mappedProgramVariables = [CBUserProgramVariable]()
-
-        for variable in globalVariableList where variable.1 == false {
-            for v in CBXMLMappingFromObjc.userVariableList where v.0?.name == variable.0 {
-                let referencedPosition = v.1
-                let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
-                let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
-                let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                var referenceString = ""
-                if CBXMLSerializer.serializeInCBL991 {
-                    referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
-                } else {
-                    referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userVariable"
-                }
-                mappedProgramVariables.append(CBUserProgramVariable(reference: referenceString))
-            }
+    static func resolveProgramVariableOrListOfListsUVarPosition(position: (Int, Int, Int), isList: Bool) -> String {
+        let objString = position.0 == 0 ? "object/" : "object[\(position.0 + 1)]/"
+        let scrString = position.1 == 0 ? "script/" : "script[\(position.1 + 1)]/"
+        let brString = position.2 == 0 ? "brick/" : "brick[\(position.2 + 1)]/"
+        var referenceString = ""
+        if CBXMLSerializer.serializeInCBL991 {
+            referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + (isList ? "userList" : "userVariable")
+        } else {
+            referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + (isList ? "userList" : "userVariable")
         }
 
-        return CBProgramVariableList(userVariable: mappedProgramVariables)
-    }
-
-    // MARK: - Map ProgramListOfLists
-    static func mapProgramListOfLists(project: Project) -> CBProgramListOfLists {
-        var mappedProgramVariables = [CBProgramList]()
-
-        for variable in globalVariableList where variable.1 == true {
-            for v in CBXMLMappingFromObjc.userVariableList where v.0?.name == variable.0 {
-                let referencedPosition = v.1
-                let objString = referencedPosition.0 == 0 ? "object/" : "object[\(referencedPosition.0 + 1)]/"
-                let scrString = referencedPosition.1 == 0 ? "script/" : "script[\(referencedPosition.1 + 1)]/"
-                let brString = referencedPosition.2 == 0 ? "brick/" : "brick[\(referencedPosition.2 + 1)]/"
-                var referenceString = ""
-                if CBXMLSerializer.serializeInCBL991 {
-                    referenceString = "../../../objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
-                } else {
-                    referenceString = "../../scenes/scene/objectList/" + objString + "scriptList/" + scrString + "brickList/" + brString + "userList"
-                }
-                mappedProgramVariables.append(CBProgramList(reference: referenceString))
-            }
-        }
-
-        return CBProgramListOfLists(list: mappedProgramVariables)
+        return referenceString
     }
 }

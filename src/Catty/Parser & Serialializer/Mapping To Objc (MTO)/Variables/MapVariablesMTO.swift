@@ -96,7 +96,7 @@ extension CBXMLMappingToObjc {
                                     referencedList.append(element.pointee)
                                 }
                             } else if let value = list.value {
-                                referencedList.append(allocUserVariable(name: value, isList: true)) // TODO: enentual error because of global?
+                                referencedList.append(allocLocalUserVariable(name: value, isList: true))
                             }
                         }
 
@@ -128,7 +128,7 @@ extension CBXMLMappingToObjc {
                                     referencedList.append(element.pointee)
                                 }
                             } else if let value = list.value {
-                                referencedList.append(allocUserVariable(name: value, isList: false)) // TODO: enentual error because of global?
+                                referencedList.append(allocLocalUserVariable(name: value, isList: false))
                             }
                         }
 

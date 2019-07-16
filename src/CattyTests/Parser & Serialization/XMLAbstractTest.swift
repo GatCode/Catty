@@ -251,7 +251,7 @@ class XMLAbstractTest: XCTestCase {
 
     func testBackAndForthMappingOfProjectToCBProject(filename: String) -> Bool {
         var cbProject: CBProject?
-        getProjectForXML(xmlFile: filename) { project, error  in
+        getProjectForXML(xmlFile: filename) { project, _  in
             cbProject = project
         }
 

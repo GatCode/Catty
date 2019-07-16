@@ -41,7 +41,7 @@ enum CBXMLMappingFromObjc {
         CBXMLMappingFromObjc.extractGlobalUserVariables(project: project)
         CBXMLMappingFromObjc.extractSpriteObjects(project: project)
         mappedProject.header = mapHeader(project: project)
-        // TODO: map settings
+        // settings need to be mapped for the CBL 0.994 upgrade
         mappedProject.scenes = CBXMLMappingFromObjc.mapScenesToCBProject(project: project)
         mappedProject.programVariableList = CBXMLMappingFromObjc.mapProgramVariableList(project: project)
         mappedProject.programListOfLists = CBXMLMappingFromObjc.mapProgramListOfLists(project: project)
