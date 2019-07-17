@@ -28,11 +28,11 @@ final class XMLMappingTests: XMLAbstractTest {
 
     func createBasicCBProject() -> CBProject {
         let sceneList = [CBProjectScene(name: "Scene1")]
-        let objectList = CBObjectList(object: [CBObject(name: "Object1"), CBObject(name: "Object2")])
-        let lookList = CBLookList(look: [CBLook(name: "Look1", fileName: "File1"), CBLook(name: "Look2", fileName: "File1")])
-        let soundList = CBSoundList(sound: [CBSound(fileName: "File1", name: "Sound1", reference: "../ref1"), CBSound(fileName: "File2", name: "Sound2", reference: "../ref2")])
-        let scriptList = CBScriptList(script: [CBScript(type: "Script"), CBScript(type: "BroadcastScript")])
-        let brickList = CBBrickList(brick: [CBBrick(type: "SetVariableBrick"), CBBrick(type: "SetVariableBrick")])
+        let objectList = CBObjectList(objects: [CBObject(name: "Object1"), CBObject(name: "Object2")])
+        let lookList = CBLookList(looks: [CBLook(name: "Look1", fileName: "File1"), CBLook(name: "Look2", fileName: "File1")])
+        let soundList = CBSoundList(sounds: [CBSound(fileName: "File1", name: "Sound1", reference: "../ref1"), CBSound(fileName: "File2", name: "Sound2", reference: "../ref2")])
+        let scriptList = CBScriptList(scripts: [CBScript(type: "Script"), CBScript(type: "BroadcastScript")])
+        let brickList = CBBrickList(bricks: [CBBrick(type: "SetVariableBrick"), CBBrick(type: "SetVariableBrick")])
         let userVariable = "UVar1"
         let userList = "UList1"
 
@@ -40,15 +40,15 @@ final class XMLMappingTests: XMLAbstractTest {
         cbProject.scenes = sceneList
         for sceneIdx in 0..<(cbProject.scenes?.count)! {
             cbProject.scenes?[sceneIdx].objectList = objectList
-            for objectIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.object?.count)! {
-                cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].lookList = lookList
-                cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].soundList = soundList
-                cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList = scriptList
-                for scriptIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?.count)! {
-                    cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList = brickList
-                    for brickIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList?.brick?.count)! {
-                        cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList?.brick?[brickIdx].userVariable = userVariable
-                        cbProject.scenes?[sceneIdx].objectList?.object?[objectIdx].scriptList?.script?[scriptIdx].brickList?.brick?[brickIdx].userList = userList
+            for objectIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.objects?.count)! {
+                cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].lookList = lookList
+                cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].soundList = soundList
+                cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].scriptList = scriptList
+                for scriptIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].scriptList?.scripts?.count)! {
+                    cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].scriptList?.scripts?[scriptIdx].brickList = brickList
+                    for brickIdx in 0..<(cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].scriptList?.scripts?[scriptIdx].brickList?.bricks?.count)! {
+                        cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].scriptList?.scripts?[scriptIdx].brickList?.bricks?[brickIdx].userVariable = userVariable
+                        cbProject.scenes?[sceneIdx].objectList?.objects?[objectIdx].scriptList?.scripts?[scriptIdx].brickList?.bricks?[brickIdx].userList = userList
                     }
                 }
             }
@@ -61,7 +61,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
         let programVariableListEntries = [CBUserProgramVariable(value: "Value1"), CBUserProgramVariable(value: "Value2")]
         let programVariableList = CBProgramVariableList(userVariable: programVariableListEntries)
-        let programListOfListsEntries = [CBProgramList(name: "Value1"), CBProgramList(name: "Value2")]
+        let programListOfListsEntries = [CBProgramList(value: "Value1"), CBProgramList(value: "Value2")]
         let programListOfLists = CBProgramListOfLists(list: programListOfListsEntries)
 
         var cbProject = createBasicCBProject()
@@ -77,7 +77,7 @@ final class XMLMappingTests: XMLAbstractTest {
 
         let referencedList = "../../../objectList/object/scriptList/script/brickList/brick/userList"
         let referencedVariable = "../../../objectList/object/scriptList/script/brickList/brick/userVariable"
-        let referencedVariableName = cbProject.scenes?[0].objectList?.object?[0].scriptList?.script?[0].brickList?.brick?[0].userVariable
+        let referencedVariableName = cbProject.scenes?[0].objectList?.objects?[0].scriptList?.scripts?[0].brickList?.bricks?[0].userVariable
 
         let programVariableList = CBProgramVariableList(userVariable: [CBUserProgramVariable(reference: referencedVariable)])
         let programListOfLists = CBProgramListOfLists(list: [CBProgramList(reference: referencedList)])
@@ -117,7 +117,7 @@ final class XMLMappingTests: XMLAbstractTest {
         var cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        let cbObjectList = cbProject.scenes?[0].objectList?.object
+        let cbObjectList = cbProject.scenes?[0].objectList?.objects
         let mappedObjectList = project?.objectList
 
         XCTAssertEqual(cbObjectList?.count, mappedObjectList?.count)
@@ -129,20 +129,20 @@ final class XMLMappingTests: XMLAbstractTest {
         var cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
         let mappedObjectsCount = project?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
-            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
             let mappedObject = project?.objectList[oIdx] as? SpriteObject
 
-            let cbLookCount = cbObject?.lookList?.look?.count
+            let cbLookCount = cbObject?.lookList?.looks?.count
             let mappedLookCount = mappedObject?.lookList.count
             XCTAssertEqual(cbLookCount, mappedLookCount)
 
             for lIdx in 0..<cbLookCount! {
-                let cbLook = cbObject?.lookList?.look?[lIdx]
+                let cbLook = cbObject?.lookList?.looks?[lIdx]
                 let mappedLook = mappedObject?.lookList[lIdx] as? Look
 
                 XCTAssertEqual(cbLook?.name, mappedLook?.name)
@@ -155,20 +155,20 @@ final class XMLMappingTests: XMLAbstractTest {
         var cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
         let mappedObjectsCount = project?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
-            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
             let mappedObject = project?.objectList[oIdx] as? SpriteObject
 
-            let cbSoundCount = cbObject?.soundList?.sound?.count
+            let cbSoundCount = cbObject?.soundList?.sounds?.count
             let mappedSoundCount = mappedObject?.soundList.count
             XCTAssertEqual(cbSoundCount, mappedSoundCount)
 
             for sIdx in 0..<cbSoundCount! {
-                let cbSound = cbObject?.soundList?.sound?[sIdx]
+                let cbSound = cbObject?.soundList?.sounds?[sIdx]
                 let mappedSound = mappedObject?.soundList[sIdx] as? Sound
 
                 XCTAssertEqual(cbSound?.name, mappedSound?.name)
@@ -181,20 +181,20 @@ final class XMLMappingTests: XMLAbstractTest {
         var cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
         let mappedObjectsCount = project?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
-            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
             let mappedObject = project?.objectList[oIdx] as? SpriteObject
 
-            let cbScriptCount = cbObject?.scriptList?.script?.count
+            let cbScriptCount = cbObject?.scriptList?.scripts?.count
             let mappedScriptCount = mappedObject?.scriptList.count
             XCTAssertEqual(cbScriptCount, mappedScriptCount)
 
             for sIdx in 0..<cbScriptCount! {
-                let cbScript = cbObject?.scriptList?.script?[sIdx]
+                let cbScript = cbObject?.scriptList?.scripts?[sIdx]
                 let mappedScript = mappedObject?.scriptList[sIdx] as? Script
 
                 XCTAssertNotNil(cbScript?.type)
@@ -207,28 +207,28 @@ final class XMLMappingTests: XMLAbstractTest {
         var cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        let cbObjectsCount = cbProject.scenes?[0].objectList?.object?.count
+        let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
         let mappedObjectsCount = project?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
-            let cbObject = cbProject.scenes?[0].objectList?.object?[oIdx]
+            let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
             let mappedObject = project?.objectList[oIdx] as? SpriteObject
 
-            let cbScriptCount = cbObject?.scriptList?.script?.count
+            let cbScriptCount = cbObject?.scriptList?.scripts?.count
             let mappedScriptCount = mappedObject?.scriptList.count
             XCTAssertEqual(cbScriptCount, mappedScriptCount)
 
             for sIdx in 0..<cbScriptCount! {
-                let cbScript = cbObject?.scriptList?.script?[sIdx]
+                let cbScript = cbObject?.scriptList?.scripts?[sIdx]
                 let mappedScript = mappedObject?.scriptList[sIdx] as? Script
 
-                let cbBrickCount = cbScript?.brickList?.brick?.count
+                let cbBrickCount = cbScript?.brickList?.bricks?.count
                 let mappedBrickCount = mappedScript?.brickList.count
                 XCTAssertEqual(cbBrickCount, mappedBrickCount)
 
                 for bIdx in 0..<cbBrickCount! {
-                    let cbBrick = cbScript?.brickList?.brick?[bIdx]
+                    let cbBrick = cbScript?.brickList?.bricks?[bIdx]
                     let mappedBrick = mappedScript?.brickList[bIdx] as? Brick
 
                     XCTAssertNotNil(cbBrick?.type)
@@ -276,7 +276,7 @@ final class XMLMappingTests: XMLAbstractTest {
             let cbVar = cbProject.programListOfLists?.list?[vIdx]
             let mappedVar = project?.variables.programListOfLists[vIdx] as? UserVariable
 
-            XCTAssertEqual(cbVar?.name, mappedVar?.name)
+            XCTAssertEqual(cbVar?.value, mappedVar?.name)
         }
     }
 

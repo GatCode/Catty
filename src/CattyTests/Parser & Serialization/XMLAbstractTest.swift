@@ -266,8 +266,8 @@ class XMLAbstractTest: XCTestCase {
 
     func checkIfCountsAreEqual(lhs: CBProject, rhs: CBProject) -> Bool {
         guard lhs.header == rhs.header else { return false }
-        guard let lhsObjectList = lhs.scenes?.first?.objectList?.object else { return false }
-        guard let rhsObjectList = rhs.scenes?.first?.objectList?.object else { return false }
+        guard let lhsObjectList = lhs.scenes?.first?.objectList?.objects else { return false }
+        guard let rhsObjectList = rhs.scenes?.first?.objectList?.objects else { return false }
         guard lhsObjectList.count == rhsObjectList.count else { return false }
 
         for (index, object) in lhsObjectList.enumerated() {
@@ -278,19 +278,19 @@ class XMLAbstractTest: XCTestCase {
 
             guard object.name == rhsObjectList[index].name else { return false }
 
-            if object.lookList?.look?.count != rhsObjectList[index].lookList?.look?.count {
-                guard object.lookList?.look.pseudoEmpty() == rhsObjectList[index].lookList?.look.pseudoEmpty() else { return false }
+            if object.lookList?.looks?.count != rhsObjectList[index].lookList?.looks?.count {
+                guard object.lookList?.looks.pseudoEmpty() == rhsObjectList[index].lookList?.looks.pseudoEmpty() else { return false }
             } else {
-                guard object.lookList?.look?.count == rhsObjectList[index].lookList?.look?.count else { return false }
+                guard object.lookList?.looks?.count == rhsObjectList[index].lookList?.looks?.count else { return false }
             }
 
-            if object.soundList?.sound?.count != rhsObjectList[index].soundList?.sound?.count {
-                guard object.soundList?.sound.pseudoEmpty() == rhsObjectList[index].soundList?.sound.pseudoEmpty() else { return false }
+            if object.soundList?.sounds?.count != rhsObjectList[index].soundList?.sounds?.count {
+                guard object.soundList?.sounds.pseudoEmpty() == rhsObjectList[index].soundList?.sounds.pseudoEmpty() else { return false }
             } else {
-                guard object.soundList?.sound.pseudoEmpty() == rhsObjectList[index].soundList?.sound.pseudoEmpty() else { return false }
+                guard object.soundList?.sounds.pseudoEmpty() == rhsObjectList[index].soundList?.sounds.pseudoEmpty() else { return false }
             }
 
-            guard object.scriptList?.script?.count == rhsObjectList[index].scriptList?.script?.count else { return false }
+            guard object.scriptList?.scripts?.count == rhsObjectList[index].scriptList?.scripts?.count else { return false }
         }
 
         return true

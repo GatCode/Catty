@@ -431,13 +431,17 @@ extension CBXMLMappingToObjc {
                 let newBrick = GlideToBrick()
                 let formulaTreeMapping = mapFormulaListToBrick(input: brick)
                 guard let formulaMapping = formulaTreeMapping else { break }
-                newBrick.durationInSeconds = formulaMapping.firstObject as? Formula
-                if formulaMapping.count >= 3 {
-                    newBrick.xDestination = formulaMapping[2] as? Formula
-                    newBrick.yDestination = formulaMapping[1] as? Formula
-                } else {
-                    newBrick.xDestination = mapGlideDestinations(input: brick, xDestination: true)?.lastObject as? Formula
-                    newBrick.yDestination = mapGlideDestinations(input: brick, xDestination: false)?.firstObject as? Formula
+                if formulaMapping.count >= 3, let mapping = formulaMapping as? [Formula] {
+                    newBrick.xDestination = mapping[1]
+                    if mapping[0].category == "Y_DESTINATION" {
+                        newBrick.reversedParsingOrder = false
+                        newBrick.yDestination = mapping[0]
+                        newBrick.durationInSeconds = mapping[2]
+                    } else {
+                        newBrick.reversedParsingOrder = true
+                        newBrick.yDestination = mapping[2]
+                        newBrick.durationInSeconds = mapping[0]
+                    }
                 }
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut

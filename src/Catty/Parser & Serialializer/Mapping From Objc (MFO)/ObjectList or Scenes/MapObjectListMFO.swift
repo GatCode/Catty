@@ -204,7 +204,11 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.pointedObjectReference = "../../" + (resolveObjectPath(project: project, object: brick?.pointedObject) ?? "")
             case kGlideToBrick.uppercased():
                 let brick = brick as? GlideToBrick
-                mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.yDestination, brick?.xDestination])
+                if let order = brick?.reversedParsingOrder, order == true {
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.xDestination, brick?.yDestination])
+                } else {
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yDestination, brick?.xDestination, brick?.durationInSeconds])
+                }
             case kVibrationBrick.uppercased():
                 let brick = brick as? VibrationBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds])
