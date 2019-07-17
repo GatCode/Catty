@@ -432,15 +432,16 @@ extension CBXMLMappingToObjc {
                 let formulaTreeMapping = mapFormulaListToBrick(input: brick)
                 guard let formulaMapping = formulaTreeMapping else { break }
                 if formulaMapping.count >= 3, let mapping = formulaMapping as? [Formula] {
-                    newBrick.xDestination = mapping[1]
                     if mapping[0].category == "Y_DESTINATION" {
                         newBrick.reversedParsingOrder = false
                         newBrick.yDestination = mapping[0]
+                        newBrick.xDestination = mapping[1]
                         newBrick.durationInSeconds = mapping[2]
                     } else {
                         newBrick.reversedParsingOrder = true
-                        newBrick.yDestination = mapping[2]
                         newBrick.durationInSeconds = mapping[0]
+                        newBrick.yDestination = mapping[1].category == "Y_DESTINATION" ? mapping[1] : mapping[2]; newBrick.reversedSerializationOrder = true
+                        newBrick.xDestination = mapping[1].category == "Y_DESTINATION" ? mapping[2] : mapping[1]; newBrick.reversedSerializationOrder = true
                     }
                 } else {
                     newBrick.reversedParsingOrder = true
