@@ -442,6 +442,12 @@ extension CBXMLMappingToObjc {
                         newBrick.yDestination = mapping[2]
                         newBrick.durationInSeconds = mapping[0]
                     }
+                } else {
+                    newBrick.reversedParsingOrder = true
+                    newBrick.durationInSeconds = formulaMapping.firstObject as? Formula
+                    let mappedDestinations = mapXYDestinationsToBrick(input: brick)
+                    newBrick.xDestination = mappedDestinations?.firstObject as? Formula
+                    newBrick.yDestination = mappedDestinations?.lastObject as? Formula
                 }
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
@@ -929,6 +935,30 @@ extension CBXMLMappingToObjc {
             }
         } else {
             return nil
+        }
+
+        return NSMutableArray(array: formulaList)
+    }
+
+    static func mapXYDestinationsToBrick(input: CBBrick?) -> NSMutableArray? {
+        var formulaList = [Formula]()
+
+        if let xDestination = input?.xDestination?.formulas {
+            for formula in xDestination {
+                let mappedFormula = mapCBFormulaToFormula(input: formula)
+                if formulaList.contains(mappedFormula) == false {
+                    formulaList.append(mappedFormula)
+                }
+            }
+        }
+
+        if let yDestination = input?.yDestination?.formulas {
+            for formula in yDestination {
+                let mappedFormula = mapCBFormulaToFormula(input: formula)
+                if formulaList.contains(mappedFormula) == false {
+                    formulaList.append(mappedFormula)
+                }
+            }
         }
 
         return NSMutableArray(array: formulaList)
