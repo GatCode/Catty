@@ -48,7 +48,6 @@ struct CBScript: XMLIndexerDeserializable {
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBScript {
-
         var tmpType: String?
         tmpType = try? node.value(ofAttribute: "type")
 
@@ -59,6 +58,7 @@ struct CBScript: XMLIndexerDeserializable {
             splittedDescription.forEach { element in
                 splittedAndCleaned.append(element.replacingOccurrences(of: "<", with: ""))
             }
+
             if splittedAndCleaned.first?.isEmpty == false {
                 tmpType = splittedAndCleaned.first
             }

@@ -39,7 +39,6 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProject {
-
         var tmpScenes: [CBProjectScene]?
         var tmpProgramVariableList: CBProgramVariableList?
         var tmpProgramListOfLists: CBProgramListOfLists?

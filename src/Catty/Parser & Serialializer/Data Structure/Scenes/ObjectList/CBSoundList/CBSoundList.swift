@@ -23,16 +23,16 @@
 import SWXMLHash
 
 struct CBSoundList: XMLIndexerDeserializable, Equatable {
-    var sound: [CBSound]?
+    var sounds: [CBSound]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBSoundList {
         return try CBSoundList(
-            sound: node["sound"].value()
+            sounds: node["sound"].value()
         )
     }
 
     static func == (lhs: CBSoundList, rhs: CBSoundList) -> Bool {
         return
-            lhs.sound == rhs.sound
+            lhs.sounds == rhs.sounds
     }
 }

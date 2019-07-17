@@ -35,7 +35,7 @@ extension CBXMLSerializer {
 
             currentScene.addChild(name: "name", value: scene.name)
 
-            if let objectList = scene.objectList?.object {
+            if let objectList = scene.objectList?.objects {
                 addObjectListTo(scene: currentScene, data: objectList)
             }
 
@@ -65,7 +65,7 @@ extension CBXMLSerializer {
             addLookListTo(object: currentObject, data: object.lookList)
             addSoundListTo(object: currentObject, data: object.soundList)
             addScriptListTo(object: currentObject, data: object.scriptList)
-            addUserBricksTo(object: currentObject, data: object.userBricks)
+            addUserBrickListTo(object: currentObject, data: object.userBrickList)
             addNfcTagListTo(object: currentObject, data: object.nfcTagList)
         }
     }
@@ -75,7 +75,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         let lookList = object.addChild(name: "lookList")
-        addLooksTo(lookList: lookList, data: data.look)
+        addLooksTo(lookList: lookList, data: data.looks)
     }
 
     func addLooksTo(lookList: AEXMLElement, data: [CBLook]?) {
@@ -93,7 +93,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         let soundList = object.addChild(name: "soundList")
-        addSoundsTo(soundList: soundList, data: data.sound)
+        addSoundsTo(soundList: soundList, data: data.sounds)
     }
 
     func addSoundsTo(soundList: AEXMLElement, data: [CBSound]?) {
@@ -112,7 +112,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         let scriptList = object.addChild(name: "scriptList")
-        addScriptsTo(scriptList: scriptList, data: data.script)
+        addScriptsTo(scriptList: scriptList, data: data.scripts)
     }
 
     func addScriptsTo(scriptList: AEXMLElement, data: [CBScript]?) {
@@ -150,7 +150,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         let brickList = script.addChild(name: "brickList")
-        addBricksTo(brickList: brickList, data: data.brick)
+        addBricksTo(brickList: brickList, data: data.bricks)
     }
 
     func addBricksTo(brickList: AEXMLElement, data: [CBBrick]?) {
@@ -178,7 +178,7 @@ extension CBXMLSerializer {
             }
 
             if let xPos = brick.xPosition, let yPos = brick.yPosition {
-                addFormulaListTo(brick: currentBrick, data: CBFormulaList(formula: [yPos, xPos]))
+                addFormulaListTo(brick: currentBrick, data: CBFormulaList(formulas: [yPos, xPos]))
             }
 
             if let msg = brick.userVariable {
@@ -202,7 +202,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         let formulaList = brick.addChild(name: "formulaList")
-        addFormulasTo(formulaList: formulaList, data: data.formula)
+        addFormulasTo(formulaList: formulaList, data: data.formulas)
     }
 
     func addFormulasTo(formulaList: AEXMLElement, data: [CBFormula]?) {
@@ -251,11 +251,10 @@ extension CBXMLSerializer {
     }
 
     // MARK: - Serialize UserBricks
-    func addUserBricksTo(object: AEXMLElement, data: CBUserBricks?) {
+    func addUserBrickListTo(object: AEXMLElement, data: CBUserBrickList?) {
         guard let data = data else { return }
-
         let userBricks = object.addChild(name: "userBricks")
-        addUserBricksTo(userBricks: userBricks, data: data.userBrick)
+        addUserBricksTo(userBricks: userBricks, data: data.userBricks)
     }
 
     func addUserBricksTo(userBricks: AEXMLElement, data: [CBUserBrick]?) {
@@ -271,7 +270,7 @@ extension CBXMLSerializer {
         guard let data = data else { return }
 
         let nfcTagList = object.addChild(name: "nfcTagList")
-        addNfcTagsTo(nfcTagList: nfcTagList, data: data.nfcTag)
+        addNfcTagsTo(nfcTagList: nfcTagList, data: data.nfcTags)
     }
 
     func addNfcTagsTo(nfcTagList: AEXMLElement, data: [CBNfcTag]?) {

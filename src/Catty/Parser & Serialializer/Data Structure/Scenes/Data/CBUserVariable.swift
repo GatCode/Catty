@@ -27,7 +27,6 @@ struct CBUserVariable: XMLIndexerDeserializable {
     let reference: String?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBUserVariable {
-
         var tmpValue: String?
         var tmpReference: String?
         tmpValue = try? node["userVariable"].value()

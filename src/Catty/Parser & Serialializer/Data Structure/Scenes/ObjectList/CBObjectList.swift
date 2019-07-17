@@ -23,16 +23,16 @@
 import SWXMLHash
 
 struct CBObjectList: XMLIndexerDeserializable, Equatable {
-    var object: [CBObject]?
+    var objects: [CBObject]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObjectList {
         return try CBObjectList(
-            object: node["object"].value()
+            objects: node["object"].value()
         )
     }
 
     static func == (lhs: CBObjectList, rhs: CBObjectList) -> Bool {
         return
-            lhs.object == rhs.object
+            lhs.objects == rhs.objects
     }
 }

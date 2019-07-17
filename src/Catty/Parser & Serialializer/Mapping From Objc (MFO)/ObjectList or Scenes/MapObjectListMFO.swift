@@ -45,8 +45,8 @@ extension CBXMLMappingFromObjc {
             mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
             mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)
             mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject, currentObject: mappedObject)
-            mappedObject.userBricks = CBUserBricks(userBrick: nil)
-            mappedObject.nfcTagList = CBNfcTagList(nfcTag: nil)
+            mappedObject.userBrickList = CBUserBrickList(userBricks: nil)
+            mappedObject.nfcTagList = CBNfcTagList(nfcTags: nil)
 
             mappedObjectList.append(mappedObject)
             CBXMLMappingFromObjc.objectList.append((object as? SpriteObject, CBXMLMappingFromObjc.currentSerializationPosition))
@@ -54,7 +54,7 @@ extension CBXMLMappingFromObjc {
             CBXMLMappingFromObjc.currentSerializationPosition.1 = 0
         }
 
-        return CBObjectList(object: mappedObjectList)
+        return CBObjectList(objects: mappedObjectList)
     }
 
     static func mapLookList(project: Project, object: SpriteObject?) -> CBLookList? {
@@ -68,7 +68,7 @@ extension CBXMLMappingFromObjc {
             }
         }
 
-        return CBLookList(look: mappedLooks)
+        return CBLookList(looks: mappedLooks)
     }
 
     static func mapSoundList(project: Project, object: SpriteObject?) -> CBSoundList? {
@@ -82,7 +82,7 @@ extension CBXMLMappingFromObjc {
             }
         }
 
-        return CBSoundList(sound: mappedSounds)
+        return CBSoundList(sounds: mappedSounds)
     }
 
     static func mapScriptList(project: Project, object: SpriteObject?, currentObject: CBObject) -> CBScriptList? {
@@ -108,11 +108,11 @@ extension CBXMLMappingFromObjc {
             CBXMLMappingFromObjc.currentSerializationPosition.2 = 0
         }
 
-        return CBScriptList(script: mappedScriptList)
+        return CBScriptList(scripts: mappedScriptList)
     }
 
     static func resolveLookPath(look: Look?, currentObject: CBObject) -> String? {
-        guard let lookList = currentObject.lookList?.look else { return nil }
+        guard let lookList = currentObject.lookList?.looks else { return nil }
 
         for (idx, refLook) in lookList.enumerated() where refLook.name == look?.name {
             return "../../../../../lookList/" + (idx == 0 ? "look" : "look[\(idx)]")
@@ -122,7 +122,7 @@ extension CBXMLMappingFromObjc {
     }
 
     static func resolveSoundPath(sound: Sound?, currentObject: CBObject) -> String? {
-        guard let soundList = currentObject.soundList?.sound else { return nil }
+        guard let soundList = currentObject.soundList?.sounds else { return nil }
 
         for (idx, refSound) in soundList.enumerated() where refSound.name == sound?.name {
             return "../../../../../soundList/" + (idx == 0 ? "sound" : "sound[\(idx)]")
@@ -164,7 +164,7 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.repeatCondition])
             case kNoteBrick.uppercased():
                 let brick = brick as? NoteBrick
-                mappedBrick.formulaTree = CBFormulaList(formula: [CBFormula(type: "STRING", value: brick?.note, category: "NOTE")])
+                mappedBrick.formulaTree = CBFormulaList(formulas: [CBFormula(type: "STRING", value: brick?.note, category: "NOTE")])
             case kWaitBrick.uppercased():
                 let brick = brick as? WaitBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timeToWaitInSeconds])
@@ -346,7 +346,7 @@ extension CBXMLMappingFromObjc {
             CBXMLMappingFromObjc.currentSerializationPosition.2 += 1
         }
 
-        return CBBrickList(brick: mappedBrickList)
+        return CBBrickList(bricks: mappedBrickList)
     }
 
     static func mapFormulaList(formulas: [Formula?]) -> CBFormulaList? {
@@ -358,7 +358,7 @@ extension CBXMLMappingFromObjc {
             }
         }
 
-        return CBFormulaList(formula: mappedFormulas)
+        return CBFormulaList(formulas: mappedFormulas)
     }
 
     static func mapFormula(formula: Formula?) -> CBFormula? {

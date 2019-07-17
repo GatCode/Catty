@@ -25,7 +25,7 @@ import SWXMLHash
 struct CBLRChild: XMLIndexerDeserializable {
     var type: String?
     var value: String?
-    var leftChild: [CBLRChild?] //wrapped in array to allow recusive calling
+    var leftChild: [CBLRChild?] // wrapped in array to allow recusive calling
     var rightChild: [CBLRChild?]
 
     init(type: String? = nil,
@@ -39,24 +39,17 @@ struct CBLRChild: XMLIndexerDeserializable {
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBLRChild {
+        var left: CBLRChild?
+        var right: CBLRChild?
 
-        var left = [CBLRChild?]()
-        var right = [CBLRChild?]()
-
-        var resultLeft: CBLRChild?
-        var resultRight: CBLRChild?
-
-        resultLeft = try node["leftChild"].value()
-        resultRight = try node["rightChild"].value()
-
-        left.append(resultLeft)
-        right.append(resultRight)
+        left = try node["leftChild"].value()
+        right = try node["rightChild"].value()
 
         return try CBLRChild(
             type: node["type"].value(),
             value: node["value"].value(),
-            leftChild: left,
-            rightChild: right
+            leftChild: [left],
+            rightChild: [right]
         )
     }
 }

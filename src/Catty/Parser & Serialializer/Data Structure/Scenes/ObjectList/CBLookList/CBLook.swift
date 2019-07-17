@@ -33,7 +33,6 @@ struct CBLook: XMLIndexerDeserializable, Equatable {
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBLook {
-
         var tmpName: String?
         tmpName = node.value(ofAttribute: "name")
         if tmpName == nil {

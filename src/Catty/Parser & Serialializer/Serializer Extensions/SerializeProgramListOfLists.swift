@@ -37,9 +37,9 @@ extension CBXMLSerializer {
 
         for userVar in data {
             if let ref = userVar.reference {
-                programListOfLists.addChild(name: "userList", value: userVar.name, attributes: ["reference": ref])
-            } else if userVar.name != nil {
-                programListOfLists.addChild(name: "userList", value: userVar.name, attributes: ["reference": userVar.reference ?? ""])
+                programListOfLists.addChild(name: "userList", value: userVar.value, attributes: ["reference": ref])
+            } else if userVar.value != nil {
+                programListOfLists.addChild(name: "userList", value: userVar.value, attributes: ["reference": userVar.reference ?? ""])
             } else {
                 programListOfLists.addChild(name: "userList", value: "\n")
             }

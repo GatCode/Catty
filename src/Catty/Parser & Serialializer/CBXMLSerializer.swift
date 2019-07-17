@@ -46,7 +46,7 @@ import AEXML
             addProgramVariableListTo(program: program, data: project.programVariableList)
             addProgramListOfListsTo(program: program, data: project.programListOfLists)
         } else {
-            addObjectListTo(scene: program, data: project.scenes?.first?.objectList?.object)
+            addObjectListTo(scene: program, data: project.scenes?.first?.objectList?.objects)
             addDataTo0991(scene: program, data: project.scenes?.first?.data, progVarList: project.programVariableList, progListOfLists: project.programListOfLists)
         }
 

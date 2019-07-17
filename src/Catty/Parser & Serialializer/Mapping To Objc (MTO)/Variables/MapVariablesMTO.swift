@@ -50,7 +50,7 @@ extension CBXMLMappingToObjc {
                 if let uVar = referencedUserVariable {
                     result.append(uVar.pointee)
                 }
-            } else if let value = variable.name {
+            } else if let value = variable.value {
                 result.append(allocUserVariable(name: value, isList: true))
             }
         }
@@ -178,7 +178,7 @@ extension CBXMLMappingToObjc {
     // MARK: - resolveReferenceString
     static func resolveReferenceString(reference: String?, project: CBProject?) -> (Int?, Int?, Int?)? {
         guard let reference = reference else { return nil }
-        guard let objectList = project?.scenes?.first?.objectList?.object else { return nil }
+        guard let objectList = project?.scenes?.first?.objectList?.objects else { return nil }
 
         var splittedReference = reference.split(separator: "/")
         splittedReference = splittedReference.filter { $0 != ".." }
@@ -231,7 +231,7 @@ extension CBXMLMappingToObjc {
         }
 
         let objForUpdate = objectList.isEmpty == false ? objectList[object?.0 ?? 0] : nil
-        let scriptList = objForUpdate?.scriptList?.script
+        let scriptList = objForUpdate?.scriptList?.scripts
 
         if var ctr = script?.0, let scriptList = scriptList {
             var resNr = 0
@@ -252,7 +252,7 @@ extension CBXMLMappingToObjc {
         }
 
         let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil
-        let brickList = scrForUpdate?.brickList?.brick
+        let brickList = scrForUpdate?.brickList?.bricks
 
         if var ctr = brick?.0, let brickList = brickList {
             var resNr = 0
@@ -294,7 +294,7 @@ extension CBXMLMappingToObjc {
             }
         }
 
-        let scriptList = object?.scriptList?.script
+        let scriptList = object?.scriptList?.scripts
 
         if var ctr = script?.0, let scriptList = scriptList {
             var resNr = 0
@@ -311,7 +311,7 @@ extension CBXMLMappingToObjc {
         }
 
         let scrForUpdate = scriptList?.isEmpty == false ? scriptList?[script?.0 ?? 0] : nil
-        let brickList = scrForUpdate?.brickList?.brick
+        let brickList = scrForUpdate?.brickList?.bricks
 
         if var ctr = brick?.0, let brickList = brickList {
             var resNr = 0
@@ -347,7 +347,7 @@ extension CBXMLMappingToObjc {
             }
         }
 
-        let brickList = script?.brickList?.brick
+        let brickList = script?.brickList?.bricks
 
         if var ctr = brick?.0, let brickList = brickList {
             var resNr = 0

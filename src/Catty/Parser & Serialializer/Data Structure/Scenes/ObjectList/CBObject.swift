@@ -29,7 +29,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
     var lookList: CBLookList?
     var soundList: CBSoundList?
     var scriptList: CBScriptList?
-    var userBricks: CBUserBricks?
+    var userBrickList: CBUserBrickList?
     var nfcTagList: CBNfcTagList?
 
     init(name: String? = nil,
@@ -38,7 +38,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
          lookList: CBLookList? = nil,
          soundList: CBSoundList? = nil,
          scriptList: CBScriptList? = nil,
-         userBricks: CBUserBricks? = nil,
+         userBrickList: CBUserBrickList? = nil,
          nfcTagList: CBNfcTagList? = nil) {
         self.name = name
         self.type = type
@@ -46,12 +46,11 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
         self.lookList = lookList
         self.soundList = soundList
         self.scriptList = scriptList
-        self.userBricks = userBricks
+        self.userBrickList = userBrickList
         self.nfcTagList = nfcTagList
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBObject {
-
         var tmpName: String?
         tmpName = node.value(ofAttribute: "name")
         if tmpName == nil {
@@ -65,7 +64,7 @@ struct CBObject: XMLIndexerDeserializable, Equatable {
             lookList: node["lookList"].value(),
             soundList: node["soundList"].value(),
             scriptList: node["scriptList"].value(),
-            userBricks: node["userBricks"].value(),
+            userBrickList: node["userBricks"].value(),
             nfcTagList: node["nfcTagList"].value()
         )
     }

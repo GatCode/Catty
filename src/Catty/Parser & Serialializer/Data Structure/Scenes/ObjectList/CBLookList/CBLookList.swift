@@ -23,16 +23,16 @@
 import SWXMLHash
 
 struct CBLookList: XMLIndexerDeserializable, Equatable {
-    var look: [CBLook]?
+    var looks: [CBLook]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBLookList {
         return try CBLookList(
-            look: node["look"].value()
+            looks: node["look"].value()
         )
     }
 
     static func == (lhs: CBLookList, rhs: CBLookList) -> Bool {
         return
-            lhs.look == rhs.look
+            lhs.looks == rhs.looks
     }
 }

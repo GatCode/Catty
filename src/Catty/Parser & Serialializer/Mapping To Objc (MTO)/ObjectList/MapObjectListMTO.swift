@@ -27,7 +27,7 @@ extension CBXMLMappingToObjc {
     // MARK: - mapObjectList
     static func mapObjectList(project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
         guard let project = project else { return nil }
-        guard let objectList = project.scenes?.first?.objectList?.object else { return nil }
+        guard let objectList = project.scenes?.first?.objectList?.objects else { return nil }
 
         var resultObjectList = [SpriteObject]()
         for object in objectList {
@@ -76,7 +76,7 @@ extension CBXMLMappingToObjc {
 
     // MARK: - mapLookList
     static func mapLookList(lookList: CBLookList?) -> NSMutableArray? {
-        guard let input = lookList?.look else { return  nil }
+        guard let input = lookList?.looks else { return  nil }
 
         var lookList = [Look]()
         for look in input {
@@ -101,7 +101,7 @@ extension CBXMLMappingToObjc {
 
     // MARK: - mapSoundList
     static func mapSoundList(soundList: CBSoundList?, project: CBProject?, object: CBObject?) -> NSMutableArray? {
-        guard let input = soundList?.sound else { return nil }
+        guard let input = soundList?.sounds else { return nil }
         guard let project = project else { return nil }
 
         var soundList = [Sound]()
@@ -128,8 +128,8 @@ extension CBXMLMappingToObjc {
         let sIdx = resolvedString.0 ?? 0
         let bIdx = resolvedString.1 ?? 0
 
-        if let scriptList = object?.scriptList?.script, sIdx < scriptList.count {
-            if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count {
+        if let scriptList = object?.scriptList?.scripts, sIdx < scriptList.count {
+            if let brickList = scriptList[sIdx].brickList?.bricks, bIdx < brickList.count {
                 soundNameToResolve = brickList[bIdx].sound?.name
                 soundFileNameToResolve = brickList[bIdx].sound?.fileName
             }
@@ -154,7 +154,7 @@ extension CBXMLMappingToObjc {
 
     // MARK: - mapScriptList
     static func mapScriptList(object: CBObject?, objectList: [CBObject]?, project: CBProject?, currentObject: inout SpriteObject) -> NSMutableArray? {
-        guard let scriptList = object?.scriptList?.script else { return nil }
+        guard let scriptList = object?.scriptList?.scripts else { return nil }
 
         var resultScriptList = [Script]()
         for script in scriptList {
@@ -215,7 +215,7 @@ extension CBXMLMappingToObjc {
 
     // MARK: - mapBrickList
     static func mapBrickList(script: CBScript?, objectList: [CBObject]?, object: CBObject?, project: CBProject?, currScript: inout Script?, currObject: inout SpriteObject) -> NSMutableArray? {
-        guard let brickList = script?.brickList?.brick else { return nil }
+        guard let brickList = script?.brickList?.bricks else { return nil }
         guard let lookList = currObject.lookList else { return nil }
         guard let currentScript = currScript else { return nil }
         guard let objectList = objectList else { return nil }
@@ -595,7 +595,7 @@ extension CBXMLMappingToObjc {
                     splittedReference = splittedReference.filter { $0 != ".." }
                     if splittedReference.count == 2, let soundString = splittedReference.last {
                         let soundIndex = extractNumberInBacesFrom(string: String(soundString))
-                        if let newSoundList = object?.soundList?.sound, soundIndex < newSoundList.count {
+                        if let newSoundList = object?.soundList?.sounds, soundIndex < newSoundList.count {
                             for sound in mappingSoundList where sound.fileName == newSoundList[soundIndex].fileName {
                                 newBrick.sound = sound
                             }
@@ -766,7 +766,7 @@ extension CBXMLMappingToObjc {
     static func mapGlideDestinations(input: CBBrick?, xDestination: Bool) -> NSMutableArray? {
         var formulaList = [Formula]()
 
-        if let formulas = xDestination ? input?.xDestination?.formula : input?.yDestination?.formula {
+        if let formulas = xDestination ? input?.xDestination?.formulas : input?.yDestination?.formulas {
             for formula in formulas {
                 let mappedFormula = mapCBFormulaToFormula(input: formula)
                 if formulaList.contains(mappedFormula) == false {
@@ -786,14 +786,14 @@ extension CBXMLMappingToObjc {
             for entry in objctVariableList {
                 let resolvedReference = resolveReferenceString(reference: entry.object, project: project)
                 if let objectIndex = resolvedReference?.0 {
-                    let referencedObject = project.scenes?.first?.objectList?.object?[objectIndex]
+                    let referencedObject = project.scenes?.first?.objectList?.objects?[objectIndex]
 
                     if referencedObject?.name == object?.name, let entryList = entry.list {
                         for variable in entryList {
                             let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
-                            if let scIdx = resolvedVariableReference?.1, scIdx < referencedObject?.scriptList?.script?.count ?? 0 {
-                                if let brIdx = resolvedVariableReference?.2, brIdx < referencedObject?.scriptList?.script?[scIdx].brickList?.brick?.count ?? 0 {
-                                    if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userVariable {
+                            if let scIdx = resolvedVariableReference?.1, scIdx < referencedObject?.scriptList?.scripts?.count ?? 0 {
+                                if let brIdx = resolvedVariableReference?.2, brIdx < referencedObject?.scriptList?.scripts?[scIdx].brickList?.bricks?.count ?? 0 {
+                                    if let localVar = referencedObject?.scriptList?.scripts?[scIdx].brickList?.bricks?[brIdx].userVariable {
                                         localVariables.append(localVar)
                                     }
                                 }
@@ -809,13 +809,13 @@ extension CBXMLMappingToObjc {
             for entry in objctVariableList {
                 let resolvedReference = resolveReferenceString(reference: entry.object, project: project)
                 if let objectIndex = resolvedReference?.0 {
-                    let referencedObject = project.scenes?.first?.objectList?.object?[objectIndex]
+                    let referencedObject = project.scenes?.first?.objectList?.objects?[objectIndex]
 
                     if referencedObject?.name == object?.name, let entryList = entry.list {
                         for variable in entryList {
                             let resolvedVariableReference = resolveReferenceString(reference: variable.reference, project: project)
                             if let scIdx = resolvedVariableReference?.1, let brIdx = resolvedVariableReference?.2 {
-                                if let localVar = referencedObject?.scriptList?.script?[scIdx].brickList?.brick?[brIdx].userList {
+                                if let localVar = referencedObject?.scriptList?.scripts?[scIdx].brickList?.bricks?[brIdx].userList {
                                     localVariables.append(localVar)
                                 }
                             }
@@ -840,14 +840,14 @@ extension CBXMLMappingToObjc {
             splittedReference = splittedReference.filter { $0 != ".." }
             if splittedReference.count == 2 {
                 let resolvedReference = resolveReferenceStringExtraShort(reference: reference, project: project, script: script)
-                if let bIdx = resolvedReference, let brickList = script.brickList?.brick, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
+                if let bIdx = resolvedReference, let brickList = script.brickList?.bricks, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
                     return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx], isList: isList)
                 }
             } else if splittedReference.count == 4 {
                 let resolvedReference = resolveReferenceStringShort(reference: reference, project: project, object: object)
                 if let sIdx = resolvedReference?.0, let bIdx = resolvedReference?.1 {
-                    if let scriptList = object.scriptList?.script, sIdx < scriptList.count {
-                        if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
+                    if let scriptList = object.scriptList?.scripts, sIdx < scriptList.count {
+                        if let brickList = scriptList[sIdx].brickList?.bricks, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
                             return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx], isList: isList)
                         }
                     }
@@ -855,9 +855,9 @@ extension CBXMLMappingToObjc {
             } else if splittedReference.count == 6 {
                 let resolvedReference = resolveReferenceString(reference: reference, project: project)
                 if let oIdx = resolvedReference?.0, let sIdx = resolvedReference?.1, let bIdx = resolvedReference?.2 {
-                    if let objectList = project.scenes?.first?.objectList?.object, oIdx < objectList.count {
-                        if let scriptList = objectList[oIdx].scriptList?.script, sIdx < scriptList.count {
-                            if let brickList = scriptList[sIdx].brickList?.brick, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
+                    if let objectList = project.scenes?.first?.objectList?.objects, oIdx < objectList.count {
+                        if let scriptList = objectList[oIdx].scriptList?.scripts, sIdx < scriptList.count {
+                            if let brickList = scriptList[sIdx].brickList?.bricks, bIdx < brickList.count, brickList[bIdx].userVariable != nil || brickList[bIdx].userList != nil {
                                 return resolveUserVariable(project: project, object: object, script: script, brick: brickList[bIdx], isList: isList)
                             }
                         }
@@ -909,14 +909,14 @@ extension CBXMLMappingToObjc {
     static func mapFormulaListToBrick(input: CBBrick?) -> NSMutableArray? {
         var formulaList = [Formula]()
 
-        if let formulas = input?.formulaList?.formula {
+        if let formulas = input?.formulaList?.formulas {
             for formula in formulas {
                 let mappedFormula = mapCBFormulaToFormula(input: formula)
                 if formulaList.contains(mappedFormula) == false {
                     formulaList.append(mappedFormula)
                 }
             }
-        } else if let formulas = input?.formulaTree?.formula {
+        } else if let formulas = input?.formulaTree?.formulas {
             for formula in formulas {
                 let mappedFormula = mapCBFormulaToFormula(input: formula)
                 if formulaList.contains(mappedFormula) == false {
@@ -1015,7 +1015,7 @@ extension CBXMLMappingToObjc {
 
         if scriptType.isEmpty == false {
             var abstractScriptNr = 0
-            if let scriptList = object.scriptList?.script {
+            if let scriptList = object.scriptList?.scripts {
                 for script in scriptList {
                     if script.type == scriptType {
                         scriptNr -= 1
@@ -1031,7 +1031,7 @@ extension CBXMLMappingToObjc {
 
         if brickType.isEmpty == false {
             var abstractBrickNr = 0
-            if let brickList = object.scriptList?.script?[scriptNr].brickList?.brick {
+            if let brickList = object.scriptList?.scripts?[scriptNr].brickList?.bricks {
                 for brick in brickList {
                     if brick.type == brickType {
                         brickNr -= 1
@@ -1078,9 +1078,9 @@ extension CBXMLMappingToObjc {
             }
         }
 
-        if scriptType.isEmpty == false && brickType.isEmpty == false, let objectList = project.scenes?.first?.objectList?.object?[objectNr] {
+        if scriptType.isEmpty == false && brickType.isEmpty == false, let objectList = project.scenes?.first?.objectList?.objects?[objectNr] {
             var abstractScriptNr = 0
-            if let scriptList = objectList.scriptList?.script {
+            if let scriptList = objectList.scriptList?.scripts {
                 for script in scriptList {
                     if script.type == scriptType {
                         scriptNr -= 1
@@ -1094,7 +1094,7 @@ extension CBXMLMappingToObjc {
             }
 
             var abstractBrickNr = 0
-            if let brickList = objectList.scriptList?.script?[scriptNr].brickList?.brick {
+            if let brickList = objectList.scriptList?.scripts?[scriptNr].brickList?.bricks {
                 for brick in brickList {
                     if brick.type == brickType {
                         brickNr -= 1

@@ -202,7 +202,7 @@
 		2E6F428B22993A8B00840319 /* CBBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428A22993A8B00840319 /* CBBrick.swift */; };
 		2E6F428D22993B0B00840319 /* CBFormulaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428C22993B0B00840319 /* CBFormulaList.swift */; };
 		2E6F429022993B5700840319 /* CBFormula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F428F22993B5700840319 /* CBFormula.swift */; };
-		2E6F4294229A639700840319 /* CBUserBricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4293229A639700840319 /* CBUserBricks.swift */; };
+		2E6F4294229A639700840319 /* CBUserBrickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4293229A639700840319 /* CBUserBrickList.swift */; };
 		2E6F4296229A63F200840319 /* CBUserBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4295229A63F200840319 /* CBUserBrick.swift */; };
 		2E6F4299229A64C500840319 /* CBNfcTagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F4298229A64C500840319 /* CBNfcTagList.swift */; };
 		2E6F429B229A64D500840319 /* CBNfcTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F429A229A64D500840319 /* CBNfcTag.swift */; };
@@ -1507,7 +1507,7 @@
 		2E6F428A22993A8B00840319 /* CBBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBBrick.swift; sourceTree = "<group>"; };
 		2E6F428C22993B0B00840319 /* CBFormulaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBFormulaList.swift; sourceTree = "<group>"; };
 		2E6F428F22993B5700840319 /* CBFormula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBFormula.swift; sourceTree = "<group>"; };
-		2E6F4293229A639700840319 /* CBUserBricks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBricks.swift; sourceTree = "<group>"; };
+		2E6F4293229A639700840319 /* CBUserBrickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrickList.swift; sourceTree = "<group>"; };
 		2E6F4295229A63F200840319 /* CBUserBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserBrick.swift; sourceTree = "<group>"; };
 		2E6F4298229A64C500840319 /* CBNfcTagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBNfcTagList.swift; sourceTree = "<group>"; };
 		2E6F429A229A64D500840319 /* CBNfcTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBNfcTag.swift; sourceTree = "<group>"; };
@@ -3605,7 +3605,7 @@
 		2E6F4297229A641E00840319 /* CBUserBricks */ = {
 			isa = PBXGroup;
 			children = (
-				2E6F4293229A639700840319 /* CBUserBricks.swift */,
+				2E6F4293229A639700840319 /* CBUserBrickList.swift */,
 				2E6F4295229A63F200840319 /* CBUserBrick.swift */,
 			);
 			path = CBUserBricks;
@@ -8958,7 +8958,7 @@
 				92FF32B91A24E2F400093DA7 /* DarkBlueGradientCell.m in Sources */,
 				F4201CFB20D7A1060030181B /* TimeMinuteSensor.swift in Sources */,
 				F411560320E7732D00E2F254 /* InternFormula+KeyboardAdapter.swift in Sources */,
-				2E6F4294229A639700840319 /* CBUserBricks.swift in Sources */,
+				2E6F4294229A639700840319 /* CBUserBrickList.swift in Sources */,
 				9218B2151CC4AB75007B4C60 /* ColorPickerViewController.m in Sources */,
 				92FF2E981A24C7D800093DA7 /* unzip.c in Sources */,
 				AA74F0B91BC05FCE00D1E954 /* GlideToBrickCell.m in Sources */,

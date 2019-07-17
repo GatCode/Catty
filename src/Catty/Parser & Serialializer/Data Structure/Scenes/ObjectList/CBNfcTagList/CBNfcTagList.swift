@@ -23,11 +23,11 @@
 import SWXMLHash
 
 struct CBNfcTagList: XMLIndexerDeserializable {
-    let nfcTag: [CBNfcTag]?
+    let nfcTags: [CBNfcTag]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBNfcTagList {
         return try CBNfcTagList(
-            nfcTag: node["nfcTag"].value()
+            nfcTags: node["nfcTag"].value()
         )
     }
 }

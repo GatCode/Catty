@@ -23,28 +23,28 @@
 import SWXMLHash
 
 struct CBScriptList: XMLIndexerDeserializable {
-    var script: [CBScript]?
+    var scripts: [CBScript]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBScriptList {
 
-        var tmpScript: [CBScript]?
-        tmpScript = try? node["script"].value()
+        var tmpScripts: [CBScript]?
+        tmpScripts = try? node["script"].value()
 
-        if tmpScript == nil {
-            tmpScript = [CBScript]()
+        if tmpScripts == nil {
+            tmpScripts = [CBScript]()
 
             for child in node.children {
                 let tmp: CBScript?
                 tmp = try? child.value()
 
                 if let res = tmp {
-                    tmpScript?.append(res)
+                    tmpScripts?.append(res)
                 }
             }
         }
 
         return CBScriptList(
-            script: tmpScript
+            scripts: tmpScripts
         )
     }
 }

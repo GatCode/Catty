@@ -23,10 +23,9 @@
 import SWXMLHash
 
 struct CBFormulaList: XMLIndexerDeserializable {
-    let formula: [CBFormula]?
+    let formulas: [CBFormula]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBFormulaList {
-
         var tmpFormulaList: [CBFormula]?
         tmpFormulaList = try? node["formula"].value()
 
@@ -41,7 +40,7 @@ struct CBFormulaList: XMLIndexerDeserializable {
         }
 
         return CBFormulaList(
-            formula: tmpFormulaList
+            formulas: tmpFormulaList
         )
     }
 }

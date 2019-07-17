@@ -127,7 +127,6 @@ struct CBHeader: XMLIndexerDeserializable, Equatable {
     }
 
     static func == (lhs: CBHeader, rhs: CBHeader) -> Bool {
-
         let lhsDescriptionComponents = lhs.description?.components(separatedBy: .whitespacesAndNewlines)
         let lhsDescriptionShort = lhsDescriptionComponents?.filter { !$0.isEmpty }.joined(separator: " ")
         let rhsDescriptionComponents = rhs.description?.components(separatedBy: .whitespacesAndNewlines)

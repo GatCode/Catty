@@ -87,7 +87,6 @@ struct CBBrick: XMLIndexerDeserializable {
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrick {
-
         var tmpIfReference: String?
         var tmpType: String?
         tmpType = try? node.value(ofAttribute: "type")

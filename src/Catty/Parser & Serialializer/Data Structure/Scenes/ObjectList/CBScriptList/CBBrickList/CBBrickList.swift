@@ -23,7 +23,7 @@
 import SWXMLHash
 
 struct CBBrickList: XMLIndexerDeserializable {
-    var brick: [CBBrick]?
+    var bricks: [CBBrick]?
 
     static func deserialize(_ node: XMLIndexer) throws -> CBBrickList {
 
@@ -44,7 +44,7 @@ struct CBBrickList: XMLIndexerDeserializable {
         }
 
         return CBBrickList(
-            brick: tmpBrickList
+            bricks: tmpBrickList
         )
     }
 }
