@@ -115,7 +115,7 @@ extension CBXMLMappingFromObjc {
         guard let lookList = currentObject.lookList?.looks else { return nil }
 
         for (idx, refLook) in lookList.enumerated() where refLook.name == look?.name {
-            return "../../../../../lookList/" + (idx == 0 ? "look" : "look[\(idx)]")
+            return "../../../../../lookList/" + (idx == 0 ? "look" : "look[\(idx + 1)]")
         }
 
         return nil
@@ -125,7 +125,7 @@ extension CBXMLMappingFromObjc {
         guard let soundList = currentObject.soundList?.sounds else { return nil }
 
         for (idx, refSound) in soundList.enumerated() where refSound.name == sound?.name {
-            return "../../../../../soundList/" + (idx == 0 ? "sound" : "sound[\(idx)]")
+            return "../../../../../soundList/" + (idx == 0 ? "sound" : "sound[\(idx + 1)]")
         }
 
         return nil
