@@ -27,8 +27,7 @@
 
 @protocol BrickProtocol <ScriptProtocol>
 
-@property (atomic, strong) Script *script;
-@property (atomic, strong) UserVariable *uVar;
+@property (atomic, weak) Script *script;
 - (BOOL)isFormulaBrick;
 - (BOOL)isIfLogicBrick;
 - (BOOL)isLoopBrick;
