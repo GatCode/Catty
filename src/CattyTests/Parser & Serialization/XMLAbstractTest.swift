@@ -279,15 +279,15 @@ class XMLAbstractTest: XCTestCase {
             guard object.name == rhsObjectList[index].name else { return false }
 
             if object.lookList?.looks?.count != rhsObjectList[index].lookList?.looks?.count {
-                guard object.lookList?.looks.pseudoEmpty() == rhsObjectList[index].lookList?.looks.pseudoEmpty() else { return false }
+                guard object.lookList?.looks.isEmptyButNotNil() == rhsObjectList[index].lookList?.looks.isEmptyButNotNil() else { return false }
             } else {
                 guard object.lookList?.looks?.count == rhsObjectList[index].lookList?.looks?.count else { return false }
             }
 
             if object.soundList?.sounds?.count != rhsObjectList[index].soundList?.sounds?.count {
-                guard object.soundList?.sounds.pseudoEmpty() == rhsObjectList[index].soundList?.sounds.pseudoEmpty() else { return false }
+                guard object.soundList?.sounds.isEmptyButNotNil() == rhsObjectList[index].soundList?.sounds.isEmptyButNotNil() else { return false }
             } else {
-                guard object.soundList?.sounds.pseudoEmpty() == rhsObjectList[index].soundList?.sounds.pseudoEmpty() else { return false }
+                guard object.soundList?.sounds.isEmptyButNotNil() == rhsObjectList[index].soundList?.sounds.isEmptyButNotNil() else { return false }
             }
 
             guard object.scriptList?.scripts?.count == rhsObjectList[index].scriptList?.scripts?.count else { return false }

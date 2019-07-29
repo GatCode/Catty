@@ -62,6 +62,7 @@
 		2E35EBBC22DB97A000B580FD /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */; };
 		2E35EBC122DB981600B580FD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC022DB981600B580FD /* String.swift */; };
 		2E35EBC322DB984600B580FD /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC222DB984600B580FD /* Optional.swift */; };
+		2E4CA98522EEB904003F262D /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98422EEB904003F262D /* CustomExtensions.swift */; };
 		2E554A0022DC844D00799BCF /* InvalidBricksAndScripts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */; };
 		2E554A0122DC844D00799BCF /* ValidFormulaList.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492322DC844C00799BCF /* ValidFormulaList.xml */; };
 		2E554A0222DC844D00799BCF /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */; };
@@ -1366,6 +1367,7 @@
 		2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
 		2E35EBC022DB981600B580FD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E35EBC222DB984600B580FD /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		2E4CA98422EEB904003F262D /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomExtensions.swift; path = Extensions/CustomExtensions.swift; sourceTree = "<group>"; };
 		2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvalidBricksAndScripts.xml; sourceTree = "<group>"; };
 		2E55492322DC844C00799BCF /* ValidFormulaList.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidFormulaList.xml; sourceTree = "<group>"; };
 		2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
@@ -6969,6 +6971,7 @@
 			isa = PBXGroup;
 			children = (
 				4CFAD35C1CFAB3EC0019C636 /* CustomExtensionsTests.m */,
+				2E4CA98422EEB904003F262D /* CustomExtensions.swift */,
 				4CFAD35D1CFAB3EC0019C636 /* UIImageExtensionTests.swift */,
 			);
 			name = Extensions;
@@ -8304,6 +8307,7 @@
 				4CB23D7221E6613D00A0FEA7 /* DeleteItemOfUserListBrickTests.swift in Sources */,
 				BA1FA9941F02A1150084184D /* UserListFunctionsTest.m in Sources */,
 				4CD27AA821B55DBC00DDADB5 /* FaceDetectionManagerTest.swift in Sources */,
+				2E4CA98522EEB904003F262D /* CustomExtensions.swift in Sources */,
 				4C822656213FA7A400F3D750 /* DeviceSensorMock.swift in Sources */,
 				4C822655213FA7A400F3D750 /* SensorMock.swift in Sources */,
 				4C28D7912133BC0B00870CE2 /* FormulaManagerResourceTests.swift in Sources */,

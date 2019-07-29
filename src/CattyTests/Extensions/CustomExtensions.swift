@@ -20,15 +20,19 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-extension Optional {
-    func isEmptyButNotNil() -> Bool {
-        if let unwrapped = self, let string = unwrapped as? String {
-            if string.isEmpty {
-                return true
-            } else {
-                return false
-            }
-        }
-        return false
+import XCTest
+
+@testable import Pocket_Code
+
+final class CustomExtensionTests: XMLAbstractTest {
+
+    func testIsEmptyButNotNil() {
+        let stringEmpty: String? = ""
+        let stringNotEmpty: String? = "hello world"
+        let stringNil: String? = nil
+
+        XCTAssertTrue(stringEmpty.isEmptyButNotNil())
+        XCTAssertFalse(stringNotEmpty.isEmptyButNotNil())
+        XCTAssertFalse(stringNil.isEmptyButNotNil())
     }
 }

@@ -60,7 +60,7 @@ extension CBXMLMappingToObjc {
         }
         header.screenWidth = screenWidth
 
-        header.tags = input.tags.pseudoEmpty() ? nil : input.tags
+        header.tags = input.tags.isEmptyButNotNil() ? nil : input.tags
         header.url = input.url
         header.userHandle = input.userHandle
         header.programID = input.programID
