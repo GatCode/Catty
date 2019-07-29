@@ -140,49 +140,28 @@ struct CBBrick: XMLIndexerDeserializable {
         }
 
         var tmpFormulaTree: CBFormulaList?
-        tmpFormulaTree = try? node["size"]["formulaTree"].value()
-
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["variableFormula"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["timeToWaitInSeconds"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["ifCondition"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["xMovement"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["yMovement"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["xPosition"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["yPosition"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["durationInSeconds"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["timesToRepeat"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["degrees"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["steps"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["transparency"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["volume"]["formulaTree"].value()
-        }
-        if tmpFormulaTree == nil {
-            tmpFormulaTree = try? node["changeGhostEffect"]["formulaTree"].value()
+        let formulaCombinations = [
+            ("size", "formulaTree"),
+            ("variableFormula", "formulaTree"),
+            ("timeToWaitInSeconds", "formulaTree"),
+            ("ifCondition", "formulaTree"),
+            ("xMovement", "formulaTree"),
+            ("yMovement", "formulaTree"),
+            ("xPosition", "formulaTree"),
+            ("yPosition", "formulaTree"),
+            ("durationInSeconds", "formulaTree"),
+            ("timesToRepeat", "formulaTree"),
+            ("degrees", "formulaTree"),
+            ("steps", "formulaTree"),
+            ("transparency", "formulaTree"),
+            ("volume", "formulaTree"),
+            ("changeGhostEffect", "formulaTree")
+        ]
+        for combination in formulaCombinations {
+            tmpFormulaTree = try? node[combination.0][combination.1].value()
+            if tmpFormulaTree != nil {
+                break
+            }
         }
 
         var tmpNoteMessage: String?
