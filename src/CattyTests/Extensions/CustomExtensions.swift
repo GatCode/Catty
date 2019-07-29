@@ -39,10 +39,14 @@ final class CustomExtensionTests: XMLAbstractTest {
     func testStringToBool() {
         let stringOK1 = "true"
         let stringOK2 = "1"
+        let stringOK3 = "TRUE"
+        let stringOK4 = "TrUe"
         let stringWrong1 = "tRu3"
 
         XCTAssertTrue(stringOK1.bool)
         XCTAssertTrue(stringOK2.bool)
+        XCTAssertTrue(stringOK3.bool)
+        XCTAssertTrue(stringOK4.bool)
         XCTAssertFalse(stringWrong1.bool)
     }
 }
