@@ -204,18 +204,18 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.pointedObjectReference = "../../" + (resolveObjectPath(project: project, object: brick?.pointedObject) ?? "")
             case kGlideToBrick.uppercased():
                 let brick = brick as? GlideToBrick
-                if let order = brick?.reversedParsingOrder, order == true {
-                    if let serializationOrder = brick?.reversedSerializationOrder, serializationOrder == true {
-                        mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.yDestination, brick?.xDestination])
-                    } else {
-                        mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds, brick?.xDestination, brick?.yDestination])
-                    }
+                let xDest = brick?.reversedXY == true ? brick?.yDestination : brick?.xDestination
+                let yDest = brick?.reversedXY == true ? brick?.xDestination : brick?.yDestination
+                let duration = brick?.durationInSeconds
+                if xDest?.category?.isEmpty ?? true || yDest?.category?.isEmpty ?? true || duration?.category?.isEmpty ?? true {
+                    xDest?.category = "X_DESTINATION"
+                    yDest?.category = "Y_DESTINATION"
+                    duration?.category = "DURATION_IN_SECONDS"
+                }
+                if let reversedDuration = brick?.reversedDuration, reversedDuration == true {
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [xDest, yDest, duration])
                 } else {
-                    if let serializationOrder = brick?.reversedSerializationOrder, serializationOrder == true {
-                        mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xDestination, brick?.yDestination, brick?.durationInSeconds])
-                    } else {
-                        mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yDestination, brick?.xDestination, brick?.durationInSeconds])
-                    }
+                    mappedBrick.formulaTree = mapFormulaList(formulas: [duration, xDest, yDest])
                 }
             case kVibrationBrick.uppercased():
                 let brick = brick as? VibrationBrick

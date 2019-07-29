@@ -431,24 +431,27 @@ extension CBXMLMappingToObjc {
                 let newBrick = GlideToBrick()
                 let formulaTreeMapping = mapFormulaListToBrick(input: brick)
                 guard let formulaMapping = formulaTreeMapping else { break }
-                if formulaMapping.count >= 3, let mapping = formulaMapping as? [Formula] {
-                    if mapping[0].category == "Y_DESTINATION" {
-                        newBrick.reversedParsingOrder = false
-                        newBrick.yDestination = mapping[0]
-                        newBrick.xDestination = mapping[1]
-                        newBrick.durationInSeconds = mapping[2]
-                    } else {
-                        newBrick.reversedParsingOrder = true
-                        newBrick.durationInSeconds = mapping[0]
-                        newBrick.yDestination = mapping[1].category == "Y_DESTINATION" ? mapping[1] : mapping[2]; newBrick.reversedSerializationOrder = true
-                        newBrick.xDestination = mapping[1].category == "Y_DESTINATION" ? mapping[2] : mapping[1]; newBrick.reversedSerializationOrder = true
+                if let mapping = formulaMapping as? [Formula] {
+                    for mappedFormula in mapping {
+                        switch mappedFormula.category {
+                        case "X_DESTINATION":
+                            newBrick.xDestination = mappedFormula
+                            newBrick.reversedXY = true
+                            newBrick.reversedDuration = false
+                        case "Y_DESTINATION":
+                            newBrick.yDestination = mappedFormula
+                            newBrick.reversedXY = false
+                            newBrick.reversedDuration = false
+                        default:
+                            newBrick.durationInSeconds = mappedFormula
+                            newBrick.reversedDuration = true
+                        }
                     }
-                } else {
-                    newBrick.reversedParsingOrder = true
-                    newBrick.durationInSeconds = formulaMapping.firstObject as? Formula
-                    let mappedDestinations = mapXYDestinationsToBrick(input: brick)
-                    newBrick.xDestination = mappedDestinations?.firstObject as? Formula
-                    newBrick.yDestination = mappedDestinations?.lastObject as? Formula
+                }
+                if newBrick.xDestination == nil || newBrick.yDestination == nil {
+                    let xyMapping = mapXYDestinationsToBrick(input: brick)
+                    newBrick.xDestination = xyMapping?.firstObject as? Formula
+                    newBrick.yDestination = xyMapping?.lastObject as? Formula
                 }
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
