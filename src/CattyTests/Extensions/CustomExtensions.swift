@@ -35,4 +35,14 @@ final class CustomExtensionTests: XMLAbstractTest {
         XCTAssertFalse(stringNotEmpty.isEmptyButNotNil())
         XCTAssertFalse(stringNil.isEmptyButNotNil())
     }
+
+    func testStringToBool() {
+        let stringOK1 = "true"
+        let stringOK2 = "1"
+        let stringWrong1 = "tRu3"
+
+        XCTAssertTrue(stringOK1.bool)
+        XCTAssertTrue(stringOK2.bool)
+        XCTAssertFalse(stringWrong1.bool)
+    }
 }
