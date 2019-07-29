@@ -93,10 +93,8 @@ extension CBXMLMappingFromObjc {
             var mappedScript = CBScript()
 
             mappedScript.brickList = mapBrickList(project: project, script: script as? Script, object: object, currentObject: currentObject)
-            mappedScript.commentedOut = (script as? Script)?.commentedOut
             mappedScript.isUserScript = (script as? Script)?.isUserScript
             mappedScript.receivedMessage = (script as? Script)?.receivedMsg
-            mappedScript.matchAll = (script as? Script)?.matchAll
             mappedScript.action = (script as? Script)?.action
 
             if let brickType = (script as? Script)?.brickType {

@@ -123,16 +123,12 @@ extension CBXMLSerializer {
 
             addBrickListTo(script: currentScript, data: script.brickList)
 
-            if let msg = script.commentedOut {
-                currentScript.addChild(name: "commentedOut", value: msg)
+            if CBXMLSerializer.serializeInCBL991 == false {
+                currentScript.addChild(name: "commentedOut", value: "false")
             }
 
             if let msg = script.isUserScript {
                 currentScript.addChild(name: "isUserScript", value: msg)
-            }
-
-            if let msg = script.matchAll {
-                currentScript.addChild(name: "matchAll", value: msg)
             }
 
             if let msg = script.receivedMessage {
