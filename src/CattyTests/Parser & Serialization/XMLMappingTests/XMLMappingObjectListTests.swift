@@ -151,6 +151,29 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         }
     }
 
+    func testMapCBLRChildToFormulaTree() {
+        let root = FormulaElement()
+
+        let leftChild = CBLRChild(type: root.string(for: ElementType.FUNCTION), value: "leftChildValue")
+        let rightChild = CBLRChild(type: root.string(for: ElementType.NUMBER), value: "rightChildValue")
+        let element = CBLRChild(type: root.string(for: ElementType.STRING), value: "value", leftChild: [leftChild], rightChild: [rightChild])
+
+        let mappedFormulaElement = CBXMLMappingToObjc.mapCBLRChildToFormulaTree(input: element, tree: root)
+        XCTAssertEqual(element.type, root.string(for: (mappedFormulaElement?.type)!))
+        XCTAssertEqual(element.value, mappedFormulaElement?.value)
+        XCTAssertEqual(root, mappedFormulaElement?.parent)
+
+        XCTAssertNotNil(mappedFormulaElement?.leftChild)
+        XCTAssertEqual(leftChild.type, root.string(for: (mappedFormulaElement?.leftChild.type)!))
+        XCTAssertEqual(leftChild.value, mappedFormulaElement?.leftChild.value)
+        XCTAssertEqual(mappedFormulaElement, mappedFormulaElement?.leftChild.parent)
+
+        XCTAssertNotNil(mappedFormulaElement?.rightChild)
+        XCTAssertEqual(rightChild.type, root.string(for: (mappedFormulaElement?.rightChild.type)!))
+        XCTAssertEqual(rightChild.value, mappedFormulaElement?.rightChild.value)
+        XCTAssertEqual(mappedFormulaElement, mappedFormulaElement?.rightChild.parent)
+    }
+
     func testBothSoundsHaveSameAddress() {
         var cbProject: CBProject?
         getProjectForXML(xmlFile: "SoundMapping") { project, error  in
