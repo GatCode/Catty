@@ -117,14 +117,25 @@ class XMLAbstractTest: XCTestCase {
             let lhs = String(left.filter { !" \n\t\r".contains($0) })
             let rhs = String(right.filter { !" \n\t\r".contains($0) })
 
-            // hack to counteract AEXML attribute serialization order
-            if lhs.contains("objecttype") || rhs.contains("objecttype") {
-                continue
+            // hack to counteract AEXML attribute serialization order and changing header properties
+            var ignoreWord = false
+            let attributesToIgnore = [
+                "objecttype",
+                "applicationBuildName",
+                "applicationBuildNumber",
+                "applicationVersion",
+                "deviceName",
+                "mediaLicense",
+                "platform",
+                "catrobatLanguageVersion",
+                "LoopEndBrick"
+            ]
+            for attribute in attributesToIgnore {
+                if lhs.contains(attribute) || rhs.contains(attribute) {
+                    ignoreWord = true
+                }
             }
-            if lhs.contains("catrobatLanguageVersion") || rhs.contains("catrobatLanguageVersion") {
-                continue
-            }
-            if lhs.contains("LoopEndBrick") || rhs.contains("LoopEndBrick") {
+            if ignoreWord {
                 continue
             }
 
