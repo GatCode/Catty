@@ -58,6 +58,8 @@ import AEXML
 extension CBXMLSerializer {
 
     @objc func serializeProjectObjc(project: Project, xmlPath: String?, fileManager: CBFileManager?) -> String? {
+        project.header.updateRelevantHeaderInfosBeforeSerialization()
+
         let mappedProject = CBXMLMappingFromObjc.mapProjectToCBProject(project: project)
 
         var resolvedXml: String?
