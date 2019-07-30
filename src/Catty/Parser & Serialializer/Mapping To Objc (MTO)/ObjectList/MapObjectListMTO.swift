@@ -80,23 +80,10 @@ extension CBXMLMappingToObjc {
 
         var lookList = [Look]()
         for look in input {
-            if let newLook = allocLook(name: look.name, filename: look.fileName) {
-                lookList.append(newLook)
-            }
+            lookList.append(Look(name: look.name, andPath: look.fileName))
         }
 
         return NSMutableArray(array: lookList)
-    }
-
-    static func allocLook(name: String?, filename: String?) -> Look? {
-        guard let name = name else { return nil }
-        guard let filename = filename else { return nil }
-
-        let newLook = Look()
-        newLook.name = name
-        newLook.fileName = filename
-
-        return newLook
     }
 
     // MARK: - mapSoundList

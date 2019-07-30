@@ -37,6 +37,7 @@ final class XMLMappingHeaderTests: XMLMappingAbstractTests {
         header.url = "url"
         header.userHandle = "userHandle"
         header.programID = "programID"
+        header.tags = "hello, world, this, is a, #"
         cbProject.header = header
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
@@ -49,5 +50,6 @@ final class XMLMappingHeaderTests: XMLMappingAbstractTests {
         XCTAssertEqual(cbProject.header?.url, project?.header.url)
         XCTAssertEqual(cbProject.header?.userHandle, project?.header.userHandle)
         XCTAssertEqual(cbProject.header?.programID, project?.header.programID)
+        XCTAssertEqual(cbProject.header?.tags, project?.header.tags)
     }
 }
