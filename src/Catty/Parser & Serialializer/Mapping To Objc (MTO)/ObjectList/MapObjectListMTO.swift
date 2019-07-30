@@ -1008,16 +1008,15 @@ extension CBXMLMappingToObjc {
     static func mapCBLRChildToFormulaTree(input: CBLRChild?, tree: FormulaElement) -> FormulaElement? {
         guard let input = input else { return nil }
         let child = FormulaElement(type: input.type, value: input.value, leftChild: nil, rightChild: nil, parent: nil)
+        child?.parent = tree
 
         if let leftChild = input.leftChild.first, leftChild != nil, let ch = child {
             let leftChild = mapCBLRChildToFormulaTree(input: leftChild, tree: ch)
-            child?.parent = tree
             child?.leftChild = leftChild
         }
 
         if let rightChild = input.rightChild.first, rightChild != nil, let ch = child {
             let rightChild = mapCBLRChildToFormulaTree(input: rightChild, tree: ch)
-            child?.parent = tree
             child?.rightChild = rightChild
         }
 
