@@ -139,7 +139,8 @@ class XMLAbstractTest: XCTestCase {
                 return false
             }
 
-            print("SAME:\n\t\(lhs[..<lhsIndex])\n\t\(rhs[..<rhsIndex])")
+            // NOTE: commented out to improve test speed
+            // print("SAME:\n\t\(lhs[..<lhsIndex])\n\t\(rhs[..<rhsIndex])")
         }
 
         return true

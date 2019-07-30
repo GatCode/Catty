@@ -179,12 +179,12 @@ extension CBXMLMappingToObjc {
             }
             result = scr
         default:
-            if script.type?.hasSuffix(kScript) ?? false {
+            if let type = script.type, type.hasSuffix(kScript) == true {
                 let scr = BroadcastScript()
-                scr.receivedMessage = String(format: "%@ %@", kLocalizedUnsupportedScript, script.type ?? "")
+                scr.receivedMessage = String(format: "%@ %@", kLocalizedUnsupportedScript, type)
                 scr.receivedMsg = scr.receivedMessage
                 result = scr
-                unsupportedElements.append(script.type ?? "")
+                unsupportedElements.append(type)
             }
         }
 

@@ -32,6 +32,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         if project != nil {
             let mappedObjectList = CBXMLMappingToObjc.mapObjectList(project: cbProject, currentProject: &project!)
+            XCTAssertNotNil(mappedObjectList)
             XCTAssertEqual(cbProject.scenes?.first?.objectList?.objects?.count, mappedObjectList?.count)
 
             for (index, object) in mappedObjectList!.enumerated() {
@@ -44,6 +45,9 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
                     XCTAssert(false)
                 }
             }
+
+            let backMappedObjectList = CBXMLMappingFromObjc.mapObjectList(project: project!)
+            XCTAssertEqual(cbProject.scenes?.first?.objectList, backMappedObjectList)
         } else {
             XCTAssert(false)
         }
@@ -190,6 +194,21 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         XCTAssertEqual(cbObjects?.first?.scriptList?.scripts?.first?.brickList?.bricks?.count, (mappedScriptList?.firstObject as? Script)?.brickList.count)
     }
 
+    func testMapScript() {
+        let cbProject = createExtendedCBProject()
+        let cbObjectList = cbProject.scenes?.first?.objectList?.objects
+        let cbObject = cbObjectList?.first
+        let cbScript = cbObject?.scriptList?.scripts?.first
+        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
+        var spriteObject = project?.objectList.firstObject as! SpriteObject
+
+        let mappedScript = CBXMLMappingToObjc.mapScript(script: cbScript, objectList: cbObjectList, object: cbObject, project: cbProject, currentObject: &spriteObject)
+
+        XCTAssertNotNil(mappedScript)
+        XCTAssertNotNil(mappedScript?.brickTitle)
+        XCTAssertNotNil(mappedScript?.brickType)
+    }
+
     func testScriptsAreEqual() {
         var cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
@@ -228,6 +247,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         let mappedBrickList = CBXMLMappingToObjc.mapBrickList(script: cbScript, objectList: cbObjectList, object: cbObject, project: cbProject, currScript: &currentScript, currObject: &currentObject)
 
+        XCTAssertNotNil(mappedBrickList)
         XCTAssertEqual(cbScript?.brickList?.bricks?.count, mappedBrickList?.count)
     }
 
