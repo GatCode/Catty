@@ -428,21 +428,20 @@ extension CBXMLMappingToObjc {
             case kGlideToBrick.uppercased():
                 let newBrick = GlideToBrick()
                 let formulaTreeMapping = mapFormulaListToBrick(input: brick)
+                var orderArr = [String]()
                 guard let formulaMapping = formulaTreeMapping else { break }
                 if let mapping = formulaMapping as? [Formula] {
                     for mappedFormula in mapping {
                         switch mappedFormula.category {
                         case "X_DESTINATION":
                             newBrick.xDestination = mappedFormula
-                            newBrick.reversedXY = true
-                            newBrick.reversedDuration = false
+                            orderArr.append("X")
                         case "Y_DESTINATION":
                             newBrick.yDestination = mappedFormula
-                            newBrick.reversedXY = false
-                            newBrick.reversedDuration = false
+                            orderArr.append("Y")
                         default:
                             newBrick.durationInSeconds = mappedFormula
-                            newBrick.reversedDuration = true
+                            orderArr.append("D")
                         }
                     }
                 }
@@ -450,7 +449,10 @@ extension CBXMLMappingToObjc {
                     let xyMapping = mapXYDestinationsToBrick(input: brick)
                     newBrick.xDestination = xyMapping?.firstObject as? Formula
                     newBrick.yDestination = xyMapping?.lastObject as? Formula
+                    orderArr.append("X")
+                    orderArr.append("Y")
                 }
+                newBrick.serializationOrder = orderArr
                 newBrick.script = currentScript
                 newBrick.commentedOut = brick.commentedOut
                 resultBrickList.append(newBrick)

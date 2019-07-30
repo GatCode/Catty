@@ -202,19 +202,25 @@ extension CBXMLMappingFromObjc {
                 mappedBrick.pointedObjectReference = "../../" + (resolveObjectPath(project: project, object: brick?.pointedObject) ?? "")
             case kGlideToBrick.uppercased():
                 let brick = brick as? GlideToBrick
-                let xDest = brick?.reversedXY == true ? brick?.yDestination : brick?.xDestination
-                let yDest = brick?.reversedXY == true ? brick?.xDestination : brick?.yDestination
-                let duration = brick?.durationInSeconds
-                if xDest?.category?.isEmpty ?? true || yDest?.category?.isEmpty ?? true || duration?.category?.isEmpty ?? true {
-                    xDest?.category = "X_DESTINATION"
-                    yDest?.category = "Y_DESTINATION"
-                    duration?.category = "DURATION_IN_SECONDS"
+                if brick?.xDestination?.category?.isEmpty ?? true || brick?.yDestination?.category?.isEmpty ?? true || brick?.durationInSeconds?.category?.isEmpty ?? true {
+                    brick?.xDestination?.category = "X_DESTINATION"
+                    brick?.yDestination?.category = "Y_DESTINATION"
+                    brick?.durationInSeconds?.category = "DURATION_IN_SECONDS"
                 }
-                if let reversedDuration = brick?.reversedDuration, reversedDuration == true {
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [xDest, yDest, duration])
-                } else {
-                    mappedBrick.formulaTree = mapFormulaList(formulas: [duration, xDest, yDest])
+                var serializationArr = [Formula?]()
+                if let serializationOrder = brick?.serializationOrder as? [String] {
+                    for orderIndex in serializationOrder {
+                        switch orderIndex {
+                        case "X":
+                            serializationArr.append(brick?.xDestination)
+                        case "Y":
+                            serializationArr.append(brick?.yDestination)
+                        default:
+                            serializationArr.append(brick?.durationInSeconds)
+                        }
+                    }
                 }
+                mappedBrick.formulaTree = mapFormulaList(formulas: serializationArr)
             case kVibrationBrick.uppercased():
                 let brick = brick as? VibrationBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds])
