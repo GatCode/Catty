@@ -24,7 +24,7 @@ import XCTest
 
 @testable import Pocket_Code
 
-final class XMLMappingHeaderTests: XMLMappingTestsStructure {
+final class XMLMappingHeaderTests: XMLMappingAbstractTests {
 
     func testHeadersAreEqual() {
         var cbProject = CBProject()

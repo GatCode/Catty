@@ -53,7 +53,7 @@
 		2E25198B229C465300DC11BD /* XMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25198A229C465300DC11BD /* XMLParserTests.swift */; };
 		2E27BC3D22D61CED00B83AF3 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30AB1A24DCAA00093DA7 /* Project.m */; };
 		2E27BC4722D6216800B83AF3 /* LanguageTranslationDefinesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C631901BC50DEE00486958 /* LanguageTranslationDefinesSwift.swift */; };
-		2E27BC4A22D6426700B83AF3 /* XMLMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */; };
+		2E27BC4A22D6426700B83AF3 /* XMLMappingAbstractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */; };
 		2E27BC4D22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27BC4C22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift */; };
 		2E34802822A4F250002D1482 /* CBLRChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34802722A4F250002D1482 /* CBLRChild.swift */; };
 		2E35EBB622DB969700B580FD /* Parser&SerializerDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBB522DB969700B580FD /* Parser&SerializerDefines.swift */; };
@@ -63,6 +63,10 @@
 		2E35EBC122DB981600B580FD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC022DB981600B580FD /* String.swift */; };
 		2E35EBC322DB984600B580FD /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC222DB984600B580FD /* Optional.swift */; };
 		2E4CA98522EEB904003F262D /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98422EEB904003F262D /* CustomExtensions.swift */; };
+		2E4CA98922EF33DC003F262D /* XMLMappingHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98822EF33DC003F262D /* XMLMappingHeaderTests.swift */; };
+		2E4CA98B22EF3431003F262D /* XMLMappingObjectListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98A22EF3431003F262D /* XMLMappingObjectListTests.swift */; };
+		2E4CA98D22EF3462003F262D /* XMLMappingVariablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98C22EF3462003F262D /* XMLMappingVariablesTests.swift */; };
+		2E4CA98F22EF34C7003F262D /* XMLMappingGeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98E22EF34C7003F262D /* XMLMappingGeneralTests.swift */; };
 		2E554A0022DC844D00799BCF /* InvalidBricksAndScripts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */; };
 		2E554A0122DC844D00799BCF /* ValidFormulaList.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492322DC844C00799BCF /* ValidFormulaList.xml */; };
 		2E554A0222DC844D00799BCF /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */; };
@@ -1337,7 +1341,7 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
-		2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLMappingTests.swift; path = "Parser & Serialization/XMLMappingTests.swift"; sourceTree = "<group>"; };
+		2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingAbstractTests.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
 		2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Galaxy_War_0994.xml; sourceTree = "<group>"; };
@@ -1368,6 +1372,10 @@
 		2E35EBC022DB981600B580FD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E35EBC222DB984600B580FD /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		2E4CA98422EEB904003F262D /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomExtensions.swift; path = Extensions/CustomExtensions.swift; sourceTree = "<group>"; };
+		2E4CA98822EF33DC003F262D /* XMLMappingHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingHeaderTests.swift; sourceTree = "<group>"; };
+		2E4CA98A22EF3431003F262D /* XMLMappingObjectListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingObjectListTests.swift; sourceTree = "<group>"; };
+		2E4CA98C22EF3462003F262D /* XMLMappingVariablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingVariablesTests.swift; sourceTree = "<group>"; };
+		2E4CA98E22EF34C7003F262D /* XMLMappingGeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingGeneralTests.swift; sourceTree = "<group>"; };
 		2E55492222DC844C00799BCF /* InvalidBricksAndScripts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvalidBricksAndScripts.xml; sourceTree = "<group>"; };
 		2E55492322DC844C00799BCF /* ValidFormulaList.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ValidFormulaList.xml; sourceTree = "<group>"; };
 		2E55492522DC844C00799BCF /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
@@ -3181,6 +3189,19 @@
 			path = Variables;
 			sourceTree = "<group>";
 		};
+		2E4CA99122EF3748003F262D /* XMLMappingTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */,
+				2E4CA98E22EF34C7003F262D /* XMLMappingGeneralTests.swift */,
+				2E4CA98822EF33DC003F262D /* XMLMappingHeaderTests.swift */,
+				2E4CA98A22EF3431003F262D /* XMLMappingObjectListTests.swift */,
+				2E4CA98C22EF3462003F262D /* XMLMappingVariablesTests.swift */,
+			);
+			name = XMLMappingTests;
+			path = "Parser & Serialization/XMLMappingTests";
+			sourceTree = "<group>";
+		};
 		2E55492022DC844C00799BCF /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
@@ -4483,8 +4504,8 @@
 			children = (
 				2E251988229C44E200DC11BD /* XMLAbstractTest.swift */,
 				2E25198A229C465300DC11BD /* XMLParserTests.swift */,
-				2E13C40322ABB0090018CB1E /* XMLMappingTests.swift */,
 				2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */,
+				2E4CA99122EF3748003F262D /* XMLMappingTests */,
 			);
 			name = "Parser & Serialializer";
 			sourceTree = "<group>";
@@ -8134,6 +8155,7 @@
 				4C82265A213FA7A400F3D750 /* TouchManagerMock.swift in Sources */,
 				2E27BC3D22D61CED00B83AF3 /* Project.m in Sources */,
 				5973F245202EF3A000A4CED9 /* SoundsLibraryCollectionViewDataSourceDelegateMock.swift in Sources */,
+				2E4CA98F22EF34C7003F262D /* XMLMappingGeneralTests.swift in Sources */,
 				4C3A5CA921D3B7EF008FD83F /* NotEqualOperatorTest.swift in Sources */,
 				4C0F9FD3204BD3B400E71B2D /* BubbleBrickTests.swift in Sources */,
 				4C822672213FA7A400F3D750 /* InclinationYSensorTest.swift in Sources */,
@@ -8192,7 +8214,7 @@
 				4C82265D213FA7A400F3D750 /* FingerYSensorTest.swift in Sources */,
 				4CEB225D1B95E47500B3BE2F /* MoveNStepsBrickTests.m in Sources */,
 				4CEB22531B95E47500B3BE2F /* BrickMutableCopyTests.m in Sources */,
-				2E27BC4A22D6426700B83AF3 /* XMLMappingTests.swift in Sources */,
+				2E27BC4A22D6426700B83AF3 /* XMLMappingAbstractTests.swift in Sources */,
 				4C1F6FA7213CFB5800C20BEB /* FunctionTests.swift in Sources */,
 				4C3A5CAB21D3B967008FD83F /* SmallerThanOperatorTest.swift in Sources */,
 				4C822653213FA7A400F3D750 /* ObjectDoubleSensorMock.swift in Sources */,
@@ -8213,6 +8235,7 @@
 				4C82267A213FA7A400F3D750 /* LookNumberSensorTest.swift in Sources */,
 				4CEB22581B95E47500B3BE2F /* ClearGrafficEffectBrickTests.m in Sources */,
 				4C82267C213FA7A400F3D750 /* BackgroundNameSensorTest.swift in Sources */,
+				2E4CA98D22EF3462003F262D /* XMLMappingVariablesTests.swift in Sources */,
 				4C822685213FA7CD00F3D750 /* FunctionManagerTests.swift in Sources */,
 				4CD487761ED2C2A3001BB80A /* ChangeVariableBrickTests.swift in Sources */,
 				4C82267B213FA7A400F3D750 /* BackgroundNumberSensorTest.swift in Sources */,
@@ -8284,9 +8307,11 @@
 				E4AEC89F210852030081A980 /* StoreProjectsDownloaderTests.swift in Sources */,
 				4C0F9FD7204BD3CC00E71B2D /* PreviousLookBrickTests.m in Sources */,
 				4CA658ED21EBA5BD000E5797 /* CBFileManagerTests.swift in Sources */,
+				2E4CA98922EF33DC003F262D /* XMLMappingHeaderTests.swift in Sources */,
 				4CC50A60213BE18F004BC914 /* SingleParameterDoubleFunctionMock.swift in Sources */,
 				4CEB22691B95E47500B3BE2F /* TurnLeftBrickTests.m in Sources */,
 				4C822682213FA7A400F3D750 /* PhiroSensorTest.swift in Sources */,
+				2E4CA98B22EF3431003F262D /* XMLMappingObjectListTests.swift in Sources */,
 				4C822669213FA7A400F3D750 /* TimeMinuteSensorTest.swift in Sources */,
 				4CEB22731B95E4BC00B3BE2F /* BrickInsertManagerAbstractTest.m in Sources */,
 				4C822673213FA7A400F3D750 /* AccelerationZSensorTest.swift in Sources */,

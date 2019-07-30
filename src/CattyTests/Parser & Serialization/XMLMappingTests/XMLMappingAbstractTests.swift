@@ -24,7 +24,7 @@ import XCTest
 
 @testable import Pocket_Code
 
-class XMLMappingTests: XMLAbstractTest {
+class XMLMappingAbstractTests: XMLAbstractTest {
 
     func createBasicCBProject() -> CBProject {
         let sceneList = [CBProjectScene(name: "Scene1")]

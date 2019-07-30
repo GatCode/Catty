@@ -296,25 +296,23 @@
 {
     if(self.type != formulaElement.type)
         return NO;
-    
-    if(self.leftChild && formulaElement.leftChild == nil) {
+    if(![Util isEqual:self.value toObject:formulaElement.value])
         return NO;
-    } else if(self.leftChild == nil && formulaElement.leftChild) {
+    if((self.leftChild != nil && formulaElement.leftChild == nil) || (self.leftChild == nil && formulaElement.leftChild != nil))
         return NO;
-    } else {
-        [self.leftChild isEqualToFormulaElement:formulaElement.leftChild];
-    }
-    
-    if(self.rightChild && formulaElement.rightChild == nil) {
+    if(self.leftChild != nil && ![self.leftChild isEqualToFormulaElement:formulaElement.leftChild])
         return NO;
-    } else if(self.rightChild == nil && formulaElement.rightChild) {
+    if((self.rightChild != nil && formulaElement.rightChild == nil) || (self.rightChild == nil && formulaElement.rightChild != nil))
         return NO;
-    } else {
-        [self.rightChild isEqualToFormulaElement:formulaElement.rightChild];
-    }
-    
-    if (self.value != formulaElement.value)
-    return NO;
+    if(self.rightChild != nil && ![self.rightChild isEqualToFormulaElement:formulaElement.rightChild])
+        return NO;
+    if((self.parent != nil && formulaElement.parent == nil) || (self.parent == nil && formulaElement.parent != nil))
+        return NO;
+    // FIXME: this leads to an endless recursion bug!!!
+    //    if(self.parent != nil && ![self.parent isEqualToFormulaElement:formulaElement.parent])
+    //        return NO;
+    if ((self.parent && (! formulaElement.parent)) || ((! self.parent) && formulaElement.parent))
+        return NO;
     
     return YES;
 }

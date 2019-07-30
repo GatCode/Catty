@@ -24,7 +24,7 @@ import XCTest
 
 @testable import Pocket_Code
 
-final class XMLMappingObjectListTests: XMLMappingTestsStructure {
+final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
     func testObjectsAreEqual() {
         var cbProject = createBasicCBProject()

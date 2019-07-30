@@ -24,7 +24,7 @@ import XCTest
 
 @testable import Pocket_Code
 
-final class XMLMappingGeneralTests: XMLMappingTestsStructure {
+final class XMLMappingGeneralTests: XMLMappingAbstractTests {
 
     func testBackAndForthMappings() {
         XCTAssertTrue(testBackAndForthMappingOfProjectToCBProject(filename: "EscapingChars_0994"))
