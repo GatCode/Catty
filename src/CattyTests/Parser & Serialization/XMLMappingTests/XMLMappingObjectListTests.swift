@@ -286,7 +286,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         }
     }
 
-    func testMapGlideDestinations() {
+    func testMapDestinations() {
         let xDest = "-123"
         let yDest = "567"
 
@@ -294,26 +294,11 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let yDestFormula = CBFormulaList(formulas: [CBFormula(type: "NUMBER", value: yDest, category: nil, leftChild: nil, rightChild: nil)])
         let cbBrick = CBBrick(type: "GlideToBrick", xDestination: xDestFormula, yDestination: yDestFormula)
 
-        let mappedXDestination = CBXMLMappingToObjc.mapGlideDestinations(input: cbBrick, xDestination: true)
-        let mappedYDestination = CBXMLMappingToObjc.mapGlideDestinations(input: cbBrick, xDestination: false)
+        let mappedXDestination = CBXMLMappingToObjc.mapDestinations(input: cbBrick, xDestination: true)
+        let mappedYDestination = CBXMLMappingToObjc.mapDestinations(input: cbBrick, xDestination: false)
 
         XCTAssertEqual(xDest, (mappedXDestination?.firstObject as? Formula)?.formulaTree.value)
         XCTAssertEqual(yDest, (mappedYDestination?.firstObject as? Formula)?.formulaTree.value)
-    }
-
-    func testMapXYDestinationsToBrick() {
-        let xDest = "-123"
-        let yDest = "567"
-
-        let xDestFormula = CBFormulaList(formulas: [CBFormula(type: "NUMBER", value: xDest, category: nil, leftChild: nil, rightChild: nil)])
-        let yDestFormula = CBFormulaList(formulas: [CBFormula(type: "NUMBER", value: yDest, category: nil, leftChild: nil, rightChild: nil)])
-        let cbBrick = CBBrick(type: "GlideToBrick", xDestination: xDestFormula, yDestination: yDestFormula)
-
-        let mappedDestinations = CBXMLMappingToObjc.mapXYDestinationsToBrick(input: cbBrick)
-
-        XCTAssertEqual(mappedDestinations?.count, 2)
-        XCTAssertEqual(xDest, (mappedDestinations?[0] as? Formula)?.formulaTree.value)
-        XCTAssertEqual(yDest, (mappedDestinations?[1] as? Formula)?.formulaTree.value)
     }
 
     // MARK: - Formula Mapping
@@ -335,6 +320,19 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         XCTAssertEqual(cat, secondMappedFormula.category)
         XCTAssertEqual(nil, secondMappedFormula.formulaTree.leftChild)
         XCTAssertEqual(rightChild.value, secondMappedFormula.formulaTree.rightChild.value)
+    }
+
+    func testAddFormulaToList() {
+        var formulaList = [Formula]()
+        let firstFormula = CBFormula(type: "NUMBER", value: "1", category: nil, leftChild: nil, rightChild: nil)
+        let SecondFormula = CBFormula(type: "NUMBER", value: "2", category: nil, leftChild: nil, rightChild: nil)
+
+        CBXMLMappingToObjc.addFormulaToList(formulas: [firstFormula, SecondFormula], formulaList: &formulaList)
+
+        XCTAssertEqual(formulaList.count, 2)
+        formulaList.forEach { mappedFormula in
+            XCTAssertTrue(mappedFormula.formulaTree.value == firstFormula.value || mappedFormula.formulaTree.value == SecondFormula.value)
+        }
     }
 
     func testMapCBLRChildToFormulaTree() {

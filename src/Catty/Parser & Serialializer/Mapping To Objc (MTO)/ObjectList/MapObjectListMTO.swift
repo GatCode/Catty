@@ -160,8 +160,7 @@ extension CBXMLMappingToObjc {
         var result: Script?
         switch script.type?.uppercased() {
         case kStartScript.uppercased():
-            let scr = StartScript()
-            result = scr
+            result = StartScript()
         case kWhenScript.uppercased():
             let scr = WhenScript()
             if let action = script.action {
@@ -169,8 +168,7 @@ extension CBXMLMappingToObjc {
             }
             result = scr
         case kWhenTouchDownScript.uppercased():
-            let scr = WhenTouchDownScript()
-            result = scr
+            result = WhenTouchDownScript()
         case kBroadcastScript.uppercased():
             let scr = BroadcastScript()
             if let msg = script.receivedMessage {
@@ -183,8 +181,8 @@ extension CBXMLMappingToObjc {
                 let scr = BroadcastScript()
                 scr.receivedMessage = String(format: "%@ %@", kLocalizedUnsupportedScript, type)
                 scr.receivedMsg = scr.receivedMessage
-                result = scr
                 unsupportedElements.append(type)
+                result = scr
             }
         }
 
@@ -210,17 +208,9 @@ extension CBXMLMappingToObjc {
             switch brick.type?.uppercased() {
             // MARK: Condition Bricks
             case kBroadcastBrick.uppercased():
-                let newBrick = BroadcastBrick()
-                if let msg = brick.broadcastMessage {
-                    newBrick.broadcastMessage = msg
-                }
-                resultBrickList.append(newBrick)
+                resultBrickList.append(BroadcastBrick(message: brick.broadcastMessage ?? ""))
             case kBroadcastWaitBrick.uppercased():
-                let newBrick = BroadcastWaitBrick()
-                if let msg = brick.broadcastMessage {
-                    newBrick.broadcastMessage = msg
-                }
-                resultBrickList.append(newBrick)
+                resultBrickList.append(BroadcastWaitBrick(message: brick.broadcastMessage ?? ""))
             case kIfLogicBeginBrick.uppercased():
                 let newBrick = IfLogicBeginBrick()
                 newBrick.ifCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -264,8 +254,7 @@ extension CBXMLMappingToObjc {
                 }
                 resultBrickList.append(newBrick)
             case kForeverBrick.uppercased():
-                let newBrick = ForeverBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(ForeverBrick())
             case kRepeatBrick.uppercased():
                 let newBrick = RepeatBrick()
                 newBrick.timesToRepeat = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -348,8 +337,7 @@ extension CBXMLMappingToObjc {
                 newBrick.yPosition?.category = "Y_POSITION"
                 resultBrickList.append(newBrick)
             case kIfOnEdgeBounceBrick.uppercased():
-                let newBrick = IfOnEdgeBounceBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(IfOnEdgeBounceBrick())
             case kMoveNStepsBrick.uppercased():
                 let newBrick = MoveNStepsBrick()
                 newBrick.steps = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -403,10 +391,9 @@ extension CBXMLMappingToObjc {
                     }
                 }
                 if newBrick.xDestination == nil || newBrick.yDestination == nil {
-                    let xyMapping = mapXYDestinationsToBrick(input: brick)
-                    newBrick.xDestination = xyMapping?.firstObject as? Formula
+                    newBrick.xDestination = mapDestinations(input: brick, xDestination: true)?.firstObject as? Formula
                     newBrick.xDestination?.category = "X_DESTINATION"
-                    newBrick.yDestination = xyMapping?.lastObject as? Formula
+                    newBrick.yDestination = mapDestinations(input: brick, xDestination: false)?.firstObject as? Formula
                     newBrick.yDestination?.category = "Y_DESTINATION"
                     orderArr.append("X")
                     orderArr.append("Y")
@@ -444,11 +431,9 @@ extension CBXMLMappingToObjc {
                 }
                 resultBrickList.append(newBrick)
             case kNextLookBrick.uppercased():
-                let newBrick = NextLookBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(NextLookBrick())
             case kPreviousLookBrick.uppercased():
-                let newBrick = PreviousLookBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(PreviousLookBrick())
             case kSetSizeToBrick.uppercased():
                 let newBrick = SetSizeToBrick()
                 newBrick.size = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -460,11 +445,9 @@ extension CBXMLMappingToObjc {
                 newBrick.size?.category = "SIZE_CHANGE"
                 resultBrickList.append(newBrick)
             case kShowBrick.uppercased():
-                let newBrick = ShowBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(ShowBrick())
             case kHideBrick.uppercased():
-                let newBrick = HideBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(HideBrick())
             case kSetTransparencyBrick.uppercased(), kSetGhostEffectBrick.uppercased():
                 let newBrick = SetTransparencyBrick()
                 newBrick.transparency = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -496,8 +479,7 @@ extension CBXMLMappingToObjc {
                 newBrick.changeColor?.category = "COLOR_CHANGE"
                 resultBrickList.append(newBrick)
             case kClearGraphicEffectBrick.uppercased():
-                let newBrick = ClearGraphicEffectBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(ClearGraphicEffectBrick())
             case kFlashBrick.uppercased(), kLedOnBrick.uppercased(), kLedOffBrick.uppercased():
                 var newBrick = FlashBrick()
                 if let flashState = brick.spinnerSelectionID {
@@ -551,8 +533,7 @@ extension CBXMLMappingToObjc {
                 }
                 resultBrickList.append(newBrick)
             case kStopAllSoundsBrick.uppercased():
-                let newBrick = StopAllSoundsBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(StopAllSoundsBrick())
             case kSetVolumeToBrick.uppercased():
                 let newBrick = SetVolumeToBrick()
                 newBrick.volume = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -653,8 +634,7 @@ extension CBXMLMappingToObjc {
                 resultBrickList.append(newBrick)
             // MARK: Alternative Bricks
             case kComeToFrontBrick.uppercased():
-                let newBrick = ComeToFrontBrick()
-                resultBrickList.append(newBrick)
+                resultBrickList.append(ComeToFrontBrick())
             case kGoNStepsBackBrick.uppercased():
                 let newBrick = GoNStepsBackBrick()
                 newBrick.steps = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
@@ -686,21 +666,7 @@ extension CBXMLMappingToObjc {
         return NSMutableArray(array: resultBrickList)
     }
 
-    static func mapGlideDestinations(input: CBBrick?, xDestination: Bool) -> NSMutableArray? {
-        var formulaList = [Formula]()
-
-        if let formulas = xDestination ? input?.xDestination?.formulas : input?.yDestination?.formulas {
-            for formula in formulas {
-                let mappedFormula = mapCBFormulaToFormula(input: formula)
-                if formulaList.contains(mappedFormula) == false {
-                    formulaList.append(mappedFormula)
-                }
-            }
-        }
-
-        return NSMutableArray(array: formulaList)
-    }
-
+    // MARK: - mapUserVariables
     static func getLocalVariablesFromObject(project: CBProject?, object: CBObject?, isList: Bool) -> [String] {
         guard let project = project else { return [String]() }
         var localVariables = [String]()
@@ -801,6 +767,7 @@ extension CBXMLMappingToObjc {
             return allocUserVariable(name: variable, isList: true)
         }
 
+        // TODO: present error to user and abort
         return nil
     }
 
@@ -833,19 +800,9 @@ extension CBXMLMappingToObjc {
         var formulaList = [Formula]()
 
         if let formulas = input?.formulaList?.formulas {
-            for formula in formulas {
-                let mappedFormula = mapCBFormulaToFormula(input: formula)
-                if formulaList.contains(mappedFormula) == false {
-                    formulaList.append(mappedFormula)
-                }
-            }
+            addFormulaToList(formulas: formulas, formulaList: &formulaList)
         } else if let formulas = input?.formulaTree?.formulas {
-            for formula in formulas {
-                let mappedFormula = mapCBFormulaToFormula(input: formula)
-                if formulaList.contains(mappedFormula) == false {
-                    formulaList.append(mappedFormula)
-                }
-            }
+            addFormulaToList(formulas: formulas, formulaList: &formulaList)
         } else {
             return nil
         }
@@ -853,28 +810,13 @@ extension CBXMLMappingToObjc {
         return NSMutableArray(array: formulaList)
     }
 
-    static func mapXYDestinationsToBrick(input: CBBrick?) -> NSMutableArray? {
-        var formulaList = [Formula]()
-
-        if let xDestination = input?.xDestination?.formulas {
-            for formula in xDestination {
-                let mappedFormula = mapCBFormulaToFormula(input: formula)
-                if formulaList.contains(mappedFormula) == false {
-                    formulaList.append(mappedFormula)
-                }
+    static func addFormulaToList(formulas: [CBFormula], formulaList: inout [Formula]) {
+        for formula in formulas {
+            let mappedFormula = mapCBFormulaToFormula(input: formula)
+            if formulaList.contains(mappedFormula) == false {
+                formulaList.append(mappedFormula)
             }
         }
-
-        if let yDestination = input?.yDestination?.formulas {
-            for formula in yDestination {
-                let mappedFormula = mapCBFormulaToFormula(input: formula)
-                if formulaList.contains(mappedFormula) == false {
-                    formulaList.append(mappedFormula)
-                }
-            }
-        }
-
-        return NSMutableArray(array: formulaList)
     }
 
     static func mapCBFormulaToFormula(input: CBFormula?) -> Formula {
@@ -934,6 +876,17 @@ extension CBXMLMappingToObjc {
         return child
     }
 
+    static func mapDestinations(input: CBBrick?, xDestination: Bool) -> NSMutableArray? {
+        var formulaList = [Formula]()
+
+        if let formulas = xDestination ? input?.xDestination?.formulas : input?.yDestination?.formulas {
+            addFormulaToList(formulas: formulas, formulaList: &formulaList)
+        }
+
+        return NSMutableArray(array: formulaList)
+    }
+
+    // MARK: - helper functions
     static func extractAbstractNumbersFrom(object: CBObject, reference: String, project: CBProject?) -> (Int, Int) {
         let splittedReference = reference.split(separator: "/")
         var brickNr = 0
