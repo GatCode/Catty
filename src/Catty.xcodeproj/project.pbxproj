@@ -2251,9 +2251,6 @@
 		927F79DF1BEE39CB008D1635 /* PhiroIfLogicBeginBrick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhiroIfLogicBeginBrick.m; sourceTree = "<group>"; };
 		928D4D771A7BD19A00E6DFA8 /* CatrobatUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatrobatUISlider.h; path = CatrobatSlider/CatrobatUISlider.h; sourceTree = "<group>"; };
 		928D4D781A7BD19A00E6DFA8 /* CatrobatUISlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatrobatUISlider.m; path = CatrobatSlider/CatrobatUISlider.m; sourceTree = "<group>"; };
-		929108931A41F32A0034564D /* CBParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBParserProtocol.h; sourceTree = "<group>"; };
-		929108941A41F32A0034564D /* CBSerializerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSerializerProtocol.h; sourceTree = "<group>"; };
-		929108951A41F32A0034564D /* CBXMLNodeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBXMLNodeProtocol.h; sourceTree = "<group>"; };
 		929CC0BB1BC39AD60027DEC0 /* BluetoothBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothBrick.h; sourceTree = "<group>"; };
 		929CC0BC1BC39AD60027DEC0 /* BluetoothBrick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothBrick.m; sourceTree = "<group>"; };
 		929CC0BF1BC39B0A0027DEC0 /* PhiroBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhiroBrick.h; sourceTree = "<group>"; };
@@ -5112,16 +5109,6 @@
 			name = CatrobatSlider;
 			sourceTree = "<group>";
 		};
-		929108911A41F32A0034564D /* Parser&Serializer */ = {
-			isa = PBXGroup;
-			children = (
-				929108931A41F32A0034564D /* CBParserProtocol.h */,
-				929108941A41F32A0034564D /* CBSerializerProtocol.h */,
-				929108951A41F32A0034564D /* CBXMLNodeProtocol.h */,
-			);
-			path = "Parser&Serializer";
-			sourceTree = "<group>";
-		};
 		929CC0BE1BC39B0A0027DEC0 /* PhiroBricks */ = {
 			isa = PBXGroup;
 			children = (
@@ -5575,7 +5562,6 @@
 				4C5517C71ABC303200A52FF4 /* Scripts */,
 				4C5517BE1ABC2F5F00A52FF4 /* Bricks */,
 				4C26506B1A653A3F0050775B /* Copying */,
-				929108911A41F32A0034564D /* Parser&Serializer */,
 			);
 			name = Protocols;
 			path = "Extension&Delegate&Protocol/Protocols";
