@@ -767,7 +767,7 @@ extension CBXMLMappingToObjc {
             return allocUserVariable(name: variable, isList: true)
         }
 
-        // TODO: present error to user and abort
+        abortMapping = true
         return nil
     }
 

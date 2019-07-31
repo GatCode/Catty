@@ -27,6 +27,7 @@ enum CBXMLMappingToObjc {
     static var mappingVariableListLocal = [UserVariable]()
     static var unsupportedElements = [String]()
     static var spriteObjectList = [SpriteObject]()
+    static var abortMapping = false
 
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
@@ -50,6 +51,6 @@ enum CBXMLMappingToObjc {
 
         mappedProject.unsupportedElements = NSMutableSet(array: CBXMLMappingToObjc.unsupportedElements)
 
-        return mappedProject
+        return CBXMLMappingToObjc.abortMapping ? nil : mappedProject
     }
 }

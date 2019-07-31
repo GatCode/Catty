@@ -466,6 +466,10 @@
         return nil;
     }
     project = [catrobatParser getProjectObjc];
+    if (project == nil) {
+        NSDebug(@"Parsing Error!");
+        return nil;
+    }
     project.header.programID = loadingInfo.projectID;
 
     NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);
