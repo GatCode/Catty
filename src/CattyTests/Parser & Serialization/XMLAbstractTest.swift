@@ -128,7 +128,10 @@ class XMLAbstractTest: XCTestCase {
                 "mediaLicense",
                 "platform",
                 "catrobatLanguageVersion",
-                "LoopEndBrick"
+                "LoopEndBrick",
+                "formula",
+                "type",
+                "value"
             ]
             for attribute in attributesToIgnore {
                 if lhs.contains(attribute) || rhs.contains(attribute) {
