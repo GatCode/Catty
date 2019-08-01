@@ -87,6 +87,21 @@ class XMLAbstractTest: XCTestCase {
             print("XML file is located at: \(String(describing: location))!")
         }
 
+        getProjectForXML(xmlFile: projectName) { result, error in
+            XCTAssertNil(error)
+            project = result
+        }
+
+        CBXMLSerializer.shared.createXMLDocument(project: project) { result, error in
+            XCTAssertNil(error)
+            xml = result
+        }
+
+        CBXMLSerializer.shared.writeXMLFile(filename: "file.xml", data: xml) { location, error in
+            XCTAssertNil(error)
+            print("XML file is located at: \(String(describing: location))!")
+        }
+
         CBXMLSerializer.shared.readXMLFile(filename: "file.xml") { result, error in
             XCTAssertNil(error)
             readXml = result
