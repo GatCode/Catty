@@ -62,6 +62,9 @@ class XMLAbstractTest: XCTestCase {
         XCTAssertNotNil(project)
         xml = CBXMLSerializer.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
 
+        let xmlToCompare = CBXMLSerializer.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
+        XCTAssertEqual(xml, xmlToCompare)
+
         CBXMLSerializer.shared.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
             XCTAssertNil(error)
             print("XML file is located at: \(String(describing: location))!")
