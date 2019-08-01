@@ -34,6 +34,7 @@ enum CBXMLMappingToObjc {
         var mappedProject = Project()
         CBXMLMappingToObjc.mappingSoundList.removeAll()
         CBXMLMappingToObjc.mappingVariableListGlobal.removeAll()
+        CBXMLMappingToObjc.mappingVariableListLocal.removeAll()
         CBXMLMappingToObjc.unsupportedElements.removeAll()
         CBXMLMappingToObjc.spriteObjectList.removeAll()
 
