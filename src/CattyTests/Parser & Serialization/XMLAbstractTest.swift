@@ -53,7 +53,26 @@ class XMLAbstractTest: XCTestCase {
             print("XML file is located at: \(String(describing: location))!")
         }
 
-        CBXMLSerializer.shared.readXMLFile(filename: "file.xml") { result, error in
+        // read the file.xml again and write it back again
+        getTmpObjcProjectForXML(xmlFile: "file.xml") { result, error in
+            XCTAssertNil(error)
+            project = result
+        }
+
+        XCTAssertNotNil(project)
+        xml = CBXMLSerializer.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
+
+        CBXMLSerializer.shared.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
+            XCTAssertNil(error)
+            print("XML file is located at: \(String(describing: location))!")
+        }
+
+        CBXMLSerializer.shared.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
+            XCTAssertNil(error)
+            print("XML file is located at: \(String(describing: location))!")
+        }
+
+        CBXMLSerializer.shared.readXMLFile(filename: "file2.xml") { result, error in
             XCTAssertNil(error)
             readXml = result
         }
@@ -293,6 +312,29 @@ class XMLAbstractTest: XCTestCase {
             let project = catrobatParser?.getProjectObjc()
             completion(project, nil)
         })
+    }
+
+    func getTmpObjcProjectForXML(xmlFile: String, completion: @escaping (Project?, XMLAbstractError?) -> Void) {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+            let path = dir.appendingPathComponent(xmlFile)
+
+            let catrobatParser = CBXMLParser(path: path.path)
+            if catrobatParser == nil {
+                completion(nil, .unexpectedError)
+            }
+
+            catrobatParser?.parseProject(completion: { error in
+                if error != nil {
+                    completion(nil, .parsingError)
+                }
+
+                let project = catrobatParser?.getProjectObjc()
+                completion(project, nil)
+            })
+        } else {
+            completion(nil, .invalidPath)
+        }
     }
 
     func getPathForXML(xmlFile: String, completion: @escaping (String?, XMLAbstractError?) -> Void) {
