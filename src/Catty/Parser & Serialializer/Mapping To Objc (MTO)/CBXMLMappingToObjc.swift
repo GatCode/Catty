@@ -37,6 +37,7 @@ enum CBXMLMappingToObjc {
         CBXMLMappingToObjc.mappingVariableListLocal.removeAll()
         CBXMLMappingToObjc.unsupportedElements.removeAll()
         CBXMLMappingToObjc.spriteObjectList.removeAll()
+        CBXMLMappingToObjc.abortMapping = false
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
