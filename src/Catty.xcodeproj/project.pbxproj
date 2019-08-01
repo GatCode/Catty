@@ -554,7 +554,6 @@
 		4CDA808521366AEA0052FA24 /* FormulaManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDA808421366AEA0052FA24 /* FormulaManagerProtocol.swift */; };
 		4CDE4CE3203DBBF500B43034 /* NKOColorPickerView.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CCB203DBBF200B43034 /* NKOColorPickerView.license */; };
 		4CDE4CE5203DBBF500B43034 /* ImageHelper.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CCD203DBBF200B43034 /* ImageHelper.license */; };
-		4CDE4CE6203DBBF500B43034 /* GDataXMLNode.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CCE203DBBF200B43034 /* GDataXMLNode.license */; };
 		4CDE4CE7203DBBF500B43034 /* LXReorderableCollectionViewFlowLayout.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CCF203DBBF200B43034 /* LXReorderableCollectionViewFlowLayout.license */; };
 		4CDE4CE8203DBBF500B43034 /* SSZipArchive.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CD0203DBBF200B43034 /* SSZipArchive.license */; };
 		4CDE4CE9203DBBF500B43034 /* OrderedDictionary.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CD1203DBBF200B43034 /* OrderedDictionary.license */; };
@@ -896,7 +895,6 @@
 		92FF2E8D1A24C7D800093DA7 /* CatrobatAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E511A24C7D800093DA7 /* CatrobatAudioPlayer.m */; };
 		92FF2E8E1A24C7D800093DA7 /* CBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E541A24C7D800093DA7 /* CBFileManager.m */; };
 		92FF2E8F1A24C7D800093DA7 /* FlashHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E571A24C7D800093DA7 /* FlashHelper.m */; };
-		92FF2E901A24C7D800093DA7 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E5A1A24C7D800093DA7 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92FF2E911A24C7D800093DA7 /* DownloadImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E5D1A24C7D800093DA7 /* DownloadImageCache.m */; };
 		92FF2E921A24C7D800093DA7 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E5F1A24C7D800093DA7 /* ImageCache.m */; };
 		92FF2E931A24C7D800093DA7 /* RuntimeImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF2E611A24C7D800093DA7 /* RuntimeImageCache.m */; };
@@ -1926,7 +1924,6 @@
 		4CDA808421366AEA0052FA24 /* FormulaManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormulaManagerProtocol.swift; path = PlayerEngine/Protocols/FormulaManagerProtocol.swift; sourceTree = "<group>"; };
 		4CDE4CCB203DBBF200B43034 /* NKOColorPickerView.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NKOColorPickerView.license; sourceTree = "<group>"; };
 		4CDE4CCD203DBBF200B43034 /* ImageHelper.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ImageHelper.license; sourceTree = "<group>"; };
-		4CDE4CCE203DBBF200B43034 /* GDataXMLNode.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GDataXMLNode.license; sourceTree = "<group>"; };
 		4CDE4CCF203DBBF200B43034 /* LXReorderableCollectionViewFlowLayout.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LXReorderableCollectionViewFlowLayout.license; sourceTree = "<group>"; };
 		4CDE4CD0203DBBF200B43034 /* SSZipArchive.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SSZipArchive.license; sourceTree = "<group>"; };
 		4CDE4CD1203DBBF200B43034 /* OrderedDictionary.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OrderedDictionary.license; sourceTree = "<group>"; };
@@ -2402,8 +2399,6 @@
 		92FF2E541A24C7D800093DA7 /* CBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFileManager.m; sourceTree = "<group>"; };
 		92FF2E561A24C7D800093DA7 /* FlashHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashHelper.h; sourceTree = "<group>"; };
 		92FF2E571A24C7D800093DA7 /* FlashHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashHelper.m; sourceTree = "<group>"; };
-		92FF2E591A24C7D800093DA7 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
-		92FF2E5A1A24C7D800093DA7 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		92FF2E5C1A24C7D800093DA7 /* DownloadImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadImageCache.h; sourceTree = "<group>"; };
 		92FF2E5D1A24C7D800093DA7 /* DownloadImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadImageCache.m; sourceTree = "<group>"; };
 		92FF2E5E1A24C7D800093DA7 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
@@ -4391,7 +4386,6 @@
 				4CDE4CD4203DBBF300B43034 /* BDKNotifyHUD.license */,
 				4CDE4CFF203DBD0B00B43034 /* DVR.license */,
 				4CDE4CDF203DBBF400B43034 /* EVCircularProgressView.license */,
-				4CDE4CCE203DBBF200B43034 /* GDataXMLNode.license */,
 				4CDE4CDC203DBBF300B43034 /* HMSegmentedControl.license */,
 				4CDE4CCD203DBBF200B43034 /* ImageHelper.license */,
 				4CDE4CFD203DBCC100B43034 /* Kingfisher.license */,
@@ -5577,7 +5571,6 @@
 				92FF2E521A24C7D800093DA7 /* FileManager */,
 				92EC99481BC3CA870003A891 /* Firmata */,
 				92FF2E551A24C7D800093DA7 /* Flash */,
-				92FF2E581A24C7D800093DA7 /* GDataXMLNode */,
 				92FF2E5B1A24C7D800093DA7 /* ImageCache */,
 				D63864691AE63EB4008569E6 /* Keychain */,
 				92FF2E621A24C7D800093DA7 /* Logger */,
@@ -5624,15 +5617,6 @@
 				92FF2E571A24C7D800093DA7 /* FlashHelper.m */,
 			);
 			path = Flash;
-			sourceTree = "<group>";
-		};
-		92FF2E581A24C7D800093DA7 /* GDataXMLNode */ = {
-			isa = PBXGroup;
-			children = (
-				92FF2E591A24C7D800093DA7 /* GDataXMLNode.h */,
-				92FF2E5A1A24C7D800093DA7 /* GDataXMLNode.m */,
-			);
-			path = GDataXMLNode;
 			sourceTree = "<group>";
 		};
 		92FF2E5B1A24C7D800093DA7 /* ImageCache */ = {
@@ -7906,7 +7890,6 @@
 				92D346BD1B8DDC0A009EB8F7 /* LaunchScreen.storyboard in Resources */,
 				598319951FBB813C00639BBF /* Introduction.storyboard in Resources */,
 				4CDE4CE7203DBBF500B43034 /* LXReorderableCollectionViewFlowLayout.license in Resources */,
-				4CDE4CE6203DBBF500B43034 /* GDataXMLNode.license in Resources */,
 				92FF2E951A24C7D800093DA7 /* LoggerProperties.plist in Resources */,
 				4C33F212214BC0390014044C /* My first project.catrobat in Resources */,
 				4CDE4CFA203DBBF500B43034 /* MXSegmentedPager.license in Resources */,
@@ -8948,7 +8931,6 @@
 				921D467B1BDF61350086AD20 /* ChangeXByNBrick+Instruction.swift in Sources */,
 				4CB0F9F220A1739400D1BE2F /* SizeSensor.swift in Sources */,
 				F4A2AFB52110D48C00C53234 /* JoinFunction.swift in Sources */,
-				92FF2E901A24C7D800093DA7 /* GDataXMLNode.m in Sources */,
 				F48E945920D6955E007E782E /* DateSensor.swift in Sources */,
 				92FF2E8F1A24C7D800093DA7 /* FlashHelper.m in Sources */,
 				AA74F09B1BC05FCE00D1E954 /* BrickCell.m in Sources */,

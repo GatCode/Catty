@@ -39,7 +39,7 @@
 @property (nonatomic) BOOL isSelected;
 @property (nonatomic, strong) NSString *commentedOut;
 @property (atomic, strong) UserVariable *uVar;
-@property (atomic, strong) Script *script;
+@property (atomic, weak) Script *script;
 
 - (BOOL)isSelectableForObject;
 
