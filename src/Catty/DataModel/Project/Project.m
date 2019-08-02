@@ -155,15 +155,12 @@
 - (void)saveToDiskWithNotification:(BOOL)notify
 {
     CBFileManager *fileManager = [CBFileManager sharedManager];
-    dispatch_queue_t saveToDiskQ = dispatch_queue_create("save to disk", NULL);
-    dispatch_async(saveToDiskQ, ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         // show saved view bezel
         if (notify) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-                [notificationCenter postNotificationName:kHideLoadingViewNotification object:self];
-                [notificationCenter postNotificationName:kShowSavedViewNotification object:self];
-            });
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+            [notificationCenter postNotificationName:kHideLoadingViewNotification object:self];
+            [notificationCenter postNotificationName:kShowSavedViewNotification object:self];
         }
         
         NSString *xmlPath = [NSString stringWithFormat:@"%@%@", [self projectPath], kProjectCodeFileName];
@@ -174,10 +171,8 @@
             NSDebug(@"Serialization failed!");
         }
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kHideLoadingViewNotification object:self];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kReadyToUpload object:self];
-        });
+        [[NSNotificationCenter defaultCenter] postNotificationName:kHideLoadingViewNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kReadyToUpload object:self];
     });
 }
 
