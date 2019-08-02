@@ -39,6 +39,7 @@ class XMLAbstractTest: XCTestCase {
         var project: Project?
         var xml: String?
         var readXml: String?
+        let serializer = CBXMLSerializer()
 
         getObjcProjectForXML(xmlFile: projectName) { result, error in
             XCTAssertNil(error)
@@ -46,9 +47,9 @@ class XMLAbstractTest: XCTestCase {
         }
 
         XCTAssertNotNil(project)
-        xml = CBXMLSerializer.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
+        xml = serializer.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
 
-        CBXMLSerializer.shared.writeXMLFile(filename: "file.xml", data: xml) { location, error in
+        serializer.writeXMLFile(filename: "file.xml", data: xml) { location, error in
             XCTAssertNil(error)
             print("XML file is located at: \(String(describing: location))!")
         }
@@ -60,22 +61,22 @@ class XMLAbstractTest: XCTestCase {
         }
 
         XCTAssertNotNil(project)
-        xml = CBXMLSerializer.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
+        xml = serializer.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
 
-        let xmlToCompare = CBXMLSerializer.shared.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
+        let xmlToCompare = serializer.serializeProjectObjc(project: project!, xmlPath: nil, fileManager: nil)
         XCTAssertEqual(xml, xmlToCompare)
 
-        CBXMLSerializer.shared.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
+        serializer.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
             XCTAssertNil(error)
             print("XML file is located at: \(String(describing: location))!")
         }
 
-        CBXMLSerializer.shared.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
+        serializer.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
             XCTAssertNil(error)
             print("XML file is located at: \(String(describing: location))!")
         }
 
-        CBXMLSerializer.shared.readXMLFile(filename: "file2.xml") { result, error in
+        serializer.readXMLFile(filename: "file2.xml") { result, error in
             XCTAssertNil(error)
             readXml = result
         }
@@ -93,18 +94,19 @@ class XMLAbstractTest: XCTestCase {
         var project: CBProject?
         var xml: String?
         var readXml: String?
+        let serializer = CBXMLSerializer()
 
         getProjectForXML(xmlFile: projectName) { result, error in
             XCTAssertNil(error)
             project = result
         }
 
-        CBXMLSerializer.shared.createXMLDocument(project: project) { result, error in
+        serializer.createXMLDocument(project: project) { result, error in
             XCTAssertNil(error)
             xml = result
         }
 
-        CBXMLSerializer.shared.writeXMLFile(filename: "file.xml", data: xml) { location, error in
+        serializer.writeXMLFile(filename: "file.xml", data: xml) { location, error in
             XCTAssertNil(error)
             print("XML file is located at: \(String(describing: location))!")
         }
@@ -115,17 +117,17 @@ class XMLAbstractTest: XCTestCase {
             project = result
         }
 
-        CBXMLSerializer.shared.createXMLDocument(project: project) { result, error in
+        serializer.createXMLDocument(project: project) { result, error in
             XCTAssertNil(error)
             xml = result
         }
 
-        CBXMLSerializer.shared.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
+        serializer.writeXMLFile(filename: "file2.xml", data: xml) { location, error in
             XCTAssertNil(error)
             print("XML file is located at: \(String(describing: location))!")
         }
 
-        CBXMLSerializer.shared.readXMLFile(filename: "file2.xml") { result, error in
+        serializer.readXMLFile(filename: "file2.xml") { result, error in
             XCTAssertNil(error)
             readXml = result
         }
