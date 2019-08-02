@@ -37,7 +37,15 @@
 		2E0F21DA22F48980002B1721 /* MapFormulaListMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21D922F48980002B1721 /* MapFormulaListMTO.swift */; };
 		2E0F21DD22F489D6002B1721 /* ResolveUserVariablesMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21DC22F489D6002B1721 /* ResolveUserVariablesMTO.swift */; };
 		2E0F21DF22F48A1A002B1721 /* ResolveXPathsMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21DE22F48A1A002B1721 /* ResolveXPathsMTO.swift */; };
-		2E0F21E222F48B69002B1721 /* ResolveVariableReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21E122F48B69002B1721 /* ResolveVariableReferences.swift */; };
+		2E0F21E222F48B69002B1721 /* ResolveVariableReferencesMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21E122F48B69002B1721 /* ResolveVariableReferencesMTO.swift */; };
+		2E0F21E422F48F81002B1721 /* MapScriptListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21E322F48F81002B1721 /* MapScriptListMFO.swift */; };
+		2E0F21E622F48F98002B1721 /* MapSoundListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21E522F48F98002B1721 /* MapSoundListMFO.swift */; };
+		2E0F21E822F48FA3002B1721 /* MapLookListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21E722F48FA3002B1721 /* MapLookListMFO.swift */; };
+		2E0F21ED22F49009002B1721 /* MapBrickListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21EC22F49009002B1721 /* MapBrickListMFO.swift */; };
+		2E0F21F022F4903A002B1721 /* MapFormulaListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21EF22F4903A002B1721 /* MapFormulaListMFO.swift */; };
+		2E0F21F322F490A5002B1721 /* ResolveUserVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */; };
+		2E0F21F622F490EF002B1721 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F522F490EF002B1721 /* MapData.swift */; };
+		2E0F21F822F49154002B1721 /* ResolveVariableReferencesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
@@ -1354,7 +1362,15 @@
 		2E0F21D922F48980002B1721 /* MapFormulaListMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFormulaListMTO.swift; sourceTree = "<group>"; };
 		2E0F21DC22F489D6002B1721 /* ResolveUserVariablesMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveUserVariablesMTO.swift; sourceTree = "<group>"; };
 		2E0F21DE22F48A1A002B1721 /* ResolveXPathsMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveXPathsMTO.swift; sourceTree = "<group>"; };
-		2E0F21E122F48B69002B1721 /* ResolveVariableReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferences.swift; sourceTree = "<group>"; };
+		2E0F21E122F48B69002B1721 /* ResolveVariableReferencesMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferencesMTO.swift; sourceTree = "<group>"; };
+		2E0F21E322F48F81002B1721 /* MapScriptListMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScriptListMFO.swift; sourceTree = "<group>"; };
+		2E0F21E522F48F98002B1721 /* MapSoundListMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSoundListMFO.swift; sourceTree = "<group>"; };
+		2E0F21E722F48FA3002B1721 /* MapLookListMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLookListMFO.swift; sourceTree = "<group>"; };
+		2E0F21EC22F49009002B1721 /* MapBrickListMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBrickListMFO.swift; sourceTree = "<group>"; };
+		2E0F21EF22F4903A002B1721 /* MapFormulaListMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFormulaListMFO.swift; sourceTree = "<group>"; };
+		2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveUserVariablesMFO.swift; sourceTree = "<group>"; };
+		2E0F21F522F490EF002B1721 /* MapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
+		2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferencesMFO.swift; sourceTree = "<group>"; };
 		2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingAbstractTests.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
@@ -3173,6 +3189,57 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2E0F21E922F48FBA002B1721 /* LookList */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F21E722F48FA3002B1721 /* MapLookListMFO.swift */,
+			);
+			path = LookList;
+			sourceTree = "<group>";
+		};
+		2E0F21EA22F48FC4002B1721 /* SoundList */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F21E522F48F98002B1721 /* MapSoundListMFO.swift */,
+			);
+			path = SoundList;
+			sourceTree = "<group>";
+		};
+		2E0F21EB22F48FCE002B1721 /* ScriptList */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F21E322F48F81002B1721 /* MapScriptListMFO.swift */,
+				2E0F21EE22F49023002B1721 /* BrickList */,
+			);
+			path = ScriptList;
+			sourceTree = "<group>";
+		};
+		2E0F21EE22F49023002B1721 /* BrickList */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F21EC22F49009002B1721 /* MapBrickListMFO.swift */,
+				2E0F21F122F4903F002B1721 /* FormulaList */,
+			);
+			path = BrickList;
+			sourceTree = "<group>";
+		};
+		2E0F21F122F4903F002B1721 /* FormulaList */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F21EF22F4903A002B1721 /* MapFormulaListMFO.swift */,
+			);
+			path = FormulaList;
+			sourceTree = "<group>";
+		};
+		2E0F21F422F490DE002B1721 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */,
+				2E0F21F522F490EF002B1721 /* MapData.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
 			isa = PBXGroup;
 			children = (
@@ -3236,6 +3303,10 @@
 			isa = PBXGroup;
 			children = (
 				2E35EBB922DB979500B580FD /* MapObjectListMFO.swift */,
+				2E0F21E922F48FBA002B1721 /* LookList */,
+				2E0F21EA22F48FC4002B1721 /* SoundList */,
+				2E0F21EB22F48FCE002B1721 /* ScriptList */,
+				2E0F21F422F490DE002B1721 /* Supporting Files */,
 			);
 			path = "ObjectList or Scenes";
 			sourceTree = "<group>";
@@ -3244,6 +3315,7 @@
 			isa = PBXGroup;
 			children = (
 				2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */,
+				2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */,
 			);
 			path = Variables;
 			sourceTree = "<group>";
@@ -3763,7 +3835,7 @@
 			isa = PBXGroup;
 			children = (
 				2E75ADB622C7B4BA00BFB521 /* MapVariablesMTO.swift */,
-				2E0F21E122F48B69002B1721 /* ResolveVariableReferences.swift */,
+				2E0F21E122F48B69002B1721 /* ResolveVariableReferencesMTO.swift */,
 			);
 			path = Variables;
 			sourceTree = "<group>";
@@ -8480,6 +8552,7 @@
 				9218B2011CC4AB75007B4C60 /* YKImageCropperView.m in Sources */,
 				CABF43BC1B115E6400419A55 /* CBSequenceList.swift in Sources */,
 				CABF43B61B115E6400419A55 /* CBConditionalSequence.swift in Sources */,
+				2E0F21ED22F49009002B1721 /* MapBrickListMFO.swift in Sources */,
 				BACDF35A1F1F9BD000346167 /* DeleteItemOfUserListBrickCell.m in Sources */,
 				4C0F9FA9204BD2D600E71B2D /* SpeakAndWaitBrickCell.m in Sources */,
 				4C0F9F34204ADC4000E71B2D /* PreviousLookBrick.m in Sources */,
@@ -8638,6 +8711,7 @@
 				5947F6DE200D20040079DBCE /* MediaLibraryCollectionViewDataSource.swift in Sources */,
 				92FF2E991A24C7D800093DA7 /* zip.c in Sources */,
 				59697DB0201F855C00A0071A /* LibraryCategoryCollectionReusableView.swift in Sources */,
+				2E0F21F322F490A5002B1721 /* ResolveUserVariablesMFO.swift in Sources */,
 				92B46FA81BC7C2A5004980C1 /* ArduinoSendPWMValueBrick+Instruction.swift in Sources */,
 				F4201CF920D79CA80030181B /* TimeHourSensor.swift in Sources */,
 				2E0F21D022F48802002B1721 /* MapBrickListMTO.swift in Sources */,
@@ -8834,6 +8908,7 @@
 				92DFB00F1A38949E00FA9B0F /* ExternToken.m in Sources */,
 				2E6F4296229A63F200840319 /* CBUserBrick.swift in Sources */,
 				92DFB0191A38949E00FA9B0F /* InternToExternGenerator.m in Sources */,
+				2E0F21E822F48FA3002B1721 /* MapLookListMFO.swift in Sources */,
 				4CF0729A20D66C4800F93AB5 /* BackgroundNumberSensor.swift in Sources */,
 				92FF30FB1A24DCAA00093DA7 /* InternFormulaParserException.m in Sources */,
 				4C1C8B14213FE76B003B3AA4 /* ChartProjectCell.swift in Sources */,
@@ -8861,6 +8936,7 @@
 				929CC0F01BC39B8C0027DEC0 /* PhiroPlayToneBrickCell.m in Sources */,
 				AA74F0AF1BC05FCE00D1E954 /* NextLookBrickCell.m in Sources */,
 				929CC0F91BC3A2420027DEC0 /* PhiroMotorMoveForwardBrick+Instruction.swift in Sources */,
+				2E0F21F622F490EF002B1721 /* MapData.swift in Sources */,
 				4C0E25E920D39E5000A80273 /* ScenePresenterViewController+Resources.swift in Sources */,
 				92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */,
 				2E6F428822993A3A00840319 /* CBBrickList.swift in Sources */,
@@ -8886,6 +8962,7 @@
 				4C0F9F3A204ADC4E00E71B2D /* SayForBubbleBrick.m in Sources */,
 				F48E946320D6F221007E782E /* DateMonthSensor.swift in Sources */,
 				AA74F0C81BC05FCE00D1E954 /* StopAllSoundsBrickCell.m in Sources */,
+				2E0F21E622F48F98002B1721 /* MapSoundListMFO.swift in Sources */,
 				4CF0728A20D659F700F93AB5 /* PhiroFrontRightSensor.swift in Sources */,
 				92FF31581A24DEB300093DA7 /* ProjectTableViewController.m in Sources */,
 				4C72EA3B2108EC3600E7407F /* TouchManagerProtocol.swift in Sources */,
@@ -8941,6 +9018,7 @@
 				92FF2E8C1A24C7D800093DA7 /* AudioManager.m in Sources */,
 				92FF2E9F1A24C7D800093DA7 /* SharkfoodMuteSwitchDetector.m in Sources */,
 				AAAF228A1BC0D0630076F11E /* TurnRightBrick+Instruction.swift in Sources */,
+				2E0F21F822F49154002B1721 /* ResolveVariableReferencesMFO.swift in Sources */,
 				AA74F0C11BC05FCE00D1E954 /* SetYBrickCell.m in Sources */,
 				99B2C3701D884D2900736769 /* FlashBrick.m in Sources */,
 				4CF0728420D6581900F93AB5 /* PhiroFrontLeftSensor.swift in Sources */,
@@ -8951,7 +9029,7 @@
 				AA74EE211BC053FD00D1E954 /* BroadcastBrick+Instruction.swift in Sources */,
 				9218B2161CC4AB75007B4C60 /* PaintViewController.m in Sources */,
 				4C595F4521CAEB230097D850 /* DivideOperator.swift in Sources */,
-				2E0F21E222F48B69002B1721 /* ResolveVariableReferences.swift in Sources */,
+				2E0F21E222F48B69002B1721 /* ResolveVariableReferencesMTO.swift in Sources */,
 				9218B2031CC4AB75007B4C60 /* ImagePicker.m in Sources */,
 				92FF32BE1A24E2F400093DA7 /* BaseTransition.m in Sources */,
 				BA1FA99D1F02AEDC0084184D /* InsertItemIntoUserListBrick.m in Sources */,
@@ -9052,7 +9130,9 @@
 				92D56C341BF202E700A54750 /* FirmataDevice.swift in Sources */,
 				2DA8790E212B444E00FE0585 /* SearchStoreDataSource.swift in Sources */,
 				AA74EFFF1BC05B5F00D1E954 /* GlideToBrick.m in Sources */,
+				2E0F21F022F4903A002B1721 /* MapFormulaListMFO.swift in Sources */,
 				AA74F0081BC05B5F00D1E954 /* TurnLeftBrick.m in Sources */,
+				2E0F21E422F48F81002B1721 /* MapScriptListMFO.swift in Sources */,
 				AA74F0C71BC05FCE00D1E954 /* SpeakBrickCell.m in Sources */,
 				AA74F0B21BC05FCE00D1E954 /* SetLookBrickCell.m in Sources */,
 				AA74F0091BC05B5F00D1E954 /* TurnRightBrick.m in Sources */,
