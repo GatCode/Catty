@@ -24,7 +24,6 @@ import AEXML
 
 @objc class CBXMLSerializer: NSObject {
 
-    static let shared = CBXMLSerializer()
     static var serializeInCBL991 = true
 
     func createXMLDocument(project: CBProject?, completion: @escaping (String?, CBXMLSerializerError?) -> Void) {
@@ -63,7 +62,7 @@ extension CBXMLSerializer {
         let mappedProject = CBXMLMappingFromObjc.mapProjectToCBProject(project: project)
 
         var resolvedXml: String?
-        CBXMLSerializer.shared.createXMLDocument(project: mappedProject) { xml, _ in
+        createXMLDocument(project: mappedProject) { xml, _ in
             resolvedXml = xml
         }
 
