@@ -48,6 +48,7 @@
 		2E0F21F822F49154002B1721 /* ResolveVariableReferencesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */; };
 		2E0F221522F5AB5C002B1721 /* MapScenesMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */; };
 		2E0F221A22F5ABA9002B1721 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221922F5ABA9002B1721 /* Scene.swift */; };
+		2E0F221D22F5C775002B1721 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221C22F5C775002B1721 /* Data.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
@@ -1402,6 +1403,7 @@
 		2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferencesMFO.swift; sourceTree = "<group>"; };
 		2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScenesMTO.swift; sourceTree = "<group>"; };
 		2E0F221922F5ABA9002B1721 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		2E0F221C22F5C775002B1721 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingAbstractTests.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
@@ -3311,6 +3313,14 @@
 				2E0F21E022F48A5B002B1721 /* Supporting Files */,
 			);
 			path = ObjectList;
+			sourceTree = "<group>";
+		};
+		2E0F221E22F5C782002B1721 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F221C22F5C775002B1721 /* Data.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
@@ -5984,6 +5994,7 @@
 			isa = PBXGroup;
 			children = (
 				92FF302B1A24DCAA00093DA7 /* Bricks */,
+				2E0F221E22F5C782002B1721 /* Data */,
 				92FF30971A24DCAA00093DA7 /* Formula */,
 				92FF309C1A24DCAA00093DA7 /* FormulaEditor */,
 				92FF30A31A24DCAA00093DA7 /* Header */,
@@ -8674,6 +8685,7 @@
 				CABF43B61B115E6400419A55 /* CBConditionalSequence.swift in Sources */,
 				2E0F21ED22F49009002B1721 /* MapBrickListMFO.swift in Sources */,
 				BACDF35A1F1F9BD000346167 /* DeleteItemOfUserListBrickCell.m in Sources */,
+				2E0F221D22F5C775002B1721 /* Data.swift in Sources */,
 				4C0F9FA9204BD2D600E71B2D /* SpeakAndWaitBrickCell.m in Sources */,
 				4C0F9F34204ADC4000E71B2D /* PreviousLookBrick.m in Sources */,
 				92B46FA31BC7BDF7004980C1 /* ArduinoSendPWMValueBrickCell.m in Sources */,

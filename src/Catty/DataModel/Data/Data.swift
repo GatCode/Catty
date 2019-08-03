@@ -20,14 +20,10 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-class Scene {
-    var name: String?
-    var data: Data?
-    var originalWidth: String?
-    var originalHeight: String?
-    var objectList = [SpriteObject]()
-
-    init(name: String?) {
-        self.name = name // TODO: check if first and apply default name
+class Data {
+    var objectVariableList: OrderedMapTable?
+    var objectListOfList: OrderedMapTable?
+    
+    init() {
     }
 }

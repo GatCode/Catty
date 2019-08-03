@@ -43,7 +43,9 @@ enum CBXMLMappingToObjc {
             mappedProject.header = mappedHeader
         }
 
-        if let mappedScenes = mapScenes(project: project, currentProject: &mappedProject) as? [Scene] {
+        if let mappedScenes = mapScenes(project: project, currentProject: &mappedProject) as? [Scene], let mappedScenesArr = mappedScenes as? NSMutableArray {
+            mappedProject.scenes = mappedScenesArr
+            
             if let objectList = mappedScenes.first?.objectList {
                 mappedProject.objectList = NSMutableArray(array: objectList) // TODO: now working with just one scene
             }
@@ -52,6 +54,8 @@ enum CBXMLMappingToObjc {
         if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
             mappedProject.variables = mappedVariables
         }
+        
+        // TODO: map objectVariableList and objectListOfLists for Data inside each Scene
 
         mappedProject.unsupportedElements = NSMutableSet(array: CBXMLMappingToObjc.unsupportedElements)
 
