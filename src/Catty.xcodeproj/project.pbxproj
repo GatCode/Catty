@@ -46,6 +46,7 @@
 		2E0F21F322F490A5002B1721 /* ResolveUserVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */; };
 		2E0F21F622F490EF002B1721 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F522F490EF002B1721 /* MapData.swift */; };
 		2E0F21F822F49154002B1721 /* ResolveVariableReferencesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */; };
+		2E0F220822F5A8C7002B1721 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F220722F5A8C6002B1721 /* Scene.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
@@ -1398,6 +1399,7 @@
 		2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveUserVariablesMFO.swift; sourceTree = "<group>"; };
 		2E0F21F522F490EF002B1721 /* MapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferencesMFO.swift; sourceTree = "<group>"; };
+		2E0F220722F5A8C6002B1721 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingAbstractTests.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
@@ -3104,7 +3106,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				CD0CCE54170CB39600B70036 /* Catty */,
@@ -3287,6 +3289,14 @@
 				2E0F21F522F490EF002B1721 /* MapData.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E0F220922F5A8CF002B1721 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				2E0F220722F5A8C6002B1721 /* Scene.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
@@ -5968,6 +5978,7 @@
 				92FF30A31A24DCAA00093DA7 /* Header */,
 				92FF30A61A24DCAA00093DA7 /* Look */,
 				92FF30A91A24DCAA00093DA7 /* Project */,
+				2E0F220922F5A8CF002B1721 /* Scene */,
 				92FF30B21A24DCAA00093DA7 /* Scripts */,
 				92FF30BB1A24DCAA00093DA7 /* Sound */,
 				92FF30BE1A24DCAA00093DA7 /* SpriteObject */,
@@ -6491,17 +6502,6 @@
 			);
 			path = Mocks;
 			sourceTree = "<group>";
-		};
-		AA101E3F1B8D3A3900797DEF /* Encapsulated */ = {
-			isa = PBXGroup;
-			children = (
-				4CA1574C1C4695E50019D319 /* Encapsulated_097.xml */,
-				4C6D15D51D7AC5C500CE53CD /* Encapsulated_098.xml */,
-				4C0F9FE6204BD45400E71B2D /* Encapsulated_0991.xml */,
-			);
-			name = Encapsulated;
-			path = CattyTests/Resources/ParserTests/Encapsulated;
-			sourceTree = SOURCE_ROOT;
 		};
 		AA401FE51BBEF5F5001BC49F /* Instructions */ = {
 			isa = PBXGroup;
@@ -7797,7 +7797,7 @@
 				nb,
 				"sr-RS",
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -8604,6 +8604,7 @@
 				4C595F5921CAF6B30097D850 /* OrOperator.swift in Sources */,
 				AA74F0941BC05FCE00D1E954 /* BrickCellLookData.m in Sources */,
 				F45AF6FD212960A3000F88A6 /* FacePositionXSensor.swift in Sources */,
+				2E0F220822F5A8C7002B1721 /* Scene.swift in Sources */,
 				99C8D1BB1D8AE339003FBC42 /* BrickCellStaticChoiceData.m in Sources */,
 				E4668B4220FE02F40021FA0B /* FeaturedProjectsCell.swift in Sources */,
 				4CDF7BB62138735700FFF7F4 /* SceneBuilder.swift in Sources */,
@@ -9064,7 +9065,6 @@
 				AA74F0951BC05FCE00D1E954 /* BrickCellMessageData.m in Sources */,
 				597AB578202089E0007CD10D /* NetworkDefinesSwift.swift in Sources */,
 				F4E6E59C210E051200D86FE6 /* MinFunction.swift in Sources */,
-				E438738A210623230062209F /* TimerWithBlock.swift in Sources */,
 				5EFBD5FC2145AADC003B3CDC /* UIView+Extensions.swift in Sources */,
 				92FF31591A24DEB300093DA7 /* DownloadTabBarController.m in Sources */,
 				F4E6E59A210E048700D86FE6 /* MaxFunction.swift in Sources */,
@@ -9634,7 +9634,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$SDKROOT/usr/include/libxml2",
+					$SDKROOT/usr/include/libxml2,
 					"\"$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources\"",
 				);
 				INFOPLIST_FILE = CattyTests/Info.plist;
@@ -9688,7 +9688,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$SDKROOT/usr/include/libxml2",
+					$SDKROOT/usr/include/libxml2,
 					"\"$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources\"",
 				);
 				INFOPLIST_FILE = CattyTests/Info.plist;
@@ -9732,7 +9732,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
 				INFOPLIST_FILE = "Catty/App-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -9777,7 +9777,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
 				INFOPLIST_FILE = "Catty/App-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

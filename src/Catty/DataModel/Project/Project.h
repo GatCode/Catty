@@ -25,12 +25,14 @@
 
 @class VariablesContainer;
 @class SpriteObject;
+@class Scene;
 @class ProjectLoadingInfo;
 
 @interface Project : NSObject
 
 @property (nonatomic, strong, nonnull) Header *header;
 @property (nonatomic, strong, nonnull) NSMutableArray<SpriteObject*> *objectList;
+@property (nonatomic, strong, nonnull) NSMutableArray<Scene*> *scenes;
 @property (nonatomic, strong, nonnull) VariablesContainer *variables;
 @property (nonatomic, strong, nonnull) NSMutableSet<NSString*> *unsupportedElements;
 @property (nonatomic) BOOL requiresBluetooth;
