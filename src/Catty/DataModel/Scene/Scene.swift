@@ -22,7 +22,7 @@
 
 class Scene {
     var name: String?
-    var data: Data?
+    var data: ObjectData?
     var originalWidth: String?
     var originalHeight: String?
     var objectList = [SpriteObject]()

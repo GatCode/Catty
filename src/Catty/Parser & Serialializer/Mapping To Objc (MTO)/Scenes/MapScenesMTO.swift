@@ -28,16 +28,81 @@ extension CBXMLMappingToObjc {
         var mappedScenes = [Scene]()
 
         for scene in scenes {
-            let mappedScene = Scene(name: scene.name)
+            var mappedScene = Scene(name: scene.name)
             if let mappedObjectList = mapObjectList(scene: scene, project: project, currentProject: &currentProject) as? [SpriteObject] {
                 mappedScene.objectList = mappedObjectList
             }
-            mappedScene.data = Data()
+            if let mappedData = mapDataMTO(project: project, currentProject: &currentProject, scene: scene, currentScene: &mappedScene) {
+                mappedScene.data = mappedData
+            }
             mappedScene.originalWidth = scene.originalWidth
             mappedScene.originalHeight = scene.originalHeight
             mappedScenes.append(mappedScene)
         }
 
         return NSMutableArray(array: mappedScenes)
+    }
+
+    static func mapDataMTO(project: CBProject?, currentProject: inout Project, scene: CBProjectScene, currentScene: inout Scene) -> ObjectData? {
+        let data = ObjectData()
+        data.objectListOfList = mapObjectListOfListsToDataMTO(project: project, currentProject: &currentProject, scene: scene, currentScene: &currentScene)
+        data.objectVariableList = mapObjectVariableListToDataMTO(project: project, currentProject: &currentProject, scene: scene, currentScene: &currentScene)
+        return data
+    }
+
+    static func mapObjectListOfListsToDataMTO(project: CBProject?, currentProject: inout Project, scene: CBProjectScene, currentScene: inout Scene) -> OrderedMapTable? {
+        let result = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
+
+        if let objectListOfList = scene.data?.objectListOfList?.entry {
+            for entry in objectListOfList {
+                if let lists = entry.list {
+
+                    let referencedObject = resolveObjectReference(reference: entry.object, project: project, scene: &currentScene)?.pointee
+
+                    var referencedList = [UserVariable]()
+                    for list in lists {
+                        if list.reference != nil {
+                            if let element = resolveUserVariableReference(reference: list.reference, project: project, scene: &currentScene) {
+                                referencedList.append(element.pointee)
+                            }
+                        } else if let value = list.value {
+                            referencedList.append(allocLocalUserVariable(name: value, isList: true))
+                        }
+                    }
+
+                    result.setObject(NSArray(array: referencedList), forKey: referencedObject)
+                }
+            }
+        }
+
+        return result
+    }
+
+    static func mapObjectVariableListToDataMTO(project: CBProject?, currentProject: inout Project, scene: CBProjectScene, currentScene: inout Scene) -> OrderedMapTable? {
+        let result = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
+
+        if let objectVariableList = scene.data?.objectVariableList?.entry {
+            for entry in objectVariableList {
+                if let lists = entry.list {
+
+                    let referencedObject = resolveObjectReference(reference: entry.object, project: project, scene: &currentScene)?.pointee
+
+                    var referencedList = [UserVariable]()
+                    for list in lists {
+                        if list.reference != nil {
+                            if let element = resolveUserVariableReference(reference: list.reference, project: project, scene: &currentScene) {
+                                referencedList.append(element.pointee)
+                            }
+                        } else if let value = list.value {
+                            referencedList.append(allocLocalUserVariable(name: value, isList: false))
+                        }
+                    }
+
+                    result.setObject(NSArray(array: referencedList), forKey: referencedObject)
+                }
+            }
+        }
+
+        return result
     }
 }

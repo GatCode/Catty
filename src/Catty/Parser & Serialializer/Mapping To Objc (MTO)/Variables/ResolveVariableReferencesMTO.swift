@@ -22,6 +22,20 @@
 
 extension CBXMLMappingToObjc {
 
+    static func resolveObjectReference(reference: String?, project: CBProject?, scene: inout Scene) -> UnsafeMutablePointer<SpriteObject>? {
+        let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
+        guard let resolvedString = resolvedReferenceString else { return nil }
+
+        if let oNr = resolvedString.0, oNr < scene.objectList.count {
+            let object = UnsafeMutablePointer<SpriteObject>.allocate(capacity: 1)
+            object.initialize(to: scene.objectList[oNr])
+            return object
+        }
+
+        return nil
+    }
+
+    // TODO remove the function below when the scenes get released
     static func resolveObjectReference(reference: String?, project: CBProject?, mappedProject: inout Project) -> UnsafeMutablePointer<SpriteObject>? {
         let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }
@@ -37,6 +51,26 @@ extension CBXMLMappingToObjc {
         return nil
     }
 
+    static func resolveUserVariableReference(reference: String?, project: CBProject?, scene: inout Scene) -> UnsafeMutablePointer<UserVariable>? {
+        let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
+        guard let resolvedString = resolvedReferenceString else { return nil }
+
+        if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < scene.objectList.count {
+            if sNr < scene.objectList[oNr].scriptList.count {
+                if let scr = scene.objectList[oNr].scriptList[sNr] as? Script, bNr < scr.brickList.count {
+                    if let br = scr.brickList[bNr] as? Brick, let uVar = br.uVar {
+                        let uVarPtr = UnsafeMutablePointer<UserVariable>.allocate(capacity: 1)
+                        uVarPtr.initialize(to: uVar)
+                        return uVarPtr
+                    }
+                }
+            }
+        }
+
+        return nil
+    }
+
+    // TODO remove the function below when the scenes get released
     static func resolveUserVariableReference(reference: String?, project: CBProject?, mappedProject: inout Project) -> UnsafeMutablePointer<UserVariable>? {
         let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }

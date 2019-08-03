@@ -20,10 +20,10 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-class Data {
+class ObjectData {
     var objectVariableList: OrderedMapTable?
     var objectListOfList: OrderedMapTable?
-    
+
     init() {
     }
 }
