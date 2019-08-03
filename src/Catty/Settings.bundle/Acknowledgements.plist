@@ -16,13 +16,13 @@
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>FooterText</key>
-                <string>Catty/Resources/Licenses/AudioKit</string>
+                <string>Catty/Resources/Licenses/AEXML</string>
             </dict>
             <dict>
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>FooterText</key>
-                <string>Catty/Resources/Licenses/BDKNotifyHUD</string>
+                <string>Catty/Resources/Licenses/AudioKit</string>
             </dict>
             <dict>
                 <key>Type</key>
