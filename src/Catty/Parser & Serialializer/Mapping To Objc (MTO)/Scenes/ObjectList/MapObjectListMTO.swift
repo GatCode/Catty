@@ -22,9 +22,9 @@
 
 extension CBXMLMappingToObjc {
 
-    static func mapObjectList(project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
+    static func mapObjectList(scene: CBProjectScene?, project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
         guard let project = project else { return nil }
-        guard let objectList = project.scenes?.first?.objectList?.objects else { return nil }
+        guard let objectList = scene?.objectList?.objects else { return nil }
 
         var resultObjectList = [SpriteObject]()
         for object in objectList {

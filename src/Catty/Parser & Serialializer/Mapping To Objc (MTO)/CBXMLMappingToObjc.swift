@@ -43,8 +43,10 @@ enum CBXMLMappingToObjc {
             mappedProject.header = mappedHeader
         }
 
-        if let mappedObjectList = mapObjectList(project: project, currentProject: &mappedProject) {
-            mappedProject.objectList = mappedObjectList
+        if let mappedScenes = mapScenes(project: project, currentProject: &mappedProject) as? [Scene] {
+            if let objectList = mappedScenes.first?.objectList {
+                mappedProject.objectList = NSMutableArray(array: objectList) // TODO: now working with just one scene
+            }
         }
 
         if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {

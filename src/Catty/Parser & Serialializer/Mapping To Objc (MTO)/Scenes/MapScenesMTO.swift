@@ -20,13 +20,24 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-class Scene {
-    var name: String?
-    var originalWidth: String?
-    var originalHeight: String?
-    var objectList = [SpriteObject]()
+extension CBXMLMappingToObjc {
 
-    init(name: String?) {
-        self.name = name // TODO: check if first and apply default name
+    static func mapScenes(project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
+        guard let project = project else { return nil }
+        guard let scenes = project.scenes else { return nil }
+        var mappedScenes = [Scene]()
+
+        for scene in scenes {
+            let mappedScene = Scene(name: scene.name)
+            if let mappedObjectList = mapObjectList(scene: scene, project: project, currentProject: &currentProject) as? [SpriteObject] {
+                mappedScene.objectList = mappedObjectList
+            }
+            //scene.data // TODO: map data
+            mappedScene.originalWidth = scene.originalWidth
+            mappedScene.originalHeight = scene.originalHeight
+            mappedScenes.append(mappedScene)
+        }
+
+        return NSMutableArray(array: mappedScenes)
     }
 }

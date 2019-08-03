@@ -46,7 +46,8 @@
 		2E0F21F322F490A5002B1721 /* ResolveUserVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */; };
 		2E0F21F622F490EF002B1721 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F522F490EF002B1721 /* MapData.swift */; };
 		2E0F21F822F49154002B1721 /* ResolveVariableReferencesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */; };
-		2E0F220822F5A8C7002B1721 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F220722F5A8C6002B1721 /* Scene.swift */; };
+		2E0F221522F5AB5C002B1721 /* MapScenesMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */; };
+		2E0F221A22F5ABA9002B1721 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221922F5ABA9002B1721 /* Scene.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
@@ -1399,7 +1400,8 @@
 		2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveUserVariablesMFO.swift; sourceTree = "<group>"; };
 		2E0F21F522F490EF002B1721 /* MapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferencesMFO.swift; sourceTree = "<group>"; };
-		2E0F220722F5A8C6002B1721 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScenesMTO.swift; sourceTree = "<group>"; };
+		2E0F221922F5ABA9002B1721 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingAbstractTests.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
@@ -3291,12 +3293,24 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E0F220922F5A8CF002B1721 /* Scene */ = {
+		2E0F221822F5ABA9002B1721 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				2E0F220722F5A8C6002B1721 /* Scene.swift */,
+				2E0F221922F5ABA9002B1721 /* Scene.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		2E0F221B22F5B575002B1721 /* ObjectList */ = {
+			isa = PBXGroup;
+			children = (
+				2E75ADB322C7B41E00BFB521 /* MapObjectListMTO.swift */,
+				2E0F21D522F488FC002B1721 /* LookList */,
+				2E0F21D622F48929002B1721 /* SoundList */,
+				2E0F21D722F48939002B1721 /* ScriptList */,
+				2E0F21E022F48A5B002B1721 /* Supporting Files */,
+			);
+			path = ObjectList;
 			sourceTree = "<group>";
 		};
 		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
@@ -3706,7 +3720,7 @@
 			children = (
 				2E56BE5022A819D100F26BC1 /* CBXMLMappingToObjc.swift */,
 				2E56BE5922A8E3EE00F26BC1 /* Header */,
-				2E75ADB222C7B40800BFB521 /* ObjectList */,
+				2E75ADB222C7B40800BFB521 /* Scenes */,
 				2E75ADB522C7B48A00BFB521 /* Variables */,
 			);
 			path = "Mapping To Objc (MTO)";
@@ -3878,16 +3892,13 @@
 			path = CattyTests/Resources/ParserTests/Mapping;
 			sourceTree = SOURCE_ROOT;
 		};
-		2E75ADB222C7B40800BFB521 /* ObjectList */ = {
+		2E75ADB222C7B40800BFB521 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				2E75ADB322C7B41E00BFB521 /* MapObjectListMTO.swift */,
-				2E0F21D522F488FC002B1721 /* LookList */,
-				2E0F21D622F48929002B1721 /* SoundList */,
-				2E0F21D722F48939002B1721 /* ScriptList */,
-				2E0F21E022F48A5B002B1721 /* Supporting Files */,
+				2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */,
+				2E0F221B22F5B575002B1721 /* ObjectList */,
 			);
-			path = ObjectList;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		2E75ADB522C7B48A00BFB521 /* Variables */ = {
@@ -5978,7 +5989,7 @@
 				92FF30A31A24DCAA00093DA7 /* Header */,
 				92FF30A61A24DCAA00093DA7 /* Look */,
 				92FF30A91A24DCAA00093DA7 /* Project */,
-				2E0F220922F5A8CF002B1721 /* Scene */,
+				2E0F221822F5ABA9002B1721 /* Scene */,
 				92FF30B21A24DCAA00093DA7 /* Scripts */,
 				92FF30BB1A24DCAA00093DA7 /* Sound */,
 				92FF30BE1A24DCAA00093DA7 /* SpriteObject */,
@@ -8604,7 +8615,6 @@
 				4C595F5921CAF6B30097D850 /* OrOperator.swift in Sources */,
 				AA74F0941BC05FCE00D1E954 /* BrickCellLookData.m in Sources */,
 				F45AF6FD212960A3000F88A6 /* FacePositionXSensor.swift in Sources */,
-				2E0F220822F5A8C7002B1721 /* Scene.swift in Sources */,
 				99C8D1BB1D8AE339003FBC42 /* BrickCellStaticChoiceData.m in Sources */,
 				E4668B4220FE02F40021FA0B /* FeaturedProjectsCell.swift in Sources */,
 				4CDF7BB62138735700FFF7F4 /* SceneBuilder.swift in Sources */,
@@ -8628,6 +8638,7 @@
 				92D56C311BF202E700A54750 /* ArduinoDevice.swift in Sources */,
 				2E6F428B22993A8B00840319 /* CBBrick.swift in Sources */,
 				F470A2E52129DF42005EC9A3 /* NumberOfItemsFunction.swift in Sources */,
+				2E0F221522F5AB5C002B1721 /* MapScenesMTO.swift in Sources */,
 				4C0F9F31204ADC2E00E71B2D /* ChooseCameraBrick.m in Sources */,
 				2E6F42842299399E00840319 /* CBScriptList.swift in Sources */,
 				2E75ADB422C7B41E00BFB521 /* MapObjectListMTO.swift in Sources */,
@@ -8761,6 +8772,7 @@
 				598319931FBB812D00639BBF /* IntroductionPageViewController.swift in Sources */,
 				AA74F0B11BC05FCE00D1E954 /* SetTransparencyBrickCell.m in Sources */,
 				E4E5599820FCD6AD004B4A08 /* StoreProject.swift in Sources */,
+				2E0F221A22F5ABA9002B1721 /* Scene.swift in Sources */,
 				AA74F00A1BC05B5F00D1E954 /* ChangeVolumeByNBrick.m in Sources */,
 				9218B2081CC4AB75007B4C60 /* UIImage+FloodFill.m in Sources */,
 				AA74F0A11BC05FCE00D1E954 /* IfLogicEndBrickCell.m in Sources */,
