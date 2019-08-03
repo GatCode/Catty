@@ -16,7 +16,13 @@
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>FooterText</key>
-                <string>Catty/Resources/Licenses/AEXML</string>
+                <string>Catty/Resources/Licenses/AudioKit</string>
+            </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSGroupSpecifier</string>
+                <key>FooterText</key>
+                <string>Catty/Resources/Licenses/BDKNotifyHUD</string>
             </dict>
             <dict>
                 <key>Type</key>
