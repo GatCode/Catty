@@ -24,21 +24,6 @@
 
 extension CBXMLMappingToObjc {
 
-    static func mapVariables(project: CBProject?, mappedProject: inout Project) -> VariablesContainer? {
-        guard let project = project else { return nil }
-        let container = VariablesContainer()
-
-        container.programListOfLists = mapProgramListOfLists(project: project, mappedProject: &mappedProject)
-
-        container.programVariableList = mapProgramVariableList(project: project, mappedProject: &mappedProject)
-
-        container.objectListOfLists = mapObjectListOfLists(project: project, mappedProject: &mappedProject)
-
-        container.objectVariableList = mapObjectVariableList(project: project, mappedProject: &mappedProject)
-
-        return container
-    }
-
     // MARK: - mapProgramListOfLists
     static func mapProgramListOfLists(project: CBProject?, mappedProject: inout Project) -> NSMutableArray? {
         guard let programListOfLists = project?.programListOfLists?.list else { return nil }

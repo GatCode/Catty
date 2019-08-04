@@ -25,20 +25,20 @@
 extension CBXMLMappingFromObjc {
 
     // MARK: - Map ObjectVariableList
-    static func mapObjectVariableList(project: Project) -> CBObjectVariableList {
+    static func mapObjectVariableList(scene: Scene, project: Project) -> CBObjectVariableList {
 
         var mappedEntries = [CBObjectVariableEntry]()
 
-        for index in 0..<project.variables.objectVariableList.count() {
-            mappedEntries.append(mapObjectVariableListEntry(project: project, referencedIndex: index))
+        for index in 0..<UInt(scene.data?.objectVariableList?.count() ?? 0) {
+            mappedEntries.append(mapObjectVariableListEntry(scene: scene, project: project, referencedIndex: index))
         }
 
         return CBObjectVariableList(entry: mappedEntries)
     }
 
-    static func mapObjectVariableListEntry(project: Project, referencedIndex: UInt) -> CBObjectVariableEntry {
-        let referencedObject = project.variables.objectVariableList.key(at: referencedIndex)
-        let referencedVariableList = project.variables.objectVariableList.object(at: referencedIndex)
+    static func mapObjectVariableListEntry(scene: Scene, project: Project, referencedIndex: UInt) -> CBObjectVariableEntry {
+        let referencedObject = scene.data?.objectVariableList?.key(at: referencedIndex)
+        let referencedVariableList = scene.data?.objectVariableList?.object(at: referencedIndex)
         let spriteObject = referencedObject as? SpriteObject
         let userVariableList = referencedVariableList as? [UserVariable]
 
@@ -49,20 +49,21 @@ extension CBXMLMappingFromObjc {
     }
 
     // MARK: - Map ObjectListOfLists
-    static func mapObjectListOfLists(project: Project) -> CBObjectListofList {
+    static func mapObjectListOfLists(scene: Scene, project: Project) -> CBObjectListofList {
 
         var mappedEntries = [CBObjectListOfListEntry]()
 
-        for index in 0..<project.variables.objectListOfLists.count() {
-            mappedEntries.append(mapObjectListOfListsEntry(project: project, referencedIndex: index))
+        for index in 0..<UInt(scene.data?.objectListOfLists?.count() ?? 0) {
+            mappedEntries.append(mapObjectListOfListsEntry(scene: scene, project: project, referencedIndex: index))
         }
 
         return CBObjectListofList(entry: mappedEntries)
     }
 
-    static func mapObjectListOfListsEntry(project: Project, referencedIndex: UInt) -> CBObjectListOfListEntry {
-        let referencedObject = project.variables.objectListOfLists.key(at: referencedIndex)
-        let referencedVariableList = project.variables.objectListOfLists.object(at: referencedIndex)
+    // TODO: move the stuff below outside!
+    static func mapObjectListOfListsEntry(scene: Scene, project: Project, referencedIndex: UInt) -> CBObjectListOfListEntry {
+        let referencedObject = scene.data?.objectListOfLists?.key(at: referencedIndex)
+        let referencedVariableList = scene.data?.objectListOfLists?.object(at: referencedIndex)
         let spriteObject = referencedObject as? SpriteObject
         let userVariableList = referencedVariableList as? [UserVariable]
 

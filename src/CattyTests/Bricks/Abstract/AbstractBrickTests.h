@@ -32,7 +32,6 @@
 #import "Look.h"
 #import <SpriteKit/SpriteKit.h>
 #import "UserVariable.h"
-#import "VariablesContainer.h"
 #import "Util.h"
 
 //BrickImports

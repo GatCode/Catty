@@ -52,13 +52,13 @@ enum CBXMLMappingFromObjc {
 
 extension CBXMLMappingFromObjc {
     private static func extractGlobalUserVariables(project: Project) {
-        project.variables.programVariableList.forEach { variable in
+        project.programVariableList?.forEach { variable in
             if let variable = variable as? UserVariable, CBXMLMappingFromObjc.globalVariableList.contains(where: { $0.0 == variable.name && $0.1 == false }) == false {
                 CBXMLMappingFromObjc.globalVariableList.append((variable.name, false))
             }
         }
 
-        project.variables.programListOfLists.forEach { variable in
+        project.programListOfLists?.forEach { variable in
             if let variable = variable as? UserVariable, CBXMLMappingFromObjc.globalVariableList.contains(where: { $0.0 == variable.name && $0.1 == true }) == false {
                 CBXMLMappingFromObjc.globalVariableList.append((variable.name, true))
             }

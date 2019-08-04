@@ -22,11 +22,11 @@
 
 extension CBXMLMappingFromObjc {
 
-    static func mapData(project: Project) -> CBProjectData {
+    static func mapData(scene: Scene, project: Project) -> CBProjectData {
         var mappedData = CBProjectData()
 
-        mappedData.objectVariableList = mapObjectVariableList(project: project)
-        mappedData.objectListOfList = mapObjectListOfLists(project: project)
+        mappedData.objectVariableList = mapObjectVariableList(scene: scene, project: project)
+        mappedData.objectListOfList = mapObjectListOfLists(scene: scene, project: project)
         mappedData.userBrickVariableList = CBUserBrickVariableList(name: nil)
         return mappedData
     }

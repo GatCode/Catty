@@ -51,10 +51,8 @@ enum CBXMLMappingToObjc {
             }
         }
 
-        if let mappedVariables = mapVariables(project: project, mappedProject: &mappedProject) {
-            mappedProject.variables = mappedVariables
-        }
-
+        mappedProject.programVariableList = mapProgramVariableList(project: project, mappedProject: &mappedProject)
+        mappedProject.programListOfLists = mapProgramListOfLists(project: project, mappedProject: &mappedProject)
         mappedProject.unsupportedElements = NSMutableSet(array: CBXMLMappingToObjc.unsupportedElements)
 
         return CBXMLMappingToObjc.abortMapping ? nil : mappedProject

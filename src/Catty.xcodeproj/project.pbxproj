@@ -49,6 +49,7 @@
 		2E0F221522F5AB5C002B1721 /* MapScenesMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */; };
 		2E0F221A22F5ABA9002B1721 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221922F5ABA9002B1721 /* Scene.swift */; };
 		2E0F221D22F5C775002B1721 /* ObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F221C22F5C775002B1721 /* ObjectData.swift */; };
+		2E0F222922F6B806002B1721 /* MapScenesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F222822F6B806002B1721 /* MapScenesMFO.swift */; };
 		2E251925229BB2CA00DC11BD /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */; };
 		2E251927229BB31600DC11BD /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */; };
 		2E251929229BCC1F00DC11BD /* Galaxy_War_0994.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E251928229BCC1F00DC11BD /* Galaxy_War_0994.xml */; };
@@ -950,7 +951,6 @@
 		92FF31061A24DCAA00093DA7 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30BD1A24DCAA00093DA7 /* Sound.m */; };
 		92FF31071A24DCAA00093DA7 /* SpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30C01A24DCAA00093DA7 /* SpriteObject.m */; };
 		92FF31081A24DCAA00093DA7 /* UserVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30C31A24DCAA00093DA7 /* UserVariable.m */; };
-		92FF31091A24DCAA00093DA7 /* VariablesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF30C61A24DCAA00093DA7 /* VariablesContainer.m */; };
 		92FF31491A24DEB300093DA7 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF310D1A24DEB300093DA7 /* BaseCollectionViewController.m */; };
 		92FF314A1A24DEB300093DA7 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF310F1A24DEB300093DA7 /* BaseTableViewController.m */; };
 		92FF314C1A24DEB300093DA7 /* CatrobatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31141A24DEB300093DA7 /* CatrobatTableViewController.m */; };
@@ -1404,6 +1404,7 @@
 		2E0F221422F5AB5C002B1721 /* MapScenesMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScenesMTO.swift; sourceTree = "<group>"; };
 		2E0F221922F5ABA9002B1721 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		2E0F221C22F5C775002B1721 /* ObjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectData.swift; sourceTree = "<group>"; };
+		2E0F222822F6B806002B1721 /* MapScenesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScenesMFO.swift; sourceTree = "<group>"; };
 		2E13C40322ABB0090018CB1E /* XMLMappingAbstractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingAbstractTests.swift; sourceTree = "<group>"; };
 		2E251924229BB2CA00DC11BD /* CBProgramVariableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E251926229BB31600DC11BD /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
@@ -2535,8 +2536,6 @@
 		92FF30C01A24DCAA00093DA7 /* SpriteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteObject.m; sourceTree = "<group>"; };
 		92FF30C21A24DCAA00093DA7 /* UserVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVariable.h; sourceTree = "<group>"; };
 		92FF30C31A24DCAA00093DA7 /* UserVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVariable.m; sourceTree = "<group>"; };
-		92FF30C51A24DCAA00093DA7 /* VariablesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariablesContainer.h; sourceTree = "<group>"; };
-		92FF30C61A24DCAA00093DA7 /* VariablesContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariablesContainer.m; sourceTree = "<group>"; };
 		92FF310C1A24DEB300093DA7 /* BaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		92FF310D1A24DEB300093DA7 /* BaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
 		92FF310E1A24DEB300093DA7 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -3290,7 +3289,6 @@
 			isa = PBXGroup;
 			children = (
 				2E0F21F222F490A5002B1721 /* ResolveUserVariablesMFO.swift */,
-				2E0F21F522F490EF002B1721 /* MapData.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -3321,6 +3319,18 @@
 				2E0F221C22F5C775002B1721 /* ObjectData.swift */,
 			);
 			path = ObjectData;
+			sourceTree = "<group>";
+		};
+		2E0F222A22F6B828002B1721 /* ObjectList */ = {
+			isa = PBXGroup;
+			children = (
+				2E35EBB922DB979500B580FD /* MapObjectListMFO.swift */,
+				2E0F21E922F48FBA002B1721 /* LookList */,
+				2E0F21EA22F48FC4002B1721 /* SoundList */,
+				2E0F21EB22F48FCE002B1721 /* ScriptList */,
+				2E0F21F422F490DE002B1721 /* Supporting Files */,
+			);
+			path = ObjectList;
 			sourceTree = "<group>";
 		};
 		2E251921229BB2AC00DC11BD /* ProgramVariableList */ = {
@@ -3355,8 +3365,7 @@
 			children = (
 				2E27BC4C22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift */,
 				2E35EBBD22DB97A500B580FD /* Header */,
-				2E35EBBE22DB97AE00B580FD /* ObjectList or Scenes */,
-				2E35EBBF22DB97B900B580FD /* Variables */,
+				2E35EBBE22DB97AE00B580FD /* Scenes */,
 			);
 			path = "Mapping From Objc (MFO)";
 			sourceTree = "<group>";
@@ -3382,25 +3391,24 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		2E35EBBE22DB97AE00B580FD /* ObjectList or Scenes */ = {
+		2E35EBBE22DB97AE00B580FD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				2E35EBB922DB979500B580FD /* MapObjectListMFO.swift */,
-				2E0F21E922F48FBA002B1721 /* LookList */,
-				2E0F21EA22F48FC4002B1721 /* SoundList */,
-				2E0F21EB22F48FCE002B1721 /* ScriptList */,
-				2E0F21F422F490DE002B1721 /* Supporting Files */,
+				2E0F222822F6B806002B1721 /* MapScenesMFO.swift */,
+				2E0F222A22F6B828002B1721 /* ObjectList */,
+				2E35EBBF22DB97B900B580FD /* Data */,
 			);
-			path = "ObjectList or Scenes";
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		2E35EBBF22DB97B900B580FD /* Variables */ = {
+		2E35EBBF22DB97B900B580FD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2E0F21F522F490EF002B1721 /* MapData.swift */,
 				2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */,
 				2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */,
 			);
-			path = Variables;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		2E4CA99122EF3748003F262D /* XMLMappingTests */ = {
@@ -6005,7 +6013,6 @@
 				92FF30BB1A24DCAA00093DA7 /* Sound */,
 				92FF30BE1A24DCAA00093DA7 /* SpriteObject */,
 				92FF30C11A24DCAA00093DA7 /* UserVariable */,
-				92FF30C41A24DCAA00093DA7 /* VariablesContainer */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -6128,15 +6135,6 @@
 				92FF30C31A24DCAA00093DA7 /* UserVariable.m */,
 			);
 			path = UserVariable;
-			sourceTree = "<group>";
-		};
-		92FF30C41A24DCAA00093DA7 /* VariablesContainer */ = {
-			isa = PBXGroup;
-			children = (
-				92FF30C51A24DCAA00093DA7 /* VariablesContainer.h */,
-				92FF30C61A24DCAA00093DA7 /* VariablesContainer.m */,
-			);
-			path = VariablesContainer;
 			sourceTree = "<group>";
 		};
 		92FF310A1A24DEB300093DA7 /* ViewController */ = {
@@ -8951,7 +8949,6 @@
 				4CF0728D20D659F700F93AB5 /* PhiroSideRightSensor.swift in Sources */,
 				AA74F0021BC05B5F00D1E954 /* MoveNStepsBrick.m in Sources */,
 				92FF2E9A1A24C7D800093DA7 /* NavigationController.m in Sources */,
-				92FF31091A24DCAA00093DA7 /* VariablesContainer.m in Sources */,
 				AA74F0A51BC05FCE00D1E954 /* NoteBrickCell.m in Sources */,
 				9E78D88B22A9B1D400948AC3 /* IterableCache.swift in Sources */,
 				921D467E1BDF61350086AD20 /* GoNStepsBackBrick+Instruction.swift in Sources */,
@@ -9119,6 +9116,7 @@
 				929CC0EE1BC39B8C0027DEC0 /* PhiroMotorMoveForwardBrickCell.m in Sources */,
 				AAF6D9DE1BC0C1F300686849 /* PlaceAtBrick+Instruction.swift in Sources */,
 				AA74EFED1BC05B5F00D1E954 /* SetVariableBrick.m in Sources */,
+				2E0F222922F6B806002B1721 /* MapScenesMFO.swift in Sources */,
 				BA9CAB601EC383E800796056 /* AddItemToUserListBrickCell.m in Sources */,
 				9218B2051CC4AB75007B4C60 /* LinkedListStack.m in Sources */,
 				F4E6E584210DFD4300D86FE6 /* TanFunction.swift in Sources */,

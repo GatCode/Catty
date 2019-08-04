@@ -20,31 +20,23 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import <Foundation/Foundation.h>
-#import "InternToken.h"
-#import "FormulaElement.h"
-#import "UserVariable.h"
+extension CBXMLMappingFromObjc {
 
-typedef enum {
-    FORMULA_PARSER_OK = -1,
-    FORMULA_PARSER_STACK_OVERFLOW = -2,
-    FORMULA_PARSER_INPUT_SYNTAX_ERROR = -3,
-    FORMULA_PARSER_STRING = -4,
-    FORMULA_PARSER_NO_INPUT = -5
-} FormulaParserStatus;
+    static func mapScenesToCBProject(project: Project) -> [CBProjectScene] {
+        var mappedScenes = [CBProjectScene]()
 
-@protocol FormulaManagerProtocol;
+        if let scenes = project.scenes as? [Scene] {
+            for scene in scenes {
+                var mappedScene = CBProjectScene()
+                mappedScene.name = scene.name
+                mappedScene.objectList = mapObjectList(scene: scene, project: project)
+                mappedScene.data = mapData(scene: scene, project: project)
+                mappedScene.originalHeight = project.header.screenHeight.stringValue
+                mappedScene.originalWidth = project.header.screenWidth.stringValue
+                mappedScenes.append(mappedScene)
+            }
+        }
 
-@interface InternFormulaParser : NSObject
-
-@property (nonatomic, strong) NSMutableArray<InternToken*>* internTokensToParse;
-@property (nonatomic) int currentTokenParseIndex;
-@property (nonatomic) int errorTokenIndex;
-@property (nonatomic, weak) InternToken* currentToken;
-@property (nonatomic) BOOL isBool;
-
-- (id)initWithTokens:(NSArray<InternToken*>*)tokens andFormulaManager:(id<FormulaManagerProtocol>)formulaManager;
-- (FormulaElement*)parseFormulaForSpriteObject:(SpriteObject*)object;
-- (int)getErrorTokenIndex;
-
-@end
+        return mappedScenes
+    }
+}

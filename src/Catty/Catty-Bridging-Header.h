@@ -183,7 +183,6 @@
 #import "SegueDefines.h"
 #import "ProjectDetailStoreViewController.h"
 #import "DarkBlueGradientFeaturedCell.h"
-#import "VariablesContainer.h"
 #import "OrderedMapTable.h"
 #import "UIDefines.h"
 #import "SpriteObject.h"
@@ -191,3 +190,4 @@
 #import "BDKNotifyHUD.h"
 #import "BrickShapeFactory.h"
 #import "BrickManager.h"
+#import <pthread.h>

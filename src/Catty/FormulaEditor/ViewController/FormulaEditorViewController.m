@@ -799,7 +799,6 @@ NS_ENUM(NSInteger, ButtonIndex) {
 }
 
 - (void)updateVariablePickerData {
-    VariablesContainer *variables = self.object.project.variables;
     [self.variableSource removeAllObjects];
     [self.variableSourceProject  removeAllObjects];
     [self.variableSourceObject  removeAllObjects];
@@ -810,11 +809,11 @@ NS_ENUM(NSInteger, ButtonIndex) {
     // ------------------
     // Project Variables
     // ------------------
-    if([variables.programVariableList count] > 0){
+    if([self.object.project.programVariableList count] > 0){
         [self.variableSource addObject:[[VariablePickerData alloc] initWithTitle:kUIFEProjectVars]];
     }
     
-    for(UserVariable *userVariable in variables.programVariableList) {
+    for(UserVariable *userVariable in self.object.project.programVariableList) {
         VariablePickerData *pickerData = [[VariablePickerData alloc] initWithTitle:userVariable.name andVariable:userVariable];
         [pickerData setIsProjectVariable:YES];
         [self.variableSource addObject:pickerData];
@@ -825,11 +824,11 @@ NS_ENUM(NSInteger, ButtonIndex) {
     // ------------------
     // Project Lists
     // ------------------
-    if([variables.programListOfLists count] > 0){
+    if([self.object.project.programListOfLists count] > 0){
         [self.listSource addObject:[[VariablePickerData alloc] initWithTitle:kUIFEProjectLists]];
     }
     
-    for(UserVariable *userVariable in variables.programListOfLists) {
+    for(UserVariable *userVariable in self.object.project.programListOfLists) {
         VariablePickerData *pickerData = [[VariablePickerData alloc] initWithTitle:userVariable.name andVariable:userVariable];
         [pickerData setIsProjectVariable:YES];
         [self.listSource addObject:pickerData];
@@ -840,7 +839,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
     // ------------------
     // Object Variables
     // ------------------
-    NSArray *array = [variables allVariablesForObject:self.object];
+    NSArray *array = [self.object.project allVariablesForObject:self.object];
     if (array) {
         if([array count] > 0)
             [self.variableSource addObject:[[VariablePickerData alloc] initWithTitle:kUIFEObjectVars]];
@@ -857,7 +856,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
     // ------------------
     // Object Lists
     // ------------------
-    array = [variables allListsForObject:self.object];
+    array = [self.object.project allListsForObject:self.object];
     if (array) {
         if([array count] > 0)
             [self.listSource addObject:[[VariablePickerData alloc] initWithTitle:kUIFEObjectLists]];
@@ -891,28 +890,28 @@ NS_ENUM(NSInteger, ButtonIndex) {
 - (void)saveVariable:(NSString*)name isList:(BOOL)isList
 {
     if (self.isProjectVariable && !isList){
-        for (UserVariable* variable in [self.object.project.variables allVariables]) {
+        for (UserVariable* variable in [self.object.project allVariables]) {
             if ([variable.name isEqualToString:name]) {
                 [self askForVariableName: isList];
                 return;
             }
         }
     } else if (!self.isProjectVariable && !isList) {
-        for (UserVariable* variable in [self.object.project.variables allVariablesForObject:self.object]) {
+        for (UserVariable* variable in [self.object.project allVariablesForObject:self.object]) {
             if ([variable.name isEqualToString:name]) {
                 [self askForVariableName: isList];
                 return;
             }
         }
     } else if (self.isProjectVariable && isList){
-        for (UserVariable* variable in [self.object.project.variables allLists]) {
+        for (UserVariable* variable in [self.object.project allLists]) {
             if ([variable.name isEqualToString:name]) {
                 [self askForVariableName: isList];
                 return;
             }
         }
     } else if (!self.isProjectVariable && isList) {
-        for (UserVariable* variable in [self.object.project.variables allListsForObject:self.object]) {
+        for (UserVariable* variable in [self.object.project allListsForObject:self.object]) {
             if ([variable.name isEqualToString:name]) {
                 [self askForVariableName: isList];
                 return;
@@ -933,13 +932,13 @@ NS_ENUM(NSInteger, ButtonIndex) {
     
     int buttonType = isList ? 11 : 0;
     if (self.isProjectVariable && !isList) {
-        [self.object.project.variables.programVariableList addObject:var];
+        [self.object.project.programVariableList addObject:var];
     } else if (self.isProjectVariable && isList){
-        [self.object.project.variables.programListOfLists addObject:var];
+        [self.object.project.programListOfLists addObject:var];
     } else if (!self.isProjectVariable && !isList) {
-        [self.object.project.variables addObjectVariable:var forObject:self.object];
+        [self.object.project addObjectVariable:var forObject:self.object];
     } else if (!self.isProjectVariable && isList) {
-        [self.object.project.variables addObjectList:var forObject:self.object];
+        [self.object.project addObjectList:var forObject:self.object];
     }
     
     [self.object.project saveToDiskWithNotification:YES];
@@ -1123,9 +1122,9 @@ NS_ENUM(NSInteger, ButtonIndex) {
                 BOOL removed = NO;
                 BOOL isList = pickerData.userVariable.isList;
                 if (!isList) {
-                    removed = [self.object.project.variables removeUserVariableNamed:pickerData.userVariable.name forSpriteObject:self.object];
+                    removed = [self.object.project removeUserVariableNamed:pickerData.userVariable.name forSpriteObject:self.object];
                 } else {
-                    removed = [self.object.project.variables removeUserListNamed:pickerData.userVariable.name forSpriteObject:self.object];
+                    removed = [self.object.project removeUserListNamed:pickerData.userVariable.name forSpriteObject:self.object];
                 }
                 if (removed) {
                     if (!isList) {
@@ -1145,7 +1144,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
 
 - (BOOL)isVarOrListBeingUsed:(UserVariable*)variable
 {
-    if([self.object.project.variables isProjectVariableOrList:variable]) {
+    if([self.object.project isProjectVariableOrList:variable]) {
         for(SpriteObject *spriteObject in self.object.project.objectList) {
             for(Script *script in spriteObject.scriptList) {
                 for(id brick in script.brickList) {

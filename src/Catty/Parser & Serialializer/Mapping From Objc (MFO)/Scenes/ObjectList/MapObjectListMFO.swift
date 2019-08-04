@@ -22,33 +22,21 @@
 
 extension CBXMLMappingFromObjc {
 
-    static func mapScenesToCBProject(project: Project) -> [CBProjectScene] {
-        var mappedScene = CBProjectScene()
-
-        mappedScene.name = "Szene 1"
-        mappedScene.objectList = mapObjectList(project: project)
-        mappedScene.data = mapData(project: project)
-        mappedScene.originalHeight = project.header.screenHeight.stringValue
-        mappedScene.originalWidth = project.header.screenWidth.stringValue
-
-        return [mappedScene]
-    }
-
-    static func mapObjectList(project: Project) -> CBObjectList {
+    static func mapObjectList(scene: Scene, project: Project) -> CBObjectList {
         var mappedObjectList = [CBObject]()
 
-        for object in project.objectList {
+        for object in scene.objectList {
             var mappedObject = CBObject()
-            mappedObject.name = (object as? SpriteObject)?.name
+            mappedObject.name = object.name
 
-            mappedObject.lookList = mapLookList(project: project, object: object as? SpriteObject)
-            mappedObject.soundList = mapSoundList(project: project, object: object as? SpriteObject)
-            mappedObject.scriptList = mapScriptList(project: project, object: object as? SpriteObject, currentObject: mappedObject)
+            mappedObject.lookList = mapLookList(project: project, object: object)
+            mappedObject.soundList = mapSoundList(project: project, object: object)
+            mappedObject.scriptList = mapScriptList(project: project, object: object, currentObject: mappedObject)
             mappedObject.userBrickList = CBUserBrickList(userBricks: nil)
             mappedObject.nfcTagList = CBNfcTagList(nfcTags: nil)
 
             mappedObjectList.append(mappedObject)
-            CBXMLMappingFromObjc.objectList.append((object as? SpriteObject, CBXMLMappingFromObjc.currentSerializationPosition))
+            CBXMLMappingFromObjc.objectList.append((object, CBXMLMappingFromObjc.currentSerializationPosition))
             CBXMLMappingFromObjc.currentSerializationPosition.0 += 1
             CBXMLMappingFromObjc.currentSerializationPosition.1 = 0
         }

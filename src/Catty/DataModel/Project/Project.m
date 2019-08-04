@@ -21,7 +21,6 @@
  */
 
 #import "Project.h"
-#import "VariablesContainer.h"
 #import "Util.h"
 #import "AppDelegate.h"
 #import "Script.h"
@@ -31,6 +30,8 @@
 #import "Pocket_Code-Swift.h"
 
 @implementation Project
+
+static pthread_mutex_t variablesLock;
 
 @synthesize objectList = _objectList;
 
@@ -79,8 +80,8 @@
         if (currentObject == object) {
             [currentObject removeSounds:currentObject.soundList AndSaveToDisk:NO];
             [currentObject removeLooks:currentObject.lookList AndSaveToDisk:NO];
-            [currentObject.project.variables removeObjectVariablesForSpriteObject:currentObject];
-            [currentObject.project.variables removeObjectListsForSpriteObject:currentObject];
+            [currentObject.project removeObjectVariablesForSpriteObject:currentObject];
+            [currentObject.project removeObjectListsForSpriteObject:currentObject];
             currentObject.project = nil;
             [self.objectList removeObjectAtIndex:index];
             break;
@@ -132,14 +133,6 @@
         }
     }
     _objectList = objectList;
-}
-
-- (VariablesContainer*)variables
-{
-    // lazy instantiation
-    if (! _variables)
-        _variables = [VariablesContainer new];
-    return _variables;
 }
 
 - (NSString*)projectPath
@@ -254,8 +247,8 @@
     CBMutableCopyContext *context = [CBMutableCopyContext new];
     NSMutableArray<UserVariable*> *copiedVariablesAndLists = [NSMutableArray new];
     
-    NSMutableArray<UserVariable*> *variablesAndLists = [[NSMutableArray alloc] initWithArray:[self.variables objectVariablesForObject:sourceObject]];
-    [variablesAndLists addObjectsFromArray: [self.variables objectListsForObject:sourceObject]];
+    NSMutableArray<UserVariable*> *variablesAndLists = [[NSMutableArray alloc] initWithArray:[self objectVariablesForObject:sourceObject]];
+    [variablesAndLists addObjectsFromArray: [self objectListsForObject:sourceObject]];
     
     for (UserVariable *variableOrList in variablesAndLists) {
         UserVariable *copiedVariableOrList = [[UserVariable alloc] initWithVariable:variableOrList];
@@ -270,9 +263,9 @@
     
     for (UserVariable *variableOrList in copiedVariablesAndLists) {
         if (variableOrList.isList) {
-            [self.variables addObjectList:variableOrList forObject:copiedObject];
+            [self addObjectList:variableOrList forObject:copiedObject];
         } else {
-            [self.variables addObjectVariable:variableOrList forObject:copiedObject];
+            [self addObjectVariable:variableOrList forObject:copiedObject];
         }
     }
     
@@ -283,8 +276,6 @@
 - (BOOL)isEqualToProject:(Project*)project
 {
     if (! [self.header isEqualToHeader:project.header])
-        return NO;
-    if (! [self.variables isEqualToVariablesContainer:project.variables])
         return NO;
     if ([self.objectList count] != [project.objectList count])
         return NO;
@@ -347,7 +338,6 @@
     [ret appendFormat:@"Sprite List: %@\n", self.objectList];
     [ret appendFormat:@"URL: %@\n", self.header.url];
     [ret appendFormat:@"User Handle: %@\n", self.header.userHandle];
-    [ret appendFormat:@"Variables: %@\n", self.variables];
     [ret appendFormat:@"------------------------------------------------\n"];
     return [ret copy];
 }
@@ -663,5 +653,436 @@
     return vars;
 }
 
+- (UserVariable*)getUserVariableNamed:(NSString*)name forSpriteObject:(SpriteObject*)sprite
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:sprite]) {
+            NSArray *objectUserVariables = [scene.data.objectVariableList objectForKey:sprite];
+            UserVariable *variable = [self findUserVariableNamed:name inArray:objectUserVariables];
+            
+            if (! variable) {
+                variable = [self findUserVariableNamed:name inArray:self.programVariableList];
+            }
+            return variable;
+        }
+    }
+    
+    return nil;
+}
+
+- (UserVariable*)getUserListNamed:(NSString*)name forSpriteObject:(SpriteObject*)sprite
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:sprite]) {
+            NSArray *objectUserLists = [scene.data.objectListOfLists objectForKey:sprite];
+            UserVariable *list = [self findUserVariableNamed:name inArray:objectUserLists];
+            
+            if (! list) {
+                list = [self findUserVariableNamed:name inArray:self.programListOfLists];
+            }
+            return list;
+        }
+    }
+    
+    return nil;
+}
+
+- (BOOL)removeUserVariableNamed:(NSString*)name forSpriteObject:(SpriteObject*)sprite
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:sprite]) {
+            NSMutableArray *objectUserVariables = [scene.data.objectVariableList objectForKey:sprite];
+            UserVariable *variable = [self findUserVariableNamed:name inArray:objectUserVariables];
+            if (variable) {
+                [self removeObjectUserVariableNamed:name inArray:objectUserVariables forSpriteObject:sprite];
+                return YES;
+            } else {
+                variable = [self findUserVariableNamed:name inArray:self.programVariableList];
+                if (variable) {
+                    [self removeProjectUserVariableNamed:name];
+                    return YES;
+                }
+            }
+            return NO;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)removeUserListNamed:(NSString*)name forSpriteObject:(SpriteObject*)sprite
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:sprite]) {
+            NSMutableArray *objectUserLists = [scene.data.objectListOfLists objectForKey:sprite];
+            UserVariable *list = [self findUserVariableNamed:name inArray:objectUserLists];
+            if (list) {
+                [self removeObjectUserListNamed:name inArray:objectUserLists forSpriteObject:sprite];
+                return YES;
+            } else {
+                list = [self findUserVariableNamed:name inArray:self.programListOfLists];
+                if (list) {
+                    [self removeProjectUserListNamed:name];
+                    return YES;
+                }
+            }
+            return NO;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)deleteFromUserList:(UserVariable*)userList atIndex:(id)position
+{
+    pthread_mutex_lock(&variablesLock);
+    if((![userList.value isKindOfClass:[NSMutableArray class]]) && (userList.value != nil)){
+        NSError(@"Found a UserList that is not of class NSMutableArray.");
+    }
+    
+    NSMutableArray *array;
+    if(userList.value == nil){
+        array = [[NSMutableArray alloc] init];
+    } else {
+        array = (NSMutableArray*)userList.value;
+    }
+    
+    NSUInteger size = [array count];
+    NSUInteger castedPosition = [(NSNumber*)position unsignedIntegerValue];
+    
+    if ((castedPosition > size) || (castedPosition < 1)) {
+        pthread_mutex_unlock(&variablesLock);
+        return;
+    }
+    [array removeObjectAtIndex:castedPosition - 1];
+    
+    userList.value = array;
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (void)setUserVariable:(UserVariable*)userVariable toValue:(id)value
+{
+    pthread_mutex_lock(&variablesLock);
+    if([value isKindOfClass:[NSString class]]){
+        NSString *stringValue = (NSString*)value;
+        userVariable.value = stringValue;
+    } else if([value isKindOfClass:[NSNumber class]]){
+        NSNumber *numberValue = (NSNumber*)value;
+        userVariable.value = numberValue;
+    } else {
+        userVariable.value = [NSNumber numberWithInt:0];
+    }
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (void)replaceItemInUserList:(UserVariable*)userList value:(id)value atIndex:(id)position
+{
+    pthread_mutex_lock(&variablesLock);
+    if((![userList.value isKindOfClass:[NSMutableArray class]]) && (userList.value != nil)){
+        NSError(@"Found a UserList that is not of class NSMutableArray.");
+    }
+    
+    NSMutableArray *array;
+    if(userList.value == nil){
+        array = [[NSMutableArray alloc] init];
+    } else {
+        array = (NSMutableArray*)userList.value;
+    }
+    
+    NSUInteger size = [array count];
+    NSUInteger castedPosition = [(NSNumber*) position unsignedIntegerValue];
+    
+    if ((castedPosition > size) || (castedPosition < 1)) {
+        pthread_mutex_unlock(&variablesLock);
+        return;
+    }
+    
+    if([value isKindOfClass:[NSString class]]){
+        [array replaceObjectAtIndex:castedPosition - 1 withObject:(NSString*)value];
+    } else if([value isKindOfClass:[NSNumber class]]){
+        [array replaceObjectAtIndex:castedPosition - 1 withObject:(NSNumber*)value];
+    }
+    userList.value = array;
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (void)addToUserList:(UserVariable*)userList value:(id)value
+{
+    pthread_mutex_lock(&variablesLock);
+    if((![userList.value isKindOfClass:[NSMutableArray class]]) && (userList.value != nil)){
+        NSError(@"Found a UserList that is not of class NSMutableArray.");
+    }
+    
+    NSMutableArray *array;
+    if(userList.value == nil){
+        array = [[NSMutableArray alloc] init];
+    } else {
+        array = (NSMutableArray*)userList.value;
+    }
+    
+    if([value isKindOfClass:[NSString class]]){
+        [array addObject:(NSString*)value];
+    } else if([value isKindOfClass:[NSNumber class]]){
+        [array addObject:(NSNumber*)value];
+    } else {
+        [array addObject:[NSNumber numberWithInt:0]];
+    }
+    userList.value = array;
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (void)changeVariable:(UserVariable*)userVariable byValue:(double)value
+{
+    pthread_mutex_lock(&variablesLock);
+    if ([userVariable.value isKindOfClass:[NSNumber class]]){
+        userVariable.value = [NSNumber numberWithFloat:(CGFloat)(([userVariable.value doubleValue] + value))];
+    }
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (void)insertToUserList:(UserVariable*)userList value:(id)value atIndex:(id)position
+{
+    pthread_mutex_lock(&variablesLock);
+    if((![userList.value isKindOfClass:[NSMutableArray class]]) && (userList.value != nil)){
+        NSError(@"Found a UserList that is not of class NSMutableArray.");
+    }
+    
+    NSMutableArray *array;
+    if(userList.value == nil){
+        array = [[NSMutableArray alloc] init];
+    } else {
+        array = (NSMutableArray*)userList.value;
+    }
+    
+    NSUInteger size = [array count];
+    NSUInteger castedPosition = [(NSNumber*)position unsignedIntegerValue];
+    
+    
+    if ((castedPosition > (size + 1)) || (castedPosition < 1)) {
+        pthread_mutex_unlock(&variablesLock);
+        return;
+    }
+    
+    if([value isKindOfClass:[NSString class]]){
+        [array insertObject:(NSString*)value atIndex:castedPosition - 1];
+    } else if([value isKindOfClass:[NSNumber class]]){
+        [array insertObject:(NSNumber*)value atIndex:castedPosition - 1];
+    } else {
+        [array insertObject:[NSNumber numberWithInt:0] atIndex:castedPosition - 1];
+    }
+    userList.value = array;
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (NSArray*)allVariablesForObject:(SpriteObject*)spriteObject
+{
+    NSMutableArray *vars = [NSMutableArray arrayWithArray:self.programVariableList];
+    [vars addObjectsFromArray:[self objectVariablesForObject:spriteObject]];
+    return vars;
+}
+
+- (NSArray*)allListsForObject:(SpriteObject*)spriteObject
+{
+    NSMutableArray *lists = [NSMutableArray arrayWithArray:self.programListOfLists];
+    [lists addObjectsFromArray:[self objectListsForObject:spriteObject]];
+    return lists;
+}
+
+- (BOOL)addObjectVariable:(UserVariable*)userVariable forObject:(SpriteObject*)spriteObject
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:spriteObject]) {
+            NSMutableArray *array = [scene.data.objectVariableList objectForKey:spriteObject];
+            
+            if (!array) {
+                array = [NSMutableArray new];
+            } else {
+                for (UserVariable *userVariableToCompare in array) {
+                    if ([userVariableToCompare.name isEqualToString:userVariable.name]) {
+                        return NO;
+                    }
+                }
+            }
+            
+            [array addObject:userVariable];
+            [scene.data.objectVariableList setObject:array forKey:spriteObject];
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)addObjectList:(UserVariable*)userList forObject:(SpriteObject*)spriteObject
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:spriteObject]) {
+            NSMutableArray *array = [scene.data.objectListOfLists objectForKey:spriteObject];
+            
+            if (!array) {
+                array = [NSMutableArray new];
+            } else {
+                for (UserVariable *userListToCompare in array) {
+                    if ([userListToCompare.name isEqualToString:userList.name]) {
+                        return NO;
+                    }
+                }
+            }
+            
+            [array addObject:userList];
+            [scene.data.objectListOfLists setObject:array forKey:spriteObject];
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)removeObjectVariablesForSpriteObject:(SpriteObject*)object
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:object]) {
+            [scene.data.objectVariableList removeObjectForKey:object];
+        }
+    }
+}
+
+- (void)removeObjectListsForSpriteObject:(SpriteObject*)object
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:object]) {
+            [scene.data.objectListOfLists removeObjectForKey:object];
+        }
+    }
+}
+
+- (NSArray*)objectVariablesForObject:(SpriteObject*)spriteObject
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:spriteObject]) {
+            NSMutableArray *vars = [NSMutableArray new];
+            if([scene.data.objectVariableList objectForKey:spriteObject]) {
+                for(UserVariable *var in [scene.data.objectVariableList objectForKey:spriteObject]) {
+                    [vars addObject:var];
+                }
+            }
+            return vars;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSArray*)objectListsForObject:(SpriteObject*)spriteObject
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:spriteObject]) {
+            NSMutableArray *lists = [NSMutableArray new];
+            if([scene.data.objectListOfLists objectForKey:spriteObject]) {
+                for(UserVariable *list in [scene.data.objectListOfLists objectForKey:spriteObject]) {
+                    [lists addObject:list];
+                }
+            }
+            return lists;
+        }
+    }
+    
+    return nil;
+}
+
+- (UserVariable*)findUserVariableNamed:(NSString*)name inArray:(NSArray*)userVariables
+{
+    UserVariable *variable = nil;
+    pthread_mutex_lock(&variablesLock);
+    for (int i = 0; i < [userVariables count]; ++i) {
+        UserVariable *var = [userVariables objectAtIndex:i];
+        if ([var.name isEqualToString:name]) {
+            variable = var;
+            break;
+        }
+    }
+    pthread_mutex_unlock(&variablesLock);
+    return variable;
+}
+
+- (void)removeObjectUserVariableNamed:(NSString*)name inArray:(NSMutableArray*)userVariables forSpriteObject:(SpriteObject*)sprite
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:sprite]) {
+            pthread_mutex_lock(&variablesLock);
+            for (int i = 0; i < [userVariables count]; ++i) {
+                UserVariable *var = [userVariables objectAtIndex:i];
+                if ([var.name isEqualToString:name]) {
+                    [userVariables removeObjectAtIndex:i];
+                    [scene.data.objectVariableList setObject:userVariables forKey:sprite];
+                    break;
+                }
+            }
+            pthread_mutex_unlock(&variablesLock);
+        }
+    }
+}
+
+- (void)removeObjectUserListNamed:(NSString*)name inArray:(NSMutableArray*)userLists forSpriteObject:(SpriteObject*)sprite
+{
+    for (Scene* scene in self.scenes) {
+        if ([scene.objectList containsObject:sprite]) {
+            pthread_mutex_lock(&variablesLock);
+            for (int i = 0; i < [userLists count]; ++i) {
+                UserVariable *list = [userLists objectAtIndex:i];
+                if ([list.name isEqualToString:name]) {
+                    [userLists removeObjectAtIndex:i];
+                    [scene.data.objectListOfLists setObject:userLists forKey:sprite];
+                    break;
+                }
+            }
+            pthread_mutex_unlock(&variablesLock);
+        }
+    }
+}
+
+- (void)removeProjectUserVariableNamed:(NSString*)name
+{
+    pthread_mutex_lock(&variablesLock);
+    for (int i = 0; i < [self.programVariableList count]; ++i) {
+        UserVariable *var = [self.programVariableList objectAtIndex:i];
+        if ([var.name isEqualToString:name]) {
+            [self.programVariableList removeObjectAtIndex:i];
+            break;
+        }
+    }
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (void)removeProjectUserListNamed:(NSString*)name
+{
+    pthread_mutex_lock(&variablesLock);
+    for (int i = 0; i < [self.programListOfLists count]; ++i) {
+        UserVariable *list = [self.programListOfLists objectAtIndex:i];
+        if ([list.name isEqualToString:name]) {
+            [self.programListOfLists removeObjectAtIndex:i];
+            break;
+        }
+    }
+    pthread_mutex_unlock(&variablesLock);
+}
+
+- (BOOL)isProjectVariableOrList:(UserVariable*)userVarOrList
+{
+    if (!userVarOrList.isList) {
+        for (UserVariable *userVariableToCompare in self.programVariableList) {
+            if ([userVariableToCompare.name isEqualToString:userVarOrList.name]) {
+                return YES;
+            }
+        }
+    } else {
+        for (UserVariable *userListToCompare in self.programListOfLists) {
+            if ([userListToCompare.name isEqualToString:userVarOrList.name]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
 
 @end

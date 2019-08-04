@@ -22,8 +22,9 @@
 
 #import "Header.h"
 #import "ProgramDefines.h"
+#import "UserVariable.h"
 
-@class VariablesContainer;
+//@class VariablesContainer;
 @class SpriteObject;
 @class Scene;
 @class ProjectLoadingInfo;
@@ -32,11 +33,10 @@
 
 @property (nonatomic, strong, nonnull) Header *header;
 @property (nonatomic, strong, nonnull) NSMutableArray<Scene*> *scenes;
-@property (nonatomic, strong) NSMutableArray *programVariableList; // TODO: fill
-@property (nonatomic, strong) NSMutableArray *programListOfLists; // TODO: fill
+@property (nonatomic, strong) NSMutableArray * _Nullable programVariableList;
+@property (nonatomic, strong) NSMutableArray * _Nullable programListOfLists;
 
 @property (nonatomic, strong, nonnull) NSMutableArray<SpriteObject*> *objectList; // TODO: remove later on
-@property (nonatomic, strong, nonnull) VariablesContainer *variables; // TODO: remove because from now on its splitted up
 @property (nonatomic, strong, nonnull) NSMutableSet<NSString*> *unsupportedElements;
 @property (nonatomic) BOOL requiresBluetooth;
 
@@ -90,10 +90,30 @@
 + (nullable NSString *)projectNameForProjectID:(NSString* _Nonnull)projectID;
 
 // Array of Variables
-- (NSMutableArray*)allVariables;
+- (NSMutableArray* _Nullable)allVariables;
 // Array of Lists
-- (NSMutableArray*)allLists;
+- (NSMutableArray* _Nullable)allLists;
 // Array of Variables and Lists
-- (NSMutableArray*)allVariablesAndLists;
+- (NSMutableArray* _Nullable)allVariablesAndLists;
+
+- (UserVariable* _Nullable)getUserVariableNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite;
+- (UserVariable* _Nullable)getUserListNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite;
+- (BOOL)removeUserVariableNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite;
+- (BOOL)removeUserListNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite;
+- (void)deleteFromUserList:(UserVariable* _Nullable)userList atIndex:(id _Nullable)index;
+- (void)setUserVariable:(UserVariable* _Nullable)userVariable toValue:(id _Nullable)value;
+- (void)replaceItemInUserList:(UserVariable* _Nullable)userList value:(id _Nullable)value atIndex:(id _Nullable)position;
+- (void)addToUserList:(UserVariable* _Nullable)userList value:(id _Nullable)value;
+- (void)changeVariable:(UserVariable* _Nullable)userVariable byValue:(double)value;
+- (void)insertToUserList:(UserVariable* _Nullable)userList value:(id _Nullable)value atIndex:(id _Nullable)position;
+- (NSArray* _Nullable)allVariablesForObject:(SpriteObject* _Nullable)spriteObject;
+- (NSArray* _Nullable)allListsForObject:(SpriteObject* _Nullable)spriteObject;
+- (BOOL)addObjectVariable:(UserVariable* _Nullable)userVariable forObject:(SpriteObject* _Nullable)spriteObject;
+- (BOOL)addObjectList:(UserVariable* _Nullable)userList forObject:(SpriteObject* _Nullable)spriteObject;
+- (void)removeObjectVariablesForSpriteObject:(SpriteObject* _Nullable)object;
+- (void)removeObjectListsForSpriteObject:(SpriteObject* _Nullable)object;
+- (NSArray* _Nullable)objectVariablesForObject:(SpriteObject* _Nullable)spriteObject;
+- (NSArray* _Nullable)objectListsForObject:(SpriteObject* _Nullable)spriteObject;
+- (BOOL)isProjectVariableOrList:(UserVariable* _Nullable)userVariable;
 
 @end
