@@ -616,4 +616,52 @@
     return [NSString stringWithFormat:@"%@%@/", [Project basePath], [[self class] projectDirectoryNameForProjectName:[Util replaceBlockedCharactersForString:projectName] projectID:projectID]];
 }
 
+#pragma mark - ProgramVariableList and ProgramListOfLists
+
+- (NSMutableArray*)allVariables
+{
+    NSMutableArray *vars = [NSMutableArray arrayWithArray:self.programVariableList];
+    for(Scene* scene in self.scenes) {
+        for(NSUInteger index = 0; index < [scene.data.objectVariableList count]; index++) {
+            NSMutableArray *variableList = [scene.data.objectVariableList objectAtIndex:index];
+            if([variableList count] > 0)
+                [vars addObjectsFromArray:variableList];
+        }
+    
+        for(NSUInteger index = 0; index < [scene.data.objectVariableList count]; index++) {
+            NSMutableArray *variableList = [scene.data.objectVariableList objectAtIndex:index];
+            if([variableList count] > 0)
+                [vars addObjectsFromArray:variableList];
+        }
+    }
+    
+    return vars;
+}
+
+- (NSMutableArray*)allLists
+{
+    NSMutableArray *vars = [NSMutableArray arrayWithArray:self.programListOfLists];
+    for(Scene* scene in self.scenes) {
+        for(NSUInteger index = 0; index < [scene.data.objectListOfLists count]; index++) {
+            NSMutableArray *listOfLists = [scene.data.objectListOfLists objectAtIndex:index];
+            if([listOfLists count] > 0)
+                [vars addObjectsFromArray:listOfLists];
+        }
+    }
+    
+    return vars;
+}
+
+- (NSMutableArray*)allVariablesAndLists
+{
+    NSMutableArray *vars = [self allVariables ];
+    NSMutableArray *lists = [self allLists ];
+    if([vars count] > 0){
+        [vars addObjectsFromArray:lists];
+    }
+    
+    return vars;
+}
+
+
 @end

@@ -20,12 +20,12 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-class Scene {
-    var name: String?
-    var data: ObjectData?
-    var originalWidth: String?
-    var originalHeight: String?
-    var objectList = [SpriteObject]()
+@objc class Scene: NSObject {
+    @objc var name: String?
+    @objc var data: ObjectData?
+    @objc var originalWidth: String?
+    @objc var originalHeight: String?
+    @objc var objectList = [SpriteObject]()
     var sceneCounter = 1
 
     init(name: String?) {

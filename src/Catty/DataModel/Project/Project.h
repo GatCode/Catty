@@ -89,4 +89,11 @@
 + (nullable ProjectLoadingInfo *)projectLoadingInfoForProjectDirectoryName:(NSString* _Nonnull)projectDirectoryName;
 + (nullable NSString *)projectNameForProjectID:(NSString* _Nonnull)projectID;
 
+// Array of Variables
+- (NSMutableArray*)allVariables;
+// Array of Lists
+- (NSMutableArray*)allLists;
+// Array of Variables and Lists
+- (NSMutableArray*)allVariablesAndLists;
+
 @end

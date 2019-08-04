@@ -20,10 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-class ObjectData {
-    var objectVariableList: OrderedMapTable?
-    var objectListOfList: OrderedMapTable?
-
-    init() {
-    }
+@objc class ObjectData: NSObject {
+    @objc var objectVariableList: OrderedMapTable?
+    @objc var objectListOfLists: OrderedMapTable?
 }
