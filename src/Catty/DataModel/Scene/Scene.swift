@@ -26,8 +26,9 @@ class Scene {
     var originalWidth: String?
     var originalHeight: String?
     var objectList = [SpriteObject]()
+    var sceneCounter = 1
 
     init(name: String?) {
-        self.name = name // TODO: check if first and apply default name
+        self.name = name.isEmptyButNotNil() ? "Scene \(sceneCounter)" : name
     }
 }

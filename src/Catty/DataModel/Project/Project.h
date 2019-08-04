@@ -31,9 +31,12 @@
 @interface Project : NSObject
 
 @property (nonatomic, strong, nonnull) Header *header;
-@property (nonatomic, strong, nonnull) NSMutableArray<SpriteObject*> *objectList;
 @property (nonatomic, strong, nonnull) NSMutableArray<Scene*> *scenes;
-@property (nonatomic, strong, nonnull) VariablesContainer *variables;
+@property (nonatomic, strong) NSMutableArray *programVariableList; // TODO: fill
+@property (nonatomic, strong) NSMutableArray *programListOfLists; // TODO: fill
+
+@property (nonatomic, strong, nonnull) NSMutableArray<SpriteObject*> *objectList; // TODO: remove later on
+@property (nonatomic, strong, nonnull) VariablesContainer *variables; // TODO: remove because from now on its splitted up
 @property (nonatomic, strong, nonnull) NSMutableSet<NSString*> *unsupportedElements;
 @property (nonatomic) BOOL requiresBluetooth;
 
