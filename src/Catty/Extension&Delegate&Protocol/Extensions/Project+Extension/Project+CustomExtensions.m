@@ -21,6 +21,7 @@
  */
 
 #import "Project+CustomExtensions.h"
+#import "Pocket_Code-Swift.h"
 #import "SpriteObject.h"
 #import "Brick.h"
 #import "Script.h"
@@ -29,7 +30,7 @@
 
 - (void)updateReferences
 {
-    for (SpriteObject *sprite in self.objectList) {
+    for (SpriteObject *sprite in (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList) { // TODO: this just works for one scene!
         sprite.project = self;
         for (Script *script in sprite.scriptList) {
             script.object = sprite;

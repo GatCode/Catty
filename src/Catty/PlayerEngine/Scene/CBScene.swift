@@ -125,7 +125,7 @@ final class CBScene: SKScene {
             return false
         }
 
-        guard let spriteObjectList = project.objectList as NSArray? as? [SpriteObject],
+        guard let spriteObjectList = (project.scenes.firstObject as? Scene)?.objectList as NSArray? as? [SpriteObject], // TODO: this just works for one scene!
             let variableList = frontend.project?.allVariables() as NSArray? as? [UserVariable] else {
                 //fatalError
                 debugPrint("!! Invalid sprite object list given !! This should never happen!")

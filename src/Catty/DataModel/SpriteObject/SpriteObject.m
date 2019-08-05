@@ -31,6 +31,7 @@
 #import "AppDelegate.h"
 #import "NSString+FastImageSize.h"
 #import "CBMutableCopyContext.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation SpriteObject
 
@@ -112,8 +113,8 @@
 
 - (BOOL)isBackground
 {
-    if (self.project && [self.project.objectList count])
-        return ([self.project.objectList objectAtIndex:0] == self);
+    if (self.project && [((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList count]) // TODO: this just works for one scene!
+        return ([((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:0] == self);
     return NO;
 }
 
@@ -193,9 +194,9 @@
 {
     CBAssert(self.project);
     NSUInteger index = 0;
-    for (SpriteObject *spriteObject in self.project.objectList) {
+    for (SpriteObject *spriteObject in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
         if (spriteObject == self) {
-            [self.project.objectList removeObjectAtIndex:index];
+            [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList removeObjectAtIndex:index]; // TODO: this just works for one scene!
             self.project = nil;
             break;
         }
@@ -466,7 +467,7 @@
 - (NSUInteger)referenceCountForLook:(NSString*)fileName
 {
     NSUInteger referenceCount = 0;
-    for (SpriteObject *object in self.project.objectList) {
+    for (SpriteObject *object in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
         for (Look *look in object.lookList) {
             if ([look.fileName isEqualToString:fileName]) {
                 ++referenceCount;
@@ -479,7 +480,7 @@
 - (NSUInteger)referenceCountForSound:(NSString*)fileName
 {
     NSUInteger referenceCount = 0;
-    for (SpriteObject *object in self.project.objectList) {
+    for (SpriteObject *object in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
         for (Sound *sound in object.soundList) {
             if ([sound.fileName isEqualToString:fileName]) {
                 ++referenceCount;

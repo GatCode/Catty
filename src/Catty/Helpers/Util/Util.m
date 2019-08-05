@@ -590,7 +590,7 @@
 
 + (SpriteObject*)objectWithName:(NSString*)objectName forProject:(Project*)project
 {
-    for(SpriteObject *object in project.objectList) {
+    for(SpriteObject *object in ((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
         if([object.name isEqualToString:objectName]) {
             return object;
         }
@@ -621,7 +621,7 @@
 + (NSArray*)allMessagesForProject:(Project*)project
 {
     NSMutableArray *messages = [[NSMutableArray alloc] init];
-    for(SpriteObject *object in project.objectList) {
+    for(SpriteObject *object in ((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
         for(Script *script in object.scriptList) {
             if([script isKindOfClass:[BroadcastScript class]]) {
                 BroadcastScript *broadcastScript = (BroadcastScript*)script;

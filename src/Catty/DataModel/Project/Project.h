@@ -35,8 +35,6 @@
 @property (nonatomic, strong, nonnull) NSMutableArray<Scene*> *scenes;
 @property (nonatomic, strong) NSMutableArray * _Nullable programVariableList;
 @property (nonatomic, strong) NSMutableArray * _Nullable programListOfLists;
-
-@property (nonatomic, strong, nonnull) NSMutableArray<SpriteObject*> *objectList; // TODO: remove later on
 @property (nonatomic, strong, nonnull) NSMutableSet<NSString*> *unsupportedElements;
 @property (nonatomic) BOOL requiresBluetooth;
 

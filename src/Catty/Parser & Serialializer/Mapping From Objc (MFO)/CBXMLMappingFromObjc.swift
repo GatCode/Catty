@@ -68,11 +68,11 @@ extension CBXMLMappingFromObjc {
     private static func extractSpriteObjects(project: Project) {
         var counter = 0
 
-        for object in project.objectList {
-            if let obj = object as? SpriteObject {
-                CBXMLMappingFromObjc.objectList.append((obj, (counter, 0, 0)))
+        if let objectList = (project.scenes as? [Scene])?.first?.objectList {
+            for object in objectList { // TODO: this just works for one scene!
+                CBXMLMappingFromObjc.objectList.append((object, (counter, 0, 0)))
+                counter += 1
             }
-            counter += 1
         }
     }
 }

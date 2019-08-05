@@ -26,9 +26,17 @@
     @objc var originalWidth: String?
     @objc var originalHeight: String?
     @objc var objectList = [SpriteObject]()
+    @objc var project: Project?
     var sceneCounter = 1
 
-    init(name: String?) {
-        self.name = name.isEmptyButNotNil() ? "Scene \(sceneCounter)" : name
+    @objc func addObject(withName objectName: String?) -> SpriteObject? {
+        let object = SpriteObject()
+        object.spriteNode?.currentLook = nil
+
+        object.name = Util.uniqueName(objectName, existingNames: self.project?.allObjectNames())
+        object.project = self.project
+        objectList.append(object)
+        return object
     }
+
 }

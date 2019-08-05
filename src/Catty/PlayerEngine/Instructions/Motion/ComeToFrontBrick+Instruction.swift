@@ -30,7 +30,7 @@
         guard let currentObject = self.script?.object,
             let currentSpriteNode = currentObject.spriteNode,
             let project = self.script?.object?.project,
-            let objectList = self.script?.object?.project?.objectList
+            let objectList = (self.script?.object?.project?.scenes as? [Scene])?.first?.objectList // TODO: this just works for one scene!
             else { fatalError("This should never happen!") }
 
         return {
@@ -38,8 +38,8 @@
             let frontValue = Double(project.numberOfNormalObjects())
             currentSpriteNode.catrobatLayer = frontValue
 
-            for obj in objectList {
-                guard let spriteObject = obj as? SpriteObject, let spriteNode = spriteObject.spriteNode else {
+            for spriteObject in objectList {
+                guard let spriteNode = spriteObject.spriteNode else {
                     continue
                 }
                 if spriteNode.catrobatLayer > currentLayer && spriteNode.catrobatLayer <= frontValue && spriteObject != currentObject {
