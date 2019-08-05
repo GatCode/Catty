@@ -23,6 +23,7 @@
 #import "Brick.h"
 #import "BrickFormulaProtocol.h"
 #import "BrickListProtocol.h"
+#import "Project+Variables.h"
 
 @class UserVariable;
 @class Formula;

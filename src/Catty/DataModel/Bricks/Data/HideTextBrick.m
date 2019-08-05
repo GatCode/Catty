@@ -20,6 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+#import "Project+Variables.h"
 #import "HideTextBrick.h"
 #import "Formula.h"
 

@@ -212,6 +212,7 @@
 		2E5A24E3229D7F680000A58F /* SerializeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E2229D7F680000A58F /* SerializeSettings.swift */; };
 		2E5A24E5229D7F740000A58F /* SerializeScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E4229D7F740000A58F /* SerializeScenes.swift */; };
 		2E5A24E7229D81D40000A58F /* XMLSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */; };
+		2E6307CF22F83BE700C5D540 /* Project+Variables.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6307CE22F83BE700C5D540 /* Project+Variables.m */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
 		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
 		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
@@ -1565,6 +1566,8 @@
 		2E5A24E2229D7F680000A58F /* SerializeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeSettings.swift; sourceTree = "<group>"; };
 		2E5A24E4229D7F740000A58F /* SerializeScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeScenes.swift; sourceTree = "<group>"; };
 		2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLSerializerTests.swift; path = "Parser & Serialization/XMLSerializerTests.swift"; sourceTree = "<group>"; };
+		2E6307CB22F83BAC00C5D540 /* Project+Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project+Variables.h"; sourceTree = "<group>"; };
+		2E6307CE22F83BE700C5D540 /* Project+Variables.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Project+Variables.m"; sourceTree = "<group>"; };
 		2E63C82C229926B2000BE715 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		2E6F426A229929FC00840319 /* Siren.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Siren.framework.dSYM; path = Carthage/Build/iOS/Siren.framework.dSYM; sourceTree = "<group>"; };
 		2E6F426D2299344200840319 /* CBLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBLook.swift; sourceTree = "<group>"; };
@@ -6079,6 +6082,8 @@
 			children = (
 				92FF30AA1A24DCAA00093DA7 /* Project.h */,
 				92FF30AB1A24DCAA00093DA7 /* Project.m */,
+				2E6307CB22F83BAC00C5D540 /* Project+Variables.h */,
+				2E6307CE22F83BE700C5D540 /* Project+Variables.m */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -9120,6 +9125,7 @@
 				BA9CAB601EC383E800796056 /* AddItemToUserListBrickCell.m in Sources */,
 				9218B2051CC4AB75007B4C60 /* LinkedListStack.m in Sources */,
 				F4E6E584210DFD4300D86FE6 /* TanFunction.swift in Sources */,
+				2E6307CF22F83BE700C5D540 /* Project+Variables.m in Sources */,
 				92B46F931BC7B3E5004980C1 /* ArduinoSendPWMValueBrick.m in Sources */,
 				F4E6E596210E03B700D86FE6 /* AtanFunction.swift in Sources */,
 				F4E6E588210DFE8800D86FE6 /* LogFunction.swift in Sources */,
