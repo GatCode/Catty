@@ -56,8 +56,8 @@
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
 
-    [project.objectList addObject:object1];
-    [project.objectList addObject:object2];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;
@@ -87,8 +87,8 @@
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
 
-    [project.objectList addObject:object1];
-    [project.objectList addObject:object2];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;
@@ -118,8 +118,8 @@
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
 
-    [project.objectList addObject:object1];
-    [project.objectList addObject:object2];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;
@@ -149,8 +149,8 @@
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
 
-    [project.objectList addObject:object1];
-    [project.objectList addObject:object2];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;
@@ -180,8 +180,8 @@
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
 
-    [project.objectList addObject:object1];
-    [project.objectList addObject:object2];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;

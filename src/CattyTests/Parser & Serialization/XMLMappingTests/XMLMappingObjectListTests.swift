@@ -59,11 +59,11 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectList = cbProject.scenes?[0].objectList?.objects
-        let mappedObjectList = project?.objectList
+        let mappedObjectList = (project?.scenes.firstObject as? Scene)?.objectList
 
         XCTAssertEqual(cbObjectList?.count, mappedObjectList?.count)
-        XCTAssertEqual(cbObjectList?[0].name, (mappedObjectList?[0] as? SpriteObject)?.name)
-        XCTAssertEqual(cbObjectList?[1].name, (mappedObjectList?[1] as? SpriteObject)?.name)
+        XCTAssertEqual(cbObjectList?[0].name, (mappedObjectList?[0])?.name)
+        XCTAssertEqual(cbObjectList?[1].name, (mappedObjectList?[1])?.name)
     }
 
     // MARK: - Look Mapping
@@ -72,12 +72,12 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
-        let mappedObjectsCount = project?.objectList.count
+        let mappedObjectsCount = (project?.scenes.firstObject as? Scene)?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
             let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
-            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+            let mappedObject = (project?.scenes.firstObject as? Scene)?.objectList[oIdx]
 
             let cbLookCount = cbObject?.lookList?.looks?.count
             let mappedLookCount = mappedObject?.lookList.count
@@ -118,7 +118,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        if let object = project?.objectList.firstObject as? SpriteObject {
+        if let object = ((project?.scenes.firstObject as? Scene)?.objectList)?.first {
             if let scriptList = object.scriptList {
                 XCTAssertEqual(scriptList.count, 2)
                 let soundFromScript1 = ((scriptList[0] as? Script)?.brickList.firstObject as? SetLookBrick)?.look
@@ -134,12 +134,12 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
-        let mappedObjectsCount = project?.objectList.count
+        let mappedObjectsCount = (project?.scenes.firstObject as? Scene)?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
             let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
-            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+            let mappedObject = (project?.scenes.firstObject as? Scene)?.objectList[oIdx]
 
             let cbSoundCount = cbObject?.soundList?.sounds?.count
             let mappedSoundCount = mappedObject?.soundList.count
@@ -172,7 +172,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        if let object = project?.objectList.firstObject as? SpriteObject {
+        if let object = (project?.scenes.firstObject as? Scene)?.objectList.first {
             if let scriptList = object.scriptList {
                 XCTAssertEqual(scriptList.count, 2)
                 let soundFromScript1 = ((scriptList[0] as? Script)?.brickList.firstObject as? PlaySoundBrick)?.sound
@@ -187,9 +187,9 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let cbProject = createBasicCBProject()
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
         let cbObjects = cbProject.scenes?.first?.objectList?.objects
-        var spriteObject = project?.objectList.firstObject as! SpriteObject
+        var spriteObject = (project?.scenes.firstObject as? Scene)?.objectList.first
 
-        let mappedScriptList = CBXMLMappingToObjc.mapScriptList(object: cbObjects?.first, objectList: cbObjects, project: cbProject, currentObject: &spriteObject)
+        let mappedScriptList = CBXMLMappingToObjc.mapScriptList(object: cbObjects?.first, objectList: cbObjects, project: cbProject, currentObject: &spriteObject!)
 
         XCTAssertEqual(cbObjects?.first?.scriptList?.scripts?.first?.brickList?.bricks?.count, (mappedScriptList?.firstObject as? Script)?.brickList.count)
     }
@@ -200,9 +200,9 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let cbObject = cbObjectList?.first
         let cbScript = cbObject?.scriptList?.scripts?.first
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
-        var spriteObject = project?.objectList.firstObject as! SpriteObject
+        var spriteObject = (project?.scenes.firstObject as? Scene)?.objectList.first
 
-        let mappedScript = CBXMLMappingToObjc.mapScript(script: cbScript, objectList: cbObjectList, object: cbObject, project: cbProject, currentObject: &spriteObject)
+        let mappedScript = CBXMLMappingToObjc.mapScript(script: cbScript, objectList: cbObjectList, object: cbObject, project: cbProject, currentObject: &spriteObject!)
 
         XCTAssertNotNil(mappedScript)
         XCTAssertNotNil(mappedScript?.brickTitle)
@@ -214,12 +214,12 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
-        let mappedObjectsCount = project?.objectList.count
+        let mappedObjectsCount = (project?.scenes.firstObject as? Scene)?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
             let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
-            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+            let mappedObject = (project?.scenes.firstObject as? Scene)?.objectList[oIdx]
 
             let cbScriptCount = cbObject?.scriptList?.scripts?.count
             let mappedScriptCount = mappedObject?.scriptList.count
@@ -242,10 +242,10 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let cbObject = cbObjectList?.first
         let cbScript = cbObject?.scriptList?.scripts?.first
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
-        var currentObject = project?.objectList.firstObject as! SpriteObject
-        var currentScript = currentObject.scriptList.firstObject as? Script
+        var currentObject = (project?.scenes.firstObject as? Scene)?.objectList.first
+        var currentScript = currentObject!.scriptList.firstObject as? Script
 
-        let mappedBrickList = CBXMLMappingToObjc.mapBrickList(script: cbScript, objectList: cbObjectList, object: cbObject, project: cbProject, currScript: &currentScript, currObject: &currentObject)
+        let mappedBrickList = CBXMLMappingToObjc.mapBrickList(script: cbScript, objectList: cbObjectList, object: cbObject, project: cbProject, currScript: &currentScript, currObject: &currentObject!)
 
         XCTAssertNotNil(mappedBrickList)
         XCTAssertEqual(cbScript?.brickList?.bricks?.count, mappedBrickList?.count)
@@ -256,12 +256,12 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbObjectsCount = cbProject.scenes?[0].objectList?.objects?.count
-        let mappedObjectsCount = project?.objectList.count
+        let mappedObjectsCount = (project?.scenes.firstObject as? Scene)?.objectList.count
         XCTAssertEqual(cbObjectsCount, mappedObjectsCount)
 
         for oIdx in 0..<cbObjectsCount! {
             let cbObject = cbProject.scenes?[0].objectList?.objects?[oIdx]
-            let mappedObject = project?.objectList[oIdx] as? SpriteObject
+            let mappedObject = (project?.scenes.firstObject as? Scene)?.objectList[oIdx]
 
             let cbScriptCount = cbObject?.scriptList?.scripts?.count
             let mappedScriptCount = mappedObject?.scriptList.count
@@ -368,7 +368,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        if let object = project?.objectList.firstObject as? SpriteObject {
+        if let object = (project?.scenes.firstObject as? Scene)?.objectList.first {
             if let scriptList = object.scriptList {
                 XCTAssertEqual(scriptList.count, 2)
 
@@ -402,7 +402,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        if let object1 = project?.objectList[0] as? SpriteObject, let object2 = project?.objectList[1] as? SpriteObject {
+        if let object1 = (project?.scenes.firstObject as? Scene)?.objectList[0], let object2 = (project?.scenes.firstObject as? Scene)?.objectList[1] {
             if let scriptList1 = object1.scriptList, let scriptList2 = object2.scriptList {
                 let o1Local1 = ((scriptList1[0] as? Script)?.brickList[0] as? SetVariableBrick)?.userVariable
                 let o1Local2 = ((scriptList1[0] as? Script)?.brickList[1] as? ChangeVariableBrick)?.userVariable
@@ -429,7 +429,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         XCTAssertNotNil(cbProject)
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
-        let spriteObject = project?.objectList[0] as? SpriteObject
+        let spriteObject = (project?.scenes.firstObject as? Scene)?.objectList[0]
         let formulaElement = (((spriteObject?.scriptList[0] as? Script)?.brickList[0] as? IfThenLogicBeginBrick)?.getFormulas()?.first)?.formulaTree
 
         XCTAssertNotNil(project?.getUserListNamed(formulaElement?.value, for: spriteObject))
@@ -467,7 +467,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        if let object = project?.objectList.firstObject as? SpriteObject {
+        if let object = (project?.scenes.firstObject as? Scene)?.objectList.first {
             if let scriptList = object.scriptList {
                 XCTAssertEqual(scriptList.count, 2)
 

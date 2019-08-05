@@ -47,15 +47,15 @@ final class LayerSensorTest: XCTestCase {
 
         let spriteObjectA = SpriteObjectMock()
         spriteObjectA.project = project
-        project.objectList.add(spriteObjectA)
+        (project.scenes.firstObject as? Scene)?.objectList.append(spriteObjectA)
 
         let spriteObjectB = SpriteObjectMock()
         spriteObjectB.project = project
-        project.objectList.add(spriteObjectB)
+        (project.scenes.firstObject as? Scene)?.objectList.append(spriteObjectB)
 
         let spriteObjectC = SpriteObjectMock()
         spriteObjectC.project = project
-        project.objectList.add(spriteObjectC)
+        (project.scenes.firstObject as? Scene)?.objectList.append(spriteObjectC)
 
         XCTAssertEqual(type(of: sensor).defaultRawValue, type(of: sensor).defaultRawValue(for: spriteObjectA), accuracy: Double.epsilon)
         XCTAssertEqual(type(of: sensor).defaultRawValue, type(of: sensor).rawValue(for: spriteObjectA), accuracy: Double.epsilon)

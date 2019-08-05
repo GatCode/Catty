@@ -70,7 +70,7 @@
     Script *script = [Script new];
     [script.brickList addObject:brick];
     [obj.scriptList addObject:script];
-    [project.objectList addObject:obj];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj];
     
     return project;
 }
@@ -873,7 +873,7 @@
     }
     [obj.scriptList addObject:script];
     [obj.scriptList addObject:script2];
-    [project.objectList addObject:obj];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj];
     
     return project;
 }
@@ -965,8 +965,8 @@
     }
     [obj.scriptList addObject:script];
     [obj1.scriptList addObject:script2];
-    [project.objectList addObject:obj];
-    [project.objectList addObject:obj1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj1];
     
     return project;
 }

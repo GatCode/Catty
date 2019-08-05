@@ -50,7 +50,7 @@
     object.spriteNode = spriteNode;
     object.project = project;
     
-    SpriteObject *backgroundObject = (SpriteObject*)project.objectList.firstObject;
+    SpriteObject *backgroundObject = ((Scene*)(SpriteObject*)project.scenes.firstObject).objectList.firstObject;
     XCTAssertNotNil(backgroundObject);
     
     CBSpriteNode *bgSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];

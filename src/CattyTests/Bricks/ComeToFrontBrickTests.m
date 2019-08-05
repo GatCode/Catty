@@ -61,9 +61,9 @@
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 2;
 
-    [project.objectList addObject:background];
-    [project.objectList addObject:object1];
-    [project.objectList addObject:object2];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:background];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
+    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;
