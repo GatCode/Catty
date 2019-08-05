@@ -31,12 +31,12 @@ final class XMLMappingVariablesTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbProgramVariableListCount = cbProject.programVariableList?.userVariable?.count
-        let mappedProgramVariableListCount = project?.variables.programVariableList.count
+        let mappedProgramVariableListCount = project?.programVariableList?.count
         XCTAssertEqual(cbProgramVariableListCount, mappedProgramVariableListCount)
 
         for vIdx in 0..<cbProgramVariableListCount! {
             let cbVar = cbProject.programVariableList?.userVariable?[vIdx]
-            let mappedVar = project?.variables.programVariableList[vIdx] as? UserVariable
+            let mappedVar = project?.programVariableList?[vIdx] as? UserVariable
 
             XCTAssertEqual(cbVar?.value, mappedVar?.name)
         }
@@ -49,7 +49,7 @@ final class XMLMappingVariablesTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        XCTAssertEqual((project?.variables.programVariableList?[0] as? UserVariable)?.name, referencedUserVariable)
+        XCTAssertEqual((project?.programVariableList?[0] as? UserVariable)?.name, referencedUserVariable)
     }
 
     func testProgramListOfListsAreEqual() {
@@ -57,12 +57,12 @@ final class XMLMappingVariablesTests: XMLMappingAbstractTests {
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         let cbProgramListOfListsCount = cbProject.programListOfLists?.list?.count
-        let mappedProgramListOfListsCount = project?.variables.programListOfLists.count
+        let mappedProgramListOfListsCount = project?.programListOfLists?.count
         XCTAssertEqual(cbProgramListOfListsCount, mappedProgramListOfListsCount)
 
         for vIdx in 0..<cbProgramListOfListsCount! {
             let cbVar = cbProject.programListOfLists?.list?[vIdx]
-            let mappedVar = project?.variables.programListOfLists[vIdx] as? UserVariable
+            let mappedVar = project?.programListOfLists?[vIdx] as? UserVariable
 
             XCTAssertEqual(cbVar?.value, mappedVar?.name)
         }
@@ -75,6 +75,6 @@ final class XMLMappingVariablesTests: XMLMappingAbstractTests {
 
         let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
-        XCTAssertEqual((project?.variables.programListOfLists?[0] as? UserVariable)?.name, referencedUserVariable)
+        XCTAssertEqual((project?.programListOfLists?[0] as? UserVariable)?.name, referencedUserVariable)
     }
 }

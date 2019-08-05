@@ -31,7 +31,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         var project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if project != nil {
-            let mappedObjectList = CBXMLMappingToObjc.mapObjectList(project: cbProject, currentProject: &project!)
+            let mappedObjectList = CBXMLMappingToObjc.mapObjectList(scene: cbProject.scenes?.first, project: cbProject, currentProject: &project!)
             XCTAssertNotNil(mappedObjectList)
             XCTAssertEqual(cbProject.scenes?.first?.objectList?.objects?.count, mappedObjectList?.count)
 
@@ -46,7 +46,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
                 }
             }
 
-            let backMappedObjectList = CBXMLMappingFromObjc.mapObjectList(project: project!)
+            let backMappedObjectList = CBXMLMappingFromObjc.mapObjectList(scene: project?.scenes.firstObject as! Scene, project: project!)
             XCTAssertEqual(cbProject.scenes?.first?.objectList, backMappedObjectList)
         } else {
             XCTAssert(false)
@@ -432,7 +432,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let spriteObject = project?.objectList[0] as? SpriteObject
         let formulaElement = (((spriteObject?.scriptList[0] as? Script)?.brickList[0] as? IfThenLogicBeginBrick)?.getFormulas()?.first)?.formulaTree
 
-        XCTAssertNotNil(project?.variables.getUserListNamed(formulaElement?.value, for: spriteObject))
+        XCTAssertNotNil(project?.getUserListNamed(formulaElement?.value, for: spriteObject))
     }
 
     func testAllocUserVariable() {

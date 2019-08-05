@@ -61,9 +61,6 @@ final class ChangeVariableBrickTests: XCTestCase {
         formulaTree.value = "0"
         formula.formulaTree = formulaTree
 
-        let varContainer = VariablesContainer()
-        spriteObject.project.variables = varContainer
-
         let brick = ChangeVariableBrick()
         brick.variableFormula = formula
         brick.script = script

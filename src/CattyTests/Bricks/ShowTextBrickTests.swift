@@ -32,7 +32,6 @@ final class ShowTextBrickTests: XCTestCase {
     var script: Script!
     var scheduler: CBScheduler!
     var context: CBScriptContextProtocol!
-    var varContainer: VariablesContainer!
 
     override func setUp() {
         project = Project()
@@ -46,9 +45,6 @@ final class ShowTextBrickTests: XCTestCase {
 
         script = Script()
         script.object = spriteObject
-
-        varContainer = VariablesContainer()
-        spriteObject.project.variables = varContainer
 
         let logger = CBLogger(name: "Logger")
         let broadcastHandler = CBBroadcastHandler(logger: logger)

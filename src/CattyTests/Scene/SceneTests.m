@@ -126,7 +126,7 @@
     CBScene *scene = [[[SceneBuilder alloc] initWithProject:project] build];
     
     UserVariable *userVariable = [[UserVariable alloc] init];
-    [project.variables.programVariableList addObject:userVariable];
+    [project.programVariableList addObject:userVariable];
     
     XCTAssertNil(userVariable.textLabel);
     

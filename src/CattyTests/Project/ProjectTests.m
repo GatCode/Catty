@@ -22,6 +22,7 @@
 
 #import <XCTest/XCTest.h>
 #import "Project.h"
+#import "Project+Variables.h"
 #import "StartScript.h"
 #import "IfThenLogicBeginBrick.h"
 #import "IfThenLogicEndBrick.h"
@@ -201,7 +202,7 @@
     
     UserVariable *variable = [UserVariable new];
     variable.name = @"userVariable";
-    [self.project.variables addObjectVariable:variable forObject:object];
+    [self.project addObjectVariable:variable forObject:object];
     
     SetVariableBrick *setVariableBrick = [SetVariableBrick new];
     setVariableBrick.userVariable = variable;
@@ -211,14 +212,14 @@
     [object.scriptList addObject:script];
     
     NSUInteger initialObjectSize = self.project.objectList.count;
-    NSUInteger initialVariableSize = self.project.variables.allVariables.count;
+    NSUInteger initialVariableSize = self.project.allVariables.count;
     
     SpriteObject *copiedObject = [self.project copyObject:object withNameForCopiedObject:@"copiedObject"];
     XCTAssertEqual(1, copiedObject.scriptList.count);
     
     NSArray<SpriteObject*> *objectList = self.project.objectList;
     XCTAssertEqual(initialObjectSize + 1, objectList.count);
-    XCTAssertEqual(initialVariableSize + 1, self.project.variables.allVariables.count);
+    XCTAssertEqual(initialVariableSize + 1, self.project.allVariables.count);
     XCTAssertTrue([objectList[initialObjectSize].name isEqualToString:copiedObject.name]);
     
     XCTAssertEqual(1, copiedObject.scriptList[0].brickList.count);
@@ -241,7 +242,7 @@
     UserVariable *list = [UserVariable new];
     list.name = @"userList";
     list.isList = YES;
-    [self.project.variables addObjectList:list forObject:object];
+    [self.project addObjectList:list forObject:object];
     
     SetVariableBrick *setVariableBrick = [SetVariableBrick new];
     setVariableBrick.userVariable = list;
@@ -251,14 +252,14 @@
     [object.scriptList addObject:script];
     
     NSUInteger initialObjectSize = self.project.objectList.count;
-    NSUInteger initialListSize = self.project.variables.allLists.count;
+    NSUInteger initialListSize = self.project.allLists.count;
     
     SpriteObject *copiedObject = [self.project copyObject:object withNameForCopiedObject:@"copiedObject"];
     XCTAssertEqual(1, copiedObject.scriptList.count);
     
     NSArray<SpriteObject*> *objectList = self.project.objectList;
     XCTAssertEqual(initialObjectSize + 1, objectList.count);
-    XCTAssertEqual(initialListSize + 1, self.project.variables.allLists.count);
+    XCTAssertEqual(initialListSize + 1, self.project.allLists.count);
     XCTAssertTrue([objectList[initialObjectSize].name isEqualToString:copiedObject.name]);
     
     XCTAssertEqual(1, copiedObject.scriptList[0].brickList.count);

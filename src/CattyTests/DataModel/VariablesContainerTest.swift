@@ -40,7 +40,7 @@ final class VariablesContainerTest: XCTestCase {
         let userVariable = UserVariable()
         userVariable.name = "testName"
 
-        let container = VariablesContainer()
+        let container = Project()
         XCTAssertEqual(0, container.allVariables()?.count)
         XCTAssertEqual(0, container.allVariables(for: objectA)?.count)
         XCTAssertEqual(0, container.allVariables(for: objectB)?.count)
@@ -74,8 +74,8 @@ final class VariablesContainerTest: XCTestCase {
         list.name = "testName"
         list.isList = true
 
-        let container = VariablesContainer()
-        XCTAssertEqual(0, container.allLists().count)
+        let container = Project()
+        XCTAssertEqual(0, container.allLists()?.count)
         XCTAssertEqual(0, container.allLists(for: objectA)?.count)
         XCTAssertEqual(0, container.allLists(for: objectB)?.count)
 

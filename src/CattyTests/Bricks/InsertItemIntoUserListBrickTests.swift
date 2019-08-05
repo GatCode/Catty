@@ -47,11 +47,9 @@ final class InsertItemIntoUserListBrickTests: XCTestCase {
         script = Script()
         script.object = spriteObject
 
-        spriteObject.project.variables = VariablesContainer()
-
         userList = UserVariable()
         userList.isList = true
-        spriteObject.project.variables.addObjectList(userList, for: spriteObject)
+        spriteObject.project.addObjectList(userList, for: spriteObject)
 
         brick = InsertItemIntoUserListBrick()
         brick.userList = userList

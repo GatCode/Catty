@@ -705,15 +705,13 @@ final class FormulaManagerInterpreterTests: XCTestCase {
 
     func testUserVariable() {
         let project = ProjectMock()!
-        let variables = VariablesContainer()
-        project.variables = variables
         object.project = project
 
         let userVariable = UserVariable()
         userVariable.name = "test"
         userVariable.isList = false
         userVariable.value = "testValue"
-        variables.programVariableList = [userVariable]
+        project.programVariableList = [userVariable]
 
         var element = FormulaElement(elementType: ElementType.USER_VARIABLE,
                                      value: userVariable.name)
@@ -736,23 +734,21 @@ final class FormulaManagerInterpreterTests: XCTestCase {
 
     func testUserList() {
         let project = ProjectMock()!
-        let variables = VariablesContainer()
-        project.variables = variables
         object.project = project
 
         let userList = UserVariable()
         userList.name = "test"
         userList.isList = true
 
-        variables.programListOfLists = [userList]
-        variables.add(toUserList: userList, value: 12.3)
+        project.programListOfLists = [userList]
+        project.add(toUserList: userList, value: 12.3)
 
         var element = FormulaElement(elementType: ElementType.USER_LIST,
                                      value: userList.name)
         var formula = Formula(formulaElement: element)!
         XCTAssertEqual(12.3, interpreter.interpretDouble(formula, for: object))
 
-        variables.add(toUserList: userList, value: "testValue")
+        project.add(toUserList: userList, value: "testValue")
         element = FormulaElement(elementType: ElementType.USER_LIST,
                                  value: userList.name)
         formula = Formula(formulaElement: element)!
