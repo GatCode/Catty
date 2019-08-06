@@ -35,7 +35,7 @@
 
         return {
             let currentLayer = currentSpriteNode.catrobatLayer
-            let frontValue = Double(project.numberOfNormalObjects())
+            let frontValue = Double(project.numberOfNormalObjects(in: (self.script.object.project.scenes as? [Scene])?.first)) // TODO: this just works for one scene!
             currentSpriteNode.catrobatLayer = frontValue
 
             for spriteObject in objectList {

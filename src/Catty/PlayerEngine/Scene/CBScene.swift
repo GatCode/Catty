@@ -125,11 +125,12 @@ final class CBScene: SKScene {
             return false
         }
 
-        guard let spriteObjectList = (project.scenes.firstObject as? Scene)?.objectList as NSArray? as? [SpriteObject], // TODO: this just works for one scene!
-            let variableList = frontend.project?.allVariables() as NSArray? as? [UserVariable] else {
-                //fatalError
-                debugPrint("!! Invalid sprite object list given !! This should never happen!")
-                return false
+        let objectList = (project.scenes.firstObject as? Scene)?.objectList as NSArray? as? [SpriteObject] // TODO: this just works for one scene!
+
+        guard let spriteObjectList = objectList, let variableList = frontend.project?.allVariables(for: nil) as NSArray? as? [UserVariable] else {
+            //fatalError
+            debugPrint("!! Invalid sprite object list given !! This should never happen!")
+            return false
         }
         assert(Thread.current.isMainThread)
 
@@ -223,10 +224,11 @@ final class CBScene: SKScene {
 
     // MARK: - Stop project
     @objc func stopProject() {
+        let scene = frontend.project?.scenes.firstObject as? Scene // TODO: this just works for one scene!
         view?.isPaused = true
         scheduler.shutdown() // stops all script contexts of all objects and removes all ressources
         removeAllChildren() // remove all CBSpriteNodes from Scene
-        frontend.project?.removeReferences() // remove all references in project hierarchy
+        frontend.project?.removeReferences(in: scene) // remove all references in project hierarchy
         formulaManager.stop()
         logger.info("All SpriteObjects and Scripts have been removed from Scene!")
     }

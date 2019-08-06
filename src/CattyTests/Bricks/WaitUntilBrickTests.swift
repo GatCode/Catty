@@ -36,8 +36,8 @@ final class WaitUntilBrickTests: XMLAbstractTest {
 
     func testWaitUntilBrick_conditionTrue_proceedsToNextBrick() {
         let objectList = (project.scenes.firstObject as? Scene)?.objectList
-        let testVar = project.getUserVariableNamed("testVar", for: objectList?[0])
-        let hasFinishedWaiting = project.getUserVariableNamed("hasFinishedWaiting", for: objectList?[0])
+        let testVar = project.getUserVariableNamed("testVar", for: objectList?[0], in: project.scenes.firstObject as? Scene)
+        let hasFinishedWaiting = project.getUserVariableNamed("hasFinishedWaiting", for: objectList?[0], in: project.scenes.firstObject as? Scene)
 
         let scene = createScene()
         XCTAssertTrue(scene.startProject())
@@ -54,7 +54,7 @@ final class WaitUntilBrickTests: XMLAbstractTest {
 
     func testWaitUntilBrick_conditionFalse_getsStuckInWaitUntilBrick() {
         let objectList = (project.scenes.firstObject as? Scene)?.objectList
-        let hasFinishedWaiting = project.getUserVariableNamed("hasFinishedWaiting", for: objectList?[0])
+        let hasFinishedWaiting = project.getUserVariableNamed("hasFinishedWaiting", for: objectList?[0], in: project.scenes.firstObject as? Scene)
 
         let scene = createScene()
         XCTAssertTrue(scene.startProject())

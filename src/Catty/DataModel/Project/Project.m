@@ -49,27 +49,44 @@
     return scene;
 }
 
-- (NSInteger)numberOfTotalObjects
+- (NSInteger)numberOfTotalObjectsInScene:(Scene*)scene
 {
-    return [((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList count];
+    if (scene == nil) {
+        scene = self.scenes.firstObject;
+    }
+    
+    return [scene.objectList count];
 }
 
-- (NSInteger)numberOfBackgroundObjects
+- (NSInteger)numberOfBackgroundObjectsInScene:(Scene*)scene
 {
-    NSInteger numberOfTotalObjects = [self numberOfTotalObjects];
+    NSInteger numberOfTotalObjects = [self numberOfTotalObjectsInScene:scene];
     if (numberOfTotalObjects < kBackgroundObjects) {
         return numberOfTotalObjects;
     }
     return kBackgroundObjects;
 }
 
-- (NSInteger)numberOfNormalObjects
+- (NSInteger)numberOfNormalObjectsInScene:(Scene*)scene
 {
-    NSInteger numberOfTotalObjects = [self numberOfTotalObjects];
+    NSInteger numberOfTotalObjects = [self numberOfTotalObjectsInScene:scene];
     if (numberOfTotalObjects > kBackgroundObjects) {
         return (numberOfTotalObjects - kBackgroundObjects);
     }
     return 0;
+}
+
+- (SpriteObject*)addObjectWithName:(NSString*)objectName toScene:(Scene*)scene
+{
+    SpriteObject *object = [[SpriteObject alloc] init];
+    //object.originalSize;
+    object.spriteNode.currentLook = nil;
+    
+    object.name = [Util uniqueName:objectName existingNames:[self allObjectNamesForScene:scene]];
+    object.project = self;
+    [(NSMutableArray<SpriteObject*>*)scene.objectList addObject:object];
+    [self saveToDiskWithNotification:YES];
+    return object;
 }
 
 - (Scene*)addSceneWithName:(NSString*)sceneName
@@ -80,50 +97,53 @@
     return scene;
 }
 
-- (void)removeObjectFromList:(SpriteObject*)object
+- (void)removeObjectFromList:(SpriteObject*)object inScene:(Scene*)scene
 {
     // do not use NSArray's removeObject here
     // => if isEqual is overriden this would lead to wrong results
     NSUInteger index = 0;
-    for (SpriteObject *currentObject in ((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *currentObject in scene.objectList) {
         if (currentObject == object) {
             [currentObject removeSounds:currentObject.soundList AndSaveToDisk:NO];
             [currentObject removeLooks:currentObject.lookList AndSaveToDisk:NO];
-            [currentObject.project removeObjectVariablesForSpriteObject:currentObject];
-            [currentObject.project removeObjectListsForSpriteObject:currentObject];
+            [currentObject.project removeObjectVariablesForSpriteObject:currentObject inScene:nil];
+            [currentObject.project removeObjectListsForSpriteObject:currentObject inScene:nil];
             currentObject.project = nil;
-            [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList removeObjectAtIndex:index]; // TODO: this just works for one scene!
+            [(NSMutableArray<SpriteObject*>*)scene.objectList removeObjectAtIndex:index];
             break;
         }
         ++index;
     }
 }
 
-- (void)removeObject:(SpriteObject*)object
+- (void)removeObject:(SpriteObject*)object inScene:(Scene*)scene
 {
-    [self removeObjectFromList:object];
+    [self removeObjectFromList:object inScene:scene];
     [self saveToDiskWithNotification:YES];
 }
 
-- (void)removeObjects:(NSArray*)objects
+- (void)removeObjects:(NSArray*)objects inScene:(Scene*)scene
 {
     for (id object in objects) {
         if ([object isKindOfClass:[SpriteObject class]]) {
-            [self removeObject:((SpriteObject*)object)];
+            [self removeObjectFromList:((SpriteObject*)object) inScene:scene];
         }
     }
     [self saveToDiskWithNotification:YES];
 }
 
-- (BOOL)objectExistsWithName:(NSString*)objectName
+- (BOOL)objectExistsWithName:(NSString*)objectName inScene:(Scene*)scene
 {
-    for (Scene *scene in self.scenes) {
-        for (SpriteObject *object in scene.objectList) {
-            if ([object.name isEqualToString:objectName]) {
-                return YES;
-            }
+    if (scene == nil) {
+        scene = self.scenes.firstObject;
+    }
+    
+    for (SpriteObject *object in scene.objectList) {
+        if ([object.name isEqualToString:objectName]) {
+            return YES;
         }
     }
+    
     return NO;
 }
 
@@ -194,12 +214,12 @@
     [self saveToDiskWithNotification:YES];
 }
 
-- (void)renameObject:(SpriteObject*)object toName:(NSString*)newObjectName
+- (void)renameObject:(SpriteObject*)object toName:(NSString*)newObjectName inScene:(Scene*  _Nullable)scene
 {
-    if (! [self hasObject:object] || [object.name isEqualToString:newObjectName]) {
+    if (! [self hasObject:object inScene:scene] || [object.name isEqualToString:newObjectName]) {
         return;
     }
-    object.name = [Util uniqueName:newObjectName existingNames:[self allObjectNames]];
+    object.name = [Util uniqueName:newObjectName existingNames:[self allObjectNamesForScene:scene]];
     [self saveToDiskWithNotification:YES];
 }
 
@@ -209,9 +229,9 @@
     [self saveToDiskWithNotification:YES];
 }
 
-- (void)removeReferences
+- (void)removeReferencesInScene:(Scene*)scene
 {
-    [((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList makeObjectsPerformSelector:@selector(removeReferences)]; // TODO: this just works for one scene!
+    [scene.objectList makeObjectsPerformSelector:@selector(removeReferences)];
 }
 
 - (NSArray*)allSceneNames
@@ -225,10 +245,10 @@
     return [sceneNames copy];
 }
 
-- (NSArray*)allObjectNames
+- (NSArray*)allObjectNamesForScene:(Scene* _Nullable)scene
 {
-    NSMutableArray *objectNames = [NSMutableArray arrayWithCapacity:[((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList count]]; // TODO: this just works for one scene!
-    for (id spriteObject in ((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    NSMutableArray *objectNames = [NSMutableArray arrayWithCapacity:[scene.objectList count]];
+    for (id spriteObject in (scene.objectList)) {
         if ([spriteObject isKindOfClass:[SpriteObject class]]) {
             [objectNames addObject:((SpriteObject*)spriteObject).name];
         }
@@ -236,22 +256,22 @@
     return [objectNames copy];
 }
 
-- (BOOL)hasObject:(SpriteObject *)object
+- (BOOL)hasObject:(SpriteObject *)object inScene:(Scene* _Nullable)scene
 {
-    return [((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList containsObject:object]; // TODO: this just works for one scene!
+    return [scene.objectList containsObject:object];
 }
 
-- (SpriteObject*)copyObject:(SpriteObject*)sourceObject
+- (SpriteObject*)copyObject:(SpriteObject*)sourceObject inScene:(Scene* _Nullable)scene
     withNameForCopiedObject:(NSString *)nameOfCopiedObject
 {
-    if (! [self hasObject:sourceObject]) {
+    if (! [self hasObject:sourceObject inScene:scene]) {
         return nil;
     }
     CBMutableCopyContext *context = [CBMutableCopyContext new];
     NSMutableArray<UserVariable*> *copiedVariablesAndLists = [NSMutableArray new];
     
-    NSMutableArray<UserVariable*> *variablesAndLists = [[NSMutableArray alloc] initWithArray:[self objectVariablesForObject:sourceObject]];
-    [variablesAndLists addObjectsFromArray: [self objectListsForObject:sourceObject]];
+    NSMutableArray<UserVariable*> *variablesAndLists = [[NSMutableArray alloc] initWithArray:[self objectVariablesForObject:sourceObject inScene:nil]];
+    [variablesAndLists addObjectsFromArray: [self objectListsForObject:sourceObject inScene:nil]];
     
     for (UserVariable *variableOrList in variablesAndLists) {
         UserVariable *copiedVariableOrList = [[UserVariable alloc] initWithVariable:variableOrList];
@@ -261,14 +281,14 @@
     }
     
     SpriteObject *copiedObject = [sourceObject mutableCopyWithContext:context];
-    copiedObject.name = [Util uniqueName:nameOfCopiedObject existingNames:[self allObjectNames]];
-    [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList addObject:copiedObject]; // TODO: this just works for one scene!
+    copiedObject.name = [Util uniqueName:nameOfCopiedObject existingNames:[self allObjectNamesForScene:scene]];
+    [(NSMutableArray<SpriteObject*>*)scene.objectList addObject:copiedObject];
     
     for (UserVariable *variableOrList in copiedVariablesAndLists) {
         if (variableOrList.isList) {
-            [self addObjectList:variableOrList forObject:copiedObject];
+            [self addObjectList:variableOrList forObject:copiedObject toScene:nil];
         } else {
-            [self addObjectVariable:variableOrList forObject:copiedObject];
+            [self addObjectVariable:variableOrList forObject:copiedObject toScene:nil];
         }
     }
     
@@ -280,35 +300,39 @@
 {
     if (! [self.header isEqualToHeader:project.header])
         return NO;
-    if ([(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList count] != [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList count]) // TODO: this just works for one scene!
-        return NO;
     
-    NSUInteger idx;
-    for (idx = 0; idx < [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList count]; idx++) { // TODO: this just works for one scene!
-        SpriteObject *firstObject = [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList objectAtIndex:idx]; // TODO: this just works for one scene!
-        SpriteObject *secondObject = nil;
-        
-        NSUInteger projectIdx;
-        for (projectIdx = 0; projectIdx < [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList count]; projectIdx++) { // TODO: this just works for one scene!
-            SpriteObject *projectObject = [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList objectAtIndex:projectIdx]; // TODO: this just works for one scene!
-            
-            if ([projectObject.name isEqualToString:firstObject.name]) {
-                secondObject = projectObject;
-                break;
-            }
-        }
-        
-        if (secondObject == nil || ! [firstObject isEqualToSpriteObject:secondObject])
+    for (Scene* scene in project.scenes) {
+        if ([scene.objectList count] != [scene.objectList count])
             return NO;
+        
+        NSUInteger idx;
+        for (idx = 0; idx < [scene.objectList count]; idx++) {
+            SpriteObject *firstObject = [scene.objectList objectAtIndex:idx];
+            SpriteObject *secondObject = nil;
+            
+            NSUInteger projectIdx;
+            for (projectIdx = 0; projectIdx < [scene.objectList count]; projectIdx++) {
+                SpriteObject *projectObject = [scene.objectList objectAtIndex:projectIdx];
+                
+                if ([projectObject.name isEqualToString:firstObject.name]) {
+                    secondObject = projectObject;
+                    break;
+                }
+            }
+            
+            if (secondObject == nil || ! [firstObject isEqualToSpriteObject:secondObject])
+                return NO;
+        }
     }
+
     return YES;
 }
 
-- (NSInteger)getRequiredResources
+- (NSInteger)getRequiredResourcesInScene:(Scene*)scene
 {
     NSInteger resources = kNoResources;
     
-    for (SpriteObject *obj in (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *obj in scene.objectList) {
         resources |= [obj getRequiredResources];
     }
     return resources;
@@ -434,10 +458,8 @@
     if (! [fileManager directoryExists:soundsDirName]) {
         [fileManager createDirectory:soundsDirName];
     }
-
-    project.scenes = [[NSMutableArray<Scene*> alloc] init];
-    [project addSceneWithName:@"Scene 1"];
-    [project.scenes.firstObject addObjectWithName:kLocalizedBackground]; // TODO: define the scene name
+    
+    (void)[project.scenes.firstObject addObjectWithName:kLocalizedBackground];
     [project saveToDiskWithNotification:YES];
     NSDebug(@"%@", [project description]);
     return project;
@@ -530,8 +552,10 @@
 
 - (void)translateDefaultProject
 {
+    Scene *scene = self.scenes.firstObject; // TODO: this just works for one scene!
+    
     NSUInteger index = 0;
-    for (SpriteObject *spriteObject in (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *spriteObject in scene.objectList) {
         if (index == kBackgroundObjectIndex) {
             spriteObject.name = kLocalizedBackground;
         } else {
@@ -551,7 +575,6 @@
 {
     return [NSString stringWithFormat:@"%@/%@/", [Util applicationDocumentsDirectory], kProjectsFolder];
 }
-
 
 + (NSArray*)allProjectNames
 {

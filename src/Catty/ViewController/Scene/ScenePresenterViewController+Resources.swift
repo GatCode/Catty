@@ -47,7 +47,7 @@ import CoreBluetooth
     }
 
     @nonobjc private func notifyUserAboutUnavailableResources(navigationController: UINavigationController) -> Bool {
-        let requiredResources = project.getRequiredResources()
+        let requiredResources = project.getRequiredResources(in: self.project.scenes.firstObject as? Scene) // TODO: this just works for one scene!
 
         // Bluetooth
         var unconnectedBluetoothDevices = [BluetoothDeviceID]()

@@ -41,7 +41,7 @@
         let object = SpriteObject()
         object.spriteNode?.currentLook = nil
 
-        object.name = Util.uniqueName(objectName, existingNames: self.project?.allObjectNames())
+        object.name = Util.uniqueName(objectName, existingNames: self.project?.allObjectNames(for: self))
         object.project = self.project
         objectList.append(object)
         return object

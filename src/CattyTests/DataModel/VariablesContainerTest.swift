@@ -41,24 +41,25 @@ final class VariablesContainerTest: XCTestCase {
         userVariable.name = "testName"
 
         let container = Project()
-        XCTAssertEqual(0, container.allVariables()?.count)
+        let firstScene = container.scenes.firstObject as? Scene
+        XCTAssertEqual(0, container.allVariables(for: firstScene)?.count)
         XCTAssertEqual(0, container.allVariables(for: objectA)?.count)
         XCTAssertEqual(0, container.allVariables(for: objectB)?.count)
 
-        var result = container.addObjectVariable(userVariable, for: objectA)
+        var result = container.addObjectVariable(userVariable, for: objectA, to: firstScene)
         XCTAssertTrue(result)
 
-        XCTAssertEqual(1, container.allVariables()?.count)
+        XCTAssertEqual(1, container.allVariables(for: firstScene)?.count)
         XCTAssertEqual(1, container.allVariables(for: objectA)?.count)
         XCTAssertEqual(0, container.allVariables(for: objectB)?.count)
 
-        result = container.addObjectVariable(userVariable, for: objectA)
+        result = container.addObjectVariable(userVariable, for: objectA, to: firstScene)
         XCTAssertFalse(result)
 
-        result = container.addObjectVariable(userVariable, for: objectB)
+        result = container.addObjectVariable(userVariable, for: objectB, to: firstScene)
         XCTAssertTrue(result)
 
-        XCTAssertEqual(2, container.allVariables()?.count)
+        XCTAssertEqual(2, container.allVariables(for: firstScene)?.count)
         XCTAssertEqual(1, container.allVariables(for: objectA)?.count)
         XCTAssertEqual(1, container.allVariables(for: objectB)?.count)
     }
@@ -75,24 +76,25 @@ final class VariablesContainerTest: XCTestCase {
         list.isList = true
 
         let container = Project()
-        XCTAssertEqual(0, container.allLists()?.count)
+        let firstScene = container.scenes.firstObject as? Scene
+        XCTAssertEqual(0, container.allLists(for: firstScene)?.count)
         XCTAssertEqual(0, container.allLists(for: objectA)?.count)
         XCTAssertEqual(0, container.allLists(for: objectB)?.count)
 
-        var result = container.addObjectList(list, for: objectA)
+        var result = container.addObjectList(list, for: objectA, to: firstScene)
         XCTAssertTrue(result)
 
-        XCTAssertEqual(1, container.allLists()?.count)
+        XCTAssertEqual(1, container.allLists(for: firstScene)?.count)
         XCTAssertEqual(1, container.allLists(for: objectA)?.count)
         XCTAssertEqual(0, container.allLists(for: objectB)?.count)
 
-        result = container.addObjectList(list, for: objectA)
+        result = container.addObjectList(list, for: objectA, to: firstScene)
         XCTAssertFalse(result)
 
-        result = container.addObjectList(list, for: objectB)
+        result = container.addObjectList(list, for: objectB, to: firstScene)
         XCTAssertTrue(result)
 
-        XCTAssertEqual(2, container.allLists()?.count)
+        XCTAssertEqual(2, container.allLists(for: firstScene)?.count)
         XCTAssertEqual(1, container.allLists(for: objectA)?.count)
         XCTAssertEqual(1, container.allLists(for: objectB)?.count)
     }

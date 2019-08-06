@@ -21,7 +21,7 @@
  */
 
 #import "ChangeVariableBrick.h"
-#import "Project+Variables.h"b
+#import "Project+Variables.h"
 
 @implementation ChangeVariableBrick
 

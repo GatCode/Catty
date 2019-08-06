@@ -890,7 +890,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
 - (void)saveVariable:(NSString*)name isList:(BOOL)isList
 {
     if (self.isProjectVariable && !isList){
-        for (UserVariable* variable in [self.object.project allVariables]) {
+        for (UserVariable* variable in [self.object.project allListsForScene:nil]) {
             if ([variable.name isEqualToString:name]) {
                 [self askForVariableName: isList];
                 return;
@@ -904,7 +904,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
             }
         }
     } else if (self.isProjectVariable && isList){
-        for (UserVariable* variable in [self.object.project allLists]) {
+        for (UserVariable* variable in [self.object.project allListsForScene:nil]) {
             if ([variable.name isEqualToString:name]) {
                 [self askForVariableName: isList];
                 return;
@@ -936,9 +936,9 @@ NS_ENUM(NSInteger, ButtonIndex) {
     } else if (self.isProjectVariable && isList){
         [self.object.project.programListOfLists addObject:var];
     } else if (!self.isProjectVariable && !isList) {
-        [self.object.project addObjectVariable:var forObject:self.object];
+        [self.object.project addObjectVariable:var forObject:self.object toScene:nil];
     } else if (!self.isProjectVariable && isList) {
-        [self.object.project addObjectList:var forObject:self.object];
+        [self.object.project addObjectList:var forObject:self.object toScene:nil];
     }
     
     [self.object.project saveToDiskWithNotification:YES];
@@ -1122,9 +1122,9 @@ NS_ENUM(NSInteger, ButtonIndex) {
                 BOOL removed = NO;
                 BOOL isList = pickerData.userVariable.isList;
                 if (!isList) {
-                    removed = [self.object.project removeUserVariableNamed:pickerData.userVariable.name forSpriteObject:self.object];
+                    removed = [self.object.project removeUserVariableNamed:pickerData.userVariable.name forSpriteObject:self.object inScene:nil];
                 } else {
-                    removed = [self.object.project removeUserListNamed:pickerData.userVariable.name forSpriteObject:self.object];
+                    removed = [self.object.project removeUserListNamed:pickerData.userVariable.name forSpriteObject:self.object inScene:nil];
                 }
                 if (removed) {
                     if (!isList) {

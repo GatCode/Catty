@@ -39,29 +39,29 @@
 @property (nonatomic) BOOL requiresBluetooth;
 
 - (Scene* _Nullable)allocDefaultScene;
-- (NSInteger)numberOfTotalObjects;
-- (NSInteger)numberOfBackgroundObjects;
-- (NSInteger)numberOfNormalObjects;
-- (SpriteObject* _Nonnull)addObjectWithName:(NSString* _Nonnull)objectName;
-- (void)removeObjects:(NSArray* _Nonnull)objects;
-- (void)removeObject:(SpriteObject* _Nonnull)object;
-- (void)removeObjectFromList:(SpriteObject* _Nonnull)object;
+- (NSInteger)numberOfTotalObjectsInScene:(Scene* _Nullable)scene;
+- (NSInteger)numberOfBackgroundObjectsInScene:(Scene* _Nullable)scene;
+- (NSInteger)numberOfNormalObjectsInScene:(Scene* _Nullable)scene;
+- (SpriteObject* _Nonnull)addObjectWithName:(NSString* _Nonnull)objectName toScene:(Scene* _Nullable)scene;
+- (void)removeObjects:(NSArray* _Nonnull)objects inScene:(Scene* _Nullable)scene;
+- (void)removeObject:(SpriteObject* _Nonnull)object inScene:(Scene* _Nullable)scene;
+- (void)removeObjectFromList:(SpriteObject* _Nonnull)object inScene:(Scene* _Nullable)scene;
 - (NSString* _Nonnull)projectPath;
 - (void)removeFromDisk;
-- (void)removeReferences;
+- (void)removeReferencesInScene:(Scene* _Nullable)scene;
 - (void)saveToDiskWithNotification:(BOOL)notify;
 - (BOOL)isLastUsedProject;
 - (void)setAsLastUsedProject;
 - (void)translateDefaultProject;
 - (void)renameToProjectName:(NSString* _Nonnull)projectName;
-- (void)renameObject:(SpriteObject* _Nonnull)object toName:(NSString* _Nonnull)newObjectName;
+- (void)renameObject:(SpriteObject* _Nonnull)object toName:(NSString* _Nonnull)newObjectName inScene:(Scene*  _Nullable)scene;
 - (void)updateDescriptionWithText:(NSString* _Nonnull)descriptionText;
-- (nonnull NSArray*)allObjectNames;
-- (BOOL)hasObject:(SpriteObject* _Nonnull)object;
-- (SpriteObject* _Nonnull)copyObject:(SpriteObject* _Nonnull)sourceObject
+- (nonnull NSArray*)allObjectNamesForScene:(Scene* _Nullable)scene;
+- (BOOL)hasObject:(SpriteObject* _Nonnull)object inScene:(Scene*  _Nullable)scene;
+- (SpriteObject* _Nonnull)copyObject:(SpriteObject* _Nonnull)sourceObject inScene:(Scene*  _Nullable)scene
     withNameForCopiedObject:(NSString* _Nonnull)nameOfCopiedObject;
 - (BOOL)isEqualToProject:(Project* _Nonnull)project;
-- (NSInteger)getRequiredResources;
+- (NSInteger)getRequiredResourcesInScene:(Scene* _Nullable)scene;
 
 + (instancetype _Nonnull)defaultProjectWithName:(NSString* _Nonnull)projectName
                                       projectID:(NSString* _Nullable)projectID;
