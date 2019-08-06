@@ -38,6 +38,7 @@
 @property (nonatomic, strong, nonnull) NSMutableSet<NSString*> *unsupportedElements;
 @property (nonatomic) BOOL requiresBluetooth;
 
+- (Scene* _Nullable)allocDefaultScene;
 - (NSInteger)numberOfTotalObjects;
 - (NSInteger)numberOfBackgroundObjects;
 - (NSInteger)numberOfNormalObjects;

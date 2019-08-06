@@ -29,6 +29,14 @@
     @objc var project: Project?
     var sceneCounter = 1
 
+    @objc override init() {
+
+    }
+
+    @objc init(project: Project) {
+        self.project = project
+    }
+
     @objc func addObject(withName objectName: String?) -> SpriteObject? {
         let object = SpriteObject()
         object.spriteNode?.currentLook = nil
@@ -39,4 +47,7 @@
         return object
     }
 
+    @objc func addObject(toObjectList spriteObject: SpriteObject) {
+        objectList.append(spriteObject)
+    }
 }

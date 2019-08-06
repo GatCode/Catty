@@ -31,6 +31,24 @@
 
 @implementation Project
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSMutableArray<Scene*> *scenes = [[NSMutableArray<Scene*> alloc] init];
+        self.scenes = scenes;
+        [scenes addObject:[self allocDefaultScene]];
+    }
+    return self;
+}
+
+- (Scene*)allocDefaultScene
+{
+    Scene* scene = [[Scene alloc] initWithProject:self];
+    scene.name = @"Scene 1";
+    return scene;
+}
+
 - (NSInteger)numberOfTotalObjects
 {
     return [((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList count];

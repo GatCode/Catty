@@ -21,6 +21,7 @@
  */
 
 #import "ProjectMock.h"
+#import "Pocket_Code-Swift.h"
 
 @interface ProjectMock()
 @property(nonatomic, assign) NSInteger mockedRequiredResources;
@@ -49,6 +50,10 @@
         self.header.screenWidth = [[NSNumber alloc] initWithFloat:width];
         self.header.screenHeight = [[NSNumber alloc] initWithFloat:height];
         self.mockedRequiredResources = requiredResources;
+        
+        NSMutableArray<Scene*> *scenes = [[NSMutableArray<Scene*> alloc] init];
+        self.scenes = scenes;
+        [scenes addObject:[[Scene alloc] initWithProject:self]];
     }
     
     return self;

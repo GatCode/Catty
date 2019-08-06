@@ -49,7 +49,7 @@
     CBSpriteNode *spriteNodeBG = [[CBSpriteNode alloc] initWithSpriteObject:background];
     background.spriteNode = spriteNodeBG;
     background.project = project;
-
+    
     SpriteObject* object1 = [[SpriteObject alloc] init];
     CBSpriteNode *spriteNode1 = [[CBSpriteNode alloc] initWithSpriteObject:object1];
     object1.spriteNode = spriteNode1;
@@ -60,10 +60,10 @@
     CBSpriteNode *spriteNode2 = [[CBSpriteNode alloc] initWithSpriteObject:object2];
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 2;
-
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:background];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object1];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:object2];
+    
+    [project.scenes.firstObject addObjectToObjectList:background];
+    [project.scenes.firstObject addObjectToObjectList:object1];
+    [project.scenes.firstObject addObjectToObjectList:object2];
 
     Script *script = [[WhenScript alloc] init];
     script.object = object1;
