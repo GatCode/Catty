@@ -89,17 +89,13 @@ static pthread_mutex_t variablesLock;
         scene = self.scenes.firstObject;
     }
     
-    if ([scene.objectList containsObject:sprite]) {
-        NSArray *objectUserVariables = [scene.data.objectVariableList objectForKey:sprite];
-        UserVariable *variable = [self findUserVariableNamed:name inArray:objectUserVariables];
-        
-        if (! variable) {
-            variable = [self findUserVariableNamed:name inArray:self.programVariableList];
-        }
-        return variable;
-    }
+    NSArray *objectUserVariables = [scene.data.objectVariableList objectForKey:sprite];
+    UserVariable *variable = [self findUserVariableNamed:name inArray:objectUserVariables];
     
-    return nil;
+    if (! variable) {
+        variable = [self findUserVariableNamed:name inArray:self.programVariableList];
+    }
+    return variable;
 }
 
 - (UserVariable*)getUserListNamed:(NSString*)name forSpriteObject:(SpriteObject*)sprite inScene:(Scene* _Nullable)scene
@@ -108,15 +104,13 @@ static pthread_mutex_t variablesLock;
         scene = self.scenes.firstObject;
     }
     
-    if ([scene.objectList containsObject:sprite]) {
-        NSArray *objectUserLists = [scene.data.objectListOfLists objectForKey:sprite];
-        UserVariable *list = [self findUserVariableNamed:name inArray:objectUserLists];
-        
-        if (! list) {
-            list = [self findUserVariableNamed:name inArray:self.programListOfLists];
-        }
-        return list;
+    NSArray *objectUserLists = [scene.data.objectListOfLists objectForKey:sprite];
+    UserVariable *list = [self findUserVariableNamed:name inArray:objectUserLists];
+    
+    if (! list) {
+        list = [self findUserVariableNamed:name inArray:self.programListOfLists];
     }
+    return list;
     
     return nil;
 }
