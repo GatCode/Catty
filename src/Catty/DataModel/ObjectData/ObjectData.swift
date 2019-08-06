@@ -23,4 +23,9 @@
 @objc class ObjectData: NSObject {
     @objc var objectVariableList: OrderedMapTable?
     @objc var objectListOfLists: OrderedMapTable?
+
+    @objc override init() {
+        self.objectVariableList = OrderedMapTable()
+        self.objectListOfLists = OrderedMapTable()
+    }
 }

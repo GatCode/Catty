@@ -38,6 +38,9 @@
         NSMutableArray<Scene*> *scenes = [[NSMutableArray<Scene*> alloc] init];
         self.scenes = scenes;
         [scenes addObject:[self allocDefaultScene]];
+        
+        self.programVariableList = [[NSMutableArray<UserVariable*> alloc] init];
+        self.programListOfLists = [[NSMutableArray<UserVariable*> alloc] init];
     }
     return self;
 }
