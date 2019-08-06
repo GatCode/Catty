@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+// swiftlint:disable large_tuple
+
 extension CBXMLMappingToObjc {
 
     static func resolveObjectReference(reference: String?, project: CBProject?, scene: inout Scene) -> UnsafeMutablePointer<SpriteObject>? {

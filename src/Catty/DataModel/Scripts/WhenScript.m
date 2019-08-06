@@ -24,6 +24,8 @@
 
 @implementation WhenScript
 
+@dynamic action;
+
 - (NSString*)brickTitle
 {
     return kLocalizedWhenTapped;
