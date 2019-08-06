@@ -75,7 +75,7 @@
     if (![self.keyIndexArray containsObject:aKey])
     {
         [self.keyIndexArray addObject:aKey];
-    }
+    } 
 }
 
 - (void)removeObjectForKey:(id)aKey

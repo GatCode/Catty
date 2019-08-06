@@ -25,7 +25,7 @@
     @objc var objectListOfLists: OrderedMapTable?
 
     @objc override init() {
-        self.objectVariableList = OrderedMapTable()
-        self.objectListOfLists = OrderedMapTable()
+        self.objectVariableList = OrderedMapTable.weakToStrongObjectsMapTable() as? OrderedMapTable
+        self.objectListOfLists = OrderedMapTable.weakToStrongObjectsMapTable() as? OrderedMapTable
     }
 }

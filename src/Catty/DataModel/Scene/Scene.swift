@@ -30,10 +30,11 @@
     var sceneCounter = 1
 
     @objc override init() {
-
+        self.data = ObjectData()
     }
 
-    @objc init(project: Project) {
+    @objc convenience init(project: Project) {
+        self.init()
         self.project = project
     }
 
