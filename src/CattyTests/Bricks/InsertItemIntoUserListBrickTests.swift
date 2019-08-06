@@ -49,7 +49,7 @@ final class InsertItemIntoUserListBrickTests: XCTestCase {
 
         userList = UserVariable()
         userList.isList = true
-        spriteObject.project.addObjectList(userList, for: spriteObject)
+        spriteObject.project.addObjectList(userList, for: spriteObject, to: nil)
 
         brick = InsertItemIntoUserListBrick()
         brick.userList = userList

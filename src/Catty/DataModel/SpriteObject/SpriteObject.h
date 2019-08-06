@@ -23,6 +23,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Project.h"
+#import "Project+Variables.h"
 #import "ProgramDefines.h"
 #import "CBMutableCopying.h"
 

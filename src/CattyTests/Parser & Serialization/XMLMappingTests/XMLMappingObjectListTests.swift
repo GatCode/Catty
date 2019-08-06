@@ -432,7 +432,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         let spriteObject = (project?.scenes.firstObject as? Scene)?.objectList[0]
         let formulaElement = (((spriteObject?.scriptList[0] as? Script)?.brickList[0] as? IfThenLogicBeginBrick)?.getFormulas()?.first)?.formulaTree
 
-        XCTAssertNotNil(project?.getUserListNamed(formulaElement?.value, for: spriteObject, in: project.scenes.firstObject as? Scene))
+        XCTAssertNotNil(project?.getUserListNamed(formulaElement?.value, for: spriteObject, in: project?.scenes.firstObject as? Scene))
     }
 
     func testAllocUserVariable() {

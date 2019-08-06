@@ -49,7 +49,9 @@ final class DeleteItemOfUserListBrickTests: XCTestCase {
 
         userList = UserVariable()
         userList.isList = true
-        spriteObject.project.addObjectList(userList, for: spriteObject, to: project.scenes.firstObject as? Scene)
+
+        project.addObjectList(nil, for: nil, to: nil)
+        project.addObjectList(userList, for: spriteObject, to: nil)
 
         brick = DeleteItemOfUserListBrick()
         brick.userList = userList
