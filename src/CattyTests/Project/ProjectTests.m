@@ -22,7 +22,6 @@
 
 #import <XCTest/XCTest.h>
 #import "Project.h"
-#import "Project+Variables.h"
 #import "StartScript.h"
 #import "IfThenLogicBeginBrick.h"
 #import "IfThenLogicEndBrick.h"

@@ -22,7 +22,6 @@
 
 
 #import "BrickCellListData.h"
-#import "Project+Variables.h"
 #import "iOSCombobox.h"
 #import "BrickCell.h"
 #import "UserVariable.h"

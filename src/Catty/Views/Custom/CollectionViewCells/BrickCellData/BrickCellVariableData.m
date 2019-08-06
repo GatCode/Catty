@@ -22,7 +22,6 @@
 
 
 #import "BrickCellVariableData.h"
-#import "Project+Variables.h"
 #import "BrickCell.h"
 #import "Script.h"
 #import "Brick.h"
