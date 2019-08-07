@@ -61,7 +61,7 @@ extension FormulaManager {
 
     @objc(setupForProject: andScene:)
     func setup(for project: Project, and scene: CBScene) {
-        let requiredResources = project.getRequiredResources()
+        let requiredResources = project.getRequiredResources(in: nil)
         setup(for: requiredResources, and: scene, startTrackingTouches: true)
     }
 
