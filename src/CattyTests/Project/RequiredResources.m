@@ -873,7 +873,7 @@
     }
     [obj.scriptList addObject:script];
     [obj.scriptList addObject:script2];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj];
+    [project.scenes.firstObject addObjectToObjectList:obj];
     
     return project;
 }
@@ -905,7 +905,7 @@
     
     Project *project = [self getProjectWithTwoScriptsWithBricks:brickArray andBrickArray2:brickArray2];
     
-    NSInteger resources = [project getRequiredResourcesInScene:nil];
+    NSInteger resources = [project getRequiredResourcesInScene:nil]; // TODO: this just works for one scene!
     XCTAssertEqual(kDeviceMotion, resources & kDeviceMotion, @"Resourses nested not correctly calculated");
     XCTAssertEqual(kLoudness, resources & kLoudness, @"Resourses nested not correctly calculated");
     XCTAssertEqual(kBluetoothArduino, resources & kBluetoothArduino, @"Resourses nested not correctly calculated");
@@ -939,7 +939,7 @@
     
     Project *project = [self getProjectWithTwoScriptsWithBricks:brickArray andBrickArray2:brickArray2];
     
-    NSInteger resources = [project getRequiredResourcesInScene:nil];
+    NSInteger resources = [project getRequiredResourcesInScene:nil]; // TODO: this just works for one scene!
     XCTAssertEqual(kDeviceMotion, resources & kDeviceMotion, @"Resourses nested not correctly calculated");
     XCTAssertEqual(kLoudness, resources & kLoudness, @"Resourses nested not correctly calculated");
     XCTAssertEqual(0, resources & kBluetoothArduino, @"Resourses nested not correctly calculated");
@@ -965,8 +965,8 @@
     }
     [obj.scriptList addObject:script];
     [obj1.scriptList addObject:script2];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj1];
+    [project.scenes.firstObject addObjectToObjectList:obj];
+    [project.scenes.firstObject addObjectToObjectList:obj1];
     
     return project;
 }
