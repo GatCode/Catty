@@ -24,59 +24,66 @@ import XCTest
 
 @testable import Pocket_Code
 
-final class VariablesContainerTest: XCTestCase {
+final class VariableTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
     }
 
     func testAddObjectVariable() {
+        let project = Project()
+        let firstScene = project.scenes.firstObject as? Scene
+
         let objectA = SpriteObject()
         objectA.name = "testObjectA"
+        firstScene?.addObject(toObjectList: objectA)
 
         let objectB = SpriteObject()
         objectB.name = "testObjectB"
+        firstScene?.addObject(toObjectList: objectB)
 
         let userVariable = UserVariable()
         userVariable.name = "testName"
 
-        let container = Project()
-        let firstScene = container.scenes.firstObject as? Scene
-        XCTAssertEqual(0, container.allVariables(for: firstScene)?.count)
-        XCTAssertEqual(0, container.allVariables(for: objectA)?.count)
-        XCTAssertEqual(0, container.allVariables(for: objectB)?.count)
+        XCTAssertEqual(0, project.allVariables(for: firstScene)?.count)
+        XCTAssertEqual(0, project.allVariables(for: objectA)?.count)
+        XCTAssertEqual(0, project.allVariables(for: objectB)?.count)
 
-        var result = container.addObjectVariable(userVariable, for: objectA, to: firstScene)
+        var result = project.addObjectVariable(userVariable, for: objectA, to: firstScene)
         XCTAssertTrue(result)
 
-        XCTAssertEqual(1, container.allVariables(for: firstScene)?.count)
-        XCTAssertEqual(1, container.allVariables(for: objectA)?.count)
-        XCTAssertEqual(0, container.allVariables(for: objectB)?.count)
+        XCTAssertEqual(1, project.allVariables(for: firstScene)?.count)
+        XCTAssertEqual(1, project.allVariables(for: objectA)?.count)
+        XCTAssertEqual(0, project.allVariables(for: objectB)?.count)
 
-        result = container.addObjectVariable(userVariable, for: objectA, to: firstScene)
+        result = project.addObjectVariable(userVariable, for: objectA, to: firstScene)
         XCTAssertFalse(result)
 
-        result = container.addObjectVariable(userVariable, for: objectB, to: firstScene)
+        result = project.addObjectVariable(userVariable, for: objectB, to: firstScene)
         XCTAssertTrue(result)
 
-        XCTAssertEqual(2, container.allVariables(for: firstScene)?.count)
-        XCTAssertEqual(1, container.allVariables(for: objectA)?.count)
-        XCTAssertEqual(1, container.allVariables(for: objectB)?.count)
+        XCTAssertEqual(2, project.allVariables(for: firstScene)?.count)
+        XCTAssertEqual(1, project.allVariables(for: objectA)?.count)
+
+        XCTAssertEqual(1, project.allVariables(for: objectB)?.count)
     }
 
     func testAddObjectList() {
+        let container = Project()
+        let firstScene = container.scenes.firstObject as? Scene
+
         let objectA = SpriteObject()
         objectA.name = "testObjectA"
+        firstScene?.addObject(toObjectList: objectA)
 
         let objectB = SpriteObject()
         objectB.name = "testObjectB"
+        firstScene?.addObject(toObjectList: objectB)
 
         let list = UserVariable()
         list.name = "testName"
         list.isList = true
 
-        let container = Project()
-        let firstScene = container.scenes.firstObject as? Scene
         XCTAssertEqual(0, container.allLists(for: firstScene)?.count)
         XCTAssertEqual(0, container.allLists(for: objectA)?.count)
         XCTAssertEqual(0, container.allLists(for: objectB)?.count)

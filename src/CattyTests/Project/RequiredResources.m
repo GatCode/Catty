@@ -70,7 +70,10 @@
     Script *script = [Script new];
     [script.brickList addObject:brick];
     [obj.scriptList addObject:script];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)project.scenes.firstObject).objectList addObject:obj];
+    [project.scenes.firstObject addObjectToObjectList:obj];
+    
+    project.programVariableList = [[NSMutableArray<UserVariable*> alloc] init];
+    project.programListOfLists = [[NSMutableArray<UserVariable*> alloc] init];
     
     return project;
 }
