@@ -62,6 +62,7 @@
     withNameForCopiedObject:(NSString* _Nonnull)nameOfCopiedObject;
 - (BOOL)isEqualToProject:(Project* _Nonnull)project;
 - (NSInteger)getRequiredResourcesInScene:(Scene* _Nullable)scene;
+- (NSInteger)getRequiredResources;
 
 + (instancetype _Nonnull)defaultProjectWithName:(NSString* _Nonnull)projectName
                                       projectID:(NSString* _Nullable)projectID;

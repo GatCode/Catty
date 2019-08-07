@@ -58,7 +58,7 @@ extension FormulaManager {
 
         return unavailableResource
     }
-    
+
     @objc(setupForProject: andScene:)
     func setup(for project: Project, and scene: CBScene) {
         let requiredResources = project.getRequiredResources()
