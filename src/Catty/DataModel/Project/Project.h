@@ -92,7 +92,6 @@
 
 
 
-
 - (NSMutableArray* _Nullable)allVariablesForScene:(Scene* _Nullable)scene;
 - (NSMutableArray* _Nullable)allListsForScene:(Scene* _Nullable)scene;
 - (NSMutableArray* _Nullable)allVariablesAndListsForScene:(Scene* _Nullable)scene;

@@ -51,4 +51,8 @@
     @objc func addObject(toObjectList spriteObject: SpriteObject) {
         objectList.append(spriteObject)
     }
+
+    @objc func clearObjectList() {
+        objectList.removeAll()
+    }
 }

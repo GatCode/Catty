@@ -261,12 +261,25 @@
 
 - (BOOL)hasObject:(SpriteObject *)object inScene:(Scene* _Nullable)scene
 {
-    return [scene.objectList containsObject:object];
+    if (scene == nil) {
+        scene = self.scenes.firstObject;
+    }
+    
+    for (Scene* selfScene in self.scenes) {
+        if (selfScene.name == scene.name) {
+            return [selfScene.objectList containsObject:object];
+        }
+    }
+    return NO;
 }
 
 - (SpriteObject*)copyObject:(SpriteObject*)sourceObject inScene:(Scene* _Nullable)scene
     withNameForCopiedObject:(NSString *)nameOfCopiedObject
 {
+    if (scene == nil) {
+        scene = self.scenes.firstObject;
+    }
+    
     if (! [self hasObject:sourceObject inScene:scene]) {
         return nil;
     }
@@ -285,7 +298,7 @@
     
     SpriteObject *copiedObject = [sourceObject mutableCopyWithContext:context];
     copiedObject.name = [Util uniqueName:nameOfCopiedObject existingNames:[self allObjectNamesForScene:scene]];
-    [(NSMutableArray<SpriteObject*>*)scene.objectList addObject:copiedObject];
+    [scene addObjectToObjectList:copiedObject];
     
     for (UserVariable *variableOrList in copiedVariablesAndLists) {
         if (variableOrList.isList) {
@@ -333,6 +346,10 @@
 
 - (NSInteger)getRequiredResourcesInScene:(Scene*)scene
 {
+    if (scene == nil) {
+        scene = self.scenes.firstObject;
+    }
+    
     NSInteger resources = kNoResources;
     
     for (SpriteObject *obj in scene.objectList) {
@@ -652,12 +669,6 @@ static pthread_mutex_t variablesLock;
     
     if (scene == nil) {
         scene = self.scenes.firstObject;
-    }
-    
-    for(NSUInteger index = 0; index < [scene.data.objectVariableList count]; index++) {
-        NSMutableArray *variableList = [scene.data.objectVariableList objectAtIndex:index];
-        if([variableList count] > 0)
-            [vars addObjectsFromArray:variableList];
     }
     
     for(NSUInteger index = 0; index < [scene.data.objectVariableList count]; index++) {

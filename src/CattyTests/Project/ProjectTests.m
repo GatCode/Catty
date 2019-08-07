@@ -110,7 +110,7 @@
     StartScript *script = [StartScript new];
     [script.brickList addObjectsFromArray:@[ifThenLogicBeginBrick, ifThenLogicEndBrick]];
     [object.scriptList addObject:script];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)self.project.scenes.firstObject).objectList addObject:object];
+    [(Scene*)self.project.scenes.firstObject addObjectToObjectList:object];
     
     NSUInteger initialObjectSize = ((Scene*)self.project.scenes.firstObject).objectList.count;
     
@@ -159,7 +159,7 @@
     StartScript *script = [StartScript new];
     [script.brickList addObjectsFromArray:@[ifLogicBeginBrick, ifLogicElseBrick, ifLogicEndBrick]];
     [object.scriptList addObject:script];
-    [(NSMutableArray<SpriteObject*>*)((Scene*)self.project.scenes.firstObject).objectList addObject:object];
+    [(Scene*)self.project.scenes.firstObject addObjectToObjectList:object];
     
     NSUInteger initialObjectSize = ((Scene*)self.project.scenes.firstObject).objectList.count;
     
@@ -200,7 +200,7 @@
     
     SpriteObject *object = [SpriteObject new];
     object.name = @"newObject";
-    [(NSMutableArray<SpriteObject*>*)((Scene*)self.project.scenes.firstObject).objectList addObject:object];
+    [(Scene*)self.project.scenes.firstObject addObjectToObjectList:object];
     
     UserVariable *variable = [UserVariable new];
     variable.name = @"userVariable";
@@ -239,7 +239,7 @@
     
     SpriteObject *object = [SpriteObject new];
     object.name = @"newObject";
-    [(NSMutableArray<SpriteObject*>*)((Scene*)self.project.scenes.firstObject).objectList addObject:object];
+    [(Scene*)self.project.scenes.firstObject addObjectToObjectList:object];
     
     UserVariable *list = [UserVariable new];
     list.name = @"userList";

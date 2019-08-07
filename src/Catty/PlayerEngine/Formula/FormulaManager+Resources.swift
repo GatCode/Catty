@@ -58,10 +58,10 @@ extension FormulaManager {
 
         return unavailableResource
     }
-
+    
     @objc(setupForProject: andScene:)
     func setup(for project: Project, and scene: CBScene) {
-        let requiredResources = project.getRequiredResources(in: project.scenes.firstObject as? Scene) // TODO: this just works for one scene!
+        let requiredResources = project.getRequiredResources()
         setup(for: requiredResources, and: scene, startTrackingTouches: true)
     }
 

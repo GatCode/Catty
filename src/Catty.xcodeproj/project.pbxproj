@@ -212,6 +212,7 @@
 		2E5A24E3229D7F680000A58F /* SerializeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E2229D7F680000A58F /* SerializeSettings.swift */; };
 		2E5A24E5229D7F740000A58F /* SerializeScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E4229D7F740000A58F /* SerializeScenes.swift */; };
 		2E5A24E7229D81D40000A58F /* XMLSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A24E6229D81D40000A58F /* XMLSerializerTests.swift */; };
+		2E6307DC22FABD6400C5D540 /* ProjectMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDF7BBD213875A900FFF7F4 /* ProjectMock.m */; };
 		2E6F426C22992A4200840319 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63C82C229926B2000BE715 /* SWXMLHash.framework */; };
 		2E6F426E2299344200840319 /* CBLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426D2299344200840319 /* CBLook.swift */; };
 		2E6F4270229934A300840319 /* CBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F426F229934A300840319 /* CBObject.swift */; };
@@ -9202,6 +9203,7 @@
 				92D56C3B1BF20B4700A54750 /* PhiroHelper.swift in Sources */,
 				AA74F0C31BC05FCE00D1E954 /* TurnRightBrickCell.m in Sources */,
 				AA74F0A01BC05FCE00D1E954 /* IfLogicElseBrickCell.m in Sources */,
+				2E6307DC22FABD6400C5D540 /* ProjectMock.m in Sources */,
 				2E6F4299229A64C500840319 /* CBNfcTagList.swift in Sources */,
 				AA74F0A91BC05FCE00D1E954 /* SetVariableBrickCell.m in Sources */,
 				4CF0729620D66B2800F93AB5 /* ColorSensor.swift in Sources */,

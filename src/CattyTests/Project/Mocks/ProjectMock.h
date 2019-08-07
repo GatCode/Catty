@@ -28,5 +28,6 @@
 - (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 - (instancetype)initWithRequiredResources:(NSInteger)requiredResources;
 - (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height andRequiredResources:(NSInteger)requiredResources;
+- (NSInteger)getRequiredResources;
 
 @end
