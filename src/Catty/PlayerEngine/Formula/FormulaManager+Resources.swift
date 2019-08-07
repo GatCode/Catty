@@ -59,6 +59,13 @@ extension FormulaManager {
         return unavailableResource
     }
 
+    @objc(setupMockForProject: andScene:)
+    func setupMock(for project: Project, and scene: CBScene) {
+        let requiredResources = project.getRequiredResources()
+        setup(for: requiredResources, and: scene, startTrackingTouches: true)
+    }
+
+
     @objc(setupForProject: andScene:)
     func setup(for project: Project, and scene: CBScene) {
         let requiredResources = project.getRequiredResources(in: nil)

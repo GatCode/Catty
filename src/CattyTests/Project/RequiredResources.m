@@ -72,9 +72,6 @@
     [obj.scriptList addObject:script];
     [project.scenes.firstObject addObjectToObjectList:obj];
     
-    project.programVariableList = [[NSMutableArray<UserVariable*> alloc] init];
-    project.programListOfLists = [[NSMutableArray<UserVariable*> alloc] init];
-    
     return project;
 }
 
