@@ -50,7 +50,7 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
     id updatedReference = [context updatedReferenceForReference:self];
     if (updatedReference) {

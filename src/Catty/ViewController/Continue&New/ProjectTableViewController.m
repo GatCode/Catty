@@ -138,11 +138,11 @@
     Scene* scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
     
     [self showLoadingView];
-    [self.project addObjectWithName:[Util uniqueName:objectName existingNames:[self.project allObjectNamesForScene:scene]] toScene:nil];
+    [self.project addObjectWithName:[Util uniqueName:objectName existingNames:[self.project allObjectNamesForScene:scene]] toScene:scene];
     NSInteger numberOfRowsInLastSection = [self tableView:self.tableView numberOfRowsInSection:kObjectSectionIndex];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(numberOfRowsInLastSection - 1) inSection:kObjectSectionIndex];
     [self.tableView insertRowsAtIndexPaths:@[indexPath]
-                          withRowAnimation:(([self.project numberOfNormalObjectsInScene:nil] == 1) ? UITableViewRowAnimationFade : UITableViewRowAnimationBottom)]; // TODO: this just works for one scene!
+                          withRowAnimation:(([self.project numberOfNormalObjectsInScene:scene] == 1) ? UITableViewRowAnimationFade : UITableViewRowAnimationBottom)];
 
     LooksTableViewController *ltvc = [self.storyboard instantiateViewControllerWithIdentifier:kLooksTableViewControllerIdentifier];
     [ltvc setObject:[((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]]; // TODO: this just works for one scene!

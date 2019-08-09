@@ -81,13 +81,17 @@
 
 - (SpriteObject*)addObjectWithName:(NSString*)objectName toScene:(Scene*)scene
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    if (scene == nil) {
+        scene = self.scenes.firstObject;
+    }
+    
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:scene];
     //object.originalSize;
     object.spriteNode.currentLook = nil;
     
     object.name = [Util uniqueName:objectName existingNames:[self allObjectNamesForScene:scene]];
     object.project = self;
-    [(NSMutableArray<SpriteObject*>*)scene.objectList addObject:object];
+    [scene addObjectToObjectList:object];
     [self saveToDiskWithNotification:YES];
     return object;
 }
@@ -291,7 +295,7 @@
         [context updateReference:variableOrList WithReference:copiedVariableOrList];
     }
     
-    SpriteObject *copiedObject = [sourceObject mutableCopyWithContext:context];
+    SpriteObject *copiedObject = [sourceObject mutableCopyWithContext:context andScene:scene];
     copiedObject.name = [Util uniqueName:nameOfCopiedObject existingNames:[self allObjectNamesForScene:scene]];
     [scene addObjectToObjectList:copiedObject];
     

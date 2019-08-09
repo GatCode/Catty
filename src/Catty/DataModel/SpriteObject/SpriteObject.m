@@ -35,6 +35,20 @@
 
 @implementation SpriteObject
 
+- (id)init { // ensure that initWithScene gets called
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:@"-init is not a valid initializer for the class SpriteObject"
+                                 userInfo:nil];
+    return nil;
+}
+
+-(instancetype)initWithScene:(Scene*)scene {
+    if (self = [super init]) {
+        self.scene = scene;
+    }
+    return self;
+}
+
 - (NSMutableArray*)lookList
 {
     // lazy instantiation
@@ -113,7 +127,7 @@
 
 - (BOOL)isBackground
 {
-    if (self.project && [((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList count]) // TODO: this just works for one scene!
+    if (self.project && [self.scene.objectList count])
         return ([((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:0] == self);
     return NO;
 }
@@ -194,9 +208,9 @@
 {
     CBAssert(self.project);
     NSUInteger index = 0;
-    for (SpriteObject *spriteObject in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *spriteObject in self.scene.objectList) {
         if (spriteObject == self) {
-            [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList removeObjectAtIndex:index]; // TODO: this just works for one scene!
+            [(NSMutableArray<SpriteObject*>*)self.scene.objectList removeObjectAtIndex:index];
             self.project = nil;
             break;
         }
@@ -312,7 +326,7 @@
     if (! [self hasLook:sourceLook]) {
         return nil;
     }
-    Look *copiedLook = [sourceLook mutableCopyWithContext:[CBMutableCopyContext new]];
+    Look *copiedLook = [sourceLook mutableCopyWithContext:[CBMutableCopyContext new] andScene:self.scene];
     copiedLook.name = [Util uniqueName:nameOfCopiedLook existingNames:[self allLookNames]];
     [self.lookList addObject:copiedLook];
     if(save) {
@@ -326,7 +340,7 @@
     if (! [self hasSound:sourceSound]) {
         return nil;
     }
-    Sound *copiedSound = [sourceSound mutableCopyWithContext:[CBMutableCopyContext new]];
+    Sound *copiedSound = [sourceSound mutableCopyWithContext:[CBMutableCopyContext new] andScene:self.scene];
     copiedSound.name = [Util uniqueName:nameOfCopiedSound existingNames:[self allSoundNames]];
     [self.soundList addObject:copiedSound];
     if(save) {
@@ -420,11 +434,11 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context;
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene*)scene;
 {
     if (! context) { NSError(@"%@ must not be nil!", [CBMutableCopyContext class]); }
 
-    SpriteObject *newObject = [[SpriteObject alloc] init];
+    SpriteObject *newObject = [[SpriteObject alloc] initWithScene:scene];
     newObject.name = [NSString stringWithString:self.name];
     newObject.project = self.project;
     [context updateReference:self WithReference:newObject];
@@ -433,19 +447,19 @@
     newObject.lookList = [NSMutableArray arrayWithCapacity:[self.lookList count]];
     for (id lookObject in self.lookList) {
         if ([lookObject isKindOfClass:[Look class]]) {
-            [newObject.lookList addObject:[lookObject mutableCopyWithContext:context]];
+            [newObject.lookList addObject:[lookObject mutableCopyWithContext:context andScene:scene]];
         }
     }
     newObject.soundList = [NSMutableArray arrayWithCapacity:[self.soundList count]];
     for (id soundObject in self.soundList) {
         if ([soundObject isKindOfClass:[Sound class]]) {
-            [newObject.soundList addObject:[soundObject mutableCopyWithContext:context]];
+            [newObject.soundList addObject:[soundObject mutableCopyWithContext:context andScene:scene]];
         }
     }
     newObject.scriptList = [NSMutableArray arrayWithCapacity:[self.scriptList count]];
     for (id scriptObject in self.scriptList) {
         if ([scriptObject isKindOfClass:[Script class]]) {
-            Script *copiedScript = [scriptObject mutableCopyWithContext:context];
+            Script *copiedScript = [scriptObject mutableCopyWithContext:context andScene:scene];
             copiedScript.object = newObject;
             [newObject.scriptList addObject:copiedScript];
         }
@@ -467,7 +481,7 @@
 - (NSUInteger)referenceCountForLook:(NSString*)fileName
 {
     NSUInteger referenceCount = 0;
-    for (SpriteObject *object in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *object in self.scene.objectList) {
         for (Look *look in object.lookList) {
             if ([look.fileName isEqualToString:fileName]) {
                 ++referenceCount;
@@ -480,7 +494,7 @@
 - (NSUInteger)referenceCountForSound:(NSString*)fileName
 {
     NSUInteger referenceCount = 0;
-    for (SpriteObject *object in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *object in self.scene.objectList) {
         for (Sound *sound in object.soundList) {
             if ([sound.fileName isEqualToString:fileName]) {
                 ++referenceCount;

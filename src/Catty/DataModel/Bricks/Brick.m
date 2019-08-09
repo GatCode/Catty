@@ -150,7 +150,7 @@
 
 #pragma mark - Copy
 // This function must be overriden by Bricks with references to other Bricks (e.g. ForeverBrick)
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
     return [self mutableCopyWithContext:context AndErrorReporting:YES];
 }
@@ -173,7 +173,7 @@
             if (updatedReference) {
                 [brick setValue:updatedReference forKey:propertyKey];
             } else {
-                id propertyValueClone = [propertyValue mutableCopyWithContext:context];
+                id propertyValueClone = [propertyValue mutableCopyWithContext:context andScene:self.script.object.scene];
                 [brick setValue:propertyValueClone forKey:propertyKey];
             }
         } else if ([propertyValue conformsToProtocol:@protocol(NSMutableCopying)]) {

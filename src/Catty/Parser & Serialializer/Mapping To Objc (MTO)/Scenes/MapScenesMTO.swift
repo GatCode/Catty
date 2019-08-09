@@ -30,7 +30,7 @@ extension CBXMLMappingToObjc {
         for scene in scenes {
             var mappedScene = Scene(project: currentProject)
             mappedScene.name = scene.name
-            if let mappedObjectList = mapObjectList(scene: scene, project: project, currentProject: &currentProject) as? [SpriteObject] {
+            if let mappedObjectList = mapObjectList(scene: scene, project: project, currentProject: &currentProject, currentScene: mappedScene) as? [SpriteObject] {
                 mappedScene.objectList = mappedObjectList
             }
             if let mappedData = mapDataMTO(project: project, currentProject: &currentProject, scene: scene, currentScene: &mappedScene) {

@@ -39,7 +39,7 @@
     }
 
     @objc func addObject(withName objectName: String?) -> SpriteObject? {
-        let object = SpriteObject()
+        let object = SpriteObject(scene: self)!
         object.spriteNode?.currentLook = nil
 
         object.name = Util.uniqueName(objectName, existingNames: self.project?.allObjectNames(for: self))

@@ -21,9 +21,10 @@
  */
 
 @class CBMutableCopyContext;
+@class Scene;
 
 @protocol CBMutableCopying <NSObject>
 
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context;
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene*)scene;
 
 @end

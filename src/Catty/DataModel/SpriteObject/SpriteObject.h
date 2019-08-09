@@ -38,8 +38,10 @@
 @property (nonatomic, strong) NSMutableArray<Sound*> *soundList;
 @property (nonatomic, strong) NSMutableArray<Script*> *scriptList;
 @property (nonatomic, weak) Project *project;
+@property (nonatomic, weak) Scene *scene;
 @property (nonatomic, weak) CBSpriteNode *spriteNode;
 
+- (instancetype)initWithScene:(Scene*)scene;
 - (NSUInteger)numberOfScripts;
 - (NSUInteger)numberOfTotalBricks; // including script bricks
 - (NSUInteger)numberOfNormalBricks; // excluding script bricks

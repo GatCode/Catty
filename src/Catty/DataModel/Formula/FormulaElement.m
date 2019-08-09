@@ -281,10 +281,10 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
-    FormulaElement *leftChildClone = self.leftChild == nil ? nil : [self.leftChild mutableCopyWithContext:context];
-    FormulaElement *rightChildClone = self.rightChild == nil ? nil : [self.rightChild mutableCopyWithContext:context];
+    FormulaElement *leftChildClone = self.leftChild == nil ? nil : [self.leftChild mutableCopyWithContext:context andScene:scene];
+    FormulaElement *rightChildClone = self.rightChild == nil ? nil : [self.rightChild mutableCopyWithContext:context andScene:scene];
     return [[FormulaElement alloc] initWithElementType:self.type value:self.value
                                              leftChild:leftChildClone
                                             rightChild:rightChildClone

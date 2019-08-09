@@ -33,8 +33,6 @@
 
 - (id)initWithVariable:(UserVariable*)userVariable;
 
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context;
-
 - (BOOL)isEqualToUserVariable:(UserVariable*)userVariable;
 
 @end

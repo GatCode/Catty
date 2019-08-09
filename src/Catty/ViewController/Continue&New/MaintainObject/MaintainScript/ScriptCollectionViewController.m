@@ -599,7 +599,7 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
              didSelectScriptOrBrick:(id<ScriptProtocol>)scriptOrBrick
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
-    scriptOrBrick = [scriptOrBrick mutableCopyWithContext:[CBMutableCopyContext new]];
+    scriptOrBrick = [scriptOrBrick mutableCopyWithContext:[CBMutableCopyContext new] andScene:self.object.scene];
     [scriptOrBrick setDefaultValuesForObject:self.object];
     self.lastSelectedBrickCategoryType = brickCategoryViewController.pageIndexCategoryType;
     brickCategoryViewController.delegate = nil;

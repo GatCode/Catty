@@ -22,7 +22,7 @@
 
 extension CBXMLMappingToObjc {
 
-    static func mapObjectList(scene: CBProjectScene?, project: CBProject?, currentProject: inout Project) -> NSMutableArray? {
+    static func mapObjectList(scene: CBProjectScene?, project: CBProject?, currentProject: inout Project, currentScene: Scene?) -> NSMutableArray? {
         guard let project = project else { return nil }
         guard let objectList = scene?.objectList?.objects else { return nil }
 
@@ -41,7 +41,7 @@ extension CBXMLMappingToObjc {
                         }
                     }
                 }
-            } else if let mappedObject = mapObject(object: object, objectList: objectList, project: project) {
+            } else if let mappedObject = mapObject(object: object, objectList: objectList, project: project, currentScene: currentScene) {
                 mappedObject.project = currentProject
                 resultObjectList.append(mappedObject)
             }
@@ -50,8 +50,8 @@ extension CBXMLMappingToObjc {
         return NSMutableArray(array: resultObjectList)
     }
 
-    static func mapObject(object: CBObject?, objectList: [CBObject]?, project: CBProject?) -> SpriteObject? {
-        var result = SpriteObject()
+    static func mapObject(object: CBObject?, objectList: [CBObject]?, project: CBProject?, currentScene: Scene?) -> SpriteObject? {
+        var result = SpriteObject(scene: currentScene)!
         guard let object = object else { return nil }
         guard let project = project else { return nil }
         guard let lookList = object.lookList else { return nil }

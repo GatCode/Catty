@@ -134,11 +134,11 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
     Formula *formula = [Formula new];
     if (self.formulaTree) {
-        formula.formulaTree = [self.formulaTree mutableCopyWithContext:context];
+        formula.formulaTree = [self.formulaTree mutableCopyWithContext:context andScene:scene];
     }
     return formula;
 }

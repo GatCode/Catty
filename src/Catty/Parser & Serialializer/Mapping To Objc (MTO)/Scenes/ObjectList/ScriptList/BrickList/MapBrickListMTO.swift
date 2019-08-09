@@ -188,10 +188,10 @@ extension CBXMLMappingToObjc {
             case kPointToBrick.uppercased():
                 let newBrick = PointToBrick()
                 for object in objectList where object.name == brick.pointedObjectReference {
-                    newBrick.pointedObject = mapObject(object: object, objectList: objectList, project: project)
+                    newBrick.pointedObject = mapObject(object: object, objectList: objectList, project: project, currentScene: currObject.scene)
                 }
                 if newBrick.pointedObject == nil, let pointed = brick.pointedObject {
-                    newBrick.pointedObject = mapObject(object: pointed, objectList: objectList, project: project)
+                    newBrick.pointedObject = mapObject(object: pointed, objectList: objectList, project: project, currentScene: currObject.scene)
                 }
                 resultBrickList.append(newBrick)
             case kGlideToBrick.uppercased():
@@ -235,7 +235,7 @@ extension CBXMLMappingToObjc {
             // MARK: Look Bricks
             case kSetBackgroundBrick.uppercased():
                 let newBrick = SetBackgroundBrick()
-                let tmpSpriteObj = SpriteObject()
+                let tmpSpriteObj = SpriteObject(scene: currObject.scene)!
                 tmpSpriteObj.lookList = lookList
                 newBrick.setDefaultValuesFor(tmpSpriteObj)
                 if let range = brick.lookReference?.range(of: "[(0-9)*]", options: .regularExpression) {
@@ -247,7 +247,7 @@ extension CBXMLMappingToObjc {
                 resultBrickList.append(newBrick)
             case kSetLookBrick.uppercased():
                 let newBrick = SetLookBrick()
-                let tmpSpriteObj = SpriteObject()
+                let tmpSpriteObj = SpriteObject(scene: currObject.scene)!
                 tmpSpriteObj.lookList = lookList
                 newBrick.setDefaultValuesFor(tmpSpriteObj)
                 if let range = brick.lookReference?.range(of: "[(0-9)*]", options: .regularExpression) {
