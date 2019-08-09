@@ -57,8 +57,8 @@ final class LastFingerIndexSensorTest: XCTestCase {
     }
 
     func testConvertToStandardized() {
-        XCTAssertEqual(2, sensor.convertToStandardized(rawValue: 2, for: SpriteObject()))
-        XCTAssertEqual(10, sensor.convertToStandardized(rawValue: 10, for: SpriteObject()))
+        XCTAssertEqual(2, sensor.convertToStandardized(rawValue: 2, for: SpriteObject(scene: Scene(project: Project()))!))
+        XCTAssertEqual(10, sensor.convertToStandardized(rawValue: 10, for: SpriteObject(scene: Scene(project: Project()))!))
     }
 
     func testTag() {
@@ -70,7 +70,7 @@ final class LastFingerIndexSensorTest: XCTestCase {
     }
 
     func testFormulaEditorSections() {
-        let sections = sensor.formulaEditorSections(for: SpriteObject())
+        let sections = sensor.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: sensor).position), sections.first)
     }

@@ -66,7 +66,7 @@
 -(Project*)getProjectWithOneSpriteWithBrick:(Brick*)brick
 {
     Project * project = [Project new];
-    SpriteObject* obj = [SpriteObject new];
+    SpriteObject* obj = [[SpriteObject alloc] initWithScene:project.scenes.firstObject];
     Script *script = [Script new];
     [script.brickList addObject:brick];
     [obj.scriptList addObject:script];
@@ -862,7 +862,7 @@
 -(Project*)getProjectWithTwoScriptsWithBricks:(NSArray*)brickArray andBrickArray2:(NSArray*)brickArray2
 {
     Project * project = [Project new];
-    SpriteObject* obj = [SpriteObject new];
+    SpriteObject* obj = [[SpriteObject alloc] initWithScene:project.scenes.firstObject];
     Script *script = [Script new];
     Script *script2 = [Script new];
     for (Brick* brick in brickArray) {
@@ -905,7 +905,7 @@
     
     Project *project = [self getProjectWithTwoScriptsWithBricks:brickArray andBrickArray2:brickArray2];
     
-    NSInteger resources = [project getRequiredResourcesInScene:nil]; // TODO: this just works for one scene!
+    NSInteger resources = [project getRequiredResourcesInScene:nil];
     XCTAssertEqual(kDeviceMotion, resources & kDeviceMotion, @"Resourses nested not correctly calculated");
     XCTAssertEqual(kLoudness, resources & kLoudness, @"Resourses nested not correctly calculated");
     XCTAssertEqual(kBluetoothArduino, resources & kBluetoothArduino, @"Resourses nested not correctly calculated");
@@ -939,7 +939,7 @@
     
     Project *project = [self getProjectWithTwoScriptsWithBricks:brickArray andBrickArray2:brickArray2];
     
-    NSInteger resources = [project getRequiredResourcesInScene:nil]; // TODO: this just works for one scene!
+    NSInteger resources = [project getRequiredResourcesInScene:nil];
     XCTAssertEqual(kDeviceMotion, resources & kDeviceMotion, @"Resourses nested not correctly calculated");
     XCTAssertEqual(kLoudness, resources & kLoudness, @"Resourses nested not correctly calculated");
     XCTAssertEqual(0, resources & kBluetoothArduino, @"Resourses nested not correctly calculated");
@@ -953,8 +953,8 @@
 -(Project*)getProjectWithTwoSpritesWithBricks:(NSArray*)brickArray andBrickArray2:(NSArray*)brickArray2
 {
     Project *project = [Project new];
-    SpriteObject* obj = [SpriteObject new];
-    SpriteObject* obj1 = [SpriteObject new];
+    SpriteObject* obj = [[SpriteObject alloc] initWithScene:project.scenes.firstObject];
+    SpriteObject* obj1 = [[SpriteObject alloc] initWithScene:project.scenes.firstObject];
     Script *script = [Script new];
     Script *script2 = [Script new];
     for (Brick* brick in brickArray) {

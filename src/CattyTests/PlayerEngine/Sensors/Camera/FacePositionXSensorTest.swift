@@ -75,7 +75,7 @@ final class FacePositionXSensorTest: XCTestCase {
     }
 
     func testFormulaEditorSections() {
-        let sections = sensor.formulaEditorSections(for: SpriteObject())
+        let sections = sensor.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: sensor).position), sections.first)
     }

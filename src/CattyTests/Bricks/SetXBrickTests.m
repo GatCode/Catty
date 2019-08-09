@@ -44,7 +44,7 @@
 
 - (void)testSetXBrickPositive
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     
@@ -65,7 +65,7 @@
 
 - (void)testSetXBrickNegative
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     
@@ -86,7 +86,7 @@
 
 - (void)testSetXBrickOutOfRange
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     
@@ -107,7 +107,7 @@
 
 - (void)testSetXBrickWrongInput
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     

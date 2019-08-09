@@ -152,11 +152,11 @@
 // This function must be overriden by Bricks with references to other Bricks (e.g. ForeverBrick)
 - (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
-    return [self mutableCopyWithContext:context AndErrorReporting:YES];
+    return [self mutableCopyWithContext:context AndErrorReporting:YES andScene:scene];
 }
 
 
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context AndErrorReporting:(BOOL)reportError
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context AndErrorReporting:(BOOL)reportError andScene:(Scene *)scene
 {
     if (! context) NSError(@"%@ must not be nil!", [CBMutableCopyContext class]);
     Brick *brick = [[self class] new];
@@ -173,7 +173,7 @@
             if (updatedReference) {
                 [brick setValue:updatedReference forKey:propertyKey];
             } else {
-                id propertyValueClone = [propertyValue mutableCopyWithContext:context andScene:self.script.object.scene];
+                id propertyValueClone = [propertyValue mutableCopyWithContext:context andScene:scene];
                 [brick setValue:propertyValueClone forKey:propertyKey];
             }
         } else if ([propertyValue conformsToProtocol:@protocol(NSMutableCopying)]) {

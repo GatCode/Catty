@@ -64,7 +64,7 @@ final class BrickTests: XCTestCase {
 
         let brick = script.brickList[0] as! SetVariableBrick
         XCTAssertEqual(1.0,
-                       formulaManager.interpretDouble(brick.variableFormula, for: SpriteObject()),
+                       formulaManager.interpretDouble(brick.variableFormula, for: SpriteObject(scene: Scene(project: Project()))!),
                        "Invalid formula")
     }
 }

@@ -32,7 +32,7 @@ final class LayerSensorTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         sensor = LayerSensor()
     }
@@ -115,7 +115,7 @@ final class LayerSensorTest: XCTestCase {
     }
 
     func testFormulaEditorSections() {
-        let sections = sensor.formulaEditorSections(for: SpriteObject())
+        let sections = sensor.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.object(position: type(of: sensor).position), sections.first)
     }

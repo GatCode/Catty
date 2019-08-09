@@ -111,7 +111,7 @@
     copiedScript.brickList = [NSMutableArray arrayWithCapacity:[self.brickList count]];
     for (id brick in self.brickList) {
         if ([brick isKindOfClass:[Brick class]]) {
-            Brick *copiedBrick = [brick mutableCopyWithContext:context andScene:self.object.scene]; // there are some bricks that refer to other sound, look, sprite objects...
+            Brick *copiedBrick = [brick mutableCopyWithContext:context andScene:scene]; // there are some bricks that refer to other sound, look, sprite objects...
             copiedBrick.script = copiedScript;
             [copiedScript.brickList addObject:copiedBrick];
         }

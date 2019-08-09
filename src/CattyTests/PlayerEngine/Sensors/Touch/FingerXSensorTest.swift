@@ -40,7 +40,7 @@ final class FingerXSensorTest: XCTestCase {
         touchManager = TouchManagerMock()
         sensor = FingerXSensor { [weak self] in self?.touchManager }
 
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         spriteNode.mockedScene = SceneBuilder(project: ProjectMock(width: CGFloat(screenWidth), andHeight: CGFloat(screenHeight))).build()
     }
@@ -83,7 +83,7 @@ final class FingerXSensorTest: XCTestCase {
     }
 
     func testFormulaEditorSections() {
-        let sections = sensor.formulaEditorSections(for: SpriteObject())
+        let sections = sensor.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: sensor).position), sections.first)
     }

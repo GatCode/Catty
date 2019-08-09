@@ -31,7 +31,7 @@ final class FormulaManagerCacheTests: XCTestCase {
 
     override func setUp() {
         manager = FormulaManager(sceneSize: Util.screenSize(true))
-        object = SpriteObject()
+        object = SpriteObject(scene: Scene(project: Project()))!
     }
 
     func testStop() {

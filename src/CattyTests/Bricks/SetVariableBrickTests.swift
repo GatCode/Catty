@@ -36,7 +36,7 @@ final class SetVariableBrickTests: XCTestCase {
     override func setUp() {
         project = Project()
 
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: project.scenes.firstObject as? Scene)
         spriteObject.name = "SpriteObjectName"
 
         spriteNode = CBSpriteNode(spriteObject: spriteObject)

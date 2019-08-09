@@ -97,7 +97,7 @@
     
     [self setupForNewProject];
     
-    SpriteObject *object = [SpriteObject new];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:self.project.scenes.firstObject];
     object.name = objectName;
     
     IfThenLogicBeginBrick *ifThenLogicBeginBrick = [IfThenLogicBeginBrick new];
@@ -141,7 +141,7 @@
     
     [self setupForNewProject];
     
-    SpriteObject *object = [SpriteObject new];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:self.project.scenes.firstObject];
     object.name = objectName;
     
     IfLogicBeginBrick *ifLogicBeginBrick = [IfLogicBeginBrick new];
@@ -198,7 +198,7 @@
 {
     [self setupForNewProject];
     
-    SpriteObject *object = [SpriteObject new];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:self.project.scenes.firstObject];
     object.name = @"newObject";
     [(Scene*)self.project.scenes.firstObject addObjectToObjectList:object];
     
@@ -237,7 +237,7 @@
 {
     [self setupForNewProject];
     
-    SpriteObject *object = [SpriteObject new];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:self.project.scenes.firstObject];
     object.name = @"newObject";
     [(Scene*)self.project.scenes.firstObject addObjectToObjectList:object];
     

@@ -43,7 +43,7 @@
 
 - (void)testClearGraphicEffectBrick
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     object.project = project;
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
@@ -90,7 +90,7 @@
 
 - (void)testClearGraphicEffectBrick2
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     object.project = project;
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];

@@ -44,7 +44,7 @@
 
 - (void)testSetColorBrickLower
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
@@ -78,7 +78,7 @@
 
 - (void)testSetColorBrickHigher
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
@@ -112,7 +112,7 @@
 
 - (void)testSetColorBrickMoreThan2Pi
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
@@ -145,7 +145,7 @@
 
 - (void)testSetColorBrickWrongInput
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;

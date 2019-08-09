@@ -74,9 +74,9 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
-    RepeatBrick *brick = [self mutableCopyWithContext:context AndErrorReporting:NO];
+    RepeatBrick *brick = [self mutableCopyWithContext:context AndErrorReporting:NO andScene:scene];
     brick.repetitions = self.repetitions;
     brick.maxRepetitions = self.maxRepetitions;
     return brick;

@@ -43,7 +43,7 @@
 
 - (void)testChangeSizeByNBrickPositive
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     spriteNode.catrobatSize = 10.0;
@@ -64,7 +64,7 @@
 
 - (void)testChangeSizeByNBrickNegative
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     spriteNode.catrobatSize = 50.0;
@@ -85,7 +85,7 @@
 
 - (void)testChangeSizeByNBrickWrongInput
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     spriteNode.catrobatSize = 10.0;

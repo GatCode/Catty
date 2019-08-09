@@ -31,7 +31,7 @@ final class FormulaManagerInterpreterTests: XCTestCase {
 
     override func setUp() {
         interpreter = FormulaManager(sceneSize: Util.screenSize(true))
-        object = SpriteObject()
+        object = SpriteObject(scene: Scene(project: Project()))!
     }
 
     func testInterpretDouble() {

@@ -34,11 +34,11 @@ final class VariableTests: XCTestCase {
         let project = Project()
         let firstScene = project.scenes.firstObject as? Scene
 
-        let objectA = SpriteObject()
+        let objectA = SpriteObject(scene: project.scenes.firstObject as? Scene)!
         objectA.name = "testObjectA"
         firstScene?.addObject(toObjectList: objectA)
 
-        let objectB = SpriteObject()
+        let objectB = SpriteObject(scene: project.scenes.firstObject as? Scene)!
         objectB.name = "testObjectB"
         firstScene?.addObject(toObjectList: objectB)
 
@@ -72,11 +72,11 @@ final class VariableTests: XCTestCase {
         let container = Project()
         let firstScene = container.scenes.firstObject as? Scene
 
-        let objectA = SpriteObject()
+        let objectA = SpriteObject(scene: container.scenes.firstObject as? Scene)!
         objectA.name = "testObjectA"
         firstScene?.addObject(toObjectList: objectA)
 
-        let objectB = SpriteObject()
+        let objectB = SpriteObject(scene: container.scenes.firstObject as? Scene)!
         objectB.name = "testObjectB"
         firstScene?.addObject(toObjectList: objectB)
 

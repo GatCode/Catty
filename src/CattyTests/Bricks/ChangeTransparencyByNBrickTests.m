@@ -43,7 +43,7 @@
 
 - (void)testChangeTransparencyByNBrickPositive
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     spriteNode = spriteNode;
     
@@ -71,7 +71,7 @@
 
 - (void)testChangeTransparencyByNBrickNegative
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     
@@ -99,7 +99,7 @@
 
 - (void)testChangeTransparencyByNBrickOutOfRange
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     
@@ -127,7 +127,7 @@
 
 - (void)testChangeTransparencyByNBrickWrongInput
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
     

@@ -73,7 +73,7 @@
     formula = [[Formula alloc] initWithFormulaElement:parseTree];
     
     XCTAssertNotNil(parseTree, @"Formula is not parsed correctly: - 1");
-    XCTAssertEqual(-1, [self.interpreter interpretDouble:formula forSpriteObject:[SpriteObject new]], @"Formula interpretation is not as expected");
+    XCTAssertEqual(-1, [self.interpreter interpretDouble:formula forSpriteObject:[[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]]], @"Formula interpretation is not as expected");
     [internTokenList removeAllObjects];
     
     formula = [[Formula alloc] initWithFormulaElement:parseTree];
@@ -88,7 +88,7 @@
     parseTree = [internParser parseFormulaForSpriteObject:nil];
     
     XCTAssertNotNil(parseTree, @"Formula is not parsed correctly: - 1");
-    XCTAssertEqual(-1, [self.interpreter interpretDouble:formula forSpriteObject:[SpriteObject new]], @"Formula interpretation is not as expected");
+    XCTAssertEqual(-1, [self.interpreter interpretDouble:formula forSpriteObject:[[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]]], @"Formula interpretation is not as expected");
     [internTokenList removeAllObjects];
 
     formula = [[Formula alloc] initWithFormulaElement:parseTree];
@@ -108,7 +108,7 @@
     XCTAssertNotNil(parseTree, @"Formula is not parsed correctly: - 1 - 1");
     
     formula = [[Formula alloc] initWithFormulaElement:parseTree];
-    XCTAssertEqual(-2, [self.interpreter interpretDouble:formula forSpriteObject:[SpriteObject new]], @"Formula interpretation is not as expected");
+    XCTAssertEqual(-2, [self.interpreter interpretDouble:formula forSpriteObject:[[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]]], @"Formula interpretation is not as expected");
     
     formula = [[Formula alloc] initWithFormulaElement:parseTree];
     XCTAssertFalse([formula isSingularNumber], "Should NOT be a single number formula");
@@ -124,7 +124,7 @@
     XCTAssertNotNil(parseTree, @"Formula is not parsed correctly: round(1.1111)");
     
     formula = [[Formula alloc] initWithFormulaElement:parseTree];
-    XCTAssertEqual(1, [self.interpreter interpretDouble:formula forSpriteObject:[SpriteObject new]], "Formula interpretation is not as expected");
+    XCTAssertEqual(1, [self.interpreter interpretDouble:formula forSpriteObject:[[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]]], "Formula interpretation is not as expected");
     [internTokenList removeAllObjects];
     
     formula = [[Formula alloc] initWithFormulaElement:parseTree];

@@ -30,7 +30,7 @@ final class CBSpriteNodeTests: XCTestCase {
     var spriteNode: CBSpriteNodeMock!
 
     override func setUp() {
-        let spriteObject = SpriteObject()
+        let spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteObject.name = "SpriteObjectName"
 
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)

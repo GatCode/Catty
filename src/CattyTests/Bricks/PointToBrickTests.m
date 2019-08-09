@@ -46,10 +46,10 @@
 
 - (void)testPointToBrickZeroDegrees
 {
-    SpriteObject *firstObject = [[SpriteObject alloc] init];
+    SpriteObject *firstObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *firstSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:firstObject];
     firstObject.spriteNode = firstSpriteNode;
-    SpriteObject *secondObject = [[SpriteObject alloc] init];
+    SpriteObject *secondObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *secondSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:secondObject];
     secondObject.spriteNode = secondSpriteNode;
 
@@ -74,10 +74,10 @@
 
 - (void)testPointToBrickSamePosition
 {
-    SpriteObject *firstObject = [[SpriteObject alloc] init];
+    SpriteObject *firstObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *firstSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:firstObject];
     firstObject.spriteNode = firstSpriteNode;
-    SpriteObject *secondObject = [[SpriteObject alloc] init];
+    SpriteObject *secondObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *secondSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:secondObject];
     secondObject.spriteNode = secondSpriteNode;
 
@@ -100,10 +100,10 @@
 
 - (void)testPointToBrick45Degrees
 {
-    SpriteObject *firstObject = [[SpriteObject alloc] init];
+    SpriteObject *firstObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *firstSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:firstObject];
     firstObject.spriteNode = firstSpriteNode;
-    SpriteObject *secondObject = [[SpriteObject alloc] init];
+    SpriteObject *secondObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *secondSpriteNode = [[CBSpriteNode alloc] initWithSpriteObject:secondObject];
     secondObject.spriteNode = secondSpriteNode;
 

@@ -44,7 +44,7 @@
 
 - (void)testSetBrightnessBrick
 {
-    SpriteObject* object = [[SpriteObject alloc] init];
+    SpriteObject* object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
@@ -76,7 +76,7 @@
 
 - (void)testSetBrightnessBrickNegative
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
@@ -108,7 +108,7 @@
 
 - (void)testSetBrightnessBrickTooBright
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;
@@ -141,7 +141,7 @@
 
 - (void)testSetBrightnessBrickWrongInput
 {
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     Project *project = [Project defaultProjectWithName:@"a" projectID:nil];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:object];
     object.spriteNode = spriteNode;

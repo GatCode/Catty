@@ -49,7 +49,7 @@ final class UserVariableTests: XCTestCase {
         let context = CBMutableCopyContext()
         XCTAssertEqual(0, context.updatedReferences.count)
 
-        let userVariableCopy = userVariable.mutableCopy(with: context) as! UserVariable
+        let userVariableCopy = userVariable.mutableCopy(with: context, andScene: nil) as! UserVariable
         XCTAssertEqual(userVariable.name, userVariableCopy.name)
         XCTAssertTrue(userVariable === userVariableCopy)
     }
@@ -65,7 +65,7 @@ final class UserVariableTests: XCTestCase {
         context.updateReference(userVariableA, withReference: userVariableB)
         XCTAssertEqual(1, context.updatedReferences.count)
 
-        let userVariableCopy = userVariableA.mutableCopy(with: context) as! UserVariable
+        let userVariableCopy = userVariableA.mutableCopy(with: context, andScene: nil) as! UserVariable
         XCTAssertEqual(userVariableA.name, userVariableCopy.name)
         XCTAssertFalse(userVariableA === userVariableCopy)
         XCTAssertTrue(userVariableB === userVariableCopy)

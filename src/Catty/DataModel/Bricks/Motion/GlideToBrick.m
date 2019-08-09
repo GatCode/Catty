@@ -111,9 +111,9 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
-    return [self mutableCopyWithContext:context AndErrorReporting:NO];
+    return [self mutableCopyWithContext:context AndErrorReporting:NO andScene:scene];
     
 }
 

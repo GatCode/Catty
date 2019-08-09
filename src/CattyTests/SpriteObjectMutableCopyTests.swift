@@ -138,7 +138,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         for object in objectList! {
             let spriteObject = object
             let context = CBMutableCopyContext()
-            let copiedSpriteObject = spriteObject.mutableCopy(with: context) as! SpriteObject
+            let copiedSpriteObject = spriteObject.mutableCopy(with: context, andScene: project?.scenes.firstObject as? Scene) as! SpriteObject
             XCTAssertTrue(spriteObject.isEqual(to: copiedSpriteObject), "SpriteObjects are not equal")
         }
     }
@@ -154,7 +154,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         context.updateReference(lookA, withReference: lookB)
         XCTAssertEqual(1, context.updatedReferences.count)
 
-        let brickCopy = brick.mutableCopy(with: context) as! SetLookBrick
+        let brickCopy = brick.mutableCopy(with: context, andScene: Scene(project: Project())) as! SetLookBrick
 
         XCTAssertEqual(brickCopy.look, lookB)
         XCTAssertNotEqual(brickCopy.look, lookA)
@@ -171,7 +171,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         context.updateReference(lookA, withReference: lookB)
         XCTAssertEqual(1, context.updatedReferences.count)
 
-        let brickCopy = brick.mutableCopy(with: context) as! SetBackgroundBrick
+        let brickCopy = brick.mutableCopy(with: context, andScene: Scene(project: Project())) as! SetBackgroundBrick
 
         XCTAssertEqual(brickCopy.look, lookB)
         XCTAssertNotEqual(brickCopy.look, lookA)
@@ -188,7 +188,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         context.updateReference(soundA, withReference: soundB)
         XCTAssertEqual(1, context.updatedReferences.count)
 
-        let brickCopy = brick.mutableCopy(with: context) as! PlaySoundBrick
+        let brickCopy = brick.mutableCopy(with: context, andScene: Scene(project: Project())) as! PlaySoundBrick
 
         XCTAssertEqual(brickCopy.sound, soundB)
         XCTAssertNotEqual(brickCopy.sound, soundA)
@@ -202,7 +202,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         let context = CBMutableCopyContext()
         XCTAssertEqual(0, context.updatedReferences.count)
 
-        let brickCopy = brick.mutableCopy(with: context) as! SetLookBrick
+        let brickCopy = brick.mutableCopy(with: context, andScene: Scene(project: Project())) as! SetLookBrick
 
         XCTAssertEqual(brickCopy.look, look)
     }
@@ -215,7 +215,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         let context = CBMutableCopyContext()
         XCTAssertEqual(0, context.updatedReferences.count)
 
-        let brickCopy = brick.mutableCopy(with: context) as! SetBackgroundBrick
+        let brickCopy = brick.mutableCopy(with: context, andScene: Scene(project: Project())) as! SetBackgroundBrick
 
         XCTAssertEqual(brickCopy.look, look)
     }
@@ -228,7 +228,7 @@ final class SpriteObjectMutableCopyTests: XMLAbstractTest {
         let context = CBMutableCopyContext()
         XCTAssertEqual(0, context.updatedReferences.count)
 
-        let brickCopy = brick.mutableCopy(with: context) as! PlaySoundBrick
+        let brickCopy = brick.mutableCopy(with: context, andScene: Scene(project: Project())) as! PlaySoundBrick
 
         XCTAssertEqual(brickCopy.sound, sound)
     }

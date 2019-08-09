@@ -99,7 +99,7 @@ final class SensorManagerTests: XCTestCase {
         let sensorC = SensorMock(tag: "tagC", formulaEditorSections: [.object(position: 2), .math(position: 10)])
 
         let manager = SensorManager(sensors: [sensorA, sensorB, sensorC])
-        let items = manager.formulaEditorItems(for: SpriteObject())
+        let items = manager.formulaEditorItems(for: SpriteObject(scene: Scene(project: Project()))!)
 
         XCTAssertEqual(3, items.count)
         XCTAssertNotNil(items.filter { $0.sensor?.tag() == sensorA.tag() }.first)
@@ -108,7 +108,7 @@ final class SensorManagerTests: XCTestCase {
     }
 
     func testValue() {
-        let object = SpriteObject()
+        let object = SpriteObject(scene: Scene(project: Project()))!
         let sensorA = DeviceSensorMock(tag: "tagA", value: 1.0)
         let sensorB = ObjectDoubleSensorMock(tag: "tagB", value: 2.0)
         let sensorC = ObjectStringSensorMock(tag: "tagC", value: "test")
@@ -119,7 +119,7 @@ final class SensorManagerTests: XCTestCase {
         XCTAssertEqual(type(of: manager).defaultValueForUndefinedSensor, manager.value(tag: "undefinedTag", spriteObject: object) as! Double)
         XCTAssertEqual(sensorA.rawValue(), manager.value(tag: sensorA.tag(), spriteObject: object) as! Double)
         XCTAssertEqual(sensorA.rawValue(), manager.value(tag: sensorA.tag(), spriteObject: nil) as! Double)
-        XCTAssertEqual(type(of: sensorB).rawValue(for: SpriteObject()), manager.value(tag: sensorB.tag(), spriteObject: object) as! Double)
+        XCTAssertEqual(type(of: sensorB).rawValue(for: SpriteObject(scene: Scene(project: Project()))!), manager.value(tag: sensorB.tag(), spriteObject: object) as! Double)
         XCTAssertEqual(type(of: sensorC).rawValue(for: object), manager.value(tag: sensorC.tag(), spriteObject: object) as! String)
         XCTAssertEqual(type(of: sensorC).defaultRawValue, manager.value(tag: sensorC.tag()) as! Double)
     }

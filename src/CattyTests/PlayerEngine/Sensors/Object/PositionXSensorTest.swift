@@ -35,7 +35,7 @@ final class PositionXSensorTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         spriteNode.mockedScene = SceneBuilder(project: ProjectMock(width: CGFloat(screenWidth), andHeight: CGFloat(screenHeight))).build()
         sensor = PositionXSensor()

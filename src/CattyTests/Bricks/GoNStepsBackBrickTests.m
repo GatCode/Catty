@@ -45,13 +45,13 @@
 - (void)testGoNStepsBackBrickSingle
 {
     Project* project = [[Project alloc] init];
-    SpriteObject* object1 = [[SpriteObject alloc] init];
+    SpriteObject* object1 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode1 = [[CBSpriteNode alloc] initWithSpriteObject:object1];
     object1.spriteNode = spriteNode1;
     object1.project = project;
     spriteNode1.zPosition = 5;
 
-    SpriteObject* object2 = [[SpriteObject alloc] init];
+    SpriteObject* object2 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode2 = [[CBSpriteNode alloc] initWithSpriteObject:object2];
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
@@ -76,13 +76,13 @@
 - (void)testGoNStepsBackBrickTwice
 {
     Project *project = [[Project alloc] init];
-    SpriteObject *object1 = [[SpriteObject alloc] init];
+    SpriteObject *object1 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode1 = [[CBSpriteNode alloc] initWithSpriteObject:object1];
     object1.spriteNode = spriteNode1;
     object1.project = project;
     spriteNode1.zPosition = 6;
 
-    SpriteObject *object2 = [[SpriteObject alloc] init];
+    SpriteObject *object2 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode2 = [[CBSpriteNode alloc] initWithSpriteObject:object2];
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
@@ -107,13 +107,13 @@
 - (void)testGoNStepsBackBrickComeToSameLayer
 {
     Project *project = [[Project alloc] init];
-    SpriteObject *object1 = [[SpriteObject alloc] init];
+    SpriteObject *object1 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     object1.project = project;
     CBSpriteNode *spriteNode1 = [[CBSpriteNode alloc] initWithSpriteObject:object1];
     object1.spriteNode = spriteNode1;
     spriteNode1.zPosition = 5;
 
-    SpriteObject *object2 = [[SpriteObject alloc] init];
+    SpriteObject *object2 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode2 = [[CBSpriteNode alloc] initWithSpriteObject:object2];
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
@@ -138,13 +138,13 @@
 - (void)testGoNStepsBackBrickOutOfRange
 {
     Project *project = [[Project alloc] init];
-    SpriteObject *object1 = [[SpriteObject alloc] init];
+    SpriteObject *object1 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode1 = [[CBSpriteNode alloc] initWithSpriteObject:object1];
     object1.spriteNode = spriteNode1;
     object1.project = project;
     spriteNode1.zPosition = 5;
 
-    SpriteObject *object2 = [[SpriteObject alloc] init];
+    SpriteObject *object2 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode2 = [[CBSpriteNode alloc] initWithSpriteObject:object2];
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;
@@ -169,13 +169,13 @@
 - (void)testGoNStepsBackBrickWronginput
 {
     Project *project = [[Project alloc] init];
-    SpriteObject *object1 = [[SpriteObject alloc] init];
+    SpriteObject *object1 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     object1.project = project;
     CBSpriteNode *spriteNode1 = [[CBSpriteNode alloc] initWithSpriteObject:object1];
     object1.spriteNode = spriteNode1;
     spriteNode1.zPosition = 5;
 
-    SpriteObject *object2 = [[SpriteObject alloc] init];
+    SpriteObject *object2 = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode2 = [[CBSpriteNode alloc] initWithSpriteObject:object2];
     object2.spriteNode = spriteNode2;
     spriteNode2.zPosition = 3;

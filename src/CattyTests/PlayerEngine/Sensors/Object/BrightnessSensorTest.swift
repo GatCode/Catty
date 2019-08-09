@@ -31,7 +31,7 @@ final class BrightnessSensorTest: XCTestCase {
     var sensor: BrightnessSensor!
 
     override func setUp() {
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         sensor = BrightnessSensor()
     }

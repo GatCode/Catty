@@ -61,7 +61,7 @@
 
 - (BOOL)isEqualToBrick:(Brick*)brick;
 
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context AndErrorReporting:(BOOL)reportError;
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context AndErrorReporting:(BOOL)reportError andScene:(Scene *)scene;
 
 - (void)removeFromScript;
 

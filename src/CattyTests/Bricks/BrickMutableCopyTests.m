@@ -24,6 +24,7 @@
 #import "PlaceAtBrick.h"
 #import "WaitBrick.h"
 #import "CBMutableCopyContext.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickMutableCopyTests : XCTestCase
 
@@ -35,7 +36,7 @@
     PlaceAtBrick *brick = [PlaceAtBrick new];
     brick.xPosition = [[Formula alloc] initWithInteger:111];
     brick.yPosition = [[Formula alloc] initWithInteger:999];
-    PlaceAtBrick *copiedBrick = [brick mutableCopyWithContext:[CBMutableCopyContext new] AndErrorReporting:YES];
+    PlaceAtBrick *copiedBrick = [brick mutableCopyWithContext:[CBMutableCopyContext new] AndErrorReporting:YES andScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     
     XCTAssertTrue([brick isEqualToBrick:copiedBrick], @"Bricks are not equal");
     XCTAssertFalse([brick.xPosition isEqualToFormula:brick.yPosition], @"Formulas for xPosition and xPosition are equal");
@@ -48,7 +49,7 @@
     brick.timeToWaitInSeconds = [[Formula alloc] initWithInteger:1];
     brick.animate = YES;
     brick.animateInsertBrick = NO;
-    WaitBrick *copiedBrick = [brick mutableCopyWithContext:[CBMutableCopyContext new] AndErrorReporting:YES];
+    WaitBrick *copiedBrick = [brick mutableCopyWithContext:[CBMutableCopyContext new] AndErrorReporting:YES andScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     
     XCTAssertTrue([brick isEqualToBrick:copiedBrick], @"Bricks are not equal");
     XCTAssertEqual(brick.animate, copiedBrick.animate, @"BOOL animate is not equal");

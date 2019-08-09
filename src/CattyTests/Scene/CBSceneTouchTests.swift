@@ -74,13 +74,13 @@ final class CBSceneTouchTests: XCTestCase {
         let look = Look()
         look.name = "Look"
 
-        let spriteObjectA = SpriteObject()
+        let spriteObjectA = SpriteObject(scene: Scene(project: Project()))!
         spriteObjectA.name = "SpriteObjectA"
         spriteObjectA.add(look, andSaveToDisk: false)
         spriteNodeA = CBSpriteNode(spriteObject: spriteObjectA)
         spriteNodeA.currentUIImageLook = MockImage(size: CGSize(width: 100, height: 100))
 
-        let spriteObjectB = SpriteObject()
+        let spriteObjectB = SpriteObject(scene: Scene(project: Project()))!
         spriteObjectB.name = "SpriteObjectB"
         spriteObjectB.add(look, andSaveToDisk: false)
         spriteNodeB = CBSpriteNode(spriteObject: spriteObjectB)

@@ -33,7 +33,7 @@ final class CBBackendTests: XCTestCase {
     var backend: CBBackend!
 
     override func setUp() {
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteObject.name = "SpriteObjectName"
 
         spriteNode = CBSpriteNode(spriteObject: spriteObject)

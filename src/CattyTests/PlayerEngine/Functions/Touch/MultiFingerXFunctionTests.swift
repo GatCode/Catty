@@ -39,7 +39,7 @@ class MultiFingerXFunctionTests: XCTestCase {
         touchManager = TouchManagerMock()
         function = MultiFingerXFunction { [weak self] in self?.touchManager }
 
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         spriteNode.mockedScene = SceneBuilder(project: ProjectMock(width: CGFloat(screenWidth), andHeight: CGFloat(screenHeight))).build()
     }

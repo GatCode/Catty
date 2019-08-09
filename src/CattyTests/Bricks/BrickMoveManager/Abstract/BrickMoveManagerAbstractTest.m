@@ -40,7 +40,7 @@
 - (void)setUp
 {
     [super setUp];
-    self.spriteObject = [[SpriteObject alloc] init];
+    self.spriteObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     self.spriteObject.name = @"SpriteObject";
     
     UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc]init];

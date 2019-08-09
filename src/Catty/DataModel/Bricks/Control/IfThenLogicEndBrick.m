@@ -67,9 +67,9 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
-    IfThenLogicEndBrick *endBrick = [self mutableCopyWithContext:context AndErrorReporting:NO];
+    IfThenLogicEndBrick *endBrick = [self mutableCopyWithContext:context AndErrorReporting:NO andScene:scene];
     IfThenLogicBeginBrick *beginBrick = [context updatedReferenceForReference:self.ifBeginBrick];
     
     if(beginBrick) {

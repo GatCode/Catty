@@ -31,7 +31,7 @@ final class XMLMappingObjectListTests: XMLMappingAbstractTests {
         var project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
 
         if project != nil {
-            let mappedObjectList = CBXMLMappingToObjc.mapObjectList(scene: cbProject.scenes?.first, project: cbProject, currentProject: &project!)
+            let mappedObjectList = CBXMLMappingToObjc.mapObjectList(scene: cbProject.scenes?.first, project: cbProject, currentProject: &project!, currentScene: project?.scenes.firstObject as? Scene)
             XCTAssertNotNil(mappedObjectList)
             XCTAssertEqual(cbProject.scenes?.first?.objectList?.objects?.count, mappedObjectList?.count)
 

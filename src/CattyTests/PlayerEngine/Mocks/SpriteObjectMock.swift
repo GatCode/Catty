@@ -24,10 +24,10 @@
 
 final class SpriteObjectMock: SpriteObject {
 
-    var background: Bool
-
+    var background: Bool = false
+    
     override init() {
-        background = false
+        super.init(scene: Scene(project: Project()))
     }
 
     override func isBackground() -> Bool {

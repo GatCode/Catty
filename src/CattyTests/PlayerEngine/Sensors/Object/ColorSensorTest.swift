@@ -32,7 +32,7 @@ final class ColorSensorTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         sensor = ColorSensor()
     }
@@ -93,7 +93,7 @@ final class ColorSensorTest: XCTestCase {
     }
 
     func testFormulaEditorSections() {
-        let sections = sensor.formulaEditorSections(for: SpriteObject())
+        let sections = sensor.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.object(position: type(of: sensor).position), sections.first)
     }

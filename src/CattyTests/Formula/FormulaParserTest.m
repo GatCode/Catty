@@ -43,7 +43,7 @@
     [super setUp];
     self.formulaManager = (id<FormulaManagerProtocol>)[[FormulaManager alloc] initWithSceneSize:[Util screenSize:true]];
     self.interpreter = (id<FormulaInterpreterProtocol>)self.formulaManager;
-    self.object = [SpriteObject new];
+    self.object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
 }
 
 - (void) testNumbers {

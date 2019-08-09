@@ -56,7 +56,7 @@
 {
     [super setUp];
     self.scene = [[[SceneBuilder alloc] initWithProject:[[ProjectMock alloc] initWithWidth:SCREEN_WIDTH andHeight:SCREEN_HEIGHT]] build];
-    self.spriteObject = [[SpriteObject alloc] init];
+    self.spriteObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     CBSpriteNode *spriteNode = [[CBSpriteNode alloc] initWithSpriteObject:self.spriteObject];
     [self.scene addChild:spriteNode];
     spriteNode.color = [UIColor blackColor];

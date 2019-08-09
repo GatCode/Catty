@@ -42,7 +42,7 @@ final class RepeatBrickTests: XCTestCase {
         let interpreter = FormulaManager(sceneSize: CGSize.zero)
         let repeatBrick = RepeatBrick()
         let script = Script()
-        let object = SpriteObject()
+        let object = SpriteObject(scene: Scene(project: Project()))!
 
         script.object = object
         repeatBrick.script = script
@@ -63,7 +63,7 @@ final class RepeatBrickTests: XCTestCase {
         let interpreter = FormulaManager(sceneSize: CGSize.zero)
         let repeatBrick = RepeatBrick()
         let script = Script()
-        let object = SpriteObject()
+        let object = SpriteObject(scene: Scene(project: Project()))!
 
         script.object = object
         repeatBrick.script = script

@@ -41,7 +41,7 @@
 {
     Project *project = [Project new];
     
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     object.project = project;
     
     UserVariable* var = [UserVariable new];
@@ -67,7 +67,7 @@
 {
     Project *project = [Project new];
     
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     object.project = project;
     
     UserVariable* var = [UserVariable new];
@@ -106,7 +106,7 @@
 {
     Project *project = [Project new];
     
-    SpriteObject *object = [[SpriteObject alloc] init];
+    SpriteObject *object = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
     object.project = project;
     
     UserVariable* var = [UserVariable new];

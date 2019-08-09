@@ -38,7 +38,7 @@ const double EPSILON = 0.001;
 - (void)setUp
 {
     self.formulaManager = [[FormulaManager alloc] initWithSceneSize:[Util screenSize:true]];
-    self.spriteObject = [SpriteObject new];
+    self.spriteObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
 }
 
 - (Formula*)getFormulaForFunction:(NSString*)tag WithLeftValue:(NSString*)leftValue AndRightValue:(NSString*)rightValue

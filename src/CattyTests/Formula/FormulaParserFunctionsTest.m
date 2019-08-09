@@ -46,7 +46,7 @@
 {
     self.formulaManager = (id<FormulaManagerProtocol>)[[FormulaManager alloc] initWithSceneSize:[Util screenSize:true]];
     self.interpreter = (id<FormulaInterpreterProtocol>)self.formulaManager;
-    self.spriteObject = [SpriteObject new];
+    self.spriteObject = [[SpriteObject alloc] initWithScene:[[Scene alloc] initWithProject:[[Project alloc] init]]];
 }
 
 - (void) testSin

@@ -55,8 +55,8 @@ final class FingerTouchedSensorTest: XCTestCase {
     }
 
     func testConvertToStandardized() {
-        XCTAssertEqual(1, self.sensor.convertToStandardized(rawValue: 1, for: SpriteObject()))
-        XCTAssertEqual(0, self.sensor.convertToStandardized(rawValue: 0, for: SpriteObject()))
+        XCTAssertEqual(1, self.sensor.convertToStandardized(rawValue: 1, for: SpriteObject(scene: Scene(project: Project()))!))
+        XCTAssertEqual(0, self.sensor.convertToStandardized(rawValue: 0, for: SpriteObject(scene: Scene(project: Project()))!))
     }
 
     func testTag() {
@@ -68,7 +68,7 @@ final class FingerTouchedSensorTest: XCTestCase {
     }
 
     func testFormulaEditorSections() {
-        let sections = sensor.formulaEditorSections(for: SpriteObject())
+        let sections = sensor.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: sensor).position), sections.first)
     }

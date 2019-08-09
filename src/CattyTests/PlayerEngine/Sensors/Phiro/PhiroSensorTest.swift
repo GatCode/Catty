@@ -61,66 +61,66 @@ final class PhiroSensorTest: XCTestCase {
     func testFormulaEditorSectionFrontLeft() {
         UserDefaults.standard.set(true, forKey: kUsePhiroBricks)
 
-        let sections = phiroFrontLeft.formulaEditorSections(for: SpriteObject())
+        let sections = phiroFrontLeft.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: phiroFrontLeft).position), sections.first)
 
         UserDefaults.standard.set(false, forKey: kUsePhiroBricks)
-        XCTAssertEqual(0, phiroFrontLeft.formulaEditorSections(for: SpriteObject()).count)
+        XCTAssertEqual(0, phiroFrontLeft.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!).count)
     }
 
     func testFormulaEditorSectionFrontLRight() {
         UserDefaults.standard.set(true, forKey: kUsePhiroBricks)
 
-        let sections = phiroFrontRight.formulaEditorSections(for: SpriteObject())
+        let sections = phiroFrontRight.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: phiroFrontRight).position), sections.first)
 
         UserDefaults.standard.set(false, forKey: kUsePhiroBricks)
-        XCTAssertEqual(0, phiroFrontRight.formulaEditorSections(for: SpriteObject()).count)
+        XCTAssertEqual(0, phiroFrontRight.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!).count)
     }
 
     func testFormulaEditorSectionSideLeft() {
         UserDefaults.standard.set(true, forKey: kUsePhiroBricks)
 
-        let sections = phiroSideLeft.formulaEditorSections(for: SpriteObject())
+        let sections = phiroSideLeft.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: phiroSideLeft).position), sections.first)
 
         UserDefaults.standard.set(false, forKey: kUsePhiroBricks)
-        XCTAssertEqual(0, phiroSideLeft.formulaEditorSections(for: SpriteObject()).count)
+        XCTAssertEqual(0, phiroSideLeft.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!).count)
     }
 
     func testFormulaEditorSectionSideRight() {
         UserDefaults.standard.set(true, forKey: kUsePhiroBricks)
 
-        let sections = phiroSideRight.formulaEditorSections(for: SpriteObject())
+        let sections = phiroSideRight.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: phiroSideRight).position), sections.first)
 
         UserDefaults.standard.set(false, forKey: kUsePhiroBricks)
-        XCTAssertEqual(0, phiroSideRight.formulaEditorSections(for: SpriteObject()).count)
+        XCTAssertEqual(0, phiroSideRight.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!).count)
     }
 
     func testFormulaEditorSectionBottomLeft() {
         UserDefaults.standard.set(true, forKey: kUsePhiroBricks)
 
-        let sections = phiroBottomLeft.formulaEditorSections(for: SpriteObject())
+        let sections = phiroBottomLeft.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: phiroBottomLeft).position), sections.first)
 
         UserDefaults.standard.set(false, forKey: kUsePhiroBricks)
-        XCTAssertEqual(0, phiroBottomLeft.formulaEditorSections(for: SpriteObject()).count)
+        XCTAssertEqual(0, phiroBottomLeft.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!).count)
     }
 
     func testFormulaEditorSectionBottomRight() {
         UserDefaults.standard.set(true, forKey: kUsePhiroBricks)
 
-        let sections = phiroBottomRight.formulaEditorSections(for: SpriteObject())
+        let sections = phiroBottomRight.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!)
         XCTAssertEqual(1, sections.count)
         XCTAssertEqual(.device(position: type(of: phiroBottomRight).position), sections.first)
 
         UserDefaults.standard.set(false, forKey: kUsePhiroBricks)
-        XCTAssertEqual(0, phiroBottomRight.formulaEditorSections(for: SpriteObject()).count)
+        XCTAssertEqual(0, phiroBottomRight.formulaEditorSections(for: SpriteObject(scene: Scene(project: Project()))!).count)
     }
 }

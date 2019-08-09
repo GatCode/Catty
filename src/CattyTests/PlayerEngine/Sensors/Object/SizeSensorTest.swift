@@ -32,7 +32,7 @@ final class SizeSensorTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        spriteObject = SpriteObject()
+        spriteObject = SpriteObject(scene: Scene(project: Project()))!
         spriteNode = CBSpriteNodeMock(spriteObject: spriteObject)
         sensor = SizeSensor()
     }
