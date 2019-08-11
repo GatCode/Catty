@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+// swiftlint:disable large_tuple
+
 extension CBXMLMappingFromObjc {
 
     static func resolveObjectPath(project: Project, object: SpriteObject?) -> String? {

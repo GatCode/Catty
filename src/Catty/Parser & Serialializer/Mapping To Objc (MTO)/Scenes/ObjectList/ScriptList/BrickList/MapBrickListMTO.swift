@@ -20,8 +20,6 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-// swiftlint:disable large_tuple
-
 extension CBXMLMappingToObjc {
 
     static func mapBrickList(script: CBScript?, objectList: [CBObject]?, object: CBObject?, project: CBProject?, currScript: inout Script?, currObject: inout SpriteObject) -> NSMutableArray? {

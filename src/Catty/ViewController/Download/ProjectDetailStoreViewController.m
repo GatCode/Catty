@@ -274,9 +274,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *error = nil;
                 NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                NSString *statusCode = [NSString stringWithFormat:@"%@", [dictionary valueForKey:@"statusCode"]];
                 
-                NSDebug(@"StatusCode is %@", statusCode);
+                NSDebug(@"StatusCode is %@", [NSString stringWithFormat:@"%@", [dictionary valueForKey:@"statusCode"]]);
                 
                 [Util alertWithText:[dictionary valueForKey:@"answer"]];
                 
