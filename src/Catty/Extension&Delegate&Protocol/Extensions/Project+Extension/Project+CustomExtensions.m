@@ -28,9 +28,9 @@
 
 @implementation Project (CustomExtensions)
 
-- (void)updateReferences
+- (void)updateReferencesforScene:(Scene*)scene
 {
-    for (SpriteObject *sprite in (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for (SpriteObject *sprite in scene.objectList) {
         sprite.project = self;
         for (Script *script in sprite.scriptList) {
             script.object = sprite;

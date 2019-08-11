@@ -21,9 +21,10 @@
  */
 
 #import "Project.h"
+#import "Pocket_Code-Swift.h"
 
 @interface Project (CustomExtensions)
 
-- (void)updateReferences;
+- (void)updateReferencesforScene:(Scene*)scene;
 
 @end
