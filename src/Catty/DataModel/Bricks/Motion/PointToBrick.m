@@ -64,11 +64,15 @@
 }
 
 #pragma mark - Default values
-- (void)setDefaultValuesForObject:(SpriteObject*)spriteObject
+- (void)setDefaultValuesForObject:(SpriteObject*)spriteObject inScene:(Scene*)scene
 {
+    if (scene == nil) {
+        scene = ((NSMutableArray<Scene*>*)spriteObject.project.scenes).firstObject;
+    }
+    
     if(spriteObject) {
         SpriteObject *firstObject = nil;
-        for(SpriteObject *object in (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)spriteObject.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+        for(SpriteObject *object in scene.objectList) {
             if(![object.name isEqualToString:spriteObject.name] && ![object.name isEqualToString:kLocalizedBackground]) {
                 firstObject = object;
                 break;

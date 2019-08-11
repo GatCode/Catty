@@ -381,7 +381,6 @@
     [ret appendFormat:@"Screen Height: %@\n", self.header.screenHeight];
     [ret appendFormat:@"Screen Width: %@\n", self.header.screenWidth];
     [ret appendFormat:@"Screen Mode: %@\n", self.header.screenMode];
-    [ret appendFormat:@"Sprite List: %@\n", (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.scenes).firstObject.objectList]; // TODO: this just works for one scene!
     [ret appendFormat:@"URL: %@\n", self.header.url];
     [ret appendFormat:@"User Handle: %@\n", self.header.userHandle];
     [ret appendFormat:@"------------------------------------------------\n"];
@@ -570,23 +569,24 @@
 }
 
 - (void)translateDefaultProject
-{
-    Scene *scene = self.scenes.firstObject; // TODO: this just works for one scene!
-    
-    NSUInteger index = 0;
-    for (SpriteObject *spriteObject in scene.objectList) {
-        if (index == kBackgroundObjectIndex) {
-            spriteObject.name = kLocalizedBackground;
-        } else {
-            NSMutableString *spriteObjectName = [NSMutableString stringWithString:spriteObject.name];
-            [spriteObjectName replaceOccurrencesOfString:kDefaultProjectBundleOtherObjectsNamePrefix
-                                              withString:kLocalizedMole
-                                                 options:NSCaseInsensitiveSearch
-                                                   range:NSMakeRange(0, spriteObjectName.length)];
-            spriteObject.name = (NSString*)spriteObjectName;
+{    
+    for (Scene* scene in self.scenes) {
+        NSUInteger index = 0;
+        for (SpriteObject *spriteObject in scene.objectList) {
+            if (index == kBackgroundObjectIndex) {
+                spriteObject.name = kLocalizedBackground;
+            } else {
+                NSMutableString *spriteObjectName = [NSMutableString stringWithString:spriteObject.name];
+                [spriteObjectName replaceOccurrencesOfString:kDefaultProjectBundleOtherObjectsNamePrefix
+                                                  withString:kLocalizedMole
+                                                     options:NSCaseInsensitiveSearch
+                                                       range:NSMakeRange(0, spriteObjectName.length)];
+                spriteObject.name = (NSString*)spriteObjectName;
+            }
+            ++index;
         }
-        ++index;
     }
+    
     [self renameToProjectName:kLocalizedMyFirstProject]; // saves to disk!
 }
 

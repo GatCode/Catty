@@ -1117,7 +1117,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
             }
         }
         if (pickerData) {
-            if(![self isVarOrListBeingUsed:pickerData.userVariable]) {
+            if(![self isVarOrListBeingUsed:pickerData.userVariable inScene:nil]) {
                 
                 BOOL removed = NO;
                 BOOL isList = pickerData.userVariable.isList;
@@ -1142,10 +1142,14 @@ NS_ENUM(NSInteger, ButtonIndex) {
     }
 }
 
-- (BOOL)isVarOrListBeingUsed:(UserVariable*)variable
+- (BOOL)isVarOrListBeingUsed:(UserVariable*)variable inScene:(Scene*)scene
 {
+    if (scene == nil) {
+        scene = ((NSMutableArray<Scene*>*)self.object.project.scenes).firstObject;
+    }
+    
     if([self.object.project isProjectVariableOrList:variable]) {
-        for(SpriteObject *spriteObject in ((NSMutableArray<Scene*>*)self.object.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+        for(SpriteObject *spriteObject in scene.objectList) {
             for(Script *script in spriteObject.scriptList) {
                 for(id brick in script.brickList) {
                     if([brick isKindOfClass:[Brick class]] && [brick isVarOrListBeingUsed:variable]) {
