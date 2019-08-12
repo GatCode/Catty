@@ -86,7 +86,7 @@
 }
 
 #pragma mark - Copy
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
     PointToBrick *copy = [super mutableCopyWithContext:context andScene:self.script.object.scene];
     if(self.pointedObject)

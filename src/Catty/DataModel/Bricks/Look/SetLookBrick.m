@@ -84,7 +84,7 @@
 }
 
 
-- (id)mutableCopyWithContext:(CBMutableCopyContext*)context
+- (id)mutableCopyWithContext:(CBMutableCopyContext*)context andScene:(Scene *)scene
 {
     if (! context) NSError(@"%@ must not be nil!", [CBMutableCopyContext class]);
     SetLookBrick *brick = [[self class] new];

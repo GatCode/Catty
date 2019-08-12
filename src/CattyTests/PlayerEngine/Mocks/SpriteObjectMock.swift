@@ -25,7 +25,7 @@
 final class SpriteObjectMock: SpriteObject {
 
     var background: Bool = false
-    
+
     override init() {
         super.init(scene: Scene(project: Project()))
     }
