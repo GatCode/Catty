@@ -27,7 +27,13 @@
     }
 
     @objc func actionBlock() -> () -> Void {
-        guard let object = ((self.script.object.project?.scenes as? [Scene])?.first?.objectList)?.first, // TODO: this just works for one scene!
+
+        var scene = self.script.object.scene
+        if scene == nil {
+            scene = (self.script.object.project?.scenes as? [Scene])?.first
+        }
+
+        guard let object = scene?.objectList.first,
             let spriteNode = object.spriteNode
             else { fatalError("This should never happen!") }
 

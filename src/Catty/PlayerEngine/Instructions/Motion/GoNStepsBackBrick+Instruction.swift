@@ -27,10 +27,16 @@
     }
 
     @objc func actionBlock(_ formulaInterpreter: FormulaInterpreterProtocol) -> () -> Void {
+
+        var scene = self.script.object.scene
+        if scene == nil {
+            scene = (self.script.object.project?.scenes as? [Scene])?.first
+        }
+
         guard let currentObject = self.script?.object,
             let currentSpriteNode = currentObject.spriteNode,
             let stepsFormula = self.steps,
-            let objectList = (self.script?.object?.project?.scenes as? [Scene])?.first?.objectList // TODO: this just works for one scene!
+            let objectList = scene?.objectList
             else { fatalError("This should never happen!") }
 
         return {

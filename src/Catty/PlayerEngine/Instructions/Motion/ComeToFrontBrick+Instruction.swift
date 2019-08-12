@@ -27,15 +27,21 @@
     }
 
     @objc func actionBlock() -> () -> Void {
+
+        var scene = self.script.object.scene
+        if scene == nil {
+            scene = (self.script.object.project?.scenes as? [Scene])?.first
+        }
+
         guard let currentObject = self.script?.object,
             let currentSpriteNode = currentObject.spriteNode,
             let project = self.script?.object?.project,
-            let objectList = (self.script?.object?.project?.scenes as? [Scene])?.first?.objectList // TODO: this just works for one scene!
+            let objectList = scene?.objectList
             else { fatalError("This should never happen!") }
 
         return {
             let currentLayer = currentSpriteNode.catrobatLayer
-            let frontValue = Double(project.numberOfNormalObjects(in: (self.script.object.project.scenes as? [Scene])?.first)) // TODO: this just works for one scene!
+            let frontValue = Double(project.numberOfNormalObjects(in: scene))
             currentSpriteNode.catrobatLayer = frontValue
 
             for spriteObject in objectList {

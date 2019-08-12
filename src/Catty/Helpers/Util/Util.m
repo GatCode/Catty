@@ -588,9 +588,13 @@
     return NO;
 }
 
-+ (SpriteObject*)objectWithName:(NSString*)objectName forProject:(Project*)project
++ (SpriteObject*)objectWithName:(NSString*)objectName forProject:(Project*)project andScene:(Scene*)scene
 {
-    for(SpriteObject *object in ((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    if (scene == nil) {
+        scene = ((NSMutableArray<Scene*>*)project.scenes).firstObject;
+    }
+    
+    for(SpriteObject *object in scene.objectList) {
         if([object.name isEqualToString:objectName]) {
             return object;
         }
@@ -618,10 +622,14 @@
     return nil;
 }
 
-+ (NSArray*)allMessagesForProject:(Project*)project
++ (NSArray*)allMessagesForProject:(Project*)project andScene:(Scene*)scene
 {
+    if (scene == nil) {
+        scene = ((NSMutableArray<Scene*>*)project.scenes).firstObject;
+    }
+    
     NSMutableArray *messages = [[NSMutableArray alloc] init];
-    for(SpriteObject *object in ((NSMutableArray<Scene*>*)project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+    for(SpriteObject *object in scene.objectList) {
         for(Script *script in object.scriptList) {
             if([script isKindOfClass:[BroadcastScript class]]) {
                 BroadcastScript *broadcastScript = (BroadcastScript*)script;

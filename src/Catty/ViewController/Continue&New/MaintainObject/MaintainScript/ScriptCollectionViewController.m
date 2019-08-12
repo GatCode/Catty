@@ -1119,7 +1119,7 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
             [self.navigationController pushViewController:ptvc animated:YES];
             return;
         } else {
-            [objectBrick setObject:[Util objectWithName:(NSString*)value forProject:self.object.project] forLineNumber:line andParameterNumber:parameter];
+            [objectBrick setObject:[Util objectWithName:(NSString*)value forProject:self.object.project andScene:self.object.scene] forLineNumber:line andParameterNumber:parameter];
         }
     } else
     if ([brickCellData isKindOfClass:[BrickCellFormulaData class]] && [brick conformsToProtocol:@protocol(BrickFormulaProtocol)]) {
