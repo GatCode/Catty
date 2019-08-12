@@ -58,7 +58,6 @@ extension CBXMLMappingFromObjc {
         return CBObjectListofList(entry: mappedEntries)
     }
 
-    // TODO: move the stuff below outside!
     static func mapObjectListOfListsEntry(scene: Scene, project: Project, referencedIndex: UInt) -> CBObjectListOfListEntry {
         let referencedObject = scene.data?.objectListOfLists?.key(at: referencedIndex)
         let referencedVariableList = scene.data?.objectListOfLists?.object(at: referencedIndex)
@@ -69,31 +68,5 @@ extension CBXMLMappingFromObjc {
         let list = mapObjectVariableListEntryList(project: project, list: userVariableList, object: spriteObject, objectPath: object, isList: true)
 
         return CBObjectListOfListEntry(object: object, list: list)
-    }
-
-    // MARK: - Map ProgramVariableList
-    static func mapProgramVariableList(project: Project) -> CBProgramVariableList {
-        var mappedProgramVariables = [CBUserProgramVariable]()
-
-        for variable in globalVariableList where variable.1 == false {
-            for v in CBXMLMappingFromObjc.userVariableList where v.0?.name == variable.0 {
-                mappedProgramVariables.append(CBUserProgramVariable(reference: resolveProgramVariableOrListOfListsUVarPosition(position: v.1, isList: false)))
-            }
-        }
-
-        return CBProgramVariableList(userVariable: mappedProgramVariables)
-    }
-
-    // MARK: - Map ProgramListOfLists
-    static func mapProgramListOfLists(project: Project) -> CBProgramListOfLists {
-        var mappedProgramVariables = [CBProgramList]()
-
-        for variable in globalVariableList where variable.1 == true {
-            for v in CBXMLMappingFromObjc.userVariableList where v.0?.name == variable.0 {
-                mappedProgramVariables.append(CBProgramList(reference: resolveProgramVariableOrListOfListsUVarPosition(position: v.1, isList: true)))
-            }
-        }
-
-        return CBProgramListOfLists(list: mappedProgramVariables)
     }
 }

@@ -79,7 +79,7 @@
 		2E35EBB622DB969700B580FD /* Parser&SerializerDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBB522DB969700B580FD /* Parser&SerializerDefines.swift */; };
 		2E35EBB822DB978C00B580FD /* MapHeaderMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBB722DB978C00B580FD /* MapHeaderMFO.swift */; };
 		2E35EBBA22DB979500B580FD /* MapObjectListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBB922DB979500B580FD /* MapObjectListMFO.swift */; };
-		2E35EBBC22DB97A000B580FD /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */; };
+		2E35EBBC22DB97A000B580FD /* MapOjectVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBBB22DB97A000B580FD /* MapOjectVariablesMFO.swift */; };
 		2E35EBC122DB981600B580FD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC022DB981600B580FD /* String.swift */; };
 		2E35EBC322DB984600B580FD /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35EBC222DB984600B580FD /* Optional.swift */; };
 		2E4CA98522EEB904003F262D /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CA98422EEB904003F262D /* CustomExtensions.swift */; };
@@ -983,6 +983,7 @@
 		92FF32BE1A24E2F400093DA7 /* BaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32511A24E2F400093DA7 /* BaseTransition.m */; };
 		92FF32BF1A24E2F400093DA7 /* BrickTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32531A24E2F400093DA7 /* BrickTransition.m */; };
 		92FF32C31A24E33B00093DA7 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92FF32C21A24E33B00093DA7 /* iPhone.storyboard */; };
+		96C2EB292301B6A600F19528 /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2EB282301B6A600F19528 /* MapVariablesMFO.swift */; };
 		99B2C3701D884D2900736769 /* FlashBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C36F1D884D2900736769 /* FlashBrick.m */; };
 		99B2C3731D884E8A00736769 /* FlashBrickCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C3721D884E8A00736769 /* FlashBrickCell.m */; };
 		99B2C3751D884F2D00736769 /* FlashBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C3741D884F2D00736769 /* FlashBrick+Instruction.swift */; };
@@ -1433,7 +1434,7 @@
 		2E35EBB522DB969700B580FD /* Parser&SerializerDefines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Parser&SerializerDefines.swift"; sourceTree = "<group>"; };
 		2E35EBB722DB978C00B580FD /* MapHeaderMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderMFO.swift; sourceTree = "<group>"; };
 		2E35EBB922DB979500B580FD /* MapObjectListMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectListMFO.swift; sourceTree = "<group>"; };
-		2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
+		2E35EBBB22DB97A000B580FD /* MapOjectVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOjectVariablesMFO.swift; sourceTree = "<group>"; };
 		2E35EBC022DB981600B580FD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E35EBC222DB984600B580FD /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		2E4CA98422EEB904003F262D /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomExtensions.swift; path = Extensions/CustomExtensions.swift; sourceTree = "<group>"; };
@@ -2599,6 +2600,7 @@
 		92FF32C21A24E33B00093DA7 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		95088280A879E5F515D4569E /* fa-AF */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = "fa-AF"; path = "fa-AF.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		95C607797206029F5B454A53 /* sw */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sw; path = sw.lproj/Localizable.strings; sourceTree = "<group>"; };
+		96C2EB282301B6A600F19528 /* MapVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
 		98738650BC99C8766A159B17 /* ko */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9990BB6C1D89D89A0088357A /* BrickStaticChoiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrickStaticChoiceProtocol.h; sourceTree = "<group>"; };
 		99B2C36E1D884D2900736769 /* FlashBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashBrick.h; sourceTree = "<group>"; };
@@ -3367,6 +3369,7 @@
 				2E27BC4C22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift */,
 				2E35EBBD22DB97A500B580FD /* Header */,
 				2E35EBBE22DB97AE00B580FD /* Scenes */,
+				96C2EB252301B67900F19528 /* Variables */,
 			);
 			path = "Mapping From Objc (MFO)";
 			sourceTree = "<group>";
@@ -3406,7 +3409,7 @@
 			isa = PBXGroup;
 			children = (
 				2E0F21F522F490EF002B1721 /* MapData.swift */,
-				2E35EBBB22DB97A000B580FD /* MapVariablesMFO.swift */,
+				2E35EBBB22DB97A000B580FD /* MapOjectVariablesMFO.swift */,
 				2E0F21F722F49154002B1721 /* ResolveVariableReferencesMFO.swift */,
 			);
 			path = Data;
@@ -6473,6 +6476,14 @@
 			path = "Catty/Storyboard+XIB";
 			sourceTree = "<group>";
 		};
+		96C2EB252301B67900F19528 /* Variables */ = {
+			isa = PBXGroup;
+			children = (
+				96C2EB282301B6A600F19528 /* MapVariablesMFO.swift */,
+			);
+			path = Variables;
+			sourceTree = "<group>";
+		};
 		9E0F740522B5174D0030CD89 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -9090,7 +9101,7 @@
 				5EFBD5FC2145AADC003B3CDC /* UIView+Extensions.swift in Sources */,
 				92FF31591A24DEB300093DA7 /* DownloadTabBarController.m in Sources */,
 				F4E6E59A210E048700D86FE6 /* MaxFunction.swift in Sources */,
-				2E35EBBC22DB97A000B580FD /* MapVariablesMFO.swift in Sources */,
+				2E35EBBC22DB97A000B580FD /* MapOjectVariablesMFO.swift in Sources */,
 				5936893C2021979A00FC3115 /* SoundsTableViewController+MediaLibrary.swift in Sources */,
 				592EF6E62094B3D700BD6000 /* SpriteObjectProtocol.swift in Sources */,
 				F4E6E5BE210E1FA400D86FE6 /* RoundFunction.swift in Sources */,
@@ -9145,6 +9156,7 @@
 				AA74F0C41BC05FCE00D1E954 /* ChangeVolumeByNBrickCell.m in Sources */,
 				92FF30FD1A24DCAA00093DA7 /* Header.m in Sources */,
 				2E734F9222CE557100F38581 /* CBUserVariable.swift in Sources */,
+				96C2EB292301B6A600F19528 /* MapVariablesMFO.swift in Sources */,
 				2E0F21DF22F48A1A002B1721 /* ResolveXPathsMTO.swift in Sources */,
 				92B46FA71BC7C2A5004980C1 /* ArduinoSendDigitalValueBrick+Instruction.swift in Sources */,
 				E4AEC86D210843D20081A980 /* ProjectInformation.swift in Sources */,
