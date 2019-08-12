@@ -26,12 +26,14 @@
 
 @class ProjectLoadingInfo;
 @class Project;
+@class Scene;
 @protocol ProjectUpdateDelegate;
 
 @interface ProjectTableViewController : BaseTableViewController
 
 @property (nonatomic, weak) id<ProjectUpdateDelegate> delegate;
 @property (nonatomic, strong) Project *project;
+@property (nonatomic, strong) Scene *scene;
 
 @property (nonatomic,assign) BOOL showAddObjectActionSheetAtStart;
 @property (copy) void (^afterSafeBlock)(SpriteObject* object);

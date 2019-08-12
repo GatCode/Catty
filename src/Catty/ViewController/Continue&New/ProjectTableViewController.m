@@ -52,6 +52,12 @@
 {
     [project setAsLastUsedProject];
     _project = project;
+    _scene = project.scenes.firstObject; // TODO: set the scene outside when scenesViewController gets implemented!!!
+}
+
+- (void)setScene:(Scene *)scene
+{
+    _scene = scene;
 }
 
 #pragma mark - initialization
@@ -81,7 +87,7 @@
         self.title = self.project.header.programName;
     }
     self.placeHolderView.title = kLocalizedObject;
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:nil]]; // TODO: this just works for one scene!
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:self.scene]];
     [self setupToolBar];
     if(self.showAddObjectActionSheetAtStart) {
         [self addObjectAction:nil];
@@ -100,15 +106,13 @@
 {
     [self.tableView setEditing:false animated:YES];
     
-    Scene* scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
-    
     [[[[[[[AlertControllerBuilder textFieldAlertWithTitle:kLocalizedAddObject message:[NSString stringWithFormat:@"%@:", kLocalizedObjectName]]
           placeholder:kLocalizedEnterYourObjectNameHere]
          addCancelActionWithTitle:kLocalizedCancel handler:^{
              [self cancelAddingObjectFromScriptEditor];
          }]
         addDefaultActionWithTitle:kLocalizedOK handler:^(NSString *name) {
-            [self addObjectActionWithName:name toScene:scene];
+            [self addObjectActionWithName:name];
         }]
        valueValidator:^InputValidationResult *(NSString *name) {
            InputValidationResult *result = [Util validationResultWithName:name
@@ -118,7 +122,7 @@
                return result;
            }
            // Alert for Objects with same name
-           if ([[self.project allObjectNamesForScene:scene] containsObject:name]) {
+           if ([[self.project allObjectNamesForScene:self.scene] containsObject:name]) {
                return [InputValidationResult invalidInputWithLocalizedMessage:kLocalizedObjectNameAlreadyExistsDescription];
            }
            return [InputValidationResult validInput];
@@ -133,39 +137,39 @@
     }
 }
 
-- (void)addObjectActionWithName:(NSString*)objectName toScene:(Scene*)scene
+- (void)addObjectActionWithName:(NSString*)objectName
 {
     [self showLoadingView];
-    [self.project addObjectWithName:[Util uniqueName:objectName existingNames:[self.project allObjectNamesForScene:scene]] toScene:scene];
+    [self.project addObjectWithName:[Util uniqueName:objectName existingNames:[self.project allObjectNamesForScene:self.scene]] toScene:self.scene];
     NSInteger numberOfRowsInLastSection = [self tableView:self.tableView numberOfRowsInSection:kObjectSectionIndex];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(numberOfRowsInLastSection - 1) inSection:kObjectSectionIndex];
     [self.tableView insertRowsAtIndexPaths:@[indexPath]
-                          withRowAnimation:(([self.project numberOfNormalObjectsInScene:scene] == 1) ? UITableViewRowAnimationFade : UITableViewRowAnimationBottom)];
-
+                          withRowAnimation:(([self.project numberOfNormalObjectsInScene:self.scene] == 1) ? UITableViewRowAnimationFade : UITableViewRowAnimationBottom)];
+    
     LooksTableViewController *ltvc = [self.storyboard instantiateViewControllerWithIdentifier:kLooksTableViewControllerIdentifier];
-    [ltvc setObject:[scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]];
+    [ltvc setObject:[self.scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]];
     ltvc.showAddLookActionSheetAtStartForObject = YES;
     ltvc.showAddLookActionSheetAtStartForScriptEditor = NO;
     ltvc.afterSafeBlock =  ^(Look* look) {
         [self.navigationController popViewControllerAnimated:YES];
         if (!look) {
             NSUInteger index = (kBackgroundObjects + indexPath.row);
-            SpriteObject *object = (SpriteObject*)[scene.objectList objectAtIndex:index];
-            [self.project removeObjectFromList:object inScene:scene];
+            SpriteObject *object = (SpriteObject*)[self.scene.objectList objectAtIndex:index];
+            [self.project removeObjectFromList:object inScene:self.scene];
             [self.project saveToDiskWithNotification:NO];
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:((indexPath.row != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
         }
         if (self.afterSafeBlock && look ) {
             NSInteger numberOfRowsInLastSection = [self tableView:self.tableView numberOfRowsInSection:kObjectSectionIndex];
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(numberOfRowsInLastSection - 1) inSection:kObjectSectionIndex];
-            self.afterSafeBlock([scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]);
+            self.afterSafeBlock([self.scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]);
         }else if (self.afterSafeBlock && !look){
             self.afterSafeBlock(nil);
         }
-        [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
+        [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:self.scene]];
     };
     [self.navigationController pushViewController:ltvc animated:NO];
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:self.scene]];
     [self hideLoadingView];
 }
 
@@ -173,7 +177,7 @@
 {
     if ([newProjectName isEqualToString:self.project.header.programName])
         return;
-
+    
     [self showLoadingView];
     NSString *oldProjectName = self.project.header.programName;
     newProjectName = [Util uniqueName:newProjectName existingNames:[Project allProjectNames]];
@@ -185,12 +189,12 @@
     [self hideLoadingView];
 }
 
-- (void)copyObjectActionWithSourceObject:(SpriteObject*)sourceObject inScene:(Scene*  _Nullable)scene
+- (void)copyObjectActionWithSourceObject:(SpriteObject*)sourceObject
 {
     [self showLoadingView];
-    NSString *nameOfCopiedObject = [Util uniqueName:sourceObject.name existingNames:[self.project allObjectNamesForScene:scene]];
-    [self.project copyObject:sourceObject inScene:scene withNameForCopiedObject:nameOfCopiedObject];
-
+    NSString *nameOfCopiedObject = [Util uniqueName:sourceObject.name existingNames:[self.project allObjectNamesForScene:self.scene]];
+    [self.project copyObject:sourceObject inScene:self.scene withNameForCopiedObject:nameOfCopiedObject];
+    
     // create new cell
     NSInteger numberOfRowsInLastSection = [self tableView:self.tableView numberOfRowsInSection:kObjectSectionIndex];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(numberOfRowsInLastSection - 1) inSection:kObjectSectionIndex];
@@ -199,15 +203,15 @@
     [self hideLoadingView];
 }
 
-- (void)renameObjectActionToName:(NSString*)newObjectName spriteObject:(SpriteObject*)spriteObject inScene:(Scene*)scene
+- (void)renameObjectActionToName:(NSString*)newObjectName spriteObject:(SpriteObject*)spriteObject
 {
     if ([newObjectName isEqualToString:spriteObject.name])
         return;
-
+    
     [self showLoadingView];
-    newObjectName = [Util uniqueName:newObjectName existingNames:[self.project allObjectNamesForScene:scene]];
-    [self.project renameObject:spriteObject toName:newObjectName inScene:scene];
-    NSUInteger spriteObjectIndex = [scene.objectList indexOfObject:spriteObject];
+    newObjectName = [Util uniqueName:newObjectName existingNames:[self.project allObjectNamesForScene:self.scene]];
+    [self.project renameObject:spriteObject toName:newObjectName inScene:self.scene];
+    NSUInteger spriteObjectIndex = [self.scene.objectList indexOfObject:spriteObject];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(spriteObjectIndex - kBackgroundObjects)
                                                 inSection:kObjectSectionIndex];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -217,25 +221,25 @@
 - (void)editAction:(id)sender
 {
     [self.tableView setEditing:false animated:YES];
-
+    
     id<AlertControllerBuilding> actionSheet = [[AlertControllerBuilder actionSheetWithTitle:kLocalizedEditProject]
                                                addCancelActionWithTitle:kLocalizedCancel handler:nil];
     
-
-    if ([self.project numberOfNormalObjectsInScene:nil]) { // TODO: this just works for one scene!
+    
+    if ([self.project numberOfNormalObjectsInScene:self.scene]) {
         [actionSheet addDestructiveActionWithTitle:kLocalizedDeleteObjects handler:^{
             self.deletionMode = YES;
             [self setupEditingToolBar];
             [super changeToEditingMode:sender];
         }];
     }
-    if ([self.project numberOfNormalObjectsInScene:nil] >= 2) { // TODO: this just works for one scene!
+    if ([self.project numberOfNormalObjectsInScene:self.scene] >= 2) {
         [actionSheet addDefaultActionWithTitle:kLocalizedMoveObjects handler:^{
             self.deletionMode = NO;
             [super changeToMoveMode:sender];
         }];
     }
-
+    
     NSString *detailActionTitle = self.useDetailCells ? kLocalizedHideDetails : kLocalizedShowDetails;
     
     [[[[[actionSheet
@@ -260,7 +264,7 @@
        addDefaultActionWithTitle:kLocalizedDescription handler:^{
            ProjectDescriptionViewController *dViewController = [[ProjectDescriptionViewController alloc] init];
            dViewController.delegate = self;
-
+           
            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:dViewController];
            [self.navigationController presentViewController:navigationController animated:YES completion:nil];
        }] build]
@@ -292,10 +296,10 @@
         [super exitEditingMode];
         return;
     }
-    [self deleteSelectedObjectsActionInScene:self.project.scenes.firstObject]; // TODO: this just works for one scene!
+    [self deleteSelectedObjectsAction];
 }
 
-- (void)deleteSelectedObjectsActionInScene:(Scene*)scene
+- (void)deleteSelectedObjectsAction
 {
     [self showLoadingView];
     NSArray *selectedRowsIndexPaths = [self.tableView indexPathsForSelectedRows];
@@ -305,24 +309,24 @@
         if (selectedRowIndexPath.section != kObjectSectionIndex) {
             continue;
         }
-        SpriteObject *object = [scene.objectList objectAtIndex:(kObjectSectionIndex + selectedRowIndexPath.row)];
+        SpriteObject *object = (SpriteObject*)[self.scene.objectList objectAtIndex:(kObjectSectionIndex + selectedRowIndexPath.row)];
         [objectsToRemove addObject:object];
     }
-    [self.project removeObjects:objectsToRemove inScene:scene];
+    [self.project removeObjects:objectsToRemove inScene:self.scene];
     [super exitEditingMode];
-    [self.tableView deleteRowsAtIndexPaths:selectedRowsIndexPaths withRowAnimation:(([self.project numberOfNormalObjectsInScene:scene] != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
+    [self.tableView deleteRowsAtIndexPaths:selectedRowsIndexPaths withRowAnimation:(([self.project numberOfNormalObjectsInScene:self.scene] != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:self.scene]];
     [self hideLoadingView];
 }
 
-- (void)deleteObjectForIndexPath:(NSIndexPath*)indexPath inScene:(Scene*)scene
+- (void)deleteObjectForIndexPath:(NSIndexPath*)indexPath
 {
     [self showLoadingView];
     NSUInteger index = (kBackgroundObjects + indexPath.row);
-    SpriteObject *object = [scene.objectList objectAtIndex:index];
-    [self.project removeObject:object inScene:scene];
+    SpriteObject *object = (SpriteObject*)[self.scene.objectList objectAtIndex:index];
+    [self.project removeObject:object inScene:self.scene];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:((indexPath.row != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:self.scene]];
     [self hideLoadingView];
 }
 
@@ -344,9 +348,9 @@
 {
     switch (section) {
         case kBackgroundSectionIndex:
-            return [self.project numberOfBackgroundObjectsInScene:nil]; // TODO: this just works for one scene!
+            return [self.project numberOfBackgroundObjectsInScene:self.scene];
         case kObjectSectionIndex:
-            return [self.project numberOfNormalObjectsInScene:nil]; // TODO: this just works for one scene!
+            return [self.project numberOfNormalObjectsInScene:self.scene];
         default:
             return 0;
     }
@@ -362,16 +366,16 @@
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:DetailCellIdentifier forIndexPath:indexPath];
     }
-
+    
     if (! [cell conformsToProtocol:@protocol(CatrobatImageCell)] || ! [cell isKindOfClass:[CatrobatBaseCell class]]) {
         return cell;
     }
-
+    
     CatrobatBaseCell<CatrobatImageCell> *imageCell = (CatrobatBaseCell<CatrobatImageCell>*)cell;
     NSInteger index = (kBackgroundSectionIndex + indexPath.section + indexPath.row);
-    SpriteObject *object = [((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:index]; // TODO: this just works for one scene!
+    SpriteObject *object = [self.scene.objectList objectAtIndex:index];
     imageCell.iconImageView.image = nil;
-
+    
     if (self.useDetailCells && [cell isKindOfClass:[DarkBlueGradientImageDetailCell class]]) {
         DarkBlueGradientImageDetailCell *detailCell = (DarkBlueGradientImageDetailCell*)imageCell;
         detailCell.topLeftDetailLabel.textColor = [UIColor textTintColor];
@@ -387,12 +391,12 @@
         detailCell.bottomRightDetailLabel.text = [NSString stringWithFormat:@"%@: %lu", kLocalizedSounds,
                                                   (unsigned long)[object numberOfSounds]];
     }
-
+    
     if (! [object.lookList count]) {
         imageCell.titleLabel.text = object.name;
         return imageCell;
     }
-
+    
     imageCell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
     RuntimeImageCache *imageCache = [RuntimeImageCache sharedImageCache];
     NSString *previewImagePath = [object previewImagePath];
@@ -469,33 +473,30 @@
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    Scene *scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
-    
     NSInteger index = (kBackgroundSectionIndex + sourceIndexPath.section + sourceIndexPath.row);
     NSInteger destIndex = (kBackgroundSectionIndex + destinationIndexPath.section + destinationIndexPath.row);
-    SpriteObject* itemToMove = scene.objectList[index];
-    [[scene.objectList mutableCopy] removeObjectAtIndex:index];
-    [[scene.objectList mutableCopy] insertObject:itemToMove atIndex:destIndex];
+    SpriteObject* itemToMove = self.scene.objectList[index];
+    [[self.scene.objectList mutableCopy] removeObjectAtIndex:index];
+    [[self.scene.objectList mutableCopy] insertObject:itemToMove atIndex:destIndex];
     [self.project saveToDiskWithNotification:NO];
 }
 
 - (NSArray<UITableViewRowAction*>*)tableView:(UITableView*)tableView
                 editActionsForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    Scene *scene = (Scene*)self.project.scenes.firstObject; // TODO: this just works for one scene!
-    
     UITableViewRowAction *moreAction = [UIUtil tableViewMoreRowActionWithHandler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         // More button was pressed
         NSInteger spriteObjectIndex = (kBackgroundSectionIndex + indexPath.section + indexPath.row);
-        SpriteObject *spriteObject = [scene.objectList objectAtIndex:spriteObjectIndex];
+        
+        SpriteObject *spriteObject = [self.scene.objectList objectAtIndex:spriteObjectIndex];
         
         [[[[[[[AlertControllerBuilder actionSheetWithTitle:kLocalizedEditObject]
               addCancelActionWithTitle:kLocalizedCancel handler:nil]
              addDefaultActionWithTitle:kLocalizedCopy handler:^{
-                 [self copyObjectActionWithSourceObject:spriteObject inScene:scene];
+                 [self copyObjectActionWithSourceObject:spriteObject];
              }]
             addDefaultActionWithTitle:kLocalizedRename handler:^{
-                NSMutableArray *unavailableNames = [[self.project allObjectNamesForScene:scene] mutableCopy];
+                NSMutableArray *unavailableNames = [[self.project allObjectNamesForScene:self.scene] mutableCopy];
                 [unavailableNames removeString:spriteObject.name];
                 [Util askUserForUniqueNameAndPerformAction:@selector(renameObjectActionToName:spriteObject:)
                                                     target:self
@@ -525,7 +526,7 @@
         [[[[[AlertControllerBuilder alertWithTitle:kLocalizedDeleteThisObject message:kLocalizedThisActionCannotBeUndone]
             addCancelActionWithTitle:kLocalizedCancel handler:nil]
            addDefaultActionWithTitle:kLocalizedYes handler:^{
-               [self deleteObjectForIndexPath:indexPath inScene:scene];
+               [self deleteObjectForIndexPath:indexPath];
            }] build]
          showWithController:self];
     }];
@@ -552,7 +553,7 @@
     if (section == 0) {
         headerView.textLabel.text = [kLocalizedBackground uppercaseString];
     } else {
-        headerView.textLabel.text = (([self.project numberOfNormalObjectsInScene:nil] != 1)
+        headerView.textLabel.text = (([self.project numberOfNormalObjectsInScene:self.scene] != 1)
                                      ? [kLocalizedObjects uppercaseString]
                                      : [kLocalizedObject uppercaseString]);
     }
@@ -582,7 +583,7 @@
 {
     // Pass the selected object to the new view controller.
     static NSString *toObjectSegueID = kSegueToObject;
-
+    
     UIViewController *destController = segue.destinationViewController;
     if ([sender isKindOfClass:[UITableViewCell class]]) {
         UITableViewCell *cell = (UITableViewCell*) sender;
@@ -591,7 +592,7 @@
             if ([destController isKindOfClass:[ObjectTableViewController class]]) {
                 ObjectTableViewController *tvc = (ObjectTableViewController*) destController;
                 if ([tvc respondsToSelector:@selector(setObject:)]) {
-                    SpriteObject* object = [((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]; // TODO: this just works for one scene!
+                    SpriteObject* object = [self.scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)];
                     [destController performSelector:@selector(setObject:) withObject:object];
                 }
             }
@@ -617,7 +618,7 @@
 - (void)setupToolBar
 {
     [super setupToolBar];
-
+    
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                          target:self
                                                                          action:@selector(addObjectAction:)];
@@ -633,7 +634,7 @@
 - (void)setupEditingToolBar
 {
     [super setupEditingToolBar];
-
+    
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:kLocalizedDelete
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
