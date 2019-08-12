@@ -1149,7 +1149,7 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
                                         minInputLength:kMinNumOfMessageNameCharacters
                                         maxInputLength:kMaxNumOfMessageNameCharacters
                               invalidInputAlertMessage:kLocalizedMessageAlreadyExistsDescription
-                                         existingNames:[Util allMessagesForProject:self.object.project]];
+                                         existingNames:[Util allMessagesForProject:self.object.project andScene:self.object.scene]];
             [self enableUserInteractionAndResetHighlight];
             return;
         } else {

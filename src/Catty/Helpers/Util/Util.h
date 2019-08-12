@@ -173,7 +173,7 @@ if (__functor) __functor(__VA_ARGS__);  \
 
 + (Look*)lookWithName:(NSString*)objectName forObject:(SpriteObject*)object;
 
-+ (NSArray*)allMessagesForProject:(Project*)project;
++ (NSArray*)allMessagesForProject:(Project*)project andScene:(Scene*)scene;
 
 + (BOOL)isNetworkError:(NSError*)error;
 
