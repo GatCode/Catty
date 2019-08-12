@@ -61,7 +61,13 @@
     }
 
     static func defaultRawValue(for spriteObject: SpriteObject) -> Double {
-        guard let objectList = (spriteObject.project?.scenes as? [Scene])?.first?.objectList else { // TODO: this just works for one scene!
+
+        var scene = spriteObject.scene
+        if scene == nil {
+            scene = (spriteObject.project?.scenes as? [Scene])?.first
+        }
+
+        guard let objectList = scene?.objectList else {
             return defaultRawValue
         }
 

@@ -37,12 +37,11 @@ extension CBXMLMappingToObjc {
         return nil
     }
 
-    // TODO remove the function below when the scenes get released
-    static func resolveObjectReference(reference: String?, project: CBProject?, mappedProject: inout Project) -> UnsafeMutablePointer<SpriteObject>? { // TODO: this just works for one scene!
+    static func resolveObjectReference(reference: String?, project: CBProject?, mappedProject: inout Project, scene: Scene) -> UnsafeMutablePointer<SpriteObject>? {
         let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }
 
-        if let oNr = resolvedString.0, oNr < (mappedProject.scenes as? [Scene])?.first?.objectList.count ?? 0 {
+        if let oNr = resolvedString.0, oNr < scene.objectList.count {
             if let obj = (mappedProject.scenes as? [Scene])?.first?.objectList[oNr] {
                 let object = UnsafeMutablePointer<SpriteObject>.allocate(capacity: 1)
                 object.initialize(to: obj)
@@ -72,13 +71,12 @@ extension CBXMLMappingToObjc {
         return nil
     }
 
-    // TODO remove the function below when the scenes get released
-    static func resolveUserVariableReference(reference: String?, project: CBProject?, mappedProject: inout Project) -> UnsafeMutablePointer<UserVariable>? {
+    static func resolveUserVariableReference(reference: String?, project: CBProject?, mappedProject: inout Project, scene: Scene) -> UnsafeMutablePointer<UserVariable>? {
         let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }
 
         // TODO: this just works for one scene!
-        if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < (mappedProject.scenes as? [Scene])?.first?.objectList.count ?? 0 {
+        if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < scene.objectList.count {
             if let obj = (mappedProject.scenes as? [Scene])?.first?.objectList[oNr], sNr < obj.scriptList.count {
                 if let scr = obj.scriptList[sNr] as? Script, bNr < scr.brickList.count {
                     if let br = scr.brickList[bNr] as? Brick, let uVar = br.uVar {
