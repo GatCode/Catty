@@ -224,13 +224,15 @@ final class CBScene: SKScene {
 
     // MARK: - Stop project
     @objc func stopProject() {
-        let scene = frontend.project?.scenes.firstObject as? Scene // TODO: this just works for one scene!
-        view?.isPaused = true
-        scheduler.shutdown() // stops all script contexts of all objects and removes all ressources
-        removeAllChildren() // remove all CBSpriteNodes from Scene
-        frontend.project?.removeReferences(in: scene) // remove all references in project hierarchy
-        formulaManager.stop()
-        logger.info("All SpriteObjects and Scripts have been removed from Scene!")
+        if let scenes = frontend.project?.scenes as? [Scene] {
+            for scene in scenes {
+                view?.isPaused = true
+                scheduler.shutdown() // stops all script contexts of all objects and removes all ressources
+                removeAllChildren() // remove all CBSpriteNodes from Scene
+                frontend.project?.removeReferences(in: scene) // remove all references in project hierarchy
+                formulaManager.stop()
+                logger.info("All SpriteObjects and Scripts have been removed from Scene!")
+            }
+        }
     }
-
 }
