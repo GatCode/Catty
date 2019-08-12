@@ -43,7 +43,13 @@
             if([self.brickCell.scriptOrBrick conformsToProtocol:@protocol(BrickObjectProtocol)]) {
                 Brick<BrickObjectProtocol> *objectBrick = (Brick<BrickObjectProtocol>*)self.brickCell.scriptOrBrick;
                 SpriteObject *currentObject = [objectBrick objectForLineNumber:self.lineNumber andParameterNumber:self.parameterNumber];
-                for(SpriteObject *object in (NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)objectBrick.script.object.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
+                
+                Scene *scene = self.object.scene;
+                if (scene == nil) {
+                    scene = ((NSMutableArray<Scene*>*)objectBrick.script.object.project.scenes).firstObject;
+                }
+                
+                for(SpriteObject *object in scene.objectList) {
                     [options addObject:object.name];
                     if([currentObject.name isEqualToString:object.name])
                         currentOptionIndex = optionIndex;

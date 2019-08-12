@@ -75,9 +75,9 @@ extension CBXMLMappingToObjc {
         let resolvedReferenceString = resolveReferenceString(reference: reference, project: project)
         guard let resolvedString = resolvedReferenceString else { return nil }
 
-        // TODO: this just works for one scene!
         if let oNr = resolvedString.0, let sNr = resolvedString.1, let bNr = resolvedString.2, oNr < scene.objectList.count {
-            if let obj = (mappedProject.scenes as? [Scene])?.first?.objectList[oNr], sNr < obj.scriptList.count {
+            let obj = scene.objectList[oNr]
+            if sNr < obj.scriptList.count {
                 if let scr = obj.scriptList[sNr] as? Script, bNr < scr.brickList.count {
                     if let br = scr.brickList[bNr] as? Brick, let uVar = br.uVar {
                         let uVarPtr = UnsafeMutablePointer<UserVariable>.allocate(capacity: 1)

@@ -116,7 +116,7 @@
             [currentObject.project removeObjectVariablesForSpriteObject:currentObject inScene:nil];
             [currentObject.project removeObjectListsForSpriteObject:currentObject inScene:nil];
             currentObject.project = nil;
-            [(NSMutableArray<SpriteObject*>*)scene.objectList removeObjectAtIndex:index];
+            [[scene.objectList mutableCopy] removeObjectAtIndex:index];
             break;
         }
         ++index;

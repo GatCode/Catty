@@ -291,9 +291,11 @@
 -(void)resaveLooks
 {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        for (SpriteObject *object in ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList) { // TODO: this just works for one scene!
-            for (Look *look in object.lookList) {
-                [[RuntimeImageCache sharedImageCache] loadImageFromDiskWithPath:look.fileName];
+        for (Scene *scene in (NSMutableArray<Scene*>*)self.project.scenes) {
+            for (SpriteObject *object in scene.objectList) {
+                for (Look *look in object.lookList) {
+                    [[RuntimeImageCache sharedImageCache] loadImageFromDiskWithPath:look.fileName];
+                }
             }
         }
     });

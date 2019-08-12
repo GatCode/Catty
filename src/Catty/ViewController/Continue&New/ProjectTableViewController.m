@@ -108,7 +108,7 @@
              [self cancelAddingObjectFromScriptEditor];
          }]
         addDefaultActionWithTitle:kLocalizedOK handler:^(NSString *name) {
-            [self addObjectActionWithName:name];
+            [self addObjectActionWithName:name toScene:scene];
         }]
        valueValidator:^InputValidationResult *(NSString *name) {
            InputValidationResult *result = [Util validationResultWithName:name
@@ -133,10 +133,8 @@
     }
 }
 
-- (void)addObjectActionWithName:(NSString*)objectName
+- (void)addObjectActionWithName:(NSString*)objectName toScene:(Scene*)scene
 {
-    Scene* scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
-    
     [self showLoadingView];
     [self.project addObjectWithName:[Util uniqueName:objectName existingNames:[self.project allObjectNamesForScene:scene]] toScene:scene];
     NSInteger numberOfRowsInLastSection = [self tableView:self.tableView numberOfRowsInSection:kObjectSectionIndex];
@@ -145,14 +143,14 @@
                           withRowAnimation:(([self.project numberOfNormalObjectsInScene:scene] == 1) ? UITableViewRowAnimationFade : UITableViewRowAnimationBottom)];
 
     LooksTableViewController *ltvc = [self.storyboard instantiateViewControllerWithIdentifier:kLooksTableViewControllerIdentifier];
-    [ltvc setObject:[((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]]; // TODO: this just works for one scene!
+    [ltvc setObject:[scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]];
     ltvc.showAddLookActionSheetAtStartForObject = YES;
     ltvc.showAddLookActionSheetAtStartForScriptEditor = NO;
     ltvc.afterSafeBlock =  ^(Look* look) {
         [self.navigationController popViewControllerAnimated:YES];
         if (!look) {
             NSUInteger index = (kBackgroundObjects + indexPath.row);
-            SpriteObject *object = (SpriteObject*)[((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:index]; // TODO: this just works for one scene!
+            SpriteObject *object = (SpriteObject*)[scene.objectList objectAtIndex:index];
             [self.project removeObjectFromList:object inScene:scene];
             [self.project saveToDiskWithNotification:NO];
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:((indexPath.row != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
@@ -160,14 +158,14 @@
         if (self.afterSafeBlock && look ) {
             NSInteger numberOfRowsInLastSection = [self tableView:self.tableView numberOfRowsInSection:kObjectSectionIndex];
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(numberOfRowsInLastSection - 1) inSection:kObjectSectionIndex];
-            self.afterSafeBlock([((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]); // TODO: this just works for one scene!
+            self.afterSafeBlock([scene.objectList objectAtIndex:(kBackgroundObjectIndex + indexPath.section + indexPath.row)]);
         }else if (self.afterSafeBlock && !look){
             self.afterSafeBlock(nil);
         }
-        [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:nil]]; // TODO: this just works for one scene!
+        [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
     };
     [self.navigationController pushViewController:ltvc animated:NO];
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:nil]]; // TODO: this just works for one scene!
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
     [self hideLoadingView];
 }
 
@@ -294,13 +292,11 @@
         [super exitEditingMode];
         return;
     }
-    [self deleteSelectedObjectsAction];
+    [self deleteSelectedObjectsActionInScene:self.project.scenes.firstObject]; // TODO: this just works for one scene!
 }
 
-- (void)deleteSelectedObjectsAction
+- (void)deleteSelectedObjectsActionInScene:(Scene*)scene
 {
-    Scene* scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
-    
     [self showLoadingView];
     NSArray *selectedRowsIndexPaths = [self.tableView indexPathsForSelectedRows];
     NSMutableArray *objectsToRemove = [NSMutableArray arrayWithCapacity:[selectedRowsIndexPaths count]];
@@ -314,21 +310,19 @@
     }
     [self.project removeObjects:objectsToRemove inScene:scene];
     [super exitEditingMode];
-    [self.tableView deleteRowsAtIndexPaths:selectedRowsIndexPaths withRowAnimation:(([self.project numberOfNormalObjectsInScene:nil] != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)]; // TODO: this just works for one scene!
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:nil]]; // TODO: this just works for one scene!
+    [self.tableView deleteRowsAtIndexPaths:selectedRowsIndexPaths withRowAnimation:(([self.project numberOfNormalObjectsInScene:scene] != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
     [self hideLoadingView];
 }
 
-- (void)deleteObjectForIndexPath:(NSIndexPath*)indexPath
+- (void)deleteObjectForIndexPath:(NSIndexPath*)indexPath inScene:(Scene*)scene
 {
-    Scene* scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
-    
     [self showLoadingView];
     NSUInteger index = (kBackgroundObjects + indexPath.row);
     SpriteObject *object = [scene.objectList objectAtIndex:index];
     [self.project removeObject:object inScene:scene];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:((indexPath.row != 0) ? UITableViewRowAnimationTop : UITableViewRowAnimationFade)];
-    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:nil]]; // TODO: this just works for one scene!
+    [self showPlaceHolder:!(BOOL)[self.project numberOfNormalObjectsInScene:scene]];
     [self hideLoadingView];
 }
 
@@ -475,22 +469,24 @@
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
+    Scene *scene = self.project.scenes.firstObject; // TODO: this just works for one scene!
+    
     NSInteger index = (kBackgroundSectionIndex + sourceIndexPath.section + sourceIndexPath.row);
     NSInteger destIndex = (kBackgroundSectionIndex + destinationIndexPath.section + destinationIndexPath.row);
-    SpriteObject* itemToMove = ((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList[index]; // TODO: this just works for one scene!
-    [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList removeObjectAtIndex:index]; // TODO: this just works for one scene!
-    [(NSMutableArray<SpriteObject*>*)((NSMutableArray<Scene*>*)self.project.scenes).firstObject.objectList insertObject:itemToMove atIndex:destIndex]; // TODO: this just works for one scene!
+    SpriteObject* itemToMove = scene.objectList[index];
+    [[scene.objectList mutableCopy] removeObjectAtIndex:index];
+    [[scene.objectList mutableCopy] insertObject:itemToMove atIndex:destIndex];
     [self.project saveToDiskWithNotification:NO];
 }
 
 - (NSArray<UITableViewRowAction*>*)tableView:(UITableView*)tableView
                 editActionsForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    Scene *scene = (Scene*)self.project.scenes.firstObject; // TODO: this just works for one scene!
+    
     UITableViewRowAction *moreAction = [UIUtil tableViewMoreRowActionWithHandler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         // More button was pressed
         NSInteger spriteObjectIndex = (kBackgroundSectionIndex + indexPath.section + indexPath.row);
-        
-        Scene *scene = (Scene*)self.project.scenes.firstObject; // TODO: this just works for one scene!
         SpriteObject *spriteObject = [scene.objectList objectAtIndex:spriteObjectIndex];
         
         [[[[[[[AlertControllerBuilder actionSheetWithTitle:kLocalizedEditObject]
@@ -529,7 +525,7 @@
         [[[[[AlertControllerBuilder alertWithTitle:kLocalizedDeleteThisObject message:kLocalizedThisActionCannotBeUndone]
             addCancelActionWithTitle:kLocalizedCancel handler:nil]
            addDefaultActionWithTitle:kLocalizedYes handler:^{
-               [self deleteObjectForIndexPath:indexPath];
+               [self deleteObjectForIndexPath:indexPath inScene:scene];
            }] build]
          showWithController:self];
     }];
