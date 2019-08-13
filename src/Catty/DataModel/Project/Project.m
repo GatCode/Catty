@@ -477,7 +477,7 @@
         [fileManager createDirectory:soundsDirName];
     }
     
-    (void)[project.scenes.firstObject addObjectWithName:kLocalizedBackground];
+    (void)[project.scenes.firstObject addObjectToObjectListWithName:kLocalizedBackground];
     [project saveToDiskWithNotification:YES];
     NSDebug(@"%@", [project description]);
     return project;

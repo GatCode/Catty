@@ -25,7 +25,7 @@
     @objc var data: ObjectData?
     @objc var originalWidth: String?
     @objc var originalHeight: String?
-    @objc var objectList = [SpriteObject]()
+    @objc private(set) var objectList = [SpriteObject]()
     @objc var project: Project?
     var sceneCounter = 1
 
@@ -38,7 +38,11 @@
         self.project = project
     }
 
-    @objc func addObject(withName objectName: String?) -> SpriteObject? {
+    @objc func addObject(toObjectList spriteObject: SpriteObject) {
+        objectList.append(spriteObject)
+    }
+
+    @objc func addObject(toObjectListWithName objectName: String?) -> SpriteObject? {
         let object = SpriteObject(scene: self)!
         object.spriteNode?.currentLook = nil
 
@@ -52,8 +56,8 @@
         objectList.remove(at: index)
     }
 
-    @objc func addObject(toObjectList spriteObject: SpriteObject) {
-        objectList.append(spriteObject)
+    @objc func setObjectList(objectList: [SpriteObject]) {
+        self.objectList = objectList
     }
 
     @objc func clearObjectList() {
