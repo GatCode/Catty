@@ -116,7 +116,7 @@
             [currentObject.project removeObjectVariablesForSpriteObject:currentObject inScene:nil];
             [currentObject.project removeObjectListsForSpriteObject:currentObject inScene:nil];
             currentObject.project = nil;
-            [[scene.objectList mutableCopy] removeObjectAtIndex:index];
+            [scene removeObjectAtIndexWithIndex:index];
             break;
         }
         ++index;

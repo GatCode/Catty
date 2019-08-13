@@ -48,6 +48,10 @@
         return object
     }
 
+    @objc func removeObjectAtIndex(index: Int) {
+        objectList.remove(at: index)
+    }
+
     @objc func addObject(toObjectList spriteObject: SpriteObject) {
         objectList.append(spriteObject)
     }
