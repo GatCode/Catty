@@ -21,6 +21,7 @@
  */
 
 #import "AddItemToUserListBrick.h"
+#import "Project+Variables.h"
 #import "Formula.h"
 #import "UserVariable.h"
 #import "Project.h"

@@ -21,6 +21,7 @@
  */
 
 #import "ShowTextBrick.h"
+#import "Project+Variables.h"
 #import "Script.h"
 
 @implementation ShowTextBrick

@@ -984,6 +984,8 @@
 		92FF32BF1A24E2F400093DA7 /* BrickTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32531A24E2F400093DA7 /* BrickTransition.m */; };
 		92FF32C31A24E33B00093DA7 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92FF32C21A24E33B00093DA7 /* iPhone.storyboard */; };
 		96C2EB292301B6A600F19528 /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2EB282301B6A600F19528 /* MapVariablesMFO.swift */; };
+		96C2EB2C2302B20200F19528 /* Project+Variables.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C2EB2B2302B20200F19528 /* Project+Variables.m */; };
+		96C2EB2D2302C2C500F19528 /* Project+Variables.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C2EB2B2302B20200F19528 /* Project+Variables.m */; };
 		99B2C3701D884D2900736769 /* FlashBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C36F1D884D2900736769 /* FlashBrick.m */; };
 		99B2C3731D884E8A00736769 /* FlashBrickCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C3721D884E8A00736769 /* FlashBrickCell.m */; };
 		99B2C3751D884F2D00736769 /* FlashBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C3741D884F2D00736769 /* FlashBrick+Instruction.swift */; };
@@ -2601,6 +2603,8 @@
 		95088280A879E5F515D4569E /* fa-AF */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = "fa-AF"; path = "fa-AF.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		95C607797206029F5B454A53 /* sw */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sw; path = sw.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96C2EB282301B6A600F19528 /* MapVariablesMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
+		96C2EB2A2302B1A000F19528 /* Project+Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project+Variables.h"; sourceTree = "<group>"; };
+		96C2EB2B2302B20200F19528 /* Project+Variables.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Project+Variables.m"; sourceTree = "<group>"; };
 		98738650BC99C8766A159B17 /* ko */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9990BB6C1D89D89A0088357A /* BrickStaticChoiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrickStaticChoiceProtocol.h; sourceTree = "<group>"; };
 		99B2C36E1D884D2900736769 /* FlashBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashBrick.h; sourceTree = "<group>"; };
@@ -6083,6 +6087,8 @@
 			children = (
 				92FF30AA1A24DCAA00093DA7 /* Project.h */,
 				92FF30AB1A24DCAA00093DA7 /* Project.m */,
+				96C2EB2A2302B1A000F19528 /* Project+Variables.h */,
+				96C2EB2B2302B20200F19528 /* Project+Variables.m */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -8529,6 +8535,7 @@
 				4C6FE16A212D2D2E0067B7D5 /* AtanFunctionTest.swift in Sources */,
 				4CEB225B1B95E47500B3BE2F /* HideBrickTests.m in Sources */,
 				4CEB224F1B95E47500B3BE2F /* BrickMoveManagerForeverTests.m in Sources */,
+				96C2EB2D2302C2C500F19528 /* Project+Variables.m in Sources */,
 				4C68FC951B25A00B00AB3EE8 /* InternFormulaTokenSelectionTest.m in Sources */,
 				4C68FC8C1B25A00B00AB3EE8 /* FormulaParserErrorDetectionTest.m in Sources */,
 				4C82267D213FA7A400F3D750 /* PositionYSensorTest.swift in Sources */,
@@ -9090,6 +9097,7 @@
 				4C0E25E920D39E5000A80273 /* ScenePresenterViewController+Resources.swift in Sources */,
 				92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */,
 				2E6F428822993A3A00840319 /* CBBrickList.swift in Sources */,
+				96C2EB2C2302B20200F19528 /* Project+Variables.m in Sources */,
 				2E27BC4D22D76FAC00B83AF3 /* CBXMLMappingFromObjc.swift in Sources */,
 				4C0F9F4F204BD0B400E71B2D /* CameraPreviewHandler.m in Sources */,
 				AA74F0931BC05FCE00D1E954 /* BrickCellFormulaData.m in Sources */,

@@ -88,34 +88,4 @@
                                                projectID:(NSString* _Nullable)projectID;
 + (nullable ProjectLoadingInfo *)projectLoadingInfoForProjectDirectoryName:(NSString* _Nonnull)projectDirectoryName;
 + (nullable NSString *)projectNameForProjectID:(NSString* _Nonnull)projectID;
-
-
-
-
-
-- (NSMutableArray* _Nullable)allVariablesForScene:(Scene* _Nullable)scene;
-- (NSMutableArray* _Nullable)allListsForScene:(Scene* _Nullable)scene;
-- (NSMutableArray* _Nullable)allVariablesAndListsForScene:(Scene* _Nullable)scene;
-- (BOOL)addObjectVariable:(UserVariable* _Nullable)userVariable forObject:(SpriteObject* _Nullable)spriteObject toScene:(Scene* _Nullable)scene;
-- (BOOL)addObjectList:(UserVariable* _Nullable)userList forObject:(SpriteObject* _Nullable)spriteObject toScene:(Scene* _Nullable)scene;
-- (void)removeObjectVariablesForSpriteObject:(SpriteObject* _Nullable)object inScene:(Scene* _Nullable)scene;
-- (void)removeObjectListsForSpriteObject:(SpriteObject* _Nullable)object inScene:(Scene* _Nullable)scene;
-- (NSArray* _Nullable)objectVariablesForObject:(SpriteObject* _Nullable)spriteObject inScene:(Scene* _Nullable)scene;
-- (NSArray* _Nullable)objectListsForObject:(SpriteObject* _Nullable)spriteObject inScene:(Scene* _Nullable)scene;
-- (UserVariable* _Nullable)getUserVariableNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite inScene:(Scene* _Nullable)scene;
-- (UserVariable* _Nullable)getUserListNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite inScene:(Scene* _Nullable)scene;
-- (BOOL)removeUserVariableNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite inScene:(Scene* _Nullable)scene;
-- (BOOL)removeUserListNamed:(NSString* _Nullable)name forSpriteObject:(SpriteObject* _Nullable)sprite inScene:(Scene* _Nullable)scene;
-
-- (void)deleteFromUserList:(UserVariable* _Nullable)userList atIndex:(id _Nullable)index;
-- (void)insertToUserList:(UserVariable* _Nullable)userList value:(id _Nullable)value atIndex:(id _Nullable)position;
-
-- (void)replaceItemInUserList:(UserVariable* _Nullable)userList value:(id _Nullable)value atIndex:(id _Nullable)position;
-- (void)changeVariable:(UserVariable* _Nullable)userVariable byValue:(double)value;
-- (void)setUserVariable:(UserVariable* _Nullable)userVariable toValue:(id _Nullable)value;
-- (void)addToUserList:(UserVariable* _Nullable)userList value:(id _Nullable)value;
-- (NSArray* _Nullable)allVariablesForObject:(SpriteObject* _Nullable)spriteObject;
-- (NSArray* _Nullable)allListsForObject:(SpriteObject* _Nullable)spriteObject;
-- (BOOL)isProjectVariableOrList:(UserVariable* _Nullable)userVariable;
-
 @end

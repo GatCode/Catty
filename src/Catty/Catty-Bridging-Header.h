@@ -192,3 +192,4 @@
 #import "BrickManager.h"
 #import <pthread.h>
 #import "Project.h"
+#import "Project+Variables.h"

@@ -21,6 +21,7 @@
  */
 
 #import "ReplaceItemInUserListBrick.h"
+#import "Project+Variables.h"
 #import "Formula.h"
 #import "UserVariable.h"
 #import "Project.h"

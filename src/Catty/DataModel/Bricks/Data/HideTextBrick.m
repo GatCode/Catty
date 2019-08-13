@@ -21,6 +21,7 @@
  */
 
 #import "HideTextBrick.h"
+#import "Project+Variables.h"
 #import "Formula.h"
 
 @implementation HideTextBrick

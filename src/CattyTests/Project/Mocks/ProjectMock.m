@@ -21,6 +21,7 @@
  */
 
 #import "ProjectMock.h"
+#import "Project+Variables.h"
 
 @interface ProjectMock()
 @property(nonatomic, assign) NSInteger mockedRequiredResources;
