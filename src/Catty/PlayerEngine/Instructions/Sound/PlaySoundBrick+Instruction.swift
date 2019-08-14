@@ -25,14 +25,14 @@
     @nonobjc func instruction() -> CBInstruction {
 
         guard let objectName = self.script?.object?.name,
-            let projectPath = self.script?.object?.projectPath()
+            let projectPath = self.script?.object?.scene.scenePath()
             else { fatalError("This should never happen!") }
 
         guard let sound = self.sound,
             let fileName = sound.fileName
             else { return .invalidInstruction() }
 
-        let filePath = projectPath + kProjectSoundsDirName
+        let filePath = projectPath + "/" + kProjectSoundsDirName
         let audioManager = AudioManager.shared()
 
         return CBInstruction.execClosure { context, _ in

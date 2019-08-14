@@ -139,7 +139,7 @@
 
 - (NSString*)pathForSound:(Sound*)sound
 {
-  return [NSString stringWithFormat:@"%@%@/%@", [self projectPath], kProjectSoundsDirName, sound.fileName];
+  return [NSString stringWithFormat:@"%@/%@/%@", [self.scene scenePath], kProjectSoundsDirName, sound.fileName];
 }
 
 - (NSUInteger)fileSizeOfLook:(Look*)look
