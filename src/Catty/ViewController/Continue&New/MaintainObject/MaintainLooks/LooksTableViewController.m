@@ -574,8 +574,8 @@
                                                existingNames:[self.object allLookNames]]
                                     andPath:newImageFileName];
     
-    NSString *newImagePath = [NSString stringWithFormat:@"%@%@/%@",
-                              [self.object projectPath], kProjectImagesDirName, newImageFileName];
+    NSString *newImagePath = [NSString stringWithFormat:@"%@/%@/%@",
+                              [self.object.scene scenePath], kProjectImagesDirName, newImageFileName];
     self.filePath = newImagePath;
     // leaving the main queue here!
     [imageData writeToFile:newImagePath atomically:YES];
@@ -781,8 +781,8 @@
     Look *look = [[Look alloc] initWithName:[Util uniqueName:lookName
                                                existingNames:[self.object allLookNames]]
                                     andPath:newImageFileName];
-    NSString *newImagePath = [NSString stringWithFormat:@"%@%@/%@",
-                              [self.object projectPath], kProjectImagesDirName, newImageFileName];
+    NSString *newImagePath = [NSString stringWithFormat:@"%@/%@/%@",
+                              [self.object.scene scenePath], kProjectImagesDirName, newImageFileName];
     self.filePath = newImagePath;
     NSDebug(@"Writing file to disk");
     
@@ -802,7 +802,7 @@
     if (checkImage) {
 //        NSDebug(@"Updating");
         NSData *imageData = UIImagePNGRepresentation(image);
-        NSString *imageDirPath = [[self.object projectPath] stringByAppendingString:kProjectImagesDirName];
+        NSString *imageDirPath = [[self.object.scene scenePath] stringByAppendingString:@"/" kProjectImagesDirName];
         NSString *fileName = [path stringByReplacingOccurrencesOfString:imageDirPath withString:@""];
         
         NSRange result = [fileName rangeOfString:kResourceFileNameSeparator];
@@ -855,8 +855,8 @@
         Look *look = [[Look alloc] initWithName:[Util uniqueName:lookName
                                                    existingNames:[self.object allLookNames]]
                                         andPath:newImageFileName];
-        NSString *newImagePath = [NSString stringWithFormat:@"%@%@/%@",
-                                  [self.object projectPath], kProjectImagesDirName, newImageFileName];
+        NSString *newImagePath = [NSString stringWithFormat:@"%@/%@/%@",
+                                  [self.object.scene scenePath], kProjectImagesDirName, newImageFileName];
         self.filePath = newImagePath;
         NSDebug(@"Writing file to disk");
         [imageData writeToFile:newImagePath atomically:YES];

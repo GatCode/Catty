@@ -63,4 +63,11 @@
     @objc func clearObjectList() {
         objectList.removeAll()
     }
+
+    @objc func scenePath() -> String? {
+        if let project = project?.projectPath(), let name = self.name {
+            return "\(project)\(name)"
+        }
+        return nil
+    }
 }

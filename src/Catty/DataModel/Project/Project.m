@@ -466,13 +466,18 @@
     if (! [fileManager directoryExists:projectName]) {
         [fileManager createDirectory:[project projectPath]];
     }
+    
+    NSString *sceneDirName = [project.scenes.firstObject scenePath];
+    if (! [fileManager directoryExists:sceneDirName]) {
+        [fileManager createDirectory:sceneDirName];
+    }
 
-    NSString *imagesDirName = [NSString stringWithFormat:@"%@%@", [project projectPath], kProjectImagesDirName];
+    NSString *imagesDirName = [NSString stringWithFormat:@"%@/%@", sceneDirName, kProjectImagesDirName];
     if (! [fileManager directoryExists:imagesDirName]) {
         [fileManager createDirectory:imagesDirName];
     }
 
-    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [project projectPath], kProjectSoundsDirName];
+    NSString *soundsDirName = [NSString stringWithFormat:@"%@/%@", sceneDirName, kProjectSoundsDirName];
     if (! [fileManager directoryExists:soundsDirName]) {
         [fileManager createDirectory:soundsDirName];
     }

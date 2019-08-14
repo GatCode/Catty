@@ -116,7 +116,7 @@
     if (! look)
         return nil;
 
-    NSString *imageDirPath = [[self projectPath] stringByAppendingString:kProjectImagesDirName];
+    NSString *imageDirPath = [[self.scene scenePath] stringByAppendingString:@"/" kProjectImagesDirName];
     return [NSString stringWithFormat:@"%@/%@", imageDirPath, [look previewImageFileName]];
 }
 
@@ -134,7 +134,7 @@
 
 - (NSString*)pathForLook:(Look*)look
 {
-  return [NSString stringWithFormat:@"%@%@/%@", [self projectPath], kProjectImagesDirName, look.fileName];
+  return [NSString stringWithFormat:@"%@/%@/%@", [self.scene scenePath], kProjectImagesDirName, look.fileName];
 }
 
 - (NSString*)pathForSound:(Sound*)sound

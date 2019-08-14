@@ -23,6 +23,7 @@
 #import "SetBackgroundBrick.h"
 #import "Script.h"
 #import "CBMutableCopyContext.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation SetBackgroundBrick
 
@@ -33,7 +34,7 @@
 
 - (NSString*)pathForLook
 {
-    return [NSString stringWithFormat:@"%@%@/%@", [self.script.object projectPath], kProjectImagesDirName, self.look.fileName];
+    return [NSString stringWithFormat:@"%@/%@/%@", [self.script.object.scene scenePath], kProjectImagesDirName, self.look.fileName];
 }
 
 #pragma mark - Description
