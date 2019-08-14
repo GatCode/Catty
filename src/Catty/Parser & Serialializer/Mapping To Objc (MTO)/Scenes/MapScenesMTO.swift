@@ -44,8 +44,8 @@ extension CBXMLMappingToObjc {
         return NSMutableArray(array: mappedScenes)
     }
 
-    static func mapDataMTO(project: CBProject?, currentProject: inout Project, scene: CBProjectScene, currentScene: inout Scene) -> ObjectData? {
-        let data = ObjectData()
+    static func mapDataMTO(project: CBProject?, currentProject: inout Project, scene: CBProjectScene, currentScene: inout Scene) -> SceneData? {
+        let data = SceneData()
         data.objectListOfLists = mapObjectListOfListsToDataMTO(project: project, currentProject: &currentProject, scene: scene, currentScene: &currentScene)
         data.objectVariableList = mapObjectVariableListToDataMTO(project: project, currentProject: &currentProject, scene: scene, currentScene: &currentScene)
         return data

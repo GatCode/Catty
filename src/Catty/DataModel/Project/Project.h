@@ -24,7 +24,6 @@
 #import "ProgramDefines.h"
 #import "UserVariable.h"
 
-//@class VariablesContainer;
 @class SpriteObject;
 @class Scene;
 @class ProjectLoadingInfo;

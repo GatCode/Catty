@@ -22,7 +22,7 @@
 
 @objc class Scene: NSObject {
     @objc var name: String?
-    @objc var data: ObjectData?
+    @objc var data: SceneData?
     @objc var originalWidth: String?
     @objc var originalHeight: String?
     @objc private(set) var objectList = [SpriteObject]()
@@ -30,7 +30,7 @@
     var sceneCounter = 1
 
     @objc override init() {
-        self.data = ObjectData()
+        self.data = SceneData()
     }
 
     @objc convenience init(project: Project) {

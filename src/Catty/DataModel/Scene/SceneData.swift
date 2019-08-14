@@ -20,7 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-@objc class ObjectData: NSObject {
+@objc class SceneData: NSObject {
     @objc var objectVariableList: OrderedMapTable?
     @objc var objectListOfLists: OrderedMapTable?
 
