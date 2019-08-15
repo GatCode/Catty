@@ -154,6 +154,10 @@
                 strPath = [strPath stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
             }
             
+            if (![strPath isEqualToString:@"code.xml"]) {
+                strPath = [@"Scene 1" stringByAppendingPathComponent:strPath];
+            }
+            
             NSString *fullPath = [destination stringByAppendingPathComponent:strPath];
             NSError *err = nil;
             NSDate *modDate = [[self class] _dateWithMSDOSFormat:(UInt32)fileInfo.dosDate];
