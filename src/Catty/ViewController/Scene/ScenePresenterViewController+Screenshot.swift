@@ -52,7 +52,7 @@
     private func saveScreenshot(_ screenshot: UIImage, for project: Project, manualScreenshot: Bool) {
         let fileName = manualScreenshot ? kScreenshotManualFilename : kScreenshotAutoFilename
         let filePath = project.projectPath() + fileName
-        let thumbnailPath = project.projectPath() + kScreenshotThumbnailPrefix + fileName
+        let thumbnailPath = project.projectPath() + kDefaultSceneName + "/" + kScreenshotThumbnailPrefix + fileName // TODO: this just works for one scene
         guard let data = screenshot.pngData() else { return }
 
         DispatchQueue.main.async {

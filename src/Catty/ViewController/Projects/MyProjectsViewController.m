@@ -463,14 +463,14 @@
     
     // check if one of these screenshot files is available in memory
     CBFileManager *fileManager = [CBFileManager sharedManager];
-    NSArray *fallbackPaths = @[[[NSString alloc] initWithFormat:@"%@%@", info.basePath, kScreenshotFilename],
-                               [[NSString alloc] initWithFormat:@"%@%@", info.basePath, kScreenshotManualFilename],
-                               [[NSString alloc] initWithFormat:@"%@%@", info.basePath, kScreenshotAutoFilename]];
+    NSArray *fallbackPaths = @[[[NSString alloc] initWithFormat:@"%@%@/%@", info.basePath, kDefaultSceneName, kScreenshotFilename],
+                               [[NSString alloc] initWithFormat:@"%@%@/%@", info.basePath, kDefaultSceneName, kScreenshotManualFilename],
+                               [[NSString alloc] initWithFormat:@"%@%@/%@", info.basePath, kDefaultSceneName, kScreenshotAutoFilename]];
     RuntimeImageCache *imageCache = [RuntimeImageCache sharedImageCache];
     for (NSString *fallbackPath in fallbackPaths) {
         NSString *fileName = [fallbackPath lastPathComponent];
-        NSString *thumbnailPath = [NSString stringWithFormat:@"%@%@%@",
-                                   info.basePath, kScreenshotThumbnailPrefix, fileName];
+        NSString *thumbnailPath = [NSString stringWithFormat:@"%@%@/%@%@",
+                                   info.basePath, kDefaultSceneName, kScreenshotThumbnailPrefix, fileName];
         UIImage *image = [imageCache cachedImageForPath:thumbnailPath];
         if (image) {
             cell.iconImageView.image = image;
@@ -485,8 +485,8 @@
         for (NSString *fallbackPath in fallbackPaths) {
             if ([fileManager fileExists:fallbackPath]) {
                 NSString *fileName = [fallbackPath lastPathComponent];
-                NSString *thumbnailPath = [NSString stringWithFormat:@"%@%@%@",
-                                           info.basePath, kScreenshotThumbnailPrefix, fileName];
+                NSString *thumbnailPath = [NSString stringWithFormat:@"%@%@/%@%@",
+                                           info.basePath, kDefaultSceneName, kScreenshotThumbnailPrefix, fileName];
                 [imageCache loadThumbnailImageFromDiskWithThumbnailPath:thumbnailPath
                                                               imagePath:fallbackPath
                                                      thumbnailFrameSize:CGSizeMake(kPreviewThumbnailWidth, kPreviewThumbnailHeight)
