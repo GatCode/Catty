@@ -472,7 +472,7 @@
         [fileManager createDirectory:imagesDirName];
     }
 
-    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [project projectPath], kProjectSoundsDirName];
+    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [project projectPath], project.scenes.firstObject.name, kProjectSoundsDirName];
     if (! [fileManager directoryExists:soundsDirName]) {
         [fileManager createDirectory:soundsDirName];
     }
@@ -503,11 +503,7 @@
         return nil;
     }
     project = [catrobatParser getProjectObjc];
-    if (project == nil) {
-        NSDebug(@"Parsing Error!");
-        return nil;
-    }
-    project.header.programID = loadingInfo.projectID;
+    
     
     if (![catrobatParser areScenesImplemented]) {
         // restructure project dir
@@ -524,7 +520,19 @@
                 [fileManager moveExistingFileAtPath:currentDir toPath:targetDir overwrite:true];
             }
         }
+        
+        CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
+        if ([catrobatParser parseProjectObjc] == false) {
+            return nil;
+        }
+        project = [catrobatParser getProjectObjc];
     }
+    
+    if (project == nil) {
+        NSDebug(@"Parsing Error!");
+        return nil;
+    }
+    project.header.programID = loadingInfo.projectID;
 
     NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);
     [self updateLastModificationTimeForProjectWithName:loadingInfo.visibleName projectID:loadingInfo.projectID];

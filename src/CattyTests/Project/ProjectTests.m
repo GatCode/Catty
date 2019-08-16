@@ -86,7 +86,7 @@
 - (void)testNewProjectIfSoundsFolderExists
 {
     [self setupForNewProject];
-    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [self.project projectPath], kProjectSoundsDirName];
+    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [self.project projectPath], "Scene 1", kProjectSoundsDirName];
     XCTAssertTrue([self.fileManager directoryExists:soundsDirName], @"No sounds folder created for the new project");
 }
 
