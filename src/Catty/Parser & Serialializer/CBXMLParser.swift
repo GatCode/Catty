@@ -69,6 +69,10 @@ extension CBXMLParser {
     @objc func getProjectObjc() -> Project? {
         return CBXMLMappingToObjc.mapCBProjectToProject(project: project)
     }
+
+    @objc func areScenesImplemented() -> Bool {
+        return self.project?.areScenesImplemented ?? false
+    }
 }
 
 enum CBXMLParserError: Error {

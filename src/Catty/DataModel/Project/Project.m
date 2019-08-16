@@ -508,6 +508,23 @@
         return nil;
     }
     project.header.programID = loadingInfo.projectID;
+    
+    if (![catrobatParser areScenesImplemented]) {
+        // restructure project dir
+        CBFileManager *fileManager = [CBFileManager sharedManager];
+        NSArray* directoryItems = [fileManager getContentsOfDirectory:loadingInfo.basePath];
+        
+        for (NSString *item in directoryItems) {
+            if (![item isEqualToString:@"code.xml"]) {
+                NSString *currentDir = [loadingInfo.basePath stringByAppendingPathComponent:item];
+                NSString *sceneDir = [loadingInfo.basePath stringByAppendingPathComponent:@"Scene 1"];
+                NSString *targetDir = [sceneDir stringByAppendingPathComponent:item];
+                [fileManager createDirectory:sceneDir];
+                [fileManager moveExistingDirectoryAtPath:currentDir toPath:targetDir];
+                [fileManager moveExistingFileAtPath:currentDir toPath:targetDir overwrite:true];
+            }
+        }
+    }
 
     NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);
     [self updateLastModificationTimeForProjectWithName:loadingInfo.visibleName projectID:loadingInfo.projectID];

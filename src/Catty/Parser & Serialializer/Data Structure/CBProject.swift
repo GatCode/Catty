@@ -27,27 +27,32 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
     var scenes: [CBProjectScene]?
     var programVariableList: CBProgramVariableList?
     var programListOfLists: CBProgramListOfLists?
+    var areScenesImplemented: Bool
 
     init(header: CBHeader? = nil,
          scenes: [CBProjectScene]? = nil,
          programVariableList: CBProgramVariableList? = nil,
-         programListOfLists: CBProgramListOfLists? = nil) {
+         programListOfLists: CBProgramListOfLists? = nil,
+         scenesAreImplemented: Bool = false) {
         self.header = header
         self.scenes = scenes
         self.programVariableList = programVariableList
         self.programListOfLists = programListOfLists
+        self.areScenesImplemented = scenesAreImplemented
     }
 
     static func deserialize(_ node: XMLIndexer) throws -> CBProject {
         var tmpScenes: [CBProjectScene]?
         var tmpProgramVariableList: CBProgramVariableList?
         var tmpProgramListOfLists: CBProgramListOfLists?
+        var tmpScenesAreImplemented = true
         tmpScenes = try node["scenes"].value()
         tmpProgramListOfLists = try node["programListOfLists"].value()
         tmpProgramVariableList = try node["programVariableList"].value()
 
         if tmpScenes == nil {
             tmpScenes = [CBProjectScene]()
+            tmpScenesAreImplemented = false
             var objectList: CBObjectList?
             var objectListOfList: CBObjectListofList?
             var objectVariableList: CBObjectVariableList?
@@ -86,7 +91,8 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
             header: node["header"].value(),
             scenes: tmpScenes,
             programVariableList: tmpProgramVariableList,
-            programListOfLists: tmpProgramListOfLists
+            programListOfLists: tmpProgramListOfLists,
+            scenesAreImplemented: tmpScenesAreImplemented
         )
     }
 
