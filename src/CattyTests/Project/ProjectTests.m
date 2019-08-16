@@ -79,14 +79,14 @@
 - (void)testNewProjectIfImagesFolderExists
 {
     [self setupForNewProject];
-    NSString *imagesDirName = [NSString stringWithFormat:@"%@/%@/%@", [self.project projectPath], "Scene 1", kProjectImagesDirName];
+    NSString *imagesDirName = [NSString stringWithFormat:@"%@%@/%@", [self.project projectPath], @"Scene 1", kProjectImagesDirName];
     XCTAssertTrue([self.fileManager directoryExists:imagesDirName], @"No images folder created for the new project");
 }
 
 - (void)testNewProjectIfSoundsFolderExists
 {
     [self setupForNewProject];
-    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [self.project projectPath], "Scene 1", kProjectSoundsDirName];
+    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@/%@", [self.project projectPath], @"Scene 1", kProjectSoundsDirName];
     XCTAssertTrue([self.fileManager directoryExists:soundsDirName], @"No sounds folder created for the new project");
 }
 

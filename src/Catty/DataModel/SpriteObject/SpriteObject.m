@@ -52,7 +52,8 @@
 
 - (void)checkSceneHasValidName:(Scene*)scene {
     if (scene.name == nil) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"-initWithScene: scene has no valid name" userInfo:nil];
+        scene.name = @"Scene 1";
+        //@throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"-initWithScene: scene has no valid name" userInfo:nil];
     }
 }
 
