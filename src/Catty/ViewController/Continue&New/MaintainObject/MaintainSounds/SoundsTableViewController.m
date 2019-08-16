@@ -209,7 +209,7 @@
                       sound.name, fileExtension];
     NSString *newPath = [self.object pathForSound:sound];
     if (![self checkIfSoundFolderExists]) {
-        [fileManager createDirectory:[NSString stringWithFormat:@"%@%@", [self.object projectPath], self.object.scene.name, kProjectSoundsDirName]];
+        [fileManager createDirectory:[NSString stringWithFormat:@"%@/%@/%@", [self.object projectPath], self.object.scene.name, kProjectSoundsDirName]];
     }
     [fileManager copyExistingFileAtPath:oldPath toPath:newPath overwrite:YES];
     [self.object.soundList addObject:sound];
@@ -228,7 +228,7 @@
 
 -(BOOL)checkIfSoundFolderExists{
     CBFileManager* manager = [CBFileManager sharedManager];
-    NSString * path = [NSString stringWithFormat:@"%@%@", [self.object projectPath], self.object.scene.name, kProjectSoundsDirName];
+    NSString * path = [NSString stringWithFormat:@"%@%@/%@", [self.object projectPath], self.object.scene.name, kProjectSoundsDirName];
     if ([manager directoryExists:path]) {
         return YES;
     }

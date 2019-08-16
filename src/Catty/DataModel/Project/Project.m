@@ -467,12 +467,17 @@
         [fileManager createDirectory:[project projectPath]];
     }
 
-    NSString *imagesDirName = [NSString stringWithFormat:@"%@/%@/%@", [project projectPath], project.scenes.firstObject.name, kProjectImagesDirName];
+    NSString *sceneDirName = [[project projectPath] stringByAppendingPathComponent:@"Scene 1"];
+    if (! [fileManager directoryExists:sceneDirName]) {
+        [fileManager createDirectory:sceneDirName];
+    }
+    
+    NSString *imagesDirName = [NSString stringWithFormat:@"%@%@/%@", [project projectPath], project.scenes.firstObject.name, kProjectImagesDirName];
     if (! [fileManager directoryExists:imagesDirName]) {
         [fileManager createDirectory:imagesDirName];
     }
 
-    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@", [project projectPath], project.scenes.firstObject.name, kProjectSoundsDirName];
+    NSString *soundsDirName = [NSString stringWithFormat:@"%@%@/%@", [project projectPath], project.scenes.firstObject.name, kProjectSoundsDirName];
     if (! [fileManager directoryExists:soundsDirName]) {
         [fileManager createDirectory:soundsDirName];
     }
@@ -504,12 +509,11 @@
     }
     project = [catrobatParser getProjectObjc];
     
-    
     if (![catrobatParser areScenesImplemented]) {
         // restructure project dir
         CBFileManager *fileManager = [CBFileManager sharedManager];
         NSArray* directoryItems = [fileManager getContentsOfDirectory:loadingInfo.basePath];
-        
+
         for (NSString *item in directoryItems) {
             if (![item isEqualToString:@"code.xml"] && ![item isEqualToString:kScreenshotAutoFilename]) {
                 NSString *currentDir = [loadingInfo.basePath stringByAppendingPathComponent:item];
@@ -521,7 +525,6 @@
             }
         }
         
-        CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
         if ([catrobatParser parseProjectObjc] == false) {
             return nil;
         }

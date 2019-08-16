@@ -24,7 +24,7 @@ import AEXML
 
 @objc class CBXMLSerializer: NSObject {
 
-    static var serializeInCBL991 = true
+    static var serializeInCBL991 = false
 
     func createXMLDocument(project: CBProject?, completion: @escaping (String?, CBXMLSerializerError?) -> Void) {
         guard let project = project else { completion(nil, .invalidProject); return }
