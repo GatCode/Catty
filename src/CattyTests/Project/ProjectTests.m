@@ -79,7 +79,7 @@
 - (void)testNewProjectIfImagesFolderExists
 {
     [self setupForNewProject];
-    NSString *imagesDirName = [NSString stringWithFormat:@"%@%@", [self.project projectPath], kProjectImagesDirName];
+    NSString *imagesDirName = [NSString stringWithFormat:@"%@/%@/%@", [self.project projectPath], "Scene 1", kProjectImagesDirName];
     XCTAssertTrue([self.fileManager directoryExists:imagesDirName], @"No images folder created for the new project");
 }
 

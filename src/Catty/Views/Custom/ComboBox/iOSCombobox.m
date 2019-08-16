@@ -25,6 +25,7 @@
 #import "RuntimeImageCache.h"
 #import "Look.h"
 #import "Util.h"
+#import "Pocket_Code-Swift.h"
 
 #define BORDER_WIDTH 1.0f
 #define BORDER_OFFSET (BORDER_WIDTH / 2)
@@ -389,7 +390,7 @@
     self.images = [[NSMutableArray alloc] initWithCapacity:self.object.lookList.count];
     NSInteger count = 0;
     for(Look *look in self.object.lookList) {
-        NSString *path = [NSString stringWithFormat:@"%@%@/%@", [self.object projectPath], kProjectImagesDirName, look.fileName];
+        NSString *path = [NSString stringWithFormat:@"%@%@/%@/%@", [self.object projectPath], self.object.scene.name, kProjectImagesDirName, look.fileName];
         RuntimeImageCache *imageCache = [RuntimeImageCache sharedImageCache];
         UIImage *image = [imageCache cachedImageForPath:path];
         if (!image) {

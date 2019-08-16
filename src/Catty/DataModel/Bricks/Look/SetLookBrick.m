@@ -23,6 +23,7 @@
 #import "SetLookBrick.h"
 #import "Script.h"
 #import "CBMutableCopyContext.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation SetLookBrick
 
@@ -38,7 +39,7 @@
 
 - (NSString*)pathForLook
 {
-    return [NSString stringWithFormat:@"%@%@/%@", [self.script.object projectPath], kProjectImagesDirName, self.look.fileName];
+    return [NSString stringWithFormat:@"%@%@/%@/%@", [self.script.object projectPath], self.script.object.scene.name, kProjectImagesDirName, self.look.fileName];
 }
 
 #pragma mark - Description

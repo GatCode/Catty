@@ -35,7 +35,7 @@
 
 - (NSString*)pathForLook:(Look*)look
 {
-    return [NSString stringWithFormat:@"%@%@/%@", [self.script.object projectPath], kProjectImagesDirName, look.fileName];
+    return [NSString stringWithFormat:@"%@%@/%@/%@", [self.script.object projectPath], self.script.object.scene.name, kProjectImagesDirName, look.fileName];
 }
 
 #pragma mark - Description

@@ -467,7 +467,7 @@
         [fileManager createDirectory:[project projectPath]];
     }
 
-    NSString *imagesDirName = [NSString stringWithFormat:@"%@%@", [project projectPath], kProjectImagesDirName];
+    NSString *imagesDirName = [NSString stringWithFormat:@"%@/%@/%@", [project projectPath], project.scenes.firstObject.name, kProjectImagesDirName];
     if (! [fileManager directoryExists:imagesDirName]) {
         [fileManager createDirectory:imagesDirName];
     }
@@ -515,7 +515,7 @@
         NSArray* directoryItems = [fileManager getContentsOfDirectory:loadingInfo.basePath];
         
         for (NSString *item in directoryItems) {
-            if (![item isEqualToString:@"code.xml"]) {
+            if (![item isEqualToString:@"code.xml"] && ![item isEqualToString:kScreenshotAutoFilename]) {
                 NSString *currentDir = [loadingInfo.basePath stringByAppendingPathComponent:item];
                 NSString *sceneDir = [loadingInfo.basePath stringByAppendingPathComponent:@"Scene 1"];
                 NSString *targetDir = [sceneDir stringByAppendingPathComponent:item];

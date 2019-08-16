@@ -43,10 +43,17 @@
 }
 
 -(instancetype)initWithScene:(Scene*)scene {
+    [self checkSceneHasValidName:scene];
     if (self = [super init]) {
         self.scene = scene;
     }
     return self;
+}
+
+- (void)checkSceneHasValidName:(Scene*)scene {
+    if (scene.name == nil) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"-initWithScene: scene has no valid name" userInfo:nil];
+    }
 }
 
 - (NSMutableArray*)lookList
@@ -116,7 +123,7 @@
     if (! look)
         return nil;
 
-    NSString *imageDirPath = [[self projectPath] stringByAppendingString:kProjectImagesDirName];
+    NSString *imageDirPath = [[self projectPath] stringByAppendingString:[self.scene.name stringByAppendingPathComponent:kProjectImagesDirName]];
     return [NSString stringWithFormat:@"%@/%@", imageDirPath, [look previewImageFileName]];
 }
 
@@ -134,7 +141,7 @@
 
 - (NSString*)pathForLook:(Look*)look
 {
-  return [NSString stringWithFormat:@"%@%@/%@", [self projectPath], kProjectImagesDirName, look.fileName];
+  return [NSString stringWithFormat:@"%@%@/%@/%@", [self projectPath], self.scene.name, kProjectImagesDirName, look.fileName];
 }
 
 - (NSString*)pathForSound:(Sound*)sound

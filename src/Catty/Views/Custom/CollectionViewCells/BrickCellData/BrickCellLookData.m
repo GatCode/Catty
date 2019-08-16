@@ -28,6 +28,7 @@
 #import "Brick.h"
 #import "BrickLookProtocol.h"
 #import "RuntimeImageCache.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation BrickCellLookData
 
@@ -50,7 +51,7 @@
                 for(Look *look in lookBrick.script.object.lookList) {
                     [options addObject:look.name];
                     if([look.name isEqualToString:currentLook.name]){
-                        NSString *path = [NSString stringWithFormat:@"%@%@/%@", [lookBrick.script.object projectPath], kProjectImagesDirName, look.fileName];
+                        NSString *path = [NSString stringWithFormat:@"%@%@/%@/%@", [lookBrick.script.object projectPath], lookBrick.script.object.scene.name, kProjectImagesDirName, look.fileName];
                         RuntimeImageCache *imageCache = [RuntimeImageCache sharedImageCache];
                         UIImage *image = [imageCache cachedImageForPath:path];
                         

@@ -29,7 +29,7 @@ extension CBXMLMappingToObjc {
 
         for scene in scenes {
             var mappedScene = Scene(project: currentProject)
-            mappedScene.name = scene.name
+            mappedScene.name = scene.name ?? "Scene 1" // TODO: Implement localized string!!!
             if let mappedObjectList = mapObjectList(scene: scene, project: project, currentProject: &currentProject, currentScene: mappedScene) as? [SpriteObject] {
                 mappedScene.setObjectList(objectList: mappedObjectList)
             }
