@@ -22,7 +22,7 @@
 
 #import "CBParserProtocol.h"
 
-@interface CBXMLParser : NSObject <CBParserProtocol>
+@interface CBXMLParserOLD : NSObject <CBParserProtocol>
 
 - (id)initWithPath:(NSString*)path;
 - (id)initWithXMLContent:(NSString*)xmlContent;

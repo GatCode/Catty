@@ -20,7 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "CBXMLParser.h"
+#import "CBXMLParserOLD.h"
 #import "GDataXMLNode.h"
 #import "Project+CBXMLHandler.h"
 #import "Project+CustomExtensions.h"
@@ -31,14 +31,14 @@
 #define kCatrobatXMLParserMinSupportedLanguageVersion 0.93f
 #define kCatrobatXMLParserMaxSupportedLanguageVersion [[Util catrobatLanguageVersion] floatValue]
 
-@interface CBXMLParser()
+@interface CBXMLParserOLD()
 
 @property (nonatomic, strong) NSString *xmlPath;
 @property (nonatomic, strong) NSString *xmlContent;
 
 @end
 
-@implementation CBXMLParser
+@implementation CBXMLParserOLD
 
 #pragma mark - Initialization
 - (id)initWithPath:(NSString*)path

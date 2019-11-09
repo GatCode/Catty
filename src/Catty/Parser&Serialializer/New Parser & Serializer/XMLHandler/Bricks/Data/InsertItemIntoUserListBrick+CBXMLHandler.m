@@ -26,7 +26,7 @@
 #import "GDataXMLNode+CustomExtensions.h"
 #import "Formula+CBXMLHandler.h"
 #import "UserVariable+CBXMLHandler.h"
-#import "CBXMLParser.h"
+#import "CBXMLParserOLD.h"
 #import "CBXMLParserContext.h"
 #import "CBXMLSerializerContext.h"
 #import "CBXMLParserHelper.h"

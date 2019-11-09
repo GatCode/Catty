@@ -28,7 +28,7 @@
 #import "Script.h"
 #import "Brick.h"
 #import "CatrobatLanguageDefines.h"
-#import "CBXMLParser.h"
+#import "CBXMLParserOLD.h"
 #import "CBXMLSerializer.h"
 #import "CBMutableCopyContext.h"
 #import "Pocket_Code-Swift.h"
@@ -480,7 +480,7 @@
     }
 
     // detect right parser for correct catrobat language version
-    CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
+    CBXMLParserOLD *catrobatParser = [[CBXMLParserOLD alloc] initWithPath:xmlPath];
     if (! [catrobatParser isSupportedLanguageVersion:languageVersion]) {
         Parser *parser = [[Parser alloc] init];
         project = [parser generateObjectForProjectWithPath:xmlPath];
