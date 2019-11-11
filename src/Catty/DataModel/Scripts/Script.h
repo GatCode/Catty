@@ -36,6 +36,9 @@
 @property (nonatomic, weak) SpriteObject *object;
 @property (strong, nonatomic) NSMutableArray<Brick*> *brickList;
 @property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) NSString *isUserScript;
+@property (nonatomic, strong) NSString *receivedMsg;
+@property (nonatomic, strong) NSString *action;
 @property (nonatomic, getter=isAnimated) BOOL animate;
 @property (nonatomic, getter=isAnimatedInsertBrick) BOOL animateInsertBrick;
 @property (nonatomic, getter=isAnimatedMoveBrick) BOOL animateMoveBrick;

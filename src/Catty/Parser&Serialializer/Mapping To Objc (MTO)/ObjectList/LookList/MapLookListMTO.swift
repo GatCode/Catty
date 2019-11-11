@@ -20,34 +20,16 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import <Foundation/Foundation.h>
-#import "InternFormula.h"
-#import "InternFormulaState.h"
-#import "CBMutableCopying.h"
+extension CBXMLMappingToObjc {
 
-@class FormulaElement;
-@class SpriteObject;
+    static func mapLookList(lookList: CBLookList?) -> NSMutableArray? {
+        guard let input = lookList?.looks else { return  nil }
 
-@interface Formula : NSObject<CBMutableCopying>
+        var lookList = [Look]()
+        for look in input {
+            lookList.append(Look(name: look.name, andPath: look.fileName))
+        }
 
-@property (nonatomic, strong) FormulaElement *formulaTree;
-@property (nonatomic, strong) NSString *category;
-@property (nonatomic, weak) NSString *displayString;
-
-- (id)initWithZero;
-- (id)initWithInteger:(int)value;
-- (id)initWithDouble:(double)value;
-- (id)initWithFloat:(float)value;
-- (id)initWithString:(NSString*)value;
-- (id)initWithFormulaElement:(FormulaElement*)formulaTree;
-
-- (BOOL)isSingularNumber;
-- (BOOL)isEqualToFormula:(Formula*)formula;
-
-- (void)setRoot:(FormulaElement*)formulaTree;
-- (InternFormulaState*)getInternFormulaState;
-- (NSString*)getDisplayString;
-- (InternFormula*)getInternFormula;
-- (void)setDisplayString:(NSString*)text;
-- (NSInteger)getRequiredResources;
-@end
+        return NSMutableArray(array: lookList)
+    }
+}

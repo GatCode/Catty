@@ -1,0 +1,143 @@
+/**
+ *  Copyright (C) 2010-2019 The Catrobat Team
+ *  (http://developer.catrobat.org/credits)
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *  An additional term exception under section 7 of the GNU Affero
+ *  General Public License, version 3, is available at
+ *  (http://developer.catrobat.org/license_additional_term)
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see http://www.gnu.org/licenses/.
+ */
+
+// swiftlint:disable large_tuple
+
+extension CBXMLMappingToObjc {
+
+    static func mapVariables(project: CBProject?, mappedProject: inout Project) -> VariablesContainer? {
+        guard let project = project else { return nil }
+        let container = VariablesContainer()
+
+        container.programListOfLists = mapProgramListOfLists(project: project, mappedProject: &mappedProject)
+
+        container.programVariableList = mapProgramVariableList(project: project, mappedProject: &mappedProject)
+
+        container.objectListOfLists = mapObjectListOfLists(project: project, mappedProject: &mappedProject)
+
+        container.objectVariableList = mapObjectVariableList(project: project, mappedProject: &mappedProject)
+
+        return container
+    }
+
+    // MARK: - mapProgramListOfLists
+    static func mapProgramListOfLists(project: CBProject?, mappedProject: inout Project) -> NSMutableArray? {
+        guard let programListOfLists = project?.programListOfLists?.list else { return nil }
+        var result = [UserVariable]()
+
+        for variable in programListOfLists {
+            if variable.reference != nil {
+                let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
+                if let uVar = referencedUserVariable {
+                    result.append(uVar.pointee)
+                }
+            } else if let value = variable.value {
+                result.append(allocUserVariable(name: value, isList: true))
+            }
+        }
+
+        return NSMutableArray(array: result)
+    }
+
+    // MARK: - mapProgramVariableList
+    static func mapProgramVariableList(project: CBProject?, mappedProject: inout Project) -> NSMutableArray? {
+        guard let programVariableList = project?.programVariableList?.userVariable else { return nil }
+        var result = [UserVariable]()
+
+        for variable in programVariableList {
+            if variable.reference != nil {
+                let referencedUserVariable = resolveUserVariableReference(reference: variable.reference, project: project, mappedProject: &mappedProject)
+                if let uVar = referencedUserVariable {
+                    result.append(uVar.pointee)
+                }
+            } else if let value = variable.value {
+                result.append(allocUserVariable(name: value, isList: false))
+            }
+        }
+
+        return NSMutableArray(array: result)
+    }
+
+    // MARK: - mapObjectListOfLists
+    static func mapObjectListOfLists(project: CBProject?, mappedProject: inout Project) -> OrderedMapTable? {
+        guard let scenes = project?.scenes else { return nil }
+        let result = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
+
+        for scene in scenes {
+            if let objectListOfList = scene.data?.objectListOfList?.entry {
+                for entry in objectListOfList {
+                    if let lists = entry.list {
+
+                        let referencedObject = resolveObjectReference(reference: entry.object, project: project, mappedProject: &mappedProject)?.pointee
+
+                        var referencedList = [UserVariable]()
+                        for list in lists {
+                            if list.reference != nil {
+                                if let element = resolveUserVariableReference(reference: list.reference, project: project, mappedProject: &mappedProject) {
+                                    referencedList.append(element.pointee)
+                                }
+                            } else if let value = list.value {
+                                referencedList.append(allocLocalUserVariable(name: value, isList: true))
+                            }
+                        }
+
+                        result.setObject(NSArray(array: referencedList), forKey: referencedObject)
+                    }
+                }
+            }
+        }
+
+        return result
+    }
+
+    // MARK: - mapObjectVariableList
+    static func mapObjectVariableList(project: CBProject?, mappedProject: inout Project) -> OrderedMapTable? {
+        guard let scenes = project?.scenes else { return nil }
+        let result = OrderedMapTable.weakToStrongObjectsMapTable() as! OrderedMapTable
+
+        for scene in scenes {
+            if let objectVariableList = scene.data?.objectVariableList?.entry {
+                for entry in objectVariableList {
+                    if let lists = entry.list {
+
+                        let referencedObject = resolveObjectReference(reference: entry.object, project: project, mappedProject: &mappedProject)?.pointee
+
+                        var referencedList = [UserVariable]()
+                        for list in lists {
+                            if list.reference != nil {
+                                if let element = resolveUserVariableReference(reference: list.reference, project: project, mappedProject: &mappedProject) {
+                                    referencedList.append(element.pointee)
+                                }
+                            } else if let value = list.value {
+                                referencedList.append(allocLocalUserVariable(name: value, isList: false))
+                            }
+                        }
+
+                        result.setObject(NSArray(array: referencedList), forKey: referencedObject)
+                    }
+                }
+            }
+        }
+
+        return result
+    }
+}

@@ -24,6 +24,7 @@
 #import "SpriteObject.h"
 #import "UIDefines.h"
 #import "BrickProtocol.h"
+#import "Formula.h"
 
 @class Script;
 
@@ -34,6 +35,7 @@
 @property (nonatomic, getter=isAnimatedInsertBrick) BOOL animateInsertBrick;
 @property (nonatomic, getter=isAnimatedMoveBrick) BOOL animateMoveBrick;
 @property (nonatomic) BOOL isSelected;
+@property (atomic, strong) UserVariable *uVar;
 
 - (BOOL)isSelectableForObject;
 

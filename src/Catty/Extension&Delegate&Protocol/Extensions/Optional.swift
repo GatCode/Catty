@@ -20,34 +20,15 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import <Foundation/Foundation.h>
-#import "InternFormula.h"
-#import "InternFormulaState.h"
-#import "CBMutableCopying.h"
-
-@class FormulaElement;
-@class SpriteObject;
-
-@interface Formula : NSObject<CBMutableCopying>
-
-@property (nonatomic, strong) FormulaElement *formulaTree;
-@property (nonatomic, strong) NSString *category;
-@property (nonatomic, weak) NSString *displayString;
-
-- (id)initWithZero;
-- (id)initWithInteger:(int)value;
-- (id)initWithDouble:(double)value;
-- (id)initWithFloat:(float)value;
-- (id)initWithString:(NSString*)value;
-- (id)initWithFormulaElement:(FormulaElement*)formulaTree;
-
-- (BOOL)isSingularNumber;
-- (BOOL)isEqualToFormula:(Formula*)formula;
-
-- (void)setRoot:(FormulaElement*)formulaTree;
-- (InternFormulaState*)getInternFormulaState;
-- (NSString*)getDisplayString;
-- (InternFormula*)getInternFormula;
-- (void)setDisplayString:(NSString*)text;
-- (NSInteger)getRequiredResources;
-@end
+extension Optional {
+    func isEmptyButNotNil() -> Bool {
+        if let unwrapped = self, let string = unwrapped as? String {
+            if string.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        }
+        return false
+    }
+}

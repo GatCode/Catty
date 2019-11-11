@@ -479,14 +479,16 @@
         return nil;
     }
 
-    // detect right parser for correct catrobat language version
-    CBXMLParserOLD *catrobatParser = [[CBXMLParserOLD alloc] initWithPath:xmlPath];
-    if (! [catrobatParser isSupportedLanguageVersion:languageVersion]) {
-        Parser *parser = [[Parser alloc] init];
-        project = [parser generateObjectForProjectWithPath:xmlPath];
-    } else {
-        project = [catrobatParser parseAndCreateProject];
+    CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
+    if ([catrobatParser parseProjectObjc] == false) {
+        return nil;
     }
+    project = [catrobatParser getProjectObjc];
+    if (project == nil) {
+        NSDebug(@"Parsing Error!");
+        return nil;
+    }
+    
     project.header.programName = loadingInfo.visibleName;
     project.header.programID = loadingInfo.projectID;
 
