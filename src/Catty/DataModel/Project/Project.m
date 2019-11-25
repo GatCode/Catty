@@ -29,8 +29,6 @@
 #import "Brick.h"
 #import "CatrobatLanguageDefines.h"
 #import "CBXMLParserOLD.h"
-#import "CBXMLSerializer.h"
-#import "CBMutableCopyContext.h"
 #import "Pocket_Code-Swift.h"
 
 @implementation Project
