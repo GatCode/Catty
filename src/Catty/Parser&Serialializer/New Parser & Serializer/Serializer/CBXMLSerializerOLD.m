@@ -20,7 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "CBXMLSerializer.h"
+#import "CBXMLSerializerOLD.h"
 #import "Project+CBXMLHandler.h"
 #import "GDataXMLElement+CustomExtensions.h"
 #import "CBXMLSerializerContext.h"
@@ -28,14 +28,14 @@
 #import "CBXMLPositionStack.h"
 #import "CBFileManager.h"
 
-@interface CBXMLSerializer()
+@interface CBXMLSerializerOLD()
 
 @property (nonatomic, strong) NSString *xmlPath;
 @property (nonatomic, strong) FileManager *fileManager;
 
 @end
 
-@implementation CBXMLSerializer
+@implementation CBXMLSerializerOLD
 
 #pragma mark - Initialization
 - (id)initWithPath:(NSString*)path fileManager:(FileManager *)fileManager

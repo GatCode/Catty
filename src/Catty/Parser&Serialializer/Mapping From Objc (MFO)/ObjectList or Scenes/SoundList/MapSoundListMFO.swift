@@ -20,17 +20,29 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "CBSerializerProtocol.h"
+extension CBXMLMappingFromObjc {
 
-#define kCBXMLSerializerLanguageVersion [Util catrobatLanguageVersion]
+    static func mapSoundList(project: Project, object: SpriteObject?) -> CBSoundList? {
+        guard let object = object else { return nil }
+        guard let soundList = object.soundList else { return nil }
+        var mappedSounds = [CBSound]()
 
-@class GDataXMLDocument;
-@class CBFileManager;
+        for sound in soundList {
+            if let sound = sound as? Sound {
+                mappedSounds.append(CBSound(fileName: sound.fileName, name: sound.name, reference: nil))
+            }
+        }
 
-@interface CBXMLSerializer : NSObject <CBSerializerProtocol>
+        return CBSoundList(sounds: mappedSounds)
+    }
 
-- (id)initWithPath:(NSString*)path fileManager:(CBFileManager *)fileManager;
-- (void)serializeProject:(Project*)project;
-+ (GDataXMLDocument*)xmlDocumentForProject:(Project*)project;
+    static func resolveSoundPath(sound: Sound?, currentObject: CBObject) -> String? {
+        guard let soundList = currentObject.soundList?.sounds else { return nil }
 
-@end
+        for (idx, refSound) in soundList.enumerated() where refSound.name == sound?.name {
+            return "../../../../../soundList/" + (idx == 0 ? "sound" : "sound[\(idx + 1)]")
+        }
+
+        return nil
+    }
+}

@@ -20,21 +20,11 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "Brick.h"
-#import "BrickFormulaProtocol.h"
+import AEXML
 
-@class Formula;
+extension CBXMLSerializer {
 
-@interface GlideToBrick : Brick<BrickFormulaProtocol>
-
-@property (nonatomic, strong) Formula *durationInSeconds;
-@property (nonatomic, strong) Formula *xDestination;
-@property (nonatomic, strong) Formula *yDestination;
-@property (nonatomic, retain) NSArray *serializationOrder;
-@property (nonatomic, assign) BOOL isInitialized;
-@property (nonatomic, assign) CGPoint currentPoint;
-@property (nonatomic, assign) CGPoint startingPoint;
-@property (nonatomic) float deltaX;
-@property (nonatomic) float deltaY;
-
-@end
+    func addSettingsTo(program: AEXMLElement) {
+        program.addChild(name: "settings")
+    }
+}

@@ -20,21 +20,17 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "Brick.h"
-#import "BrickFormulaProtocol.h"
+#import "CBSerializerProtocol.h"
 
-@class Formula;
+#define kCBXMLSerializerLanguageVersion [Util catrobatLanguageVersion]
 
-@interface GlideToBrick : Brick<BrickFormulaProtocol>
+@class GDataXMLDocument;
+@class CBFileManager;
 
-@property (nonatomic, strong) Formula *durationInSeconds;
-@property (nonatomic, strong) Formula *xDestination;
-@property (nonatomic, strong) Formula *yDestination;
-@property (nonatomic, retain) NSArray *serializationOrder;
-@property (nonatomic, assign) BOOL isInitialized;
-@property (nonatomic, assign) CGPoint currentPoint;
-@property (nonatomic, assign) CGPoint startingPoint;
-@property (nonatomic) float deltaX;
-@property (nonatomic) float deltaY;
+@interface CBXMLSerializerOLD : NSObject <CBSerializerProtocol>
+
+- (id)initWithPath:(NSString*)path fileManager:(CBFileManager *)fileManager;
+- (void)serializeProject:(Project*)project;
++ (GDataXMLDocument*)xmlDocumentForProject:(Project*)project;
 
 @end

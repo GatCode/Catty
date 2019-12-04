@@ -197,7 +197,7 @@
 #import "CBXMLParserOLD.h"
 #import "Parser.h"
 #import "GDataXMLNode.h"
-#import "CBXMLSerializer.h"
+#import "CBXMLSerializerOLD.h"
 #import "GDataXMLElement+CustomExtensions.h"
 #import "CBXMLSerializerContext.h"
 #import "CBXMLParserContext.h"

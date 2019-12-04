@@ -20,21 +20,29 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "Brick.h"
-#import "BrickFormulaProtocol.h"
+extension CBXMLMappingFromObjc {
 
-@class Formula;
+    static func mapLookList(project: Project, object: SpriteObject?) -> CBLookList? {
+        guard let object = object else { return nil }
+        guard let lookList = object.lookList else { return nil }
+        var mappedLooks = [CBLook]()
 
-@interface GlideToBrick : Brick<BrickFormulaProtocol>
+        for look in lookList {
+            if let look = look as? Look {
+                mappedLooks.append(CBLook(name: look.name, fileName: look.fileName))
+            }
+        }
 
-@property (nonatomic, strong) Formula *durationInSeconds;
-@property (nonatomic, strong) Formula *xDestination;
-@property (nonatomic, strong) Formula *yDestination;
-@property (nonatomic, retain) NSArray *serializationOrder;
-@property (nonatomic, assign) BOOL isInitialized;
-@property (nonatomic, assign) CGPoint currentPoint;
-@property (nonatomic, assign) CGPoint startingPoint;
-@property (nonatomic) float deltaX;
-@property (nonatomic) float deltaY;
+        return CBLookList(looks: mappedLooks)
+    }
 
-@end
+    static func resolveLookPath(look: Look?, currentObject: CBObject) -> String? {
+        guard let lookList = currentObject.lookList?.looks else { return nil }
+
+        for (idx, refLook) in lookList.enumerated() where refLook.name == look?.name {
+            return "../../../../../lookList/" + (idx == 0 ? "look" : "look[\(idx + 1)]")
+        }
+
+        return nil
+    }
+}

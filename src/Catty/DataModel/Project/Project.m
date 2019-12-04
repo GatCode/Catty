@@ -168,7 +168,7 @@
         }
         // TODO: find correct serializer class dynamically
         NSString *xmlPath = [NSString stringWithFormat:@"%@%@", [self projectPath], kProjectCodeFileName];
-        id<CBSerializerProtocol> serializer = [[CBXMLSerializer alloc] initWithPath:xmlPath fileManager:fileManager];
+        id<CBSerializerProtocol> serializer = [[CBXMLSerializerOLD alloc] initWithPath:xmlPath fileManager:fileManager];
         [serializer serializeProject:self];
 
         dispatch_async(dispatch_get_main_queue(), ^{

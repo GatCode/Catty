@@ -30,6 +30,25 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.downloadData.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */; };
+		2E4BA1A023979DB200607047 /* CBXMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA19F23979DB200607047 /* CBXMLSerializer.swift */; };
+		2E4BA1A823979DC900607047 /* SerializeScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1A223979DC900607047 /* SerializeScenes.swift */; };
+		2E4BA1A923979DC900607047 /* SerializeProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1A323979DC900607047 /* SerializeProgramVariableList.swift */; };
+		2E4BA1AA23979DC900607047 /* XMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1A423979DC900607047 /* XMLHandler.swift */; };
+		2E4BA1AB23979DC900607047 /* SerializeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1A523979DC900607047 /* SerializeSettings.swift */; };
+		2E4BA1AC23979DC900607047 /* SerializeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1A623979DC900607047 /* SerializeHeader.swift */; };
+		2E4BA1AD23979DC900607047 /* SerializeProgramListOfLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1A723979DC900607047 /* SerializeProgramListOfLists.swift */; };
+		2E4BA1C423979E3000607047 /* CBXMLMappingFromObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1AF23979E3000607047 /* CBXMLMappingFromObjc.swift */; };
+		2E4BA1C523979E3000607047 /* MapVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1B123979E3000607047 /* MapVariablesMFO.swift */; };
+		2E4BA1C623979E3000607047 /* ResolveVariableReferencesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1B223979E3000607047 /* ResolveVariableReferencesMFO.swift */; };
+		2E4BA1C723979E3000607047 /* MapObjectListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1B423979E3000607047 /* MapObjectListMFO.swift */; };
+		2E4BA1C823979E3000607047 /* MapBrickListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1B723979E3000607047 /* MapBrickListMFO.swift */; };
+		2E4BA1C923979E3000607047 /* MapFormulaListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1B923979E3000607047 /* MapFormulaListMFO.swift */; };
+		2E4BA1CA23979E3000607047 /* MapScriptListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1BA23979E3000607047 /* MapScriptListMFO.swift */; };
+		2E4BA1CB23979E3000607047 /* MapSoundListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1BC23979E3000607047 /* MapSoundListMFO.swift */; };
+		2E4BA1CC23979E3000607047 /* ResolveUserVariablesMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1BE23979E3000607047 /* ResolveUserVariablesMFO.swift */; };
+		2E4BA1CD23979E3000607047 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1BF23979E3000607047 /* MapData.swift */; };
+		2E4BA1CE23979E3000607047 /* MapLookListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1C123979E3000607047 /* MapLookListMFO.swift */; };
+		2E4BA1CF23979E3000607047 /* MapHeaderMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1C323979E3000607047 /* MapHeaderMFO.swift */; };
 		2E9116C7238C2DD50068B792 /* CBProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E911698238C2DD50068B792 /* CBProject.swift */; };
 		2E9116C8238C2DD50068B792 /* CBProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91169A238C2DD50068B792 /* CBProjectScene.swift */; };
 		2E9116C9238C2DD50068B792 /* CBUserBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91169D238C2DD50068B792 /* CBUserBrick.swift */; };
@@ -339,7 +358,7 @@
 		4C724E231B4D3E8C00E27479 /* CBXMLSerializerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724D8B1B4D3E8C00E27479 /* CBXMLSerializerHelper.m */; };
 		4C724E241B4D3E8C00E27479 /* CBXMLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724D8D1B4D3E8C00E27479 /* CBXMLValidator.m */; };
 		4C724E251B4D3E8C00E27479 /* CBXMLParserOLD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724D901B4D3E8C00E27479 /* CBXMLParserOLD.m */; };
-		4C724E271B4D3E8C00E27479 /* CBXMLSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724D961B4D3E8C00E27479 /* CBXMLSerializer.m */; };
+		4C724E271B4D3E8C00E27479 /* CBXMLSerializerOLD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724D961B4D3E8C00E27479 /* CBXMLSerializerOLD.m */; };
 		4C724E561B4D3E8C00E27479 /* Formula+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724DFE1B4D3E8C00E27479 /* Formula+CBXMLHandler.m */; };
 		4C724E571B4D3E8C00E27479 /* FormulaElement+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724E001B4D3E8C00E27479 /* FormulaElement+CBXMLHandler.m */; };
 		4C724E581B4D3E8C00E27479 /* Header+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C724E031B4D3E8C00E27479 /* Header+CBXMLHandler.m */; };
@@ -1479,6 +1498,25 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.downloadData.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.downloadData.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadData.fail.request.json; sourceTree = "<group>"; };
+		2E4BA19F23979DB200607047 /* CBXMLSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBXMLSerializer.swift; sourceTree = "<group>"; };
+		2E4BA1A223979DC900607047 /* SerializeScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializeScenes.swift; sourceTree = "<group>"; };
+		2E4BA1A323979DC900607047 /* SerializeProgramVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializeProgramVariableList.swift; sourceTree = "<group>"; };
+		2E4BA1A423979DC900607047 /* XMLHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLHandler.swift; sourceTree = "<group>"; };
+		2E4BA1A523979DC900607047 /* SerializeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializeSettings.swift; sourceTree = "<group>"; };
+		2E4BA1A623979DC900607047 /* SerializeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializeHeader.swift; sourceTree = "<group>"; };
+		2E4BA1A723979DC900607047 /* SerializeProgramListOfLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializeProgramListOfLists.swift; sourceTree = "<group>"; };
+		2E4BA1AF23979E3000607047 /* CBXMLMappingFromObjc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBXMLMappingFromObjc.swift; sourceTree = "<group>"; };
+		2E4BA1B123979E3000607047 /* MapVariablesMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVariablesMFO.swift; sourceTree = "<group>"; };
+		2E4BA1B223979E3000607047 /* ResolveVariableReferencesMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResolveVariableReferencesMFO.swift; sourceTree = "<group>"; };
+		2E4BA1B423979E3000607047 /* MapObjectListMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapObjectListMFO.swift; sourceTree = "<group>"; };
+		2E4BA1B723979E3000607047 /* MapBrickListMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBrickListMFO.swift; sourceTree = "<group>"; };
+		2E4BA1B923979E3000607047 /* MapFormulaListMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFormulaListMFO.swift; sourceTree = "<group>"; };
+		2E4BA1BA23979E3000607047 /* MapScriptListMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScriptListMFO.swift; sourceTree = "<group>"; };
+		2E4BA1BC23979E3000607047 /* MapSoundListMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSoundListMFO.swift; sourceTree = "<group>"; };
+		2E4BA1BE23979E3000607047 /* ResolveUserVariablesMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResolveUserVariablesMFO.swift; sourceTree = "<group>"; };
+		2E4BA1BF23979E3000607047 /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
+		2E4BA1C123979E3000607047 /* MapLookListMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLookListMFO.swift; sourceTree = "<group>"; };
+		2E4BA1C323979E3000607047 /* MapHeaderMFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHeaderMFO.swift; sourceTree = "<group>"; };
 		2E911698238C2DD50068B792 /* CBProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBProject.swift; sourceTree = "<group>"; };
 		2E91169A238C2DD50068B792 /* CBProjectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBProjectScene.swift; sourceTree = "<group>"; };
 		2E91169D238C2DD50068B792 /* CBUserBrick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBUserBrick.swift; sourceTree = "<group>"; };
@@ -1860,8 +1898,8 @@
 		4C724D8D1B4D3E8C00E27479 /* CBXMLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBXMLValidator.m; sourceTree = "<group>"; };
 		4C724D8F1B4D3E8C00E27479 /* CBXMLParserOLD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBXMLParserOLD.h; sourceTree = "<group>"; };
 		4C724D901B4D3E8C00E27479 /* CBXMLParserOLD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBXMLParserOLD.m; sourceTree = "<group>"; };
-		4C724D951B4D3E8C00E27479 /* CBXMLSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBXMLSerializer.h; sourceTree = "<group>"; };
-		4C724D961B4D3E8C00E27479 /* CBXMLSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBXMLSerializer.m; sourceTree = "<group>"; };
+		4C724D951B4D3E8C00E27479 /* CBXMLSerializerOLD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBXMLSerializerOLD.h; sourceTree = "<group>"; };
+		4C724D961B4D3E8C00E27479 /* CBXMLSerializerOLD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBXMLSerializerOLD.m; sourceTree = "<group>"; };
 		4C724DFD1B4D3E8C00E27479 /* Formula+CBXMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Formula+CBXMLHandler.h"; sourceTree = "<group>"; };
 		4C724DFE1B4D3E8C00E27479 /* Formula+CBXMLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "Formula+CBXMLHandler.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4C724DFF1B4D3E8C00E27479 /* FormulaElement+CBXMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FormulaElement+CBXMLHandler.h"; sourceTree = "<group>"; };
@@ -3482,6 +3520,110 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
+		2E4BA1A123979DC900607047 /* Serializer Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1A223979DC900607047 /* SerializeScenes.swift */,
+				2E4BA1A323979DC900607047 /* SerializeProgramVariableList.swift */,
+				2E4BA1A423979DC900607047 /* XMLHandler.swift */,
+				2E4BA1A523979DC900607047 /* SerializeSettings.swift */,
+				2E4BA1A623979DC900607047 /* SerializeHeader.swift */,
+				2E4BA1A723979DC900607047 /* SerializeProgramListOfLists.swift */,
+			);
+			path = "Serializer Extensions";
+			sourceTree = "<group>";
+		};
+		2E4BA1AE23979E3000607047 /* Mapping From Objc (MFO) */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1AF23979E3000607047 /* CBXMLMappingFromObjc.swift */,
+				2E4BA1B023979E3000607047 /* Variables */,
+				2E4BA1B323979E3000607047 /* ObjectList or Scenes */,
+				2E4BA1C223979E3000607047 /* Header */,
+			);
+			path = "Mapping From Objc (MFO)";
+			sourceTree = "<group>";
+		};
+		2E4BA1B023979E3000607047 /* Variables */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1B123979E3000607047 /* MapVariablesMFO.swift */,
+				2E4BA1B223979E3000607047 /* ResolveVariableReferencesMFO.swift */,
+			);
+			path = Variables;
+			sourceTree = "<group>";
+		};
+		2E4BA1B323979E3000607047 /* ObjectList or Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1B423979E3000607047 /* MapObjectListMFO.swift */,
+				2E4BA1B523979E3000607047 /* ScriptList */,
+				2E4BA1BB23979E3000607047 /* SoundList */,
+				2E4BA1BD23979E3000607047 /* Supporting Files */,
+				2E4BA1C023979E3000607047 /* LookList */,
+			);
+			path = "ObjectList or Scenes";
+			sourceTree = "<group>";
+		};
+		2E4BA1B523979E3000607047 /* ScriptList */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1B623979E3000607047 /* BrickList */,
+				2E4BA1BA23979E3000607047 /* MapScriptListMFO.swift */,
+			);
+			path = ScriptList;
+			sourceTree = "<group>";
+		};
+		2E4BA1B623979E3000607047 /* BrickList */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1B723979E3000607047 /* MapBrickListMFO.swift */,
+				2E4BA1B823979E3000607047 /* FormulaList */,
+			);
+			path = BrickList;
+			sourceTree = "<group>";
+		};
+		2E4BA1B823979E3000607047 /* FormulaList */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1B923979E3000607047 /* MapFormulaListMFO.swift */,
+			);
+			path = FormulaList;
+			sourceTree = "<group>";
+		};
+		2E4BA1BB23979E3000607047 /* SoundList */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1BC23979E3000607047 /* MapSoundListMFO.swift */,
+			);
+			path = SoundList;
+			sourceTree = "<group>";
+		};
+		2E4BA1BD23979E3000607047 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1BE23979E3000607047 /* ResolveUserVariablesMFO.swift */,
+				2E4BA1BF23979E3000607047 /* MapData.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E4BA1C023979E3000607047 /* LookList */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1C123979E3000607047 /* MapLookListMFO.swift */,
+			);
+			path = LookList;
+			sourceTree = "<group>";
+		};
+		2E4BA1C223979E3000607047 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BA1C323979E3000607047 /* MapHeaderMFO.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		2E911697238C2DD50068B792 /* Data Structure */ = {
 			isa = PBXGroup;
 			children = (
@@ -4469,10 +4611,13 @@
 		4C724D851B4D3E8C00E27479 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
-				2EA8ABC22376D9B50029726A /* Mapping To Objc (MTO) */,
 				2EA8AB392376D3730029726A /* CBXMLParser.swift */,
-				4C724D861B4D3E8C00E27479 /* New Parser & Serializer */,
+				2E4BA19F23979DB200607047 /* CBXMLSerializer.swift */,
 				2E911697238C2DD50068B792 /* Data Structure */,
+				2E4BA1A123979DC900607047 /* Serializer Extensions */,
+				2EA8ABC22376D9B50029726A /* Mapping To Objc (MTO) */,
+				2E4BA1AE23979E3000607047 /* Mapping From Objc (MFO) */,
+				4C724D861B4D3E8C00E27479 /* New Parser & Serializer */,
 				4C724E191B4D3E8C00E27479 /* Old Parser */,
 			);
 			path = "Parser&Serialializer";
@@ -4516,8 +4661,8 @@
 		4C724D941B4D3E8C00E27479 /* Serializer */ = {
 			isa = PBXGroup;
 			children = (
-				4C724D951B4D3E8C00E27479 /* CBXMLSerializer.h */,
-				4C724D961B4D3E8C00E27479 /* CBXMLSerializer.m */,
+				4C724D951B4D3E8C00E27479 /* CBXMLSerializerOLD.h */,
+				4C724D961B4D3E8C00E27479 /* CBXMLSerializerOLD.m */,
 				4C724D971B4D3E8C00E27479 /* Context */,
 			);
 			path = Serializer;
@@ -9594,11 +9739,13 @@
 				AABCB3ED1BB368CF009F67D2 /* CBFrontend.swift in Sources */,
 				AABCB3EC1BB368C2009F67D2 /* CBFrontendSequenceFilters.swift in Sources */,
 				AABCB3EA1BB3687D009F67D2 /* CBScene.swift in Sources */,
+				2E4BA1CE23979E3000607047 /* MapLookListMFO.swift in Sources */,
 				AA74F0B61BC05FCE00D1E954 /* ChangeXByNBrickCell.m in Sources */,
 				4C595F5121CAEC060097D850 /* GreaterOrEqualOperator.swift in Sources */,
 				AABCB3E71BB3671F009F67D2 /* LLNode.swift in Sources */,
 				AA74EE3C1BC0543700D1E954 /* SpeakBrick+Instruction.swift in Sources */,
 				AA401FE91BBEF6F9001BC49F /* CBInstructionProtocol.swift in Sources */,
+				2E4BA1A023979DB200607047 /* CBXMLSerializer.swift in Sources */,
 				AABCB3E21BB36529009F67D2 /* CBScheduler.swift in Sources */,
 				BACDF3521F1F9B7E00346167 /* DeleteItemOfUserListBrick.m in Sources */,
 				AABCB3DF1BB3650B009F67D2 /* CBBackendProtocol.swift in Sources */,
@@ -9606,6 +9753,7 @@
 				F470A2E52129DF42005EC9A3 /* NumberOfItemsFunction.swift in Sources */,
 				92B46F9B1BC7BC8C004980C1 /* ArduinoSendDigitalValueBrick+CBXMLHandler.m in Sources */,
 				4C0F9F31204ADC2E00E71B2D /* ChooseCameraBrick.m in Sources */,
+				2E4BA1C923979E3000607047 /* MapFormulaListMFO.swift in Sources */,
 				AABCB3E01BB3650B009F67D2 /* CBFrontendProtocol.swift in Sources */,
 				AABCB3E11BB3650B009F67D2 /* CBSchedulerProtocol.swift in Sources */,
 				F4E6E598210E03FE00D86FE6 /* ExpFunction.swift in Sources */,
@@ -9614,8 +9762,10 @@
 				4C994E08207A3D4100C415FD /* SensorManager.swift in Sources */,
 				AABCB3DE1BB364F2009F67D2 /* CBBackend.swift in Sources */,
 				AABCB3DD1BB364DD009F67D2 /* CBIfConditionalSequence.swift in Sources */,
+				2E4BA1C623979E3000607047 /* ResolveVariableReferencesMFO.swift in Sources */,
 				4C0F9F82204BD20A00E71B2D /* SpeakAndWaitBrick+Instruction.swift in Sources */,
 				AA74EFF21BC05B5F00D1E954 /* ChangeTransparencyByNBrick.m in Sources */,
+				2E4BA1AD23979DC900607047 /* SerializeProgramListOfLists.swift in Sources */,
 				929CC0CD1BC39B0A0027DEC0 /* PhiroMotorMoveForwardBrick.m in Sources */,
 				4C0F9F8E204BD27200E71B2D /* RepeatUntilBrickCell.m in Sources */,
 				AABCB3DB1BB364B9009F67D2 /* CBBroadcastHandlerProtocol.swift in Sources */,
@@ -9672,6 +9822,7 @@
 				9200C2C91C808006002F5CA4 /* HideTextBrick.m in Sources */,
 				AA74F0BB1BC05FCE00D1E954 /* IfOnEdgeBounceBrickCell.m in Sources */,
 				BAEE49BE1F165CBA00F06741 /* ReplaceItemInUserListBrick+CBXMLHandler.m in Sources */,
+				2E4BA1AC23979DC900607047 /* SerializeHeader.swift in Sources */,
 				2D6E3F3B210A0AB700FB8139 /* ChartProjectsStoreViewController.swift in Sources */,
 				92FF2EA41A24C7D800093DA7 /* Util.m in Sources */,
 				AA74EFEC1BC05B5F00D1E954 /* ChangeVariableBrick.m in Sources */,
@@ -9722,6 +9873,7 @@
 				92BCDC871BF1FB1E00F9CB23 /* FirmataProtocol.swift in Sources */,
 				AA74EFE21BC05B5F00D1E954 /* BroadcastWaitBrick.m in Sources */,
 				4CF0729420D66A7F00F93AB5 /* AltitudeSensor.swift in Sources */,
+				2E4BA1A823979DC900607047 /* SerializeScenes.swift in Sources */,
 				9218B2131CC4AB75007B4C60 /* UndoManager.m in Sources */,
 				AA74F0B31BC05FCE00D1E954 /* SetSizeToBrickCell.m in Sources */,
 				F4E6E5C6210E24F900D86FE6 /* TrueFunction.swift in Sources */,
@@ -9879,6 +10031,7 @@
 				92FF32BF1A24E2F400093DA7 /* BrickTransition.m in Sources */,
 				4CEFFADB2105E46500DC5CFE /* ObjectDoubleSensor.swift in Sources */,
 				921D46871BDF698A0086AD20 /* ChangeBrightnessByNBrick+Instruction.swift in Sources */,
+				2E4BA1A923979DC900607047 /* SerializeProgramVariableList.swift in Sources */,
 				92FF31081A24DCAA00093DA7 /* UserVariable.m in Sources */,
 				4C724E221B4D3E8C00E27479 /* CBXMLParserHelper.m in Sources */,
 				2E9116DE238C2DD50068B792 /* CBObjectListOfList.swift in Sources */,
@@ -9971,9 +10124,11 @@
 				AA74EF7E1BC05A3400D1E954 /* IfOnEdgeBounceBrick+CBXMLHandler.m in Sources */,
 				4CF429F8213A8DA600B78897 /* LoopBeginBrick.m in Sources */,
 				AA74F00B1BC05B5F00D1E954 /* PlaySoundBrick.m in Sources */,
+				2E4BA1CA23979E3000607047 /* MapScriptListMFO.swift in Sources */,
 				F4A2AFB92110D4A800C53234 /* LengthFunction.swift in Sources */,
 				92FF31551A24DEB300093DA7 /* SoundsTableViewController.m in Sources */,
 				F4E6E58A210DFECA00D86FE6 /* SqrtFunction.swift in Sources */,
+				2E4BA1CB23979E3000607047 /* MapSoundListMFO.swift in Sources */,
 				F4E6E586210DFE0800D86FE6 /* LnFunction.swift in Sources */,
 				92FF31561A24DEB300093DA7 /* SRViewController.m in Sources */,
 				AAF6D9DA1BC0BB1F00686849 /* SetLookBrick+Instruction.swift in Sources */,
@@ -10015,6 +10170,7 @@
 				4C994E25207A56D500C415FD /* AccelerationYSensor.swift in Sources */,
 				2E9116DA238C2DD50068B792 /* CBProjectData.swift in Sources */,
 				921D467A1BDF61350086AD20 /* ChangeSizeByNBrick+Instruction.swift in Sources */,
+				2E4BA1AA23979DC900607047 /* XMLHandler.swift in Sources */,
 				2E9116E1238C2DD50068B792 /* CBProgramListOfLists.swift in Sources */,
 				F470A2E32129DAFB005EC9A3 /* ElementFunction.swift in Sources */,
 				92FF30FF1A24DCAA00093DA7 /* Project.m in Sources */,
@@ -10082,6 +10238,7 @@
 				92FC85CE1B9E1EB5001C728F /* BrickManager.m in Sources */,
 				5E18A81221A547AA00541536 /* UIViewController+Extensions.swift in Sources */,
 				AA74F0951BC05FCE00D1E954 /* BrickCellMessageData.m in Sources */,
+				2E4BA1AB23979DC900607047 /* SerializeSettings.swift in Sources */,
 				597AB578202089E0007CD10D /* NetworkDefines.swift in Sources */,
 				F4E6E59C210E051200D86FE6 /* MinFunction.swift in Sources */,
 				4C5AEF0522F7037200280F8B /* CatrobatSetup+Operators.swift in Sources */,
@@ -10145,6 +10302,7 @@
 				AA74EFF31BC05B5F00D1E954 /* ClearGraphicEffectBrick.m in Sources */,
 				AAF6D9C91BC0914100686849 /* CBPlayerConfig.swift in Sources */,
 				AA74EFF51BC05B5F00D1E954 /* NextLookBrick.m in Sources */,
+				2E4BA1C723979E3000607047 /* MapObjectListMFO.swift in Sources */,
 				92DFB0121A38949E00FA9B0F /* InternFormula.m in Sources */,
 				2E9116CC238C2DD50068B792 /* CBLookList.swift in Sources */,
 				4C595F5521CAF3E60097D850 /* NotOperator.swift in Sources */,
@@ -10158,7 +10316,7 @@
 				AA74EFE31BC05B5F00D1E954 /* ForeverBrick.m in Sources */,
 				AA74EEFB1BC057C900D1E954 /* HideBrick+CBXMLHandler.m in Sources */,
 				AA74EFFD1BC05B5F00D1E954 /* ChangeYByNBrick.m in Sources */,
-				4C724E271B4D3E8C00E27479 /* CBXMLSerializer.m in Sources */,
+				4C724E271B4D3E8C00E27479 /* CBXMLSerializerOLD.m in Sources */,
 				9200C2DC1C8084AA002F5CA4 /* ShowTextBrick+CBXMLHandler.m in Sources */,
 				9218B2041CC4AB75007B4C60 /* LCTableViewPickerControl.m in Sources */,
 				92DFB0111A38949E00FA9B0F /* NSMutableArray+Reverse.m in Sources */,
@@ -10218,9 +10376,11 @@
 				4C994E0A207A3D4100C415FD /* Sensor.swift in Sources */,
 				AA74F00D1BC05B5F00D1E954 /* SpeakBrick.m in Sources */,
 				4C0F9F1C204ADB5900E71B2D /* ChooseCameraBrick+Instruction.swift in Sources */,
+				2E4BA1C823979E3000607047 /* MapBrickListMFO.swift in Sources */,
 				AA74EEDE1BC057B900D1E954 /* IfLogicBeginBrick+CBXMLHandler.m in Sources */,
 				92FF2E931A24C7D800093DA7 /* RuntimeImageCache.m in Sources */,
 				92D56C3B1BF20B4700A54750 /* PhiroHelper.swift in Sources */,
+				2E4BA1CF23979E3000607047 /* MapHeaderMFO.swift in Sources */,
 				AA74F0C31BC05FCE00D1E954 /* TurnRightBrickCell.m in Sources */,
 				AA74F0A01BC05FCE00D1E954 /* IfLogicElseBrickCell.m in Sources */,
 				AA74F0A91BC05FCE00D1E954 /* SetVariableBrickCell.m in Sources */,
@@ -10257,6 +10417,7 @@
 				4CB0F9F220A1739400D1BE2F /* SizeSensor.swift in Sources */,
 				F4A2AFB52110D48C00C53234 /* JoinFunction.swift in Sources */,
 				92FF2E901A24C7D800093DA7 /* GDataXMLNode.m in Sources */,
+				2E4BA1C523979E3000607047 /* MapVariablesMFO.swift in Sources */,
 				F48E945920D6955E007E782E /* DateSensor.swift in Sources */,
 				92FF2E8F1A24C7D800093DA7 /* FlashHelper.m in Sources */,
 				AA74F09B1BC05FCE00D1E954 /* BrickCell.m in Sources */,
@@ -10276,6 +10437,7 @@
 				2E9116C9238C2DD50068B792 /* CBUserBrick.swift in Sources */,
 				99B2C3751D884F2D00736769 /* FlashBrick+Instruction.swift in Sources */,
 				5E7B5B0D21EC0FCF002E4B57 /* HelpWebViewController.swift in Sources */,
+				2E4BA1CC23979E3000607047 /* ResolveUserVariablesMFO.swift in Sources */,
 				9218B2111CC4AB75007B4C60 /* PointerTool.m in Sources */,
 				AA74F0CE1BC05FCE00D1E954 /* WhenScriptCell.m in Sources */,
 				5EA1089421B8FBD200B837B9 /* AVAudioSession+Extensions.swift in Sources */,
@@ -10322,7 +10484,9 @@
 				92FF32B41A24E2F400093DA7 /* CellMotionEffect.m in Sources */,
 				92FF314F1A24DEB300093DA7 /* LooksTableViewController.m in Sources */,
 				929CC0D01BC39B0A0027DEC0 /* PhiroRGBLightBrick.m in Sources */,
+				2E4BA1C423979E3000607047 /* CBXMLMappingFromObjc.swift in Sources */,
 				92FF32B51A24E2F400093DA7 /* PlaceHolderView.m in Sources */,
+				2E4BA1CD23979E3000607047 /* MapData.swift in Sources */,
 				4C724E561B4D3E8C00E27479 /* Formula+CBXMLHandler.m in Sources */,
 				F4E6E5C2210E23D500D86FE6 /* CeilFunction.swift in Sources */,
 				92C6318B1BC502CB00486958 /* SearchDevicesTableViewController.swift in Sources */,

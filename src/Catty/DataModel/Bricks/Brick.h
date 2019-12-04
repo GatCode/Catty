@@ -35,6 +35,7 @@
 @property (nonatomic, getter=isAnimatedInsertBrick) BOOL animateInsertBrick;
 @property (nonatomic, getter=isAnimatedMoveBrick) BOOL animateMoveBrick;
 @property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) NSString *commentedOut;
 @property (atomic, strong) UserVariable *uVar;
 
 - (BOOL)isSelectableForObject;

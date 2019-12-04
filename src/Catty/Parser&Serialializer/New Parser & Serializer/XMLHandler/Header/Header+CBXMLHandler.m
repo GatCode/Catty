@@ -25,7 +25,7 @@
 #import "CBXMLValidator.h"
 #import "CBXMLParserHelper.h"
 #import "CatrobatLanguageDefines.h"
-#import "CBXMLSerializer.h"
+#import "CBXMLSerializerOLD.h"
 #import "CBXMLPropertyMapping.h"
 #import "CBXMLParserContext.h"
 #import "Util.h"
