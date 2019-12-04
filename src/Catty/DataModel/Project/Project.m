@@ -466,15 +466,10 @@
     NSString *xmlPath = [NSString stringWithFormat:@"%@%@", loadingInfo.basePath, kProjectCodeFileName];
     NSDebug(@"XML-Path: %@", xmlPath);
 
-    //    //######### FIXME remove that later!! {
-    //        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    //        xmlPath = [bundle pathForResource:@"ValidProjectAllBricks093" ofType:@"xml"];
-    //    // }
-
     Project *project = nil;
     CGFloat languageVersion = [Util detectCBLanguageVersionFromXMLWithPath:xmlPath];
 
-    if (languageVersion == kCatrobatInvalidVersion) {
+    if (languageVersion == kCatrobatInvalidVersion || languageVersion > [[Util catrobatLanguageVersion] floatValue]) {
         NSDebug(@"Invalid catrobat language version!");
         return nil;
     }

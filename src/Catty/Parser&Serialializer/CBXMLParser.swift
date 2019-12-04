@@ -67,8 +67,7 @@ extension CBXMLParser {
     }
 
     @objc func getProjectObjc() -> Project? {
-        return nil
-        //return CBXMLMappingToObjc.mapCBProjectToProject(project: project)
+        return CBXMLMappingToObjc.mapCBProjectToProject(project: project)
     }
 }
 
