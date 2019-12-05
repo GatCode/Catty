@@ -26,6 +26,10 @@
 
 @implementation SetXBrick
 
+- (NSString *)xmlTag {
+    return @"SetXBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     return self.xPosition;

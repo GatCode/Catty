@@ -26,6 +26,10 @@
 
 @implementation ChangeSizeByNBrick
 
+- (NSString *)xmlTag {
+    return @"ChangeSizeByNBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

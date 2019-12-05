@@ -24,6 +24,10 @@
 
 @implementation WhenTouchDownScript
 
+- (NSString *)xmlTag {
+    return @"WhenTouchDownScript";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

@@ -25,6 +25,10 @@
 
 @implementation MoveNStepsBrick
 
+- (NSString *)xmlTag {
+    return @"MoveNStepsBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     return self.steps;

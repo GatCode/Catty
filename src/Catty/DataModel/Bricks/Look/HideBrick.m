@@ -24,6 +24,10 @@
 
 @implementation HideBrick
 
+- (NSString *)xmlTag {
+    return @"HideBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

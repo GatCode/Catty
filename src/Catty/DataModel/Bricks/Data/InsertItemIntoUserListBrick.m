@@ -29,6 +29,10 @@
 
 @implementation InsertItemIntoUserListBrick
 
+- (NSString *)xmlTag {
+    return @"InsertItemIntoUserListBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     if(lineNumber == 0)

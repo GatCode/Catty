@@ -25,6 +25,10 @@
 
 @implementation VibrationBrick
 
+- (NSString *)xmlTag {
+    return @"VibrationBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

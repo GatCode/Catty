@@ -29,6 +29,10 @@
 
 @implementation AddItemToUserListBrick
 
+- (NSString *)xmlTag {
+    return @"AddItemToUserListBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     return self.listFormula;

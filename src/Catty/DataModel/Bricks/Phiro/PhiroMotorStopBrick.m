@@ -25,6 +25,10 @@
 
 @implementation PhiroMotorStopBrick
 
+- (NSString *)xmlTag {
+    return @"PhiroMotorStopBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kPhiroBrick;

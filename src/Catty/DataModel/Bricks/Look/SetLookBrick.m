@@ -31,6 +31,10 @@
     return YES;
 }
 
+- (NSString *)xmlTag {
+    return @"SetLookBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

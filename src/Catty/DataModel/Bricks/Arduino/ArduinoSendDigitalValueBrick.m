@@ -25,6 +25,10 @@
 
 @implementation ArduinoSendDigitalValueBrick
 
+- (NSString *)xmlTag {
+    return @"ArduinoSendDigitalValueBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kArduinoBrick;

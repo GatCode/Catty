@@ -28,6 +28,10 @@
 
 @implementation WaitUntilBrick
 
+- (NSString *)xmlTag {
+    return @"WaitUntilBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

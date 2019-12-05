@@ -26,6 +26,10 @@
 
 @implementation GoNStepsBackBrick
 
+- (NSString *)xmlTag {
+    return @"GoNStepsBackBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     return self.steps;

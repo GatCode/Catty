@@ -27,6 +27,10 @@
 
 @implementation ChangeColorByNBrick
 
+- (NSString *)xmlTag {
+    return @"ChangeColorByNBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

@@ -29,6 +29,10 @@
 
 @implementation ReplaceItemInUserListBrick
 
+- (NSString *)xmlTag {
+    return @"ReplaceItemInUserListBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     if(lineNumber == 2 && paramNumber == 0)

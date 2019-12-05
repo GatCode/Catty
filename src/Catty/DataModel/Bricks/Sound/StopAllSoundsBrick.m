@@ -24,6 +24,10 @@
 
 @implementation StopAllSoundsBrick
 
+- (NSString *)xmlTag {
+    return @"StopAllSoundsBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kSoundBrick;

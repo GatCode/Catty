@@ -26,6 +26,10 @@
 
 @implementation IfOnEdgeBounceBrick
 
+- (NSString *)xmlTag {
+    return @"IfOnEdgeBounceBrick";
+}
+
 - (BOOL)isSelectableForObject
 {
     return (! [self.script.object isBackground]);

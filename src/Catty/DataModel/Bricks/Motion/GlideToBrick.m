@@ -34,6 +34,10 @@
 @synthesize xDestination = _xDestination;
 @synthesize yDestination = _yDestination;
 
+- (NSString *)xmlTag {
+    return @"GlideToBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

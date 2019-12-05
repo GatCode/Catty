@@ -25,6 +25,10 @@
 
 @implementation PointInDirectionBrick
 
+- (NSString *)xmlTag {
+    return @"PointInDirectionBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

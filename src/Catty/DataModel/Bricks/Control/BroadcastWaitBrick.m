@@ -26,6 +26,11 @@
 
 @implementation BroadcastWaitBrick
 
+- (NSString *)xmlTag {
+    return @"BroadcastWaitBrick";
+}
+
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

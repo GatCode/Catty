@@ -25,6 +25,10 @@
 
 @implementation HideTextBrick
 
+- (NSString *)xmlTag {
+    return @"HideTextBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;

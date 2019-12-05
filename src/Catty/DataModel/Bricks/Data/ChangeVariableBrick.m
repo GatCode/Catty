@@ -24,6 +24,10 @@
 
 @implementation ChangeVariableBrick
 
+- (NSString *)xmlTag {
+    return @"ChangeVariableBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;

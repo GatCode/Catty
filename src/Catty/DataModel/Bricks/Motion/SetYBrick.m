@@ -25,6 +25,10 @@
 
 @implementation SetYBrick
 
+- (NSString *)xmlTag {
+    return @"SetYBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumbers
 {
     return self.yPosition;

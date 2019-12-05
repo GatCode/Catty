@@ -28,6 +28,10 @@
 
 @implementation RepeatUntilBrick
 
+- (NSString *)xmlTag {
+    return @"RepeatUntilBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

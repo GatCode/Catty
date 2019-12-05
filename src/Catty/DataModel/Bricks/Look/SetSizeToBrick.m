@@ -25,6 +25,10 @@
 
 @implementation SetSizeToBrick
 
+- (NSString *)xmlTag {
+    return @"SetSizeToBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

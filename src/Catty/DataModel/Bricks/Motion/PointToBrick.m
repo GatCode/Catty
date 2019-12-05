@@ -25,6 +25,10 @@
 
 @implementation PointToBrick
 
+- (NSString *)xmlTag {
+    return @"PointToBrick";
+}
+
 - (SpriteObject*) pointedObject
 {
     if(!_pointedObject)

@@ -28,6 +28,10 @@
 
 @implementation NextLookBrick
 
+- (NSString *)xmlTag {
+    return @"NextLookBrick";
+}
+
 - (NSString*)pathForLook:(Look*)look
 {
     return [NSString stringWithFormat:@"%@%@/%@", [self.script.object projectPath], kProjectImagesDirName, look.fileName];

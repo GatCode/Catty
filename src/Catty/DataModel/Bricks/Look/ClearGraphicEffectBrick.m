@@ -27,6 +27,10 @@
 
 @implementation ClearGraphicEffectBrick
 
+- (NSString *)xmlTag {
+    return @"ClearGraphicEffectBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

@@ -25,6 +25,10 @@
 
 @implementation ShowBrick
 
+- (NSString *)xmlTag {
+    return @"ShowBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

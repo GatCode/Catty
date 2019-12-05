@@ -26,6 +26,10 @@
 
 @implementation SayForBubbleBrick
 
+- (NSString *)xmlTag {
+    return @"SayForBubbleBrick";
+}
+
 - (id)init
 {
     self = [super init];

@@ -25,6 +25,10 @@
 
 @implementation ShowTextBrick
 
+- (NSString *)xmlTag {
+    return @"ShowTextBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     if(paramNumber == 0)

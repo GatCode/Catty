@@ -24,6 +24,10 @@
 
 @implementation FlashBrick
 
+- (NSString *)xmlTag {
+    return @"FlashBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

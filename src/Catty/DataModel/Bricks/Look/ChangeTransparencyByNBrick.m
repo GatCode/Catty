@@ -28,6 +28,10 @@
 
 @synthesize changeTransparency = _changeTransparency;
 
+- (NSString *)xmlTag {
+    return @"ChangeTransparencyByNBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

@@ -24,6 +24,10 @@
 
 @implementation NoteBrick
 
+- (NSString *)xmlTag {
+    return @"NoteBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

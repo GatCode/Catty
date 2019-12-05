@@ -27,6 +27,10 @@
 
 @implementation IfThenLogicEndBrick
 
+- (NSString *)xmlTag {
+    return @"IfThenLogicEndBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

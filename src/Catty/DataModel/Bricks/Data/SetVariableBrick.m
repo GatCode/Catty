@@ -25,6 +25,10 @@
 
 @implementation SetVariableBrick
 
+- (NSString *)xmlTag {
+    return @"SetVariableBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     return self.variableFormula;

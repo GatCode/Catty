@@ -25,6 +25,10 @@
 
 @implementation PlaceAtBrick
 
+- (NSString *)xmlTag {
+    return @"PlaceAtBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     if(paramNumber == 0)

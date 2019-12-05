@@ -28,6 +28,10 @@
 
 @implementation SetBrightnessBrick
 
+- (NSString *)xmlTag {
+    return @"SetBrightnessBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

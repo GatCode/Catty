@@ -26,6 +26,10 @@
 
 @implementation ChangeXByNBrick
 
+- (NSString *)xmlTag {
+    return @"ChangeXByNBrick";
+}
+
 - (Formula*)formulaForLineNumber:(NSInteger)lineNumber andParameterNumber:(NSInteger)paramNumber
 {
     return self.xMovement;

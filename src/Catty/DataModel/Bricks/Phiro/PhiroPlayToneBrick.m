@@ -26,6 +26,10 @@
 
 @implementation PhiroPlayToneBrick
 
+- (NSString *)xmlTag {
+    return @"PhiroPlayToneBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kPhiroBrick;

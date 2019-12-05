@@ -26,6 +26,10 @@
 
 @implementation ComeToFrontBrick
 
+- (NSString *)xmlTag {
+    return @"comeToFrontBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

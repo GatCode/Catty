@@ -29,6 +29,10 @@
 
 @implementation DeleteItemOfUserListBrick
 
+- (NSString *)xmlTag {
+    return @"DeleteItemOfUserListBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;
