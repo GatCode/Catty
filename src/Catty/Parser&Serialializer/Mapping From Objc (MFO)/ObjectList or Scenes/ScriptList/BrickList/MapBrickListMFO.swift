@@ -29,69 +29,70 @@ extension CBXMLMappingFromObjc {
         for brick in script.brickList {
             var mappedBrick = CBBrick()
 
-            mappedBrick.type = "GENERIC" // TODO: implement bricktype
+            guard let tag = (brick as? BrickProtocol)?.xmlTag() else { continue }
+            mappedBrick.type = tag
 
             switch mappedBrick.type?.uppercased() {
             // MARK: Condition Bricks
-            case kBroadcastBrick.uppercased():
+            case BroadcastBrick().xmlTag()?.uppercased():
                 let brick = brick as? BroadcastBrick
                 mappedBrick.broadcastMessage = brick?.broadcastMessage
-            case kBroadcastWaitBrick.uppercased():
+            case BroadcastWaitBrick().xmlTag()?.uppercased():
                 let brick = brick as? BroadcastWaitBrick
                 mappedBrick.broadcastMessage = brick?.broadcastMessage
-            case kIfLogicBeginBrick.uppercased():
+            case IfLogicBeginBrick().xmlTag()?.uppercased():
                 let brick = brick as? IfLogicBeginBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
-            case kIfThenLogicBeginBrick.uppercased():
+            case IfThenLogicBeginBrick().xmlTag()?.uppercased():
                 let brick = brick as? IfThenLogicBeginBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.ifCondition])
-            case kRepeatBrick.uppercased():
+            case RepeatBrick().xmlTag()?.uppercased():
                 let brick = brick as? RepeatBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timesToRepeat])
-            case kRepeatUntilBrick.uppercased():
+            case RepeatUntilBrick().xmlTag()?.uppercased():
                 let brick = brick as? RepeatUntilBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.repeatCondition])
-            case kNoteBrick.uppercased():
+            case NoteBrick().xmlTag()?.uppercased():
                 let brick = brick as? NoteBrick
                 mappedBrick.formulaTree = CBFormulaList(formulas: [CBFormula(type: "STRING", value: brick?.note, category: "NOTE")])
-            case kWaitBrick.uppercased():
+            case WaitBrick().xmlTag()?.uppercased():
                 let brick = brick as? WaitBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.timeToWaitInSeconds])
-            case kWaitUntilBrick.uppercased():
+            case WaitUntilBrick().xmlTag()?.uppercased():
                 let brick = brick as? WaitUntilBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.waitCondition])
             // MARK: Motion Bricks
-            case kPlaceAtBrick.uppercased():
+            case PlaceAtBrick().xmlTag()?.uppercased():
                 let brick = brick as? PlaceAtBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yPosition, brick?.xPosition])
-            case kChangeXByNBrick.uppercased():
+            case ChangeXByNBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeXByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xMovement])
-            case kChangeYByNBrick.uppercased():
+            case ChangeYByNBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeYByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yMovement])
-            case kSetXBrick.uppercased():
+            case SetXBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetXBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.xPosition])
-            case kSetYBrick.uppercased():
+            case SetYBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetYBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.yPosition])
-            case kMoveNStepsBrick.uppercased():
+            case MoveNStepsBrick().xmlTag()?.uppercased():
                 let brick = brick as? MoveNStepsBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
-            case kTurnLeftBrick.uppercased():
+            case TurnLeftBrick().xmlTag()?.uppercased():
                 let brick = brick as? TurnLeftBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
-            case kTurnRightBrick.uppercased():
+            case TurnRightBrick().xmlTag()?.uppercased():
                 let brick = brick as? TurnRightBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
-            case kPointInDirectionBrick.uppercased():
+            case PointInDirectionBrick().xmlTag()?.uppercased():
                 let brick = brick as? PointInDirectionBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.degrees])
-            case kPointToBrick.uppercased():
+            case PointToBrick().xmlTag()?.uppercased():
                 let brick = brick as? PointToBrick
                 mappedBrick.pointedObjectReference = "../../" + (resolveObjectPath(project: project, object: brick?.pointedObject) ?? "")
-            case kGlideToBrick.uppercased():
+            case GlideToBrick().xmlTag()?.uppercased():
                 let brick = brick as? GlideToBrick
                 if brick?.xDestination?.category?.isEmpty ?? true || brick?.yDestination?.category?.isEmpty ?? true || brick?.durationInSeconds?.category?.isEmpty ?? true {
                     brick?.xDestination?.category = "X_DESTINATION"
@@ -112,137 +113,137 @@ extension CBXMLMappingFromObjc {
                     }
                 }
                 mappedBrick.formulaTree = mapFormulaList(formulas: serializationArr)
-            case kVibrationBrick.uppercased():
+            case VibrationBrick().xmlTag()?.uppercased():
                 let brick = brick as? VibrationBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.durationInSeconds])
             // MARK: Look Bricks
-            case kSetBackgroundBrick.uppercased():
+            case SetBackgroundBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetBackgroundBrick
                 mappedBrick.lookReference = resolveLookPath(look: brick?.look, currentObject: currentObject)
-            case kSetLookBrick.uppercased():
+            case SetLookBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetLookBrick
                 mappedBrick.lookReference = resolveLookPath(look: brick?.look, currentObject: currentObject)
-            case kSetSizeToBrick.uppercased():
+            case SetSizeToBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetSizeToBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
-            case kChangeSizeByNBrick.uppercased():
+            case ChangeSizeByNBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeSizeByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.size])
-            case kSetTransparencyBrick.uppercased(), kSetGhostEffectBrick.uppercased():
+            case SetTransparencyBrick().xmlTag()?.uppercased(), "SETGHOSTEFFECTBRICK":
                 let brick = brick as? SetTransparencyBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.transparency])
-            case kChangeTransparencyByNBrick.uppercased(), kChangeGhostEffectByNBrick.uppercased():
+            case ChangeTransparencyByNBrick().xmlTag()?.uppercased(), "CHANGEGHOSTEFFECTBYNBRICK":
                 let brick = brick as? ChangeTransparencyByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeTransparency])
-            case kSetBrightnessBrick.uppercased():
+            case SetBrightnessBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetBrightnessBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.brightness])
-            case kChangeBrightnessByNBrick.uppercased():
+            case ChangeBrightnessByNBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeBrightnessByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeBrightness])
-            case kSetColorBrick.uppercased():
+            case SetColorBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetColorBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.color])
-            case kChangeColorByNBrick.uppercased():
+            case ChangeColorByNBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeColorByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.changeColor])
-            case kFlashBrick.uppercased(), kLedOnBrick.uppercased(), kLedOffBrick.uppercased():
+            case FlashBrick().xmlTag()?.uppercased(), "LEDONBRICK", "LEDOFFBRICK":
                 let brick = brick as? FlashBrick
                 mappedBrick.spinnerSelectionID = String(brick?.flashChoice ?? 0)
-            case kCameraBrick.uppercased():
+            case CameraBrick().xmlTag()?.uppercased():
                 let brick = brick as? CameraBrick
                 mappedBrick.spinnerSelectionID = String(brick?.cameraChoice ?? 0)
-            case kChooseCameraBrick.uppercased():
+            case ChooseCameraBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChooseCameraBrick
                 mappedBrick.spinnerSelectionID = String(brick?.cameraPosition ?? 0)
-            case kThinkBubbleBrick.uppercased():
+            case ThinkBubbleBrick().xmlTag()?.uppercased():
                 let brick = brick as? ThinkBubbleBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-            case kThinkForBubbleBrick.uppercased():
+            case ThinkForBubbleBrick().xmlTag()?.uppercased():
                 let brick = brick as? ThinkForBubbleBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula, brick?.stringFormula])
             // MARK: Sound Bricks
-            case kPlaySoundBrick.uppercased():
+            case PlaySoundBrick().xmlTag()?.uppercased():
                 let brick = brick as? PlaySoundBrick
                 mappedBrick.soundReference = resolveSoundPath(sound: brick?.sound, currentObject: currentObject)
-            case kSetVolumeToBrick.uppercased():
+            case SetVolumeToBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetVolumeToBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
-            case kChangeVolumeByNBrick.uppercased():
+            case ChangeVolumeByNBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeVolumeByNBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.volume])
-            case kSpeakBrick.uppercased():
+            case SpeakBrick().xmlTag()?.uppercased():
                 let brick = brick as? SpeakBrick
                 mappedBrick.noteMessage = brick?.text
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-            case kSpeakAndWaitBrick.uppercased():
+            case SpeakAndWaitBrick().xmlTag()?.uppercased():
                 let brick = brick as? SpeakAndWaitBrick
                 mappedBrick.noteMessage = brick?.text
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
             // MARK: Variable Bricks
-            case kSetVariableBrick.uppercased():
+            case SetVariableBrick().xmlTag()?.uppercased():
                 let brick = brick as? SetVariableBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kChangeVariableBrick.uppercased():
+            case ChangeVariableBrick().xmlTag()?.uppercased():
                 let brick = brick as? ChangeVariableBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.variableFormula])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kShowTextBrick.uppercased():
+            case ShowTextBrick().xmlTag()?.uppercased():
                 let brick = brick as? ShowTextBrick
                 mappedBrick.xPosition = mapFormula(formula: brick?.xFormula)
                 mappedBrick.yPosition = mapFormula(formula: brick?.yFormula)
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kHideTextBrick.uppercased():
+            case HideTextBrick().xmlTag()?.uppercased():
                 let brick = brick as? HideTextBrick
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userVariable, object: object, isList: false)
                 mappedBrick.userVariable = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kAddItemToUserListBrick.uppercased():
+            case AddItemToUserListBrick().xmlTag()?.uppercased():
                 let brick = brick as? AddItemToUserListBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kDeleteItemOfUserListBrick.uppercased():
+            case DeleteItemOfUserListBrick().xmlTag()?.uppercased():
                 let brick = brick as? DeleteItemOfUserListBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.listFormula])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kInsertItemIntoUserListBrick.uppercased():
+            case InsertItemIntoUserListBrick().xmlTag()?.uppercased():
                 let brick = brick as? InsertItemIntoUserListBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.index, brick?.elementFormula])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
-            case kReplaceItemInUserListBrick.uppercased():
+            case ReplaceItemInUserListBrick().xmlTag()?.uppercased():
                 let brick = brick as? ReplaceItemInUserListBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.elementFormula, brick?.index])
                 let uVar = mapUserVariableWithLocalCheck(project: project, userVariable: brick?.userList, object: object, isList: true)
                 mappedBrick.userList = uVar?.value
                 mappedBrick.userVariableReference = uVar?.reference
             // MARK: Arduino Bricks
-            case kArduinoSendDigitalValueBrick.uppercased():
+            case ArduinoSendDigitalValueBrick().xmlTag()?.uppercased():
                 let brick = brick as? ArduinoSendDigitalValueBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.pin, brick?.value])
-            case kArduinoSendPWMValueBrick.uppercased():
+            case ArduinoSendPWMValueBrick().xmlTag()?.uppercased():
                 let brick = brick as? ArduinoSendPWMValueBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.pin, brick?.value])
             // MARK: Alternative Bricks
-            case kGoNStepsBackBrick.uppercased():
+            case GoNStepsBackBrick().xmlTag()?.uppercased():
                 let brick = brick as? GoNStepsBackBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.steps])
-            case kSayBubbleBrick.uppercased():
+            case SayBubbleBrick().xmlTag()?.uppercased():
                 let brick = brick as? SayBubbleBrick
                 mappedBrick.formulaTree = mapFormulaList(formulas: [brick?.formula])
-            case kSayForBubbleBrick.uppercased():
+            case SayForBubbleBrick().xmlTag()?.uppercased():
                 let brick = brick as? SayForBubbleBrick
                 mappedBrick.formulaList = mapFormulaList(formulas: [brick?.intFormula, brick?.stringFormula])
             default:

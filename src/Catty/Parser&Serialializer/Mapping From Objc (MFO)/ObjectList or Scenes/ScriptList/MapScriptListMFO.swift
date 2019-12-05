@@ -34,7 +34,8 @@ extension CBXMLMappingFromObjc {
             mappedScript.receivedMessage = (script as? Script)?.receivedMsg
             mappedScript.action = (script as? Script)?.action
 
-            mappedScript.type = "GENERIC" // TODO: implement bricktype
+            guard let tag = (script as? BrickProtocol)?.xmlTag() else { continue }
+            mappedScript.type = tag
 
             mappedScriptList.append(mappedScript)
             CBXMLMappingFromObjc.currentSerializationPosition.1 += 1

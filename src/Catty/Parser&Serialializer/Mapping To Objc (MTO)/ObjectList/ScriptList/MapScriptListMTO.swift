@@ -41,17 +41,17 @@ extension CBXMLMappingToObjc {
 
         var result: Script?
         switch script.type?.uppercased() {
-        case kStartScript.uppercased():
+        case StartScript().xmlTag()?.uppercased():
             result = StartScript()
-        case kWhenScript.uppercased():
+        case WhenScript().xmlTag()?.uppercased():
             let scr = WhenScript()
             if let action = script.action {
                 scr.action = action
             }
             result = scr
-        case kWhenTouchDownScript.uppercased():
+        case WhenTouchDownScript().xmlTag()?.uppercased():
             result = WhenTouchDownScript()
-        case kBroadcastScript.uppercased():
+        case BroadcastScript().xmlTag()?.uppercased():
             let scr = BroadcastScript()
             if let msg = script.receivedMessage {
                 scr.receivedMessage = msg
@@ -59,7 +59,7 @@ extension CBXMLMappingToObjc {
             }
             result = scr
         default:
-            if let type = script.type, type.hasSuffix(kScript) == true {
+            if let type = script.type, type.hasSuffix("Script") == true {
                 let scr = BroadcastScript()
                 scr.receivedMessage = String(format: "%@ %@", kLocalizedUnsupportedScript, type)
                 scr.receivedMsg = scr.receivedMessage

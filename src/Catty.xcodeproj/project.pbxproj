@@ -80,7 +80,6 @@
 		2E9116E3238C2DD50068B792 /* CBProgramVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9116C3238C2DD50068B792 /* CBProgramVariableList.swift */; };
 		2E9116E4238C2DD50068B792 /* CBUserProgramVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9116C4238C2DD50068B792 /* CBUserProgramVariable.swift */; };
 		2E9116E5238C2DD50068B792 /* CBHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9116C6238C2DD50068B792 /* CBHeader.swift */; };
-		2EA8AAE72376D1EC0029726A /* Parser&SerializerDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA8AAE62376D1EC0029726A /* Parser&SerializerDefines.swift */; };
 		2EA8AB4B2376D3730029726A /* CBXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA8AB392376D3730029726A /* CBXMLParser.swift */; };
 		2EA8ABDA2376D9B60029726A /* CBXMLMappingToObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA8ABC32376D9B50029726A /* CBXMLMappingToObjc.swift */; };
 		2EA8ABDB2376D9B60029726A /* MapObjectListMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA8ABC52376D9B50029726A /* MapObjectListMTO.swift */; };
@@ -1452,7 +1451,6 @@
 		2E9116C3238C2DD50068B792 /* CBProgramVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBProgramVariableList.swift; sourceTree = "<group>"; };
 		2E9116C4238C2DD50068B792 /* CBUserProgramVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBUserProgramVariable.swift; sourceTree = "<group>"; };
 		2E9116C6238C2DD50068B792 /* CBHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeader.swift; sourceTree = "<group>"; };
-		2EA8AAE62376D1EC0029726A /* Parser&SerializerDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser&SerializerDefines.swift"; sourceTree = "<group>"; };
 		2EA8AB392376D3730029726A /* CBXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBXMLParser.swift; sourceTree = "<group>"; };
 		2EA8ABC32376D9B50029726A /* CBXMLMappingToObjc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBXMLMappingToObjc.swift; sourceTree = "<group>"; };
 		2EA8ABC52376D9B50029726A /* MapObjectListMTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapObjectListMTO.swift; sourceTree = "<group>"; };
@@ -5749,7 +5747,6 @@
 				92FF2E061A24C3BE00093DA7 /* SegueDefines.h */,
 				92FF2E071A24C3BE00093DA7 /* UIDefines.h */,
 				4C5517BC1ABC16B600A52FF4 /* ViewControllerDefines.h */,
-				2EA8AAE62376D1EC0029726A /* Parser&SerializerDefines.swift */,
 			);
 			path = Defines;
 			sourceTree = "<group>";
@@ -9380,7 +9377,6 @@
 				92FF30C81A24DCAA00093DA7 /* Brick.m in Sources */,
 				AA74F0971BC05FCE00D1E954 /* BrickCellSoundData.m in Sources */,
 				92B46F911BC7B3E5004980C1 /* ArduinoBrick.m in Sources */,
-				2EA8AAE72376D1EC0029726A /* Parser&SerializerDefines.swift in Sources */,
 				92B46F831BC79585004980C1 /* AboutPoketCodeOptionTableViewController.m in Sources */,
 				2EA8ABE02376D9B60029726A /* ResolveUserVariablesMTO.swift in Sources */,
 				929CC0CE1BC39B0A0027DEC0 /* PhiroMotorStopBrick.m in Sources */,
