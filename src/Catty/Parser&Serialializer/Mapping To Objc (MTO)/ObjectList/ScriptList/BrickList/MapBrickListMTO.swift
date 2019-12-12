@@ -92,7 +92,7 @@ extension CBXMLMappingToObjc {
                 newBrick.repeatCondition = mapFormulaListToBrick(input: brick)?.firstObject as? Formula
                 newBrick.repeatCondition?.category = "REPEAT_UNTIL_CONDITION"
                 resultBrickList.append(newBrick)
-            case LoopEndBrick().xmlTag()?.uppercased(), "LOPENDLESSBRICK":
+            case LoopEndBrick().xmlTag()?.uppercased(), "LOOPENDLESSBRICK":
                 let newBrick = LoopEndBrick()
                 for item in resultBrickList.reversed() {
                     if let item = item as? RepeatBrick, item.loopEndBrick == nil {
