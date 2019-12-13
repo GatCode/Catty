@@ -99,8 +99,11 @@ class AudioEngineAbstractTest: XMLAbstractTest {
     }
 
     func createScene(xmlFile: String) -> CBScene {
-        let project = self.getProjectForXML(xmlFile: xmlFile)
-        let sceneBuilder = SceneBuilder(project: project).withFormulaManager(formulaManager: FormulaManager(sceneSize: Util.screenSize(true))).withAudioEngine(audioEngine: audioEngine)
+        var project: Project?
+        self.getObjcProjectForXML(xmlFile: xmlFile, completion: { proj, _ in
+            project = proj
+        })
+        let sceneBuilder = SceneBuilder(project: project!).withFormulaManager(formulaManager: FormulaManager(sceneSize: Util.screenSize(true))).withAudioEngine(audioEngine: audioEngine)
         return sceneBuilder.build()
     }
 }

@@ -26,8 +26,15 @@ import XCTest
 
 final class WaitUntilBrickTests: XMLAbstractTest {
 
+    lazy var project: Project = {
+        var project: Project?
+        getObjcProjectForXML(xmlFile: "WaitUntilBrick0991", completion: { proj, _ in
+            project = proj
+        })
+        return project!
+    }()
+
     func testWaitUntilBrick_conditionTrue_proceedsToNextBrick() {
-        let project = getProjectForXML(xmlFile: "WaitUntilBrick0991")
         let testVar = project.variables.getUserVariableNamed("testVar", for: project.objectList[0] as? SpriteObject)
         let hasFinishedWaiting = project.variables.getUserVariableNamed("hasFinishedWaiting", for: project.objectList[0] as? SpriteObject)
 
@@ -46,7 +53,6 @@ final class WaitUntilBrickTests: XMLAbstractTest {
     }
 
     func testWaitUntilBrick_conditionFalse_getsStuckInWaitUntilBrick() {
-        let project = getProjectForXML(xmlFile: "WaitUntilBrick0991")
         let hasFinishedWaiting = project.variables.getUserVariableNamed("hasFinishedWaiting", for: project.objectList[0] as? SpriteObject)
 
         let scene = createScene(project: project)
