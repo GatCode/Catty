@@ -225,7 +225,7 @@ extension CBXMLMappingToObjc {
                     orderArr.append("X")
                     orderArr.append("Y")
                 }
-                //newBrick.serializationOrder = orderArr
+                newBrick.serializationOrder = orderArr
                 resultBrickList.append(newBrick)
             case VibrationBrick().xmlTag()?.uppercased():
                 let newBrick = VibrationBrick()
