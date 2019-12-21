@@ -20,35 +20,9 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-class PowFunction: DoubleParameterDoubleFunction {
-    static var tag = "POW"
-    static var name = "power"
-    static var defaultValue = 0.0
-    static var requiredResource = ResourceType.noResources
-    static var isIdempotent = true
-    static let position = 160
+#import "CBXMLNodeProtocol.h"
+#import "Pocket_Code-Swift.h"
 
-    func tag() -> String {
-        return type(of: self).tag
-    }
+@interface PlaySoundAndWaitBrick (CBXMLHandler) <CBXMLNodeProtocol>
 
-    func firstParameter() -> FunctionParameter {
-        return .number(defaultValue: 2)
-    }
-
-    func secondParameter() -> FunctionParameter {
-        return .number(defaultValue: 3)
-    }
-
-    func value(firstParameter: AnyObject?, secondParameter: AnyObject?) -> Double {
-        guard let base = firstParameter as? Double,
-            let exponent = secondParameter as? Double else {
-                return type(of: self).defaultValue
-        }
-        return pow(base, exponent)
-    }
-
-    func formulaEditorSections() -> [FormulaEditorSection] {
-        return [.math(position: type(of: self).position)]
-    }
-}
+@end

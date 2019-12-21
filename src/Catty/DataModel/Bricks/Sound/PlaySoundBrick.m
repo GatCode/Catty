@@ -60,6 +60,8 @@
 
 - (BOOL)isEqualToBrick:(Brick*)brick
 {
+    if([self class] != [brick class])
+        return NO;
     if(![self.sound isEqualToSound:((PlaySoundBrick*)brick).sound])
         return NO;
     return YES;
