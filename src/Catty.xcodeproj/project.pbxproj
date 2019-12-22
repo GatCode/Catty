@@ -284,6 +284,10 @@
 		2E4BA1CD23979E3000607047 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1BF23979E3000607047 /* MapData.swift */; };
 		2E4BA1CE23979E3000607047 /* MapLookListMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1C123979E3000607047 /* MapLookListMFO.swift */; };
 		2E4BA1CF23979E3000607047 /* MapHeaderMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BA1C323979E3000607047 /* MapHeaderMFO.swift */; };
+		2E8A9ABD23AE20830096AD12 /* PlaySoundAndWaitBrickContinueWhenFinished.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E3C239D7E2A002D8F96 /* PlaySoundAndWaitBrickContinueWhenFinished.xml */; };
+		2E8A9AC023AE20870096AD12 /* PlaySoundAndWaitBrickStopUntilFinished.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E36239D738E002D8F96 /* PlaySoundAndWaitBrickStopUntilFinished.xml */; };
+		2E8A9AC123AE209D0096AD12 /* PlaySoundAndWaitBrickContinueWhenInterrupted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E3E239D7EFB002D8F96 /* PlaySoundAndWaitBrickContinueWhenInterrupted.xml */; };
+		2E8A9AC223AE209F0096AD12 /* PlaySoundAndWaitBrickSoundNotInterruptedByDifferentSound.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE57E523A19B0400E76229 /* PlaySoundAndWaitBrickSoundNotInterruptedByDifferentSound.xml */; };
 		2E9116C7238C2DD50068B792 /* CBProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E911698238C2DD50068B792 /* CBProject.swift */; };
 		2E9116C8238C2DD50068B792 /* CBProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91169A238C2DD50068B792 /* CBProjectScene.swift */; };
 		2E9116C9238C2DD50068B792 /* CBUserBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91169D238C2DD50068B792 /* CBUserBrick.swift */; };
@@ -1017,7 +1021,6 @@
 		9E24D7072326EBC300608203 /* ShowBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E24D7062326EBC300608203 /* ShowBrickTests.swift */; };
 		9E24D7092326ED6C00608203 /* SetYBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E24D7082326ED6C00608203 /* SetYBrickTests.swift */; };
 		9E2AEA4E239886DA00CDF58F /* PlaySoundAndWaitBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AEA4C239886D900CDF58F /* PlaySoundAndWaitBrick.m */; };
-		9E2AEA50239887A600CDF58F /* PlaySoundAndWaitBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AEA4F239887A600CDF58F /* PlaySoundAndWaitBrickCell.swift */; };
 		9E2AEA52239888C100CDF58F /* PlaySoundAndWaitBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AEA51239888C100CDF58F /* PlaySoundAndWaitBrick+Instruction.swift */; };
 		9E2C2D862325673C004B66C6 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2C2D852325673C004B66C6 /* AudioEngine.swift */; };
 		9E2C2D8A23256901004B66C6 /* AudioEngineMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2C2D8923256901004B66C6 /* AudioEngineMock.swift */; };
@@ -1037,7 +1040,6 @@
 		9E4D5CB322B845F100848584 /* IterableCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4D5CB222B845F100848584 /* IterableCacheTests.swift */; };
 		9E544D35238754C500935C17 /* SpeechSynthesizerIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E544D34238754C500935C17 /* SpeechSynthesizerIntegrationTests.swift */; };
 		9E544D392387562400935C17 /* SpeakBrickWithSoundBrick.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E544D382387562300935C17 /* SpeakBrickWithSoundBrick.xml */; };
-		9E5811842399BAA2004EFB56 /* PlaySoundAndWaitBrick+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5811802399BAA2004EFB56 /* PlaySoundAndWaitBrick+CBXMLHandler.m */; };
 		9E7564B222C7AB1A00D38A3B /* ObjectTVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A988832B1BCA86FF005029E8 /* ObjectTVCTests.swift */; };
 		9E773797230B4EBC004F264D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E773796230B4EBC004F264D /* Accelerate.framework */; };
 		9E78D88322A9AF8400948AC3 /* AudioEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78D88222A9AF8400948AC3 /* AudioEngineProtocol.swift */; };
@@ -1048,15 +1050,8 @@
 		9E8176E52389BA4800A4912B /* SpeakAndWaitInterruptedBySpeak.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E8176E42389BA4800A4912B /* SpeakAndWaitInterruptedBySpeak.xml */; };
 		9E8176E72389C14B00A4912B /* SpeakAndWaitTwoInterruptingSpeakBricks.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E8176E62389C14A00A4912B /* SpeakAndWaitTwoInterruptingSpeakBricks.xml */; };
 		9E8176E92389C60F00A4912B /* guitar_chords.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E8176E82389C60F00A4912B /* guitar_chords.mp3 */; };
-		9E929E35239D732B002D8F96 /* bling_short.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E34239D732B002D8F96 /* bling_short.mp3 */; };
-		9E929E37239D738E002D8F96 /* PlaySoundAndWaitBrickStopUntilFinished.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E36239D738E002D8F96 /* PlaySoundAndWaitBrickStopUntilFinished.xml */; };
-		9E929E39239D7942002D8F96 /* piano_jazz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E38239D7942002D8F96 /* piano_jazz.mp3 */; };
-		9E929E3B239D7966002D8F96 /* kontrabass_jazz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E3A239D7965002D8F96 /* kontrabass_jazz.mp3 */; };
-		9E929E3D239D7E2B002D8F96 /* PlaySoundAndWaitBrickContinueWhenFinished.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E3C239D7E2A002D8F96 /* PlaySoundAndWaitBrickContinueWhenFinished.xml */; };
-		9E929E3F239D7EFB002D8F96 /* PlaySoundAndWaitBrickContinueWhenInterrupted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9E929E3E239D7EFB002D8F96 /* PlaySoundAndWaitBrickContinueWhenInterrupted.xml */; };
 		9EA3FD812327089900551B6C /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3FD802327089900551B6C /* SceneTests.swift */; };
 		9EA6DCB02329A9E1007E837A /* MoveNStepsBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6DCAF2329A9E1007E837A /* MoveNStepsBrickTests.swift */; };
-		9EAE57E823A19B0400E76229 /* PlaySoundAndWaitBrickSoundNotInterruptedByDifferentSound.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE57E523A19B0400E76229 /* PlaySoundAndWaitBrickSoundNotInterruptedByDifferentSound.xml */; };
 		9EBAC31122A9B91C002E198D /* AudioKit.license in Resources */ = {isa = PBXBuildFile; fileRef = 9EBAC30E22A9B91B002E198D /* AudioKit.license */; };
 		9EBAC31422A9BF47002E198D /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBAC31222A9BE5A002E198D /* AudioKit.framework */; };
 		9EBCBD832329B44E0074C2D9 /* NextLookBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBCBD822329B44E0074C2D9 /* NextLookBrickTests.swift */; };
@@ -1233,7 +1228,6 @@
 		AAF6D9DE1BC0C1F300686849 /* PlaceAtBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF6D9DD1BC0C1F300686849 /* PlaceAtBrick+Instruction.swift */; };
 		AAF6D9E01BC0C2AA00686849 /* PointInDirectionBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF6D9DF1BC0C2AA00686849 /* PointInDirectionBrick+Instruction.swift */; };
 		AAF6D9E21BC0C48300686849 /* PointToBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF6D9E11BC0C48300686849 /* PointToBrick+Instruction.swift */; };
-		BA1FA9941F02A1150084184D /* UserListFunctionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA9901F02A10C0084184D /* UserListFunctionsTest.m */; };
 		BA1FA99D1F02AEDC0084184D /* InsertItemIntoUserListBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA99C1F02AEDC0084184D /* InsertItemIntoUserListBrick.m */; };
 		BA1FA9A01F02B0020084184D /* InsertItemIntoUserListBrickCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA99F1F02B0020084184D /* InsertItemIntoUserListBrickCell.m */; };
 		BA1FA9A21F02B0C80084184D /* InsertItemIntoUserListBrick+Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA9A11F02B0C80084184D /* InsertItemIntoUserListBrick+Instruction.swift */; };
@@ -2709,8 +2703,6 @@
 		9E4D5CB222B845F100848584 /* IterableCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterableCacheTests.swift; sourceTree = "<group>"; };
 		9E544D34238754C500935C17 /* SpeechSynthesizerIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerIntegrationTests.swift; sourceTree = "<group>"; };
 		9E544D382387562300935C17 /* SpeakBrickWithSoundBrick.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpeakBrickWithSoundBrick.xml; sourceTree = "<group>"; };
-		9E5811802399BAA2004EFB56 /* PlaySoundAndWaitBrick+CBXMLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PlaySoundAndWaitBrick+CBXMLHandler.m"; path = "Catty/Parser&Serialializer/New Parser & Serializer/XMLHandler/Bricks/Sound/PlaySoundAndWaitBrick+CBXMLHandler.m"; sourceTree = SOURCE_ROOT; };
-		9E5811832399BAA2004EFB56 /* PlaySoundAndWaitBrick+CBXMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PlaySoundAndWaitBrick+CBXMLHandler.h"; path = "Catty/Parser&Serialializer/New Parser & Serializer/XMLHandler/Bricks/Sound/PlaySoundAndWaitBrick+CBXMLHandler.h"; sourceTree = SOURCE_ROOT; };
 		9E773796230B4EBC004F264D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9E78D88222A9AF8400948AC3 /* AudioEngineProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngineProtocol.swift; sourceTree = "<group>"; };
 		9E78D88622A9AFB400948AC3 /* AudioSubtree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSubtree.swift; sourceTree = "<group>"; };
@@ -3007,7 +2999,6 @@
 		B4F243CC170EBEF7007A071D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B7EEF76F87F0A9D0BFF0C2AA /* es */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B94B8CFF0168D667D71ACC96 /* cs */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BA1FA9901F02A10C0084184D /* UserListFunctionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserListFunctionsTest.m; path = Formula/UserListFunctionsTest.m; sourceTree = "<group>"; };
 		BA1FA99B1F02AEDC0084184D /* InsertItemIntoUserListBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertItemIntoUserListBrick.h; sourceTree = "<group>"; };
 		BA1FA99C1F02AEDC0084184D /* InsertItemIntoUserListBrick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertItemIntoUserListBrick.m; sourceTree = "<group>"; };
 		BA1FA99E1F02B0020084184D /* InsertItemIntoUserListBrickCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertItemIntoUserListBrickCell.h; sourceTree = "<group>"; };
@@ -8154,6 +8145,7 @@
 				2DCB4920212EA096005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.success.json in Resources */,
 				2E3327BB23A386D700C2A972 /* Skydiving_Steve_092.xml in Resources */,
 				2E3327D523A386D700C2A972 /* Minions__098.xml in Resources */,
+				2E8A9AC123AE209D0096AD12 /* PlaySoundAndWaitBrickContinueWhenInterrupted.xml in Resources */,
 				2E33270723A386D600C2A972 /* EscapingChars_0994.xml in Resources */,
 				2E33274123A386D600C2A972 /* Galaxy_War_0992.xml in Resources */,
 				2E33276E23A386D700C2A972 /* ValidProjectAllBricks0991.xml in Resources */,
@@ -8181,6 +8173,7 @@
 				2E3327CF23A386D700C2A972 /* Minions__097.xml in Resources */,
 				2E33272423A386D600C2A972 /* X_Ray_phone_0994.xml in Resources */,
 				2E33273A23A386D600C2A972 /* SoundMapping.xml in Resources */,
+				2E8A9AC223AE209F0096AD12 /* PlaySoundAndWaitBrickSoundNotInterruptedByDifferentSound.xml in Resources */,
 				2E3326FD23A386D600C2A972 /* Flappy_v3.0_098.xml in Resources */,
 				2E3327DC23A386D700C2A972 /* Rock_paper_scissors_0994.xml in Resources */,
 				2E33273423A386D600C2A972 /* VariableMapping3.xml in Resources */,
@@ -8320,6 +8313,7 @@
 				2E33274C23A386D600C2A972 /* Word_balloon_demo_097.xml in Resources */,
 				2E33278523A386D700C2A972 /* Memory_0991.xml in Resources */,
 				4CF8A5802359B93800905BA9 /* StoreProjectDownloader.fetchMostViewedProjects.IntegerId.success.json in Resources */,
+				2E8A9AC023AE20870096AD12 /* PlaySoundAndWaitBrickStopUntilFinished.xml in Resources */,
 				2E33274723A386D600C2A972 /* Word_balloon_demo_0993.xml in Resources */,
 				2E33276423A386D600C2A972 /* Piano_093.xml in Resources */,
 				2E33274823A386D600C2A972 /* Word_balloon_demo_0994.xml in Resources */,
@@ -8381,6 +8375,7 @@
 				2E33278B23A386D700C2A972 /* Pythagorean_Theorem_0991.xml in Resources */,
 				2E33271423A386D600C2A972 /* Gossip_Girl_091.xml in Resources */,
 				2E33278023A386D700C2A972 /* Airplane_with_shadow_098.xml in Resources */,
+				2E8A9ABD23AE20830096AD12 /* PlaySoundAndWaitBrickContinueWhenFinished.xml in Resources */,
 				2E33279F23A386D700C2A972 /* Drink_more_water_093.xml in Resources */,
 				9EE674DA23253A5E0029D153 /* PlaySameSoundTwiceDifferentObjects.xml in Resources */,
 				2E33276223A386D600C2A972 /* Piano_09.xml in Resources */,
@@ -8810,7 +8805,6 @@
 				4C68FC8A1B25A00B00AB3EE8 /* FormulaElementTest.m in Sources */,
 				4CF4CB7521E64BEE009D6DD9 /* InsertItemIntoUserListBrickTests.swift in Sources */,
 				9E44588A230A024600222B14 /* AudioPlayerIntegrationTests.swift in Sources */,
-				D3374C4423AA5AC10088FA36 /* UserListFunctionsTest.swift in Sources */,
 				4C6FE16C212D2D2E0067B7D5 /* AcosFunctionTest.swift in Sources */,
 				9E1ED58D231332E000E36DED /* AudioEngineAbstractTest.swift in Sources */,
 				2E3325EF23A3864F00C2A972 /* XMLMappingAbstractTests.swift in Sources */,
@@ -9015,7 +9009,6 @@
 				92FF32B11A24E2F400093DA7 /* CreateView.m in Sources */,
 				4CF072A920D6710F00F93AB5 /* FingerTouchedSensor.swift in Sources */,
 				E405EABB212D4E420074ADDB /* SearchStoreCell.swift in Sources */,
-				9E5811842399BAA2004EFB56 /* PlaySoundAndWaitBrick+CBXMLHandler.m in Sources */,
 				9E78D88922A9B16200948AC3 /* AudioPlayer.swift in Sources */,
 				9218B2121CC4AB75007B4C60 /* ResizeViewManager.m in Sources */,
 				AA74F0AA1BC05FCE00D1E954 /* VibrationBrickCell.m in Sources */,
