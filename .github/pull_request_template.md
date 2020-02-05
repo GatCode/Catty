@@ -1,4 +1,4 @@
-*Please enter a short describtion of your pull request and add a reference to the Jira ticket.*
+*Please enter a short description of your pull request and add a reference to the Jira ticket.*
 
 ### Your checklist for this pull request
 Please review the [contributing guidelines](https://github.com/Catrobat/Catty/blob/develop/README.md) and [wiki pages](https://github.com/Catrobat/Catroid/wiki/) of this repository.
@@ -16,4 +16,4 @@ Please review the [contributing guidelines](https://github.com/Catrobat/Catty/bl
 - [ ] Stick to the project’s git workflow (rebase and squash your commits)
 - [ ] Verify that your changes do not have any conflicts with the base branch
 - [ ] After the PR, verify that all CI checks have passed
-- [ ] Post a message in the *#ios-general* [Slack channel](https://catrobat.slack.com) and ask for a code reviewer
+- [ ] Post a message in the *#catty* [Slack channel](https://catrobat.slack.com) and ask for a code reviewer
