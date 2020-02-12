@@ -90,6 +90,10 @@
     return kNoResources;
 }
 
+- (NSString *)xmlTag {
+    return @"PointToBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

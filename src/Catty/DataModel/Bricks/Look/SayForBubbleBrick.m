@@ -34,6 +34,10 @@
     return self;
 }
 
+- (NSString *)xmlTag {
+    return @"SayForBubbleBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

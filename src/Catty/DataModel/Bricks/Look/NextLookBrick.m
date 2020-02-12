@@ -38,6 +38,10 @@
     return kLocalizedNextLook;
 }
 
+- (NSString *)xmlTag {
+    return @"NextLookBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

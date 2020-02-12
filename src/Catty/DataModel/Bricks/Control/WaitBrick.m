@@ -26,6 +26,10 @@
 
 @implementation WaitBrick
 
+- (NSString *)xmlTag {
+    return @"WaitBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

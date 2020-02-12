@@ -25,6 +25,10 @@
 
 @implementation PhiroRGBLightBrick
 
+- (NSString *)xmlTag {
+    return @"PhiroRGBLightBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kPhiroBrick;

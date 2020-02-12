@@ -24,6 +24,10 @@
 
 @implementation CameraBrick
 
+- (NSString *)xmlTag {
+    return @"CameraBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

@@ -50,6 +50,10 @@
     self.steps = [[Formula alloc] initWithInteger:10];
 }
 
+- (NSString *)xmlTag {
+    return @"MoveNStepsBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

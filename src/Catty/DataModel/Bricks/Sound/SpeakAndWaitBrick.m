@@ -25,6 +25,10 @@
 
 @implementation SpeakAndWaitBrick
 
+- (NSString *)xmlTag {
+    return @"SpeakAndWaitBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kSoundBrick;

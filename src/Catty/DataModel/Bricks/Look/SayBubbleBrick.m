@@ -25,6 +25,10 @@
 
 @implementation SayBubbleBrick
 
+- (NSString *)xmlTag {
+    return @"SayBubbleBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

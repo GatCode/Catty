@@ -25,6 +25,10 @@
 
 @implementation TurnLeftBrick
 
+- (NSString *)xmlTag {
+    return @"TurnLeftBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

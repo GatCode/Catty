@@ -26,6 +26,10 @@
 
 @implementation PlaySoundBrick
 
+- (NSString *)xmlTag {
+    return @"PlaySoundBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kSoundBrick;

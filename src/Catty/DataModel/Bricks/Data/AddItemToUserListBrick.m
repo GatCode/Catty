@@ -66,6 +66,10 @@
     }
 }
 
+- (NSString *)xmlTag {
+    return @"AddItemToUserListBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;

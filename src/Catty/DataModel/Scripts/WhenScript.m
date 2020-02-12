@@ -33,6 +33,10 @@
     return self;
 }
 
+- (NSString *)xmlTag {
+    return @"WhenScript";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

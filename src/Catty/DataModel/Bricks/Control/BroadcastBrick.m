@@ -25,6 +25,10 @@
 
 @implementation BroadcastBrick
 
+- (NSString *)xmlTag {
+    return @"BroadcastBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

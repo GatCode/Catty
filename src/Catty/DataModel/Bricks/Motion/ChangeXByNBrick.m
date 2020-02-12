@@ -51,6 +51,10 @@
     self.xMovement = [[Formula alloc] initWithInteger:10];
 }
 
+- (NSString *)xmlTag {
+    return @"ChangeXByNBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;
