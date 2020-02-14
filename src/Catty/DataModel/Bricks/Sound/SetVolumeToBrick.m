@@ -25,6 +25,10 @@
 
 @implementation SetVolumeToBrick
 
+- (NSString *)xmlTag {
+    return @"SetVolumeToBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kSoundBrick;

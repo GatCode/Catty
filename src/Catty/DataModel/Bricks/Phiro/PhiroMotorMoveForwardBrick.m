@@ -26,6 +26,10 @@
 
 @implementation PhiroMotorMoveForwardBrick
 
+- (NSString *)xmlTag {
+    return @"PhiroMotorMoveForwardBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kPhiroBrick;

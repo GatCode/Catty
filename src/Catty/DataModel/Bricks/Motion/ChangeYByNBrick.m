@@ -26,6 +26,10 @@
 
 @implementation ChangeYByNBrick
 
+- (NSString *)xmlTag {
+    return @"ChangeYByNBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

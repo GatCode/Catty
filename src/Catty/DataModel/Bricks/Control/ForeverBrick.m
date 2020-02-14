@@ -24,6 +24,10 @@
 
 @implementation ForeverBrick
 
+- (NSString *)xmlTag {
+    return @"ForeverBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

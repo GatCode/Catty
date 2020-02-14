@@ -75,6 +75,10 @@
     return NO;
 }
 
+- (NSString *)xmlTag {
+    return @"ShowTextBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;

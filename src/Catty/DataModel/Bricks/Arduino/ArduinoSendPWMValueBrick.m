@@ -25,6 +25,10 @@
 
 @implementation ArduinoSendPWMValueBrick
 
+- (NSString *)xmlTag {
+    return @"ArduinoSendPWMValueBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kArduinoBrick;

@@ -28,6 +28,10 @@
 
 @implementation PreviousLookBrick
 
+- (NSString *)xmlTag {
+    return @"PreviousLookBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

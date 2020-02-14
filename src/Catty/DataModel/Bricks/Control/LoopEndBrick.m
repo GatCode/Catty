@@ -27,6 +27,10 @@
 
 @implementation LoopEndBrick
 
+- (NSString *)xmlTag {
+    return @"LoopEndBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

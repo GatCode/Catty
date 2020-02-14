@@ -51,6 +51,10 @@
     self.xPosition = [[Formula alloc] initWithInteger:100];
 }
 
+- (NSString *)xmlTag {
+    return @"SetXBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

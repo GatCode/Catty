@@ -56,6 +56,10 @@
     return YES;
 }
 
+- (NSString *)xmlTag {
+    return @"GoNStepsBackBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

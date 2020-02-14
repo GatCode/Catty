@@ -59,6 +59,10 @@
     self.yPosition = [[Formula alloc] initWithInteger:200];
 }
 
+- (NSString *)xmlTag {
+    return @"PlaceAtBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

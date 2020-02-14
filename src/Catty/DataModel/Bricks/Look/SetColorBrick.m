@@ -28,6 +28,10 @@
 
 @synthesize color = _color;
 
+- (NSString *)xmlTag {
+    return @"SetColorBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

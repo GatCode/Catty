@@ -26,6 +26,10 @@
 
 @implementation SetBackgroundBrick
 
+- (NSString *)xmlTag {
+    return @"SetBackgroundBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kLookBrick;

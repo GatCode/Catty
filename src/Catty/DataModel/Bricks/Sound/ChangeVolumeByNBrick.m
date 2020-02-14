@@ -27,6 +27,10 @@
 
 @synthesize volume  = _volume;
 
+- (NSString *)xmlTag {
+    return @"ChangeVolumeByNBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kSoundBrick;

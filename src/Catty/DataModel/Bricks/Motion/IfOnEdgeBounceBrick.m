@@ -31,6 +31,10 @@
     return (! [self.script.object isBackground]);
 }
 
+- (NSString *)xmlTag {
+    return @"IfOnEdgeBounceBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kMotionBrick;

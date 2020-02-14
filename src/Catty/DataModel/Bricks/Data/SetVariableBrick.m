@@ -62,6 +62,10 @@
     }
 }
 
+- (NSString *)xmlTag {
+    return @"SetVariableBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;

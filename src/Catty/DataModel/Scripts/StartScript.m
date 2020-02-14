@@ -24,6 +24,10 @@
 
 @implementation StartScript
 
+- (NSString *)xmlTag {
+    return @"StartScript";
+}
+
 - (kBrickCategoryType)category
 {
     return kControlBrick;

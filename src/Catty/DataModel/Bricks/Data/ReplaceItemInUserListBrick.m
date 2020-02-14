@@ -75,6 +75,10 @@
     }
 }
 
+- (NSString *)xmlTag {
+    return @"ReplaceItemInUserListBrick";
+}
+
 - (kBrickCategoryType)category
 {
     return kVariableBrick;
