@@ -8,11 +8,11 @@
     <catrobatLanguageVersion>0.93</catrobatLanguageVersion>
     <dateTimeUpload></dateTimeUpload>
     <description>Use the phone to control the paddle.
-REMIX TIPS:
- * Change what the ball looks like
- * Add a score if the ball touches the paddle
- * Add background music
- * Increase the speed of the ball each time it hits the paddle</description>
+        REMIX TIPS:
+        * Change what the ball looks like
+        * Add a score if the ball touches the paddle
+        * Add background music
+        * Increase the speed of the ball each time it hits the paddle</description>
     <deviceName>Nexus 7</deviceName>
     <mediaLicense>http://developer.catrobat.org/ccbysa_v3</mediaLicense>
     <platform>Android</platform>
