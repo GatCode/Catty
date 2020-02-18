@@ -9,3 +9,4 @@ github "audiokit/audiokit" "v4.9.3"
 github "ZipArchive/ZipArchive"
 github "Quick/Quick"
 github "Quick/Nimble"
+github "drmohundro/SWXMLHash" ~> 5.0
