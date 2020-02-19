@@ -22,8 +22,7 @@
 
 import SWXMLHash
 
-@objcMembers
-class XMLParser: NSObject {
+@objcMembers class XMLParser: NSObject {
 
     fileprivate var xmlPath: String = ""
     fileprivate var project: CBProject?
@@ -31,40 +30,22 @@ class XMLParser: NSObject {
     required init(path: String) {
         xmlPath = path
     }
-
-    func parse(completion: @escaping (CBXMLParserError?) -> Void) {
-        guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { completion(.invalidPath); return }
+    
+    @objc func parse() -> Int {
+        guard let xmlFile = try? String(contentsOfFile: self.xmlPath, encoding: .utf8) else { return -1 }
 
         let xml = SWXMLHash.parse(xmlFile)
-
+        
         do {
             project = try xml["program"].value()
-            completion(nil)
         } catch {
-            completion(.parsingError)
+            return -1
         }
+        
+        return 1
     }
-
+    
     func getProject() -> CBProject? {
         return project
-    }
-}
-
-@objc enum CBXMLParserError: Int {
-    private enum CBXMLParserError: Error {
-        case invalidPath
-        case parsingError
-    }
-    
-    case invalidPath
-    case parsingError
-    
-    var errorValue: Error {
-        switch self {
-        case .invalidPath:
-            return CBXMLParserError.invalidPath
-        case .parsingError:
-            return CBXMLParserError.parsingError
-        }
     }
 }
