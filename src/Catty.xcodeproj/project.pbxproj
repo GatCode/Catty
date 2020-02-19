@@ -260,6 +260,8 @@
 		2E10F6AD23FC2AA900128525 /* X_Ray_phone_095.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E10F4D523FC228400128525 /* X_Ray_phone_095.xml */; };
 		2E10F6AE23FC2AA900128525 /* X_Ray_phone_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E10F4D623FC228400128525 /* X_Ray_phone_091.xml */; };
 		2E10F6AF23FC2AA900128525 /* X_Ray_phone_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E10F4D723FC228400128525 /* X_Ray_phone_093.xml */; };
+		2E63CAE123FD012C00C1BF02 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */; };
+		2E63CAE223FD012C00C1BF02 /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4647D55A23D8AF9F001A67F6 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647D55923D8AF9F001A67F6 /* PrivacyPolicyViewController.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
@@ -1439,6 +1441,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2E63CAE223FD012C00C1BF02 /* SWXMLHash.framework in CopyFiles */,
 				92C6319E1BC5183D00486958 /* BluetoothHelper.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1714,6 +1717,8 @@
 		2E10F4D523FC228400128525 /* X_Ray_phone_095.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = X_Ray_phone_095.xml; sourceTree = "<group>"; };
 		2E10F4D623FC228400128525 /* X_Ray_phone_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = X_Ray_phone_091.xml; sourceTree = "<group>"; };
 		2E10F4D723FC228400128525 /* X_Ray_phone_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = X_Ray_phone_093.xml; sourceTree = "<group>"; };
+		2E63CADD23FD012000C1BF02 /* SWXMLHash.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SWXMLHash.framework.dSYM; path = Carthage/Build/iOS/SWXMLHash.framework.dSYM; sourceTree = "<group>"; };
+		2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -3380,6 +3385,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E63CAE123FD012C00C1BF02 /* SWXMLHash.framework in Frameworks */,
 				9ED1150E22C56DEF0035DB63 /* AudioKit.framework in Frameworks */,
 				CADBD7EE19B0E8C200C62836 /* libz.dylib in Frameworks */,
 				59473A6A1F76F05000BD634F /* Bohr.framework in Frameworks */,
@@ -3442,6 +3448,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */,
+				2E63CADD23FD012000C1BF02 /* SWXMLHash.framework.dSYM */,
 				9ECCA3A42395C0D900FE8323 /* Nimble.framework */,
 				9ECCA3A52395C0D900FE8323 /* Quick.framework */,
 				4C36D6D623374FA200670D58 /* ZipArchive.framework */,
@@ -8998,6 +9006,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/TTTAttributedLabel.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
 			);
 			name = "Carthage Copy Frameworks Run Script";
 			outputPaths = (
@@ -10603,6 +10612,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREFIX_HEADER = "Catty/App-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -10650,6 +10660,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREFIX_HEADER = "Catty/App-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
