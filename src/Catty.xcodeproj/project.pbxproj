@@ -32,6 +32,8 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */; };
+		2E6FBAFC23FD8DE800165A64 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E6FBAF923FD8DE800165A64 /* SWXMLHash.framework */; };
+		2E6FBAFD23FD8DE800165A64 /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E6FBAF923FD8DE800165A64 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4647D55A23D8AF9F001A67F6 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647D55923D8AF9F001A67F6 /* PrivacyPolicyViewController.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
@@ -1426,6 +1428,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2E6FBAFD23FD8DE800165A64 /* SWXMLHash.framework in CopyFiles */,
 				92C6319E1BC5183D00486958 /* BluetoothHelper.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1473,6 +1476,7 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.fail.request.json; sourceTree = "<group>"; };
+		2E6FBAF923FD8DE800165A64 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -3367,6 +3371,7 @@
 				59473A6E1F76F05000BD634F /* MXParallaxHeader.framework in Frameworks */,
 				4C4B4CC223ED94230054C861 /* FirebaseCrashlytics.framework in Frameworks */,
 				4C10D9DD23ED8DA900EB0C6E /* GoogleDataTransport.framework in Frameworks */,
+				2E6FBAFC23FD8DE800165A64 /* SWXMLHash.framework in Frameworks */,
 				59473A6F1F76F05000BD634F /* MXSegmentedPager.framework in Frameworks */,
 				4C36D6D923374FA200670D58 /* ZipArchive.framework in Frameworks */,
 				4C4B4CD323EE76370054C861 /* GoogleAppMeasurement.framework in Frameworks */,
@@ -3428,6 +3433,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E6FBAF923FD8DE800165A64 /* SWXMLHash.framework */,
 				4C4B4CC123ED94230054C861 /* FirebaseCrashlytics.framework */,
 				4C10D9E223ED8DF500EB0C6E /* PromisesObjC.framework */,
 				4C10D9DF23ED8DCF00EB0C6E /* FirebaseInstallations.framework */,
@@ -10567,6 +10573,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREFIX_HEADER = "Catty/App-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -10614,6 +10621,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREFIX_HEADER = "Catty/App-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
