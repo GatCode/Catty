@@ -262,6 +262,8 @@
 		2E10F6AF23FC2AA900128525 /* X_Ray_phone_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2E10F4D723FC228400128525 /* X_Ray_phone_093.xml */; };
 		2E63CAE123FD012C00C1BF02 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */; };
 		2E63CAE223FD012C00C1BF02 /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2E63CAE523FD034000C1BF02 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63CAE423FD034000C1BF02 /* XMLParser.swift */; };
+		2E63CAE823FD03F500C1BF02 /* CBProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63CAE723FD03F500C1BF02 /* CBProject.swift */; };
 		4647D55A23D8AF9F001A67F6 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647D55923D8AF9F001A67F6 /* PrivacyPolicyViewController.swift */; };
 		4C03A4BE2133FD05007BFFD2 /* FormulaManager+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4BD2133FD05007BFFD2 /* FormulaManager+Resources.swift */; };
 		4C03A4C22133FDE7007BFFD2 /* FormulaManager+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03A4C12133FDE7007BFFD2 /* FormulaManager+Editor.swift */; };
@@ -1719,6 +1721,8 @@
 		2E10F4D723FC228400128525 /* X_Ray_phone_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = X_Ray_phone_093.xml; sourceTree = "<group>"; };
 		2E63CADD23FD012000C1BF02 /* SWXMLHash.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SWXMLHash.framework.dSYM; path = Carthage/Build/iOS/SWXMLHash.framework.dSYM; sourceTree = "<group>"; };
 		2E63CAE023FD012C00C1BF02 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		2E63CAE423FD034000C1BF02 /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
+		2E63CAE723FD03F500C1BF02 /* CBProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProject.swift; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App-Prefix.pch"; sourceTree = "<group>"; };
@@ -4042,6 +4046,14 @@
 			path = CattyTests/Resources/ParserTests/X_Ray_phone;
 			sourceTree = SOURCE_ROOT;
 		};
+		2E63CAE623FD03C900C1BF02 /* Data Structure */ = {
+			isa = PBXGroup;
+			children = (
+				2E63CAE723FD03F500C1BF02 /* CBProject.swift */,
+			);
+			path = "Data Structure";
+			sourceTree = "<group>";
+		};
 		4647D55823D8AF9F001A67F6 /* PrivacyPolicy */ = {
 			isa = PBXGroup;
 			children = (
@@ -4735,6 +4747,8 @@
 		4C724D851B4D3E8C00E27479 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
+				2E63CAE423FD034000C1BF02 /* XMLParser.swift */,
+				2E63CAE623FD03C900C1BF02 /* Data Structure */,
 				4C724D861B4D3E8C00E27479 /* New Parser & Serializer */,
 				4C724E191B4D3E8C00E27479 /* Old Parser */,
 			);
@@ -9801,6 +9815,7 @@
 				92EC985E1BC3ABB90003A891 /* PhiroMotorStopBrick+CBXMLHandler.m in Sources */,
 				4C0F9F9F204BD2B100E71B2D /* SayForBubbleBrickCell.m in Sources */,
 				AA74EE261BC0540D00D1E954 /* ChangeVariableBrick+Instruction.swift in Sources */,
+				2E63CAE823FD03F500C1BF02 /* CBProject.swift in Sources */,
 				4C37A0A5212E767C0074F417 /* ArduinoDigitalPinFunction.swift in Sources */,
 				AA74F0B81BC05FCE00D1E954 /* ComeToFrontBrickCell.m in Sources */,
 				AA74F0981BC05FCE00D1E954 /* BrickCellTextData.m in Sources */,
@@ -10037,6 +10052,7 @@
 				92FF2E8E1A24C7D800093DA7 /* CBFileManager.m in Sources */,
 				F470A2E72129DFD5005EC9A3 /* ContainsFunction.swift in Sources */,
 				921D468C1BDF698A0086AD20 /* SetTransparencyBrick+Instruction.swift in Sources */,
+				2E63CAE523FD034000C1BF02 /* XMLParser.swift in Sources */,
 				9276B7051C9E8F6C008BC594 /* SoundCache.m in Sources */,
 				C6A06BEC1EC8CA4C0000C656 /* AlertController.swift in Sources */,
 				92FF31021A24DCAA00093DA7 /* BroadcastScript.m in Sources */,

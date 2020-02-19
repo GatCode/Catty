@@ -478,6 +478,13 @@
         NSDebug(@"Invalid catrobat language version!");
         return nil;
     }
+    
+    // use the new parser + data structure to enable testing
+    XMLParser *xmlParser = [[XMLParser alloc] initWithPath:xmlPath];
+//    [XMLParser parse]
+//    [xmlParser parse:@"" withCompletion:^(CBXMLParserError* error){
+//    // your code here
+//    }];
 
     // detect right parser for correct catrobat language version
     CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
