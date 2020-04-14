@@ -38,12 +38,15 @@
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */; };
 		2E6120FF2445AC0700708FED /* CBProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6120FE2445AC0700708FED /* CBProject.swift */; };
 		2E6121052445B55600708FED /* CBHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121042445B55600708FED /* CBHeader.swift */; };
-		2E61210B2445BDFB00708FED /* XMLMappingHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E61210A2445BDFB00708FED /* XMLMappingHeaderTests.swift */; };
+		2E61210B2445BDFB00708FED /* XMLMappingToObjcHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E61210A2445BDFB00708FED /* XMLMappingToObjcHeaderTests.swift */; };
 		2E6121112445C9A400708FED /* CBXMLMappingToObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121102445C9A400708FED /* CBXMLMappingToObjc.swift */; };
 		2E6121132445C9CF00708FED /* MapHeaderMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121122445C9CF00708FED /* MapHeaderMTO.swift */; };
 		2E6121162445CBCB00708FED /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121152445CBCB00708FED /* String.swift */; };
 		2E6121182445CBF400708FED /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121172445CBF400708FED /* Optional.swift */; };
 		2EC78F992445D637006D9000 /* HeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC78F972445D607006D9000 /* HeaderMock.swift */; };
+		2EC78FA4244605FB006D9000 /* CBXMLMappingFromObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC78FA3244605FB006D9000 /* CBXMLMappingFromObjc.swift */; };
+		2EC78FA724460678006D9000 /* MapHeaderMFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC78FA624460678006D9000 /* MapHeaderMFO.swift */; };
+		2EC78FAD2446070B006D9000 /* XMLMappingFromObjcHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC78FAB24460708006D9000 /* XMLMappingFromObjcHeaderTests.swift */; };
 		2ED4179F241120AF00AFE2FD /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */; };
 		2ED417A0241120AF00AFE2FD /* Nyancat_1.0_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */; };
 		2ED417A1241120AF00AFE2FD /* Nyancat_1.0_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */; };
@@ -1536,12 +1539,15 @@
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.fail.request.json; sourceTree = "<group>"; };
 		2E6120FE2445AC0700708FED /* CBProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBProject.swift; sourceTree = "<group>"; };
 		2E6121042445B55600708FED /* CBHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBHeader.swift; sourceTree = "<group>"; };
-		2E61210A2445BDFB00708FED /* XMLMappingHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingHeaderTests.swift; sourceTree = "<group>"; };
+		2E61210A2445BDFB00708FED /* XMLMappingToObjcHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingToObjcHeaderTests.swift; sourceTree = "<group>"; };
 		2E6121102445C9A400708FED /* CBXMLMappingToObjc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMappingToObjc.swift; sourceTree = "<group>"; };
 		2E6121122445C9CF00708FED /* MapHeaderMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderMTO.swift; sourceTree = "<group>"; };
 		2E6121152445CBCB00708FED /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E6121172445CBF400708FED /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		2EC78F972445D607006D9000 /* HeaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMock.swift; sourceTree = "<group>"; };
+		2EC78FA3244605FB006D9000 /* CBXMLMappingFromObjc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBXMLMappingFromObjc.swift; sourceTree = "<group>"; };
+		2EC78FA624460678006D9000 /* MapHeaderMFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderMFO.swift; sourceTree = "<group>"; };
+		2EC78FAB24460708006D9000 /* XMLMappingFromObjcHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLMappingFromObjcHeaderTests.swift; sourceTree = "<group>"; };
 		2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
 		2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_091.xml; sourceTree = "<group>"; };
 		2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_093.xml; sourceTree = "<group>"; };
@@ -3631,7 +3637,7 @@
 			isa = PBXGroup;
 			children = (
 				2EC78F9E2445FDAB006D9000 /* Mocks */,
-				2EC78F932445D36D006D9000 /* Mapping To Objc (MTO) */,
+				2EC78FA9244606C7006D9000 /* Mapping */,
 			);
 			path = Refactoring2020;
 			sourceTree = "<group>";
@@ -3639,8 +3645,9 @@
 		2E61210E2445C85100708FED /* Refactoring2020 */ = {
 			isa = PBXGroup;
 			children = (
-				2E61210F2445C99200708FED /* Mapping To Objc (MTO) */,
 				2E6121022445AC1200708FED /* Data Structure */,
+				2EC78FA524460603006D9000 /* Mapping From Objc (MFO) */,
+				2E61210F2445C99200708FED /* Mapping To Objc (MTO) */,
 			);
 			path = Refactoring2020;
 			sourceTree = "<group>";
@@ -3662,20 +3669,46 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		2EC78F932445D36D006D9000 /* Mapping To Objc (MTO) */ = {
-			isa = PBXGroup;
-			children = (
-				2E61210A2445BDFB00708FED /* XMLMappingHeaderTests.swift */,
-			);
-			path = "Mapping To Objc (MTO)";
-			sourceTree = "<group>";
-		};
 		2EC78F9E2445FDAB006D9000 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
 				2EC78F972445D607006D9000 /* HeaderMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		2EC78FA524460603006D9000 /* Mapping From Objc (MFO) */ = {
+			isa = PBXGroup;
+			children = (
+				2EC78FA3244605FB006D9000 /* CBXMLMappingFromObjc.swift */,
+				2EC78FA82446067B006D9000 /* Header */,
+			);
+			path = "Mapping From Objc (MFO)";
+			sourceTree = "<group>";
+		};
+		2EC78FA82446067B006D9000 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2EC78FA624460678006D9000 /* MapHeaderMFO.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2EC78FA9244606C7006D9000 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				2EC78FAA244606CE006D9000 /* Header */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		2EC78FAA244606CE006D9000 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2E61210A2445BDFB00708FED /* XMLMappingToObjcHeaderTests.swift */,
+				2EC78FAB24460708006D9000 /* XMLMappingFromObjcHeaderTests.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		2ED41693241120AE00AFE2FD /* UserProjects */ = {
@@ -9505,7 +9538,7 @@
 				4C6FE175212D2D2E0067B7D5 /* ContainsFunctionTest.swift in Sources */,
 				4C822663213FA7A400F3D750 /* FacePositionXSensorTest.swift in Sources */,
 				4CBDF1AA21CF830E00325338 /* BinaryOperatorMock.swift in Sources */,
-				2E61210B2445BDFB00708FED /* XMLMappingHeaderTests.swift in Sources */,
+				2E61210B2445BDFB00708FED /* XMLMappingToObjcHeaderTests.swift in Sources */,
 				9E22CC8D2323FC6700BA4CBA /* AudioEngineFingerprintingStub.swift in Sources */,
 				9E2C2D8A23256901004B66C6 /* AudioEngineMock.swift in Sources */,
 				4C822668213FA7A400F3D750 /* CompassDirectionSensorTest.swift in Sources */,
@@ -9548,6 +9581,7 @@
 				9EBCBD892329BF5F0074C2D9 /* PointToBrickTests.swift in Sources */,
 				9EBCBD8F2329C7A30074C2D9 /* SetTransparencyBrickTests.swift in Sources */,
 				4C6FE171212D2D2E0067B7D5 /* CosFunctionTest.swift in Sources */,
+				2EC78FAD2446070B006D9000 /* XMLMappingFromObjcHeaderTests.swift in Sources */,
 				4C53E38821D5238900F2EC76 /* GreaterOrEqualOperatorTest.swift in Sources */,
 				D3F2717923CC9ADF00E339FD /* FormulaFunctionsTest.swift in Sources */,
 				4C6FE15F212D2D2E0067B7D5 /* FalseFunctionTest.swift in Sources */,
@@ -9919,6 +9953,7 @@
 				4CF429F1213A876000B78897 /* RepeatBrick+Condition.swift in Sources */,
 				92D56C301BF202E700A54750 /* BluetoothDevice.swift in Sources */,
 				4C0F9F91204BD28100E71B2D /* CameraBrickCell.m in Sources */,
+				2EC78FA724460678006D9000 /* MapHeaderMFO.swift in Sources */,
 				92FF2EBE1A24C8A700093DA7 /* CatrobatInformation.m in Sources */,
 				921D46891BDF698A0086AD20 /* ClearGraphicEffectBrick+Instruction.swift in Sources */,
 				4C0F9F39204ADC4E00E71B2D /* SayBubbleBrick.m in Sources */,
@@ -10402,6 +10437,7 @@
 				AA74F0081BC05B5F00D1E954 /* TurnLeftBrick.m in Sources */,
 				AA74F0C71BC05FCE00D1E954 /* SpeakBrickCell.m in Sources */,
 				AA74F0B21BC05FCE00D1E954 /* SetLookBrickCell.m in Sources */,
+				2EC78FA4244605FB006D9000 /* CBXMLMappingFromObjc.swift in Sources */,
 				AA74F0091BC05B5F00D1E954 /* TurnRightBrick.m in Sources */,
 				4CF773E51AEE3B5100DBBB2B /* VariablePickerData.m in Sources */,
 				AA74F0071BC05B5F00D1E954 /* SetYBrick.m in Sources */,

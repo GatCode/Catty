@@ -24,7 +24,7 @@ import XCTest
 
 @testable import Pocket_Code
 
-final class XMLMappingHeaderTests: XCTestCase {
+final class XMLMappingToObjcHeaderTests: XCTestCase {
 
     func testHeadersAreEqual() {
         let mock = HeaderMock()

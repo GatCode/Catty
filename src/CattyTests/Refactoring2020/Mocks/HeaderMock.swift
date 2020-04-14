@@ -29,7 +29,7 @@ class HeaderMock {
     var applicationName = "Mock"
     var applicationVersion = "0.01"
     var catrobatLanguageVersion = "0.80"
-    var dateTimeUpload = "2020-01-02 03:04:05"
+    var dateTimeUpload = "2020-01-0203:04:05"
     var programDescription = "test description"
     var deviceName = "iPhone X"
     var landscapeMode = false
