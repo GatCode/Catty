@@ -22,27 +22,14 @@
 
 enum CBXMLMappingToObjc {
 
-    static var mappingSoundList = [Sound]()
-    static var mappingVariableListGlobal = [UserVariable]()
-    static var mappingVariableListLocal = [UserVariable]()
-    static var unsupportedElements = [String]()
-    static var spriteObjectList = [SpriteObject]()
-    static var abortMapping = false
-
     static func mapCBProjectToProject(project: CBProject?) -> Project? {
 
-        var mappedProject = Project()
-        CBXMLMappingToObjc.mappingSoundList.removeAll()
-        CBXMLMappingToObjc.mappingVariableListGlobal.removeAll()
-        CBXMLMappingToObjc.mappingVariableListLocal.removeAll()
-        CBXMLMappingToObjc.unsupportedElements.removeAll()
-        CBXMLMappingToObjc.spriteObjectList.removeAll()
-        CBXMLMappingToObjc.abortMapping = false
+        let mappedProject = Project()
 
         if let mappedHeader = mapHeader(project: project) {
             mappedProject.header = mappedHeader
         }
 
-        return CBXMLMappingToObjc.abortMapping ? nil : mappedProject
+        return mappedProject
     }
 }

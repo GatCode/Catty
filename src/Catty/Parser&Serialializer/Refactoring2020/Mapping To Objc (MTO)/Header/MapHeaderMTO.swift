@@ -23,7 +23,8 @@
 extension CBXMLMappingToObjc {
 
     static func mapHeader(project: CBProject?) -> Header? {
-         guard let input = project?.header else { return nil }
+        
+        guard let input = project?.header else { return nil }
 
         let header = Header()
         header.applicationBuildName = input.applicationBuildName

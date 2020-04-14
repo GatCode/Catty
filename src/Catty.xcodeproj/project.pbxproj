@@ -43,6 +43,7 @@
 		2E6121132445C9CF00708FED /* MapHeaderMTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121122445C9CF00708FED /* MapHeaderMTO.swift */; };
 		2E6121162445CBCB00708FED /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121152445CBCB00708FED /* String.swift */; };
 		2E6121182445CBF400708FED /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6121172445CBF400708FED /* Optional.swift */; };
+		2EC78F992445D637006D9000 /* HeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC78F972445D607006D9000 /* HeaderMock.swift */; };
 		2ED4179F241120AF00AFE2FD /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */; };
 		2ED417A0241120AF00AFE2FD /* Nyancat_1.0_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */; };
 		2ED417A1241120AF00AFE2FD /* Nyancat_1.0_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */; };
@@ -1540,6 +1541,7 @@
 		2E6121122445C9CF00708FED /* MapHeaderMTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderMTO.swift; sourceTree = "<group>"; };
 		2E6121152445CBCB00708FED /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E6121172445CBF400708FED /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		2EC78F972445D607006D9000 /* HeaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMock.swift; sourceTree = "<group>"; };
 		2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
 		2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_091.xml; sourceTree = "<group>"; };
 		2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_093.xml; sourceTree = "<group>"; };
@@ -3628,7 +3630,7 @@
 		2E6121092445BDBE00708FED /* Refactoring2020 */ = {
 			isa = PBXGroup;
 			children = (
-				2E61210A2445BDFB00708FED /* XMLMappingHeaderTests.swift */,
+				2EC78F932445D36D006D9000 /* Mapping To Objc (MTO) */,
 			);
 			path = Refactoring2020;
 			sourceTree = "<group>";
@@ -3657,6 +3659,15 @@
 				2E6121122445C9CF00708FED /* MapHeaderMTO.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		2EC78F932445D36D006D9000 /* Mapping To Objc (MTO) */ = {
+			isa = PBXGroup;
+			children = (
+				2EC78F972445D607006D9000 /* HeaderMock.swift */,
+				2E61210A2445BDFB00708FED /* XMLMappingHeaderTests.swift */,
+			);
+			path = "Mapping To Objc (MTO)";
 			sourceTree = "<group>";
 		};
 		2ED41693241120AE00AFE2FD /* UserProjects */ = {
@@ -9402,6 +9413,7 @@
 				187A3F202434BC4300EF1B02 /* PlaySoundAndWaitBrickTests.swift in Sources */,
 				4C1A596823FE9997001A78D2 /* CrashlyticsMock.swift in Sources */,
 				4C82265A213FA7A400F3D750 /* TouchManagerMock.swift in Sources */,
+				2EC78F992445D637006D9000 /* HeaderMock.swift in Sources */,
 				4CBF96BF2351B3EC0063D5FC /* ProjectTests.swift in Sources */,
 				5973F245202EF3A000A4CED9 /* SoundsLibraryCollectionViewDataSourceDelegateMock.swift in Sources */,
 				4C3A5CA921D3B7EF008FD83F /* NotEqualOperatorTest.swift in Sources */,

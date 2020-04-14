@@ -27,6 +27,9 @@ import XCTest
 final class XMLMappingHeaderTests: XCTestCase {
 
     func testHeadersAreEqual() {
+        
+        let mock = HeaderMock()
+        
         var cbProject = CBProject()
         var header = CBHeader()
         header.applicationBuildName = "applicationBuildName"

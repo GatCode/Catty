@@ -23,6 +23,7 @@
 import SWXMLHash
 
 struct CBProject: XMLIndexerDeserializable, Equatable {
+    
     var header: CBHeader?
 
     init(header: CBHeader? = nil) {
@@ -36,7 +37,6 @@ struct CBProject: XMLIndexerDeserializable, Equatable {
     }
 
     static func == (lhs: CBProject, rhs: CBProject) -> Bool {
-        return
-            lhs.header == rhs.header
+        return lhs.header == rhs.header
     }
 }
