@@ -27,32 +27,51 @@ import XCTest
 final class XMLMappingHeaderTests: XCTestCase {
 
     func testHeadersAreEqual() {
-        
+        let mock = HeaderMock()
+        let cbProject = mock.getCBProject()
+        let project = mock.getProject()
+        let mappedProject = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
+        compareHeaders(projectA: mappedProject!, projectB: project)
+    }
+    
+    func testManipulatedHeadersAreEqual() {
         let mock = HeaderMock()
         
-        var cbProject = CBProject()
-        var header = CBHeader()
-        header.applicationBuildName = "applicationBuildName"
-        header.applicationName = "applicationName"
-        header.catrobatLanguageVersion = "catrobatLanguageVersion"
-        header.description = "description"
-        header.remixOf = "remixOf"
-        header.url = "url"
-        header.userHandle = "userHandle"
-        header.programID = "programID"
-        header.tags = "hello, world, this, is a, #"
-        cbProject.header = header
+        mock.applicationBuildName = ""
+        mock.applicationBuildNumber = "abc"
+        mock.dateTimeUpload = ""
+        mock.landscapeMode = true
+        mock.screenWidth = 0
+        mock.programID = ""
         
-        let project = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
-
-        XCTAssertEqual(cbProject.header?.applicationBuildName, project?.header.applicationBuildName)
-        XCTAssertEqual(cbProject.header?.applicationName, project?.header.applicationName)
-        XCTAssertEqual(cbProject.header?.catrobatLanguageVersion, project?.header.catrobatLanguageVersion)
-        XCTAssertEqual(cbProject.header?.description, project?.header.programDescription)
-        XCTAssertEqual(cbProject.header?.remixOf, project?.header.remixOf)
-        XCTAssertEqual(cbProject.header?.url, project?.header.url)
-        XCTAssertEqual(cbProject.header?.userHandle, project?.header.userHandle)
-        XCTAssertEqual(cbProject.header?.programID, project?.header.programID)
-        XCTAssertEqual(cbProject.header?.tags, project?.header.tags)
+        let cbProject = mock.getCBProject()
+        let project = mock.getProject()
+        let mappedProject = CBXMLMappingToObjc.mapCBProjectToProject(project: cbProject)
+        compareHeaders(projectA: mappedProject!, projectB: project)
+    }
+    
+    func compareHeaders(projectA: Project, projectB: Project) {
+        XCTAssertEqual(projectA.header.applicationBuildName, projectB.header.applicationBuildName)
+        XCTAssertEqual(projectA.header.applicationBuildNumber, projectB.header.applicationBuildNumber)
+        XCTAssertEqual(projectA.header.applicationName, projectB.header.applicationName)
+        XCTAssertEqual(projectA.header.applicationVersion, projectB.header.applicationVersion)
+        XCTAssertEqual(projectA.header.catrobatLanguageVersion, projectB.header.catrobatLanguageVersion)
+        XCTAssertEqual(projectA.header.dateTimeUpload, projectB.header.dateTimeUpload)
+        XCTAssertEqual(projectA.header.programDescription, projectB.header.programDescription)
+        XCTAssertEqual(projectA.header.deviceName, projectB.header.deviceName)
+        XCTAssertEqual(projectA.header.landscapeMode, projectB.header.landscapeMode)
+        XCTAssertEqual(projectA.header.mediaLicense, projectB.header.mediaLicense)
+        XCTAssertEqual(projectA.header.platform, projectB.header.platform)
+        XCTAssertEqual(projectA.header.platformVersion, projectB.header.platformVersion)
+        XCTAssertEqual(projectA.header.programLicense, projectB.header.programLicense)
+        XCTAssertEqual(projectA.header.programName, projectB.header.programName)
+        XCTAssertEqual(projectA.header.remixOf, projectB.header.remixOf)
+        XCTAssertEqual(projectA.header.screenHeight, projectB.header.screenHeight)
+        XCTAssertEqual(projectA.header.screenWidth, projectB.header.screenWidth)
+        XCTAssertEqual(projectA.header.screenMode, projectB.header.screenMode)
+        XCTAssertEqual(projectA.header.tags, projectB.header.tags)
+        XCTAssertEqual(projectA.header.url, projectB.header.url)
+        XCTAssertEqual(projectA.header.userHandle, projectB.header.userHandle)
+        XCTAssertEqual(projectA.header.programID, projectB.header.programID)
     }
 }

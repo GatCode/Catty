@@ -3630,6 +3630,7 @@
 		2E6121092445BDBE00708FED /* Refactoring2020 */ = {
 			isa = PBXGroup;
 			children = (
+				2EC78F9E2445FDAB006D9000 /* Mocks */,
 				2EC78F932445D36D006D9000 /* Mapping To Objc (MTO) */,
 			);
 			path = Refactoring2020;
@@ -3664,10 +3665,17 @@
 		2EC78F932445D36D006D9000 /* Mapping To Objc (MTO) */ = {
 			isa = PBXGroup;
 			children = (
-				2EC78F972445D607006D9000 /* HeaderMock.swift */,
 				2E61210A2445BDFB00708FED /* XMLMappingHeaderTests.swift */,
 			);
 			path = "Mapping To Objc (MTO)";
+			sourceTree = "<group>";
+		};
+		2EC78F9E2445FDAB006D9000 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2EC78F972445D607006D9000 /* HeaderMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		2ED41693241120AE00AFE2FD /* UserProjects */ = {
