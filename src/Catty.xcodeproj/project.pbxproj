@@ -38,6 +38,12 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */; };
+		2EB5B10F2456A3C8002FAEA6 /* CBHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5B10E2456A3C8002FAEA6 /* CBHeader.swift */; };
+		2EB5B1132456B0C3002FAEA6 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5B1122456B0C3002FAEA6 /* Optional.swift */; };
+		2EB5B1152456B182002FAEA6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5B1142456B182002FAEA6 /* String.swift */; };
+		2EB5B1182456B437002FAEA6 /* XMLCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5B1172456B437002FAEA6 /* XMLCoderTests.swift */; };
+		2EB5B11D2456B97F002FAEA6 /* HeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5B11C2456B97F002FAEA6 /* HeaderMock.swift */; };
+		2EB5B1232456C1D7002FAEA6 /* XMLCoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5B1222456C1D7002FAEA6 /* XMLCoder.framework */; };
 		2ED4179F241120AF00AFE2FD /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */; };
 		2ED417A0241120AF00AFE2FD /* Nyancat_1.0_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */; };
 		2ED417A1241120AF00AFE2FD /* Nyancat_1.0_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */; };
@@ -811,8 +817,6 @@
 		6FAAD8B6244CAFDA00142FA7 /* SpeakBrickWithoutCommentedOut_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAD8B5244CAFDA00142FA7 /* SpeakBrickWithoutCommentedOut_0991.xml */; };
 		6FDC3CB82439423D0033F252 /* RegularExpressionFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDC3CB52439423D0033F252 /* RegularExpressionFunction.swift */; };
 		6FDC3CBA243942980033F252 /* RegularExpressionFunctionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDC3CB9243942980033F252 /* RegularExpressionFunctionTest.swift */; };
-		6F659875243E8B9B00BD6B8C /* StoreProjectDownloader.downloadProject.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F659874243E8B9B00BD6B8C /* StoreProjectDownloader.downloadProject.fail.request.json */; };
-		6F87B80D2441300A00D79A2C /* StoreProjectDownloader.downloadProject.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F87B80C2441300A00D79A2C /* StoreProjectDownloader.downloadProject.success.json */; };
 		811FB6EA1A4980EF00957E10 /* ScriptCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811FB6E91A4980EF00957E10 /* ScriptCollectionViewController.m */; };
 		81C0A67F1A4EE8CF003A77C5 /* BrickSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C0A67E1A4EE8CF003A77C5 /* BrickSelectionViewController.m */; };
 		81D46EA41CC29E3000653EAB /* ShapeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D46EA31CC29E3000653EAB /* ShapeButton.m */; };
@@ -1542,6 +1546,12 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.fail.request.json; sourceTree = "<group>"; };
+		2EB5B10E2456A3C8002FAEA6 /* CBHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBHeader.swift; sourceTree = "<group>"; };
+		2EB5B1122456B0C3002FAEA6 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		2EB5B1142456B182002FAEA6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.swift; path = "Extension&Delegate&Protocol/Extensions/String.swift"; sourceTree = "<group>"; };
+		2EB5B1172456B437002FAEA6 /* XMLCoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XMLCoderTests.swift; path = "CattyTests/Parser & Serialization/Refactoring2020/Header/XMLCoderTests.swift"; sourceTree = "<group>"; };
+		2EB5B11C2456B97F002FAEA6 /* HeaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderMock.swift; path = "../../Parser & Serialization/Refactoring2020/Mocks/HeaderMock.swift"; sourceTree = "<group>"; };
+		2EB5B1222456C1D7002FAEA6 /* XMLCoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLCoder.framework; path = Carthage/Build/iOS/XMLCoder.framework; sourceTree = "<group>"; };
 		2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
 		2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_091.xml; sourceTree = "<group>"; };
 		2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_093.xml; sourceTree = "<group>"; };
@@ -2414,8 +2424,6 @@
 		6FAAD8B5244CAFDA00142FA7 /* SpeakBrickWithoutCommentedOut_0991.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpeakBrickWithoutCommentedOut_0991.xml; sourceTree = "<group>"; };
 		6FDC3CB52439423D0033F252 /* RegularExpressionFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpressionFunction.swift; sourceTree = "<group>"; };
 		6FDC3CB9243942980033F252 /* RegularExpressionFunctionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpressionFunctionTest.swift; sourceTree = "<group>"; };
-		6F659874243E8B9B00BD6B8C /* StoreProjectDownloader.downloadProject.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadProject.fail.request.json; sourceTree = "<group>"; };
-		6F87B80C2441300A00D79A2C /* StoreProjectDownloader.downloadProject.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.downloadProject.success.json; sourceTree = "<group>"; };
 		71003B79069F162A53CC656E /* fr */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		746F8E7562A2BCF8785510CE /* ro */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		758FD262053C04755851BC4D /* ml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = ml; path = ml.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -3484,6 +3492,7 @@
 				4C10D9D623ED8CDC00EB0C6E /* FIRAnalyticsConnector.framework in Frameworks */,
 				CADBD7EE19B0E8C200C62836 /* libz.dylib in Frameworks */,
 				59473A6A1F76F05000BD634F /* Bohr.framework in Frameworks */,
+				2EB5B1232456C1D7002FAEA6 /* XMLCoder.framework in Frameworks */,
 				59473A6B1F76F05000BD634F /* HMSegmentedControl.framework in Frameworks */,
 				59697DAC201F631700A0071A /* Kingfisher.framework in Frameworks */,
 				59473A6C1F76F05000BD634F /* M13ProgressSuite.framework in Frameworks */,
@@ -3553,6 +3562,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EB5B1222456C1D7002FAEA6 /* XMLCoder.framework */,
 				4C4B4CC123ED94230054C861 /* FirebaseCrashlytics.framework */,
 				4C10D9E223ED8DF500EB0C6E /* PromisesObjC.framework */,
 				4C10D9DF23ED8DCF00EB0C6E /* FirebaseInstallations.framework */,
@@ -3616,6 +3626,55 @@
 				E405EABA212D4E420074ADDB /* SearchStoreCell.swift */,
 			);
 			path = SearchStore;
+			sourceTree = "<group>";
+		};
+		2EB5B1082456A299002FAEA6 /* Refactoring2020 */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5B10B2456A38E002FAEA6 /* DataStructure */,
+			);
+			path = Refactoring2020;
+			sourceTree = "<group>";
+		};
+		2EB5B10B2456A38E002FAEA6 /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5B10D2456A3B0002FAEA6 /* Header */,
+			);
+			path = DataStructure;
+			sourceTree = "<group>";
+		};
+		2EB5B10D2456A3B0002FAEA6 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5B10E2456A3C8002FAEA6 /* CBHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2EB5B1192456B43B002FAEA6 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5B1172456B437002FAEA6 /* XMLCoderTests.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2EB5B11A2456B448002FAEA6 /* Refactoring2020 */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5B11B2456B970002FAEA6 /* Mocks */,
+				2EB5B1192456B43B002FAEA6 /* Header */,
+			);
+			path = Refactoring2020;
+			sourceTree = "<group>";
+		};
+		2EB5B11B2456B970002FAEA6 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5B11C2456B97F002FAEA6 /* HeaderMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		2ED41693241120AE00AFE2FD /* UserProjects */ = {
@@ -4981,6 +5040,7 @@
 		4C724D851B4D3E8C00E27479 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
+				2EB5B1082456A299002FAEA6 /* Refactoring2020 */,
 				4C724D861B4D3E8C00E27479 /* New Parser & Serializer */,
 				4C724E191B4D3E8C00E27479 /* Old Parser */,
 			);
@@ -5709,6 +5769,7 @@
 		4CD194F21A0631B200484E4F /* Parser & Serialization */ = {
 			isa = PBXGroup;
 			children = (
+				2EB5B11A2456B448002FAEA6 /* Refactoring2020 */,
 				2ED4188D2411213D00AFE2FD /* Abstract */,
 				2ED418B02411213D00AFE2FD /* CatrobatLanguage0.92 */,
 				2ED418A42411213D00AFE2FD /* CatrobatLanguage0.93 */,
@@ -8348,6 +8409,8 @@
 				92FF2E461A24C64300093DA7 /* Protocols */,
 				92FF2E411A24C5F300093DA7 /* Delegates */,
 				92FF2E081A24C5A700093DA7 /* Extensions */,
+				2EB5B1122456B0C3002FAEA6 /* Optional.swift */,
+				2EB5B1142456B182002FAEA6 /* String.swift */,
 			);
 			name = "Extensions & Delegates & Protocols";
 			sourceTree = "<group>";
@@ -9414,6 +9477,7 @@
 				4C5AEEFB22F6F92B00280F8B /* ArduinoBrickTests.swift in Sources */,
 				4C3A5CA121D3B4DF008FD83F /* OrOperatorTest.swift in Sources */,
 				4C6FE178212D2D2E0067B7D5 /* JoinFunctionTest.swift in Sources */,
+				2EB5B11D2456B97F002FAEA6 /* HeaderMock.swift in Sources */,
 				4CA6DFBF23069204003A729B /* FormulaCacheTests.swift in Sources */,
 				9EE1BA5E2385F62A0024C7A5 /* SpeechSynthesizerTests.swift in Sources */,
 				4C6FE174212D2D2E0067B7D5 /* ElementFunctionTest.swift in Sources */,
@@ -9448,6 +9512,7 @@
 				4C5AEEE322F6EBBC00280F8B /* WaitBrickCellTests.swift in Sources */,
 				4CAC7DA21DCF444A00EC7D6F /* CBSceneTouchTests.swift in Sources */,
 				4C5AEEE722F6EDEB00280F8B /* ThinkForBubbleBrickCellTests.swift in Sources */,
+				2EB5B1182456B437002FAEA6 /* XMLCoderTests.swift in Sources */,
 				4C3A5CA521D3B5D1008FD83F /* DivideOperatorTest.swift in Sources */,
 				4C68FC961B25A00B00AB3EE8 /* InternFormulaUtilsTest.m in Sources */,
 				4C6FE15B212D2D2E0067B7D5 /* CeilFunctionTest.swift in Sources */,
@@ -10064,6 +10129,7 @@
 				92FF31561A24DEB300093DA7 /* SRViewController.m in Sources */,
 				AAF6D9DA1BC0BB1F00686849 /* SetLookBrick+Instruction.swift in Sources */,
 				4C0F9F8B204BD26100E71B2D /* IfThenLogicBeginBrickCell.m in Sources */,
+				2EB5B1132456B0C3002FAEA6 /* Optional.swift in Sources */,
 				BAEE49BB1F165C6E00F06741 /* ReplaceItemInUserListBrick.m in Sources */,
 				99EBDC041D5624D2008D6860 /* ChangeColorByNBrick+Instruction.swift in Sources */,
 				4C4B4CCF23EDE4FA0054C861 /* AppDelegateFirebaseExtension.swift in Sources */,
@@ -10254,6 +10320,7 @@
 				4CF0728420D6581900F93AB5 /* PhiroFrontLeftSensor.swift in Sources */,
 				9218B2001CC4AB75007B4C60 /* YKImageCropperOverlayView.m in Sources */,
 				4C724E5E1B4D3E8C00E27479 /* UserVariable+CBXMLHandler.m in Sources */,
+				2EB5B1152456B182002FAEA6 /* String.swift in Sources */,
 				4C0F9F2E204ADC2300E71B2D /* CameraBrick.m in Sources */,
 				92C631891BC502CB00486958 /* ConnectedDevicesTableViewController.swift in Sources */,
 				92FF30F91A24DCAA00093DA7 /* FormulaElement.m in Sources */,
@@ -10324,6 +10391,7 @@
 				4C0F9F43204ADC6600E71B2D /* ThinkBubbleBrick.m in Sources */,
 				AAF6D9D81BC0BAF300686849 /* ShowBrick+Instruction.swift in Sources */,
 				593E4DDE1FE11D410016DCB9 /* CatrobatReorderableCollectionViewFlowLayout.m in Sources */,
+				2EB5B10F2456A3C8002FAEA6 /* CBHeader.swift in Sources */,
 				4CEFFAD32105DE4800DC5CFE /* ObjectSensor.swift in Sources */,
 				921D467B1BDF61350086AD20 /* ChangeXByNBrick+Instruction.swift in Sources */,
 				4CB0F9F220A1739400D1BE2F /* SizeSensor.swift in Sources */,
@@ -10748,6 +10816,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -10809,6 +10878,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -10864,6 +10934,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREFIX_HEADER = "Catty/Supporting Files/App-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -10912,6 +10983,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREFIX_HEADER = "Catty/Supporting Files/App-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
