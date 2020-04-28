@@ -41,10 +41,10 @@
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */; };
 		2E64A5722457FE9800527446 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A56F2457FE9800527446 /* Optional.swift */; };
 		2E64A5742457FE9E00527446 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5732457FE9E00527446 /* String.swift */; };
-		2E64A5792457FEBC00527446 /* CBHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5782457FEBB00527446 /* CBHeader.swift */; };
+		2E64A5792457FEBC00527446 /* CodableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5782457FEBB00527446 /* CodableHeader.swift */; };
 		2E64A58024580F1900527446 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A57F24580F1900527446 /* Date.swift */; };
-		2E64A5902458195300527446 /* CBHeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58E2458195300527446 /* CBHeaderMock.swift */; };
-		2E64A5912458195300527446 /* CBHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58F2458195300527446 /* CBHeaderTests.swift */; };
+		2E64A5902458195300527446 /* CodableHeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58E2458195300527446 /* CodableHeaderMock.swift */; };
+		2E64A5912458195300527446 /* CodableHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58F2458195300527446 /* CodableHeaderTests.swift */; };
 		2ED4179F241120AF00AFE2FD /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */; };
 		2ED417A0241120AF00AFE2FD /* Nyancat_1.0_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */; };
 		2ED417A1241120AF00AFE2FD /* Nyancat_1.0_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */; };
@@ -1547,10 +1547,10 @@
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.fail.request.json; sourceTree = "<group>"; };
 		2E64A56F2457FE9800527446 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		2E64A5732457FE9E00527446 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		2E64A5782457FEBB00527446 /* CBHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeader.swift; sourceTree = "<group>"; };
+		2E64A5782457FEBB00527446 /* CodableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHeader.swift; sourceTree = "<group>"; };
 		2E64A57F24580F1900527446 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		2E64A58E2458195300527446 /* CBHeaderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeaderMock.swift; sourceTree = "<group>"; };
-		2E64A58F2458195300527446 /* CBHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeaderTests.swift; sourceTree = "<group>"; };
+		2E64A58E2458195300527446 /* CodableHeaderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHeaderMock.swift; sourceTree = "<group>"; };
+		2E64A58F2458195300527446 /* CodableHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHeaderTests.swift; sourceTree = "<group>"; };
 		2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
 		2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_091.xml; sourceTree = "<group>"; };
 		2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_093.xml; sourceTree = "<group>"; };
@@ -3639,7 +3639,7 @@
 		2E64A5772457FEBB00527446 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				2E64A5782457FEBB00527446 /* CBHeader.swift */,
+				2E64A5782457FEBB00527446 /* CodableHeader.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -3656,8 +3656,8 @@
 		2E64A58D2458195300527446 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				2E64A58E2458195300527446 /* CBHeaderMock.swift */,
-				2E64A58F2458195300527446 /* CBHeaderTests.swift */,
+				2E64A58E2458195300527446 /* CodableHeaderMock.swift */,
+				2E64A58F2458195300527446 /* CodableHeaderTests.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -9559,7 +9559,7 @@
 				4CAB10091ECF1A9A0019A67B /* HideTextBrickTests.swift in Sources */,
 				9EBCBD892329BF5F0074C2D9 /* PointToBrickTests.swift in Sources */,
 				9EBCBD8F2329C7A30074C2D9 /* SetTransparencyBrickTests.swift in Sources */,
-				2E64A5912458195300527446 /* CBHeaderTests.swift in Sources */,
+				2E64A5912458195300527446 /* CodableHeaderTests.swift in Sources */,
 				4C6FE171212D2D2E0067B7D5 /* CosFunctionTest.swift in Sources */,
 				4C53E38821D5238900F2EC76 /* GreaterOrEqualOperatorTest.swift in Sources */,
 				D3F2717923CC9ADF00E339FD /* FormulaFunctionsTest.swift in Sources */,
@@ -9639,7 +9639,7 @@
 				4C6FE15E212D2D2E0067B7D5 /* MaxFunctionTest.swift in Sources */,
 				1833ED942446572F0053BF7C /* HelpWebViewControllerTests.swift in Sources */,
 				4C822674213FA7A400F3D750 /* InclinationXSensorTest.swift in Sources */,
-				2E64A5902458195300527446 /* CBHeaderMock.swift in Sources */,
+				2E64A5902458195300527446 /* CodableHeaderMock.swift in Sources */,
 				4C68FC8F1B25A00B00AB3EE8 /* FormulaParserTest.m in Sources */,
 				4C6FE16B212D2D2E0067B7D5 /* SqrtFunctionTest.swift in Sources */,
 				4CBF5F9E21AF1D390079C834 /* UIGestureRecognizerMock.swift in Sources */,
@@ -10144,7 +10144,7 @@
 				4C82268D213FB29A00F3D750 /* MultiFingerYFunction.swift in Sources */,
 				BA987D0F2194EA1F002DAA05 /* WaitUntilBrick+Instruction.swift in Sources */,
 				BA9CAB541EC380CA00796056 /* AddItemToUserListBrick.m in Sources */,
-				2E64A5792457FEBC00527446 /* CBHeader.swift in Sources */,
+				2E64A5792457FEBC00527446 /* CodableHeader.swift in Sources */,
 				929CC0CF1BC39B0A0027DEC0 /* PhiroPlayToneBrick.m in Sources */,
 				BA1FA9A01F02B0020084184D /* InsertItemIntoUserListBrickCell.m in Sources */,
 				F4E6E590210E026500D86FE6 /* AbsFunction.swift in Sources */,

@@ -22,7 +22,7 @@
 
 @testable import Pocket_Code
 
-class CBHeaderMock {
+class CodableHeaderMock {
     var applicationBuildName = "Catty"
     var applicationBuildNumber = "0"
     var applicationName = "Mock"
@@ -46,7 +46,7 @@ class CBHeaderMock {
     var userHandle = "Catrobat"
     var programID = "123"
 
-    func getCBHeader() -> CBHeader {
+    func getCBHeader() -> CodableHeader {
         return CBHeader(getHeader())
     }
 

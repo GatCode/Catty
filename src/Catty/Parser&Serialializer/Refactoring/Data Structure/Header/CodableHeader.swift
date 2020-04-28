@@ -20,7 +20,7 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-struct CBHeader: Codable, Equatable {
+struct CodableHeader: Codable, Equatable {
     var applicationBuildName: String?
     var applicationBuildNumber: String
     var applicationName: String

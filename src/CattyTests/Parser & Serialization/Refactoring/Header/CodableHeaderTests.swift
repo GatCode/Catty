@@ -24,9 +24,9 @@ import XCTest
 
 @testable import Pocket_Code
 
-class CHHeaderTests: XCTestCase {
+class CodableHeaderTests: XCTestCase {
     
-    let mock = CBHeaderMock()
+    let mock = CodableBHeaderMock()
     
     func testHeaderTransformation() {
         let header = mock.getHeader()
@@ -38,13 +38,13 @@ class CHHeaderTests: XCTestCase {
     func testCBHeaderTransformation() {
         let cbHeader = mock.getCBHeader()
         let transformedHeader = cbHeader.transform()
-        let transformedCBHeader = CBHeader(transformedHeader)
+        let transformedCBHeader = CodableHeader(transformedHeader)
         XCTAssertTrue(compareCBHeaders(lhs: cbHeader, rhs: transformedCBHeader))
     }
 }
 
-extension CHHeaderTests {
-    func compareCBHeaders(lhs: CBHeader, rhs: CBHeader) -> Bool {
+extension CodableHeaderTests {
+    func compareCBHeaders(lhs: CodableHeader, rhs: CodableHeader) -> Bool {
         return
             lhs.applicationBuildName == rhs.applicationBuildName &&
             lhs.applicationBuildNumber == rhs.applicationBuildNumber &&
