@@ -98,3 +98,11 @@ struct CodableHeader: Codable, Equatable {
         return header
     }
 }
+
+extension Date {
+    func toXMLString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = kCatrobatHeaderDateTimeFormat
+        return dateFormatter.string(from: self)
+    }
+}

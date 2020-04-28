@@ -47,7 +47,7 @@ class CodableHeaderMock {
     var programID = "123"
 
     func getCBHeader() -> CodableHeader {
-        return CBHeader(getHeader())
+        return CodableHeader(getHeader())
     }
 
     func getHeader() -> Header {

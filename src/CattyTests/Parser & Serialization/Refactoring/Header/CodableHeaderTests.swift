@@ -26,7 +26,7 @@ import XCTest
 
 class CodableHeaderTests: XCTestCase {
     
-    let mock = CodableBHeaderMock()
+    let mock = CodableHeaderMock()
     
     func testHeaderTransformation() {
         let header = mock.getHeader()

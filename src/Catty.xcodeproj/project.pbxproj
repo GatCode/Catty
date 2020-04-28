@@ -42,7 +42,6 @@
 		2E64A5722457FE9800527446 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A56F2457FE9800527446 /* Optional.swift */; };
 		2E64A5742457FE9E00527446 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5732457FE9E00527446 /* String.swift */; };
 		2E64A5792457FEBC00527446 /* CodableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5782457FEBB00527446 /* CodableHeader.swift */; };
-		2E64A58024580F1900527446 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A57F24580F1900527446 /* Date.swift */; };
 		2E64A5902458195300527446 /* CodableHeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58E2458195300527446 /* CodableHeaderMock.swift */; };
 		2E64A5912458195300527446 /* CodableHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58F2458195300527446 /* CodableHeaderTests.swift */; };
 		2ED4179F241120AF00AFE2FD /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */; };
@@ -1548,7 +1547,6 @@
 		2E64A56F2457FE9800527446 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		2E64A5732457FE9E00527446 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2E64A5782457FEBB00527446 /* CodableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHeader.swift; sourceTree = "<group>"; };
-		2E64A57F24580F1900527446 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		2E64A58E2458195300527446 /* CodableHeaderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHeaderMock.swift; sourceTree = "<group>"; };
 		2E64A58F2458195300527446 /* CodableHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHeaderTests.swift; sourceTree = "<group>"; };
 		2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
@@ -6772,7 +6770,6 @@
 				92FF2E0B1A24C5A700093DA7 /* CAGradient+Extension */,
 				925819851C0208E8003247A9 /* CALayer+XibConfiguration */,
 				5E21DA7021A5289F00017D2C /* Data+Extensions.swift */,
-				2E64A57F24580F1900527446 /* Date.swift */,
 				5EF590B92192D81F00C19F12 /* Double+Extensions.swift */,
 				92FF2E0E1A24C5A700093DA7 /* GDataXMLElement+CustomExtensions */,
 				4C6066371A5ACC3100F486CE /* GDataXMLNode+CustomExtensions */,
@@ -10413,7 +10410,6 @@
 				4C26506A1A6538710050775B /* CBMutableCopyContext.m in Sources */,
 				92FF2E8D1A24C7D800093DA7 /* CatrobatAudioPlayer.m in Sources */,
 				92D56C341BF202E700A54750 /* FirmataDevice.swift in Sources */,
-				2E64A58024580F1900527446 /* Date.swift in Sources */,
 				2DA8790E212B444E00FE0585 /* SearchStoreDataSource.swift in Sources */,
 				AA74EFFF1BC05B5F00D1E954 /* GlideToBrick.m in Sources */,
 				AA74F0081BC05B5F00D1E954 /* TurnLeftBrick.m in Sources */,
