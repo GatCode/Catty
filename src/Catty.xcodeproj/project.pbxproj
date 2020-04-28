@@ -39,6 +39,12 @@
 		2DCB4934212EA9BF005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */; };
 		2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */; };
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */; };
+		2E64A5722457FE9800527446 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A56F2457FE9800527446 /* Optional.swift */; };
+		2E64A5742457FE9E00527446 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5732457FE9E00527446 /* String.swift */; };
+		2E64A5792457FEBC00527446 /* CBHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A5782457FEBB00527446 /* CBHeader.swift */; };
+		2E64A58024580F1900527446 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A57F24580F1900527446 /* Date.swift */; };
+		2E64A5902458195300527446 /* CBHeaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58E2458195300527446 /* CBHeaderMock.swift */; };
+		2E64A5912458195300527446 /* CBHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64A58F2458195300527446 /* CBHeaderTests.swift */; };
 		2ED4179F241120AF00AFE2FD /* Nyancat_1.0_0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */; };
 		2ED417A0241120AF00AFE2FD /* Nyancat_1.0_091.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */; };
 		2ED417A1241120AF00AFE2FD /* Nyancat_1.0_093.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */; };
@@ -1539,6 +1545,12 @@
 		2DCB4933212EA9BE005E8E3D /* StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchMostRecentProjects.fail.parse.json; sourceTree = "<group>"; };
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.fail.request.json; sourceTree = "<group>"; };
+		2E64A56F2457FE9800527446 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		2E64A5732457FE9E00527446 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		2E64A5782457FEBB00527446 /* CBHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeader.swift; sourceTree = "<group>"; };
+		2E64A57F24580F1900527446 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2E64A58E2458195300527446 /* CBHeaderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeaderMock.swift; sourceTree = "<group>"; };
+		2E64A58F2458195300527446 /* CBHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBHeaderTests.swift; sourceTree = "<group>"; };
 		2ED41695241120AE00AFE2FD /* Nyancat_1.0_0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_0991.xml; sourceTree = "<group>"; };
 		2ED41696241120AE00AFE2FD /* Nyancat_1.0_091.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_091.xml; sourceTree = "<group>"; };
 		2ED41697241120AE00AFE2FD /* Nyancat_1.0_093.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Nyancat_1.0_093.xml; sourceTree = "<group>"; };
@@ -3608,6 +3620,48 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
+		2E64A5752457FEBB00527446 /* Refactoring2020 */ = {
+			isa = PBXGroup;
+			children = (
+				2E64A5762457FEBB00527446 /* Data Structure */,
+			);
+			path = Refactoring2020;
+			sourceTree = "<group>";
+		};
+		2E64A5762457FEBB00527446 /* Data Structure */ = {
+			isa = PBXGroup;
+			children = (
+				2E64A5772457FEBB00527446 /* Header */,
+			);
+			path = "Data Structure";
+			sourceTree = "<group>";
+		};
+		2E64A5772457FEBB00527446 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2E64A5782457FEBB00527446 /* CBHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2E64A58C2458195300527446 /* Refactoring2020 */ = {
+			isa = PBXGroup;
+			children = (
+				2E64A58D2458195300527446 /* Header */,
+			);
+			name = Refactoring2020;
+			path = "Parser & Serialization/Refactoring2020";
+			sourceTree = "<group>";
+		};
+		2E64A58D2458195300527446 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2E64A58E2458195300527446 /* CBHeaderMock.swift */,
+				2E64A58F2458195300527446 /* CBHeaderTests.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		2ED41693241120AE00AFE2FD /* UserProjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -4970,6 +5024,7 @@
 		4C724D851B4D3E8C00E27479 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
+				2E64A5752457FEBB00527446 /* Refactoring2020 */,
 				4C724D861B4D3E8C00E27479 /* New Parser & Serializer */,
 				4C724E191B4D3E8C00E27479 /* Old Parser */,
 			);
@@ -5698,6 +5753,7 @@
 		4CD194F21A0631B200484E4F /* Parser & Serialization */ = {
 			isa = PBXGroup;
 			children = (
+				2E64A58C2458195300527446 /* Refactoring2020 */,
 				2ED4188D2411213D00AFE2FD /* Abstract */,
 				2ED418B02411213D00AFE2FD /* CatrobatLanguage0.92 */,
 				2ED418A42411213D00AFE2FD /* CatrobatLanguage0.93 */,
@@ -6716,6 +6772,7 @@
 				92FF2E0B1A24C5A700093DA7 /* CAGradient+Extension */,
 				925819851C0208E8003247A9 /* CALayer+XibConfiguration */,
 				5E21DA7021A5289F00017D2C /* Data+Extensions.swift */,
+				2E64A57F24580F1900527446 /* Date.swift */,
 				5EF590B92192D81F00C19F12 /* Double+Extensions.swift */,
 				92FF2E0E1A24C5A700093DA7 /* GDataXMLElement+CustomExtensions */,
 				4C6066371A5ACC3100F486CE /* GDataXMLNode+CustomExtensions */,
@@ -6725,7 +6782,9 @@
 				92FF2E171A24C5A700093DA7 /* NSMutableArray+CustomExtension */,
 				92FF2E1A1A24C5A700093DA7 /* NSString+Extension */,
 				92FF2E1D1A24C5A700093DA7 /* NSString+FastImageSize */,
+				2E64A56F2457FE9800527446 /* Optional.swift */,
 				92FF2E211A24C5A700093DA7 /* Project+Extension */,
+				2E64A5732457FE9E00527446 /* String.swift */,
 				92FF2E261A24C5A700093DA7 /* UIColor+Extension */,
 				92FF2E291A24C5A700093DA7 /* UIImage+Extension */,
 				5E84B7A32341FC4E009982AA /* UITextField+Extension */,
@@ -9500,6 +9559,7 @@
 				4CAB10091ECF1A9A0019A67B /* HideTextBrickTests.swift in Sources */,
 				9EBCBD892329BF5F0074C2D9 /* PointToBrickTests.swift in Sources */,
 				9EBCBD8F2329C7A30074C2D9 /* SetTransparencyBrickTests.swift in Sources */,
+				2E64A5912458195300527446 /* CBHeaderTests.swift in Sources */,
 				4C6FE171212D2D2E0067B7D5 /* CosFunctionTest.swift in Sources */,
 				4C53E38821D5238900F2EC76 /* GreaterOrEqualOperatorTest.swift in Sources */,
 				D3F2717923CC9ADF00E339FD /* FormulaFunctionsTest.swift in Sources */,
@@ -9579,6 +9639,7 @@
 				4C6FE15E212D2D2E0067B7D5 /* MaxFunctionTest.swift in Sources */,
 				1833ED942446572F0053BF7C /* HelpWebViewControllerTests.swift in Sources */,
 				4C822674213FA7A400F3D750 /* InclinationXSensorTest.swift in Sources */,
+				2E64A5902458195300527446 /* CBHeaderMock.swift in Sources */,
 				4C68FC8F1B25A00B00AB3EE8 /* FormulaParserTest.m in Sources */,
 				4C6FE16B212D2D2E0067B7D5 /* SqrtFunctionTest.swift in Sources */,
 				4CBF5F9E21AF1D390079C834 /* UIGestureRecognizerMock.swift in Sources */,
@@ -10069,6 +10130,7 @@
 				AA74F0971BC05FCE00D1E954 /* BrickCellSoundData.m in Sources */,
 				92B46F911BC7B3E5004980C1 /* ArduinoBrick.m in Sources */,
 				92B46F831BC79585004980C1 /* AboutPocketCodeOptionTableViewController.m in Sources */,
+				2E64A5742457FE9E00527446 /* String.swift in Sources */,
 				4C724E631B4D3E8C00E27479 /* XMLObjectReference.m in Sources */,
 				4C60663A1A5ACC5A00F486CE /* GDataXMLNode+CustomExtensions.m in Sources */,
 				929CC0CE1BC39B0A0027DEC0 /* PhiroMotorStopBrick.m in Sources */,
@@ -10082,6 +10144,7 @@
 				4C82268D213FB29A00F3D750 /* MultiFingerYFunction.swift in Sources */,
 				BA987D0F2194EA1F002DAA05 /* WaitUntilBrick+Instruction.swift in Sources */,
 				BA9CAB541EC380CA00796056 /* AddItemToUserListBrick.m in Sources */,
+				2E64A5792457FEBC00527446 /* CBHeader.swift in Sources */,
 				929CC0CF1BC39B0A0027DEC0 /* PhiroPlayToneBrick.m in Sources */,
 				BA1FA9A01F02B0020084184D /* InsertItemIntoUserListBrickCell.m in Sources */,
 				F4E6E590210E026500D86FE6 /* AbsFunction.swift in Sources */,
@@ -10293,6 +10356,7 @@
 				AA74EF4D1BC0586F00D1E954 /* ChangeXByNBrick+CBXMLHandler.m in Sources */,
 				4CB0F9F020A1732700D1BE2F /* BrightnessSensor.swift in Sources */,
 				4C0F9F8A204BD26100E71B2D /* IfThenLogicEndBrickCell.m in Sources */,
+				2E64A5722457FE9800527446 /* Optional.swift in Sources */,
 				92FF314A1A24DEB300093DA7 /* BaseTableViewController.m in Sources */,
 				AA74EF4C1BC0586F00D1E954 /* ChangeSizeByNBrick+CBXMLHandler.m in Sources */,
 				5EDBA043219549AE000EFFEF /* LoadingView.swift in Sources */,
@@ -10349,6 +10413,7 @@
 				4C26506A1A6538710050775B /* CBMutableCopyContext.m in Sources */,
 				92FF2E8D1A24C7D800093DA7 /* CatrobatAudioPlayer.m in Sources */,
 				92D56C341BF202E700A54750 /* FirmataDevice.swift in Sources */,
+				2E64A58024580F1900527446 /* Date.swift in Sources */,
 				2DA8790E212B444E00FE0585 /* SearchStoreDataSource.swift in Sources */,
 				AA74EFFF1BC05B5F00D1E954 /* GlideToBrick.m in Sources */,
 				AA74F0081BC05B5F00D1E954 /* TurnLeftBrick.m in Sources */,
