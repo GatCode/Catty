@@ -3620,12 +3620,12 @@
 			path = SearchStore;
 			sourceTree = "<group>";
 		};
-		2E64A5752457FEBB00527446 /* Refactoring2020 */ = {
+		2E64A5752457FEBB00527446 /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
 				2E64A5762457FEBB00527446 /* Data Structure */,
 			);
-			path = Refactoring2020;
+			path = Refactoring;
 			sourceTree = "<group>";
 		};
 		2E64A5762457FEBB00527446 /* Data Structure */ = {
@@ -3644,13 +3644,13 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		2E64A58C2458195300527446 /* Refactoring2020 */ = {
+		2E64A58C2458195300527446 /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
 				2E64A58D2458195300527446 /* Header */,
 			);
-			name = Refactoring2020;
-			path = "Parser & Serialization/Refactoring2020";
+			name = Refactoring;
+			path = "Parser & Serialization/Refactoring";
 			sourceTree = "<group>";
 		};
 		2E64A58D2458195300527446 /* Header */ = {
@@ -5024,7 +5024,7 @@
 		4C724D851B4D3E8C00E27479 /* Parser&Serialializer */ = {
 			isa = PBXGroup;
 			children = (
-				2E64A5752457FEBB00527446 /* Refactoring2020 */,
+				2E64A5752457FEBB00527446 /* Refactoring */,
 				4C724D861B4D3E8C00E27479 /* New Parser & Serializer */,
 				4C724E191B4D3E8C00E27479 /* Old Parser */,
 			);
@@ -5753,7 +5753,7 @@
 		4CD194F21A0631B200484E4F /* Parser & Serialization */ = {
 			isa = PBXGroup;
 			children = (
-				2E64A58C2458195300527446 /* Refactoring2020 */,
+				2E64A58C2458195300527446 /* Refactoring */,
 				2ED4188D2411213D00AFE2FD /* Abstract */,
 				2ED418B02411213D00AFE2FD /* CatrobatLanguage0.92 */,
 				2ED418A42411213D00AFE2FD /* CatrobatLanguage0.93 */,
