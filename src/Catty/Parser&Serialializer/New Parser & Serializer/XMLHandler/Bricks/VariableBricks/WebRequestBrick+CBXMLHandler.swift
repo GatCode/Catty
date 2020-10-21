@@ -22,12 +22,33 @@
 
 extension WebRequestBrick: CBXMLNodeProtocol {
     static func parse(from xmlElement: GDataXMLElement, with context: CBXMLParserContext) -> Self {
-        CBXMLParserHelper.validate(xmlElement, forNumberOfChildNodes: 0)
-        return self.init()
+        CBXMLParserHelper.validate(xmlElement, forNumberOfChildNodes: 2, andFormulaListWithTotalNumberOfFormulas: 1)
+        let formula = CBXMLParserHelper.formula(in: xmlElement, forCategoryName: "WEB_REQUEST", with: context)
+        let xmlVariable = xmlElement.child(withElementName: "userVariable")
+        let userVariable = context.parse(from: xmlVariable, withClass: UserVariable.self)
+
+        let brick = self.init()
+        brick.request = formula
+        brick.userVariable = userVariable as? UserVariable
+
+        return brick
     }
 
     func xmlElement(with context: CBXMLSerializerContext) -> GDataXMLElement? {
-        let brick = super.xmlElement(for: "StampBrick", with: context)
+        let brick = super.xmlElement(for: "WebRequestBrick", with: context)
+        let formulaList = GDataXMLElement(name: "formulaList", context: context)
+        let formula = self.request?.xmlElement(with: context)
+        formula?.addAttribute(GDataXMLElement(name: "category", stringValue: "WEB_REQUEST", context: nil))
+        formulaList?.addChild(formula, context: context)
+        brick?.addChild(formulaList, context: context)
+
+        guard let variable = self.userVariable else {
+            return brick
+        }
+
+        let finalVariable = GDataXMLElement.element(withName: "userVariable", stringValue: variable.name)
+        brick?.addChild(finalVariable)
+
         return brick
     }
 }

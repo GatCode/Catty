@@ -114,6 +114,8 @@
             InsertItemIntoUserListBrick(),
             ReplaceItemInUserListBrick(),
             DeleteItemOfUserListBrick(),
+            WebRequestBrick(),
+            // arduino bricks
             ArduinoSendDigitalValueBrick(),
             ArduinoSendPWMValueBrick(),
             // embroidery brick
