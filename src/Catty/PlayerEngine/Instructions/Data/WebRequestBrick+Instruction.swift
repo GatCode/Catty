@@ -35,19 +35,21 @@ extension WebRequestBrick: CBInstructionProtocol {
         }
 
         return CBInstruction.waitExecClosure { _, scheduler in
-            DispatchQueue.main.async {
-                // EXEC WEB REQUEST HERE
-                print("EXEC WEB REQUEST")
-            }
+            guard let url = URL(string: requestString) else { return }
+            URLSession.shared.dataTask(with: url) {(data, response, error) in
+                guard let data = data else { return }
+                guard let response = String(data: data, encoding: .utf8) else { return }
+                self.callbackSubmit(with: response, scheduler: scheduler)
+            }.resume()
             scheduler.pause()
         }
     }
-
+    
     func callbackSubmit(with input: String, scheduler: CBSchedulerProtocol) {
         guard let userVariable = self.userVariable else { fatalError("Unexpected found nil.") }
-        if input.isNotEmpty {
-            userVariable.value = input
+        userVariable.value = input
+        DispatchQueue.main.async {
+          scheduler.resume()
         }
-        scheduler.resume()
     }
 }
