@@ -71,7 +71,7 @@ extension WebRequestBrick: CBInstructionProtocol {
                 }
                 guard let response = response as? HTTPURLResponse else { return (nil, .unexpectedError) }
                 guard let data = data, response.statusCode == 200, error == nil else {
-                    return (nil, .request(error: error, statusCode: response.statusCode))
+                    return (String(response.statusCode), .request(error: error, statusCode: response.statusCode))
                 }
                 guard let stringResponse = String(data: data, encoding: .utf8) else { return (nil, .unexpectedError) }
                 return (stringResponse, nil)

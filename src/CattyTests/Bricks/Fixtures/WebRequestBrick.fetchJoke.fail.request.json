@@ -1,0 +1,32 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "status" : 404,
+        "url" : "https:\/\/official-joke-api.appspot.com\/random_jokeX",
+        "headers" : {
+          "Date" : "Wed, 11 Nov 2020 10:56:41 GMT",
+          "Vary" : "Accept-Encoding",
+          "Access-Control-Allow-Origin" : "*",
+          "content-security-policy" : "default-src 'self'",
+          "Content-Type" : "text\/html; charset=utf-8",
+          "x-cloud-trace-context" : "95f3b5a8c5a4a69d56393fcdc773fd1e",
+          "alt-svc" : "h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+          "Content-Length" : "146",
+          "Content-Encoding" : "gzip",
+          "Server" : "Google Frontend",
+          "x-content-type-options" : "nosniff",
+          "Cache-Control" : "private",
+          "x-powered-by" : "Express"
+        },
+        "body" : "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error<\/title>\n<\/head>\n<body>\n<pre>Cannot GET \/random_jokeX<\/pre>\n<\/body>\n<\/html>\n"
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/official-joke-api.appspot.com\/random_jokeX"
+      },
+      "recorded_at" : 1605092202.124939
+    }
+  ],
+  "name" : "newCassete"
+}

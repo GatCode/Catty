@@ -348,6 +348,7 @@
 		2ED41881241120B000AFE2FD /* ReplaceItemInUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4179D241120AF00AFE2FD /* ReplaceItemInUserListBrick0991.xml */; };
 		2ED41882241120B000AFE2FD /* AddItemToUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4179E241120AF00AFE2FD /* AddItemToUserListBrick0991.xml */; };
 		2EF52550255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5254D255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json */; };
+		2EF52553255BFA1700BAACFC /* WebRequestBrick.fetchJoke.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EF52552255BFA1700BAACFC /* WebRequestBrick.fetchJoke.fail.request.json */; };
 		3DA1BED924365A3400133C99 /* BrickMutableCopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1BED824365A3400133C99 /* BrickMutableCopyTests.swift */; };
 		4405C95A24F803EA005C36DC /* UserVariable+CBXMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4405C95724F803EA005C36DC /* UserVariable+CBXMLHandler.swift */; };
 		440A4ECB254829FE0048AEA7 /* Look.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A4ECA254829FE0048AEA7 /* Look.swift */; };
@@ -2222,6 +2223,7 @@
 		2ED4179D241120AF00AFE2FD /* ReplaceItemInUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReplaceItemInUserListBrick0991.xml; sourceTree = "<group>"; };
 		2ED4179E241120AF00AFE2FD /* AddItemToUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AddItemToUserListBrick0991.xml; sourceTree = "<group>"; };
 		2EF5254D255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WebRequestBrick.fetchJoke.success.json; sourceTree = "<group>"; };
+		2EF52552255BFA1700BAACFC /* WebRequestBrick.fetchJoke.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WebRequestBrick.fetchJoke.fail.request.json; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "App-Prefix.pch"; path = "Supporting Files/App-Prefix.pch"; sourceTree = "<group>"; };
@@ -5528,6 +5530,7 @@
 			isa = PBXGroup;
 			children = (
 				2EF5254D255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json */,
+				2EF52552255BFA1700BAACFC /* WebRequestBrick.fetchJoke.fail.request.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -11219,6 +11222,7 @@
 				599E64A0202DACCB009494B5 /* MediaLibraryDownloader.downloadData.fail.request.json in Resources */,
 				2ED417F1241120AF00AFE2FD /* Pythagorean_Theorem_096.xml in Resources */,
 				2ED417FB241120AF00AFE2FD /* Minecraft_Work_In_Progress_096.xml in Resources */,
+				2EF52553255BFA1700BAACFC /* WebRequestBrick.fetchJoke.fail.request.json in Resources */,
 				4CF8A57A2359B16900905BA9 /* StoreProjectDownloader.fetchFeaturedProjects.IntegerId.success.json in Resources */,
 				2ED417B7241120AF00AFE2FD /* Piano_096.xml in Resources */,
 				2ED417E3241120AF00AFE2FD /* Memory_095.xml in Resources */,
