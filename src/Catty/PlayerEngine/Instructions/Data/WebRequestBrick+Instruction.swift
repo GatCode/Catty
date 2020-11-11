@@ -36,25 +36,29 @@ extension WebRequestBrick: CBInstructionProtocol {
 
         return CBInstruction.waitExecClosure { _, scheduler in
             self.sendRequest(request: requestString) { response, error in
-                guard let response = response else {
-                    switch error.self {
-                    case .request:
-                        fatalError("Failed to load response")
-                    case .timeout:
-                        fatalError("Timeout")
-                    default:
-                        fatalError("Unexpected Error")
-                    }
-                }
-                self.callbackSubmit(with: response, scheduler: scheduler)
+                self.callbackSubmit(with: response, error: error, scheduler: scheduler)
             }
             scheduler.pause()
         }
     }
 
-    func callbackSubmit(with input: String, scheduler: CBSchedulerProtocol) {
+    func extractMessage(input: String?, error: WebRequestBrickError?) -> String {
+        guard let input = input else {
+            switch error {
+            case let .request(error: _, statusCode: statusCode):
+                return String(statusCode)
+            case .timeout:
+                return "Timeout"
+            default:
+                return "Unexpected Error"
+            }
+        }
+        return input
+    }
+
+    func callbackSubmit(with input: String?, error: WebRequestBrickError?, scheduler: CBSchedulerProtocol) {
         guard let userVariable = self.userVariable else { fatalError("Unexpected found nil.") }
-        userVariable.value = input
+        userVariable.value = extractMessage(input: input, error: error)
         DispatchQueue.main.async {
           scheduler.resume()
         }
@@ -71,7 +75,7 @@ extension WebRequestBrick: CBInstructionProtocol {
                 }
                 guard let response = response as? HTTPURLResponse else { return (nil, .unexpectedError) }
                 guard let data = data, response.statusCode == 200, error == nil else {
-                    return (String(response.statusCode), .request(error: error, statusCode: response.statusCode))
+                    return (nil, .request(error: error, statusCode: response.statusCode))
                 }
                 guard let stringResponse = String(data: data, encoding: .utf8) else { return (nil, .unexpectedError) }
                 return (stringResponse, nil)
