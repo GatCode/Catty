@@ -30,18 +30,18 @@ class WebRequestBrickCell: BrickCell, BrickCellProtocol {
     static func cellHeight() -> CGFloat {
         CGFloat(kBrickHeight3h)
     }
-    
+
     func brickTitle(forBackground isBackground: Bool, andInsertionScreen isInsertion: Bool) -> String! {
         "Send web request to" + " %@\n" + "and store answer in" + "\n%@" // TODO: localization
     }
-    
+
     override func hookUpSubViews(_ inlineViewSubViews: [Any]!) {
         self.topTextLabel = inlineViewSubViews[0] as? UILabel
         self.requestTextField = inlineViewSubViews[1] as? UITextField
         self.bottomTextLabel = inlineViewSubViews[2] as? UILabel
         self.variableComboBox = inlineViewSubViews[3] as? iOSCombobox
     }
-    
+
     override func parameters() -> [String]! {
         NSArray.init(objects: "{FLOAT;range=(0,inf)}", "{VARIABLE}") as? [String]
     }

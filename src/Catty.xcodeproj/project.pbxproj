@@ -347,6 +347,7 @@
 		2ED41880241120B000AFE2FD /* DeleteItemOfUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4179C241120AF00AFE2FD /* DeleteItemOfUserListBrick0991.xml */; };
 		2ED41881241120B000AFE2FD /* ReplaceItemInUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4179D241120AF00AFE2FD /* ReplaceItemInUserListBrick0991.xml */; };
 		2ED41882241120B000AFE2FD /* AddItemToUserListBrick0991.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4179E241120AF00AFE2FD /* AddItemToUserListBrick0991.xml */; };
+		2EF52550255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EF5254D255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json */; };
 		3DA1BED924365A3400133C99 /* BrickMutableCopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1BED824365A3400133C99 /* BrickMutableCopyTests.swift */; };
 		4405C95A24F803EA005C36DC /* UserVariable+CBXMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4405C95724F803EA005C36DC /* UserVariable+CBXMLHandler.swift */; };
 		440A4ECB254829FE0048AEA7 /* Look.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A4ECA254829FE0048AEA7 /* Look.swift */; };
@@ -2220,6 +2221,7 @@
 		2ED4179C241120AF00AFE2FD /* DeleteItemOfUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeleteItemOfUserListBrick0991.xml; sourceTree = "<group>"; };
 		2ED4179D241120AF00AFE2FD /* ReplaceItemInUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ReplaceItemInUserListBrick0991.xml; sourceTree = "<group>"; };
 		2ED4179E241120AF00AFE2FD /* AddItemToUserListBrick0991.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AddItemToUserListBrick0991.xml; sourceTree = "<group>"; };
+		2EF5254D255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WebRequestBrick.fetchJoke.success.json; sourceTree = "<group>"; };
 		307727D68FC877FADDBB318E /* da */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31B8C09D8586CC1D8718B2F0 /* sv */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "App-Prefix.pch"; path = "Supporting Files/App-Prefix.pch"; sourceTree = "<group>"; };
@@ -5522,6 +5524,14 @@
 			path = CatrobatLanguage0.98;
 			sourceTree = "<group>";
 		};
+		2EF52551255BF5E200BAACFC /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				2EF5254D255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
 		4C2CBB2825A5AA8400C1C143 /* XMLParserTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -7008,6 +7018,7 @@
 				4C3746E622FC7AC3007B2BE1 /* BrickManager */,
 				4CEB222D1B95E47500B3BE2F /* BrickMoveManager */,
 				4CEB226B1B95E4BC00B3BE2F /* BrickInsertManager */,
+				2EF52551255BF5E200BAACFC /* Fixtures */,
 				4C5AEEFA22F6F92B00280F8B /* ArduinoBrickTests.swift */,
 				4C968C3F1F00288500355C0D /* BrickTests.swift */,
 				46162CB92544AE2D00DF6042 /* SetRotationStyleBrickTests.swift */,
@@ -11144,6 +11155,7 @@
 				2ED4187D241120B000AFE2FD /* AddItemToUserListBrick098.xml in Resources */,
 				6F7D0CA024EBEA91008C1D4C /* ValidProjectAllBricks0992.xml in Resources */,
 				4C32861B2546D57D00C31F9D /* Solar_System_v1.0_0993.xml in Resources */,
+				2EF52550255BF5C700BAACFC /* WebRequestBrick.fetchJoke.success.json in Resources */,
 				2DCB4936212EAAEF005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json in Resources */,
 				2ED41871241120B000AFE2FD /* CameraBricks_0991.xml in Resources */,
 				2ED417C2241120AF00AFE2FD /* Air_fight_0.5_098.xml in Resources */,

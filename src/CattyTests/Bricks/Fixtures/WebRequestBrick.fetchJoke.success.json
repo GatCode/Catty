@@ -1,0 +1,36 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1605090779.2474279,
+      "response" : {
+        "body" : {
+          "id" : 262,
+          "type" : "general",
+          "setup" : "What is the tallest building in the world?",
+          "punchline" : "The library, it’s got the most stories!"
+        },
+        "status" : 200,
+        "url" : "https:\/\/official-joke-api.appspot.com\/random_joke",
+        "headers" : {
+          "Content-Encoding" : "gzip",
+          "Date" : "Wed, 11 Nov 2020 10:32:59 GMT",
+          "Vary" : "Accept-Encoding",
+          "Cache-Control" : "private",
+          "x-cloud-trace-context" : "e31a8dc2b971b6a68587ee36356ca2d2",
+          "Server" : "Google Frontend",
+          "Content-Length" : "142",
+          "Access-Control-Allow-Origin" : "*",
+          "x-powered-by" : "Express",
+          "Content-Type" : "application\/json; charset=utf-8",
+          "Etag" : "W\/\"88-+9zxAqVaUpPgOpjTaGAhXdnneYo\"",
+          "alt-svc" : "h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/catrob.at\/joke"
+      }
+    }
+  ],
+  "name" : "example123"
+}

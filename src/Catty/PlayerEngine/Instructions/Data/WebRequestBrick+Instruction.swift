@@ -62,7 +62,7 @@ extension WebRequestBrick: CBInstructionProtocol {
 
     func sendRequest(request: String, completion: @escaping (String?, WebRequestBrickError?) -> Void) {
         guard let url = URL(string: request) else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        self.session.dataTask(with: url) { data, response, error in
 
             let handleDataTaskCompletion: (Data?, URLResponse?, Error?) -> (response: String?, error: WebRequestBrickError?)
             handleDataTaskCompletion = { data, response, error in

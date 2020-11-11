@@ -22,12 +22,13 @@
 
 @objc(WebRequestBrick)
 @objcMembers class WebRequestBrick: Brick, BrickProtocol, BrickFormulaProtocol, BrickVariableProtocol {
-    
+
     var request: Formula?
     var userVariable: UserVariable?
+    let session: URLSession
 
-    override required init() {
-        super.init()
+    init(session: URLSession = WebRequestBrick.defaultSession()) {
+        self.session = session
     }
 
     func category() -> kBrickCategoryType {
@@ -45,7 +46,7 @@
     override func brickCell() -> BrickCellProtocol.Type! {
         WebRequestBrickCell.self as BrickCellProtocol.Type
     }
-    
+
     func variable(forLineNumber lineNumber: Int, andParameterNumber paramNumber: Int) -> UserVariable! {
         self.userVariable
     }
@@ -77,5 +78,10 @@
     override func isDisabledForBackground() -> Bool {
         false
     }
-    
+
+    static func defaultSession() -> URLSession {
+        let config = URLSessionConfiguration.ephemeral
+        config.timeoutIntervalForRequest = Double(NetworkDefines.connectionTimeout)
+        return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
+    }
 }

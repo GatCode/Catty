@@ -20,69 +20,38 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import DVR
 import XCTest
 
 @testable import Pocket_Code
 
 final class WebRequestBrickTests: XCTestCase {
 
-    var project: Project!
-    var spriteObject: SpriteObject!
-    var spriteNode: CBSpriteNode!
-    var script: Script!
-    var scheduler: CBScheduler!
-    var context: CBScriptContextProtocol!
-    var userList: UserList!
-    var brick: WebRequestBrick!
-    var broadcastHandler: CBBroadcastHandler!
+    func testDVRGeneration() {
+        let group = DispatchGroup()
+        group.enter()
 
-    override func setUp() {
-        project = Project()
-        let scene = Scene(name: "testScene")
-        spriteObject = SpriteObject()
-        spriteObject.scene = scene
-        spriteObject.name = "SpriteObjectName"
+        let dvrSession = Session(cassetteName: "newCassete")
+        let brick = WebRequestBrick(session: dvrSession)
 
-        spriteNode = CBSpriteNode(spriteObject: spriteObject)
-        spriteObject.spriteNode = spriteNode
-        spriteObject.scene.project = project
-        project.scene = spriteObject.scene
+        brick.sendRequest(request: "https://catrob.at/joke") { _, _ in
+            group.leave()
+        }
 
-        script = Script()
-        script.object = spriteObject
-
-        spriteObject.scene.project!.userData = UserDataContainer()
-
-        userList = UserList(name: "testName")
-        spriteObject.userData.add(userList)
-
-        brick = WebRequestBrick()
-        brick.userVariable = UserVariable(name: "var")
-        brick.request = Formula(string: "https://www.catrob.at/joke")
-        brick.script = script
-
-        let logger = CBLogger(name: "Logger")
-        broadcastHandler = CBBroadcastHandler(logger: logger)
-        let formulaInterpreter = FormulaManager(stageSize: Util.screenSize(true), landscapeMode: false)
-        scheduler = CBScheduler(logger: logger, broadcastHandler: broadcastHandler, formulaInterpreter: formulaInterpreter, audioEngine: AudioEngineMock())
-        context = CBScriptContext(script: script, spriteNode: spriteNode, formulaInterpreter: formulaInterpreter, touchManager: formulaInterpreter.touchManager)
+        group.wait()
     }
 
-    func testAnswerNormal() {
-        let variableBefore = brick.userVariable?.value as? String
-        switch brick.instruction() {
-        case let .waitExecClosure(closure: closure):
-            if scheduler.running {
-                closure(context, scheduler)
-                print("WOHOO")
-            }
-//            closure(context, scheduler)
-//            brick.callbackSubmit(with: "https://www.catrob.at/joke", scheduler: scheduler)
-        default:
-            XCTFail("Fatal Error")
-        }
-        let variableAfter = brick.userVariable?.value as? String
+    func testNormalResponse() {
+        let dvrSession = Session(cassetteName: "WebRequestBrick.fetchJoke.success")
+        let brick = WebRequestBrick(session: dvrSession)
+        let expectation = XCTestExpectation(description: "Fetch Featured Projects")
 
-        XCTAssertNotEqual(variableBefore, variableAfter)
+        brick.sendRequest(request: "https://catrob.at/joke") { response, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(response)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1.0)
     }
 }
