@@ -68,17 +68,21 @@ final class WebRequestBrickTests: XCTestCase {
         context = CBScriptContext(script: script, spriteNode: spriteNode, formulaInterpreter: formulaInterpreter, touchManager: formulaInterpreter.touchManager)
     }
 
-//    func testAnswerNormal() {
-//        let variableBefore = brick.userVariable?.value as? String
-//        switch brick.instruction() {
-//        case let .waitExecClosure(closure):
+    func testAnswerNormal() {
+        let variableBefore = brick.userVariable?.value as? String
+        switch brick.instruction() {
+        case let .waitExecClosure(closure: closure):
+            if scheduler.running {
+                closure(context, scheduler)
+                print("WOHOO")
+            }
 //            closure(context, scheduler)
-//            brick.callbackSubmit(with: "an answer", scheduler: scheduler)
-//        default:
-//            XCTFail("Fatal Error")
-//        }
-//        let variableAfter = brick.userVariable?.value as? String
-//
-//        XCTAssertNotEqual(variableBefore, variableAfter)
-//    }
+//            brick.callbackSubmit(with: "https://www.catrob.at/joke", scheduler: scheduler)
+        default:
+            XCTFail("Fatal Error")
+        }
+        let variableAfter = brick.userVariable?.value as? String
+
+        XCTAssertNotEqual(variableBefore, variableAfter)
+    }
 }
