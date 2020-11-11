@@ -27,11 +27,11 @@ extension WebRequestBrick: CBXMLNodeProtocol {
         let xmlVariable = xmlElement.child(withElementName: "userVariable")
         let userVariable = context.parse(from: xmlVariable, withClass: UserVariable.self)
 
-        let brick = WebRequestBrick()
+        let brick = self.init()
         brick.request = formula
         brick.userVariable = userVariable as? UserVariable
 
-        return brick as! Self
+        return brick
     }
 
     func xmlElement(with context: CBXMLSerializerContext) -> GDataXMLElement? {

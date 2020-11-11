@@ -27,6 +27,11 @@
     var userVariable: UserVariable?
     let session: URLSession
 
+    override required init() {
+        self.session = WebRequestBrick.defaultSession()
+        super.init()
+    }
+
     init(session: URLSession = WebRequestBrick.defaultSession()) {
         self.session = session
     }
