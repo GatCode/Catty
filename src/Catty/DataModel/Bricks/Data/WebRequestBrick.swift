@@ -37,7 +37,7 @@
     }
 
     func category() -> kBrickCategoryType {
-        kBrickCategoryType.variableBrick
+        kBrickCategoryType.dataBrick
     }
 
     override class func description() -> String {

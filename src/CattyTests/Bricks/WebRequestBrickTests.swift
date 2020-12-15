@@ -41,6 +41,20 @@ final class WebRequestBrickTests: XCTestCase {
 //        group.wait()
 //    }
 
+    func testLongWebRequestSucceeds() {
+//        let dvrSession = Session(cassetteName: "WebRequestBrick.fetchJoke.success")
+        let brick = WebRequestBrick()
+//        let expectation = XCTestExpectation(description: "Fetch Random Joke")
+
+        brick.sendRequest(request: "http://catrob.at/joke") { response, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(response)
+//            expectation.fulfill()
+        }
+
+//        wait(for: [expectation], timeout: 1.0)
+    }
+
     func testWebRequestSucceeds() {
         let dvrSession = Session(cassetteName: "WebRequestBrick.fetchJoke.success")
         let brick = WebRequestBrick(session: dvrSession)
