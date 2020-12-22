@@ -48,7 +48,7 @@ extension WebRequestBrick: CBInstructionProtocol {
             case let .request(error: _, statusCode: statusCode):
                 return String(statusCode)
             case .timeout:
-                return "Timeout"
+                return "503"
             default:
                 return "Unexpected Error"
             }
@@ -70,6 +70,10 @@ extension WebRequestBrick: CBInstructionProtocol {
 
             let handleDataTaskCompletion: (Data?, URLResponse?, Error?) -> (response: String?, error: WebRequestBrickError?)
             handleDataTaskCompletion = { data, response, error in
+                if let error = error as NSError?, error.code == NSURLErrorNotConnectedToInternet {
+                    return (nil, .noInternet)
+                    // TODO: show warning for a few seconds that the internet is not accessible
+                }
                 if let error = error as NSError?, error.code == NSURLErrorTimedOut {
                     return (nil, .timeout)
                 }
@@ -88,9 +92,11 @@ extension WebRequestBrick: CBInstructionProtocol {
     }
 
     enum WebRequestBrickError: Error {
+        /// Indicates an no internet connection is present
+        case noInternet
         /// Indicates an error with the URLRequest.
         case request(error: Error?, statusCode: Int)
-        /// Indicates an overflow of the MTLTextureDescriptor max length
+        /// Indicates a request timeout
         case timeout
         /// Indicates an unexpected error.
         case unexpectedError
