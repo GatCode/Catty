@@ -40,6 +40,14 @@
                 guard let scene = userVariable.textLabel?.scene else {
                     fatalError("This should never happen!")
                 }
+
+                // Truncate to prevent MTLTextureDescriptor maximum allowed size error
+                if let value = userVariable.value, let textValue = value as? String {
+                    if textValue.count > 160 {
+                        userVariable.value = textValue[..<String.Index(utf16Offset: 160, in: textValue)] + "..."
+                    }
+                }
+
                 userVariable.textLabel?.position = CGPoint(x: scene.size.width / 2 + CGFloat(xResult), y: scene.size.height / 2 + CGFloat(yResult))
                 userVariable.textLabel?.isHidden = false
             }
