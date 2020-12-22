@@ -36,6 +36,15 @@ extension WebRequestBrick: CBInstructionProtocol {
 
         return CBInstruction.waitExecClosure { _, scheduler in
             self.sendRequest(request: requestString) { response, error in
+                if case .noInternet = error {
+                    // TODO: translation
+                    DispatchQueue.main.async {
+                        AlertControllerBuilder.alert(title: nil, message: "No Network")
+                            .addDefaultAction(title: kLocalizedOK, handler: nil)
+                            .build()
+                            .showWithController(Util.topmostViewController())
+                    }
+                }
                 self.callbackSubmit(with: response, error: error, scheduler: scheduler)
             }
             scheduler.pause()
@@ -47,8 +56,8 @@ extension WebRequestBrick: CBInstructionProtocol {
             switch error {
             case let .request(error: _, statusCode: statusCode):
                 return String(statusCode)
-            case .timeout:
-                return "503"
+            case .timeout, .noInternet:
+                return "504"
             default:
                 return "Unexpected Error"
             }
@@ -72,7 +81,6 @@ extension WebRequestBrick: CBInstructionProtocol {
             handleDataTaskCompletion = { data, response, error in
                 if let error = error as NSError?, error.code == NSURLErrorNotConnectedToInternet {
                     return (nil, .noInternet)
-                    // TODO: show warning for a few seconds that the internet is not accessible
                 }
                 if let error = error as NSError?, error.code == NSURLErrorTimedOut {
                     return (nil, .timeout)
