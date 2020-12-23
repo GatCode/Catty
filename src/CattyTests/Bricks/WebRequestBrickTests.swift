@@ -27,6 +27,48 @@ import XCTest
 
 final class WebRequestBrickTests: XCTestCase {
 
+    var project: Project!
+    var spriteObject: SpriteObject!
+    var spriteNode: CBSpriteNode!
+    var script: Script!
+    var scheduler: CBScheduler!
+    var context: CBScriptContextProtocol!
+    var userList: UserList!
+    var brick: WebRequestBrick!
+    var broadcastHandler: CBBroadcastHandler!
+
+    override func setUp() {
+        project = Project()
+        let scene = Scene(name: "testScene")
+        spriteObject = SpriteObject()
+        spriteObject.scene = scene
+        spriteObject.name = "SpriteObjectName"
+
+        spriteNode = CBSpriteNode(spriteObject: spriteObject)
+        spriteObject.spriteNode = spriteNode
+        spriteObject.scene.project = project
+        project.scene = spriteObject.scene
+
+        script = Script()
+        script.object = spriteObject
+
+        spriteObject.scene.project!.userData = UserDataContainer()
+
+        userList = UserList(name: "testName")
+        spriteObject.userData.add(userList)
+
+        brick = WebRequestBrick()
+        brick.userVariable = UserVariable(name: "var")
+        brick.request = Formula(string: "http://catrob.at/joke")
+        brick.script = script
+
+        let logger = CBLogger(name: "Logger")
+        broadcastHandler = CBBroadcastHandler(logger: logger)
+        let formulaInterpreter = FormulaManager(stageSize: Util.screenSize(true), landscapeMode: false)
+        scheduler = CBScheduler(logger: logger, broadcastHandler: broadcastHandler, formulaInterpreter: formulaInterpreter, audioEngine: AudioEngineMock())
+        context = CBScriptContext(script: script, spriteNode: spriteNode, formulaInterpreter: formulaInterpreter, touchManager: formulaInterpreter.touchManager)
+    }
+
 //    func testDVRGeneration() {
 //        let group = DispatchGroup()
 //        group.enter()
@@ -40,20 +82,6 @@ final class WebRequestBrickTests: XCTestCase {
 //
 //        group.wait()
 //    }
-
-    func testLongWebRequestSucceeds() {
-//        let dvrSession = Session(cassetteName: "WebRequestBrick.fetchJoke.success")
-        let brick = WebRequestBrick()
-//        let expectation = XCTestExpectation(description: "Fetch Random Joke")
-
-        brick.sendRequest(request: "http://catrob.at/joke") { response, error in
-            XCTAssertNil(error)
-            XCTAssertNotNil(response)
-//            expectation.fulfill()
-        }
-
-//        wait(for: [expectation], timeout: 1.0)
-    }
 
     func testWebRequestSucceeds() {
         let dvrSession = Session(cassetteName: "WebRequestBrick.fetchJoke.success")
@@ -127,5 +155,50 @@ final class WebRequestBrickTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1.0)
+    }
+
+    func testWebRequestNormal() {
+        let variableBefore = brick.userVariable?.value as? String
+
+        switch brick.instruction() {
+        case let .waitExecClosure(closure):
+            closure(context, scheduler)
+            brick.callbackSubmit(with: "request", error: nil, scheduler: scheduler)
+        default:
+            XCTFail("Fatal Error")
+        }
+        let variableAfter = brick.userVariable?.value as? String
+
+        XCTAssertNotEqual(variableBefore, variableAfter)
+    }
+
+    func testWebRequestNoChange() {
+        brick.userVariable?.value = ""
+        let variableBefore = brick.userVariable?.value as? String
+
+        switch brick.instruction() {
+        case let .waitExecClosure(closure):
+            closure(context, scheduler)
+            brick.callbackSubmit(with: "", error: nil, scheduler: scheduler)
+        default:
+            XCTFail("Fatal Error")
+        }
+        let variableAfter = brick.userVariable?.value as? String
+
+        XCTAssertEqual(variableBefore, variableAfter)
+    }
+
+    func testWebRequestNoUserVariable() {
+        brick.userVariable = nil
+
+        switch brick.instruction() {
+        case let .waitExecClosure(closure):
+            closure(context, scheduler)
+            brick.callbackSubmit(with: "request", error: nil, scheduler: scheduler)
+        default:
+            XCTFail("Fatal Error")
+        }
+
+         XCTAssertEqual(brick.userVariable, nil)
     }
 }
