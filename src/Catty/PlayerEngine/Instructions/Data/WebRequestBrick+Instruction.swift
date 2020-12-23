@@ -66,8 +66,9 @@ extension WebRequestBrick: CBInstructionProtocol {
     }
 
     func callbackSubmit(with input: String?, error: WebRequestBrickError?, scheduler: CBSchedulerProtocol) {
-        guard let userVariable = self.userVariable else { fatalError("Unexpected found nil.") }
-        userVariable.value = extractMessage(input: input, error: error)
+        if let userVariable = self.userVariable {
+            userVariable.value = extractMessage(input: input, error: error)
+        }
         DispatchQueue.main.async {
           scheduler.resume()
         }
