@@ -25,7 +25,9 @@
 
     var request: Formula?
     var userVariable: UserVariable?
+    var observation: NSKeyValueObservation?
     let session: URLSession
+    var task: URLSessionDataTask?
 
     override required init() {
         self.session = WebRequestBrick.defaultSession()

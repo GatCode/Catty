@@ -76,7 +76,7 @@ extension WebRequestBrick: CBInstructionProtocol {
 
     func sendRequest(request: String, completion: @escaping (String?, WebRequestBrickError?) -> Void) {
         guard let url = URL(string: request) else { return }
-        self.session.dataTask(with: url) { data, response, error in
+        self.task = self.session.dataTask(with: url) { data, response, error in
 
             let handleDataTaskCompletion: (Data?, URLResponse?, Error?) -> (response: String?, error: WebRequestBrickError?)
             handleDataTaskCompletion = { data, response, error in
@@ -97,7 +97,23 @@ extension WebRequestBrick: CBInstructionProtocol {
             DispatchQueue.main.async {
                 completion(result.response, result.error)
             }
-        }.resume()
+        }
+        
+        let downloadLimitInBytes = 10
+        
+        observation = task?.progress.observe(\.fractionCompleted) { progress, _ in
+            if let downloadedByteCount = progress.userInfo[ProgressUserInfoKey(rawValue: "NSProgressByteCompletedCountKey")] {
+                if let byteCount = downloadedByteCount as? Int, byteCount > downloadLimitInBytes {
+                    self.task?.cancel()
+                    self.session.invalidateAndCancel()
+                    DispatchQueue.main.async {
+                        completion(nil, .filesize)
+                    }
+                }
+            }
+        }
+        
+        self.task?.resume()
     }
 
     enum WebRequestBrickError: Error {
@@ -107,6 +123,8 @@ extension WebRequestBrick: CBInstructionProtocol {
         case request(error: Error?, statusCode: Int)
         /// Indicates a request timeout
         case timeout
+        /// Indicates a download of a huge file
+        case filesize
         /// Indicates an unexpected error.
         case unexpectedError
     }
