@@ -54,10 +54,15 @@ extension WebRequestBrick: CBInstructionProtocol {
     func extractMessage(input: String?, error: WebRequestBrickError?) -> String {
         guard let input = input else {
             switch error {
+            // TODO: translation
+            case .downloadSize:
+                return "file too big"
+            case .invalidURL:
+                return "file too big"
+            case .noInternet, .timeout:
+                return "504"
             case let .request(error: _, statusCode: statusCode):
                 return String(statusCode)
-            case .timeout, .noInternet:
-                return "504"
             default:
                 return "Unexpected Error"
             }
@@ -75,57 +80,33 @@ extension WebRequestBrick: CBInstructionProtocol {
     }
 
     func sendRequest(request: String, completion: @escaping (String?, WebRequestBrickError?) -> Void) {
-        guard let url = URL(string: request) else { return }
-        self.task = self.session.dataTask(with: url) { data, response, error in
-
-            let handleDataTaskCompletion: (Data?, URLResponse?, Error?) -> (response: String?, error: WebRequestBrickError?)
-            handleDataTaskCompletion = { data, response, error in
-                if let error = error as NSError?, error.code == NSURLErrorNotConnectedToInternet {
-                    return (nil, .noInternet)
+        let downloader = WebRequestDownloader(url: request, session: self.session)
+        downloader.download { response, error in
+            if let error = error as? WebRequestDownloadError {
+                if case WebRequestDownloadError.invalidUrl = error {
+                    completion(nil, .invalidURL)
+                } else if case WebRequestDownloadError.downloadSize = error {
+                    completion(nil, .downloadSize)
+                } else {
+                    completion(nil, .unexpectedError)
                 }
-                if let error = error as NSError?, error.code == NSURLErrorTimedOut {
-                    return (nil, .timeout)
-                }
-                guard let response = response as? HTTPURLResponse else { return (nil, .unexpectedError) }
-                guard let data = data, response.statusCode == 200, error == nil else {
-                    return (nil, .request(error: error, statusCode: response.statusCode))
-                }
-                guard let stringResponse = String(data: data, encoding: .utf8) else { return (nil, .unexpectedError) }
-                return (stringResponse, nil)
             }
-            let result = handleDataTaskCompletion(data, response, error)
-            DispatchQueue.main.async {
-                completion(result.response, result.error)
-            }
+            completion(response, nil)
         }
-        
-        let downloadLimitInBytes = 10
-        
-        observation = task?.progress.observe(\.fractionCompleted) { progress, _ in
-            if let downloadedByteCount = progress.userInfo[ProgressUserInfoKey(rawValue: "NSProgressByteCompletedCountKey")] {
-                if let byteCount = downloadedByteCount as? Int, byteCount > downloadLimitInBytes {
-                    self.task?.cancel()
-                    self.session.invalidateAndCancel()
-                    DispatchQueue.main.async {
-                        completion(nil, .filesize)
-                    }
-                }
-            }
-        }
-        
-        self.task?.resume()
     }
 
     enum WebRequestBrickError: Error {
-        /// Indicates an no internet connection is present
+        /// Indicates a download bigger than kWebRequestMaxDownloadSize
+        case downloadSize
+        /// Indicates an invalid URL
+        case invalidURL
+        /// Indicates that no internet connection is present
         case noInternet
-        /// Indicates an error with the URLRequest.
+        /// Indicates an error with the URLRequest
         case request(error: Error?, statusCode: Int)
         /// Indicates a request timeout
         case timeout
-        /// Indicates a download of a huge file
-        case filesize
-        /// Indicates an unexpected error.
+        /// Indicates an unexpected error
         case unexpectedError
     }
 }
