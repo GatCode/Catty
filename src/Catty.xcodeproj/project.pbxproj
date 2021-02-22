@@ -117,6 +117,9 @@
 		2DCB4938212EAB36005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */; };
 		2E0E25D525E265840020CD9D /* WebRequestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E25D425E265840020CD9D /* WebRequestDownloader.swift */; };
 		2E0E25D625E265840020CD9D /* WebRequestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E25D425E265840020CD9D /* WebRequestDownloader.swift */; };
+		2E7ED10025E38C700009F17F /* NetworkDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597AB575202089DF007CD10D /* NetworkDefines.swift */; };
+		2E7ED10625E38E1A0009F17F /* WebRequestDownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7ED10525E38E1A0009F17F /* WebRequestDownloaderTests.swift */; };
+		2E7ED11425E3AAFA0009F17F /* WebRequestDownloader.fetchJoke.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ED11325E3AAFA0009F17F /* WebRequestDownloader.fetchJoke.success.json */; };
 		2E8780A82542BCE200816B52 /* WebRequestBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8780A72542BCE200816B52 /* WebRequestBrickTests.swift */; };
 		2EBD8456253FEDD4009BFED5 /* WebRequestBrick+CBXMLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD8455253FEDD4009BFED5 /* WebRequestBrick+CBXMLHandler.swift */; };
 		2EBD845B253FEEA1009BFED5 /* WebRequestBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD845A253FEEA1009BFED5 /* WebRequestBrick.swift */; };
@@ -1993,6 +1996,8 @@
 		2DCB4935212EAAEE005E8E3D /* StoreProjectDownloader.fetchProjectDetails.success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.success.json; sourceTree = "<group>"; };
 		2DCB4937212EAB35005E8E3D /* StoreProjectDownloader.fetchProjectDetails.fail.request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoreProjectDownloader.fetchProjectDetails.fail.request.json; sourceTree = "<group>"; };
 		2E0E25D425E265840020CD9D /* WebRequestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestDownloader.swift; sourceTree = "<group>"; };
+		2E7ED10525E38E1A0009F17F /* WebRequestDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestDownloaderTests.swift; sourceTree = "<group>"; };
+		2E7ED11325E3AAFA0009F17F /* WebRequestDownloader.fetchJoke.success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WebRequestDownloader.fetchJoke.success.json; sourceTree = "<group>"; };
 		2E8780A72542BCE200816B52 /* WebRequestBrickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestBrickTests.swift; sourceTree = "<group>"; };
 		2EBD8455253FEDD4009BFED5 /* WebRequestBrick+CBXMLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebRequestBrick+CBXMLHandler.swift"; sourceTree = "<group>"; };
 		2EBD845A253FEEA1009BFED5 /* WebRequestBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestBrick.swift; sourceTree = "<group>"; };
@@ -4587,6 +4592,23 @@
 				2E0E25D425E265840020CD9D /* WebRequestDownloader.swift */,
 			);
 			path = WebRequestDownloader;
+			sourceTree = "<group>";
+		};
+		2E7ED10425E38DF50009F17F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2E7ED11225E3AAC10009F17F /* Fixtures */,
+				2E7ED10525E38E1A0009F17F /* WebRequestDownloaderTests.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2E7ED11225E3AAC10009F17F /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				2E7ED11325E3AAFA0009F17F /* WebRequestDownloader.fetchJoke.success.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		2ED41693241120AE00AFE2FD /* UserProjects */ = {
@@ -10215,6 +10237,7 @@
 				4CEB222C1B95E47500B3BE2F /* Bricks */,
 				CAD740E61AF2D3F600C32937 /* CBStack */,
 				4CD0BA9721467C4500BF17A4 /* DataModel */,
+				2E7ED10425E38DF50009F17F /* Helpers */,
 				C34B44FB17F3403400624730 /* Extensions */,
 				4CA658EB21EBA5A5000E5797 /* FileManager */,
 				4C3C03F5199BA5250004F594 /* Formula */,
@@ -10908,6 +10931,7 @@
 				2ED41864241120B000AFE2FD /* ValidHeader095.xml in Resources */,
 				4C3286232546D81000C31F9D /* GoToBrick_0993.xml in Resources */,
 				2ED4181E241120AF00AFE2FD /* Compass_0.1_093.xml in Resources */,
+				2E7ED11425E3AAFA0009F17F /* WebRequestDownloader.fetchJoke.success.json in Resources */,
 				2ED41862241120B000AFE2FD /* ValidHeader097.xml in Resources */,
 				2ED41873241120B000AFE2FD /* Encapsulated_0991.xml in Resources */,
 				2ED41823241120AF00AFE2FD /* Compass_0.1_0991.xml in Resources */,
@@ -11632,6 +11656,7 @@
 				4C0F9FD5204BD3C200E71B2D /* ChooseCameraBrickTests.swift in Sources */,
 				CA7698C21B0E4B3F000D0340 /* CBStackTests.m in Sources */,
 				4C822679213FA7A400F3D750 /* SizeSensorTest.swift in Sources */,
+				2E7ED10625E38E1A0009F17F /* WebRequestDownloaderTests.swift in Sources */,
 				4CFAD35E1CFAB3EC0019C636 /* CustomExtensionsTests.m in Sources */,
 				46C5D9F6254FF641003D58D9 /* RotationStyleTests.swift in Sources */,
 				9E2C2D9023257704004B66C6 /* ChangeBrightnessByNBrickTests.swift in Sources */,
@@ -11676,6 +11701,7 @@
 				4C6FE176212D2D2E0067B7D5 /* LetterFunctionTest.swift in Sources */,
 				4CEB22511B95E47500B3BE2F /* BrickMoveManagerRepeatTests.m in Sources */,
 				4C1329041CD9259900F16E48 /* AudioManagerTests.swift in Sources */,
+				2E7ED10025E38C700009F17F /* NetworkDefines.swift in Sources */,
 				4C2CBB5A25A5AA8400C1C143 /* XMLParserTests0992.swift in Sources */,
 				4C822667213FA7A400F3D750 /* LocationAccuracySensorTest.swift in Sources */,
 				4C822677213FA7A400F3D750 /* RotationSensorTest.swift in Sources */,

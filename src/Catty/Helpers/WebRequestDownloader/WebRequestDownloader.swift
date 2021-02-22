@@ -27,13 +27,16 @@ public class WebRequestDownloader: NSObject {
     private var task: URLSessionDataTask?
     private var url = String()
     
-    required init(url: String, session: URLSession = WebRequestDownloader.defaultSession()) {
+    required init(url: String, session: URLSession?) {
+        super.init()
         self.url = url
+        self.session = session != nil ? session : self.defaultSession()
     }
     
-    private static func defaultSession() -> URLSession {
+    private func defaultSession() -> URLSession {
         let config = URLSessionConfiguration.ephemeral
-        return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
+        config.timeoutIntervalForRequest = Double(NetworkDefines.connectionTimeout)
+        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }
 
     func download(completion: @escaping (String?, Error?) -> Void) {

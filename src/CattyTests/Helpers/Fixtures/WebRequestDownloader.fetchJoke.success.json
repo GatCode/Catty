@@ -1,0 +1,37 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : {
+          "id" : 336,
+          "type" : "general",
+          "setup" : "Why did the cookie cry?",
+          "punchline" : "It was feeling crumby."
+        },
+        "url" : "https:\/\/official-joke-api.appspot.com\/random_joke",
+        "status" : 200,
+        "headers" : {
+          "Cache-Control" : "private",
+          "Content-Type" : "application\/json; charset=utf-8",
+          "x-powered-by" : "Express",
+          "Alt-Svc" : "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+          "Etag" : "W\/\"62-ojnzitUIpfKpZvZJmUraX3ygir4\"",
+          "Vary" : "Accept-Encoding",
+          "x-cloud-trace-context" : "e015abb6f27f64a5512eb617c6fbecb3",
+          "Date" : "Mon, 22 Feb 2021 10:18:49 GMT",
+          "Content-Length" : "115",
+          "Access-Control-Allow-Origin" : "*",
+          "Server" : "Google Frontend",
+          "Content-Encoding" : "gzip"
+        }
+      },
+      "recorded_at" : 1613989129.405463,
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/official-joke-api.appspot.com\/random_joke"
+      }
+    }
+  ],
+  "name" : "WebRequestDownloader.fetchJoke.successs"
+}
+

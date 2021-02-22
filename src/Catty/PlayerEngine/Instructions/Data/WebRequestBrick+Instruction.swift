@@ -80,7 +80,7 @@ extension WebRequestBrick: CBInstructionProtocol {
     }
 
     func sendRequest(request: String, completion: @escaping (String?, WebRequestBrickError?) -> Void) {
-        let downloader = WebRequestDownloader(url: request, session: self.session)
+        let downloader = WebRequestDownloader(url: request, session: session)
         downloader.download { response, error in
             if let error = error as? WebRequestDownloadError {
                 if case WebRequestDownloadError.invalidUrl = error {

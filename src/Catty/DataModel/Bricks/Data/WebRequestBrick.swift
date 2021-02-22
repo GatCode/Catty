@@ -25,14 +25,13 @@
 
     var request: Formula?
     var userVariable: UserVariable?
-    let session: URLSession
+    var session: URLSession?
 
     override required init() {
-        self.session = WebRequestBrick.defaultSession()
         super.init()
     }
 
-    init(session: URLSession = WebRequestBrick.defaultSession()) {
+    init(session: URLSession) {
         self.session = session
     }
 
@@ -82,11 +81,5 @@
 
     override func isDisabledForBackground() -> Bool {
         false
-    }
-
-    static func defaultSession() -> URLSession {
-        let config = URLSessionConfiguration.ephemeral
-        config.timeoutIntervalForRequest = Double(NetworkDefines.connectionTimeout)
-        return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
     }
 }
