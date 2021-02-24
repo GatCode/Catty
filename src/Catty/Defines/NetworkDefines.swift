@@ -98,6 +98,6 @@ class NetworkDefines: NSObject {
     @objc static let kUserLoginToken = "userLoginToken"
     
     // MARK: WebRequestDownloader
-    
-    static let kWebRequestMaxDownloadSize = 10000000 // = 10MB
+        
+    static let kWebRequestMaxDownloadSize = 1000000 // = 1MB
 }

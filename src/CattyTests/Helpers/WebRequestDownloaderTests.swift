@@ -26,27 +26,18 @@ import XCTest
 @testable import Pocket_Code
 
 final class WebRequestDownloaderTests: XCTestCase {
-    
-//    func testDVRGeneration() {
-//        let group = DispatchGroup()
-//        group.enter()
-//
-//        let dvrSession = Session(cassetteName: "WebRequestDownloader.fetchJoke.success")
-//
-//        let downloader = WebRequestDownloader(url: "https://official-joke-api.appspot.com/random_joke", session: dvrSession)
-//
-//        downloader.download() { _,_ in
-//            group.leave()
-//        }
-//
-//        group.wait()
-//    }
-
+        
     func testWebRequestSucceeds() {
-        let dvrSession = Session(cassetteName: "WebRequestDownloader.fetchJoke.success")
-        let url = "https://official-joke-api.appspot.com/random_joke"
-        let downloader = WebRequestDownloader(url: url, session: dvrSession)
-        let expectation = XCTestExpectation(description: "Fetch Random Joke")
+        let url = "https://share.catrob.at/api/projects?category=random&limit=1"
+        let downloader = WebRequestDownloader(url: url, session: nil)
+        
+        let config = downloader.session?.configuration
+        let delegate = downloader.session?.delegate
+        let backingSession = URLSession(configuration: config!, delegate: delegate, delegateQueue: nil)
+        let dvrSession = Session(cassetteName: "WebRequestDownloader.success", backingSession: backingSession)
+        downloader.session = dvrSession
+
+        let expectation = XCTestExpectation(description: "Fetch Ok")
 
         downloader.download() { response, error in
             XCTAssertNil(error)
@@ -54,6 +45,48 @@ final class WebRequestDownloaderTests: XCTestCase {
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testWebRequestFailsWithInvalidURL() {
+        let downloader = WebRequestDownloader(url: "", session: nil)
+        let expectation = XCTestExpectation(description: "Fetch Fail")
+
+        downloader.download() { response, error in
+            guard let error = error else { XCTFail("no error received"); return }
+            switch error {
+            case WebRequestDownloadError.invalidUrl:
+                expectation.fulfill()
+            default:
+                XCTFail("wrong error received")
+            }
+        }
+
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testWebRequestFailsWithDownloadSize() {
+        let url = "https://share.catrob.at/api/projects?category=random&limit=5000"
+        let downloader = WebRequestDownloader(url: url, session: nil)
+        
+        let config = downloader.session?.configuration
+        let delegate = downloader.session?.delegate
+        let backingSession = URLSession(configuration: config!, delegate: delegate, delegateQueue: nil)
+        let dvrSession = Session(cassetteName: "WebRequestDownloader.fail", backingSession: backingSession)
+        downloader.session = dvrSession
+
+        let expectation = XCTestExpectation(description: "Fetch Fail Download Size")
+
+        downloader.download() { response, error in
+            guard let error = error else { XCTFail("no error received"); return }
+            switch error {
+            case WebRequestDownloadError.downloadSize:
+                expectation.fulfill()
+            default:
+                XCTFail("wrong error received")
+            }
+        }
+
+        wait(for: [expectation], timeout: 1.0)
     }
 }

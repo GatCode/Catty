@@ -23,9 +23,9 @@
 public class WebRequestDownloader: NSObject {
     private var completion: ((String?, Error?) -> Void)?
     private var data = Data()
-    private var session: URLSession?
     private var task: URLSessionDataTask?
     private var url = String()
+    var session: URLSession?
     
     required init(url: String, session: URLSession?) {
         super.init()
@@ -58,13 +58,12 @@ extension WebRequestDownloader: URLSessionDataDelegate {
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let completion = self.completion {
-            if error != nil {
+            if (error as NSError?)?.code == NSURLErrorCancelled || self.data.count > NetworkDefines.kWebRequestMaxDownloadSize {
                 data.removeAll()
-                if (error as NSError?)?.code == NSURLErrorCancelled {
-                    completion(nil, WebRequestDownloadError.downloadSize)
-                } else {
-                    completion(nil, WebRequestDownloadError.unexpectedError)
-                }
+                completion(nil, WebRequestDownloadError.downloadSize)
+            } else if error != nil {
+                data.removeAll()
+                completion(nil, WebRequestDownloadError.unexpectedError)
             } else {
                 completion(String(decoding: data, as: UTF8.self), nil)
             }
