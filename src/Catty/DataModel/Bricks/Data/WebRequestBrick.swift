@@ -23,16 +23,16 @@
 @objc(WebRequestBrick)
 @objcMembers class WebRequestBrick: Brick, BrickProtocol, BrickFormulaProtocol, BrickVariableProtocol {
 
+    var downloader: WebRequestDownloader?
     var request: Formula?
     var userVariable: UserVariable?
-    var session: URLSession?
-
+    
     override required init() {
         super.init()
     }
 
-    init(session: URLSession) {
-        self.session = session
+    func createDownloader(url: String, session: URLSession?) {
+        self.downloader = WebRequestDownloader(url: url, session: session)
     }
 
     func category() -> kBrickCategoryType {

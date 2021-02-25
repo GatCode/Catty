@@ -33,9 +33,11 @@ extension WebRequestBrick: CBInstructionProtocol {
         if requestString.hasSuffix("'") {
             requestString = String(requestString.dropLast())
         }
+        
+        self.createDownloader(url: requestString, session: nil)
 
         return CBInstruction.waitExecClosure { _, scheduler in
-            self.sendRequest(request: requestString) { response, error in
+            self.sendRequest() { response, error in
                 if case .noInternet = error {
                     // TODO: translation
                     DispatchQueue.main.async {
@@ -79,9 +81,8 @@ extension WebRequestBrick: CBInstructionProtocol {
         }
     }
 
-    func sendRequest(request: String, completion: @escaping (String?, WebRequestBrickError?) -> Void) {
-        let downloader = WebRequestDownloader(url: request, session: session)
-        downloader.download { response, error in
+    func sendRequest(completion: @escaping (String?, WebRequestBrickError?) -> Void) {
+        self.downloader?.download { response, error in
             if let error = error as? WebRequestDownloadError {
                 if case WebRequestDownloadError.invalidUrl = error {
                     completion(nil, .invalidURL)
